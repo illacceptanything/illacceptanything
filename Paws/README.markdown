@@ -1,0 +1,20 @@
+Paws.js 3
+=========
+Yet another stab at Paws; this time, attempting to be idiomatic with my JavaScript, and be
+browser-friendly. Time to make “a real Paws.”
+
+Of note, this is *still* a playground for ideas; meaning that, at the moment, I'm going to be trying
+a continuation-based instead of execution-based Paws, first-classing the concept of “holes.” I've
+high hopes for this approach clearing up a whole pile of obscure confusing problems.
+
+Notes to self
+-------------
+In the spirit of being idiomatic for a change, here's a couple design goals of the codebase, at
+least during the boring repetitive “implementing the same Paws concepts *yet again*” phase:
+
+ - using CoffeeScript, for the first time evah, despite the huge drawback thereof
+ - taking an idiomatic CommonJS (fuckin' ick. ಠ_ಠ) modularization style. `require()`, here I come.
+    - correspondingly, I'll have to use Browserify or similar instead of the `from` magic I wanted
+ - doing project-support with common tools: TJ Holowaychuk's (ಠ_ಠ) Mocha, Chai, etceteras
+ - trying to build at least a *mildly* idiomatic API, making as much full use of `EventEmitter`s,
+   and probably Q-style promises, as I can

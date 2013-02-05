@@ -1,0 +1,22 @@
+{     "author" : "elliottcable (http://ell.io/tt)"
+   
+,       "name" : "Paws.js"
+,    "private" :  true
+,    "version" : "3.0.0"
+
+,       "main" : "Library/Paws.js"
+   
+,          "engines" :{"node":"~0.8.0"}
+,     "dependencies" :{"coffee-script"          : " ~ 1. 4. 0"                                    }
+,  "devDependencies" :{"docco"                  : " ~ 0. 4. 0"
+                     , "mocha"                  : " ~ 1. 8. 1"
+                     , "expect.js"              : " ~ 0. 2. 0"                                    }
+
+,   "testling" :{
+          "files" : "Test/*.coffee"
+     ,  "harness" : "mocha-bdd"
+     , "browsers" :{"ie":      [ 6, 7, 8, 9, 10 ]
+                  , "firefox": [ 3, 3.5, 4, 5, 10, 17 ]
+                  , "chrome":  [ 4, 10, 23 ]
+                  , "safari":  [ "5.0.5", 5.1 ]
+                  , "opera":   [ 10.0, 10.5, 11.0, 11.5, 12.0 ]                                  }}}
