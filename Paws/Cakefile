@@ -26,10 +26,10 @@ task 'test', 'run testsuite through Mocha', (options) ->
       NODE_ENV: { value: config.mocha.env }
    
    spawn path.resolve('./node_modules/.bin/mocha'),
-      [ '--compilers', 'coffee:coffee-script'
-        '--reporter',   options.reporter or config.mocha.reporter
-        '--ui',         config.mocha.ui
-         path.resolve config.dirs.tests ]
+      _.compact [ '--compilers', 'coffee:coffee-script'
+                  '--reporter',   options.reporter or config.mocha.reporter
+                  '--ui',         config.mocha.ui
+                  path.resolve config.dirs.tests ]
       stdio: 'inherit'
       cwd: path.resolve config.dirs.tests
       env: env
@@ -41,10 +41,10 @@ task 'docs', 'generate HTML documentation via Docco', (options) ->
       invoke 'docs:open' if options.wait
 
 task 'docs:open', (options) ->
-   browser = spawn 'open', _.compact [
-      path.join(config.dirs.docs, 'Paws.html')
-      '-a', config.docco.browser
-      (if options.wait then '-W') ]
+   browser = spawn 'open',
+      _.compact [ path.join(config.dirs.docs, 'Paws.html')
+                  '-a', config.docco.browser
+                  (if options.wait then '-W') ]
    
    if options.wait
       browser.on 'exit', -> invoke 'clean'
