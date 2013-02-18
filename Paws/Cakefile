@@ -29,9 +29,9 @@ task 'test', 'run testsuite through Mocha', (options) ->
       [ '--compilers', 'coffee:coffee-script'
         '--reporter',   options.reporter or config.mocha.reporter
         '--ui',         config.mocha.ui
-         path.resolve config.dirs.test ]
+         path.resolve config.dirs.tests ]
       stdio: 'inherit'
-      cwd: path.resolve config.dirs.test
+      cwd: path.resolve config.dirs.tests
       env: env
 
 
