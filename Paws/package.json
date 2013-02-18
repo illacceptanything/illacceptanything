@@ -7,11 +7,11 @@
 ,       "main" : "Library/Paws.js"
    
 ,          "engines" :{"node":"~0.8.0"}
-,     "dependencies" :{"coffee-script"          : " ~ 1. 4. 0"
-                     , "lodash"                 : " ~ 1. 0. 0"                                     }
-,  "devDependencies" :{"docco"                  : " ~ 0. 4. 0"
-                     , "mocha"                  : " ~ 1. 8. 1"
-                     , "expect.js"              : " ~ 0. 2. 0"                                    }
+,     "dependencies" :{"coffee-script"          : "~ 1. 4. 0"
+                     , "lodash"                 : "~ 1. 0. 0"                                     }
+,  "devDependencies" :{"docco"                  : "~ 0. 4. 0"
+                     , "mocha"                  : "~ 1. 8. 1"
+                     , "expect.js"              : "~ 0. 2. 0"                                     }
 
 ,   "testling" :{
           "files" : "Test/*.coffee"
