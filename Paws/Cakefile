@@ -3,17 +3,18 @@ _       = require 'lodash'
 # Configuration vars.
 option '-r', '--reporter [REP]', 'Mocha reporter to display test results'
 
-mocha =
-   reporter:   'spec'
-   dir:        'Test'
-   ui:         'bdd'
-   env:        'test'
+config =
+   mocha:
+      reporter:   'spec'
+      dir:        'Test'
+      ui:         'bdd'
+      env:        'test'
 
 
-
-path    = require 'path'
-{spawn} = require 'child_process'
-
+# I try to use standard `make`-target names for these tasks.
+# See: http://www.gnu.org/software/make/manual/make.html#Standard-Targets
+{spawn}  = require 'child_process'
+path     = require 'path'
 task 'test', 'run testsuite through Mocha', (options) ->
    env = Object.create process.env,
       NODE_ENV: { value: mocha.env }
