@@ -1,22 +1,27 @@
 _       = require 'lodash'
 
 # Configuration vars.
+option '-w', '--watch',          'watch files for changes, and recompile results'
 option '-g', '--grep [PATTERN]', 'see `mocha --help`'
 option '-i', '--invert',         'see `mocha --help`'
 option '-r', '--reporter [REP]', 'specify Mocha reporter to display test results'
 option '-W', '--wait',           'open browser and wait, on documentation tasks'
+option '-t', '--tests',          'include tests in the bundle'
 
 config =
    dirs:
-      source:  'Source'
-      tests:   'Test'
-      docs:    'Documentation'
+      source:     'Source'
+      tests:      'Test'
+      docs:       'Documentation'
+      products:   'Library'
    mocha:
       reporter:   'spec'
       ui:         'bdd'
       env:        'test'
    docco:
       browser:    'Google Chrome' # Browser to open HTML documentation in
+   
+   package:    require './package.json'
 
 
 # I try to use standard `make`-target names for these tasks.
@@ -52,10 +57,29 @@ task 'docs:open', (options) ->
    if options.wait
       browser.on 'exit', -> invoke 'clean'
 
-task 'html', -> invoke 'docs'
+
+task 'compile', "write out JavaScript to lib/", -> # NYI
+
+browserify = require 'browserify'
+glob       = require 'glob'
+fs         = require 'fs'
+task 'compile:browser', "bundle JavaScript through Browserify", (options) ->
+   bundle = browserify
+      watch: options.watch
+      cache: true
+      exports: ['require', 'process']
+   
+   bundle.addEntry path.join config.dirs.source, 'Paws.coffee'
+   if options.tests
+      bundle.addEntry file for file in glob.sync config.package.testling.files
+   
+   fs.writeFile config.package.main.replace(/(?=\.(?:js|coffee))|$/, '.bundle'), bundle.bundle()
 
 
 task 'clean', "remove git-ignore'd build products", ->
    spawn 'mv', ['node_modules/', 'node_modules-PRECLEAN'] # Hacky as fuck.
    spawn 'git', ['clean', '-fXd']
    spawn 'mv', ['node_modules-PRECLEAN/', 'node_modules']
+
+task 'html',  -> invoke 'docs'
+task 'build', -> invoke 'compile'
