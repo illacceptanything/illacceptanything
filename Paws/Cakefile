@@ -1,7 +1,8 @@
 _       = require 'lodash'
 
 # Configuration vars.
-option '-r', '--reporter [REP]', 'Mocha reporter to display test results'
+option '-r', '--reporter [REP]', 'specify Mocha reporter to display test results'
+option '-W', '--wait',           'open browser and wait, on documentation tasks'
 
 config =
    dirs:
@@ -12,6 +13,8 @@ config =
       reporter:   'spec'
       ui:         'bdd'
       env:        'test'
+   docco:
+      browser:    'Google Chrome' # Browser to open HTML documentation in
 
 
 # I try to use standard `make`-target names for these tasks.
@@ -31,8 +34,25 @@ task 'test', 'run testsuite through Mocha', (options) ->
       cwd: path.resolve config.dirs.test
       env: env
 
+
 { document: docco } = require 'docco'
-task 'html', 'generate HTML documentation', (options) ->
-   docco [path.join config.dirs.source, '*'],
-      output: config.dirs.docs
-   spawn 'open', [path.join config.dirs.docs, 'Paws.html']
+task 'docs', 'generate HTML documentation via Docco', (options) ->
+   docco [path.join config.dirs.source, '*'], { output: config.dirs.docs }, ->
+      invoke 'docs:open' if options.wait
+
+task 'docs:open', (options) ->
+   browser = spawn 'open', _.compact [
+      path.join(config.dirs.docs, 'Paws.html')
+      '-a', config.docco.browser
+      (if options.wait then '-W') ]
+   
+   if options.wait
+      browser.on 'exit', -> invoke 'clean'
+
+task 'html', -> invoke 'docs'
+
+
+task 'clean', "remove git-ignore'd build products", ->
+   spawn 'mv', ['node_modules/', 'node_modules-PRECLEAN'] # Hacky as fuck.
+   spawn 'git', ['clean', '-fXd']
+   spawn 'mv', ['node_modules-PRECLEAN/', 'node_modules']
