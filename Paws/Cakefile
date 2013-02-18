@@ -1,12 +1,12 @@
 _       = require 'lodash'
 
 # Configuration vars.
-option '-w', '--watch',          'watch files for changes, and recompile results'
-option '-g', '--grep [PATTERN]', 'see `mocha --help`'
-option '-i', '--invert',         'see `mocha --help`'
-option '-r', '--reporter [REP]', 'specify Mocha reporter to display test results'
-option '-W', '--wait',           'open browser and wait, on documentation tasks'
-option '-t', '--tests',          'include tests in the bundle'
+option '-w', '--watch',          '(compile:browser) watch files for changes, and recompile results'
+option '-W', '--wait',           '(docs, docs:open) open browser and wait'
+option '-g', '--grep [PATTERN]', '(test) see `mocha --help`'
+option '-i', '--invert',         '(test) see `mocha --help`'
+option '-r', '--reporter [REP]', '(test) specify Mocha reporter to display test results'
+option '-t', '--tests',          '(compile:browser) include tests in the bundle'
 
 config =
    dirs:
