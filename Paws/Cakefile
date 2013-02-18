@@ -1,6 +1,8 @@
 _       = require 'lodash'
 
 # Configuration vars.
+option '-g', '--grep [PATTERN]', 'see `mocha --help`'
+option '-i', '--invert',         'see `mocha --help`'
 option '-r', '--reporter [REP]', 'specify Mocha reporter to display test results'
 option '-W', '--wait',           'open browser and wait, on documentation tasks'
 
@@ -26,7 +28,8 @@ task 'test', 'run testsuite through Mocha', (options) ->
       NODE_ENV: { value: config.mocha.env }
    
    spawn path.resolve('./node_modules/.bin/mocha'),
-      _.compact [ '--compilers', 'coffee:coffee-script'
+      _.compact [ '--grep', (options.grep or '.'), (if options.invert then '--invert')
+                  '--compilers', 'coffee:coffee-script'
                   '--reporter',   options.reporter or config.mocha.reporter
                   '--ui',         config.mocha.ui
                   path.resolve config.dirs.tests ]
