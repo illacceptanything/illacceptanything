@@ -1,2 +1,3 @@
 module.exports = Paws =
-   whee: 'whee!'
+   Unit:    require './Unit'
+   Script:  require './Script'
