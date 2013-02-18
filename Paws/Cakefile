@@ -76,6 +76,7 @@ task 'compile:client', "bundle JavaScript through Browserify", (options) ->
       watch: options.watch
       cache: true
       exports: ['require', 'process']
+   bundle.use require 'tagify'
    
    bundle.addEntry path.join config.dirs.source, 'Paws.coffee'
    if options.tests
