@@ -7,6 +7,7 @@ config =
    dirs:
       source:  'Source'
       tests:   'Test'
+      docs:    'Documentation'
    mocha:
       reporter:   'spec'
       ui:         'bdd'
@@ -29,3 +30,9 @@ task 'test', 'run testsuite through Mocha', (options) ->
       stdio: 'inherit'
       cwd: path.resolve config.dirs.test
       env: env
+
+{ document: docco } = require 'docco'
+task 'html', 'generate HTML documentation', (options) ->
+   docco [path.join config.dirs.source, '*'],
+      output: config.dirs.docs
+   spawn 'open', [path.join config.dirs.docs, 'Paws.html']
