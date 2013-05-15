@@ -21,24 +21,26 @@ utilities =
          semaphore =
             source: source
          
+         parent = body(html(window.document))
          $frame = window.document.createElement 'iframe'
          $frame.style.display = 'none'
-         body(html(window.document)).insertBefore $frame
+         parent.insertBefore $frame, parent.firstChild
          $window = $frame.contentWindow
         #$window.document.close()
          
+         $parent = body(html($window.document))
          $window.__fromSemaphore = semaphore
          $script = $window.document.createElement 'script'
          $script.text = "window.__fromSemaphore.result = eval(window.__fromSemaphore.source)"
-         body(html($window.document)).insertBefore $script
+         $parent.insertBefore $script, $parent.firstChild
          
-         body(html(window.document)).removeChild $frame
+         parent.removeChild $frame
          
          return semaphore.result
       
       nodeFor = (type) -> (node) ->
          node.getElementsByTagName(type)[0] or
-         node.insertBefore (node.ownerDocument or node).createElement type
+         node.insertBefore (node.ownerDocument or node).createElement(type), node.firstChild
       
       html = nodeFor 'html'
       head = nodeFor 'head'
