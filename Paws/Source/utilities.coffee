@@ -6,10 +6,8 @@ utilities =
    hasPrototypeAccessors: do ->
       canHaz = undefined
       return (setTo) ->
-         if (typeof setTo != 'undefined') # FIXME: CoffeeScriptize this.
-            canHaz = setTo
-         
-         return canHaz ? do ->
+         canHaz = setTo if setTo?
+         canHaz ? do ->
             (a = new Object).inherits = true
             (b = new Object).__proto__ = a
             return canHaz = !!b.inherits
@@ -42,9 +40,9 @@ utilities =
          node.getElementsByTagName(type)[0] or
          node.insertBefore (node.ownerDocument or node).createElement type
       
-      html = nodeFor('html')
-      head = nodeFor('head')
-      body = nodeFor('body')
+      html = nodeFor 'html'
+      head = nodeFor 'head'
+      body = nodeFor 'body'
 
       return (source, context) ->
          (if process?.browser then client else server).apply this, arguments
@@ -112,7 +110,8 @@ utilities =
                return (arguments.callee._runtimeBody
                     || "+parent.name+"._subclassSemaphore.runtimeBody
                     || function(){})
-                  ["+parent.name+"._subclassSemaphore.intactArguments ? 'call':'apply'](this, arguments)")
+                  ["+parent.name+"._subclassSemaphore.intactArguments ? 'call':'apply']
+                     (this, arguments)")
             (constructorBody ? noop).apply(that, arguments) ? that
          
          constructor.prototype = parent.prototype
