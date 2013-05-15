@@ -1,8 +1,8 @@
 _       = require 'lodash'
 
 # Configuration vars.
-option '-w', '--watch',          '(compile:browser) watch files for changes, and recompile results'
-option '-W', '--wait',           '(docs, docs:open) open browser and wait'
+option '-w', '--watch',          '(compile:client) watch files for changes, and recompile results'
+option '-W', '--wait',           '(docs:open, test:client:open) open browser and wait'
 option '-g', '--grep [PATTERN]', '(test) see `mocha --help`'
 option '-i', '--invert',         '(test) see `mocha --help`'
 option '-r', '--reporter [REP]', '(test) specify Mocha reporter to display test results'
@@ -49,6 +49,14 @@ task 'test', 'run testsuite through Mocha', (options) ->
       cwd: path.resolve config.dirs.tests
       env: env
 
+task 'test:client', (options) ->
+   options.tests = true
+   invoke 'compile:client'
+   invoke 'test:client:open'
+
+task 'test:client:open', (options) ->
+   open_wait_task options, path.join(config.dirs.products, 'tests.html')
+
 
 { document: docco } = require 'docco'
 task 'docs', 'generate HTML documentation via Docco', (options) ->
@@ -63,7 +71,7 @@ task 'docs:open', (options) ->
 browserify = require 'browserify'
 glob       = require 'glob'
 fs         = require 'fs'
-task 'compile:browser', "bundle JavaScript through Browserify", (options) ->
+task 'compile:client', "bundle JavaScript through Browserify", (options) ->
    bundle = browserify
       watch: options.watch
       cache: true
