@@ -23,6 +23,13 @@ config =
    
    package:    require './package.json'
 
+open_wait_task = (opts, path) ->
+   browser = spawn 'open',
+      _.compact [ path, '-a', config.docco.browser, (if opts.wait then '-W') ]
+   
+   if opts.wait
+      browser.on 'exit', -> invoke 'clean'
+
 
 # I try to use standard `make`-target names for these tasks.
 # See: http://www.gnu.org/software/make/manual/make.html#Standard-Targets
@@ -47,18 +54,11 @@ task 'test', 'run testsuite through Mocha', (options) ->
 task 'docs', 'generate HTML documentation via Docco', (options) ->
    docco [path.join config.dirs.source, '*'], { output: config.dirs.docs }, ->
       invoke 'docs:open' if options.wait
-
 task 'docs:open', (options) ->
-   browser = spawn 'open',
-      _.compact [ path.join(config.dirs.docs, 'Paws.html')
-                  '-a', config.docco.browser
-                  (if options.wait then '-W') ]
-   
-   if options.wait
-      browser.on 'exit', -> invoke 'clean'
+   open_wait_task options, path.join(config.dirs.docs, 'Paws.html')
 
 
-task 'compile', "write out JavaScript to lib/", -> # NYI
+#task 'compile', "write out JavaScript to lib/", -> # NYI
 
 browserify = require 'browserify'
 glob       = require 'glob'
@@ -77,9 +77,9 @@ task 'compile:browser', "bundle JavaScript through Browserify", (options) ->
 
 
 task 'clean', "remove git-ignore'd build products", ->
-   spawn 'mv', ['node_modules/', 'node_modules-PRECLEAN'] # Hacky as fuck.
+   spawn 'mv', ['node_modules/', 'node_modules-PRECLEAN'] # FIXME: Hacky as fuck.
    spawn 'git', ['clean', '-fXd']
    spawn 'mv', ['node_modules-PRECLEAN/', 'node_modules']
 
 task 'html',  -> invoke 'docs'
-task 'build', -> invoke 'compile'
+#task 'build', -> invoke 'compile'
