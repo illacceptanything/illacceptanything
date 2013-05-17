@@ -35,6 +35,13 @@ describe "Paws' utilities:", ->
          
          expect(run 'Function').to.not.be Function
          expect(run 'new Object').to.not.be.an Object
+      
+      describe '(regressions)', ->
+         it 'should expose expected globals to eval-bodies /re #4', ->
+            $Function = run 'Function'
+            $func = new $Function "return Object"
+            expect(-> $func()).to.not.throwException()
+            expect($func()).to.be.a 'function'
    
    if process.browser then describe '#runInNewContext (client)', ->
       it 'should not leave trash in the DOM', ->
