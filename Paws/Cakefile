@@ -2,11 +2,12 @@ _       = require 'lodash'
 
 # Configuration vars.
 option '-w', '--watch',          '(compile:client) watch files for changes, and recompile results'
-option '-W', '--wait',           '(docs:open, test:client:open) open browser and wait'
+option '-W', '--wait',           '(*:open) open browser and wait'
 option '-g', '--grep [PATTERN]', '(test) see `mocha --help`'
 option '-i', '--invert',         '(test) see `mocha --help`'
 option '-r', '--reporter [REP]', '(test) specify Mocha reporter to display test results'
 option '-t', '--tests',          '(compile:browser) include tests in the bundle'
+option '-a', '--browser [BROW]', '(*:open) select browser to use'
 
 config =
    dirs:
@@ -25,7 +26,7 @@ config =
 
 open_wait_task = (opts, path) ->
    browser = spawn 'open',
-      _.compact [ path, '-a', config.docco.browser, (if opts.wait then '-W') ]
+      _.compact [ path, '-a', opts.browser ? config.docco.browser, (if opts.wait then '-W') ]
    
    if opts.wait
       browser.on 'exit', -> invoke 'clean'
