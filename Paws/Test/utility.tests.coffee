@@ -68,7 +68,9 @@ describe "Paws' utilities:", ->
          Fan = sub Function,
             ->
             (arg) -> arg + 'bar'
-         expect( (new Fan)('foo') ).to.be 'foobar'
+         
+         fan = new Fan
+         expect( fan('foo') ).to.be 'foobar'
       
       it 'should maintain the prototype-chain as expected', ->
          Fan = sub Function
