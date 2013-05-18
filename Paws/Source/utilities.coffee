@@ -174,8 +174,6 @@ utilities =
    # FIXME: The runtime choice between the two implementations is unnecessary
    # TODO: Release this as its own micro-library
    subclass: do ->
-      noop = ->
-      
       # The first approach, and most flexible of all, is to create `Function` instances with the
       # native `Function` constructor from our own context, and then directly modify the
       # `[[Prototype]]` field thereof with the `__proto__` pseudo-property provided by many
@@ -238,6 +236,9 @@ utilities =
       return (parent, constructorBody, runtimeBody, intactArguments) ->
          (if utilities.hasPrototypeAccessors() then withAccessors else fromOtherContext)
             .apply this, arguments
+   
+   noop: -> this
+   identity: (arg) -> arg
    
    
    infect: (globals, wif = utilities) -> _.assign globals, wif

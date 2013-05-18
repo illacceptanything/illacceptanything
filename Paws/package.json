@@ -25,6 +25,7 @@
    
 ,          "engines" :{"node":"~0.10.7"}
 ,     "dependencies" :{"coffee-script"          : "~1.6.2"
+                     , "uuid"                   : "~1.4.1"
                      , "lodash"                 : "~1.2.1"                                        }
 ,  "devDependencies" :{"glob"                   : "~3.2.1"
                      , "browserify"             : "~2.14.2"
