@@ -8,7 +8,7 @@ describe "Paws' utilities:", ->
    
    
    run = utilities.runInNewContext
-   describe '#runInNewContext', ->
+   describe 'runInNewContext()', ->
       it 'should not error out', ->
          expect(-> run 'true')    .to.not.throwException()
          expect(-> run 'Function').to.not.throwException()
@@ -87,5 +87,5 @@ describe "Paws' utilities:", ->
          expect(-> fan.method 'bar').to.not.throwError()
          expect(fan.foo).to.be 'bar'
       
-   describe '#subclass (via __proto__)', subclassTests true if utilities.hasPrototypeAccessors()
-   describe '#subclass (via a foreign context)', subclassTests false
+   describe 'subclass() (via __proto__)', subclassTests true if utilities.hasPrototypeAccessors()
+   describe 'subclass() (via a foreign context)', subclassTests false
