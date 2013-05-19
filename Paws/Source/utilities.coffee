@@ -1,6 +1,35 @@
 module.exports =
 utilities =
    
+   # When called without a second argument (i.e., from something that is, itself, a constructor),
+   # this function both:
+   # 
+   #  - ensures that the caller's `this` is configured *as if* the caller were called via the
+   #    “`new` invocation pattern,” even if it wasn't [^1]
+   #  - if there's a CoffeeScript-style `__super__` defined, then we call the super's constructor
+   #    on our `this`, as well
+   # 
+   # If invoked *not* from a constructor (i.e. with a second argument referencing the constructor),
+   # this will only construct a new `this` *without* invoking the constructor. It's implied that
+   # you'll have to apply the constructor to the returned value yourself, when appropriate.
+   # 
+   # [^1]: invocation-protection can only work as intended if the return value of `construct` is
+   #       taken as the body's `this`, i.e. with a call like the following:
+   #       
+   #           this = construct(this)
+   # ----
+   # TODO: This needs a way to pass arguments along to the super
+   construct: do -> construct = (it, klass) ->
+      klass ?= construct.caller
+      if construct.caller.caller != construct and it.constructor != klass
+         (F = new Function).prototype = klass.prototype
+         it = new F
+      if construct.caller == klass and klass.__super__? # CoffeeScript idiom
+         klass.__super__.constructor.call(it)
+      
+      return it
+   
+   
    # This is the most robust method I could come up with to detect the presence or absence of
    # `__proto__`-style accessors. It's probably not foolproof.
    hasPrototypeAccessors: do ->

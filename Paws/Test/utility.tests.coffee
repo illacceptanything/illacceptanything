@@ -7,6 +7,47 @@ describe "Paws' utilities:", ->
       expect(utilities).to.be.ok()
    
    
+   construct = utilities.construct
+   describe 'construct()', ->
+      describe '(from a constructor)', ->
+         Ctor = -> it = construct this
+         
+         it 'should not error out', ->
+            expect(-> new Ctor).to.not.throwException()
+            expect(->  Ctor() ).to.not.throwException()
+         it 'should return an instance of the constructor', ->
+            expect(new Ctor).to.be.a Ctor
+            expect( Ctor() ).to.be.a Ctor
+      
+      describe '(from a subclass)', ->
+         class Parent
+            constructor: -> @parent_called = yes
+         class Child extends Parent
+            constructor: -> return it = construct this
+         
+         it 'should not error out', ->
+            expect(-> Child()).to.not.throwException()
+         it "should call the superclass's constructor", ->
+            expect(Child().parent_called).to.be true
+   
+      describe '(from another function)', ->
+         class Parent
+            constructor: -> @parent_called = yes
+         class Child extends Parent
+            constructor: -> @child_called = yes
+         
+         func = -> it = construct this, Child
+         
+         it 'should not error out', ->
+            expect(-> new func).to.not.throwException()
+            expect(->  func() ).to.not.throwException()
+         it 'should *not* call either constructor', ->
+            expect(func().child_called ).to.not.be true
+            expect(func().parent_called).to.not.be true
+         it 'should return an instance of the passed class', ->
+            expect(func()).to.be.a Child
+   
+   
    run = utilities.runInNewContext
    describe 'runInNewContext()', ->
       it 'should not error out', ->
