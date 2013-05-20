@@ -96,7 +96,8 @@ utilities =
    
    runInNewContext: do ->
       server = (source, context) ->
-         `//@browserify-ignore`
+         `//@browserify-ignore
+         ` # Newline necessary as of CoffeeScript 1.6.2
          require('vm').createScript(source).runInNewContext(context)
       
       client = (source, context) ->
