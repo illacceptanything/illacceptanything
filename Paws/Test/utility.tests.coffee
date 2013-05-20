@@ -47,6 +47,29 @@ describe "Paws' utilities:", ->
          it 'should return an instance of the passed class', ->
             expect(func()).to.be.a Child
    
+      
+   describe 'parameterizable()', ->
+      utilities.parameterizable class Twat
+         constructor: -> return this
+      
+      it 'should create a parameterizable constructor', ->
+         constructor = new Twat.with(foo: 'bar')
+         expect(constructor).to.be.a 'function'
+         expect(constructor()).to.be.a Twat
+         expect(constructor()._.foo).to.be 'bar'
+      
+      it 'should provide parameterizable methods', ->
+         twat = new Twat
+         expect(twat.with(foo: 'bar')).to.be twat
+         expect(twat._.foo).to.be 'bar'
+      
+      it 'should not leave cruft around on the object', (complete) ->
+         twat = new Twat.with({})()
+         setTimeout => # *Intentionally* using setTimeout instead of nextTick
+            expect(twat._).to.be undefined
+            complete()
+         , 0
+   
    
    run = utilities.runInNewContext
    describe 'runInNewContext()', ->

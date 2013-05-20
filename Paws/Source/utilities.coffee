@@ -29,6 +29,59 @@ utilities =
       
       return it
    
+   # This is a “tag” that's intended to be inserted before CoffeeScript class-definitions:
+   # 
+   #     parameterizable class Something
+   #        constructor: ->
+   #           # ...
+   #           return this
+   # 
+   # When tagged thus, the class will provide `Klass.with()(...)` and `instance.with()...` methods.
+   # These will store any argument given, temporarily, on `this._`. The intended use thereof is for
+   # further parameterizing methods which need complex or variable numbers of arguments in their
+   # *actual invocation*, thus leaving no room for the quintessential (and indespensible) “options”
+   # argument. An example:
+   #
+   #     new Arrayish.with(makeAwesome: no)(element, element2, element3 ...)
+   # 
+   # There are two extremely important caveats to its use:
+   #
+   #  - First off, CoffeeScript *does not* generate constructors that explicitly return the
+   #    constructed value; it's assumed (reasonably enough) that the constructor will always be
+   #    called via the `new` invocaton pattern, which ensures such a return. When using a
+   #    “parameterized call pattern” as per this function's intended use, the final constructor
+   #    itself is *not* called via a `new` invocation pattern (even though such is simulated
+   #    reasonably well.)
+   #
+   #    **tl;dr**: Your constructors *must* explicitly `return this`.
+   # 
+   #  - Second, because I don't wish to leave extra cruft on the instances of `parameterizable`
+   #    ‘classes,’ this implementation automatically deletes the options member at the *end of the
+   #    reactor-tick wherein it was defined*. This means both that you must immediately call any
+   #    parameterized constructor, and, more importantly, that the options member *will not be
+   #    available* within asynchronous calls.
+   #    
+   #    As an example, the following will not work:
+   #
+   #        parameterizable class Something
+   #           constructor: ->
+   #              asynchronousOperation (result) ->
+   #                 if (@_.beAwesome) ...
+   #    
+   #    The idiomatic way around this, is to store the options object to a local variable if you
+   #    will be needing it across multiple reactor ticks. This, in my experience, is an edge-case.
+   parameterizable: (klass) ->
+      klass.with = (_) ->
+         it = construct this, klass
+         it.with(_)
+         return klass.bind(it)
+         
+      klass.prototype.with = (@_) ->
+         process.nextTick => delete @_
+         return this
+      
+      return klass
+   
    
    # This is the most robust method I could come up with to detect the presence or absence of
    # `__proto__`-style accessors. It's probably not foolproof.
