@@ -84,7 +84,7 @@ utilities =
    # There's several ways to acheive a trick like this; unfortunately, all of them are severely
    # limited in some crucial way. Herein, I chose two of the most flexible ways, and dynamically
    # choose which to employ based on the capabilities of the hosting JavaScript implementation.
-   # ---
+   # ----
    # FIXME: This currently only works for subclassing `Function`, genearlize it out
    # FIXME: The runtime choice between the two implementations is unnecessary
    # TODO: Release this as its own micro-library
@@ -95,7 +95,7 @@ utilities =
       # native `Function` constructor from our own context, and then directly modify the
       # `[[Prototype]]` field thereof with the `__proto__` pseudo-property provided by many
       # implementations.
-      # ---
+      # ----
       # FIXME: This should probably try to use standard ES5 methods instead of `__proto__`
       withAccessors = (parent, constructorBody, runtimeBody, intactArguments) ->
          constructor = ->
@@ -153,3 +153,8 @@ utilities =
       return (parent, constructorBody, runtimeBody, intactArguments) ->
          (if utilities.hasPrototypeAccessors() then withAccessors else fromOtherContext)
             .apply this, arguments
+   
+   
+   infect: (ermagerdglobals, wif = utilities) ->
+      Object.keys(wif).forEach (key) -> ermagerdglobals[key] = wif[key]
+
