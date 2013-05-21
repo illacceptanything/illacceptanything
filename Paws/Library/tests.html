@@ -3,6 +3,10 @@
    <meta charset="utf-8">
    <title>Paws.js Tests</title>
    <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+   <style>
+      #warning .addendum { font-size: 80%; font-style: italic }
+      #warning .code { font-family: monospace }
+   </style>
 </head>
 <body>
    <div id="mocha"></div>
@@ -13,6 +17,9 @@
    <div id='warning' style='display:none'>
       <p>You'll need to bundle up the tests before this page will work:
          <pre>cake --tests compile:browser</pre></p>
+      <p class='addendum'>(Note: if you've already compiled the tests, and are still seeing this,
+         check the <span class='code'>console</span>. This may also appear if there's been an
+         error.)</p>
    </div>
    
    <script>

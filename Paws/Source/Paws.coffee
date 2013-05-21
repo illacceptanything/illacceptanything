@@ -1,4 +1,4 @@
-utilities = require('./utilities').infect GLOBAL
+utilities = require('./utilities').infect global
 
 Unit   = require './Unit'
 Script = require './Script'
