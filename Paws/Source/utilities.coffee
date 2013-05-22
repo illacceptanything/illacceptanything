@@ -93,7 +93,7 @@ utilities =
       klass.with = (opts) ->
          it = construct this, klass
          it.with opts
-         bound = klass.bind(it)
+         bound = _.bind(klass, it)
          _.assign bound, klass
          bound.prototype = klass.prototype
          bound._ = opts
