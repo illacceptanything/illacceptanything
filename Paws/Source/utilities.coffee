@@ -84,11 +84,17 @@ utilities =
    #    
    #    The idiomatic way around this, is to store the options object to a local variable if you
    #    will be needing it across multiple reactor ticks. This, in my experience, is an edge-case.
+   # ----
+   # TODO: This could all be a lot more succinct, and prettier.
    parameterizable: (klass) ->
       klass.with = (_) ->
          it = construct this, klass
-         it.with(_)
-         return klass.bind(it)
+         it.with _
+         bound = klass.bind(it)
+         utilities.infect bound, klass
+         bound._ = _
+         process.nextTick => delete bound._
+         bound
          
       klass.prototype.with = (@_) ->
          process.nextTick => delete @_
