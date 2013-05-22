@@ -6,6 +6,19 @@ describe "Paws' utilities:", ->
    it 'should exist', ->
       expect(utilities).to.be.ok()
    
+   describe 'chain()', ->
+      composed = utilities.chain -> 'whee'
+      it 'should always return the `this` value', ->
+         object = new Object
+         expect(composed.call object).to.be object
+   
+   describe 'modifier()', ->
+      composed = utilities.modifier (foo) -> return 'yep' if foo == 'foo'
+      it 'should return the return-value of the body ...', ->
+         expect(composed 'foo').to.be 'yep'
+      it '... unless the body returns nothing', ->
+         object = new Object
+         expect(composed object).to.be object
    
    construct = utilities.construct
    describe 'construct()', ->

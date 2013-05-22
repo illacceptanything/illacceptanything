@@ -1,6 +1,20 @@
 module.exports =
 utilities =
    
+   # Third-order function to pass-through the arguments to the first-order body
+   passthrough: passthrough =
+      (snd) -> (fst) -> ->
+         result = fst.apply this, arguments
+         snd.call this, result, arguments
+   
+   # Higher-order function to wrap a function such that it always returns the owner thereof
+   chain:    passthrough -> this
+   
+   # Higher-order function to return the argument given to the function, unless the function
+   # modifies it
+   modifier: passthrough (result, args) -> result ? args[0]
+   
+   
    # When called without a second argument (i.e., from something that is, itself, a constructor),
    # this function both:
    # 
