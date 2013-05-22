@@ -1,12 +1,12 @@
 _       = require 'lodash'
 
 # Configuration vars.
-option '-w', '--watch',          '(compile:client) watch files for changes, and recompile results'
+option '-w', '--watch',          '(test, compile:client) watch files for changes, and recompile results'
 option '-W', '--wait',           '(*:open) open browser and wait'
 option '-g', '--grep [PATTERN]', '(test) see `mocha --help`'
 option '-i', '--invert',         '(test) see `mocha --help`'
 option '-r', '--reporter [REP]', '(test) specify Mocha reporter to display test results'
-option '-t', '--tests',          '(compile:browser) include tests in the bundle'
+option '-t', '--tests',          '(compile:client) include tests in the bundle'
 option '-a', '--browser [BROW]', '(*:open) select browser to use'
 
 config =
@@ -42,6 +42,7 @@ task 'test', 'run testsuite through Mocha', (options) ->
    
    spawn path.resolve('./node_modules/.bin/mocha'),
       _.compact [ '--grep', (options.grep or '.'), (if options.invert then '--invert')
+                  '--watch' if options.watch
                   '--compilers', 'coffee:coffee-script'
                   '--reporter',   options.reporter or config.mocha.reporter
                   '--ui',         config.mocha.ui
