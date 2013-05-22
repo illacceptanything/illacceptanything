@@ -1,6 +1,9 @@
 module.exports =
 utilities =
    
+   _:_ = require 'lodash/dist/lodash.compat.min'
+
+   
    # Third-order function to pass-through the arguments to the first-order body
    passthrough: passthrough =
       (snd) -> (fst) -> ->
@@ -87,12 +90,13 @@ utilities =
    # ----
    # TODO: This could all be a lot more succinct, and prettier.
    parameterizable: (klass) ->
-      klass.with = (_) ->
+      klass.with = (opts) ->
          it = construct this, klass
-         it.with _
+         it.with opts
          bound = klass.bind(it)
-         utilities.infect bound, klass
-         bound._ = _
+         _.assign bound, klass
+         bound.prototype = klass.prototype
+         bound._ = opts
          process.nextTick => delete bound._
          bound
          
@@ -229,6 +233,4 @@ utilities =
             .apply this, arguments
    
    
-   infect: (ermagerdglobals, wif = utilities) ->
-      Object.keys(wif).forEach (key) -> ermagerdglobals[key] = wif[key]
-
+   infect: (globals, wif = utilities) -> _.assign globals, wif
