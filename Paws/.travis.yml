@@ -1,0 +1,15 @@
+branches:
+   except: /\+$/
+
+language: node_js
+node_js:
+ - "0.11"
+ - "0.10"
+ - "0.8"
+
+script: "cake test"
+
+matrix:
+   allow_failures:
+    - node_js: "0.8"
+    - node_js: "0.11"
