@@ -1,7 +1,7 @@
-utilities = require('./utilities').infect global
+utilities = require('./utilities.coffee').infect global
 
-Unit   = require './Unit'
-Script = require './Script'
+Unit   = require './Unit.coffee'
+Script = require './Script.coffee'
 
 parameterizable class Thing
    constructor: ->

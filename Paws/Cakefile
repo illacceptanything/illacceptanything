@@ -71,20 +71,24 @@ task 'docs:open', (options) ->
 #task 'compile', "write out JavaScript to lib/", -> # NYI
 
 browserify = require 'browserify'
+coffeeify  = require 'coffeeify'
 glob       = require 'glob'
 fs         = require 'fs'
 task 'compile:client', "bundle JavaScript through Browserify", (options) ->
-   bundle = browserify
-      watch: options.watch
-      cache: true
-      exports: ['require', 'process']
-   bundle.use require 'tagify'
+   bundle = browserify()
+     #watch: options.watch # FIXME: Lost in 1.0 -> 2.0
+     #cache: true # FIXME: Lost in 1.0 -> 2.0
+     #exports: ['require', 'process'] # FIXME: Lost in 1.0 -> 2.0
+   bundle.transform coffeeify
    
-   bundle.addEntry path.join config.dirs.source, 'Paws.coffee'
+   bundle.ignore 'vm'
+   
+   bundle.add path.resolve process.cwd(), config.dirs.source, 'Paws.coffee'
    if options.tests
-      bundle.addEntry file for file in glob.sync config.package.testling.files
+      bundle.add path.resolve process.cwd(), file for file in glob.sync config.package.testling.files
    
-   fs.writeFile config.package.main.replace(/(?=\.(?:js|coffee))|$/, '.bundle'), bundle.bundle()
+   bundle.bundle(debug: yes).pipe fs.createWriteStream(
+      config.package.main.replace(/(?=\.(?:js|coffee))|$/, '.bundle') )
 
 
 task 'clean', "remove git-ignore'd build products", ->
