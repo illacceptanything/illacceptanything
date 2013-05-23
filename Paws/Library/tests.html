@@ -25,7 +25,7 @@
    <script>
       window.onload = function(){
          if (mocha.suite.suites.length >= 1)
-            mocha.run()
+            mocha.run(function(){})
          else
             document.getElementById('warning').style.display = 'block' }
    </script>
