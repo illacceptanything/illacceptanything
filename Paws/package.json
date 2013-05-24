@@ -18,8 +18,9 @@
 
 ,   "testling" :{
           "files" : "Test/*.coffee"
-     ,  "harness" : "mocha-bdd"
-     , "browsers" :{"ie":      [ 6, 7, 8, 9, 10 ]
+   ,       "html" : "Library/TAP.html"
+   , "preprocess" : "cake --tests compile:client"
+   ,   "browsers" :{"ie":      [ 6, 7, 8, 9, 10 ]
                   , "firefox": [ 3, 4, 10, 17, "nightly" ]
                   , "chrome":  [ 4, 10, 23, "canary" ]
                   , "safari":  [ "5.0.5", 5.1, 6.0 ]

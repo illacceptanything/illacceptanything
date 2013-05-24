@@ -1,18 +1,25 @@
 <html>
 <head>
    <meta charset="utf-8">
-   <title>Paws.js Tests</title>
+   <title>Paws.js Client Tests</title>
    <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
    <style>
+      #warning {
+         margin: 2.5em;
+         
+         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+         font-size: 135% }
+      #warning span.code {
+         font-family: Menlo, Consolas, "Lucida Console", monospace }
+      
       #warning .addendum { font-size: 80%; font-style: italic }
-      #warning .code { font-family: monospace }
    </style>
 </head>
 <body>
    <div id="mocha"></div>
    <script src="../node_modules/mocha/mocha.js"></script>
    <script>mocha.setup('bdd')</script>
-   <script src="../Library/Paws.bundle.js"></script>
+   <script src="./Paws.bundle.js"></script>
    
    <div id='warning' style='display:none'>
       <p>You'll need to bundle up the tests before this page will work:
