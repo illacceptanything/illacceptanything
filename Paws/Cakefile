@@ -40,7 +40,7 @@ task 'test', 'run testsuite through Mocha', (options) ->
    env = Object.create process.env,
       NODE_ENV: { value: config.mocha.env }
    
-   spawn path.resolve('./node_modules/.bin/mocha'),
+   child = spawn path.resolve('./node_modules/.bin/mocha'),
       _.compact [ '--grep', (options.grep or '.'), (if options.invert then '--invert')
                   '--watch' if options.watch
                   '--compilers', 'coffee:coffee-script'
@@ -50,6 +50,9 @@ task 'test', 'run testsuite through Mocha', (options) ->
       stdio: 'inherit'
       cwd: path.resolve config.dirs.tests
       env: env
+   
+   child.on 'exit', (code) ->
+      process.on('exit', -> process.exit code) if code > 0
 
 task 'test:client', (options) ->
    options.tests = true
