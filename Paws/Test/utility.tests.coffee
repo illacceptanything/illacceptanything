@@ -1,8 +1,8 @@
+`require = require('../Source/cov_require.js')(require)`
 expect = require 'expect.js'
 
 describe "Paws' utilities:", ->
-   
-   utilities = require '../Source/utilities.coffee'
+   utilities = require "../Source/utilities.coffee"
    it 'should exist', ->
       expect(utilities).to.be.ok()
    

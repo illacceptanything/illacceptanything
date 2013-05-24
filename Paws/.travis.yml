@@ -7,7 +7,7 @@ node_js:
  - "0.10"
  - "0.8"
 
-script: "cake test"
+script: "cake travis"
 
 matrix:
    allow_failures:

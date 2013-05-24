@@ -1,3 +1,6 @@
+.coveralls.yml
 node_modules/
+Source/*.js
 Documentation/
 Library/*.bundle.js
+Library/Coverage.html

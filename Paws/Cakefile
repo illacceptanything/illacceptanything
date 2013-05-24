@@ -50,9 +50,7 @@ task 'test', 'run testsuite through Mocha', (options) ->
       stdio: 'inherit'
       cwd: path.resolve config.dirs.tests
       env: env
-   
-   child.on 'exit', (code) ->
-      process.on('exit', -> process.exit code) if code > 0
+   child.on 'exit', (code) -> process.on('exit', -> process.exit code) if code > 0
 
 task 'test:client', (options) ->
    options.tests = true
@@ -62,6 +60,11 @@ task 'test:client', (options) ->
 task 'test:client:open', (options) ->
    open_wait_task options, path.join(config.dirs.products, 'tests.html')
 
+task 'travis', ->
+   exec 'npm run-script coveralls', (error) ->
+      process.exit 1 if error
+      invoke 'test'
+      
 
 { document: docco } = require 'docco'
 task 'docs', 'generate HTML documentation via Docco', (options) ->

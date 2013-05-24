@@ -1,3 +1,4 @@
+`require = require('./cov_require.js')(require)`
 utilities = require('./utilities.coffee').infect global
 
 Unit   = require './Unit.coffee'

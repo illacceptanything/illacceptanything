@@ -1,4 +1,4 @@
-Paws.js 3 [![Build status](https://travis-ci.org/elliottcable/Paws.js.png)](https://travis-ci.org/elliottcable/Paws.js) [![Dependency status](https://gemnasium.com/elliottcable/Paws.js.png)](https://gemnasium.com/elliottcable/Paws.js)
+Paws.js 3 [![Build status](https://travis-ci.org/elliottcable/Paws.js.png)](https://travis-ci.org/elliottcable/Paws.js) [![Coverage status](https://coveralls.io/repos/elliottcable/Paws.js/badge.png?branch=Master)](https://coveralls.io/r/elliottcable/Paws.js) [![Dependency status](https://gemnasium.com/elliottcable/Paws.js.png)](https://gemnasium.com/elliottcable/Paws.js)
 =========
 Yet another stab at Paws; this time, attempting to be idiomatic with my JavaScript, and be
 browser-friendly. Time to make “a real Paws.”
