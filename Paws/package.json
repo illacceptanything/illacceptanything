@@ -11,6 +11,7 @@
                      , "lodash"                 : "~1.2.1"                                        }
 ,  "devDependencies" :{"glob"                   : "~3.2.1"
                      , "browserify"             : "~2.14.2"
+                     , "coffeeify"              : "~0.4.0"
                      , "docco"                  : "~0.6.2"
                      , "mocha"                  : "~1.10.0"
                      , "expect.js"              : "~0.2.0"                                        }
