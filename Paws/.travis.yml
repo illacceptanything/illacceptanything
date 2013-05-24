@@ -13,3 +13,16 @@ matrix:
    allow_failures:
     - node_js: "0.8"
     - node_js: "0.11"
+
+notifications:
+   email: false
+   irc:
+      skip_join: true
+      on_success: never
+      on_failure: change
+      channels:
+       - "chat.freenode.net#elliottcable"
+       - "chat.freenode.net#Paws.Nucleus"
+      template:
+       - "%{repository}/%{branch} %{commit} %{author}: #%{build_number} %{message}"
+       - "(Details: %{build_url})"
