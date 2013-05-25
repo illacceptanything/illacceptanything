@@ -7,7 +7,8 @@
 ,       "main" : "Library/Paws.js"
 
 ,    "scripts" :{
-       "coverage" : "./Scripts/coverage.sh 3> Coverage.html"
+          "clean" : "./Scripts/clean.sh"
+,      "coverage" : "./Scripts/coverage.sh 3> Coverage.html"
 ,     "coveralls" : "./Scripts/coveralls.sh"
 }
 

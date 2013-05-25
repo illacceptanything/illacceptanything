@@ -98,9 +98,8 @@ task 'compile:client', "bundle JavaScript through Browserify", (options) ->
 
 
 task 'clean', "remove git-ignore'd build products", ->
-   exec 'mv node_modules/ node_modules-PRECLEAN', -> # FIXME: Hacky as fuck.
-      exec 'git clean -fXd', ->
-         exec 'mv node_modules-PRECLEAN/ node_modules'
+   exec 'npm run-script clean', (error) ->
+      process.exit 1 if error
 
 task 'html',  -> invoke 'docs'
 #task 'build', -> invoke 'compile'
