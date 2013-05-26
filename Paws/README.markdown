@@ -1,5 +1,7 @@
-Paws.js 3 [![Build status](https://travis-ci.org/elliottcable/Paws.js.png)](https://travis-ci.org/elliottcable/Paws.js) [![Coverage status](https://coveralls.io/repos/elliottcable/Paws.js/badge.png?branch=Master)](https://coveralls.io/r/elliottcable/Paws.js) [![Dependency status](https://gemnasium.com/elliottcable/Paws.js.png)](https://gemnasium.com/elliottcable/Paws.js)
-=========
+<!-- This is definitely the biggest hack, ever. Damnit, GitHub. -->
+<h1><a href="https://travis-ci.org/elliottcable/Paws.js"><img alt='Build status' src="https://travis-ci.org/elliottcable/Paws.js.png" align='right'></a><img src="http://elliottcable.s3.amazonaws.com/p/8x8.png" align='right'><a href="https://coveralls.io/r/elliottcable/Paws.js"><img alt='Coverage status' src="https://coveralls.io/repos/elliottcable/Paws.js/badge.png?branch=Master" align='right'></a><img src="http://elliottcable.s3.amazonaws.com/p/8x8.png" align='right'><a href="https://gemnasium.com/elliottcable/Paws.js"><img alt='Dependency status' src="https://gemnasium.com/elliottcable/Paws.js.png" align='right'></a>
+
+Paws.js </h1>
 Yet another stab at Paws; this time, attempting to be idiomatic with my JavaScript, and be
 browser-friendly. Time to make “a real Paws.”
 
