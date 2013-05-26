@@ -9,6 +9,7 @@ describe 'The Paws API:', ->
       expect(Paws).to.be.ok()
    
    Thing = Paws.Thing
+   Label = Paws.Label
    
    describe 'Thing', ->
       
@@ -46,6 +47,8 @@ describe 'The Paws API:', ->
                expect(rel.clone().to).to.be rel.to
                expect(rel.clone().isResponsible).to.be rel.isResponsible
          
+      describe '##pair', ->
+      
       uuid_regex = /[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}/
       it 'should have a UUID', ->
          expect((new Thing).id).to.match uuid_regex
@@ -88,3 +91,41 @@ describe 'The Paws API:', ->
             result = thing1.clone(thing2)
             expect(result).to.be thing2
             expect(thing2.metadata).to.not.be old_metadata
+      
+      describe '#find', ->
+         first = new Thing; second = new Thing; third = new Thing
+         foo_bar_foo = new Thing Thing.pair('foo', first),
+                                 Thing.pair('bar', second),
+                                 Thing.pair('foo', third)
+         
+         it 'should return an array ...', ->
+            expect(foo_bar_foo.find Label 'foo').to.be.an 'array'
+         it '... of result-Things ...', ->
+            expect(foo_bar_foo.find(Label 'foo').length).to.be.greaterThan 0
+            foo_bar_foo.find(Label 'foo').forEach (result) ->
+               expect(result).to.be.a Thing
+         it '... that only contains matching pairs ...', ->
+            expect(foo_bar_foo.find Label 'foo').to.have.length 2
+         it '... in reverse order', ->
+            expect(foo_bar_foo.find(Label 'foo')[0].valueish()).to.be third
+            expect(foo_bar_foo.find(Label 'foo')[1].valueish()).to.be first
+         
+         it 'should handle non-pair Things gracefully', ->
+            thing = new Thing Thing.pair('foo', first),
+                              new Thing,
+                              Thing.pair('bar', second),
+                              Thing.pair('foo', third)
+            expect(thing.find Label 'foo').to.have.length 2
+   
+   
+   describe 'Label', ->
+      it 'should contain a String', ->
+         foo = new Label 'foo'
+         expect(foo).to.be.a Thing
+         expect(foo.alien).to.be.a String
+         expect(foo.alien.valueOf()).to.be 'foo' # temporary hack. see: http://git.io/expect.js-57
+      
+      it 'should compare as equal, when containing the same String', ->
+         foo1 = new Label 'foo'
+         foo2 = new Label 'foo'
+         expect(foo1.compare foo2).to.be true

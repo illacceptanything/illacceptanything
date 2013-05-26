@@ -60,6 +60,9 @@ paws.Thing = Thing = parameterizable class Thing
          rel?.to?.isPair?() and key.compare rel.to.at 1
       _.pluck(results.reverse(), 'to')
    
+   # TODO: Figure out whether pairs should be responsible for their children
+   @pair: (key, value) ->
+      new Thing(Label(key), value)
    isPair:   -> @metadata[1] and @metadata[2]
    keyish:   -> @at 1
    valueish: -> @at 2
@@ -88,3 +91,21 @@ paws.Relation = Relation = parameterizable delegated('to', Thing) class Relation
    
    responsible:   chain (val) -> @isResponsible = val ? true
    irresponsible: chain       -> @isResponsible = false
+
+
+paws.Label = Label = class Label extends Thing
+   constructor: (string) ->
+      it = construct this
+      it.alien = new String string
+      it.alien.native = this
+      return it
+   
+   clone: (to) ->
+      to ?= new Label
+      super to
+      to.alien = @alien
+      to.alien.native
+      return to
+   compare: (to) ->
+      to instanceof Label and
+      to.alien.valueOf() == @alien.valueOf()
