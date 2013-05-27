@@ -59,8 +59,32 @@ describe "Paws' utilities:", ->
             expect(func().parent_called).to.not.be true
          it 'should return an instance of the passed class', ->
             expect(func()).to.be.a Child
-   
       
+      it 'should not prevent constructor-forwarding /re', ->
+         class Ancestor
+            constructor: -> @ancestor_called = yes
+         class Parent extends Ancestor
+            constructor: (forward) ->
+               return new Child if forward
+               it = construct this
+               it.parent_called = yes
+               return it
+         class Child extends Parent
+            constructor: ->
+               it = construct this
+               it.child_called = yes
+               return it
+         
+         expect(-> new Parent yes).to.not.throwException()
+         expect(new Parent yes).to.be.a Child
+         expect(new Parent yes).to.be.a Parent
+         
+         child = new Parent yes
+         expect(child.ancestor_called).to.be.ok()
+         expect(child.parent_called)  .to.be.ok()
+         expect(child.child_called)  .to.be.ok()
+   
+   
    describe 'parameterizable()', ->
       utilities.parameterizable class Twat
          constructor: -> return this
