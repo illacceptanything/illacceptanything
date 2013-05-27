@@ -13,3 +13,11 @@ module.exports = Paws =
    
    Unit: Unit
    Script: Script
+   
+   Label: class Label extends Thing
+      constructor: (@alien) ->
+   
+   Execution: class Execution extends Thing
+   
+   Native: class Native extends Execution
+      constructor: (@position) ->
