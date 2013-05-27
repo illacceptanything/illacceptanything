@@ -83,6 +83,25 @@ describe "Paws' utilities:", ->
             complete()
          , 0
    
+   describe 'delegated()', ->
+      class Delegatee
+         shadowed: ->
+         operate: (arg) -> return [this, arg]
+      
+      correct_shadowed = ->
+      utilities.delegated('foo', Delegatee) class Something
+         shadowed: correct_shadowed
+         constructor: (@foo) ->
+      
+      it 'should delegate calls to missing methods, if possible', ->
+         something = new Something(new Delegatee)
+         expect(Something::operate).to.be.ok()
+         expect(-> something.operate()).to.not.throwException()
+         expect(something.operate 123).to.eql [something.foo, 123]
+      
+      it 'should not shadow re-implemented methods', ->
+         expect(Something::shadowed).to.be correct_shadowed
+   
    
    describe.skip 'runInNewContext()', ->
       run = utilities.runInNewContext

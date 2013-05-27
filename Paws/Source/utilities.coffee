@@ -106,6 +106,15 @@ utilities =
       
       return klass
    
+   # Another “tag” for CoffeeScript classes, to cause them to delegate any undefined methods to
+   # another class, if they *are* defined on that other class.
+   delegated: (member, delegatee) -> (klass) ->
+      functions = _(delegatee::).functions().map (f) ->
+         mapped = -> delegatee::[f].apply this[member], arguments
+         [f, mapped]
+      _.defaults klass::, functions.object().valueOf()
+      
+      return klass
    
    # This is the most robust method I could come up with to detect the presence or absence of
    # `__proto__`-style accessors. It's probably not foolproof.
