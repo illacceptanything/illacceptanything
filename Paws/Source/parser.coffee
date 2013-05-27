@@ -36,7 +36,6 @@ class Parser
       true
 
    label: ->
-      @whitespace()
       start = @i
       res = ''
       while @text[@i] && labelCharacters.test(@text[@i])
@@ -45,8 +44,7 @@ class Parser
 
    braces: (delim, constructor) ->
       start = @i
-      if @whitespace() &&
-            @character(delim[0]) &&
+      if @character(delim[0]) &&
             (it = @expr()) &&
             @whitespace() &&
             @character(delim[1])
@@ -56,13 +54,17 @@ class Parser
    scope: -> @braces('{}', Paws.Native)
 
    expr: ->
+      @whitespace()
       start = @i
+      end = @i
       substart = @i
       res = new Expression
       while sub = (@label() || @paren() || @scope())
          res.append(@with_range(new Expression(sub), substart))
+         end = @i
+         @whitespace()
          substart = @i
-      @with_range(res, start)
+      @with_range(res, start, end)
 
    parse: ->
     @expr()

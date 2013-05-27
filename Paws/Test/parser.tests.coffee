@@ -16,6 +16,15 @@ describe 'Parser', ->
       expect(expr).to.be.a(parser.Expression)
       expect(expr.contents).to.be(undefined)
       expect(expr.next).to.be(undefined)
+   
+   it 'should ignore leading/trailing whitespace', ->
+      expr = parser.parse '   '
+      range = expr.source_range
+      expect(range.end - range.begin).to.be 0 # because there's nothing *in* it
+      
+      expr = parser.parse '  abc  '
+      range = expr.source_range
+      expect(range.end - range.begin).to.be 3 # because the *code*'s length is 3 characters
 
    it 'should parse a label expression', ->
       expr = parser.parse('hello').next
@@ -88,5 +97,5 @@ describe 'Parser', ->
       contains_same(exe)
       expect(exe.source_range.slice()).to.be('{b  }')
 
-      expect(exe.contents.position.source_range.slice()).to.be('b  ')
+      expect(exe.contents.position.source_range.slice()).to.be('b')
 
