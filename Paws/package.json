@@ -7,7 +7,8 @@
 ,       "main" : "Library/Paws.js"
 
 ,    "scripts" :{
-          "clean" : "./Scripts/clean.sh"
+           "test" : "./Scripts/test.sh"
+,         "clean" : "./Scripts/clean.sh"
 ,      "coverage" : "./Scripts/coverage.sh 3> Coverage.html"
 ,     "coveralls" : "./Scripts/coveralls.sh"
 }
@@ -16,9 +17,11 @@
       "testFiles" : "Test/*.coffee"
 ,          "dirs" :{"source"  :"Source"
                   , "instrumentation"
-                              :"Source"
-                  
-}}
+                              :"Source" }
+,         "mocha" :{"ui"         : "bdd"
+                  , "reporter"   : "spec"
+                  , "ENV"        : "test" }
+ }
    
 ,          "engines" :{"node":"~0.10.7"}
 ,     "dependencies" :{"coffee-script"          : "~1.6.2"
