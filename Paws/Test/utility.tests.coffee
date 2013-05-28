@@ -20,69 +20,55 @@ describe "Paws' utilities:", ->
          object = new Object
          expect(composed object).to.be object
    
-   construct = utilities.construct
-   describe 'construct()', ->
-      describe '(from a constructor)', ->
-         Ctor = -> it = construct this
-         
-         it 'should not error out', ->
-            expect(-> new Ctor).to.not.throwException()
-            expect(->  Ctor() ).to.not.throwException()
-         it 'should return an instance of the constructor', ->
-            expect(new Ctor).to.be.a Ctor
-            expect( Ctor() ).to.be.a Ctor
-      
-      describe '(from a subclass)', ->
-         class Parent
-            constructor: -> @parent_called = yes
-         class Child extends Parent
-            constructor: -> return it = construct this
-         
-         it 'should not error out', ->
-            expect(-> Child()).to.not.throwException()
-         it "should call the superclass's constructor", ->
-            expect(Child().parent_called).to.be true
    
-      describe '(from another function)', ->
-         class Parent
-            constructor: -> @parent_called = yes
-         class Child extends Parent
-            constructor: -> @child_called = yes
-         
-         func = -> it = construct this, Child
-         
-         it 'should not error out', ->
-            expect(-> new func).to.not.throwException()
-            expect(->  func() ).to.not.throwException()
-         it 'should *not* call either constructor', ->
-            expect(func().child_called ).to.not.be true
-            expect(func().parent_called).to.not.be true
-         it 'should return an instance of the passed class', ->
-            expect(func()).to.be.a Child
+   describe 'constructify()', ->
+      it 'basically works', ->
+         expect(constructify).to.be.ok()
+         expect(-> constructify ->).to.not.throwException()
+         expect(constructify ->).to.be.a 'function'
+         Ctor = constructify ->
+         expect(-> new Ctor).to.not.throwException()
       
-      it 'should not prevent constructor-forwarding /re', ->
-         class Ancestor
-            constructor: -> @ancestor_called = yes
-         class Parent extends Ancestor
-            constructor: (forward) ->
-               return new Child if forward
-               it = construct this
-               it.parent_called = yes
-               return it
-         class Child extends Parent
-            constructor: ->
-               it = construct this
-               it.child_called = yes
-               return it
-         
-         expect(-> new Parent yes).to.not.throwException()
-         expect(new Parent yes).to.be.a Child
-         expect(new Parent yes).to.be.a Parent
-         
-         child = new Parent yes
-         expect(child.ancestor_called).to.be.ok()
-         expect(child.parent_called)  .to.be.ok()
-         expect(child.child_called)  .to.be.ok()
+      it 'returns a *new* function, not the constructor-body passed to it', ->
+         body = ->
+         Ctor = constructify body
+         expect(constructify).to.not.be body
+      it "causes constructors it's called on to always return instances", ->
+         Ctor = constructify ->
+         expect(new Ctor)  .to.be.a Ctor
+         expect(    Ctor()).to.be.a Ctor
+         expect(new Ctor().constructor).to.be Ctor
+         expect(    Ctor().constructor).to.be Ctor
+      
+      it 'executes the function-body passed to it, on new instances', ->
+         Ctor = constructify -> @called = yes
+         expect(new Ctor().called).to.be.ok()
+      
+      it "returns the return-value of the body, if it isn't nullish", ->
+         Ctor = constructify (rv) -> return rv
+         obj = new Object
+         expect(new Ctor(obj)).to.be obj
+         expect(    Ctor(obj)).to.be obj
+      it 'returns the new instance, otherwise', ->
+         Ctor = constructify (rv) -> return 123
+         expect(new Ctor)  .not.to.be 123
+         expect(    Ctor()).not.to.be 123
+         expect(new Ctor)  .to.be.a Ctor
+         expect(    Ctor()).to.be.a Ctor
+      
+      it 'can take options', ->
+         expect(-> constructify(foo: 'bar') ->).to.not.throwException()
+      it 'can pass the `arguments` object intact', ->
+         Ctor = constructify(arguments: 'intact') (args) ->
+            @caller = args.callee.caller
+         it = null; func = null
+         expect(-> (func = -> it = new Ctor)() ).to.not.throwException()
+         expect(it).to.have.property 'caller'
+         expect(it.caller).to.be func
+      it 'can be configured to *always* return the instance', ->
+         Ctor = constructify(return: this) -> return new Array
+         expect(new Ctor()).not.to.be.an 'array'
+         expect(    Ctor()).not.to.be.an 'array'
    
    
    describe 'parameterizable()', ->
