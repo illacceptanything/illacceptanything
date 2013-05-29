@@ -28,6 +28,9 @@ describe "Paws' utilities:", ->
          expect(constructify ->).to.be.a 'function'
          Ctor = constructify ->
          expect(-> new Ctor).to.not.throwException()
+         class Klass
+            constructor: constructify ->
+         expect(-> new Klass).to.not.throwException()
       it 'can take options', ->
          expect(-> constructify(foo: 'bar') ->).to.not.throwException()
       
@@ -35,6 +38,9 @@ describe "Paws' utilities:", ->
          body = ->
          Ctor = constructify body
          expect(constructify).to.not.be body
+         class Klass
+            constructor: constructify body
+         expect(Klass).to.not.be body
       it 'can pass the `arguments` object intact', ->
          Ctor = constructify(arguments: 'intact') (args) ->
             @caller = args.callee.caller
@@ -48,6 +54,17 @@ describe "Paws' utilities:", ->
          expect(    Ctor()).to.be.a Ctor
          expect(new Ctor().constructor).to.be Ctor
          expect(    Ctor().constructor).to.be Ctor
+         class Klass
+            constructor: constructify ->
+         expect(new Klass)  .to.be.a Klass
+         expect(    Klass()).to.be.a Klass
+      
+      it 'uses a really hacky system that requires you not to call the wrapper before CoffeeScript does', ->
+         Ctor = null
+         class Klass
+            constructor: Ctor = constructify -> console.log 'constructed ...'; return this
+         Ctor()
+         expect(-> new Klass).to.throwException()
       
       it 'executes the function-body passed to it, on new instances', ->
          Ctor = constructify -> @called = yes

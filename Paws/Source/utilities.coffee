@@ -30,6 +30,40 @@ utilities =
             
             rv = this if typeof rv != 'object' or opts.return
             return rv
+         
+         # Wow. Okay. So, CoffeeScript wraps *our* wrapper in another wrapper, that then calls us
+         # (understandably). This means that our `Wrapper` is no longer the *actual type* we're
+         # trying to construct (that is, the nominal “constructor function” whose prototype we're
+         # trying to construct.)
+         #
+         # My approach to solving this is to replace *our wrapper*'s prototype with
+         # CoffeeScript's-wrapper's prototype, the first time it *looks* like we're getting called
+         # from a CoffeeScript wrapper.
+         #
+         # Unfortunately, my method for testing for “CoffeeScript-wrapper-ness” in the caller, is
+         # rather fragile. I don't know how else to reliably go about this, right now.
+         #
+         # TODO: This is surely the most fragile thing ever conceived. Contact the Guinness.
+         before_interceptor = ->
+            if before_interceptor.caller.name? and arguments[1].callee?
+               Wrapper.prototype = before_interceptor.caller.prototype
+            Wrapper.apply = after_interceptor
+            return Function::apply.apply Wrapper, arguments
+         after_interceptor = ->
+            if after_interceptor.caller.name? and arguments[1].callee?
+               (if process?.stderr?
+               then process.stderr.write.bind process.stderr
+               else console.log) """
+                  Oh-oh! It looks like a CoffeeScript constructor-wrapper has tried to call a
+                         constructor that you've called `constructify()` on, *after* you've
+                         otherwise called that function yourself. Due to the (unfortunately,
+                         extremely fragile) approach that we take to handle CoffeeScript's
+                         unfortunate indirection, you'll have to refactor your code so that
+                         CoffeeScript's constructor is *always* called first. \n"""
+               throw new ReferenceError "CoffeeScript wrapper called after other constructor invocations"
+            return Function::apply.apply Wrapper, arguments
+         
+         Wrapper.apply = before_interceptor
          return Wrapper
       
       return inner(opts) if typeof opts == 'function'
