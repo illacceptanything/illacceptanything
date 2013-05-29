@@ -28,11 +28,20 @@ describe "Paws' utilities:", ->
          expect(constructify ->).to.be.a 'function'
          Ctor = constructify ->
          expect(-> new Ctor).to.not.throwException()
+      it 'can take options', ->
+         expect(-> constructify(foo: 'bar') ->).to.not.throwException()
       
       it 'returns a *new* function, not the constructor-body passed to it', ->
          body = ->
          Ctor = constructify body
          expect(constructify).to.not.be body
+      it 'can pass the `arguments` object intact', ->
+         Ctor = constructify(arguments: 'intact') (args) ->
+            @caller = args.callee.caller
+         it = null; func = null
+         expect(-> (func = -> it = new Ctor)() ).to.not.throwException()
+         expect(it).to.have.property 'caller'
+         expect(it.caller).to.be func
       it "causes constructors it's called on to always return instances", ->
          Ctor = constructify ->
          expect(new Ctor)  .to.be.a Ctor
@@ -55,16 +64,6 @@ describe "Paws' utilities:", ->
          expect(    Ctor()).not.to.be 123
          expect(new Ctor)  .to.be.a Ctor
          expect(    Ctor()).to.be.a Ctor
-      
-      it 'can take options', ->
-         expect(-> constructify(foo: 'bar') ->).to.not.throwException()
-      it 'can pass the `arguments` object intact', ->
-         Ctor = constructify(arguments: 'intact') (args) ->
-            @caller = args.callee.caller
-         it = null; func = null
-         expect(-> (func = -> it = new Ctor)() ).to.not.throwException()
-         expect(it).to.have.property 'caller'
-         expect(it.caller).to.be func
       it 'can be configured to *always* return the instance', ->
          Ctor = constructify(return: this) -> return new Array
          expect(new Ctor()).not.to.be.an 'array'
