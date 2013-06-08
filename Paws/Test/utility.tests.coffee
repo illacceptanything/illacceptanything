@@ -59,12 +59,28 @@ describe "Paws' utilities:", ->
          expect(new Klass)  .to.be.a Klass
          expect(    Klass()).to.be.a Klass
       
+      # FIXME: Stop this test from printing.
       it 'uses a really hacky system that requires you not to call the wrapper before CoffeeScript does', ->
          Ctor = null
          class Klass
-            constructor: Ctor = constructify -> console.log 'constructed ...'; return this
+            constructor: Ctor = constructify ->
          Ctor()
          expect(-> new Klass).to.throwException()
+      it 'can be called multiple times /re', ->
+         Ctor1 = constructify ->
+         expect(-> new Ctor1).to.not.throwException()
+         expect(-> new Ctor1).to.not.throwException()
+         Ctor2 = constructify ->
+         expect(-> Ctor2()).to.not.throwException()
+         expect(-> Ctor2()).to.not.throwException()
+         class Klass1
+            constructor: constructify ->
+         expect(-> new Klass1).to.not.throwException()
+         expect(-> new Klass1).to.not.throwException()
+         class Klass2
+            constructor: constructify ->
+         expect(-> Klass2()).to.not.throwException()
+         expect(-> Klass2()).to.not.throwException()
       
       it 'executes the function-body passed to it, on new instances', ->
          Ctor = constructify -> @called = yes

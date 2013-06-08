@@ -42,15 +42,28 @@ utilities =
          #
          # Unfortunately, my method for testing for “CoffeeScript-wrapper-ness” in the caller, is
          # rather fragile. I don't know how else to reliably go about this, right now.
+         # 
+         # This *SHOULD NOT* affect you if you're using this in the most common, intended fashion
+         # (as a direct tag on a CoffeeScript class.)
          #
          # TODO: This is surely the most fragile thing ever conceived. Contact the Guinness.
          before_interceptor = ->
-            if before_interceptor.caller.name? and arguments[1].callee?
+            cs_wrapper = before_interceptor.caller
+            # The method we actually use to test “CoffeeScript-wrapper-ness”: first off, it calls
+            # `#apply`, which we've here intercepted. Second, we know that the wrapper itself will
+            # have a defined (and non-zero-length) function-name (which *no other function* in
+            # CoffeeScript can have); third, we know that the second argument given to `#apply` will
+            # be an `arguments` object, and thus have a `callee` property, referring to the
+            # CoffeeScript wrapper itself, our caller.
+            if cs_wrapper.name?.length > 0 and arguments[1].callee == cs_wrapper
                Wrapper.prototype = before_interceptor.caller.prototype
-            Wrapper.apply = after_interceptor
+               Wrapper.apply = Function::apply
+            else
+               Wrapper.apply = after_interceptor
             return Function::apply.apply Wrapper, arguments
          after_interceptor = ->
-            if after_interceptor.caller.name? and arguments[1].callee?
+            cs_wrapper = after_interceptor.caller
+            if cs_wrapper.name?.length > 0 and arguments[1].callee == cs_wrapper
                (if process?.stderr?
                then process.stderr.write.bind process.stderr
                else console.log) """
