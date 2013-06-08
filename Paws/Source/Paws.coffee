@@ -1,15 +1,12 @@
 `require = require('./cov_require.js')(require)`
-utilities = require('./utilities.coffee').infect global
 
-Unit   = require './Unit.coffee'
-Script = require './Script.coffee'
+require('./additional.coffee') module.exports =
+   paws = new Object
 
-parameterizable class Thing
+paws.utilities       = require('./utilities.coffee').infect global
+paws.Unit   = Unit   = require './Unit.coffee'
+paws.Script = Script = require './Script.coffee'
+
+paws.Thing = Thing = parameterizable class Thing
    constructor: ->
       return this
-
-module.exports = Paws =
-   Thing: Thing
-   
-   Unit: Unit
-   Script: Script
