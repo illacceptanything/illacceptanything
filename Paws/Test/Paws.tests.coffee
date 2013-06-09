@@ -8,8 +8,9 @@ describe 'The Paws API:', ->
    it 'should be defined', ->
       expect(Paws).to.be.ok()
    
-   Thing = Paws.Thing
-   Label = Paws.Label
+   Thing     = Paws.Thing
+   Label     = Paws.Label
+   Execution = Paws.Execution
    
    describe 'Thing', ->
       
@@ -129,3 +130,35 @@ describe 'The Paws API:', ->
          foo1 = new Label 'foo'
          foo2 = new Label 'foo'
          expect(foo1.compare foo2).to.be true
+   
+   
+   describe 'Execution', ->
+      Alien  = Paws.Alien
+      Native = Paws.Native
+      
+      it 'should construct as either a Native or an Alien or a native', ->
+         expect(new Execution ->).to.be.an Alien
+         expect(new Execution {}).to.be.a Native
+         expect(new Execution)   .to.be.a Native
+      
+      it 'should begin life as pristine', ->
+         expect((new Execution).pristine).to.be yes
+      it 'should have locals', ->
+         exe = new Execution
+         expect(exe).to.have.property 'locals'
+         expect(exe.locals).to.be.a Thing
+         expect(exe.locals.metadata).to.have.length 2
+         
+         expect(exe.locals.at(1).valueish()).to.be exe.locals
+         expect(exe       .at(1).valueish()).to.be exe.locals
+      
+      describe '(alien, nukespace code)', ->
+         it 'should take a series of procedure-bits', ->
+            a = (->); b = (->); c = (->)
+            expect(-> new Execution a, b, c).to.not.throwException()
+            expect(   new Execution a, b, c).to.be.an Alien
+            expect(  (new Execution a, b, c).bits).to.have.length 3
+            expect(  (new Execution a, b, c).bits).to.eql [a, b, c]
+      
+      describe.skip '(native, libspace code)', ->
+         it 'should be tested', ->

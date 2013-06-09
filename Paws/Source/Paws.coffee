@@ -103,7 +103,19 @@ paws.Label = Label = class Label extends Thing
       to instanceof Label and
       to.alien.valueOf() == @alien.valueOf()
 
+
 paws.Execution = Execution = class Execution extends Thing
+   constructor: constructify (first) ->
+      unless this instanceof Alien or this instanceof Native
+         return (if typeof first == 'function' then Alien else Native).apply this, arguments
+      
+      @pristine = yes
+      @locals = new Thing # TODO: `name` this “locals”
+      @locals.push Thing.pair 'locals', @locals.irresponsible()
+      @      .push Thing.pair 'locals', @locals.responsible()
+
+paws.Alien = Alien = class Alien extends Execution
+   constructor: constructify(return:@) (@bits...) -> @alien = yes
 
 paws.Native = Native = class Native extends Execution
-   constructor: (@position) ->
+   constructor: constructify(return:@) (@position) -> @stack = new Array
