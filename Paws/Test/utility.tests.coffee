@@ -1,4 +1,5 @@
 `require = require('../Source/cov_require.js')(require)`
+paws = require "../Source/paws.coffee"
 expect = require 'expect.js'
 
 describe "Paws' utilities:", ->
@@ -20,69 +21,108 @@ describe "Paws' utilities:", ->
          object = new Object
          expect(composed object).to.be object
    
-   construct = utilities.construct
-   describe 'construct()', ->
-      describe '(from a constructor)', ->
-         Ctor = -> it = construct this
-         
-         it 'should not error out', ->
-            expect(-> new Ctor).to.not.throwException()
-            expect(->  Ctor() ).to.not.throwException()
-         it 'should return an instance of the constructor', ->
-            expect(new Ctor).to.be.a Ctor
-            expect( Ctor() ).to.be.a Ctor
-      
-      describe '(from a subclass)', ->
-         class Parent
-            constructor: -> @parent_called = yes
-         class Child extends Parent
-            constructor: -> return it = construct this
-         
-         it 'should not error out', ->
-            expect(-> Child()).to.not.throwException()
-         it "should call the superclass's constructor", ->
-            expect(Child().parent_called).to.be true
    
-      describe '(from another function)', ->
-         class Parent
-            constructor: -> @parent_called = yes
-         class Child extends Parent
-            constructor: -> @child_called = yes
-         
-         func = -> it = construct this, Child
-         
-         it 'should not error out', ->
-            expect(-> new func).to.not.throwException()
-            expect(->  func() ).to.not.throwException()
-         it 'should *not* call either constructor', ->
-            expect(func().child_called ).to.not.be true
-            expect(func().parent_called).to.not.be true
-         it 'should return an instance of the passed class', ->
-            expect(func()).to.be.a Child
+   describe 'constructify()', ->
+      it 'basically works', ->
+         expect(constructify).to.be.ok()
+         expect(-> constructify ->).to.not.throwException()
+         expect(constructify ->).to.be.a 'function'
+         Ctor = constructify ->
+         expect(-> new Ctor).to.not.throwException()
+         class Klass
+            constructor: constructify ->
+         expect(-> new Klass).to.not.throwException()
+      it 'can take options', ->
+         expect(-> constructify(foo: 'bar') ->).to.not.throwException()
       
-      it 'should not prevent constructor-forwarding /re', ->
-         class Ancestor
-            constructor: -> @ancestor_called = yes
+      it 'returns a *new* function, not the constructor-body passed to it', ->
+         body = ->
+         Ctor = constructify body
+         expect(constructify).to.not.be body
+         class Klass
+            constructor: constructify body
+         expect(Klass).to.not.be body
+      it 'can pass the `arguments` object intact', ->
+         Ctor = constructify(arguments: 'intact') (args) ->
+            @caller = args.callee.caller
+         it = null; func = null
+         expect(-> (func = -> it = new Ctor)() ).to.not.throwException()
+         expect(it).to.have.property 'caller'
+         expect(it.caller).to.be func
+      it "causes constructors it's called on to always return instances", ->
+         Ctor = constructify ->
+         expect(new Ctor)  .to.be.a Ctor
+         expect(    Ctor()).to.be.a Ctor
+         expect(new Ctor().constructor).to.be Ctor
+         expect(    Ctor().constructor).to.be Ctor
+         class Klass
+            constructor: constructify ->
+         expect(new Klass)  .to.be.a Klass
+         expect(    Klass()).to.be.a Klass
+      
+      it 'uses a really hacky system that requires you not to call the wrapper before CoffeeScript does', ->
+         paws.info "Silencing output."; paws.SILENT()
+         Ctor = null
+         class Klass
+            constructor: Ctor = constructify ->
+         Ctor()
+         expect(-> new Klass).to.throwException()
+      it 'can be called multiple times /re', ->
+         Ctor1 = constructify ->
+         expect(-> new Ctor1).to.not.throwException()
+         expect(-> new Ctor1).to.not.throwException()
+         Ctor2 = constructify ->
+         expect(-> Ctor2()).to.not.throwException()
+         expect(-> Ctor2()).to.not.throwException()
+         class Klass1
+            constructor: constructify ->
+         expect(-> new Klass1).to.not.throwException()
+         expect(-> new Klass1).to.not.throwException()
+         class Klass2
+            constructor: constructify ->
+         expect(-> Klass2()).to.not.throwException()
+         expect(-> Klass2()).to.not.throwException()
+      
+      it 'executes the function-body passed to it, on new instances', ->
+         Ctor = constructify -> @called = yes
+         expect(new Ctor().called).to.be.ok()
+      
+      it "returns the return-value of the body, if it isn't nullish", ->
+         Ctor = constructify (rv) -> return rv
+         obj = new Object
+         expect(new Ctor(obj)).to.be obj
+         expect(    Ctor(obj)).to.be obj
+      it 'returns the new instance, otherwise', ->
+         Ctor = constructify (rv) -> return 123
+         expect(new Ctor)  .not.to.be 123
+         expect(    Ctor()).not.to.be 123
+         expect(new Ctor)  .to.be.a Ctor
+         expect(    Ctor()).to.be.a Ctor
+      it 'can be configured to *always* return the instance', ->
+         Ctor = constructify(return: this) -> return new Array
+         expect(new Ctor()).not.to.be.an 'array'
+         expect(    Ctor()).not.to.be.an 'array'
+      
+      it 'should call any ancestor that exists', ->
+         Ancestor = constructify -> @ancestor_called = true
          class Parent extends Ancestor
-            constructor: (forward) ->
-               return new Child if forward
-               it = construct this
-               it.parent_called = yes
-               return it
+            constructor: constructify -> @parent_called = true
          class Child extends Parent
-            constructor: ->
-               it = construct this
-               it.child_called = yes
-               return it
+            constructor: constructify -> @child_called = true
          
-         expect(-> new Parent yes).to.not.throwException()
-         expect(new Parent yes).to.be.a Child
-         expect(new Parent yes).to.be.a Parent
+         expect(new Parent)  .to.be.an Ancestor
+         expect(    Parent()).to.be.an Ancestor
+         expect(new Child)  .to.be.an Ancestor
+         expect(    Child()).to.be.an Ancestor
+         expect(new Child)  .to.be.a Parent
+         expect(    Child()).to.be.a Parent
          
-         child = new Parent yes
-         expect(child.ancestor_called).to.be.ok()
-         expect(child.parent_called)  .to.be.ok()
-         expect(child.child_called)  .to.be.ok()
+         expect(new Parent)  .to.have.property 'ancestor_called'
+         expect(    Parent()).to.have.property 'ancestor_called'
+         expect(new Child)  .to.have.property 'ancestor_called'
+         expect(    Child()).to.have.property 'ancestor_called'
+         expect(new Child)  .to.have.property 'parent_called'
+         expect(    Child()).to.have.property 'parent_called'
    
    
    describe 'parameterizable()', ->

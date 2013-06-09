@@ -1,3 +1,6 @@
+`require = require('./cov_require.js')(require)`
+paws = require './Paws.coffee' # Circular. Intentionally.
+
 module.exports =
 utilities =
    
@@ -18,33 +21,73 @@ utilities =
    modifier: passthrough (result, args) -> result ? args[0]
    
    
-   # When called without a second argument (i.e., from something that is, itself, a constructor),
-   # this function both:
-   # 
-   #  - ensures that the caller's `this` is configured *as if* the caller were called via the
-   #    “`new` invocation pattern,” even if it wasn't [^1]
-   #  - if there's a CoffeeScript-style `__super__` defined, then we call the super's constructor
-   #    on our `this`, as well
-   # 
-   # If invoked *not* from a constructor (i.e. with a second argument referencing the constructor),
-   # this will only construct a new `this` *without* invoking the constructor. It's implied that
-   # you'll have to apply the constructor to the returned value yourself, when appropriate.
-   # 
-   # [^1]: invocation-protection can only work as intended if the return value of `construct` is
-   #       taken as the body's `this`, i.e. with a call like the following:
-   #       
-   #           this = construct(this)
-   # ----
-   # TODO: This needs a way to pass arguments along to the super
-   construct: do -> construct = (it, klass) ->
-      klass ?= construct.caller
-      if construct.caller.caller != construct and it.constructor != klass
-         (F = new Function).prototype = klass.prototype
-         it = new F
-      if construct.caller == klass and klass.__super__? # CoffeeScript idiom
-         klass.__super__.constructor.call(it)
+   # NYD
+   constructify: (opts) ->
+      inner = (body) ->
+         Wrapper = ->
+            
+            unless this instanceof Wrapper
+               (F = -> @constructor = Wrapper; return this).prototype = Wrapper.prototype; it = new F
+               return Wrapper.apply it, arguments
+            
+            # TODO: Functionality to control arguments passed to the superclass
+            Wrapper.__super__?.constructor?.call this
+            
+            rv = body[ if opts.arguments == 'intact' then 'call' else 'apply' ] this, arguments
+            rv = this if typeof rv != 'object' or opts.return
+            
+            return rv
+         
+         # Wow. Okay. So, CoffeeScript wraps *our* wrapper in another wrapper, that then calls us
+         # (understandably). This means that our `Wrapper` is no longer the *actual type* we're
+         # trying to construct (that is, the nominal “constructor function” whose prototype we're
+         # trying to construct.)
+         #
+         # My approach to solving this is to replace *our wrapper*'s prototype with
+         # CoffeeScript's-wrapper's prototype, the first time it *looks* like we're getting called
+         # from a CoffeeScript wrapper.
+         #
+         # Unfortunately, my method for testing for “CoffeeScript-wrapper-ness” in the caller, is
+         # rather fragile. I don't know how else to reliably go about this, right now.
+         # 
+         # This *SHOULD NOT* affect you if you're using this in the most common, intended fashion
+         # (as a direct tag on a CoffeeScript class.)
+         #
+         # TODO: This is surely the most fragile thing ever conceived. Contact the Guinness.
+         before_interceptor = ->
+            cs_wrapper = before_interceptor.caller
+            # The method we actually use to test “CoffeeScript-wrapper-ness”: first off, it calls
+            # `#apply`, which we've here intercepted. Second, we know that the wrapper itself will
+            # have a defined (and non-zero-length) function-name (which *no other function* in
+            # CoffeeScript can have); third, we know that the second argument given to `#apply` will
+            # be an `arguments` object, and thus have a `callee` property, referring to the
+            # CoffeeScript wrapper itself, our caller.
+            if cs_wrapper.name?.length > 0 and arguments[1].callee == cs_wrapper
+               Wrapper.prototype = cs_wrapper.prototype
+               Wrapper.__super__ = cs_wrapper.__super__ if cs_wrapper.__super__?
+               Wrapper.apply = Function::apply
+            else
+               Wrapper.apply = after_interceptor
+            return Function::apply.apply Wrapper, arguments
+         after_interceptor = ->
+            cs_wrapper = after_interceptor.caller
+            if cs_wrapper.name?.length > 0 and arguments[1].callee == cs_wrapper
+               paws.error """
+                  Oh-oh! It looks like a CoffeeScript constructor-wrapper has tried to call a
+                         constructor that you've called `constructify()` on, *after* you've
+                         otherwise called that function yourself. Due to the (unfortunately,
+                         extremely fragile) approach that we take to handle CoffeeScript's
+                         unfortunate indirection, you'll have to refactor your code so that
+                         CoffeeScript's constructor is *always* called first. \n"""
+               throw new ReferenceError "CoffeeScript wrapper called after other constructor invocations"
+            return Function::apply.apply Wrapper, arguments
+         
+         Wrapper.apply = before_interceptor
+         return Wrapper
       
-      return it
+      return inner(opts) if typeof opts == 'function'
+      return inner
+   
    
    # This is a “tag” that's intended to be inserted before CoffeeScript class-definitions:
    # 
@@ -89,22 +132,28 @@ utilities =
    #    will be needing it across multiple reactor ticks. This, in my experience, is an edge-case.
    # ----
    # TODO: This could all be a lot more succinct, and prettier.
-   parameterizable: (klass) ->
-      klass.with = (opts) ->
-         it = construct this, klass
+   parameterizable: (Klass) ->
+      Klass.with = (opts) ->
+         
+         # XXX: Perhaps this should use constructify()?
+         # XXX: Should this handle super-constructors?
+         F = -> @constructor = Klass; return this
+         F:: = Klass::
+         it = new F
+         
          it.with opts
-         bound = _.bind(klass, it)
-         _.assign bound, klass
-         bound.prototype = klass.prototype
+         bound = _.bind Klass, it
+         _.assign bound, Klass
+         bound.prototype = Klass.prototype
          bound._ = opts
          process.nextTick => delete bound._
          bound
          
-      klass.prototype.with = (@_) ->
+      Klass.prototype.with = (@_) ->
          process.nextTick => delete @_
          return this
       
-      return klass
+      return Klass
    
    # Another “tag” for CoffeeScript classes, to cause them to delegate any undefined methods to
    # another class, if they *are* defined on that other class.

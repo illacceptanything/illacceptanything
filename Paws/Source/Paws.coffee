@@ -109,3 +109,8 @@ paws.Label = Label = class Label extends Thing
    compare: (to) ->
       to instanceof Label and
       to.alien.valueOf() == @alien.valueOf()
+
+paws.Execution = Execution = class Execution extends Thing
+
+paws.Native = Native = class Native extends Execution
+   constructor: (@position) ->

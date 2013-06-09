@@ -26,11 +26,13 @@ module.exports = (paws) ->
    # XXX: WHY DOES `verbosity < maximum` HAVE TO BE BACKWARDS D:
    for name, v in paws.verbosities
       paws[name] = do (name, v) ->-> if v <= verbosity 
+         out = process?.stderr?.write.bind(process.stderr) || console.log.bind(console)
+         
          if verbosity >= 9 or process.env.DEBUG_VERBOSITY
-            console.log(
-               "-- Verbosity of #{v}:#{verbos[v]} ≤ #{verbosity}:#{verbos[verbosity] ? '???'}; "+
-               "printing message:" )
-         console.log.apply this, arguments
+            out "-- Verbosity of #{v}:#{verbos[v]} ≤ #{verbosity}:#{verbos[verbosity] ? '???'}; " +
+                "printing message:"
+         
+         out.apply this, arguments
    
    # Second, we configure the `verbosity` itself in one of two ways: by calling an internal API
    # at runtime; or by setting an environment-variable before entry to the Paws library. (The
