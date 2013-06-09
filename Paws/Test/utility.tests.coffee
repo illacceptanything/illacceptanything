@@ -1,4 +1,5 @@
 `require = require('../Source/cov_require.js')(require)`
+paws = require "../Source/paws.coffee"
 expect = require 'expect.js'
 
 describe "Paws' utilities:", ->
@@ -61,6 +62,7 @@ describe "Paws' utilities:", ->
       
       # FIXME: Stop this test from printing.
       it 'uses a really hacky system that requires you not to call the wrapper before CoffeeScript does', ->
+         paws.info "Silencing output."; paws.SILENT()
          Ctor = null
          class Klass
             constructor: Ctor = constructify ->

@@ -1,3 +1,6 @@
+`require = require('./cov_require.js')(require)`
+paws = require './Paws.coffee' # Circular. Intentionally.
+
 module.exports =
 utilities =
    
@@ -64,9 +67,7 @@ utilities =
          after_interceptor = ->
             cs_wrapper = after_interceptor.caller
             if cs_wrapper.name?.length > 0 and arguments[1].callee == cs_wrapper
-               (if process?.stderr?
-               then process.stderr.write.bind process.stderr
-               else console.log) """
+               paws.error """
                   Oh-oh! It looks like a CoffeeScript constructor-wrapper has tried to call a
                          constructor that you've called `constructify()` on, *after* you've
                          otherwise called that function yourself. Due to the (unfortunately,
