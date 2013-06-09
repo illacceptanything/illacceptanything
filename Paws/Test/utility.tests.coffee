@@ -1,5 +1,5 @@
 `require = require('../Source/cov_require.js')(require)`
-paws = require "../Source/paws.coffee"
+paws = require "../Source/Paws.coffee"
 expect = require 'expect.js'
 
 describe "Paws' utilities:", ->
