@@ -127,22 +127,28 @@ utilities =
    #    will be needing it across multiple reactor ticks. This, in my experience, is an edge-case.
    # ----
    # TODO: This could all be a lot more succinct, and prettier.
-   parameterizable: (klass) ->
-      klass.with = (opts) ->
-         it = construct this, klass
+   parameterizable: (Klass) ->
+      Klass.with = (opts) ->
+         
+         # XXX: Perhaps this should use constructify()?
+         # XXX: Should this handle super-constructors?
+         F = -> @constructor = Klass; return this
+         F:: = Klass::
+         it = new F
+         
          it.with opts
-         bound = _.bind(klass, it)
-         _.assign bound, klass
-         bound.prototype = klass.prototype
+         bound = _.bind Klass, it
+         _.assign bound, Klass
+         bound.prototype = Klass.prototype
          bound._ = opts
          process.nextTick => delete bound._
          bound
          
-      klass.prototype.with = (@_) ->
+      Klass.prototype.with = (@_) ->
          process.nextTick => delete @_
          return this
       
-      return klass
+      return Klass
    
    # Another “tag” for CoffeeScript classes, to cause them to delegate any undefined methods to
    # another class, if they *are* defined on that other class.
