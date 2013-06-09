@@ -60,7 +60,6 @@ describe "Paws' utilities:", ->
          expect(new Klass)  .to.be.a Klass
          expect(    Klass()).to.be.a Klass
       
-      # FIXME: Stop this test from printing.
       it 'uses a really hacky system that requires you not to call the wrapper before CoffeeScript does', ->
          paws.info "Silencing output."; paws.SILENT()
          Ctor = null
@@ -103,6 +102,27 @@ describe "Paws' utilities:", ->
          Ctor = constructify(return: this) -> return new Array
          expect(new Ctor()).not.to.be.an 'array'
          expect(    Ctor()).not.to.be.an 'array'
+      
+      it 'should call any ancestor that exists', ->
+         Ancestor = constructify -> @ancestor_called = true
+         class Parent extends Ancestor
+            constructor: constructify -> @parent_called = true
+         class Child extends Parent
+            constructor: constructify -> @child_called = true
+         
+         expect(new Parent)  .to.be.an Ancestor
+         expect(    Parent()).to.be.an Ancestor
+         expect(new Child)  .to.be.an Ancestor
+         expect(    Child()).to.be.an Ancestor
+         expect(new Child)  .to.be.a Parent
+         expect(    Child()).to.be.a Parent
+         
+         expect(new Parent)  .to.have.property 'ancestor_called'
+         expect(    Parent()).to.have.property 'ancestor_called'
+         expect(new Child)  .to.have.property 'ancestor_called'
+         expect(    Child()).to.have.property 'ancestor_called'
+         expect(new Child)  .to.have.property 'parent_called'
+         expect(    Child()).to.have.property 'parent_called'
    
    
    describe 'parameterizable()', ->

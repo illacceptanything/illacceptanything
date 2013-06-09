@@ -21,6 +21,7 @@ utilities =
    modifier: passthrough (result, args) -> result ? args[0]
    
    
+   # NYD
    constructify: (opts) ->
       inner = (body) ->
          Wrapper = ->
@@ -29,9 +30,12 @@ utilities =
                (F = -> @constructor = Wrapper; return this).prototype = Wrapper.prototype; it = new F
                return Wrapper.apply it, arguments
             
-            rv = body[ if opts.arguments == 'intact' then 'call' else 'apply' ] this, arguments
+            # TODO: Functionality to control arguments passed to the superclass
+            Wrapper.__super__?.constructor?.call this
             
+            rv = body[ if opts.arguments == 'intact' then 'call' else 'apply' ] this, arguments
             rv = this if typeof rv != 'object' or opts.return
+            
             return rv
          
          # Wow. Okay. So, CoffeeScript wraps *our* wrapper in another wrapper, that then calls us
@@ -59,7 +63,8 @@ utilities =
             # be an `arguments` object, and thus have a `callee` property, referring to the
             # CoffeeScript wrapper itself, our caller.
             if cs_wrapper.name?.length > 0 and arguments[1].callee == cs_wrapper
-               Wrapper.prototype = before_interceptor.caller.prototype
+               Wrapper.prototype = cs_wrapper.prototype
+               Wrapper.__super__ = cs_wrapper.__super__ if cs_wrapper.__super__?
                Wrapper.apply = Function::apply
             else
                Wrapper.apply = after_interceptor
