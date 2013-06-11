@@ -21,7 +21,7 @@ notifications:
       on_success: never
       on_failure: change
       channels:
-       - "chat.freenode.net#elliottcable"
+       - "chat.freenode.net#ELLIOTTCABLE"
        - "chat.freenode.net#Paws.Nucleus"
       template:
        - "%{repository}/%{branch} %{commit} %{author}: #%{build_number} %{message}"
