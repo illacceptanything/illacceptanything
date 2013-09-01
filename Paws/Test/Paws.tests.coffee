@@ -149,8 +149,10 @@ describe 'The Paws API:', ->
          expect(exe.locals).to.be.a Thing
          expect(exe.locals.metadata).to.have.length 2
          
-         expect(exe.locals.at(1).valueish()).to.be exe.locals
          expect(exe       .at(1).valueish()).to.be exe.locals
+         expect(exe       .at(1).metadata[2].isResponsible).to.be true
+         expect(exe.locals.at(1).valueish()   ).to.be exe.locals
+         expect(exe.locals.at(1).metadata[2].isResponsible).to.be false
       
       describe '(alien, nukespace code)', ->
          it 'should take a series of procedure-bits', ->
