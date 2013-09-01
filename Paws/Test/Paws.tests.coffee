@@ -154,13 +154,23 @@ describe 'The Paws API:', ->
          expect(exe.locals.at(1).valueish()   ).to.be exe.locals
          expect(exe.locals.at(1).metadata[2].isResponsible).to.be false
       
-      describe '(alien, nukespace code)', ->
+      describe '(Alien / nukespace code)', ->
          it 'should take a series of procedure-bits', ->
             a = (->); b = (->); c = (->)
+
             expect(-> new Execution a, b, c).to.not.throwException()
             expect(   new Execution a, b, c).to.be.an Alien
+            
             expect(  (new Execution a, b, c).bits).to.have.length 3
             expect(  (new Execution a, b, c).bits).to.eql [a, b, c]
       
-      describe.skip '(native, libspace code)', ->
-         it 'should be tested', ->
+      describe '(Native / libspace code)', ->
+         Expression = Paws.parser.Expression
+         
+         it 'should take a position', ->
+            expr = new Expression
+            
+            expect(-> new Execution expr).to.not.throwException()
+            expect(   new Execution expr).to.be.an Native
+            
+            expect(  (new Execution expr).position).to.be.ok()

@@ -9,6 +9,7 @@ paws.utilities       = require('./utilities.coffee').infect global
 paws.Unit   = Unit   = require './Unit.coffee'
 paws.Script = Script = require './Script.coffee'
 
+paws.parser = parser = require './parser.coffee'
 
 
 # Core data-types
