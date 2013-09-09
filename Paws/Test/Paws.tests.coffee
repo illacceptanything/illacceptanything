@@ -163,6 +163,13 @@ describe 'The Paws API:', ->
             
             expect(  (new Execution a, b, c).bits).to.have.length 3
             expect(  (new Execution a, b, c).bits).to.eql [a, b, c]
+         
+         it 'should know whether it is complete', ->
+            ex = new Execution ->
+            expect(ex.complete()).to.be false
+            
+            ex.bits.length = 0
+            expect(ex.complete()).to.be true
       
       describe '(Native / libspace code)', ->
          Expression = Paws.parser.Expression
@@ -174,3 +181,14 @@ describe 'The Paws API:', ->
             expect(   new Execution expr).to.be.an Native
             
             expect(  (new Execution expr).position).to.be.ok()
+         
+         it 'should know whether it is complete', ->
+            ex = new Execution (new Expression)
+            expect(ex.complete()).to.be false
+            
+            ex.position = null
+            ex.stack.push 42
+            expect(ex.complete()).to.be false
+            
+            ex.stack.length = 0
+            expect(ex.complete()).to.be true

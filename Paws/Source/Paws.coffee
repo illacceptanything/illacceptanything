@@ -113,9 +113,32 @@ paws.Execution = Execution = class Execution extends Thing
       @locals = new Thing # TODO: `name` this “locals”
       @locals.push Thing.pair 'locals', @locals.irresponsible()
       @      .push Thing.pair 'locals', @locals.responsible()
+   
+   # This will never be called directly, as the Execution constructor ensures that actual instances
+   # of raw Execution are impossible, and both Alien and Native wrap this.
+   clone: (to) ->
+      to.pristine = @pristine
+      
+      to.locals = @locals
+      to.push Thing.pair 'locals', @locals.responsible()
 
 paws.Alien = Alien = class Alien extends Execution
    constructor: constructify(return:@) (@bits...) ->
+   
+   complete: -> !this.bits.length
+   
+   clone: (to) ->
+      super (to ?= new Alien)
+      to.bits = @bits.slice 0
+      return to
 
 paws.Native = Native = class Native extends Execution
    constructor: constructify(return:@) (@position) -> @stack = new Array
+   
+   complete: -> not this.position? and !this.stack.length
+   
+   clone: (to) ->
+      super (to ?= new Native)
+      to.position = @position
+      to.stack = @stack.slice 0
+      return to
