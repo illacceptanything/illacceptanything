@@ -1,4 +1,4 @@
-{     "author" : "elliottcable (http://ell.io/tt)"
+{     "author" : "ELLIOTTCABLE (http://ell.io/tt)"
    
 ,       "name" : "Paws.js"
 ,    "private" :  true
@@ -7,9 +7,10 @@
 ,       "main" : "Library/Paws.js"
 
 ,    "scripts" :{
-           "test" : "./Scripts/test.sh"
+           "repl" : "./Scripts/repl.js"
+,          "test" : "./Scripts/test.sh"
 ,         "clean" : "./Scripts/clean.sh"
-,      "coverage" : "./Scripts/coverage.sh 3> Coverage.html"
+,      "coverage" : "./Scripts/coverage.sh 3> ./Library/Coverage.html"
 ,     "coveralls" : "./Scripts/coveralls.sh"
 }
 
@@ -26,15 +27,15 @@
 ,          "engines" :{"node":"~0.10.7"}
 ,     "dependencies" :{"coffee-script"          : "~1.6.2"
                      , "uuid"                   : "~1.4.1"
-                     , "lodash"                 : "~1.2.1"                                        }
+                     , "lodash"                 : "~1.3.1"                                        }
 ,  "devDependencies" :{"glob"                   : "~3.2.1"
-                     , "browserify"             : "~2.14.2"
+                     , "browserify"             : "~2.29.1"
                      , "coffeeify"              : "~0.4.0"
                      , "coffee-coverage"        : "~0.1.3"
                      , "mocha-lcov-reporter"    : "~0.0.1"
-                     , "coveralls"              : "~2.0.7"
+                     , "coveralls"              : "~2.3.0"
                      , "docco"                  : "~0.6.2"
-                     , "mocha"                  : "~1.10.0"
+                     , "mocha"                  : "~1.12.1"
                      , "expect.js"              : "~0.2.0"                                        }
 
 ,   "testling" :{

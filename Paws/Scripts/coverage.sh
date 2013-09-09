@@ -6,7 +6,7 @@
 # descriptor 3.
 # 
 #     npm run-script coverage
-#     # ./Scripts/coverage.sh 3>coverage.html
+#     # ./Scripts/coverage.sh 3>./Library/coverage.html
 
 if [ "$npm_package_config_mocha_reporter" != 'mocha-lcov-reporter' ]; then
        npm_package_config_mocha_reporter='html-cov'                 ; fi
