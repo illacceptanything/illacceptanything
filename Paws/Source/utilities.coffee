@@ -1,5 +1,5 @@
 `require = require('./cov_require.js')(require)`
-paws = require './Paws.coffee' # Circular. Intentionally.
+require('./additional.coffee') paws = new Object
 
 module.exports =
 utilities =
