@@ -2,7 +2,7 @@
 # exports-object. It's called as the first action in `Paws.coffee`.
 verbosity = 4
 
-module.exports = (paws) ->
+module.exports = (paws)->
    
    # TODO: This could easily be reduced to a module.
    variables = silent: 0, quiet: 2, verbose: 8, WTF: 9
@@ -25,7 +25,7 @@ module.exports = (paws) ->
    #        mechanism we end up using
    # XXX: WHY DOES `verbosity < maximum` HAVE TO BE BACKWARDS D:
    for name, v in paws.verbosities
-      paws[name] = do (name, v) ->-> if v <= verbosity 
+      paws[name] = do (name, v)->-> if v <= verbosity 
          out = process?.stderr?.write.bind(process.stderr) || console.log.bind(console)
          
          if verbosity >= 9 or process.env.DEBUG_VERBOSITY
@@ -51,7 +51,7 @@ module.exports = (paws) ->
    #       isFinite() shit.
    for own name, ddefault of variables
       name = name.toUpperCase()
-      paws[name] = do (name, ddefault) -> (level) ->
+      paws[name] = do (name, ddefault)-> (level)->
          level = true unless level?
          if isFinite (l = parseInt level, 10)
             verbosity = l
