@@ -127,6 +127,96 @@ Paws.Alien = Alien = class Alien extends Execution
       to.bits = @bits.slice 0
       return to
 
+   # This alternative constructor will automatically generate a series of ‘bits’ that will curry the
+   # appropriate number of arguments into a single, final function.
+   # 
+   # Instead of having to write individual function-bits for your Alien that collect the appropriate
+   # set of resumption-values into a series of “arguments” that you need for your task, you can use
+   # this convenience constructor for the common situation that you're treating an Execution as
+   # equivalent to a synchronous JavaScript function.
+   # 
+   # ----
+   # 
+   # This takes a single function, and checks the number of arguments it requires before generating
+   # the corresponding bits to acquire those arguments.
+   # 
+   # Then, once it's been resumed the appropriate number of times (plus one extra initial resumption
+   # with a `caller` as the resumption-value, as is standard coproductive practice in Paws), the
+   # synchronous JavaScript passed in as the argument here will be invoked.
+   # 
+   # That invocation will provide the arguments recorded in the function's implementation, as well
+   # as a context-object containing the following information as `this`:
+   # 
+   # caller
+   #  : The first resumption-value provided to the generated `Execution`. Usually, itself, an
+   #    `Execution`, in the coproductive pattern.
+   # this
+   #  : The original `this`. That is, the generated `Execution` that's currently being run.
+   # world
+   #  : The current `World` at the time of execution, as provided by the reactor.
+   # 
+   # After your function executes, if it provides a non-null JavaScript return value, then the
+   # `caller` provided as the first resumption-value Paws-side will be resumed one final time with
+   # that as the resumption-value. (Hence the name of this method: it provides a ‘synchronous’
+   # result after all arguments have been acquired.)
+   # 
+   # @param { function(... [Thing]
+   #                , this:{caller: Execution, this, world: World}): ?Thing }
+   #    func   The synchronous function we'll generate an Execution to match
+   #---
+   # FIXME: Replace the holdover ES5 methods in this with IE6-compat LoDash functions
+   @synchronous: (func) ->
+      body = ->
+         arity = func.length
+         
+         # First, we construct the *middle* bits of the coproductive pattern (that is, the ones that
+         # handle all but the *last* actual argument the passed function requires.) These are pretty
+         # generic: they simply partially-apply their RV to the *last* bit (which will be defined
+         # below.) Thus, they participate in currying their argument into the final invocation of
+         # the synchronous function.
+         @bits = new Array(arity).join().split(',').map ->
+            return (caller, rv, here)->
+               # FIXME: Pretty this up with prototype extensions. (#last, anybody?)
+               @bits[@bits.length - 1] = _.partial @bits[@bits.length - 1], rv
+               here.stage caller, this
+         
+         # Next, we construct the *first* bit, which is assumed to be responsible for receiving the
+         # `caller` (as is usually the case in the coproductive pattern.) It takes its
+         # resumption-value, and curries it into *every* following bit. (Notice that both the
+         # middle-bits, above, and the concluding bit, below, save a spot for a `caller` argument.)
+         @bits[0] = (caller, here)->
+            @bits = @bits.map (bit)=> _.partial bit, caller
+            here.stage caller, this
+         
+         # Now, the complex part. The *final* bit has quite a few arguments curried into it:
+         # 
+         #  - First, we *immediately* (at generate-time) contribute the locals we'll need within the
+         #    body: the `Paws` API, and the `func` we were passed
+         #  - Second, the `caller` curried in by the first bit
+         #  - Third, any *actual arguments* curried in by intermediate bits
+         # 
+         # In addition to these, it's got one final argument (the actual resumption-value with which
+         # this final bit is invoked, **after** all the other bits have been exhausted), and the
+         # World passed in by the reactor.
+         #
+         # These values are curred into a function we construct within the body-string below, that
+         # proceeds to provide the *actual* arguments to the synchronous `func`, as well as
+         # constructing a context-object to act as the `this` described above.
+         #---
+         # FIXME: Remove the `Paws` pass, if it's unnecessary
+         @bits[arity] = Function.apply(null, ['Paws', 'func', 'caller'].concat(
+            Array(arity + 1).join('_').split(''), 'here', """
+               var rv = func.apply({ caller: caller, this: this
+                                   , world: arguments[arguments.length - 1] }
+                                 , [].slice.call(arguments, 3) )
+               if (typeof rv !== 'undefined' && rv !== null) {
+                  here.stage(caller, rv) }
+            """))
+         @bits[arity] = _.partial @bits[arity], Paws, func
+         
+         return this
+      body.apply new Execution(->)
+
 Paws.Native = Native = class Native extends Execution
    constructor: constructify(return:@) (@position)-> @stack = new Array
    

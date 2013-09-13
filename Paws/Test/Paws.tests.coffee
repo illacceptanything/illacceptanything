@@ -1,5 +1,7 @@
 `                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
+assert = require 'assert'
 expect = require 'expect.js'
+sinon  = require 'sinon'
 
 # TODO: Replace all the 'should' language with more direct 'will' language
 #       (i.e. “it should return ...” becomes “it returns ...”
@@ -170,6 +172,146 @@ describe 'The Paws API:', ->
             
             ex.bits.length = 0
             expect(ex.complete()).to.be true
+         
+         describe '##synchronous', ->
+            synchronous = Alien.synchronous
+            it 'accepts a function', ->
+               expect(   synchronous).to.be.ok()
+               expect(-> synchronous ->).to.not.throwException()
+            
+            it 'results in a new Alien', ->
+               expect(synchronous ->).to.be.an Alien
+            
+            it 'adds bits corresponding to the arity of the function', ->
+               expect( (synchronous (a, b)->)       .bits).to.have.length 3
+               expect( (synchronous (a, b, c, d)->) .bits).to.have.length 5
+            
+            describe 'produces bits that ...', ->
+               a = null
+               beforeEach -> a =
+                  caller: new Execution
+                  thing:  new Label 'foo'
+                  world: { stage: sinon.spy() }
+               call = (exe, rv)->
+                  exe.bits.shift().call exe, rv, a.world
+               
+               it 'are Functions', ->
+                  exe = synchronous (a, b, c)->
+                  expect(exe.bits[0]).to.be.a Function
+                  expect(exe.bits[1]).to.be.a Function
+                  expect(exe.bits[2]).to.be.a Function
+                  expect(exe.bits[3]).to.be.a Function
+               
+               it 'expect a caller, RV, and world', ->
+                  exe = synchronous (a, b, c)->
+                  expect(exe.bits[0]).to.have.length 2 # `caller`-curry
+                  expect(exe.bits[1]).to.have.length 3
+                  expect(exe.bits[2]).to.have.length 3
+               
+               it 'can be successfully called', ->
+                  exe = synchronous (a, b, c)->
+                  expect(-> call exe, a.caller).to.not.throwException()
+                  expect(-> call exe, a.thing).to.not.throwException()
+               
+               it 'are provided a `caller` by the first bit', ->
+                  some_function = sinon.spy (a, b, c)->
+                  exe = synchronous some_function
+                  exe.bits = exe.bits.map (bit)-> sinon.spy bit
+                  bits = exe.bits.slice()
+                  
+                  call exe, a.caller
+                  call exe, new Label 123
+                  call exe, new Label 456
+                  call exe, new Label 789
+                  
+                  assert bits[1].calledWith a.caller
+                  assert bits[2].calledWith a.caller
+                  assert bits[3].calledWith a.caller
+               
+               it 're-stage the `caller` after each coproductive consumption', ->
+                  stage = a.world.stage
+                  exe = synchronous (a, b, c)->
+                  
+                  call exe, a.caller
+                  expect(stage.callCount).to.be 1
+                  assert stage.getCall(0).calledOn a.world
+                  assert stage.getCall(0).calledWith a.caller, exe
+                  
+                  call exe, new Label 123
+                  expect(stage.callCount).to.be 2
+                  assert stage.getCall(1).calledOn a.world
+                  assert stage.getCall(1).calledWith a.caller, exe
+                  
+                  call exe, new Label 456
+                  expect(stage.callCount).to.be 3
+                  assert stage.getCall(2).calledOn a.world
+                  assert stage.getCall(2).calledWith a.caller, exe
+                  
+                  call exe, new Label 789
+                  expect(stage.callCount).to.not.be 4
+               
+               it 're-stage the `caller` after all coproduction if a result is returned', ->
+                  stage = a.world.stage
+                  
+                  result = new Label "A result!"
+                  exe = synchronous (a)-> return result
+                  
+                  call exe, a.caller
+                  expect(stage.callCount).to.be 1
+                  assert stage.getCall(0).calledOn a.world
+                  assert stage.getCall(0).calledWith a.caller, exe
+                  
+                  call exe, new Label 123
+                  expect(stage.callCount).to.be 2
+                  assert stage.getCall(1).calledOn a.world
+                  assert stage.getCall(1).calledWith a.caller, result
+               
+               it 'call the passed function exactly once, when exhausted', ->
+                  some_function = sinon.spy (a, b, c)->
+                  exe = synchronous some_function
+                  
+                  call exe, a.caller
+                  call exe, new Label 123
+                  call exe, new Label 456
+                  call exe, new Label 789
+                  
+                  assert some_function.calledOnce
+                  
+               it 'collect individually passed arguments into arguments to the passed function', ->
+                  some_function = sinon.spy (a, b, c)->
+                  exe = synchronous some_function
+                  
+                  things =
+                     first:  new Label 123
+                     second: new Label 456
+                     third:  new Label 789
+                  
+                  call exe, a.caller
+                  call exe, things.first
+                  call exe, things.second
+                  call exe, things.third
+                  
+                  assert some_function.calledWithExactly(
+                     things.first, things.second, things.third, a.world)
+               
+               it 'inject context into the passed function', ->
+                  some_function = sinon.spy (arg)->
+                  exe = synchronous some_function
+                  
+                  call exe, a.caller
+                  call exe, a.thing
+                  
+                  expect(some_function.firstCall.thisValue).to.have.property 'caller'
+                  expect(some_function.firstCall.thisValue.caller).to.be.an Execution
+                  expect(some_function.firstCall.thisValue.caller).to.be a.caller
+                  
+                  expect(some_function.firstCall.thisValue).to.have.property 'this'
+                  expect(some_function.firstCall.thisValue.this).to.be.an Execution
+                  expect(some_function.firstCall.thisValue.this).to.be exe
+                  
+                  expect(some_function.firstCall.thisValue).to.have.property 'world'
+                 #expect(some_function.firstCall.thisValue.world).to.be.a World # FIXME
+                  expect(some_function.firstCall.thisValue.world).to.be a.world
       
       describe '(Native / libspace code)', ->
          Expression = Paws.parser.Expression
