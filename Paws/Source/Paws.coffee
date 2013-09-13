@@ -111,17 +111,31 @@ Paws.Execution = Execution = class Execution extends Thing
          return (if typeof first == 'function' then Alien else Native).apply this, arguments
       
       @pristine = yes
-      @locals = new Thing # TODO: `name` this “locals”
-      @locals.push Thing.pair 'locals', @locals.irresponsible()
-      @      .push Thing.pair 'locals', @locals.responsible()
+      locals = new Thing # TODO: `name` this “locals”
+      locals.push Thing.pair 'locals', locals.irresponsible()
+      this  .push Thing.pair 'locals', locals.responsible()
    
-   # This will never be called directly, as the Execution constructor ensures that actual instances
-   # of raw Execution are impossible, and both Alien and Native wrap this.
+   #---
+   # Convenience method to find the oldest 'locals' member on this `Execution`
+   locals: ->
+      results = @find 'locals'
+      results[results.length - 1].valueish()
+   
+   # This method of the `Execution` types will copy all data relevant to advancement of the
+   # execution to a `Execution` instance. This includes the pristine-state, any `Alien`'s `bits`, or
+   # a `Native`'s `stack` and `position`. A clone made thus can be advanced just as the original
+   # would have been, without affecting the original's advancement-state.
+   # 
+   # Of note: along with all the other data copied from the old instance, the new clone will inherit
+   # the original `locals`. This is intentional.
+   # 
+   #---
+   # NOTE: This will never be called directly, as the Execution constructor ensures that actual
+   #       instances of raw Execution are impossible, and both Alien and Native wrap this.
+   # FIXME: ‘Cloning’ locals ... *isn't*, here. I need to figure out what I want to do with this.
    clone: (to)->
+      super to
       to.pristine = @pristine
-      
-      to.locals = @locals
-      to.push Thing.pair 'locals', @locals.responsible()
 
 Paws.Alien = Alien = class Alien extends Execution
    constructor: constructify(return:@) (@bits...)->
