@@ -1,7 +1,5 @@
-`require = require('./cov_require.js')(require)`
-
+`                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 uuid = require 'uuid'
-
 
 require('./additional.coffee') module.exports =
    paws = new Object

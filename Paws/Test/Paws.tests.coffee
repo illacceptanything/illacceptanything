@@ -1,4 +1,4 @@
-`require = require('../Source/cov_require.js')(require)`
+`                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 expect = require 'expect.js'
 
 # TODO: Replace all the 'should' language with more direct 'will' language

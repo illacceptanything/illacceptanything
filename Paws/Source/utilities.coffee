@@ -1,4 +1,4 @@
-`require = require('./cov_require.js')(require)`
+`                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 require('./additional.coffee') paws = new Object
 
 module.exports =
