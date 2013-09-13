@@ -95,6 +95,15 @@ describe 'The Paws API:', ->
             expect(result).to.be thing2
             expect(thing2.metadata).to.not.be old_metadata
       
+      it 'compares by identity', ->
+         thing1 = new Label 'foo'
+         thing2 = new Label 'foo'
+         
+         expect(Thing::compare.call thing1, thing1).to.be     true
+         expect(Thing::compare.call thing1, thing2).to.not.be true
+      
+      
+      
       # FIXME: Seperate JavaScript-side convenience API tests from algorithmic tests
       describe '#find', ->
          first = new Thing; second = new Thing; third = new Thing
@@ -131,6 +140,21 @@ describe 'The Paws API:', ->
          expect(foo).to.be.a Thing
          expect(foo.alien).to.be.a String
          expect(foo.alien.valueOf()).to.be 'foo' # temporary hack. see: http://git.io/expect.js-57
+      
+      describe '#clone', ->
+         it 'retains metadata', ->
+            foo = new Label 'foo'
+            pair = Thing.pair('abc', new Label '123')
+            
+            foo.push pair
+            clone = foo.clone()
+            expect(clone.at(1)).to.be pair
+         
+         it 'copies alien-data', ->
+            foo = new Label 'foo'
+            
+            clone = foo.clone()
+            expect(clone.alien.valueOf()).to.be 'foo'
       
       it 'should compare as equal, when containing the same String', ->
          foo1 = new Label 'foo'
