@@ -1,7 +1,7 @@
 `                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 expect = require 'expect.js'
 
-paws = require "../Source/Paws.coffee"
+Paws = require "../Source/Paws.coffee"
 
 describe "Paws' utilities:", ->
    utilities = require "../Source/utilities.coffee"
@@ -62,7 +62,7 @@ describe "Paws' utilities:", ->
          expect(    Klass()).to.be.a Klass
       
       it 'uses a really hacky system that requires you not to call the wrapper before CoffeeScript does', ->
-         paws.info "Silencing output."; paws.SILENT()
+         Paws.info "Silencing output."; Paws.SILENT()
          Ctor = null
          class Klass
             constructor: Ctor = constructify ->

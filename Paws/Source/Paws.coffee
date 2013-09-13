@@ -2,14 +2,14 @@
 uuid = require 'uuid'
 
 require('./additional.coffee') module.exports =
-   paws = new Object
-paws.utilities       = require('./utilities.coffee').infect global
-paws.parser = parser = require './parser.coffee'
+   Paws = new Object
+Paws.utilities       = require('./utilities.coffee').infect global
+Paws.parser = parser = require './parser.coffee'
 
 
 # Core data-types
 # ---------------
-paws.Thing = Thing = parameterizable class Thing
+Paws.Thing = Thing = parameterizable class Thing
    constructor: constructify(return:@) (elements...)->
       @id = uuid.v4()
       @metadata = new Array
@@ -62,7 +62,7 @@ paws.Thing = Thing = parameterizable class Thing
    responsible:   -> new Relation this, yes
    irresponsible: -> new Relation this, no
 
-paws.Relation = Relation = parameterizable delegated('to', Thing) class Relation
+Paws.Relation = Relation = parameterizable delegated('to', Thing) class Relation
    # Given a `Thing` (or `Array`s thereof), this will return a `Relation` to that thing.
    # 
    # @option responsible: Whether to create new relations as `responsible`
@@ -84,7 +84,7 @@ paws.Relation = Relation = parameterizable delegated('to', Thing) class Relation
    irresponsible: chain      -> @isResponsible = false
 
 
-paws.Label = Label = class Label extends Thing
+Paws.Label = Label = class Label extends Thing
    constructor: constructify(return:@) (@alien)->
       @alien = new String @alien
       @alien.native = this
@@ -99,7 +99,7 @@ paws.Label = Label = class Label extends Thing
       to.alien.valueOf() == @alien.valueOf()
 
 
-paws.Execution = Execution = class Execution extends Thing
+Paws.Execution = Execution = class Execution extends Thing
    constructor: constructify (first)->
       unless this instanceof Alien or this instanceof Native
          return (if typeof first == 'function' then Alien else Native).apply this, arguments
@@ -117,7 +117,7 @@ paws.Execution = Execution = class Execution extends Thing
       to.locals = @locals
       to.push Thing.pair 'locals', @locals.responsible()
 
-paws.Alien = Alien = class Alien extends Execution
+Paws.Alien = Alien = class Alien extends Execution
    constructor: constructify(return:@) (@bits...)->
    
    complete: -> !this.bits.length
@@ -127,7 +127,7 @@ paws.Alien = Alien = class Alien extends Execution
       to.bits = @bits.slice 0
       return to
 
-paws.Native = Native = class Native extends Execution
+Paws.Native = Native = class Native extends Execution
    constructor: constructify(return:@) (@position)-> @stack = new Array
    
    complete:-> not this.position? and !this.stack.length
