@@ -36,7 +36,8 @@
                      , "coveralls"              : "~2.3.0"
                      , "docco"                  : "~0.6.2"
                      , "mocha"                  : "~1.12.1"
-                     , "expect.js"              : "~0.2.0"                                        }
+                     , "expect.js"              : "~0.2.0"
+                     , "sinon"                  : "~1.7.3"                                        }
 
 ,   "testling" :{
           "files" : "Test/*.coffee"
