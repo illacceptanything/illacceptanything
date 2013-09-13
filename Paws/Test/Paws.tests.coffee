@@ -95,6 +95,7 @@ describe 'The Paws API:', ->
             expect(result).to.be thing2
             expect(thing2.metadata).to.not.be old_metadata
       
+      # FIXME: Seperate JavaScript-side convenience API tests from algorithmic tests
       describe '#find', ->
          first = new Thing; second = new Thing; third = new Thing
          foo_bar_foo = new Thing Thing.pair('foo', first),
@@ -119,6 +120,9 @@ describe 'The Paws API:', ->
                               Thing.pair('bar', second),
                               Thing.pair('foo', third)
             expect(thing.find Label 'foo').to.have.length 2
+         
+         it 'should accept JavaScript primitives', ->
+            expect(foo_bar_foo.find 'foo').to.have.length 2
    
    
    describe 'Label', ->

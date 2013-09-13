@@ -46,11 +46,17 @@ Paws.Thing = Thing = parameterizable class Thing
    # Of note, in this implementation, we additionally test *if the matching item is a pair*. For
    # most *intended* purposes, this should work fine; but it departs slightly from the spec.
    # We'll see if we keep it that way.
-   find: (key)->
+   find = (key)->
       # TODO: Sanity-check `key`
       results = @metadata.filter (rel)->
          rel?.to?.isPair?() and key.compare rel.to.at 1
       _.pluck(results.reverse(), 'to')
+   
+   #---
+   # (Convenience method to `find` from nukespace. Accepts JavaScript primitives as keys.)
+   find: (key)->
+      key = new Label(key) unless key instanceof Thing
+      find.call this, key
    
    # TODO: Figure out whether pairs should be responsible for their children
    @pair: (key, value)->
