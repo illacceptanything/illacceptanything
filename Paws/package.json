@@ -42,9 +42,10 @@
    ,       "html" : "Library/TAP.html"
    , "preprocess" : "cake --tests compile:client"
    ,   "browsers" :{"ie":      [ 6, 7, 8, 9, 10 ]
-                  , "firefox": [ 3, 4, 10, 17, "nightly" ]
-                  , "chrome":  [ 4, 10, 23, "canary" ]
-                  , "safari":  [ "5.0.5", 5.1, 6.0 ]
+                  , "firefox": [ 3, 3.5, 3.6, 4, 5, 10, 19, "nightly" ]
+                  , "chrome":  [ 4, 5, 6, 7, 10, 15, 25, "canary" ]
+                  , "safari":  [ 4.0, "5.0.5", 5.1, 6.0 ]
+                  , "opera":   [ 10.0, 10.5, 11.0, 11.5, 11.6, 12.0, "next" ]
                   , "iphone":  [ 6.0 ]
                   , "ipad":    [ 6.0 ]
-                  , "opera":   [ 10.0, 12.0, "next" ]                                            }}}
+                  , "android-browser": [ 4.2 ]                                                   }}}
