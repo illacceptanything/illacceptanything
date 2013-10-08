@@ -4,7 +4,7 @@ tput = new Tput term: process.env.TERM
 
 Paws = require '../Library/Paws.js'
 
-salutation = 'Paws loves you <3'
+salutation = 'Paws loves you 💖 '
 colour     = if tput.colors == 256 then 219 else 5 # Pink(ish.)
 
 ii = process.stdin
