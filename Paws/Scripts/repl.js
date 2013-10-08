@@ -23,3 +23,4 @@ r = repl.start({
 
 require('../Source/utilities.coffee').infect(r.context, Paws)
                                              r.context.Paws = Paws
+                                             r.context.P    = Paws

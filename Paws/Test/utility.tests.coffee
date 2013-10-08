@@ -1,6 +1,7 @@
-`require = require('../Source/cov_require.js')(require)`
-paws = require "../Source/Paws.coffee"
+`                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 expect = require 'expect.js'
+
+Paws = require "../Source/Paws.coffee"
 
 describe "Paws' utilities:", ->
    utilities = require "../Source/utilities.coffee"
@@ -14,7 +15,7 @@ describe "Paws' utilities:", ->
          expect(composed.call object).to.be object
    
    describe 'modifier()', ->
-      composed = utilities.modifier (foo) -> return 'yep' if foo == 'foo'
+      composed = utilities.modifier (foo)-> return 'yep' if foo == 'foo'
       it 'should return the return-value of the body ...', ->
          expect(composed 'foo').to.be 'yep'
       it '... unless the body returns nothing', ->
@@ -43,7 +44,7 @@ describe "Paws' utilities:", ->
             constructor: constructify body
          expect(Klass).to.not.be body
       it 'can pass the `arguments` object intact', ->
-         Ctor = constructify(arguments: 'intact') (args) ->
+         Ctor = constructify(arguments: 'intact') (args)->
             @caller = args.callee.caller
          it = null; func = null
          expect(-> (func = -> it = new Ctor)() ).to.not.throwException()
@@ -61,7 +62,7 @@ describe "Paws' utilities:", ->
          expect(    Klass()).to.be.a Klass
       
       it 'uses a really hacky system that requires you not to call the wrapper before CoffeeScript does', ->
-         paws.info "Silencing output."; paws.SILENT()
+         Paws.info "Silencing output."; Paws.SILENT()
          Ctor = null
          class Klass
             constructor: Ctor = constructify ->
@@ -88,12 +89,12 @@ describe "Paws' utilities:", ->
          expect(new Ctor().called).to.be.ok()
       
       it "returns the return-value of the body, if it isn't nullish", ->
-         Ctor = constructify (rv) -> return rv
+         Ctor = constructify (rv)-> return rv
          obj = new Object
          expect(new Ctor(obj)).to.be obj
          expect(    Ctor(obj)).to.be obj
       it 'returns the new instance, otherwise', ->
-         Ctor = constructify (rv) -> return 123
+         Ctor = constructify (rv)-> return 123
          expect(new Ctor)  .not.to.be 123
          expect(    Ctor()).not.to.be 123
          expect(new Ctor)  .to.be.a Ctor
@@ -140,7 +141,7 @@ describe "Paws' utilities:", ->
          expect(twat.with(foo: 'bar')).to.be twat
          expect(twat._.foo).to.be 'bar'
       
-      it 'should not leave cruft around on the object', (complete) ->
+      it 'should not leave cruft around on the object', (complete)->
          twat = new Twat.with({})()
          setTimeout => # *Intentionally* using setTimeout instead of nextTick
             expect(twat._).to.be undefined
@@ -150,12 +151,12 @@ describe "Paws' utilities:", ->
    describe 'delegated()', ->
       class Delegatee
          shadowed: ->
-         operate: (arg) -> return [this, arg]
+         operate: (arg)-> return [this, arg]
       
       correct_shadowed = ->
       utilities.delegated('foo', Delegatee) class Something
          shadowed: correct_shadowed
-         constructor: (@foo) ->
+         constructor: (@foo)->
       
       it 'should delegate calls to missing methods, if possible', ->
          something = new Something(new Delegatee)
@@ -209,7 +210,7 @@ describe "Paws' utilities:", ->
          expect(iframes).to.be.empty()
    
    
-   subclassTests = (canHaveAccessors) -> ->
+   subclassTests = (canHaveAccessors)->->
       sub = utilities.subclass
       beforeEach -> utilities.hasPrototypeAccessors(canHaveAccessors)
       
@@ -228,20 +229,20 @@ describe "Paws' utilities:", ->
             expect(new Fan).to.be.a  Function
       
       it 'should support a function-body for the constructor', ->
-         Fan = sub Function, (stuff) -> this.stuff = stuff; this
+         Fan = sub Function, (stuff)-> this.stuff = stuff; this
          expect(new Fan('foo').stuff).to.be 'foo'
       
       it 'should support a function-body for the descendant', ->
          Fan = sub Function,
             ->
-            (arg) -> arg + 'bar'
+            (arg)-> arg + 'bar'
          
          fan = new Fan
          expect( fan('foo') ).to.be 'foobar'
       
       it 'should maintain the prototype-chain as expected', ->
          Fan = sub Function
-         Fan.prototype.method = (foo) -> this.foo = foo
+         Fan.prototype.method = (foo)-> this.foo = foo
          
          fan = new Fan
          expect(-> fan.method 'bar').to.not.throwError()

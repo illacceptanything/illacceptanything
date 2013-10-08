@@ -12,10 +12,15 @@ if [ "$npm_package_config_mocha_reporter" != 'mocha-lcov-reporter' ]; then
        npm_package_config_mocha_reporter='html-cov'                 ; fi
 
 ./node_modules/.bin/coffeeCoverage --path=relative \
-   $npm_package_config_dirs_source \
-   $npm_package_config_dirs_instrumentation >/dev/null
+   --exclude 'additional.coffee' \
+   "$npm_package_config_dirs_source" \
+   "$npm_package_config_dirs_instrumentation" >/dev/null
+
+./node_modules/.bin/coffee --compile \
+   --output "$npm_package_config_dirs_instrumentation" \
+   "$npm_package_config_dirs_source/additional.coffee"
 
 env NODE_ENV='coverage' \
 ./node_modules/.bin/mocha --compilers 'coffee:coffee-script' \
-   --reporter $npm_package_config_mocha_reporter \
-   $npm_package_config_testFiles >&3
+   --reporter "$npm_package_config_mocha_reporter" \
+   "$npm_package_config_testFiles" >&3

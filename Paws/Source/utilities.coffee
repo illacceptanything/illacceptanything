@@ -1,5 +1,5 @@
-`require = require('./cov_require.js')(require)`
-require('./additional.coffee') paws = new Object
+`                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
+require('./additional.coffee') Paws = new Object
 
 module.exports =
 utilities =
@@ -9,7 +9,7 @@ utilities =
    
    # Third-order function to pass-through the arguments to the first-order body
    passthrough: passthrough =
-      (snd) -> (fst) -> ->
+      (snd)-> (fst)-> ->
          result = fst.apply this, arguments
          snd.call this, result, arguments
    
@@ -18,12 +18,12 @@ utilities =
    
    # Higher-order function to return the argument given to the function, unless the function
    # modifies it
-   modifier: passthrough (result, args) -> result ? args[0]
+   modifier: passthrough (result, args)-> result ? args[0]
    
    
    # NYD
-   constructify: (opts) ->
-      inner = (body) ->
+   constructify: (opts)->
+      inner = (body)->
          Wrapper = ->
             
             unless this instanceof Wrapper
@@ -72,7 +72,7 @@ utilities =
          after_interceptor = ->
             cs_wrapper = after_interceptor.caller
             if cs_wrapper.name?.length > 0 and arguments[1].callee == cs_wrapper
-               paws.error """
+               Paws.error """
                   Oh-oh! It looks like a CoffeeScript constructor-wrapper has tried to call a
                          constructor that you've called `constructify()` on, *after* you've
                          otherwise called that function yourself. Due to the (unfortunately,
@@ -125,15 +125,15 @@ utilities =
    #
    #        parameterizable class Something
    #           constructor: ->
-   #              asynchronousOperation (result) ->
+   #              asynchronousOperation (result)->
    #                 if (@_.beAwesome) ...
    #    
    #    The idiomatic way around this, is to store the options object to a local variable if you
    #    will be needing it across multiple reactor ticks. This, in my experience, is an edge-case.
    # ----
    # TODO: This could all be a lot more succinct, and prettier.
-   parameterizable: (Klass) ->
-      Klass.with = (opts) ->
+   parameterizable: (Klass)->
+      Klass.with = (opts)->
          
          # XXX: Perhaps this should use constructify()?
          # XXX: Should this handle super-constructors?
@@ -149,7 +149,7 @@ utilities =
          process.nextTick => delete bound._
          bound
          
-      Klass.prototype.with = (@_) ->
+      Klass.prototype.with = (@_)->
          process.nextTick => delete @_
          return this
       
@@ -157,8 +157,8 @@ utilities =
    
    # Another “tag” for CoffeeScript classes, to cause them to delegate any undefined methods to
    # another class, if they *are* defined on that other class.
-   delegated: (member, delegatee) -> (klass) ->
-      functions = _(delegatee::).functions().map (f) ->
+   delegated: (member, delegatee)-> (klass)->
+      functions = _(delegatee::).functions().map (f)->
          mapped = -> delegatee::[f].apply this[member], arguments
          [f, mapped]
       _.defaults klass::, functions.object().valueOf()
@@ -169,7 +169,7 @@ utilities =
    # `__proto__`-style accessors. It's probably not foolproof.
    hasPrototypeAccessors: do ->
       canHaz = undefined
-      return (setTo) ->
+      return (setTo)->
          canHaz = setTo if setTo?
          canHaz ? do ->
             (a = new Object).inherits = true
@@ -177,10 +177,10 @@ utilities =
             return canHaz = !!b.inherits
    
    runInNewContext: do ->
-      server = (source, context) ->
+      server = (source, context)->
          require('vm').createScript(source).runInNewContext(context)
       
-      client = (source, context) ->
+      client = (source, context)->
          semaphore =
             source: source
          
@@ -201,7 +201,7 @@ utilities =
          
          return semaphore.result
       
-      nodeFor = (type) -> (node) ->
+      nodeFor = (type)-> (node)->
          node.getElementsByTagName(type)[0] or
          node.insertBefore (node.ownerDocument or node).createElement(type), node.firstChild
       
@@ -209,7 +209,7 @@ utilities =
       head = nodeFor 'head'
       body = nodeFor 'body'
 
-      return (source, context) ->
+      return (source, context)->
          (if process?.browser then client else server).apply this, arguments
    
    # This creates a pseudo-‘subclass’ of a native JavaScript complex-type. Currently only makes
@@ -223,15 +223,13 @@ utilities =
    # FIXME: The runtime choice between the two implementations is unnecessary
    # TODO: Release this as its own micro-library
    subclass: do ->
-      noop = ->
-      
       # The first approach, and most flexible of all, is to create `Function` instances with the
       # native `Function` constructor from our own context, and then directly modify the
       # `[[Prototype]]` field thereof with the `__proto__` pseudo-property provided by many
       # implementations.
       # ----
       # FIXME: This should probably try to use standard ES5 methods instead of `__proto__`
-      withAccessors = (parent, constructorBody, runtimeBody, intactArguments) ->
+      withAccessors = (parent, constructorBody, runtimeBody, intactArguments)->
          constructor = ->
             that = ->
                body = arguments.callee._runtimeBody ? runtimeBody ? noop
@@ -264,7 +262,7 @@ utilities =
       #  - and necessitates utilizing those modifications on objects returned from our APIs.
       # 
       # (All that ... along with the fact that I know of absolutely *no way* to circumvent this.)
-      fromOtherContext = (parent, constructorBody, runtimeBody, intactArguments) ->
+      fromOtherContext = (parent, constructorBody, runtimeBody, intactArguments)->
          parent = utilities.runInNewContext parent.name
          parent._subclassSemaphore =
             runtimeBody: runtimeBody
@@ -284,9 +282,12 @@ utilities =
          
          constructor
       
-      return (parent, constructorBody, runtimeBody, intactArguments) ->
+      return (parent, constructorBody, runtimeBody, intactArguments)->
          (if utilities.hasPrototypeAccessors() then withAccessors else fromOtherContext)
             .apply this, arguments
    
+   noop: -> this
+   identity: (arg)-> arg
    
-   infect: (globals, wif = utilities) -> _.assign globals, wif
+   
+   infect: (globals, wif = utilities)-> _.assign globals, wif

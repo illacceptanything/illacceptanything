@@ -1,15 +1,15 @@
-`require = require('./cov_require.js')(require)`
+`                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 Paws = require './Paws.coffee'
 
 class SourceRange
-   constructor: (@source, @begin, @end) ->
+   constructor: (@source, @begin, @end)->
 
    slice: -> @source.slice(@begin, @end)
 
 class Expression
-    constructor: (@contents, @next) ->
+    constructor: (@contents, @next)->
     
-    append: (expr) ->
+    append: (expr)->
        curr = this
        curr = curr.next while curr.next
        curr.next = expr
@@ -18,16 +18,16 @@ class Expression
 class Parser
    labelCharacters = /[^(){} \n]/ # Not currently supporting quote-delimited labels
 
-   constructor: (@text) ->
+   constructor: (@text)->
       # Keep track of the current position into the text
       @i = 0
 
    # Accept a single character. If the given +char+ is at the
    # current position, proceed and return true.
-   accept: (char) ->
+   accept: (char)->
       @text[@i] is char && ++@i
 
-   expect: (char) ->
+   expect: (char)->
       # TODO: This should raise an exception
       @accept(char)
 
@@ -37,7 +37,7 @@ class Parser
       true
 
    # Sets a SourceRange on a expression
-   with_range: (expr, begin, end) ->
+   with_range: (expr, begin, end)->
       # Copy the source range of the contents if possible
       if expr.contents?.source_range?
          expr.source_range = expr.contents.source_range
@@ -57,7 +57,7 @@ class Parser
       res && @with_range(new Paws.Label(res), start)
 
    # Parses an expression delimited by some characters
-   braces: (delim, constructor) ->
+   braces: (delim, constructor)->
       start = @i
       if @accept(delim[0]) &&
             (it = @expr()) &&
@@ -66,7 +66,7 @@ class Parser
          @with_range(new constructor(it), start)
 
    # Subexpression
-   paren: -> @braces('()', (it) -> it)
+   paren: -> @braces('()', (it)-> it)
    # Execution
    scope: -> @braces('{}', Paws.Native)
 
@@ -96,7 +96,7 @@ class Parser
       @expr()
 
 module.exports =
-   parse: (text) ->
+   parse: (text)->
       parser = new Parser(text)
       parser.parse()
    

@@ -1,5 +1,6 @@
-`require = require('../Source/cov_require.js')(require)`
+`                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 expect = require 'expect.js'
+
 Paws = require '../Source/Paws.coffee'
 
 describe 'Parser', ->
@@ -78,7 +79,7 @@ describe 'Parser', ->
    it 'should keep track of tricky locations', ->
       expr = parser.parse(' h(  a{b  } )')
 
-      contains_same = (expr) ->
+      contains_same = (expr)->
          expect(expr.source_range.slice()).to.be(expr.contents.source_range.slice())
 
       hello = expr.next
