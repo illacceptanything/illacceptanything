@@ -1,4 +1,4 @@
-           require('coffee-script')
+           require('coffee-script/register')
 var Paws = require('../Source/Paws.coffee')
 
 Object.keys(Paws).forEach(function(key){

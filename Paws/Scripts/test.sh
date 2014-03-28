@@ -12,7 +12,7 @@
 
 env NODE_ENV="$npm_package_config_mocha_ENV"       \
 ./node_modules/.bin/mocha                          \
-   --compilers coffee:coffee-script                \
+   --compilers coffee:coffee-script/register       \
    --reporter "$npm_package_config_mocha_reporter" \
    --ui "$npm_package_config_mocha_ui"             \
    $FLAGS "$npm_package_config_testFiles"

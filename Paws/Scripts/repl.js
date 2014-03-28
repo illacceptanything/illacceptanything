@@ -10,7 +10,7 @@
 // 
 // All of the Paws.js APIs are exposed both under `Paws.*`, as well as made directly accessible.
 
-           require('coffee-script')
+           require('coffee-script/register')
 var repl = require('coffee-script/lib/coffee-script/repl')
   , path = require('path')
     
