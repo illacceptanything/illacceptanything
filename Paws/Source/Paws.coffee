@@ -17,6 +17,16 @@ Paws.Thing = Thing = parameterizable class Thing
       
       @metadata.unshift undefined if @_?.noughtify != no
    
+   # Construct a generic ‘key/value’ style `Thing` from a JavaScript `Object`-representation thereof.
+   # These representations will have JavaScript strings as the keys (which will be converted into the
+   # `Label` of a pair), and a Paws `Object`-type as the values.
+   # 
+   # For instance, given `{foo: thing_A, bar: thing_B}` will be constructed into the following:
+   #    
+   #    (, (, ‘foo’, thing_B), (, ‘bar’, thing_B))
+   @construct: (representation)->
+      Thing (Thing.pair( key, value.irresponsible() ).responsible() for key, value of representation)...
+   
    # Creates a copy of the `Thing` it is called on. Alternatively, can be given an extant `Thing`
    # copy this `Thing` *to*, over-writing that `Thing`'s metadata. In the process, the
    # `Relation`s within this relation are themselves cloned, so that changes to the new clone's

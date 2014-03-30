@@ -1,7 +1,9 @@
 `                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
-assert = require 'assert'
-expect = require 'expect.js'
-sinon  = require 'sinon'
+support = require './support'
+
+assert  = require 'assert'
+expect  = require 'expect.js'
+sinon   = require 'sinon'
 
 # TODO: Replace all the 'should' language with more direct 'will' language
 #       (i.e. “it should return ...” becomes “it returns ...”
@@ -49,7 +51,33 @@ describe 'The Paws API:', ->
                expect(rel.clone()).to.not.be rel
                expect(rel.clone().to).to.be rel.to
                expect(rel.clone().isResponsible).to.be rel.isResponsible
+      
+      describe '##construct', ->
+         it 'should construct a Thing', ->
+            a_thing = new Thing
+            expect(Thing.construct {foo: a_thing}).to.be.a Thing
+            
+         it 'should construct Things with a noughty', ->
+            constructee = Thing.construct {foo: new Thing}
+            expect(constructee.at 0).to.be undefined
          
+         it 'should construct Things with pairs', ->
+            a_thing = new Thing
+            constructee = Thing.construct {foo: a_thing}
+            expect(constructee.metadata).to.have.length 2
+            
+            pair = constructee.at 1
+            expect(pair     ).to.be.a Thing
+            expect(pair.at 1).to.be.a Label
+            expect(pair.at 2).to.be a_thing
+            
+         it 'should construct multiple pairs', ->
+            thing_1 = new Thing; thing_2 = new Thing
+            constructee = Thing.construct {foo: thing_1, bar: thing_2}
+            expect(constructee.metadata).to.have.length 3
+            expect(constructee.find('foo')[0].valueish()).to.be thing_1
+            expect(constructee.find('bar')[0].valueish()).to.be thing_2
+            
       describe '##pair', ->
       
       uuid_regex = /[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}/
