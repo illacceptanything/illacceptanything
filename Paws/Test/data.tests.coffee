@@ -77,7 +77,20 @@ describe 'The Paws API:', ->
             expect(constructee.metadata).to.have.length 3
             expect(constructee.find('foo')[0].valueish()).to.be thing_1
             expect(constructee.find('bar')[0].valueish()).to.be thing_2
-            
+         
+         it 'should flag the construct as responsible as for its pairs', ->
+            constructee = Thing.construct {something: new Thing}
+            expect(constructee.metadata[1]).to.be.responsible()
+         
+         it 'should flag the construct as responsible as for its members, by default', ->
+            constructee = Thing.construct {something: new Thing}
+            expect(constructee.find('something')[0].metadata[2]).to.be.responsible()
+         
+         it 'should accept an option to create irresponsible structures', ->
+            constructee = Thing.with(responsible: no).construct {something: new Thing}
+            expect(constructee.metadata[1]).to.be.responsible()
+            expect(constructee.find('something')[0].metadata[2]).to.not.be.responsible()
+         
       describe '##pair', ->
       
       uuid_regex = /[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}/

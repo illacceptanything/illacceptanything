@@ -21,8 +21,17 @@ Paws.Thing = Thing = parameterizable class Thing
    # For instance, given `{foo: thing_A, bar: thing_B}` will be constructed into the following:
    #    
    #    (, (, ‘foo’, thing_B), (, ‘bar’, thing_B))
+   # 
+   # The ‘pair-ish’ values are always owned by the generated structure; as are, by default, the objects
+   # passed in. The latter is overridable with `.with(responsible: no)`.
+   # 
+   # @option responsible: Whether to mark the structure as `responsible` for the objects passed in.
    @construct: (representation)->
-      Thing (Thing.pair( key, value.irresponsible() ).responsible() for key, value of representation)...
+      relations = for key, value of representation
+         relation = Relation(value, @_?.responsible ? yes)
+         Thing.pair( key, relation ).responsible()
+      
+      return Thing relations...
    
    # Creates a copy of the `Thing` it is called on. Alternatively, can be given an extant `Thing`
    # copy this `Thing` *to*, over-writing that `Thing`'s metadata. In the process, the
@@ -61,6 +70,7 @@ Paws.Thing = Thing = parameterizable class Thing
    
    #---
    # (Convenience method to `find` from nukespace. Accepts JavaScript primitives as keys.)
+   # TODO: `raw` option, to return the `Relation`s, instead of the wrapped `Thing`s
    find: (key)->
       key = new Label(key) unless key instanceof Thing
       find.call this, key
