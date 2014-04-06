@@ -1,5 +1,6 @@
 `                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 (Paws = require './Paws.coffee').utilities.infect global
+infect global, Paws
 
 module.exports =
 reactor = new Object
@@ -76,18 +77,85 @@ reactor.Unit = Unit = class Unit
       @queue = new Array
       @table = new Table
 
-# At some point, I want to refactor this function (originally, a method of Execution, that I decided
-# was more in-kind with the rest of `reactor` instead of with anything implemented within the rest
-# of the data-types, and so moved here) to be A) simpler, and B) integrated tighter with the rest of
-# the reactor. For now, however, it's a direct port from `µpaws.js`.
-advance = (exe)->
+reactor.Staging = Staging = class Staging
+   # NYI
+
+reactor.Combination = Combination = class Combination
+   constructor: constructify (@subject, @message)->
+
+# Given an `Execution`, this will preform the functions of the `reactor` necessary to advance that
+# `Execution` one ‘step’, or combination. This requires a `response` (usually the ‘result’ of the
+# previous combination; more specifically, whatever the thing that queued this `Execution` passed to
+# it.)
+#
+# This will mutate the `position` counter of the `Execution` (hence the name of `advance()`), as
+# well as managing the `stack` thereof.
+#
+# @this {Execution} The `Execution` to advance. (This function must be `apply()`ied.)
+#---
+# XXX: At some point, I want to refactor this function (originally, a method of Execution, that I
+#      decided was more in-kind with the rest of `reactor` instead of with anything implemented
+#      within the rest of the data-types, and so moved here) to be A) simpler, and B) integrated
+#      tighter with the rest of the reactor. For now, however, it's a direct port from `µpaws.js`.
+# TODO: REPEAT. REFACTOR THIS SHIT.
+advance = (response)->
    return if @complete()
    
    if this instanceof Alien
       @pristine = no
       return _.bind @bits.shift(), this
+      # FIXME: Test whether _.bind works identically-enough to ES5's Function#bind() for this
    
-   # NYI
+   unless @pristine
+      # ... we're continuing an existing execution
+      
+      unless @position?
+         # ... that's previously reached the *end* of an expression, so we step ‘up’ the stack.
+         {value, next} = @stack.pop()
+         @position = next
+         return new Combination value, response
+      
+      {contents, next} = @position
+      unless @position.contents instanceof parser.Expression
+         # The upcoming node being neither the end of an expression, nor the beginning of a new one,
+         # then it must be a Thing. We combine that against the response passed-in.
+         @position = next
+         return new Combination response, contents
+      else
+         # Else, we're going to dive into the new expression, and then go through all of the below.
+         @position = contents
+         @stack.push value: response, next: next
+      
+   # We've exhausted the easy situations. Either we're looking at the beginning of a new expression,
+   # in a non-pristine Execution, or we're at the beginning of a pristine Execution.
+   @pristine = no
+   
+   # Even if we've already dug into a new expression above, there's still possibly *more*
+   # expressions nested immediately (that is, as the first node in the previous one). We drill down
+   # through all of those, if so, until we get to a ‘real’ node (that is, a node whose `contents`
+   # isn't another Expression, but rather a `Thing`.)
+   while @position.next?.contents instanceof parser.Expression
+      {contents, next} = @position
+      @position = next.contents
+      # DOCME: wat is this:
+      @stack.push value: @locals(), next: next.next
+   
+   upcoming = @position
+   unless upcoming.next?
+      # DOCME: wat.
+      {value, next} = @stack.pop()
+      @position = next
+      return new Combination value, upcoming.contents ? this # Special-cased self-reference, `()`
+   
+   # DOCME: wat.
+   {contents, next} = @position
+   @position = next.next
+   return new Combination contents ? @locals(), next.contents
+
+# FIXME: I dislike exposing this, but I'm bad at TDD, and don't know how else to access it in my
+#        tests. I need to move some of these sorts of things to a `testables` object, conditionally
+#        exported.
+reactor._advance = advance
 
 reactor.schedule = 
    reactor.awaitingTicks++
