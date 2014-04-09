@@ -216,14 +216,14 @@ describe 'The Paws API:', ->
          expect((new Execution).pristine).to.be yes
       it 'should have locals', ->
          exe = new Execution
-         expect(exe.find 'locals').to.not.be.empty()
-         expect(exe.locals()).to.be.a Thing
-         expect(exe.locals().metadata).to.have.length 2
+         expect(exe.locals).to.be.a Thing
+         expect(exe.locals.metadata).to.have.length 2
          
-         expect(exe         .at(1).valueish()).to.be exe.locals()
-         expect(exe         .at(1).metadata[2].isResponsible).to.be true
-         expect(exe.locals().at(1).valueish()   ).to.be exe.locals()
-         expect(exe.locals().at(1).metadata[2].isResponsible).to.be false
+         expect(exe.find 'locals').to.not.be.empty()
+         expect(exe       .at(1).valueish()).to.be exe.locals
+         expect(exe       .at(1).metadata[2].isResponsible).to.be true
+         expect(exe.locals.at(1).valueish()   ).to.be exe.locals
+         expect(exe.locals.at(1).metadata[2].isResponsible).to.be false
       
       describe '(Alien / nukespace code)', ->
          it 'should take a series of procedure-bits', ->
@@ -262,7 +262,7 @@ describe 'The Paws API:', ->
             ex = new Execution ->
             clone = ex.clone()
             
-            expect(clone.locals()).to.equal ex.locals()
+            expect(clone.locals).to.equal ex.locals
          
          describe '##synchronous', ->
             synchronous = Alien.synchronous
@@ -453,4 +453,4 @@ describe 'The Paws API:', ->
             ex = new Execution Expression()
             clone = ex.clone()
             
-            expect(clone.locals()).to.equal ex.locals()
+            expect(clone.locals).to.equal ex.locals

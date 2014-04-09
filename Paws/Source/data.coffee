@@ -128,15 +128,9 @@ Paws.Execution = Execution = class Execution extends Thing
          return (if typeof first == 'function' then Alien else Native).apply this, arguments
       
       @pristine = yes
-      locals = new Thing # TODO: `name` this “locals”
-      locals.push Thing.pair 'locals', locals.irresponsible()
-      this  .push Thing.pair 'locals', locals.responsible()
-   
-   #---
-   # Convenience method to find the oldest 'locals' member on this `Execution`
-   locals: ->
-      results = @find 'locals'
-      results[results.length - 1].valueish()
+      @locals = new Thing # TODO: `name` this “locals”
+      @locals.push Thing.pair 'locals', @locals.irresponsible()
+      this   .push Thing.pair 'locals', @locals.responsible()
    
    # This method of the `Execution` types will copy all data relevant to advancement of the
    # execution to a `Execution` instance. This includes the pristine-state, any `Alien`'s `bits`, or
@@ -153,6 +147,7 @@ Paws.Execution = Execution = class Execution extends Thing
    clone: (to)->
       super to
       to.pristine = @pristine
+      to.locals   = @locals
 
 Paws.Alien = Alien = class Alien extends Execution
    constructor: constructify(return:@) (@bits...)->

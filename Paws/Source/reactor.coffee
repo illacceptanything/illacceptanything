@@ -138,7 +138,7 @@ advance = (response)->
       {contents, next} = @position
       @position = next.contents
       # DOCME: wat is this:
-      @stack.push value: @locals(), next: next.next
+      @stack.push value: @locals, next: next.next
    
    upcoming = @position
    unless upcoming.next?
@@ -150,7 +150,7 @@ advance = (response)->
    # DOCME: wat.
    {contents, next} = @position
    @position = next.next
-   return new Combination contents ? @locals(), next.contents
+   return new Combination contents ? @locals, next.contents
 
 # FIXME: I dislike exposing this, but I'm bad at TDD, and don't know how else to access it in my
 #        tests. I need to move some of these sorts of things to a `testables` object, conditionally

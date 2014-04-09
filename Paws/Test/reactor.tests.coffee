@@ -175,7 +175,7 @@ describe 'The Paws reactor:', ->
          an_xec = new Native root
          
          combo = an_xec.advance null
-         expect(combo.subject).to.be an_xec.locals()
+         expect(combo.subject).to.be an_xec.locals
          expect(combo.message).to.be something.contents
       
       it 'should dive into sub-expressions, combining against locals again', ->
@@ -185,7 +185,7 @@ describe 'The Paws reactor:', ->
          
          something = new Thing
          combo = an_xec.advance something
-         expect(combo.subject).to.be an_xec.locals()
+         expect(combo.subject).to.be an_xec.locals
          expect(combo.message).to.be other.contents
       
       it "should retain the previous result at the parent's level,
@@ -214,13 +214,13 @@ describe 'The Paws reactor:', ->
          
          other = new Thing
          combo = an_xec.advance other
-         expect(combo.subject).to.be an_xec.locals()
+         expect(combo.subject).to.be an_xec.locals
          expect(combo.message).to.be other
          # ~locals <- other
          
          meta_other = new Thing
          combo = an_xec.advance meta_other
-         expect(combo.subject).to.be an_xec.locals()
+         expect(combo.subject).to.be an_xec.locals
          expect(combo.message).to.be meta_other
          # ~locals <- <meta-other>
          
@@ -238,7 +238,7 @@ describe 'The Paws reactor:', ->
             
             something = new Thing
             combo = an_xec.advance something
-            expect(combo.subject).to.be an_xec.locals()
+            expect(combo.subject).to.be an_xec.locals
             expect(combo.message).to.be something
             # ~locals <- something
             
