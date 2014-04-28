@@ -230,20 +230,44 @@ describe 'The Paws reactor:', ->
          expect(combo.message).to.be meta_meta_other
          # something <- <meta-meta-other>
       
-      it 'should handle an immediate sub-expression', ->
-            root = parse '(something) other'; other = root.next.next
-            an_xec = new Native root
-            an_xec.advance null
-            # ~locals <- 'something'
-            
-            something = new Thing
-            combo = an_xec.advance something
-            expect(combo.subject).to.be an_xec.locals
-            expect(combo.message).to.be something
-            # ~locals <- something
-            
-            meta_something = new Thing
-            combo = an_xec.advance meta_something
-            expect(combo.subject).to.be meta_something
-            expect(combo.message).to.be other.contents
-            # <meta-something> <- 'other'
+      it 'should handle an *immediate* sub-expression', ->
+         root = parse '(something) other'; other = root.next.next
+         an_xec = new Native root
+         an_xec.advance null
+         # ~locals <- 'something'
+         
+         something = new Thing
+         combo = an_xec.advance something
+         expect(combo.subject).to.be an_xec.locals
+         expect(combo.message).to.be something
+         # ~locals <- something
+         
+         meta_something = new Thing
+         combo = an_xec.advance meta_something
+         expect(combo.subject).to.be meta_something
+         expect(combo.message).to.be other.contents
+         # <meta-something> <- 'other'
+      
+      it 'should descend into multiple levels of *immediate* nested sub-expressions', ->
+         root = parse '(((other)))'
+         an_xec = new Native root
+         an_xec.advance null
+         # ~locals <- 'other'
+         
+         other = new Thing
+         combo = an_xec.advance other
+         expect(combo.subject).to.be an_xec.locals
+         expect(combo.message).to.be other
+         # ~locals <- other
+         
+         meta_other = new Thing
+         combo = an_xec.advance meta_other
+         expect(combo.subject).to.be an_xec.locals
+         expect(combo.message).to.be meta_other
+         # ~locals <- <meta-other>
+         
+         meta_meta_other = new Thing
+         combo = an_xec.advance meta_meta_other
+         expect(combo.subject).to.be an_xec.locals
+         expect(combo.message).to.be meta_meta_other
+         # ~locals <- <meta-meta-other>
