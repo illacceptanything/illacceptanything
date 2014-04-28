@@ -1,5 +1,5 @@
 `                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
-support = require './support'
+support = require './support.coffee'
 
 assert  = require 'assert'
 expect  = require 'expect.js'
