@@ -98,13 +98,14 @@ reactor.Combination = Combination = class Combination
 #      within the rest of the data-types, and so moved here) to be A) simpler, and B) integrated
 #      tighter with the rest of the reactor. For now, however, it's a direct port from `µpaws.js`.
 # TODO: REPEAT. REFACTOR THIS SHIT.
+# XXX: The original implementation .bind()ed aliens' bits to the Alien object (`this` at call-time.)
+#      For the moment, I've nixed this, depending on the reactor loop to handle that with `apply`.
 advance = (response)->
    return if @complete()
    
    if this instanceof Alien
       @pristine = no
-      return _.bind @bits.shift(), this
-      # FIXME: Test whether _.bind works identically-enough to ES5's Function#bind() for this
+      return @bits.shift()
    
    unless @pristine
       # ... we're continuing an existing execution

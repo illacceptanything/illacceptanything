@@ -146,9 +146,25 @@ describe 'The Paws reactor:', ->
       parse = Paws.parser.parse
       Execution::advance = reactor._advance
       
-      it 'should not modify a completed Alien'
-      it 'should flag a modified Alien as un-pristine'
-      it 'should advance the bits of an Alien'
+      it 'should not modify a completed Alien', ->
+         completed_alien = new Alien
+         expect(completed_alien.complete()).to.be.ok()
+         
+         expect(completed_alien.advance(new Thing)).to.be undefined
+         
+      it 'should flag a modified Alien as un-pristine', ->
+         func1 = new Function; func2 = new Function
+         an_alien = new Alien func1, func2
+         
+         an_alien.advance new Thing
+         expect(an_alien.pristine).to.be no
+         
+      it 'should advance the bits of an Alien', ->
+         func1 = new Function; func2 = new Function
+         an_alien = new Alien func1, func2
+         
+         expect(an_alien.advance new Thing).to.be func1
+         expect(an_alien.advance new Thing).to.be func2
       
       it 'should not modify a completed Native', ->
          completed_native = new Native undefined
