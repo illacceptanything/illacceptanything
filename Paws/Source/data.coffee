@@ -33,6 +33,10 @@ Paws.Thing = Thing = parameterizable class Thing
       
       return Thing relations...
    
+   # XXX: Defined later, in `reactor.coffee`. These definitions have to be deferred, because
+   #      `Execution` isn't defined yet.
+   receiver: undefined
+   
    # Creates a copy of the `Thing` it is called on. Alternatively, can be given an extant `Thing`
    # copy this `Thing` *to*, over-writing that `Thing`'s metadata. In the process, the
    # `Relation`s within this relation are themselves cloned, so that changes to the new clone's
@@ -131,6 +135,10 @@ Paws.Execution = Execution = class Execution extends Thing
       @locals = new Thing # TODO: `name` this “locals”
       @locals.push Thing.pair 'locals', @locals.irresponsible()
       this   .push Thing.pair 'locals', @locals.responsible()
+   
+   # XXX: Defined later, in `reactor.coffee`. These definitions have to be deferred, because
+   #      `Execution` isn't defined yet.
+   receiver: undefined
    
    # This method of the `Execution` types will copy all data relevant to advancement of the
    # execution to a `Execution` instance. This includes the pristine-state, any `Alien`'s `bits`, or

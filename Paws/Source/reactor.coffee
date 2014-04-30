@@ -83,6 +83,20 @@ reactor.Staging = Staging = class Staging
 reactor.Combination = Combination = class Combination
    constructor: constructify (@subject, @message)->
 
+
+# The default receiver for `Thing`s preforms a ‘lookup’ (described in `data.coffee`).
+Paws.Thing.receiver = new Alien (rv, world)->
+   [caller, subject, message] = rv.toArray()
+   results = subject.find message
+   world.stage caller, results[0] if results[0]
+
+# `Execution`'s default-receiver preforms a “call”-patterned staging; that is, cloning the subject
+# `Execution`, staging that clone, and leaving the caller unstaged.
+Paws.Execution.receiver = new Alien (rv, world)->
+   [caller, subject, message] = rv.toArray()
+   world.stage subject.clone(), message
+
+
 # Given an `Execution`, this will preform the functions of the `reactor` necessary to advance that
 # `Execution` one ‘step’, or combination. This requires a `response` (usually the ‘result’ of the
 # previous combination; more specifically, whatever the thing that queued this `Execution` passed to

@@ -165,6 +165,8 @@ describe 'The Paws reactor:', ->
          
          expect(an_alien.advance new Thing).to.be func1
          expect(an_alien.advance new Thing).to.be func2
+         
+         expect(an_alien.complete()).to.be.ok()
       
       it 'should not modify a completed Native', ->
          completed_native = new Native undefined
