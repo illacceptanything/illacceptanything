@@ -65,6 +65,11 @@ reactor.Table = Table = class Table
    canHave: (accessor, mask)->
       not _(@content).reject(accessor: accessor).some (entry)->
          mask.conflictsWith entry.masks...
+   
+   allowsStagingOf: ({stagee, _, requestedMask})-> not requestedMask? or
+      @has(stagee, requestedMask) or
+      @canHave(stagee, requestedMask)
+      
 
 # The Unitary design (i.e. distribution) isn't complete, at all. At the moment, a `Unit` is just a
 # place to store the action-queue and access-table.
@@ -76,9 +81,21 @@ reactor.Unit = Unit = class Unit
    constructor: constructify(return:@) ->
       @queue = new Array
       @table = new Table
+   
+   # This method looks for the foremost request of the queue that either:
+   # 
+   #  1. doesn’t have an associated `requestedMask`,
+   #  2. is already responsible for a mask equivalent to the one requested,
+   #  3. or whose requested mask doesn’t conflict with any existing ones, excluding its own.
+   # 
+   # If no request is currently valid, it returns undefined.
+   next: ->
+      _(@queue).findWhere (staging, idx)=>
+         @queue.splice(idx, 1)[0] if @table.allowsStagingOf staging
+
 
 reactor.Staging = Staging = class Staging
-   # NYI
+   constructor: constructify (@stagee, @result, @requestedMask)->
 
 reactor.Combination = Combination = class Combination
    constructor: constructify (@subject, @message)->
@@ -171,6 +188,7 @@ advance = (response)->
 #        tests. I need to move some of these sorts of things to a `testables` object, conditionally
 #        exported.
 reactor._advance = advance
+
 
 reactor.schedule = 
    reactor.awaitingTicks++

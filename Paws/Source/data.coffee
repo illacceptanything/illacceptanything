@@ -66,6 +66,9 @@ Paws.Thing = Thing = parameterizable class Thing
    # Of note, in this implementation, we additionally test *if the matching item is a pair*. For
    # most *intended* purposes, this should work fine; but it departs slightly from the spec.
    # We'll see if we keep it that way.
+   #---
+   # FIXME: The only place that this can reasonably be used, the default-receiver, can't even use
+   #        this as it's not defined in this file. Refactor me.
    find = (key)->
       # TODO: Sanity-check `key`
       results = @metadata.filter (rel)->

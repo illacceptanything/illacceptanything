@@ -65,8 +65,9 @@ describe 'The Paws reactor:', ->
             expect(a_mask.containedBy another_mask).to.be false
    
    describe 'a responsibility Table', ->
-      Table = reactor.Table
-      Mask = reactor.Mask
+      Table   = reactor.Table
+      Mask    = reactor.Mask
+      Staging = reactor.Staging
       
       it 'should exist', ->
          expect(Table).to.be.ok()
@@ -141,6 +142,63 @@ describe 'The Paws reactor:', ->
             
             table.give another_xec, new Mask new Thing
             expect(table.canHave an_xec, new Mask new Thing).to.be true
+      
+      describe '#allowsStagingOf', ->
+         it 'passes stagings with no requestedMask', ->
+            table = new Table
+            
+            staging_without_mask = new Staging new Execution, new Thing
+            expect(table.allowsStagingOf staging_without_mask).to.be yes
+         
+         it 'passes stagings already responsible for their requested Mask', ->
+            table = new Table
+            an_xec = new Execution; a_mask = new Mask new Thing
+            table.give an_xec, a_mask
+            
+            responsible_staging = new Staging an_xec, new Thing, a_mask
+            expect(table.allowsStagingOf responsible_staging).to.be yes
+            
+         it 'passes stagings already responsible for the same Thing', ->
+            table = new Table
+            an_xec = new Execution; a_thing = new Thing
+            table.give an_xec, new Mask a_thing
+            
+            responsible_staging = new Staging an_xec, new Thing, new Mask a_thing
+            expect(table.allowsStagingOf responsible_staging).to.be yes
+            
+         it 'passes stagings responsible for equivalent Masks', ->
+            table = new Table
+            an_xec = new Execution; a_thing = new Thing
+            table.give an_xec, new Mask a_thing
+            
+            responsible_staging = new Staging an_xec, new Thing, new Mask a_thing
+            expect(table.allowsStagingOf responsible_staging).to.be yes
+         
+         it 'passes stagings that have no conflicts, when there is other ownership', ->
+            table = new Table
+            [a_thing, another_thing] = [new Thing, new Thing]
+            [an_xec, another_xec] = [new Execution, new Execution]
+            table.give another_xec, new Mask another_thing
+            
+            available_staging = new Staging an_xec, new Thing, new Mask a_thing
+            expect(table.allowsStagingOf available_staging).to.be yes
+         
+         it 'fails stagings responsible for Masks equivalent to existing ownership', ->
+            table = new Table
+            [a_thing, another_thing] = [new Thing, new Thing]
+            parent_thing = Thing.construct {something: a_thing, something_else: another_thing}
+            [an_xec, another_xec] = [new Execution, new Execution]
+            table.give another_xec, new Mask Thing.construct {child: parent_thing}
+            
+            conflicting_staging = new Staging an_xec, new Thing, new Mask a_thing
+            expect(table.allowsStagingOf conflicting_staging).to.be no
+   
+   
+   describe 'a Unit', ->
+      describe '#next', ->
+         it 'returns undefined if no staging is available'
+         it 'returns an available staging'
+         it 'removes the staging from the queue'
    
    describe 'Execution#advance', ->
       parse = Paws.parser.parse
