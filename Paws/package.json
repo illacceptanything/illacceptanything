@@ -15,11 +15,12 @@
 }
 
 ,     "config" :{
-      "testFiles" : "Test/*.coffee"
-,          "dirs" :{"source"  :"Source"
+           "dirs" :{"source"  :"Source"
+                  , "test"    :"Test"
                   , "instrumentation"
                               :"Source" }
-,         "mocha" :{"ui"         : "bdd"
+,         "mocha" :{"files"      : "Test/*.coffee"
+                  , "ui"         : "bdd"
                   , "reporter"   : "spec"
                   , "ENV"        : "test" }
  }

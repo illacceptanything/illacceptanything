@@ -15,4 +15,4 @@ env NODE_ENV="$npm_package_config_mocha_ENV"       \
    --compilers coffee:coffee-script/register       \
    --reporter "$npm_package_config_mocha_reporter" \
    --ui "$npm_package_config_mocha_ui"             \
-   $FLAGS "$npm_package_config_testFiles"
+   $FLAGS "$npm_package_config_mocha_files"

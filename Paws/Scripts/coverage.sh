@@ -19,8 +19,11 @@ if [ "$npm_package_config_mocha_reporter" != 'mocha-lcov-reporter' ]; then
 ./node_modules/.bin/coffee --compile \
    --output "$npm_package_config_dirs_instrumentation" \
    "$npm_package_config_dirs_source/additional.coffee"
+./node_modules/.bin/coffee --compile \
+   --output "$npm_package_config_dirs_test" \
+   "$npm_package_config_dirs_test/support.coffee"
 
 env NODE_ENV='coverage' \
 ./node_modules/.bin/mocha --compilers 'coffee:coffee-script/register' \
    --reporter "$npm_package_config_mocha_reporter" \
-   "$npm_package_config_testFiles" >&3
+   "$npm_package_config_mocha_files" >&3
