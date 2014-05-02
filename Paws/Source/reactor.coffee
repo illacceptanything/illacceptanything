@@ -69,29 +69,6 @@ reactor.Table = Table = class Table
    allowsStagingOf: ({stagee, _, requestedMask})-> not requestedMask? or
       @has(stagee, requestedMask) or
       @canHave(stagee, requestedMask)
-      
-
-# The Unitary design (i.e. distribution) isn't complete, at all. At the moment, a `Unit` is just a
-# place to store the action-queue and access-table.
-#
-# Theoretically, this should be enough to, at least, run two Units *at once*, even if there's
-# currently no design for the ways I want to allow them to interact.
-# More on that later.
-reactor.Unit = Unit = class Unit
-   constructor: constructify(return:@) ->
-      @queue = new Array
-      @table = new Table
-   
-   # This method looks for the foremost request of the queue that either:
-   # 
-   #  1. doesn’t have an associated `requestedMask`,
-   #  2. is already responsible for a mask equivalent to the one requested,
-   #  3. or whose requested mask doesn’t conflict with any existing ones, excluding its own.
-   # 
-   # If no request is currently valid, it returns undefined.
-   next: ->
-      _(@queue).findWhere (staging, idx)=>
-         @queue.splice(idx, 1)[0] if @table.allowsStagingOf staging
 
 
 reactor.Staging = Staging = class Staging
@@ -102,15 +79,15 @@ reactor.Combination = Combination = class Combination
 
 
 # The default receiver for `Thing`s preforms a ‘lookup’ (described in `data.coffee`).
-Paws.Thing.receiver = new Alien (rv, world)->
-   [caller, subject, message] = rv.toArray()
+Paws.Thing::receiver = new Alien (rv, world)->
+   [_, caller, subject, message] = rv.toArray()
    results = subject.find message
    world.stage caller, results[0] if results[0]
 
 # `Execution`'s default-receiver preforms a “call”-patterned staging; that is, cloning the subject
 # `Execution`, staging that clone, and leaving the caller unstaged.
-Paws.Execution.receiver = new Alien (rv, world)->
-   [caller, subject, message] = rv.toArray()
+Paws.Execution::receiver = new Alien (rv, world)->
+   [_, caller, subject, message] = rv.toArray()
    world.stage subject.clone(), message
 
 
@@ -190,9 +167,77 @@ advance = (response)->
 reactor._advance = advance
 
 
-reactor.schedule = 
-   reactor.awaitingTicks++
+# The Unitary design (i.e. distribution) isn't complete, at all. At the moment, a `Unit` is just a
+# place to store the action-queue and access-table.
+#
+# Theoretically, this should be enough to, at least, run two Units *at once*, even if there's
+# currently no design for the ways I want to allow them to interact.
+# More on that later.
+reactor.Unit = Unit = class Unit
+   constructor: constructify(return:@) ->
+      @queue = new Array
+      @table = new Table
    
+   # `stage`ing is the core operation of a `Unit` as a whole, the only one that requires
+   # simultaneous access to the `queue` and `table`.
+   stage: (execution, resumptionValue, requestedMask)->
+      @queue.push new Staging execution, resumptionValue, requestedMask
+      @schedule() if @_?.incrementAwaiting != no
    
+   # This method looks for the foremost request of the queue that either:
+   # 
+   #  1. doesn’t have an associated `requestedMask`,
+   #  2. is already responsible for a mask equivalent to the one requested,
+   #  3. or whose requested mask doesn’t conflict with any existing ones, excluding its own.
+   # 
+   # If no request is currently valid, it returns undefined.
+   next: ->
+      _(@queue).findWhere (staging, idx)=>
+         @queue.splice(idx, 1)[0] if @table.allowsStagingOf staging
 
-reactor.awaitingTicks = 0
+   
+   # The core reactor of this implementation, `#realize` will ‘process’ a single `Staging` from this
+   # `Unit`'s queue. Returns `true` if a `Staging` was acquired and in some way processed, and
+   # `false` if no processing was possible.
+   realize: ->
+      return no unless staging = @next()
+      {stagee, result, requestedMask} = staging
+      
+      return yes if stagee.complete()
+      return yes unless combo = advance.call stagee, result
+      
+      # If the staging has passed #next, then it's safe to grant it the ownership it's requesting
+      @table.give stagee, requestedMask
+      
+      # If we're looking at an alien, then we received a bit-function from #advance
+      if typeof combo == 'function'
+         combo.apply stagee, [result, this]
+      
+      else
+         receiver_params = new Thing stagee, combo.subject, combo.message
+         @stage combo.subject.receiver.clone(), receiver_params
+      
+      @table.remove stagee if stagee.complete()
+      
+      return yes
+
+   # Every time `schedule()` is called on a `Unit`, the implementation is informed that there's at
+   # least one more combination that needs to be processed. As long as the implementation *knows*
+   # there's combinations waiting to be processed, it will attempt to process them actively, on the
+   # stack (that is, non-asynchronously.) This is often quite a bit faster than waiting for the next
+   # iteration of the underlying event-loop.
+   #
+   # Immediately after incrementing the count of awaiting-combinations, this will start the reactor
+   # attempting to process those combinations
+   schedule: ->
+      ++@awaitingTicks
+      
+      loop
+         if @realize() then --@awaitingTicks else return
+   
+   awaitingTicks: 0
+   interval: 50         # in milliseconds; default of 1/20th of a second.
+   interval = 0
+   
+   start: -> interval ||=           setInterval @realize.bind(this), @interval
+   stop:  -> interval || interval = clearInterval interval
