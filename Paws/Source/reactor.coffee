@@ -1,9 +1,11 @@
 `                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
-(Paws = require './Paws.coffee').utilities.infect global
+require('./utilities.coffee').infect global
+
+Paws = require './data.coffee'
 infect global, Paws
 
 module.exports =
-reactor = new Object
+   reactor = new Object
 
 # A Mask is a lens through which one can use a `Thing` as a delinator of a particular sub-graph of the
 # running program's object-graph.
@@ -50,10 +52,10 @@ reactor.Table = Table = class Table
       entry.masks.push masks...
       return entry
    
-   get: (accessor)-> _(@content).find(accessor: accessor)?.masks
+   get: (accessor)-> _(@content).find(accessor: accessor)?.masks ? new Array
    
    remove: (accessor)->
-      delete @content[ _(@content).findIndex accessor: accessor ]
+      _(@content).remove accessor: accessor
    
    # Returns `true` if a given `Mask` is fully contained by the set of responsibility that a given
    # `accessor` has already been given.
@@ -82,7 +84,7 @@ reactor.Combination = Combination = class Combination
 Paws.Thing::receiver = new Alien (rv, world)->
    [_, caller, subject, message] = rv.toArray()
    results = subject.find message
-   world.stage caller, results[0] if results[0]
+   world.stage caller, results[0].valueish() if results[0]
 
 # `Execution`'s default-receiver preforms a “call”-patterned staging; that is, cloning the subject
 # `Execution`, staging that clone, and leaving the caller unstaged.
@@ -173,7 +175,7 @@ reactor._advance = advance
 # Theoretically, this should be enough to, at least, run two Units *at once*, even if there's
 # currently no design for the ways I want to allow them to interact.
 # More on that later.
-reactor.Unit = Unit = class Unit
+reactor.Unit = Unit = parameterizable class Unit
    constructor: constructify(return:@) ->
       @queue = new Array
       @table = new Table
@@ -207,7 +209,7 @@ reactor.Unit = Unit = class Unit
       return yes unless combo = advance.call stagee, result
       
       # If the staging has passed #next, then it's safe to grant it the ownership it's requesting
-      @table.give stagee, requestedMask
+      @table.give stagee, requestedMask if requestedMask
       
       # If we're looking at an alien, then we received a bit-function from #advance
       if typeof combo == 'function'
@@ -239,5 +241,5 @@ reactor.Unit = Unit = class Unit
    interval: 50         # in milliseconds; default of 1/20th of a second.
    interval = 0
    
-   start: -> interval ||=           setInterval @realize.bind(this), @interval
-   stop:  -> interval || interval = clearInterval interval
+   start: -> interval ||= setInterval @realize.bind(this), @interval
+   stop:  -> if interval then clearInterval(interval) and interval = undefined

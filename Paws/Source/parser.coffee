@@ -1,5 +1,5 @@
 `                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
-Paws = require './Paws.coffee'
+Paws = require './data.coffee'
 
 class SourceRange
    constructor: (@source, @begin, @end)->

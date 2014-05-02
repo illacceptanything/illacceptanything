@@ -72,6 +72,14 @@ describe 'The Paws reactor:', ->
       it 'should exist', ->
          expect(Table).to.be.ok()
       
+      it 'should always return an array', ->
+         table = new Table
+         
+         an_xec = new Execution
+         
+         expect(-> table.get an_xec).not.to.throwError()
+         expect(table.get an_xec).to.be.an 'array'
+      
       it 'should store a Mask for a given Execution', ->
          table = new Table
          
@@ -110,6 +118,23 @@ describe 'The Paws reactor:', ->
          expect(table.get another_xec).to.contain mask_Y
          expect(table.get another_xec).to.not.contain mask_A
          expect(table.get another_xec).to.not.contain mask_B
+      
+      it 'removes masks as requested', ->
+         table = new Table
+         
+         an_xec = new Execution
+         [mask_A, mask_B] = [new Mask(new Thing), new Mask(new Thing)]
+         table.give an_xec, mask_A, mask_B
+         another_xec = new Execution
+         [mask_X, mask_Y] = [new Mask(new Thing), new Mask(new Thing)]
+         table.give another_xec, mask_X, mask_Y
+         
+         expect(-> table.remove an_xec).not.to.throwError()
+         expect(table.get an_xec).to.not.contain mask_A
+         expect(table.get an_xec).to.not.contain mask_B
+         expect(table.get another_xec).to.contain mask_X
+         expect(table.get another_xec).to.contain mask_Y
+         
       
       # FIXME: Not well-exercised.
       describe '#has', ->

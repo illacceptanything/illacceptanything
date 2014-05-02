@@ -1,8 +1,11 @@
 `                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 require('./utilities.coffee').infect global
 
-Paws = require './Paws.coffee'
 uuid = require 'uuid'
+
+
+module.exports =
+   Paws = new Object
 
 # Core data-types
 # ---------------
