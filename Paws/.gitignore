@@ -2,6 +2,7 @@
 .repl_history
 node_modules/
 Source/*.js
+Test/*.js
 Documentation/
 Library/*.bundle.js
 Library/Coverage.html
