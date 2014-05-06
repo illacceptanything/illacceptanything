@@ -219,12 +219,6 @@ describe 'The Paws reactor:', ->
             expect(table.allowsStagingOf conflicting_staging).to.be no
    
    
-   describe 'a Unit', ->
-      describe '#next', ->
-         it 'returns undefined if no staging is available'
-         it 'returns an available staging'
-         it 'removes the staging from the queue'
-   
    describe 'Execution#advance', ->
       parse = Paws.parser.parse
       Execution::advance = reactor._advance
@@ -372,3 +366,42 @@ describe 'The Paws reactor:', ->
          expect(combo.subject).to.be an_xec.locals
          expect(combo.message).to.be meta_meta_other
          # ~locals <- <meta-meta-other>
+   
+   
+   describe "Thing's default receiver", ->
+      it 'finds a matching pair-ish Thing in the subject'
+      it 'stages the caller if there is a result'
+      it 'does not stage the caller if there is no result'
+   
+   describe "Execution's default receiver", ->
+      it 'clones the subject'
+      it "stages the subject's clone"
+      it 'does not re-stage the caller'
+   
+   
+   describe 'a Unit', ->
+      describe '#stage', ->
+         it "can be told not to increment realization-count"
+      
+      describe '#next', ->
+         it 'returns undefined if no staging is available'
+         it 'returns an available staging'
+         it 'removes the staging from the queue'
+   
+   describe 'Realization', ->
+      it 'fails a tick if no staging is eligible'
+      it 'succeeds a tick if a stagee is complete'
+      it 'succeeds a tick if advance cannot succeed' # XXX: wat.
+      it 'gives any requested ownership'
+      it "calls the advance'd bit for Aliens"
+      it "clones the current combination-subject's receiver for Natives"
+      it "stages the the subject's receiver's clone"
+      it 'invalidates all ownership for the stagee, if it has been completed'
+   
+      describe 'scheduling', ->
+         it 'causes realization'
+         it 'schedules an extra realization-loop if called during a realization tick'
+         it 'iterates as many times as ticks are scheduled'
+         
+         it 'can be started'
+         it 'can be stopped'

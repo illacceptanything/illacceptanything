@@ -136,6 +136,11 @@ describe 'The Paws API:', ->
             expect(result).to.be thing2
             expect(thing2.metadata).to.not.be old_metadata
       
+      describe '#toArray', ->
+         it 'reduces Things to an Array'
+         it 'leaves empty slots untouched'
+         it 'contains Things, not the Relation members of the Thing'
+      
       it 'compares by identity', ->
          thing1 = new Label 'foo'
          thing2 = new Label 'foo'
