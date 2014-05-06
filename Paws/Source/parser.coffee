@@ -7,12 +7,12 @@ class SourceRange
    slice: -> @source.slice(@begin, @end)
 
 class Expression
-    constructor: (@contents, @next)->
-    
-    append: (expr)->
-       curr = this
-       curr = curr.next while curr.next
-       curr.next = expr
+   constructor: (@contents, @next)->
+   
+   append: (expr)->
+      curr = this
+      curr = curr.next while curr.next
+      curr.next = expr
 
 # A simple recursive descent parser with no backtracking. No lexing is needed here.
 class Parser
@@ -102,4 +102,3 @@ module.exports =
    
    Expression: Expression
    SourceRange: SourceRange
-
