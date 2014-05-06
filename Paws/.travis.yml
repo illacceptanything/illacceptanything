@@ -7,7 +7,9 @@ node_js:
  - "0.10"
  - "0.8"
 
-script: "cake travis"
+script: 
+ - npm run-script coveralls
+ - npm run-script test
 
 matrix:
    allow_failures:
@@ -24,5 +26,5 @@ notifications:
        - "chat.freenode.net#ELLIOTTCABLE"
        - "chat.freenode.net#Paws.Nucleus"
       template:
-       - "%{repository}/%{branch} %{commit} %{author}: #%{build_number} %{message}"
+       - "%{repository_name}/%{branch} @%{commit} %{author}: #%{build_number} %{message}"
        - "(Details: %{build_url})"
