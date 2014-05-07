@@ -20,11 +20,11 @@ describe 'Parser', ->
    
    it 'should ignore leading/trailing whitespace', ->
       expr = parser.parse '   '
-      range = expr.source_range
+      range = expr.source
       expect(range.end - range.begin).to.be 0 # because there's nothing *in* it
       
       expr = parser.parse '  abc  '
-      range = expr.source_range
+      range = expr.source
       expect(range.end - range.begin).to.be 3 # because the *code*'s length is 3 characters
 
    it 'should parse a label expression', ->
@@ -52,51 +52,51 @@ describe 'Parser', ->
 
    it 'should keep track of locations', ->
       expr = parser.parse('hello world')
-      expect(expr.source_range).to.be.a(parser.SourceRange)
-      expect(expr.source_range.begin).to.be(0)
-      expect(expr.source_range.end).to.be(11)
+      expect(expr.source).to.be.a(parser.SourceRange)
+      expect(expr.source.begin).to.be(0)
+      expect(expr.source.end).to.be(11)
 
       hello = expr.next
-      expect(hello.source_range).to.be.a(parser.SourceRange)
-      expect(hello.source_range.begin).to.be(0)
-      expect(hello.source_range.end).to.be(5)
+      expect(hello.source).to.be.a(parser.SourceRange)
+      expect(hello.source.begin).to.be(0)
+      expect(hello.source.end).to.be(5)
 
       hello_label = hello.contents
-      expect(hello_label.source_range).to.be.a(parser.SourceRange)
-      expect(hello_label.source_range.begin).to.be(0)
-      expect(hello_label.source_range.end).to.be(5)
+      expect(hello_label.source).to.be.a(parser.SourceRange)
+      expect(hello_label.source.begin).to.be(0)
+      expect(hello_label.source.end).to.be(5)
 
       world = expr.next.next
-      expect(world.source_range).to.be.a(parser.SourceRange)
-      expect(world.source_range.begin).to.be(6)
-      expect(world.source_range.end).to.be(11)
+      expect(world.source).to.be.a(parser.SourceRange)
+      expect(world.source.begin).to.be(6)
+      expect(world.source.end).to.be(11)
 
       world_label = world.contents
-      expect(world_label.source_range).to.be.a(parser.SourceRange)
-      expect(world_label.source_range.begin).to.be(6)
-      expect(world_label.source_range.end).to.be(11)
+      expect(world_label.source).to.be.a(parser.SourceRange)
+      expect(world_label.source.begin).to.be(6)
+      expect(world_label.source.end).to.be(11)
 
    it 'should keep track of tricky locations', ->
       expr = parser.parse(' h(  a{b  } )')
 
       contains_same = (expr)->
-         expect(expr.source_range.slice()).to.be(expr.contents.source_range.slice())
+         expect(expr.source.contents()).to.be(expr.contents.source.contents())
 
       hello = expr.next
       contains_same(hello)
-      expect(hello.source_range.slice()).to.be('h')
+      expect(hello.source.contents()).to.be('h')
 
       list = hello.next
       contains_same(list)
-      expect(list.source_range.slice()).to.be('(  a{b  } )')
+      expect(list.source.contents()).to.be('(  a{b  } )')
 
       a = list.contents.next
       contains_same(a)
-      expect(a.source_range.slice()).to.be('a')
+      expect(a.source.contents()).to.be('a')
 
       exe = a.next
       contains_same(exe)
-      expect(exe.source_range.slice()).to.be('{b  }')
+      expect(exe.source.contents()).to.be('{b  }')
 
-      expect(exe.contents.position.source_range.slice()).to.be('b')
+      expect(exe.contents.position.source.contents()).to.be('b')
 

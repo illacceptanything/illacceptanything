@@ -2,11 +2,13 @@
 Paws = require './data.coffee'
 
 class SourceRange
-   constructor: (@source, @begin, @end)->
+   constructor: (@text, @begin, @end)->
 
-   slice: -> @source.slice(@begin, @end)
+   before:     -> @text.substring 0, @begin
+   contents:   -> @text.substring @begin, @end
+   after:      -> @text.substring @end
 
-class Expression
+Expression = parameterizable class Expression
    constructor: (@contents, @next)->
    
    append: (expr)->
@@ -39,12 +41,12 @@ class Parser
    # Sets a SourceRange on a expression
    with_range: (expr, begin, end)->
       # Copy the source range of the contents if possible
-      if expr.contents?.source_range?
-         expr.source_range = expr.contents.source_range
+      if expr.contents?.source?
+         expr.source = expr.contents.source
       else
-         expr.source_range = new SourceRange(@text, begin, end || @i)
+         expr.source = new SourceRange(@text, begin, end || @i)
          # Copy the source range to the contents if possible
-         expr.contents.source_range = expr.source_range if expr.contents?
+         expr.contents.source = expr.source if expr.contents?
       expr
 
    # Parses a single label
@@ -94,6 +96,31 @@ class Parser
 
    parse: ->
       @expr()
+
+
+# @option {boolean=false} context:  Include the entire parse-time Script, instead of just the
+#                                      current Expression
+# @option {boolean=true} colour:    Convey the boundaries of context, if included, with ANSI
+#                                      colour-codes instead of Unicode delimiters.
+# @option {boolean=true} tag:       Include the [Type ...] tag around the output.
+Expression::toString = ->
+   if not @source?
+      return new Serializer(this).serialize()
+   
+   output = if @_?.context
+      use_colour = Paws.use_colour and (@_?.colour ? @_?.color ? true)
+      
+      magenta = '\x1b[' + '95m'
+      reset   = '\x1b[' + '39m'
+      [before, after] = if use_colour then [magenta, reset] else ['|', '|']
+      
+      '{ ' + @source.before() + before + @source.contents() + after + @source.after() + ' }'
+      
+   else
+      @source.contents()
+   
+   if @_?.tag == no then output else '['+@constructor.name+' '+output+']'
+
 
 module.exports =
    parse: (text)->

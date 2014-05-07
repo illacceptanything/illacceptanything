@@ -6,6 +6,7 @@ util = require 'util'
 module.exports = additional =
    
    debugging: debugging = new class Debugging
+      use_colour = true # Default
       verbosity = 4 # Default
       environment_verbosity = Infinity
 
@@ -34,8 +35,10 @@ module.exports = additional =
       debug: -> null # NYI
          
       inject: (exports)->
-         exports.verbosity = -> verbosity
-         exports.isSilent  = -> verbosity == 0
+         exports.verbosity  = -> verbosity
+         exports.is_silent  = -> verbosity == 0
+         
+         exports.use_colour = -> use_colour
          
          for name, v in verbosities
             exports[name] = do (name, v)->-> if v <= verbosity 
@@ -66,9 +69,7 @@ module.exports = additional =
          #       isFinite() shit.
          for own name, ddefault of variables
             name = name.toUpperCase()
-            exports[name] = do (name, ddefault)-> (level, opts = {environmental: no})->
-               level = true unless level?
-               
+            exports[name] = do (name, ddefault)-> (level = true, opts = {environmental: no})->
                if isFinite (l = parseInt level, 10)
                   verbosity = l
                else if level == true or
@@ -80,4 +81,11 @@ module.exports = additional =
                
                exports.wtf "-- Verbosity set to: #{verbosity}/#{verbosities[verbosity] ? '???'}"
             
-            exports[name](process.env[name], environmental: yes) if process.env[name]
+            if process.env[name] and not environment_verbosity
+               exports[name](process.env[name], environmental: yes) 
+         
+         exports.colour = exports.color = (use = true)->
+            use_colour = use
+         
+         if env_colour = process.env['COLOUR'] ? process.env['COLOR']
+            exports.colour env_colour
