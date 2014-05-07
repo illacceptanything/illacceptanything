@@ -1,18 +1,24 @@
 `                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 assert = require 'assert'
-expect = require 'expect.js'
+sinon  = require 'sinon'
+expect = require('sinon-expect').enhance require('expect.js'), sinon, 'was'
 
 Paws = require "../Source/Paws.coffee"
 Paws.utilities.infect global, Paws
 
 describe 'The Paws reactor:', ->
    reactor = Paws.reactor
+   
+   Table   = reactor.Table
+   Mask    = reactor.Mask
+   Staging = reactor.Staging
+   
+   Unit    = reactor.Unit
+   
    it 'should exist', ->
       expect(reactor).to.be.ok()
    
    describe 'Mask', ->
-      Mask = reactor.Mask
-      
       describe '#flatten', ->
          it 'should always return at least the root', ->
             a_mask = new Mask(a_thing = new Thing)
@@ -65,10 +71,6 @@ describe 'The Paws reactor:', ->
             expect(a_mask.containedBy another_mask).to.be false
    
    describe 'a responsibility Table', ->
-      Table   = reactor.Table
-      Mask    = reactor.Mask
-      Staging = reactor.Staging
-      
       it 'should exist', ->
          expect(Table).to.be.ok()
       
@@ -369,14 +371,75 @@ describe 'The Paws reactor:', ->
    
    
    describe "Thing's default receiver", ->
-      it 'finds a matching pair-ish Thing in the subject'
-      it 'stages the caller if there is a result'
-      it 'does not stage the caller if there is no result'
+      here = undefined; caller = undefined; receiver = undefined
+      beforeEach ->
+         here     = new Unit; here.stage = sinon.spy()
+         caller   = new Execution
+         receiver = Thing::receiver.clone()
+      
+      it 'stages the caller if there is a result', ->
+         a_thing = Thing.construct foo: another_thing = new Thing
+         params = Unit.receiver_parameters caller, a_thing, new Label 'foo'
+         
+         bit = reactor.advance receiver, params
+         bit.apply receiver, [params, here]
+         
+         expect(here.stage).was.calledOnce()
+         
+      it 'does not stage the caller if there is no result', ->
+         a_thing = Thing.construct foo: another_thing = new Thing
+         params = Unit.receiver_parameters caller, a_thing, new Label 'bar'
+         
+         bit = reactor.advance receiver, params
+         bit.apply receiver, [params, here]
+         
+         expect(here.stage).was.notCalled()
+         
+      it 'finds a matching pair-ish Thing in the subject', ->
+         a_thing = Thing.construct foo: another_thing = new Thing
+         params = Unit.receiver_parameters caller, a_thing, new Label 'foo'
+         
+         bit = reactor.advance receiver, params
+         bit.apply receiver, [params, here]
+         
+         result = here.stage.getCall(0).args[1]
+         expect(result).to.be another_thing
    
    describe "Execution's default receiver", ->
-      it 'clones the subject'
-      it "stages the subject's clone"
-      it 'does not re-stage the caller'
+      here = undefined; caller = undefined; receiver = undefined
+      beforeEach ->
+         here     = new Unit; here.stage = sinon.spy()
+         caller   = new Execution
+         receiver = Execution::receiver.clone()
+      
+      it 'clones the subject', ->
+         an_exec = new Execution; something = new Thing
+         params = Unit.receiver_parameters caller, an_exec, something
+         
+         sinon.spy an_exec, 'clone'
+         
+         bit = reactor.advance receiver, params
+         bit.apply receiver, [params, here]
+         
+         expect(an_exec.clone).was.called()
+         
+      it "stages the subject's clone", ->
+         an_exec = new Execution; something = new Thing
+         params = Unit.receiver_parameters caller, an_exec, something
+         
+         bit = reactor.advance receiver, params
+         bit.apply receiver, [params, here]
+         
+         expect(here.stage).was.calledWith sinon.match.any, something
+         
+      it 'does not re-stage the caller', ->
+         an_exec = new Execution; something = new Thing
+         params = Unit.receiver_parameters caller, an_exec, something
+         
+         bit = reactor.advance receiver, params
+         bit.apply receiver, [params, here]
+         
+         expect(here.stage).was.neverCalledWith caller, sinon.match.any
    
    
    describe 'a Unit', ->

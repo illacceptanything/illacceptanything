@@ -39,7 +39,8 @@
                      , "docco"                  : "~0.6.3"
                      , "mocha"                  : "~1.18.2"
                      , "expect.js"              : "~0.3.0"
-                     , "sinon"                  : "~1.9.0"                                        }
+                     , "sinon"                  : "~1.9.0"
+                     , "sinon-expect"           : "~0.2.0"                                        }
 
 ,   "testling" :{
           "files" : "Test/*.coffee"

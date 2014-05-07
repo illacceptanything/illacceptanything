@@ -181,6 +181,7 @@ reactor.Unit = Unit = parameterizable class Unit
       @queue.push new Staging execution, resumptionValue, requestedMask
       @schedule() if @_?.incrementAwaiting != no
    
+   
    # This method looks for the foremost request of the queue that either:
    # 
    #  1. doesn’t have an associated `requestedMask`,
@@ -191,7 +192,10 @@ reactor.Unit = Unit = parameterizable class Unit
    next: ->
       _(@queue).findWhere (staging, idx)=>
          @queue.splice(idx, 1)[0] if @table.allowsStagingOf staging
-
+   
+   # Generate the form of object passed to receivers.
+   @receiver_parameters: (stagee, subject, message)->
+      new Thing stagee, subject, message
    
    # The core reactor of this implementation, `#realize` will ‘process’ a single `Staging` from this
    # `Unit`'s queue. Returns `true` if a `Staging` was acquired and in some way processed, and
@@ -211,8 +215,8 @@ reactor.Unit = Unit = parameterizable class Unit
          combo.apply stagee, [result, this]
       
       else
-         receiver_params = new Thing stagee, combo.subject, combo.message
-         @stage combo.subject.receiver.clone(), receiver_params
+         @stage combo.subject.receiver.clone(),
+            @receiver_params stagee, combo.subject, combo.message
       
       @table.remove stagee if stagee.complete()
       
