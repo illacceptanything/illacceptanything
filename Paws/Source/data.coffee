@@ -7,6 +7,8 @@ uuid = require 'uuid'
 module.exports =
    Paws = new Object
 
+require('./additional.coffee').debugging.inject Paws
+
 # Core data-types
 # ---------------
 Paws.Thing = Thing = parameterizable class Thing
