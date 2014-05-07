@@ -100,8 +100,6 @@ Paws.Execution::receiver = new Alien (rv, world)->
 #
 # This will mutate the `position` counter of the `Execution` (hence the name of `advance()`), as
 # well as managing the `stack` thereof.
-#
-# @this {Execution} The `Execution` to advance. (This function must be `apply()`ied.)
 #---
 # XXX: At some point, I want to refactor this function (originally, a method of Execution, that I
 #      decided was more in-kind with the rest of `reactor` instead of with anything implemented
@@ -110,6 +108,8 @@ Paws.Execution::receiver = new Alien (rv, world)->
 # TODO: REPEAT. REFACTOR THIS SHIT.
 # XXX: The original implementation .bind()ed aliens' bits to the Alien object (`this` at call-time.)
 #      For the moment, I've nixed this, depending on the reactor loop to handle that with `apply`.
+reactor.advance = (exec, result)-> advance.call exec, result
+
 advance = (response)->
    return if @complete()
    
@@ -163,11 +163,6 @@ advance = (response)->
    @position = next.next
    return new Combination contents ? @locals, next.contents
 
-# FIXME: I dislike exposing this, but I'm bad at TDD, and don't know how else to access it in my
-#        tests. I need to move some of these sorts of things to a `testables` object, conditionally
-#        exported.
-reactor._advance = advance
-
 
 # The Unitary design (i.e. distribution) isn't complete, at all. At the moment, a `Unit` is just a
 # place to store the action-queue and access-table.
@@ -206,7 +201,7 @@ reactor.Unit = Unit = parameterizable class Unit
       {stagee, result, requestedMask} = staging
       
       return yes if stagee.complete()
-      return yes unless combo = advance.call stagee, result
+      return yes unless combo = reactor.advance stagee, result
       
       # If the staging has passed #next, then it's safe to grant it the ownership it's requesting
       @table.give stagee, requestedMask if requestedMask

@@ -221,27 +221,27 @@ describe 'The Paws reactor:', ->
    
    describe 'Execution#advance', ->
       parse = Paws.parser.parse
-      Execution::advance = reactor._advance
+      advance = reactor.advance
       
       it 'should not modify a completed Alien', ->
          completed_alien = new Alien
          expect(completed_alien.complete()).to.be.ok()
          
-         expect(completed_alien.advance(new Thing)).to.be undefined
+         expect(advance completed_alien, new Thing).to.be undefined
          
       it 'should flag a modified Alien as un-pristine', ->
          func1 = new Function; func2 = new Function
          an_alien = new Alien func1, func2
          
-         an_alien.advance new Thing
+         advance an_alien, new Thing
          expect(an_alien.pristine).to.be no
          
       it 'should advance the bits of an Alien', ->
          func1 = new Function; func2 = new Function
          an_alien = new Alien func1, func2
          
-         expect(an_alien.advance new Thing).to.be func1
-         expect(an_alien.advance new Thing).to.be func2
+         expect(advance an_alien, new Thing).to.be func1
+         expect(advance an_alien, new Thing).to.be func2
          
          expect(an_alien.complete()).to.be.ok()
       
@@ -249,19 +249,19 @@ describe 'The Paws reactor:', ->
          completed_native = new Native undefined
          expect(completed_native.complete()).to.be.ok()
          
-         expect(completed_native.advance(new Thing)).to.be undefined
+         expect(advance completed_native, new Thing).to.be undefined
       
       it 'should not choke on a simple expression', ->
          an_xec = new Native parse 'abc def'
-         expect(-> an_xec.advance() ).to.not.throwError()
+         expect(-> advance an_xec, null ).to.not.throwError()
       
       it 'should generate a simple combination against a previous result', ->
          root = parse 'something other'; other = root.next.next
          an_xec = new Native root
-         an_xec.advance null
+         advance an_xec, null
          
          something = new Thing
-         combo = an_xec.advance something
+         combo = advance an_xec, something
          expect(combo.subject).to.be something
          expect(combo.message).to.be other.contents
          
@@ -269,17 +269,17 @@ describe 'The Paws reactor:', ->
          root = parse 'something'; something = root.next
          an_xec = new Native root
          
-         combo = an_xec.advance null
+         combo = advance an_xec, null
          expect(combo.subject).to.be an_xec.locals
          expect(combo.message).to.be something.contents
       
       it 'should dive into sub-expressions, combining against locals again', ->
          root = parse 'something (other)'; expr = root.next.next; other = expr.contents.next
          an_xec = new Native root
-         an_xec.advance null
+         advance an_xec, null
          
          something = new Thing
-         combo = an_xec.advance something
+         combo = advance an_xec, something
          expect(combo.subject).to.be an_xec.locals
          expect(combo.message).to.be other.contents
       
@@ -287,40 +287,40 @@ describe 'The Paws reactor:', ->
           and juxtapose against that when exiting", ->
          root = parse 'something (other)'
          an_xec = new Native root
-         an_xec.advance null
+         advance an_xec, null
          
          something = new Thing
-         an_xec.advance something
+         advance an_xec, something
          
          other = new Object
-         combo = an_xec.advance other
+         combo = advance an_xec, other
          expect(combo.subject).to.be something
          expect(combo.message).to.be other
       
       it 'should descend into multiple levels of nested-immediate sub-expressions', ->
          root = parse 'something (((other)))'
          an_xec = new Native root
-         an_xec.advance null
+         advance an_xec, null
          # ~locals <- 'something'
          
          something = new Thing
-         an_xec.advance something
+         advance an_xec, something
          # ~locals <- 'other'
          
          other = new Thing
-         combo = an_xec.advance other
+         combo = advance an_xec, other
          expect(combo.subject).to.be an_xec.locals
          expect(combo.message).to.be other
          # ~locals <- other
          
          meta_other = new Thing
-         combo = an_xec.advance meta_other
+         combo = advance an_xec, meta_other
          expect(combo.subject).to.be an_xec.locals
          expect(combo.message).to.be meta_other
          # ~locals <- <meta-other>
          
          meta_meta_other = new Thing
-         combo = an_xec.advance meta_meta_other
+         combo = advance an_xec, meta_meta_other
          expect(combo.subject).to.be something
          expect(combo.message).to.be meta_meta_other
          # something <- <meta-meta-other>
@@ -328,17 +328,17 @@ describe 'The Paws reactor:', ->
       it 'should handle an *immediate* sub-expression', ->
          root = parse '(something) other'; other = root.next.next
          an_xec = new Native root
-         an_xec.advance null
+         advance an_xec, null
          # ~locals <- 'something'
          
          something = new Thing
-         combo = an_xec.advance something
+         combo = advance an_xec, something
          expect(combo.subject).to.be an_xec.locals
          expect(combo.message).to.be something
          # ~locals <- something
          
          meta_something = new Thing
-         combo = an_xec.advance meta_something
+         combo = advance an_xec, meta_something
          expect(combo.subject).to.be meta_something
          expect(combo.message).to.be other.contents
          # <meta-something> <- 'other'
@@ -346,23 +346,23 @@ describe 'The Paws reactor:', ->
       it 'should descend into multiple levels of *immediate* nested sub-expressions', ->
          root = parse '(((other)))'
          an_xec = new Native root
-         an_xec.advance null
+         advance an_xec, null
          # ~locals <- 'other'
          
          other = new Thing
-         combo = an_xec.advance other
+         combo = advance an_xec, other
          expect(combo.subject).to.be an_xec.locals
          expect(combo.message).to.be other
          # ~locals <- other
          
          meta_other = new Thing
-         combo = an_xec.advance meta_other
+         combo = advance an_xec, meta_other
          expect(combo.subject).to.be an_xec.locals
          expect(combo.message).to.be meta_other
          # ~locals <- <meta-other>
          
          meta_meta_other = new Thing
-         combo = an_xec.advance meta_meta_other
+         combo = advance an_xec, meta_meta_other
          expect(combo.subject).to.be an_xec.locals
          expect(combo.message).to.be meta_meta_other
          # ~locals <- <meta-meta-other>
