@@ -177,8 +177,8 @@ reactor.Unit = Unit = parameterizable class Unit
    
    # `stage`ing is the core operation of a `Unit` as a whole, the only one that requires
    # simultaneous access to the `queue` and `table`.
-   stage: (execution, resumptionValue, requestedMask)->
-      @queue.push new Staging execution, resumptionValue, requestedMask
+   stage: (execution, result, requestedMask)->
+      @queue.push new Staging execution, result, requestedMask
       @schedule() if @_?.incrementAwaiting != no
    
    

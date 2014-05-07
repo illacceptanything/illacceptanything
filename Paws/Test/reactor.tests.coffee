@@ -443,13 +443,60 @@ describe 'The Paws reactor:', ->
    
    
    describe 'a Unit', ->
+      here = undefined
+      beforeEach ->
+         here = new Unit; here.realize = sinon.spy()
+      
       describe '#stage', ->
-         it "can be told not to increment realization-count"
+         it 'adds the passed staging-data to the queue', ->
+            an_exec = new Execution; something = new Thing
+            
+            here.stage an_exec, something
+            expect(here.queue).to.have.length 1
+            expect(here.queue[0].stagee).to.be an_exec
+            expect(here.queue[0].result).to.be something
+            
+         it 'will pass execution-flow onwards to the realization system', ->
+            an_exec = new Execution; something = new Thing
+            
+            here.stage an_exec, something
+            expect(here.realize).was.calledOnce()
+            
+         it "can be told not to increment realization-count", ->
+            an_exec = new Execution; something = new Thing
+            
+            here.with(incrementAwaiting: no).stage an_exec, something
+            expect(here.realize).was.notCalled()
       
       describe '#next', ->
-         it 'returns undefined if no staging is available'
-         it 'returns an available staging'
-         it 'removes the staging from the queue'
+         here = undefined
+         beforeEach ->
+            here = new Unit
+         
+         it 'returns undefined if no staging is available', ->
+            expect(here.next()).to.be undefined
+            
+            a_thing = Thing.construct foo: another_thing = new Thing
+            here.table.give new Execution, new Mask another_thing
+            here.with(incrementAwaiting: no).stage new Execution, null, new Mask a_thing
+            expect(here.next()).to.be undefined
+            
+         it 'returns an available staging', ->
+            an_exec = new Execution; a_thing = new Thing; another_thing = new Thing
+            here.table.give new Execution, new Mask another_thing
+            here.with(incrementAwaiting: no).stage an_exec, null, new Mask a_thing
+            
+            staging = here.next()
+            expect(staging).to.be.ok()
+            expect(staging.stagee).to.be an_exec
+            
+         it 'removes the staging from the queue', ->
+            here.with(incrementAwaiting: no).stage new Execution, new Thing
+            
+            expect(here.queue).to.have.length 1
+            staging = here.next()
+            expect(here.queue).to.be.empty()
+   
    
    describe 'Realization', ->
       it 'fails a tick if no staging is eligible'
