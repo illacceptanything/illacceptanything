@@ -216,7 +216,7 @@ reactor.Unit = Unit = parameterizable class Unit
       
       else
          @stage combo.subject.receiver.clone(),
-            @receiver_params stagee, combo.subject, combo.message
+            Unit.receiver_parameters stagee, combo.subject, combo.message
       
       @table.remove stagee if stagee.complete()
       

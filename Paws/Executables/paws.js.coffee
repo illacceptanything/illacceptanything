@@ -95,8 +95,11 @@ prettify = require('pretty-error').start ->
       
       salutation = '~ ' + salutation + (if Paws.use_colour() then heart else '<3') + "\n"
       err.write salutation
+      
+      process.exit 0
    
    process.on 'exit', exit
+   process.on 'SIGINT', -> process.exit 0
    
    
 # ---- --- ---- --- ----
@@ -110,12 +113,22 @@ prettify = require('pretty-error').start ->
    if (argf.version)
       return version()
    
+   if not argv[1]? then argv.unshift 'start'
    switch argv[0]
+      
       when 'parse'
          # TODO: More robust file resolution
          return fs.readFileAsync(argv[1], 'utf8').then (source)->
             expr = Paws.parser.parse(source)
             out.write expr.serialize() + "\n"
+      
+      when 'start'
+         return fs.readFileAsync(argv[1], 'utf8').then (source)->
+            expr = Paws.parser.parse(source)
+            
+            here = new Paws.reactor.Unit
+            here.start() unless argf.start == false
+            here.stage new Execution expr
    
    # If we get nothing we understand, we just print the usage data and terminate.
    help()
