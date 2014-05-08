@@ -9,6 +9,10 @@ module.exports = additional =
       use_colour = true # Default
       verbosity = 4 # Default
       environment_verbosity = Infinity
+      
+      constructor: ->
+         # FIXME: This `require` will break browserify.
+         @tput = new (require('blessed').Tput) term: process.env['TERM']
 
       # This is an exposed, bi-directional mapping of verbosity-names:
       # 
@@ -18,8 +22,6 @@ module.exports = additional =
          "emergency alert critical error warning notice info debug verbose wtf".split(' ')
       verbosities[name] = minimum for name, minimum in verbosities
       
-      # FIXME: This'll break on the web.
-      tput: new (require('blessed').Tput)
       
       write_browser = (console?.error || console?.log || noop).bind console
       write_cli = (objects...)->
