@@ -87,7 +87,12 @@ module.exports = additional =
                exports[name](process.env[name], environmental: yes) 
          
          exports.colour = exports.color = (use = true)->
-            use_colour = use
+            if use == no or
+               use.charAt?(0) == 'n' or # no
+               use.charAt?(0) == 'f'    # false
+             use_colour = no
+            else
+             use_colour = yes
          
          if env_colour = process.env['COLOUR'] ? process.env['COLOR']
             exports.colour env_colour
