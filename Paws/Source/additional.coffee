@@ -13,6 +13,13 @@ module.exports = additional =
       constructor: ->
          # FIXME: This `require` will break browserify.
          @tput = new (require('blessed').Tput) term: process.env['TERM']
+         
+         @tput.sgr = (flags...)-> @csi flags.join(';') + 'm'
+         @tput.csi = (text)->  '\x1b[' + text
+         
+         @tput.bold      = (text)-> if use_colour then @sgr(1) + text + @sgr(22) else text
+         @tput.underline = (text)-> if use_colour then @sgr(4) + text + @sgr(24) else text
+         @tput.invert    = (text)-> if use_colour then @sgr(7) + text + @sgr(27) else text
 
       # This is an exposed, bi-directional mapping of verbosity-names:
       # 

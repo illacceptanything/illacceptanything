@@ -26,8 +26,11 @@
  }
    
 ,          "engines" :{"node":"~0.10.7"}
-,     "dependencies" :{"blessed"                : "~0.0.25"
+,     "dependencies" :{"minimist"               : "~0.0.9"
+                     , "mustache"               : "~0.8.1"
+                     , "blessed"                : "~0.0.29"
                      , "coffee-script"          : "~1.7.1"
+                     , "pretty-error"           : "~0.1.18"
                      , "uuid"                   : "~1.4.1"
                      , "lodash"                 : "~2.4.1"                                        }
 ,  "devDependencies" :{"glob"                   : "~3.2.9"
