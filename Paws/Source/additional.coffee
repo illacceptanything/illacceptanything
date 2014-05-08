@@ -8,7 +8,7 @@ module.exports = additional =
    debugging: debugging = new class Debugging
       use_colour = true # Default
       verbosity = 4 # Default
-      environment_verbosity = Infinity
+      max_verbosity = Infinity
       
       constructor: ->
          # FIXME: This `require` will break browserify.
@@ -84,13 +84,13 @@ module.exports = additional =
                else if level == true or
                        level.charAt?(0) == 'y' or # yes
                        level.charAt?(0) == 't'    # true
-                  verbosity = ddefault unless environment_verbosity < ddefault # Silence reigns.
+                  verbosity = ddefault unless max_verbosity < ddefault # Silence reigns.
                
-               environment_verbosity = verbosity if opts.environmental
+               max_verbosity = verbosity if opts.environmental
                
                exports.wtf "-- Verbosity set to: #{verbosity}/#{verbosities[verbosity] ? '???'}"
             
-            if process.env[name] and not environment_verbosity
+            if process.env[name]? and (max_verbosity == Infinity)
                exports[name](process.env[name], environmental: yes) 
          
          exports.colour = exports.color = (use = true)->
