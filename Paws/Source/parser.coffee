@@ -15,6 +15,8 @@ Expression = parameterizable class Expression
       curr = this
       curr = curr.next while curr.next
       curr.next = expr
+   
+   serialize: -> new Serializer(this).serialize()
 
 # A simple recursive descent parser with no backtracking. No lexing is needed here.
 class Parser
@@ -97,6 +99,26 @@ class Parser
    parse: ->
       @expr()
 
+#---
+# XXX: Why are we doing this disgusting Java-esque “everything is a class” form? o_O - ELLIOTTCABLE
+class Serializer
+   constructor: (@root)->
+   
+   serialize: (node, text)->
+      return @serialize @root, "" unless node?
+      {contents, next} = node
+      
+      if contents instanceof Label
+         text += '"'+contents.alien+'"'
+         text += ' ' if next
+      
+      if contents instanceof Expression
+         text += '('+@serialize(contents, '')+')'
+         text += ' ' if next
+      
+      return text unless next?
+      return @serialize next, text
+
 
 # @option {boolean=false} context:  Include the entire parse-time Script, instead of just the
 #                                      current Expression
@@ -126,6 +148,10 @@ module.exports =
    parse: (text)->
       parser = new Parser(text)
       parser.parse()
+   
+   serialize: (expr)->
+      serializer = new Serializer(expr)
+      serializer.serialize()
    
    Expression: Expression
    SourceRange: SourceRange

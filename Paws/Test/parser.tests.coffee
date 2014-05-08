@@ -1,11 +1,10 @@
 `                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 expect = require 'expect.js'
 
-Paws = require '../Source/Paws.coffee'
+Paws   = require '../Source/Paws.coffee'
+parser = require "../Source/parser.coffee"
 
 describe 'Parser', ->
-   parser = require "../Source/parser.coffee"
-
    it 'should be defined', ->
       expect(parser).to.be.ok()
       expect(parser.parse).to.be.a('function')
@@ -100,3 +99,39 @@ describe 'Parser', ->
 
       expect(exe.contents.position.source.contents()).to.be('b')
 
+
+# FIXME: This is currently tested *in terms of the `Parser`'s results*. I dislike that; any problem
+#        in the `Parser` could shadow problems in the `Serializer`. Howevr, it's mildly necessary
+#        now; because I don't have another remotely expident way to create Expressions right now.
+# TODO: In that spirit ... write a Expression.construct() method. (JSON-to-Expression?)
+describe 'Serializer', ->
+   it 'generates an empty string for an empty expression', ->
+      expr = parser.parse('')
+      expect(expr.serialize()).to.be ''
+   
+   it 'generates no whitespace at the ends', ->
+      expr = parser.parse('foo (bar) baz')
+      expect(expr.serialize()).to.not.match /^\s+|\s+$/
+      
+      expr = parser.parse('foo (bar) (baz)')
+      expect(expr.serialize()).to.not.match /^\s+|\s+$/
+   
+   it 'generates quotes around Labels', ->
+      expr = parser.parse('foo')
+      expect(expr.serialize()).to.be '"foo"'
+   
+   it 'generates parenthesis around sub-expressions', ->
+      expr = parser.parse('(foo)')
+      expect(expr.serialize()).to.be '("foo")'
+   
+   it 'puts spaces between adjacent Labels', ->
+      expr = parser.parse('foo bar')
+      expect(expr.serialize()).to.be '"foo" "bar"'
+   
+   it 'puts no space inside the start or end of expressions', ->
+      expr = parser.parse('abc (def) ghi')
+      expect(expr.serialize()).to.be '"abc" ("def") "ghi"'
+   
+   it 'handles complex nested expressions', ->
+      expr = parser.parse('(bar ((foo))) baz')
+      expect(expr.serialize()).to.be '("bar" (("foo"))) "baz"'
