@@ -1,7 +1,10 @@
 #!./node_modules/.bin/coffee 
 module.package = require '../package.json'
+bluebird = require 'bluebird'
 minimist = require 'minimist'
 mustache = require 'mustache'
+
+fs = bluebird.promisifyAll require 'fs'
 
 prettify = require('pretty-error').start ->
    Paws = require '../Library/Paws.js'
@@ -83,15 +86,15 @@ prettify = require('pretty-error').start ->
    exit = ->
       if Paws.use_colour()
          # Get rid of the "^C",
-         out.write T.cursor_left() + T.cursor_left()
-         out.write T.clr_eol()
+         err.write T.cursor_left() + T.cursor_left()
+         err.write T.clr_eol()
          
-         out.write T.cursor_right() + T.cursor_right() + T.cursor_right()
-         out.write T.enter_blink_mode()
-         out.write T.sgr 38, 5, colour
+         err.write T.cursor_right() + T.cursor_right() + T.cursor_right()
+         err.write T.enter_blink_mode() unless process.env['NOBLINK']
+         err.write T.sgr 38, 5, colour
       
       salutation = '~ ' + salutation + (if Paws.use_colour() then heart else '<3') + "\n"
-      out.write salutation
+      err.write salutation
    
    process.on 'exit', exit
    
@@ -99,16 +102,28 @@ prettify = require('pretty-error').start ->
 # ---- --- ---- --- ----
    
    # TODO: Ensure this works well for arguments passed to shebang-files
-   argv = minimist process.argv.slice 2
+   argf = minimist process.argv.slice 2
+   argv = argf._
    
-   if (argv.help)
+   if (argf.help)
       return help()
-   if (argv.version)
+   if (argf.version)
       return version()
    
+   switch argv[0]
+      when 'parse'
+         # TODO: More robust file resolution
+         return fs.readFileAsync(argv[1], 'utf8').then (source)->
+            expr = Paws.parser.parse(source)
+            out.write expr.serialize() + "\n"
+   
+   # If we get nothing we understand, we just print the usage data and terminate.
    help()
 
 prettify.skipNodeFiles()
+bluebird.onPossiblyUnhandledRejection (error)->
+   console.error prettify.render error
+   process.exit 1
 
 
 # ---- --- ---- --- ----

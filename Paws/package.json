@@ -32,6 +32,7 @@
                      , "coffee-script"          : "~1.7.1"
                      , "pretty-error"           : "~0.1.18"
                      , "uuid"                   : "~1.4.1"
+                     , "bluebird"               : "~1.2.4"
                      , "lodash"                 : "~2.4.1"                                        }
 ,  "devDependencies" :{"glob"                   : "~3.2.9"
                      , "browserify"             : "~3.33.0"
