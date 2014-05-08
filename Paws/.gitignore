@@ -1,6 +1,7 @@
 .coveralls.yml
 .repl_history
 node_modules/
+Executables/*.js
 Source/*.js
 Test/*.js
 Documentation/

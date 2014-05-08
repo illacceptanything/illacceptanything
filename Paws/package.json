@@ -6,8 +6,12 @@
 
 ,       "main" : "Library/Paws.js"
 
+,        "bin" : {"paws.js" : "Executables/paws.js"}
+
 ,    "scripts" :{
-           "repl" : "./Scripts/repl.js"
+     "preinstall" : "printf \"%s\\n%s\" '#!/usr/bin/env node' \"$(coffee -cbp --no-header ./Executables/paws.js.coffee)\" > ./Executables/paws.js"
+
+,          "repl" : "./Scripts/repl.js"
 ,          "test" : "./Scripts/test.sh"
 ,         "clean" : "./Scripts/clean.sh"
 ,      "coverage" : "./Scripts/coverage.sh 3> ./Library/Coverage.html"
