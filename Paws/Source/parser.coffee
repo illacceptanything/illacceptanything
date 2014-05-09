@@ -22,9 +22,12 @@ Expression = parameterizable class Expression
 class Parser
    labelCharacters = /[^(){} \n]/ # Not currently supporting quote-delimited labels
 
-   constructor: (@text)->
+   constructor: (@text, opts = {})->
       # Keep track of the current position into the text
       @i = 0
+      
+      if opts.root
+         @text = @text.split("\n").slice(1).join("\n")
 
    # Accept a single character. If the given +char+ is at the
    # current position, proceed and return true.
@@ -145,12 +148,12 @@ Expression::toString = ->
 
 
 module.exports =
-   parse: (text)->
-      parser = new Parser(text)
+   parse: (text, opts)->
+      parser = new Parser(text, opts)
       parser.parse()
    
-   serialize: (expr)->
-      serializer = new Serializer(expr)
+   serialize: (expr, opts)->
+      serializer = new Serializer(expr, opts)
       serializer.serialize()
    
    Expression: Expression

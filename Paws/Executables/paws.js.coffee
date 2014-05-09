@@ -119,12 +119,12 @@ prettify = require('pretty-error').start ->
       when 'parse'
          # TODO: More robust file resolution
          return fs.readFileAsync(argv[1], 'utf8').then (source)->
-            expr = Paws.parser.parse(source)
+            expr = Paws.parser.parse(source, {root: true})
             out.write expr.serialize() + "\n"
       
       when 'start'
          return fs.readFileAsync(argv[1], 'utf8').then (source)->
-            expr = Paws.parser.parse(source)
+            expr = Paws.parser.parse(source, {root: true})
             
             here = new Paws.reactor.Unit
             here.start() unless argf.start == false
