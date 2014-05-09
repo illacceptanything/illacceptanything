@@ -141,7 +141,7 @@ Expression::toString = ->
    else
       @source.contents()
    
-   if @_?.tag == no then output else '['+@constructor.name+' '+output+']'
+   if @_?.tag == no then output else '['+(@constructor.__name__ or @constructor.name)+' '+output+']'
 
 
 module.exports =

@@ -207,6 +207,10 @@ reactor.Unit = Unit = parameterizable class Unit
       return yes if stagee.complete()
       return yes unless combo = reactor.advance stagee, result
       
+      Paws.info 'Stagee: ', stagee
+      Paws.info '   Subject: ', combo.subject if combo.subject
+      Paws.info '   Message: ', combo.message if combo.message
+      
       # If the staging has passed #next, then it's safe to grant it the ownership it's requesting
       @table.give stagee, requestedMask if requestedMask
       

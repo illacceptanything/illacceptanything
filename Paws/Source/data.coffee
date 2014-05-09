@@ -2,6 +2,7 @@
 require('./utilities.coffee').infect global
 
 uuid = require 'uuid'
+util = require 'util'
 
 
 module.exports =
@@ -14,8 +15,11 @@ require('./additional.coffee').debugging.inject Paws
 Paws.Thing = Thing = parameterizable class Thing
    constructor: constructify(return:@) (elements...)->
       @id = uuid.v4()
+      _name = undefined
       @metadata = new Array
       @push elements... if elements.length
+      
+      @name = (name)-> if name? then _name = name else name
       
       @metadata.unshift undefined if @_?.noughtify != no
    
@@ -275,3 +279,24 @@ Paws.Native = Native = class Native extends Execution
       to.position = @position
       to.stack = @stack.slice 0
       return to
+
+
+# Debugging output
+# ----------------
+
+# Convenience to call whatever string-making methods are available on the passed object.
+Paws.inspect = (object)->
+   object.inspect?() or
+   object instanceof Thing && Thing::inspect.apply(object) or
+   util.inspect object
+
+
+Thing.inspectID = (it)->
+  '❲' + it.id.slice(-8) + (if it.name() then ':'+it.name() else '') + '❳'
+   
+Thing::toString = ->
+   output = Thing.inspectID(this)
+   if @_?.tag == no then output else '['+(@constructor.__name__ or @constructor.name)+' '+output+']'
+
+Thing::inspect = ->
+   @toString()
