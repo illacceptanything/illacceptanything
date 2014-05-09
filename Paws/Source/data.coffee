@@ -35,6 +35,9 @@ Paws.Thing = Thing = parameterizable class Thing
    # passed in. The latter is overridable with `.with(responsible: no)`.
    # 
    # @option responsible: Whether to mark the structure as `responsible` for the objects passed in.
+   #---
+   # TODO: Make recursive. Don't know how that didn't happen in the first place.
+   # TODO: Support functions, so this can replace µPaws' applyGlobals.
    @construct: (representation)->
       relations = for key, value of representation
          relation = Relation(value, @_?.responsible ? yes)
@@ -125,8 +128,6 @@ Paws.Relation = Relation = parameterizable delegated('to', Thing) class Relation
 
 Paws.Label = Label = class Label extends Thing
    constructor: constructify(return:@) (@alien)->
-      @alien = new String @alien
-      @alien.native = this
    
    clone: (to)->
       super (to ?= new Label)
@@ -135,7 +136,7 @@ Paws.Label = Label = class Label extends Thing
       return to
    compare: (to)->
       to instanceof Label and
-      to.alien.valueOf() == @alien.valueOf()
+      to.alien == @alien
 
 
 Paws.Execution = Execution = class Execution extends Thing
