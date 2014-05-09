@@ -10,6 +10,10 @@
 # Unfortunately, at the moment, there's no way to pass flags to `npm run-script`; so I roll in flags
 # using an environment-variable (`$FLAGS`). See: https://github.com/isaacs/npm/issues/3494
 
+if [ "$PRE_COMMIT" == "true" ]; then
+   npm_package_config_mocha_reporter='dot'
+fi
+
 env NODE_ENV="$npm_package_config_mocha_ENV"       \
 ./node_modules/.bin/mocha                          \
    --compilers coffee:coffee-script/register       \
