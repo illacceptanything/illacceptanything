@@ -124,7 +124,16 @@ describe "Paws' utilities:", ->
          expect(    Child()).to.have.property 'ancestor_called'
          expect(new Child)  .to.have.property 'parent_called'
          expect(    Child()).to.have.property 'parent_called'
-   
+      
+      it 'should provide the name of the original constructor', ->
+         class Klass
+            constructor: constructify ->
+         instance = new Klass
+        #expect(instance.constructor.__name__).to.be 'Klass'
+         
+         instance = Klass()
+         expect(instance.constructor.__name__).to.be 'Klass'
+           
    
    describe 'parameterizable()', ->
       utilities.parameterizable class Twat

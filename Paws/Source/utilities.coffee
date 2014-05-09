@@ -27,8 +27,10 @@ utilities =
          Wrapper = ->
             
             unless this instanceof Wrapper
-               (F = -> @constructor = Wrapper; return this).prototype = Wrapper.prototype; it = new F
-               return Wrapper.apply it, arguments
+               F = -> @constructor = Wrapper; return this
+               F.prototype = Wrapper.prototype
+               F.__name__ = Wrapper.__name__
+               return Wrapper.apply new F, arguments
             
             # TODO: Functionality to control arguments passed to the superclass
             Wrapper.__super__?.constructor?.call this
@@ -65,6 +67,7 @@ utilities =
             if cs_wrapper.name?.length > 0 and arguments[1].callee == cs_wrapper
                Wrapper.prototype = cs_wrapper.prototype
                Wrapper.__super__ = cs_wrapper.__super__ if cs_wrapper.__super__?
+               Wrapper.__name__  = cs_wrapper.__name__ ? cs_wrapper.name
                Wrapper.apply = Function::apply
             else
                Wrapper.apply = after_interceptor
@@ -83,6 +86,7 @@ utilities =
             return Function::apply.apply Wrapper, arguments
          
          Wrapper.apply = before_interceptor
+         Wrapper.__name__ = body.__name__ ? body.name
          return Wrapper
       
       return inner(opts) if typeof opts == 'function'
