@@ -39,11 +39,13 @@ Paws.Thing = Thing = parameterizable class Thing
    # TODO: Make recursive. Don't know how that didn't happen in the first place.
    # TODO: Support functions, so this can replace µPaws' applyGlobals.
    @construct: (representation)->
-      relations = for key, value of representation
+      members = for key, value of representation
+         value = Alien.synchronous value if _.isFunction value
+         value = @construct value unless value instanceof Thing
          relation = Relation(value, @_?.responsible ? yes)
          Thing.pair( key, relation ).responsible()
       
-      return Thing relations...
+      return Thing members...
    
    # XXX: Defined later, in `reactor.coffee`. These definitions have to be deferred, because
    #      `Execution` isn't defined yet.

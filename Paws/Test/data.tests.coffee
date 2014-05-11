@@ -91,6 +91,33 @@ describe 'The Paws API:', ->
             expect(constructee.metadata[1]).to.be.responsible()
             expect(constructee.find('something')[0].metadata[2]).to.not.be.responsible()
          
+         it 'generates nested Things', ->
+            constructee = Thing.construct { foo: { bar: {baz: something = new Thing} } }
+            
+            first_pair = constructee.at 1
+            expect(first_pair               ).to.be.a Thing
+            expect(first_pair.keyish().alien).to.be 'foo'
+            expect(first_pair.valueish()    ).to.be.a Thing
+            
+            second_pair = first_pair.valueish().at 1
+            expect(second_pair               ).to.be.a Thing
+            expect(second_pair.keyish().alien).to.be 'bar'
+            expect(second_pair.valueish()    ).to.be.a Thing
+            
+            third_pair = second_pair.valueish().at 1
+            expect(third_pair               ).to.be.a Thing
+            expect(third_pair.keyish().alien).to.be 'baz'
+            expect(third_pair.valueish()    ).to.be something
+         
+         it 'passes Functions to Alien.synchronous', ->
+            constructee = Thing.construct {foo: new Function}
+            expect(constructee.metadata).to.have.length 2
+            
+            pair = constructee.at 1
+            expect(pair     ).to.be.a Thing
+            expect(pair.at 1).to.be.a Label
+            expect(pair.at 2).to.be.an Execution
+      
       describe '##pair', ->
       
       uuid_regex = /[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}/
