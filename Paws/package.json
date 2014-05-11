@@ -16,6 +16,8 @@
 ,         "clean" : "./Scripts/clean.sh"
 ,      "coverage" : "./Scripts/coverage.sh 3> ./Library/Coverage.html"
 ,     "coveralls" : "./Scripts/coveralls.sh"
+,     "install-git-hooks" :
+                    "./Scripts/install-git-hooks.sh"
 }
 
 ,     "config" :{
