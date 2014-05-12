@@ -93,7 +93,7 @@ prettify = require('pretty-error').start ->
          err.write T.cursor_right() + T.cursor_right() + T.cursor_right()
          err.write T.enter_blink_mode() unless process.env['NOBLINK']
       
-      salutation = '~ ' + salutation +' '+ (if Paws.use_colour() then heart else '<3') + "\n"
+      salutation = '~ '+salutation+' '+ (if Paws.use_colour() then heart else '<3') + "\n"
       err.write if T.colors == 256 then T.xfg 219, salutation else T.fg 5, salutation
       
       process.exit 0
