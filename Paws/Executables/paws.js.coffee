@@ -52,8 +52,10 @@ prettify = require('pretty-error').start ->
             {{#b}}COLOUR{{/b}}=[true|false]           Disable coloured output [default: {{#b}}true{{/b}}]
          
          Paws homepage: <{{#link}}http://Paws.mu{{/link}}>
-         Report bugs:   <{{#link}}https://github.com/Paws/Paws.js/issues{{/link}}>
+         Report bugs:   <{{#link}}https://github.com/ELLIOTTCABLE/Paws.js/issues{{/link}}>
+         
          Say hi:        <{{#link}}http://twitter.com/ELLIOTTCABLE{{/link}}>
+                     or <{{#link}}http://ell.io/IRC{{/link}}> ({{#b}}#ELLIOTTCABLE{{/b}} on the Freenode IRC network)
          
       """
       #  -- standard 80-column terminal -------------------------------------------------|
