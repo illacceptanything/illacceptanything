@@ -154,6 +154,10 @@ prettify = require('pretty-error').start ->
                expr = Paws.parser.parse source.code, root: true
                out.write expr.serialize() + "\n"
       
+      when 'in', 'interact', 'interactive'
+         Interactive = require '../Source/interactive.coffee'
+         new Interactive().start()
+      
       when 'st', 'start'
          readFilesAsync(argv).then (files)->
             sources.push files...
