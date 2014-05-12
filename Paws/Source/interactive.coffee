@@ -1,6 +1,7 @@
 `                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 Paws = require './Paws.coffee'
 Paws.infect global
+T = Paws.debugging.tput
 
 PrettyError = require('pretty-error')
 
@@ -17,8 +18,10 @@ parameterizable class Interactive
       #      be moved to start().
       @readline = readline.createInterface
          input: @_?.input ? process.stdin, output: @_?.output ? process.stdout
-      
       @readline.setPrompt @_?.prompt ? ':: '
+      @readline.line_style = T.sgr 7
+      @readline.clear_style = T.sgr 27
+      @hackReadline()
       
       @error_renderer = @_?.error_renderer
       unless @error_renderer?
@@ -36,15 +39,15 @@ parameterizable class Interactive
    
    prompt: -> @readline.prompt()
    
-   
    start: ->
-      #process.title = 'paws.js: interact'
+      process.title = 'paws.js (interact)'
       @here.start()
       
       shortcircuit = undefined # ???
       @readline.on 'line', (line)=>
          return shortcircuit = false if shortcircuit # ???
          return @readline.prompt() unless line.length
+         @readline.write @readline.clear_style
          
          # FIXME: Input during the processing is currently all processed immediately after a prompt
          #        is next shown. This is rather icky when the user ^C's a ton, and then externally
@@ -71,14 +74,28 @@ parameterizable class Interactive
       SIGTERM = =>
          @here.stop()
          @readline.write "\x1b[2K\x1b[0G" # Zero cursor.
+         @readline.write @readline.clear_style
+         @readline.close()
          process.stdin.destroy()
       @readline.on 'close', SIGTERM
       process.on 'SIGTERM', SIGTERM
       
-      t = Paws.debugging.tput
+      SIGTSTP = =>
+         process.once 'SIGCONT', =>
+            @readline.input.pause()
+            @readline.input.resume()
+            @readline._setRawMode true
+            @readline._refreshLine()
+         
+         @readline.write @readline.clear_style
+         @readline._setRawMode false
+         process.kill process.pid, 'SIGTSTP'
+         
+      @readline.on 'SIGTSTP', SIGTSTP
+      
       Paws.alert "Successive lines will be evaluated as executions, with shared `locals`."
-      Paws.alert "   (#{t.bold '⌃d'} to close the input-stream; "+
-                     "#{t.bold '⌃c'} to synchronously force new prompt)"
+      Paws.alert "   (#{T.bold '⌃d'} to close the input-stream; "+
+                     "#{T.bold '⌃c'} to synchronously force new prompt)"
       @prompt()
    
    
@@ -118,5 +135,50 @@ parameterizable class Interactive
       @prompt()
    .rename '<interact: resume prompt>'
    
-   # Generates an `Execution` that will print information about the `Thing` passed to it
-   # (presumably, the final result of a line of code typed into the `Interactive`.)
+   
+   # --- ---- --- /!\ --- ---- --- #
+   
+   # This is all a huge, fragile, horrible, monkey-patching hack.
+   hackReadline: ->
+      exportz = readline
+      
+      _refreshLine = @readline._refreshLine
+      @readline._refreshLine = =>
+         [clearScreenDown, exportz.clearScreenDown] = [exportz.clearScreenDown, haxClearScreenDown]
+         _refreshLine.apply @readline
+         exportz.clearScreenDown = clearScreenDown
+      
+      # This ensures our custom line-styles get applied every time the line is refreshed
+      haxClearScreenDown = (stream)=>
+         stream.write '\x1b[0J'
+         stream.write T.column_address(0)
+         stream.write T.sgr(7)+(new Array(T.columns+1).join ' ')
+         stream.write T.column_address(0)
+         stream.write @readline.line_style
+      
+      _ttyWrite = @readline._ttyWrite
+      # These replace the usual behavior of pausing the input-stream (which means all input while
+      # paused is buffered, and will eventually be dumped back out), and simply *ignores* all input
+      # until unpaused. No buffering.
+      @readline.pause = ->
+         return if @paused
+         @_ttyWrite = haxTtyWrite
+         @paused = true
+         @emit 'pause'
+         return this
+      
+      @readline.resume = ->
+         return unless @paused
+         @_ttyWrite = _ttyWrite
+         @paused = false
+         @emit 'resume'
+         return this
+      
+      haxTtyWrite = (s, key)->
+         if key.ctrl
+            switch key.name
+               when 'c' then @emit 'SIGINT'     # ^c (interrupt)
+               when 'd' then @close             # ^d (EOF)
+               when 'z'                         # ^z (process backgrounding)
+                  return if process.platform == 'win32'
+                  @emit 'SIGTSTP'
