@@ -17,6 +17,23 @@ module.exports = additional =
          @tput.sgr = (flags...)-> @csi flags.join(';') + 'm'
          @tput.csi = (text)->  '\x1b[' + text
          
+         @tput.fg = (colour, text)-> if use_colour then switch
+            when colour < 10 then @sgr(30+colour) + text + @sgr(39)
+            when colour < 20 then @sgr(80+colour) + text + @sgr(39)
+            else                  @xfg colour, text
+         else text
+         
+         @tput.bg = (colour, text)-> if use_colour then switch
+            when colour < 10 then @sgr(40+colour) + text + @sgr(49)
+            when colour < 20 then @sgr(90+colour) + text + @sgr(49)
+            else                  @xbg colour, text
+         else text
+            
+         @tput.xfg = (colour, text)->
+            if use_colour then @sgr(38,5,colour) + text + @sgr(39) else text
+         @tput.xbg = (colour, text)->
+            if use_colour then @sgr(48,5,colour) + text + @sgr(49) else text
+         
          @tput.bold      = (text)-> if use_colour then @sgr(1) + text + @sgr(22) else text
          @tput.underline = (text)-> if use_colour then @sgr(4) + text + @sgr(24) else text
          @tput.invert    = (text)-> if use_colour then @sgr(7) + text + @sgr(27) else text
@@ -100,6 +117,8 @@ module.exports = additional =
              use_colour = no
             else
              use_colour = yes
+            
+            exports.wtf "-- Colour set to: #{use_colour}"
          
          if env_colour = process.env['COLOUR'] ? process.env['COLOR']
             exports.colour env_colour
