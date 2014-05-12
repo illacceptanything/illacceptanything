@@ -204,7 +204,7 @@ reactor.Unit = Unit = parameterizable class Unit
    
    # Generate the form of object passed to receivers.
    @receiver_parameters: (stagee, subject, message)->
-      new Thing stagee, subject, message
+      new Thing(stagee, subject, message).rename '<receiver params>'
    
    # The core reactor of this implementation, `#realize` will ‘process’ a single `Staging` from this
    # `Unit`'s queue. Returns `true` if a `Staging` was acquired and in some way processed, and
@@ -212,15 +212,17 @@ reactor.Unit = Unit = parameterizable class Unit
    realize: ->
       return no unless staging = @next()
       {stagee, result, requestedMask} = staging
+      prior_position = stagee.position
       
       return yes if stagee.complete()
       return yes unless combo = reactor.advance stagee, result
       
       @current = stagee
       
-      Paws.info 'Stagee: ', stagee
-      Paws.info '   Subject: ', combo.subject if combo.subject
-      Paws.info '   Message: ', combo.message if combo.message
+      if process.env['TRACE_REACTOR']
+         Paws.alert "-- #{stagee} ← #{result}"
+         Paws.alert "   #{prior_position.with(context: yes, tag: no).toString()}" if prior_position?
+         Paws.alert "   ┗> #{combo.subject} × #{combo.message}" if combo.subject?
       
       # If the staging has passed #next, then it's safe to grant it the ownership it's requesting
       @table.give stagee, requestedMask if requestedMask
