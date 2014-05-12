@@ -24,26 +24,27 @@ prettify = require('pretty-error').start ->
       usage = "\n" + _(figlets).sample() + """
          
 {{#title}}Usages:{{/title}}
-{{#code}}   > paws.js [FLAGS] [operation] [file]
+{{#pre}}   > paws.js [{{#flag}}flags{{/flag}}] {{#op}}operation{{/op}} [params]
             > paws.js {{#u}}file.paws{{/u}} [--] [arguments]
-            > paws.js {{#b}}interact{{/b}}
-            > paws.js {{#b}}parse{{/b}} {{#u}}file.paws{{/u}}{{/code}}
+            > paws.js {{#op}}interact{{/op}}
+            > paws.js {{#op}}parse{{/op}} {{#u}}file.paws{{/u}}{{/pre}}
          
          The first non-flag argument will be an operation to preform; the second depends
          on the operation, but is usually a path to a file to load. If no operation is
          instructed, then the `start` operation is used.
          
 {{#title}}Operations:{{/title}}
-            [<none>|{{#b}}start{{/b}}] {{#u}}file.paws{{/u}}      Start the Paws reactor, load the given file
-            {{#b}}interact{{/b}}                      Begin an interactive Paws session (a ‘repl’)
-            {{#b}}parse{{/b}} {{#u}}file.paws{{/u}}               Show the computed parse-tree for a cPaws file
+            [<none>|{{#op}}start{{/op}}] {{#u}}file.paws{{/u}}      Start the Paws reactor, load the given file
+            {{#op}}interact{{/op}}                      Begin an interactive Paws session (a ‘repl’)
+            {{#op}}parse{{/op}} {{#u}}file.paws{{/u}}               Show the computed parse-tree for a cPaws file
          
 {{#title}}Flags:{{/title}}
-            --help:        Show usage information
-            --version:     Show version information
+{{#flag}}   --help{{/flag}}:        Show usage information
+{{#flag}}   --version{{/flag}}:     Show version information
+            
          
          Paws.js also accepts several environment variables, in the form:
-{{#code}}   > VAR=value paws.js ...{{/code}}
+{{#pre}}   > VAR=value paws.js ...{{/pre}}
          
 {{#title}}Variables:{{/title}}
             {{#b}}SILENT{{/b}}=[true|false]           Suppress all output from Paws.js itself
@@ -63,11 +64,15 @@ prettify = require('pretty-error').start ->
          heart: if Paws.use_colour() then heart else '<3'
          b: ->(text, r)-> T.bold r text
          u: ->(text, r)-> T.underline r text
+         c: ->(text, r)-> T.invert r text
+         
+         op:   ->(text, r)-> T.fg 2, r text
+         flag: ->(text, r)-> T.fg 6, r text
          
          title: ->(text, r)-> T.bold T.underline r text
          link:  ->(text, r)->
             if Paws.use_colour() then T.sgr(34) + T.underline(r text) + T.sgr(39) else r text
-         code:  ->(text, r)->
+         pre:  ->(text, r)->
             if Paws.use_colour()
                lines = text.split "\n"
                lines = _(lines).map (line)->
