@@ -15,13 +15,13 @@ require('./additional.coffee').debugging.inject Paws
 Paws.Thing = Thing = parameterizable class Thing
    constructor: constructify(return:@) (elements...)->
       @id = uuid.v4()
-      _name = undefined
       @metadata = new Array
       @push elements... if elements.length
       
-      @name = (name)-> if name? then _name = name else name
       
       @metadata.unshift undefined if @_?.noughtify != no
+   
+   rename: (name)-> @name = name ; return this
    
    # Construct a generic ‘key/value’ style `Thing` from a JavaScript `Object`-representation thereof.
    # These representations will have JavaScript strings as the keys (which will be converted into the
@@ -58,6 +58,9 @@ Paws.Thing = Thing = parameterizable class Thing
    clone: (to)->
       to ?= new Thing.with(noughtify: no)()
       to.metadata = @metadata.map (rel)-> rel?.clone()
+      
+      to.name = @name unless to.name?
+      
       return to
    
    compare: (to)-> to == this
@@ -147,7 +150,7 @@ Paws.Execution = Execution = class Execution extends Thing
          return (if typeof first == 'function' then Alien else Native).apply this, arguments
       
       @pristine = yes
-      @locals = new Thing # TODO: `name` this “locals”
+      @locals = new Thing().rename 'locals'
       @locals.push Thing.pair 'locals', @locals.irresponsible()
       this   .push Thing.pair 'locals', @locals.responsible()
    
@@ -294,12 +297,15 @@ Paws.inspect = (object)->
    util.inspect object
 
 
-Thing.inspectID = (it)->
-  '❲' + it.id.slice(-8) + (if it.name() then ':'+it.name() else '') + '❳'
-   
+Thing.inspectID = (it)-> it.id.slice(-8)
+
 Thing::toString = ->
-   output = Thing.inspectID(this)
+   output = Thing.inspectID(this) + (if @name? then ': '+@name else '')
    if @_?.tag == no then output else '['+(@constructor.__name__ or @constructor.name)+' '+output+']'
 
 Thing::inspect = ->
    @toString()
+
+Label::toString = ->
+   output = '“'+@alien+'”' + (if @name? then ': '+@name else '')
+   if @_?.tag == no then output else '['+(@constructor.__name__ or @constructor.name)+' '+output+']'
