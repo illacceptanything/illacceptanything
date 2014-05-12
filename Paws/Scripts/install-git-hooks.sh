@@ -14,7 +14,7 @@ requested_hook="$1"
 # ‘Arrays’ in POSIX shell are a nasty topic. It's possible to work relatively sanely with
 # newline-delimited strings, but since git hooks' names contain no spaces, I'll simply use a
 # space-delimited string for this.  /=
-default_hooks="pre-commit"
+default_hooks="pre-commit post-merge post-checkout"
 
 if [ ! -d "$hook_dir" ]; then
    printf %s\\n 'You must be in the root directory of a `git` project to use this script!' >&2
@@ -33,7 +33,7 @@ install_hook() {
       mv "$hook_dir/$hook_name" "$hook_dir/$hook_name"'-local' || exit 1                        ;fi
    
    # If it still exists now, it's either already a symlink or not executable. Either way, don't care
-   rm "$hook_dir/$hook_name" >/dev/null
+   rm "$hook_dir/$hook_name" 2>/dev/null
    
    # Now, we link the hook-chaining script to process these hooks
    ln -s "../../$tracked_dir/chain-hooks.sh" "$hook_dir/$hook_name"
