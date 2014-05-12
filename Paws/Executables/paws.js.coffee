@@ -46,6 +46,18 @@ prettify = require('pretty-error').start ->
                For {{#b}}parse{{/b}} and {{#b}}start{{/b}}, allows you to provide a cPaws expression at the
                command-line, to substitute for a file. (If at least one {{#c}}--expression{{/c}} is
                included, the required filname for those operations may be omitted.)
+            
+{{#flag}}   --[no-]start{{/flag}}:
+               Disable the self-scheduling reactor functionality. By default, a Paws
+               reactor runs indefinately, processing combinations when they become
+               available.
+               
+               With the {{#c}}--no-start{{/c}} flag, however, the reactor will shut down as soon as
+               all immediately-known stagings have been completed. This means your
+               program will more intuitively ‘automatically exit,’ but it also means any
+               deferred stagings in your code (stagings that cannot immediately execute,
+               for instance those with ownership-conflicts, or those deferred by timing
+               primitives) may not complete before the reactor shuts down.
          
          
          Paws.js also accepts several environment variables, in the form:
