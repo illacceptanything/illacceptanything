@@ -216,6 +216,8 @@ reactor.Unit = Unit = parameterizable class Unit
       return yes if stagee.complete()
       return yes unless combo = reactor.advance stagee, result
       
+      @current = stagee
+      
       Paws.info 'Stagee: ', stagee
       Paws.info '   Subject: ', combo.subject if combo.subject
       Paws.info '   Message: ', combo.message if combo.message
@@ -233,6 +235,7 @@ reactor.Unit = Unit = parameterizable class Unit
       
       @table.remove accessor: stagee if stagee.complete()
       
+      delete @current
       return yes
 
    # Every time `schedule()` is called on a `Unit`, the implementation is informed that there's at
@@ -245,8 +248,9 @@ reactor.Unit = Unit = parameterizable class Unit
    # attempting to process those combinations
    schedule: ->
       ++@awaitingTicks
+      return if @current?
       
-      loop
+      while @awaitingTicks
          if @realize() then --@awaitingTicks else return
    
    awaitingTicks: 0
