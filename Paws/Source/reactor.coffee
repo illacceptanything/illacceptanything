@@ -54,8 +54,14 @@ reactor.Table = Table = class Table
    
    get: (accessor)-> _(@content).find(accessor: accessor)?.masks ? new Array
    
-   remove: (accessor)->
-      _(@content).remove accessor: accessor
+   # FIXME: Test the remove-conflicting-masks functionality
+   remove: ({accessor, mask})->
+      return unless accessor? or mask?
+      _(@content).remove (entry)->
+         return false if accessor? and entry.accessor != accessor
+         return true unless mask
+         _(entry.masks).remove (m)-> m.conflictsWith mask
+         entry.masks.length == 0
    
    # Returns `true` if a given `Mask` is fully contained by the set of responsibility that a given
    # `accessor` has already been given.
@@ -222,7 +228,7 @@ reactor.Unit = Unit = parameterizable class Unit
          @stage combo.subject.receiver.clone(),
             Unit.receiver_parameters stagee, combo.subject, combo.message
       
-      @table.remove stagee if stagee.complete()
+      @table.remove accessor: stagee if stagee.complete()
       
       return yes
 

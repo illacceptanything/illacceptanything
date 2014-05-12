@@ -121,6 +121,7 @@ describe 'The Paws reactor:', ->
          expect(table.get another_xec).to.not.contain mask_A
          expect(table.get another_xec).to.not.contain mask_B
       
+      # FIXME: Not well-executed, either.
       it 'removes masks as requested', ->
          table = new Table
          
@@ -131,7 +132,7 @@ describe 'The Paws reactor:', ->
          [mask_X, mask_Y] = [new Mask(new Thing), new Mask(new Thing)]
          table.give another_xec, mask_X, mask_Y
          
-         expect(-> table.remove an_xec).not.to.throwError()
+         expect(-> table.remove accessor: an_xec).not.to.throwError()
          expect(table.get an_xec).to.not.contain mask_A
          expect(table.get an_xec).to.not.contain mask_B
          expect(table.get another_xec).to.contain mask_X
