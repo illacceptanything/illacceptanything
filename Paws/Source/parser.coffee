@@ -26,7 +26,7 @@ class Parser
       # Keep track of the current position into the text
       @i = 0
       
-      if opts.root
+      if opts.root and @text.slice(0,2) == '#!'
          @text = @text.split("\n").slice(1).join("\n")
 
    # Accept a single character. If the given +char+ is at the
@@ -139,7 +139,7 @@ Expression::toString = ->
       reset   = '\x1b[' + '39m'
       [before, after] = if use_colour then [magenta, reset] else ['|', '|']
       
-      '{ ' + @source.before() + before + @source.contents() + after + @source.after() + ' }'
+      '{ ' + (@source.before() + before + @source.contents() + after + @source.after()).trim() + ' }'
       
    else
       @source.contents()
