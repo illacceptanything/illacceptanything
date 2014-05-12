@@ -42,6 +42,11 @@ prettify = require('pretty-error').start ->
 {{#flag}}   --help{{/flag}}:        Show usage information
 {{#flag}}   --version{{/flag}}:     Show version information
             
+{{#flag}}   -e "EXPR", --expression="EXPR"{{/flag}}:
+               For {{#b}}parse{{/b}} and {{#b}}start{{/b}}, allows you to provide a cPaws expression at the
+               command-line, to substitute for a file. (If at least one {{#c}}--expression{{/c}} is
+               included, the required filname for those operations may be omitted.)
+         
          
          Paws.js also accepts several environment variables, in the form:
 {{#pre}}   > VAR=value paws.js ...{{/pre}}
@@ -106,6 +111,10 @@ prettify = require('pretty-error').start ->
    process.on 'exit', exit
    process.on 'SIGINT', -> process.exit 0
    
+   # TODO: More robust file resolution
+   readFilesAsync = (files)->
+      bluebird.map files, (file)->
+         fs.readFileAsync(file, 'utf8').then (source)-> { from: file, code: source }
    
 # ---- --- ---- --- ----
    
@@ -118,25 +127,36 @@ prettify = require('pretty-error').start ->
    if (argf.version)
       return version()
    
-   if not argv[1]? then argv.unshift 'start'
-   switch argv[0]
-      
-      when 'parse'
-         # TODO: More robust file resolution
-         return fs.readFileAsync(argv[1], 'utf8').then (source)->
-            expr = Paws.parser.parse(source, {root: true})
-            out.write expr.serialize() + "\n"
-      
-      when 'start'
-         return fs.readFileAsync(argv[1], 'utf8').then (source)->
-            expr = Paws.parser.parse(source, {root: true})
-            
-            here = new Paws.reactor.Unit
-            here.start() unless argf.start == false
-            here.stage new Execution expr
+   sources = _([argf.e, argf.expr, argf.expression])
+      .flatten().compact().map (expression)-> { from: expression, code: expression }
+      .value()
    
-   # If we get nothing we understand, we just print the usage data and terminate.
-   help()
+   help() if _.isEmpty argv[0]
+   choose = -> switch operation = argv.shift()
+      
+      when 'pa', 'parse'
+         readFilesAsync(argv).then (files)->
+            sources.push files...
+            _.forEach sources, (source)->
+               Paws.info "-- Parse-tree for '#{T.bold source.from}':"
+               expr = Paws.parser.parse source.code, root: true
+               out.write expr.serialize() + "\n"
+      
+      when 'st', 'start'
+         readFilesAsync(argv).then (files)->
+            sources.push files...
+            _.forEach sources, (source)->
+               Paws.info "-- Staging '#{T.bold source.from}' from the command-line ..."
+               expr = Paws.parser.parse source.code, root: true
+               
+               here = new Paws.reactor.Unit
+               here.stage new Execution expr
+               
+               here.start() unless argf.start == false
+      
+      else argv.unshift('start', operation) and choose()
+   
+   choose()
 
 prettify.skipNodeFiles()
 bluebird.onPossiblyUnhandledRejection (error)->
