@@ -1,5 +1,7 @@
 `                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 
+process.title = 'Paws.js'
+
 Paws = require './data.coffee'
 
 Paws.debugging = require('./additional.coffee').debugging
