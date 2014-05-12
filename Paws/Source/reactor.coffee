@@ -220,7 +220,7 @@ reactor.Unit = Unit = parameterizable class Unit
       @current = stagee
       
       if process.env['TRACE_REACTOR']
-         Paws.alert "-- #{stagee} ← #{result}"
+         Paws.alert ">> #{stagee} ← #{result}"
          Paws.alert "   #{prior_position.with(context: yes, tag: no).toString()}" if prior_position?
          Paws.alert "   ┗> #{combo.subject} × #{combo.message}" if combo.subject?
       

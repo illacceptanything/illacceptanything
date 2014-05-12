@@ -107,12 +107,13 @@ prettify = require('pretty-error').start ->
       process.exit 1
    
    exit = ->
+      length = salutation.length + 3
       if Paws.use_colour()
          # Get rid of the "^C",
          err.write T.cursor_left() + T.cursor_left()
          err.write T.clr_eol()
          
-         err.write T.cursor_right() + T.cursor_right() + T.cursor_right()
+         err.write T.column_address(T.columns - 1 - length - 2)
          err.write T.enter_blink_mode() unless process.env['NOBLINK']
       
       salutation = '~ '+salutation+' '+ (if Paws.use_colour() then heart else '<3') + "\n"
