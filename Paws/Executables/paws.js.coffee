@@ -20,8 +20,9 @@ prettify = require('pretty-error').start ->
    help = ->
       process.removeListener 'exit', exit
       
-      #  -- stanard 80-column terminal -------------------------------------------------|
-      usage = "\n" + _(figlets).sample() + """
+      #  -- standard 80-column terminal ------------------------------------------------|
+      usage = T.invert( new Array(Math.ceil((T.columns + 1) / 2)).join('- ') ) +
+         "\n" + _(figlets).sample() + """
          
 {{#title}}Usages:{{/title}}
 {{#pre}}   > paws.js [{{#flag}}flags{{/flag}}] {{#op}}operation{{/op}} [params]
