@@ -316,6 +316,7 @@ describe 'The Paws API:', ->
                   thing:  new Label 'foo'
                   world: { stage: sinon.spy() }
                call = (exe, rv)->
+                  # FIXME: This is waaaaay too tightly-coupled. I am clearly bad at TDD.
                   exe.bits.shift().call exe, rv, a.world
                
                it 'are Functions', ->
@@ -388,6 +389,17 @@ describe 'The Paws API:', ->
                   expect(stage.callCount).to.be 2
                   assert stage.getCall(1).calledOn a.world
                   assert stage.getCall(1).calledWith a.caller, result
+               
+               it 're-stage the `caller` immediately if no coconsumption is required', ->
+                  stage = a.world.stage
+                  
+                  result = new Label "A result!"
+                  exe = synchronous -> return result
+                  
+                  call exe, a.caller
+                  expect(stage.callCount).to.be 1
+                  assert stage.getCall(0).calledOn a.world
+                  assert stage.getCall(0).calledWith a.caller, result
                
                it 'call the passed function exactly once, when exhausted', ->
                   some_function = sinon.spy (a, b, c)->
