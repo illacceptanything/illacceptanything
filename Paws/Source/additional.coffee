@@ -17,7 +17,7 @@ module.exports = additional =
          # Patching Tput's column measurement
          if @tput.columns == 80
             @tput.columns = process.stdout.columns
-         process.stdout.on 'resize', -> @tput.columns = process.stdout.columns
+         process.stdout.on 'resize', => @tput.columns = process.stdout.columns
          
          @tput.sgr = (flags...)-> @csi flags.join(';') + 'm'
          @tput.csi = (text)->  '\x1b[' + text
