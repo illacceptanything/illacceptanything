@@ -8,7 +8,8 @@ util = require 'util'
 module.exports =
    Paws = new Object
 
-require('./additional.coffee').debugging.inject Paws
+{debugging} = require('./additional.coffee')
+debugging.inject Paws
 
 # Core data-types
 # ---------------
@@ -290,6 +291,7 @@ Paws.Native = Native = class Native extends Execution
 
 # Debugging output
 # ----------------
+T = debugging.tput
 
 # Convenience to call whatever string-making methods are available on the passed object.
 Paws.inspect = (object)->
@@ -301,12 +303,12 @@ Paws.inspect = (object)->
 Thing.inspectID = (it)-> it.id.slice(-8)
 
 Thing::toString = ->
-   output = Thing.inspectID(this) + (if @name? then ': '+@name else '')
+   output = Thing.inspectID(this) + (if @name? then ': '+T.bold @name else '')
    if @_?.tag == no then output else '['+(@constructor.__name__ or @constructor.name)+' '+output+']'
 
 Thing::inspect = ->
    @toString()
 
 Label::toString = ->
-   output = '“'+@alien+'”' + (if @name? then ': '+@name else '')
+   output = '“'+@alien+'”' + (if @name? then ': '+T.bold @name else '')
    if @_?.tag == no then output else '['+(@constructor.__name__ or @constructor.name)+' '+output+']'
