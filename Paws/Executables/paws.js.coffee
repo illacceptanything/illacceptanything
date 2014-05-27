@@ -165,10 +165,10 @@ prettify = require('pretty-error').start ->
             sources.push files...
             _.forEach sources, (source)->
                Paws.info "-- Staging '#{T.bold source.from}' from the command-line ..."
-               expr = Paws.parser.parse source.code, root: true
+               root = Paws.generateRoot source.code
                
                here = new Paws.reactor.Unit
-               here.stage new Execution expr
+               here.stage root
                
                here.start() unless argf.start == false
       

@@ -30,7 +30,7 @@ parameterizable class Interactive
       
       # TODO: Inject aliens.
       @here = new reactor.Unit
-      @shared_locals = (new Execution).locals
+      @shared_locals = (Paws.generateRoot()).locals
       
       inspector = new Alien (result)->
          process.stdout.write Paws.inspect(result) + "\n"
@@ -119,7 +119,7 @@ parameterizable class Interactive
       # Now, we put both those in the queue, giving the first ownership of the mutex. This prevents
       # the resumer from realizing until the interact-line has become complete(), and thus had its
       # ownership invalidated.
-      execution = new Execution expr
+      execution = Paws.generateRoot expr
       execution.locals = @shared_locals
       execution.rename '<interact: interactive input>'
       

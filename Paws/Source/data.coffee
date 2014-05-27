@@ -42,6 +42,7 @@ Paws.Thing = Thing = parameterizable class Thing
       members = for key, value of representation
          value = Alien.synchronous value if _.isFunction value
          value = @construct value unless value instanceof Thing
+         value.rename key if @_?.names
          relation = Relation(value, @_?.responsible ? yes)
          Thing.pair( key, relation ).responsible()
       
