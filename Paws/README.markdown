@@ -1,4 +1,4 @@
-<img src="https://cloud.githubusercontent.com/assets/200/3139963/5cebc112-e8fc-11e3-9f8f-92ce3bc8c72e.png">
+<img src="http://elliottcable.s3.amazonaws.com/p/paws.js-cathode-3.png">
 <a href="https://travis-ci.org/ELLIOTTCABLE/Paws.js"><img alt='Build status' src="https://travis-ci.org/ELLIOTTCABLE/Paws.js.png"></a><img src="http://elliottcable.s3.amazonaws.com/p/8x8.png"><a href="https://coveralls.io/r/ELLIOTTCABLE/Paws.js"><img alt='Coverage status' src="https://coveralls.io/repos/ELLIOTTCABLE/Paws.js/badge.png?branch=Master"></a><img src="http://elliottcable.s3.amazonaws.com/p/8x8.png"><a href="https://gemnasium.com/ELLIOTTCABLE/Paws.js"><img alt='Dependency status' src="https://gemnasium.com/ELLIOTTCABLE/Paws.js.png"></a><img src="http://elliottcable.s3.amazonaws.com/p/8x8.png"><a href="http://stillmaintained.com/ELLIOTTCABLE/Paws.js"><img alt='Maintenance status' src="http://stillmaintained.com/ELLIOTTCABLE/Paws.js.png"></a>
 
 **Hello, friend.** This is a JavaScript implementation of the Paws machine, intended both to be included
