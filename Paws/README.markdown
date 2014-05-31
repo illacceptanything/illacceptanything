@@ -30,7 +30,7 @@ they implemented in this codebase); so anybody trying to write those abstraction
 probably going to have some of their work invalidated in the future. **tl;dr: the Paws design isn't
 stable, yet!**
 
-**Okay, well, I like language design. Can I write stuff on top of this machine?** I'm so glad you
+**“Okay, well, I like language design. Can I write stuff on top of this machine?”** I'm so glad you
 asked! You're my favourite kind of person! Assuming you understand the caveat mentioned above (that
 this project is in flux), you can *absolutely* start experimenting with abstractions on top of the
 Paws machine.
