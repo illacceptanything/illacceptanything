@@ -178,6 +178,33 @@ Paws.Execution = Execution = class Execution extends Thing
       to.locals   = @locals
 
 Paws.Alien = Alien = class Alien extends Execution
+   
+   # An `Alien` is an `Execution` that's implemented with JavaScript code, instead of as a series of
+   # Paws combinations. These are the primitive building-blocks with which Paws programs are built.
+   # 
+   # Most `Alien`s are exposed to Paws code through 'bags' of `Alien`s stored under useful names on
+   # the `locals` of the first (root-level) `Execution` in a Paws program; notably, the primitives
+   # described by the Paws specification are exposed in such a bag, named "infrastructure."
+   # 
+   # `Alien`s in this implementation consist of a series of 'bits', each of which is a JavaScript
+   # `Function`. Each 'bit' of the `Alien` implements a (clearly synchronous, as they are written in
+   # JavaScript) set of operations to be preformed upon the next resumption of the `Execution`
+   # represented by this `Alien`. (It can be easier to conceptualize an `Alien` as an explicit
+   # coroutine, with the `return` statement of one bit and the arguments of the following bit acting
+   # somewhat like a traditional `yield` statement.)
+   # 
+   # The first `Function`-bit will be invoked upon resumption of the `Alien`, and then discarded
+   # (thus causing the following `Function` to receive the resumption thereafter.) Upon resumption,
+   # the `Function` will be invoked with the following arguments and environment:
+   # 
+   #  1. `result`, whatever resumption-value was queued to cause this resumption
+   #  2. `unit` (optional), the `Unit` in which this resumption is relevant (thus providing access
+   #     to the current `Unit`'s staging-`queue` and responsibility-`table`.)
+   #  
+   # In addition, the `this` at invocation will be the `Alien` itself, giving the bit-body
+   # convenient access to a place to store incrementally-constructed results. (Note that the actual
+   # `Alien` object referred to during the invocation of subsequent bits may *not* be the same, as
+   # the `Alien` may have been branched!)
    constructor: constructify(return:@) (@bits...)->
    
    complete: -> !this.bits.length
