@@ -348,7 +348,7 @@ T = debugging.tput
 
 # Convenience to call whatever string-making methods are available on the passed object.
 Paws.inspect = (object)->
-   object.inspect?() or
+   object?.inspect?() or
    object instanceof Thing && Thing::inspect.apply(object) or
    util.inspect object
 

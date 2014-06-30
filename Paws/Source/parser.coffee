@@ -129,22 +129,27 @@ class Serializer
 #                                      colour-codes instead of Unicode delimiters.
 # @option {boolean=true} tag:       Include the [Type ...] tag around the output.
 Expression::toString = ->
-   if not @source?
-      return new Serializer(this).serialize()
+   contents = if not @source?
+      new Serializer(this).serialize()
    
-   output = if @_?.context
+   else if @_?.context
       use_colour = Paws.use_colour and (@_?.colour ? @_?.color ? true)
       
       magenta = '\x1b[' + '95m'
       reset   = '\x1b[' + '39m'
-      [before, after] = if use_colour then [magenta, reset] else ['|', '|']
+      [before_char, after_char] = if use_colour then [magenta, reset] else ['|', '|']
       
-      '{ ' + (@source.before() + before + @source.contents() + after + @source.after()).trim() + ' }'
+      before = @source.before().split("\n").slice(-3).join("\n") + before_char
+      after  = after_char + @source.after().split("\n").slice(0, 3).join("\n")
       
+      (before + @source.contents() + after).trim()
+   
    else
       @source.contents()
    
-   if @_?.tag == no then output else '['+(@constructor.__name__ or @constructor.name)+' '+output+']'
+   contents = '{'+contents+'}'
+   
+   if @_?.tag == no then contents else '['+(@constructor.__name__ or @constructor.name)+' '+contents+']'
 
 
 module.exports =

@@ -90,7 +90,8 @@ reactor.Combination = Combination = class Combination
 Paws.Thing::receiver = new Alien (rv, world)->
    [_, caller, subject, message] = rv.toArray()
    results = subject.find message
-   Paws.notice "No results on #{subject.toString()} for #{message.toString()}." unless results[0]
+   # FIXME: Welp, this is horrible error-handling. "Print a warning and freeze forevah."
+   Paws.notice "No results on #{Paws.inspect subject} for #{Paws.inspect message}" unless results[0]
    world.stage caller, results[0].valueish() if results[0]
 .rename 'thing✕'
 
