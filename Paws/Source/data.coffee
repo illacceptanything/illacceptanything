@@ -239,8 +239,8 @@ Paws.Alien = Alien = class Alien extends Execution
    #    `Execution`, in the coproductive pattern.
    # this
    #  : The original `this`. That is, the generated `Execution` that's currently being run.
-   # world
-   #  : The current `World` at the time of execution, as provided by the reactor.
+   # unit
+   #  : The current `Unit` at the time of execution, as provided by the reactor.
    # 
    # After your function executes, if it provides a non-null JavaScript return value, then the
    # `caller` provided as the first resumption-value Paws-side will be resumed one final time with
@@ -248,7 +248,7 @@ Paws.Alien = Alien = class Alien extends Execution
    # result after all arguments have been acquired.)
    # 
    # @param { function(... [Thing]
-   #                , this:{caller: Execution, this, world: World}): ?Thing }
+   #                , this:{caller: Execution, this, unit: Unit}): ?Thing }
    #    func   The synchronous function we'll generate an Execution to match
    #---
    # FIXME: Replace the holdover ES5 methods in this with IE6-compat LoDash functions
@@ -284,7 +284,7 @@ Paws.Alien = Alien = class Alien extends Execution
          # 
          # In addition to these, it's got one final argument (the actual resumption-value with which
          # this final bit is invoked, **after** all the other bits have been exhausted), and the
-         # World passed in by the reactor.
+         # Unit passed in by the reactor.
          #
          # These values are curred into a function we construct within the body-string below, that
          # proceeds to provide the *actual* arguments to the synchronous `func`, as well as
@@ -294,7 +294,7 @@ Paws.Alien = Alien = class Alien extends Execution
          @bits[arity] = Function.apply(null, ['Paws', 'func', 'caller'].concat(
             Array(arity + 1).join('_').split(''), 'here', """
                var rv = func.apply({ caller: caller, this: this
-                                   , world: arguments[arguments.length - 1] }
+                                   , unit: arguments[arguments.length - 1] }
                                  , [].slice.call(arguments, 3) )
                if (typeof rv !== 'undefined' && rv !== null) {
                   here.stage(caller, rv) }

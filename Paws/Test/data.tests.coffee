@@ -314,10 +314,10 @@ describe 'The Paws API:', ->
                beforeEach -> a =
                   caller: new Execution
                   thing:  new Label 'foo'
-                  world: { stage: sinon.spy() }
+                  unit: { stage: sinon.spy() }
                call = (exe, rv)->
                   # FIXME: This is waaaaay too tightly-coupled. I am clearly bad at TDD.
-                  exe.bits.shift().call exe, rv, a.world
+                  exe.bits.shift().call exe, rv, a.unit
                
                it 'are Functions', ->
                   exe = synchronous (a, b, c)->
@@ -326,7 +326,7 @@ describe 'The Paws API:', ->
                   expect(exe.bits[2]).to.be.a Function
                   expect(exe.bits[3]).to.be.a Function
                
-               it 'expect a caller, RV, and world', ->
+               it 'expect a caller, RV, and unit', ->
                   exe = synchronous (a, b, c)->
                   expect(exe.bits[0]).to.have.length 2 # `caller`-curry
                   expect(exe.bits[1]).to.have.length 3
@@ -353,52 +353,52 @@ describe 'The Paws API:', ->
                   assert bits[3].calledWith a.caller
                
                it 're-stage the `caller` after each coproductive consumption', ->
-                  stage = a.world.stage
+                  stage = a.unit.stage
                   exe = synchronous (a, b, c)->
                   
                   call exe, a.caller
                   expect(stage.callCount).to.be 1
-                  assert stage.getCall(0).calledOn a.world
+                  assert stage.getCall(0).calledOn a.unit
                   assert stage.getCall(0).calledWith a.caller, exe
                   
                   call exe, new Label 123
                   expect(stage.callCount).to.be 2
-                  assert stage.getCall(1).calledOn a.world
+                  assert stage.getCall(1).calledOn a.unit
                   assert stage.getCall(1).calledWith a.caller, exe
                   
                   call exe, new Label 456
                   expect(stage.callCount).to.be 3
-                  assert stage.getCall(2).calledOn a.world
+                  assert stage.getCall(2).calledOn a.unit
                   assert stage.getCall(2).calledWith a.caller, exe
                   
                   call exe, new Label 789
                   expect(stage.callCount).to.not.be 4
                
                it 're-stage the `caller` after all coproduction if a result is returned', ->
-                  stage = a.world.stage
+                  stage = a.unit.stage
                   
                   result = new Label "A result!"
                   exe = synchronous (a)-> return result
                   
                   call exe, a.caller
                   expect(stage.callCount).to.be 1
-                  assert stage.getCall(0).calledOn a.world
+                  assert stage.getCall(0).calledOn a.unit
                   assert stage.getCall(0).calledWith a.caller, exe
                   
                   call exe, new Label 123
                   expect(stage.callCount).to.be 2
-                  assert stage.getCall(1).calledOn a.world
+                  assert stage.getCall(1).calledOn a.unit
                   assert stage.getCall(1).calledWith a.caller, result
                
                it 're-stage the `caller` immediately if no coconsumption is required', ->
-                  stage = a.world.stage
+                  stage = a.unit.stage
                   
                   result = new Label "A result!"
                   exe = synchronous -> return result
                   
                   call exe, a.caller
                   expect(stage.callCount).to.be 1
-                  assert stage.getCall(0).calledOn a.world
+                  assert stage.getCall(0).calledOn a.unit
                   assert stage.getCall(0).calledWith a.caller, result
                
                it 'call the passed function exactly once, when exhausted', ->
@@ -427,7 +427,7 @@ describe 'The Paws API:', ->
                   call exe, things.third
                   
                   assert some_function.calledWithExactly(
-                     things.first, things.second, things.third, a.world)
+                     things.first, things.second, things.third, a.unit)
                
                it 'inject context into the passed function', ->
                   some_function = sinon.spy (arg)->
@@ -444,9 +444,9 @@ describe 'The Paws API:', ->
                   expect(some_function.firstCall.thisValue.this).to.be.an Execution
                   expect(some_function.firstCall.thisValue.this).to.be exe
                   
-                  expect(some_function.firstCall.thisValue).to.have.property 'world'
-                 #expect(some_function.firstCall.thisValue.world).to.be.a World # FIXME
-                  expect(some_function.firstCall.thisValue.world).to.be a.world
+                  expect(some_function.firstCall.thisValue).to.have.property 'unit'
+                 #expect(some_function.firstCall.thisValue.unit).to.be.a Unit # FIXME
+                  expect(some_function.firstCall.thisValue.unit).to.be a.unit
       
       describe '(Native / libspace code)', ->
          Expression = Paws.parser.Expression
