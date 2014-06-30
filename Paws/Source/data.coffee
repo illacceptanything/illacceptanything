@@ -172,6 +172,7 @@ Paws.Execution = Execution = class Execution extends Thing
    # NOTE: This will never be called directly, as the Execution constructor ensures that actual
    #       instances of raw Execution are impossible, and both Alien and Native wrap this.
    # FIXME: ‘Cloning’ locals ... *isn't*, here. I need to figure out what I want to do with this.
+   # TODO: nuke-API equivalent of lib-API's `branch()()`
    clone: (to)->
       super to
       to.pristine    = @pristine
@@ -213,6 +214,7 @@ Paws.Alien = Alien = class Alien extends Execution
    
    clone: (to)->
       super (to ?= new Alien)
+      _.map Object.getOwnPropertyNames(this), (key)=> to[key] = this[key]
       to.bits = @bits.slice 0
       return to
 
