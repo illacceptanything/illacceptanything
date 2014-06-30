@@ -53,6 +53,26 @@ Paws.Thing = Thing = parameterizable class Thing
    #      `Execution` isn't defined yet.
    receiver: undefined
    
+   at: (idx)->       @metadata[idx]?.to
+   set: (idx, to)->  @metadata[idx] = Relation.from to
+   
+   push: (elements...)->
+      @metadata = @metadata.concat Relation.from elements
+   pop: ->
+      @metadata.pop()
+   shift: ->
+      noughty = @metadata.shift()
+      result = @metadata.shift()
+      @metadata.unshift noughty
+      result
+   unshift: (other)->
+      # TODO: include-noughtie option
+      noughty = @metadata.shift()
+      @metadata.unshift other
+      @metadata.unshift noughty
+   
+   compare: (to)-> to == this
+   
    # Creates a copy of the `Thing` it is called on. Alternatively, can be given an extant `Thing`
    # copy this `Thing` *to*, over-writing that `Thing`'s metadata. In the process, the
    # `Relation`s within this relation are themselves cloned, so that changes to the new clone's
@@ -64,12 +84,6 @@ Paws.Thing = Thing = parameterizable class Thing
       to.name = @name unless to.name?
       
       return to
-   
-   compare: (to)-> to == this
-   
-   at: (idx)-> @metadata[idx]?.to
-   push: (elements...)->
-      @metadata = @metadata.concat Relation.from elements
    
    toArray: (cb)-> @metadata.map (rel)-> (cb ? identity) rel?.to
    
@@ -144,6 +158,13 @@ Paws.Label = Label = class Label extends Thing
    compare: (to)->
       to instanceof Label and
       to.alien == @alien
+   
+   # FIXME: I need to double-check the Unicode properties of this. I'd really like to explode by
+   #        codepoint, and I'm not sure how JS handles `split()` and Unicode.
+   explode: ->
+      it = new Thing
+      it.push.apply it, _.map @alien.split(''), (char)-> new Label char
+      it
 
 
 Paws.Execution = Execution = class Execution extends Thing
