@@ -174,8 +174,9 @@ Paws.Execution = Execution = class Execution extends Thing
    # FIXME: ‘Cloning’ locals ... *isn't*, here. I need to figure out what I want to do with this.
    clone: (to)->
       super to
-      to.pristine = @pristine
-      to.locals   = @locals
+      to.pristine    = @pristine
+      to.locals      = @locals
+      to.resumptions = @resumptions if @resumptions?
 
 Paws.Alien = Alien = class Alien extends Execution
    
@@ -206,6 +207,7 @@ Paws.Alien = Alien = class Alien extends Execution
    # `Alien` object referred to during the invocation of subsequent bits may *not* be the same, as
    # the `Alien` may have been branched!)
    constructor: constructify(return:@) (@bits...)->
+      @resumptions = @bits.length
    
    complete: -> !this.bits.length
    
@@ -255,6 +257,7 @@ Paws.Alien = Alien = class Alien extends Execution
    @synchronous: (func) ->
       body = ->
          arity = func.length
+         @resumptions = arity + 1
          
          # First, we construct the *middle* bits of the coproductive pattern (that is, the ones that
          # handle all but the *last* actual argument the passed function requires.) These are pretty
@@ -338,4 +341,10 @@ Thing::inspect = ->
 
 Label::toString = ->
    output = '“'+@alien+'”' + (if @name? then ': '+T.bold @name else '')
+   if @_?.tag == no then output else '['+(@constructor.__name__ or @constructor.name)+' '+output+']'
+
+Execution::toString = ->
+   output = Thing.inspectID(this) +
+      (if @name? then ': '+T.bold @name else '') +
+      (if @resumptions? then new Array(@resumptions - @bits.length).join('()') else '')
    if @_?.tag == no then output else '['+(@constructor.__name__ or @constructor.name)+' '+output+']'
