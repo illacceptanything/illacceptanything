@@ -19,7 +19,6 @@ Paws.Thing = Thing = parameterizable class Thing
       @metadata = new Array
       @push elements... if elements.length
       
-      
       @metadata.unshift undefined if @_?.noughtify != no
    
    rename: (name)-> @name = name ; return this
@@ -37,7 +36,6 @@ Paws.Thing = Thing = parameterizable class Thing
    # 
    # @option responsible: Whether to mark the structure as `responsible` for the objects passed in.
    #---
-   # TODO: Make recursive. Don't know how that didn't happen in the first place.
    # TODO: Support functions, so this can replace µPaws' applyGlobals.
    @construct: (representation)->
       members = for key, value of representation
@@ -85,8 +83,6 @@ Paws.Thing = Thing = parameterizable class Thing
       
       return to
    
-   toArray: (cb)-> @metadata.map (rel)-> (cb ? identity) rel?.to
-   
    # This implements the core algorithm of the default jux-receiver; this algorithm is very
    # crucial to Paws' object system:
    # 
@@ -100,20 +96,14 @@ Paws.Thing = Thing = parameterizable class Thing
    # most *intended* purposes, this should work fine; but it departs slightly from the spec.
    # We'll see if we keep it that way.
    #---
-   # FIXME: The only place that this can reasonably be used, the default-receiver, can't even use
-   #        this as it's not defined in this file. Refactor me.
-   find = (key)->
-      # TODO: Sanity-check `key`
+   # TODO: `raw` option, to return the `Relation`s, instead of the wrapped `Thing`s
+   find: (key)->
+      key = new Label(key) unless key instanceof Thing
       results = @metadata.filter (rel)->
          rel?.to?.isPair?() and key.compare rel.to.at 1
       _.pluck(results.reverse(), 'to')
    
-   #---
-   # (Convenience method to `find` from nukespace. Accepts JavaScript primitives as keys.)
-   # TODO: `raw` option, to return the `Relation`s, instead of the wrapped `Thing`s
-   find: (key)->
-      key = new Label(key) unless key instanceof Thing
-      find.call this, key
+   toArray: (cb)-> @metadata.map (rel)-> (cb ? identity) rel?.to
    
    # TODO: Figure out whether pairs should be responsible for their children
    @pair: (key, value)->
