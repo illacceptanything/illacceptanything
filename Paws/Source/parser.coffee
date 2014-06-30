@@ -20,7 +20,7 @@ Expression = parameterizable class Expression
 
 # A simple recursive descent parser with no backtracking. No lexing is needed here.
 class Parser
-   labelCharacters = /[^(){} \n]/ # Not currently supporting quote-delimited labels
+   labelCharacters = /[^(){} \r\n]/ # Not currently supporting quote-delimited labels
 
    constructor: (@text, opts = {})->
       # Keep track of the current position into the text
@@ -40,7 +40,7 @@ class Parser
 
    # Swallow all whitespace
    whitespace: ->
-      true while @accept(' ') || @accept('\n')
+      true while @accept(' ') || @accept('\r') || @accept('\n')
       true
 
    # Sets a SourceRange on a expression
