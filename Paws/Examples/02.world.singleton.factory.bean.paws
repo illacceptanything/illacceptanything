@@ -1,11 +1,11 @@
-#!/usr/bin/env node ../../Executables/paws.js --no-start
+#!/usr/bin/env paws.js --no-start
 implementation void()
 
-    Let's try an unnecessarily complex approach to printing something. We'll save it into the data-
+--  Let's try an unnecessarily complex approach to printing something. We'll save it into the data-
     graph, and then read it back out to print it:
 
 (  infrastructure execution stage()
-      (infrastructure affix() (locals)) hi!                                                        )
+     (infrastructure affix() (locals)) Hi!                                                         )
 
 (  infrastructure execution stage()
-      (implementation console inspect) (infrastructure unaffix() (locals))                         )
+     (implementation console inspect) (infrastructure unaffix() (locals))                          )
