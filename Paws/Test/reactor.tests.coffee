@@ -277,7 +277,7 @@ describe 'The Paws reactor:', ->
          expect(combo.message).to.be something.contents
       
       it 'should dive into sub-expressions, combining against locals again', ->
-         root = parse 'something (other)'; expr = root.next.next; other = expr.contents.next
+         root = parse 'something [other]'; expr = root.next.next; other = expr.contents.next
          an_xec = new Native root
          advance an_xec, null
          
@@ -288,7 +288,7 @@ describe 'The Paws reactor:', ->
       
       it "should retain the previous result at the parent's level,
           and juxtapose against that when exiting", ->
-         root = parse 'something (other)'
+         root = parse 'something [other]'
          an_xec = new Native root
          advance an_xec, null
          
@@ -301,7 +301,7 @@ describe 'The Paws reactor:', ->
          expect(combo.message).to.be other
       
       it 'should descend into multiple levels of nested-immediate sub-expressions', ->
-         root = parse 'something (((other)))'
+         root = parse 'something [[[other]]]'
          an_xec = new Native root
          advance an_xec, null
          # ~locals <- 'something'
@@ -329,7 +329,7 @@ describe 'The Paws reactor:', ->
          # something <- <meta-meta-other>
       
       it 'should handle an *immediate* sub-expression', ->
-         root = parse '(something) other'; other = root.next.next
+         root = parse '[something] other'; other = root.next.next
          an_xec = new Native root
          advance an_xec, null
          # ~locals <- 'something'
@@ -347,7 +347,7 @@ describe 'The Paws reactor:', ->
          # <meta-something> <- 'other'
       
       it 'should descend into multiple levels of *immediate* nested sub-expressions', ->
-         root = parse '(((other)))'
+         root = parse '[[[other]]]'
          an_xec = new Native root
          advance an_xec, null
          # ~locals <- 'other'

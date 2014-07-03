@@ -20,7 +20,7 @@ Expression = parameterizable class Expression
 
 # A simple recursive descent parser with no backtracking. No lexing is needed here.
 class Parser
-   labelCharacters = /[^(){} \r\n]/ # Not currently supporting quote-delimited labels
+   labelCharacters = /[^\[\]{} \r\n]/ # Not currently supporting quote-delimited labels
 
    constructor: (@text, opts = {})->
       # Keep track of the current position into the text
@@ -73,7 +73,7 @@ class Parser
          @with_range(new constructor(it), start)
 
    # Subexpression
-   paren: -> @braces('()', (it)-> it)
+   paren: -> @braces('[]', (it)-> it)
    # Execution
    scope: -> @braces('{}', Paws.Native)
 
@@ -116,7 +116,7 @@ class Serializer
          text += ' ' if next
       
       if contents instanceof Expression
-         text += '('+@serialize(contents, '')+')'
+         text += '['+@serialize(contents, '')+']'
          text += ' ' if next
       
       return text unless next?

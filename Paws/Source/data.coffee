@@ -29,7 +29,7 @@ Paws.Thing = Thing = parameterizable class Thing
    # 
    # For instance, given `{foo: thing_A, bar: thing_B}` will be constructed into the following:
    #    
-   #    (, (, ‘foo’, thing_B), (, ‘bar’, thing_B))
+   #    [, [, ‘foo’, thing_B], [, ‘bar’, thing_B]]
    # 
    # The ‘pair-ish’ values are always owned by the generated structure; as are, by default, the objects
    # passed in. The latter is overridable with `.with(responsible: no)`.
@@ -347,17 +347,17 @@ Thing.inspectID = (it)-> it.id.slice(-8)
 
 Thing::toString = ->
    output = Thing.inspectID(this) + (if @name? then ': '+T.bold @name else '')
-   if @_?.tag == no then output else '['+(@constructor.__name__ or @constructor.name)+' '+output+']'
+   if @_?.tag == no then output else '<'+(@constructor.__name__ or @constructor.name)+' '+output+'>'
 
 Thing::inspect = ->
    @toString()
 
 Label::toString = ->
    output = '“'+@alien+'”' + (if @name? then ': '+T.bold @name else '')
-   if @_?.tag == no then output else '['+(@constructor.__name__ or @constructor.name)+' '+output+']'
+   if @_?.tag == no then output else '<'+(@constructor.__name__ or @constructor.name)+' '+output+'>'
 
 Execution::toString = ->
    output = Thing.inspectID(this) +
       (if @name? then ': '+T.bold @name else '') +
-      (if @resumptions? then new Array(@resumptions - @bits.length).join('()') else '')
-   if @_?.tag == no then output else '['+(@constructor.__name__ or @constructor.name)+' '+output+']'
+      (if @resumptions? then new Array(@resumptions - @bits.length).join('[]') else '')
+   if @_?.tag == no then output else '<'+(@constructor.__name__ or @constructor.name)+' '+output+'>'

@@ -166,7 +166,7 @@ advance = (response)->
       # DOCME: wat.
       {value, next} = @stack.pop()
       @position = next
-      return new Combination value, upcoming.contents ? this # Special-cased self-reference, `()`
+      return new Combination value, upcoming.contents ? this # Special-cased self-reference, `[]`
    
    # DOCME: wat.
    {contents, next} = @position

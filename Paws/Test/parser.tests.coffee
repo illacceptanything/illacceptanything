@@ -39,14 +39,14 @@ describe 'Parser', ->
       expect(expr.next.contents.alien.toString()).to.be('world')
 
    it 'should parse subexpressions', ->
-      expr = parser.parse('(hello) (world)').next
+      expr = parser.parse('[hello] [world]').next
       expect(expr.contents).to.be.a(parser.Expression)
       expect(expr.contents.next.contents).to.be.a(Paws.Label)
       expect(expr.next.contents).to.be.a(parser.Expression)
       expect(expr.next.contents.next.contents).to.be.a(Paws.Label)
 
    it 'should parse Execution', ->
-      expr = parser.parse('{hello world}').next
+      expr = parser.parse('{ hello world }').next
       expect(expr.contents).to.be.a(Paws.Native)
 
    it 'should keep track of locations', ->
@@ -76,7 +76,7 @@ describe 'Parser', ->
       expect(world_label.source.end).to.be(11)
 
    it 'should keep track of tricky locations', ->
-      expr = parser.parse(' h(  a{b  } )')
+      expr = parser.parse(' h[  a{b  } ]')
 
       contains_same = (expr)->
          expect(expr.source.contents()).to.be(expr.contents.source.contents())
@@ -87,7 +87,7 @@ describe 'Parser', ->
 
       list = hello.next
       contains_same(list)
-      expect(list.source.contents()).to.be('(  a{b  } )')
+      expect(list.source.contents()).to.be('[  a{b  } ]')
 
       a = list.contents.next
       contains_same(a)
@@ -110,10 +110,10 @@ describe 'Serializer', ->
       expect(expr.serialize()).to.be ''
    
    it 'generates no whitespace at the ends', ->
-      expr = parser.parse('foo (bar) baz')
+      expr = parser.parse('foo [bar] baz')
       expect(expr.serialize()).to.not.match /^\s+|\s+$/
       
-      expr = parser.parse('foo (bar) (baz)')
+      expr = parser.parse('foo [bar] [baz]')
       expect(expr.serialize()).to.not.match /^\s+|\s+$/
    
    it 'generates quotes around Labels', ->
@@ -121,17 +121,17 @@ describe 'Serializer', ->
       expect(expr.serialize()).to.be '"foo"'
    
    it 'generates parenthesis around sub-expressions', ->
-      expr = parser.parse('(foo)')
-      expect(expr.serialize()).to.be '("foo")'
+      expr = parser.parse('[foo]')
+      expect(expr.serialize()).to.be '["foo"]'
    
    it 'puts spaces between adjacent Labels', ->
       expr = parser.parse('foo bar')
       expect(expr.serialize()).to.be '"foo" "bar"'
    
    it 'puts no space inside the start or end of expressions', ->
-      expr = parser.parse('abc (def) ghi')
-      expect(expr.serialize()).to.be '"abc" ("def") "ghi"'
+      expr = parser.parse('abc [def] ghi')
+      expect(expr.serialize()).to.be '"abc" ["def"] "ghi"'
    
    it 'handles complex nested expressions', ->
-      expr = parser.parse('(bar ((foo))) baz')
-      expect(expr.serialize()).to.be '("bar" (("foo"))) "baz"'
+      expr = parser.parse('[bar [[foo]]] baz')
+      expect(expr.serialize()).to.be '["bar" [["foo"]]] "baz"'

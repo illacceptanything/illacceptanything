@@ -111,7 +111,7 @@ parameterizable class Interactive
          inspector.append superexpr
          expr = inspector
       else
-         expr = parser.parse '<inspect> ('+code+')'
+         expr = parser.parse '<inspect> ['+code+']'
       
       Paws.info "-- Generated expression to evaluate: " +
          expr.with(context: yes, tag: no).toString()
