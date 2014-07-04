@@ -13,7 +13,7 @@ prettify = require('pretty-error').start ->
    
    out = process.stdout
    err = process.stderr
-
+   
    heart = '💖 '
    salutation = 'Paws loves you. Bye!'
    
@@ -25,37 +25,46 @@ prettify = require('pretty-error').start ->
       #  -- standard 80-column terminal ------------------------------------------------|
       usage = seperator + "\n" + _(figlets).sample() + """
          
-{{#title}}Usages:{{/title}}
-{{#pre}}   > paws.js [{{#flag}}flags{{/flag}}] {{#op}}operation{{/op}} [params]
-            > paws.js {{#u}}file.paws{{/u}} [--] [arguments]
-            > paws.js {{#op}}interact{{/op}}
-            > paws.js {{#op}}parse{{/op}} {{#u}}file.paws{{/u}}{{/pre}}
+{{#title}}Usage:{{/title}}
+{{#pre}}{{prompt}} paws.js [{{#bgflag}}flags{{/bgflag}}] {{#bgop}}operation{{/bgop}} [operation parameters]
+         
+           # for example,
+         {{prompt}} paws.js {{#u}}foo.paws{{/u}} [[--] arguments]
+         {{prompt}} paws.js {{#bgop}}interact{{/bgop}}
+         {{prompt}} paws.js {{#bgop}}parse{{/bgop}} {{#u}}bar.paws{{/u}}{{/pre}}
          
          The first non-flag argument will be an operation to preform; the second depends
          on the operation, but is usually a path to a file to load. If no operation is
-         instructed, then the `start` operation is used.
+         instructed, then the {{#op}}start{{/op}} operation is used.
+         
+         In true UNIX style, single-letter flags may be combined serially; that is,
+         {{#c}}-aBc{{/c}} is synonymous with {{#c}}-a -B -c{{/c}}. Furthermore, all arguments following a
+         bare {{#c}}--{{/c}} are passed to the program un-parsed (that is, even if it's a flag that
+         would otherwise be interpreted by the Paws.js CLI, it will be ignored and passed
+         verbatim to the Paws runtime.)
          
 {{#title}}Operations:{{/title}}
-            [<none>|{{#op}}start{{/op}}] {{#u}}file.paws{{/u}}      Start the Paws reactor, load the given file
+            {{#op}}start{{/op}} {{#u}}filename.paws{{/u}}           Start the Paws reactor, load the given unit
+            {{#op}}parse{{/op}} {{#u}}filename.paws{{/u}}           Show the computed parse-tree for a cPaws file
             {{#op}}interact{{/op}}                      Begin an interactive Paws session (a ‘repl’)
-            {{#op}}parse{{/op}} {{#u}}file.paws{{/u}}               Show the computed parse-tree for a cPaws file
          
 {{#title}}Flags:{{/title}}
-{{#flag}}   --help{{/flag}}:        Show usage information
+{{#flag}}   --help{{/flag}}:        Show this usage information
 {{#flag}}   --version{{/flag}}:     Show version information
             
-{{#flag}}   -e "EXPR", --expression="EXPR"{{/flag}}:
-               For {{#b}}parse{{/b}} and {{#b}}start{{/b}}, allows you to provide a cPaws expression at the
-               command-line, to substitute for a file. (If at least one {{#c}}--expression{{/c}} is
-               included, the required filname for those operations may be omitted.)
+{{#flag}}   -e "EXPR"{{/flag}},{{#flag}} --expression="EXPR"{{/flag}}:
+               For {{#op}}parse{{/op}} and {{#op}}start{{/op}}, allows you to provide a cPaws expression at the
+               command-line, to substitute for a file. (If at least one {{#c}}--expression{{/c}}
+               is included, the filname for those operations, normally a required
+               parameter, may be omitted.)
             
 {{#flag}}   --[no-]start{{/flag}}:
-               Disable the self-scheduling reactor functionality. By default, a Paws
-               reactor runs indefinately, processing combinations when they become
-               available.
+               Disable the self-scheduling reactor functionality. Under normal
+               circumstances (i.e. {{#c}}--start{{/c}}, the default) a Paws reactor runs
+               indefinately, processing combinations when they become available.
                
-               With the {{#c}}--no-start{{/c}} flag, however, the reactor will shut down as soon as
-               all immediately-known stagings have been completed. This means your
+               With the {{#c}}--no-start{{/c}} flag, however, the reactor will shut down as soon
+               as all immediately-known stagings have been completed. This means your
                program will more intuitively ‘automatically exit,’ but it also means any
                deferred stagings in your code (stagings that cannot immediately execute,
                for instance those with ownership-conflicts, or those deferred by timing
@@ -63,7 +72,7 @@ prettify = require('pretty-error').start ->
          
          
          Paws.js also accepts several environment variables, in the form:
-{{#pre}}   > VAR=value paws.js ...{{/pre}}
+{{#pre}}{{prompt}} VAR=value paws.js ...{{/pre}}
          
 {{#title}}Variables:{{/title}}
             {{#b}}SILENT{{/b}}=[true|false]           Suppress all output from Paws.js itself
@@ -84,22 +93,25 @@ prettify = require('pretty-error').start ->
          heart: if Paws.use_colour() then heart else '<3'
          b: ->(text, r)-> T.bold r text
          u: ->(text, r)-> T.underline r text
-         c: ->(text, r)-> T.invert r text
+         c: ->(text, r)-> if Paws.use_colour() then T.invert r text else '`'+r(text)+'`'
          
          op:   ->(text, r)-> T.fg 2, r text
+         bgop: ->(text, r)-> T.bg 2, r text
          flag: ->(text, r)-> T.fg 6, r text
+         bgflag: ->(text, r)-> T.bg 6, r text
          
          title: ->(text, r)-> T.bold T.underline r text
          link:  ->(text, r)->
             if Paws.use_colour() then T.sgr(34) + T.underline(r text) + T.sgr(39) else r text
+         prompt: -> T.bg 7,'$'
          pre:  ->(text, r)->
-            if Paws.use_colour()
-               lines = text.split "\n"
-               lines = _(lines).map (line)->
-                  sanitized_line = line.replace /\{\{\{?[^}]+\}?\}\}/g, ''
-                  line + new Array(T.columns - sanitized_line.length + 1).join(' ')
-               T.invert r lines.join("\n")
-            else r text
+            lines = text.split "\n"
+            lines = _(lines).map (line)->
+               line = r line
+               sgr_sanitized_line = line.replace /\033.*?m/g, ''
+               spacing = new Array(T.columns - sgr_sanitized_line.length - 4).join(' ')
+               '  ' + (if Paws.use_colour() then T.invert T.fg 10, ' ' + line + spacing else line) + '  '
+            lines.join("\n")
       
       version()
    
