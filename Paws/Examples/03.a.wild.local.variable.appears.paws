@@ -21,4 +21,4 @@ implementation void[]
      [infrastructure]                                                                              ]
 
 [  # execution stage[]
-     [implementation console print] Go!.PAWS!                                                      ]
+     [implementation console print] “Go! PAWS!”                                                    ]

@@ -20,7 +20,8 @@ Expression = parameterizable class Expression
 
 # A simple recursive descent parser with no backtracking. No lexing is needed here.
 class Parser
-   labelCharacters = /[^\[\]{} \r\n]/ # Not currently supporting quote-delimited labels
+   # FIXME: This won't handle a standalone-closing-quote properly.
+   labelCharacters = /[^\[\]{}"“” \r\n]/
 
    constructor: (@text, opts = {})->
       # Keep track of the current position into the text
@@ -29,14 +30,22 @@ class Parser
       if opts.root and @text.slice(0,2) == '#!'
          @text = @text.split("\n").slice(1).join("\n")
 
+   from: (start, end = @i)->
+      @text.substring start, end
+
    # Accept a single character. If the given +char+ is at the
    # current position, proceed and return true.
    accept: (char)->
       @text[@i] is char && ++@i
 
+   # TODO: These should raise an exception
    expect: (char)->
-      # TODO: This should raise an exception
       @accept(char)
+
+   expect_later: (char)->
+      while @text[@i] && not (@text[@i] is char)
+         ++@i
+      ++@i if @text[@i] is char
 
    # Swallow all whitespace
    whitespace: ->
@@ -44,17 +53,18 @@ class Parser
       true
 
    # Sets a SourceRange on a expression
-   with_range: (expr, begin, end)->
+   with_range: (expr, begin, end = @i)->
       # Copy the source range of the contents if possible
       if expr.contents?.source?
          expr.source = expr.contents.source
       else
-         expr.source = new SourceRange(@text, begin, end || @i)
+         expr.source = new SourceRange(@text, begin, end)
          # Copy the source range to the contents if possible
          expr.contents.source = expr.source if expr.contents?
       expr
 
-   # Parses a single label
+   # Parses a bare label
+   # TODO: rewrite with accept()s
    label: ->
       start = @i
       res = ''
@@ -63,14 +73,23 @@ class Parser
          @i++
       res && @with_range(new Paws.Label(res), start)
 
+   quote: (delim)->
+      start = @i
+      if    @accept(delim[0]) &&
+            @expect_later(delim[1])
+         @with_range(new Paws.Label(@from start + 1, @i - 1), start)
+
+   quoted_label: -> @quote('“”') || @quote('""')
+
    # Parses an expression delimited by some characters
    braces: (delim, constructor)->
       start = @i
-      if @accept(delim[0]) &&
-            (it = @expr()) &&
+      if    @accept(delim[0]) &&
+            @whitespace() &&
+            (expr = @expr()) &&
             @whitespace() &&
             @expect(delim[1])
-         @with_range(new constructor(it), start)
+         @with_range(new constructor(expr), start)
 
    # Subexpression
    paren: -> @braces('[]', (it)-> it)
@@ -89,7 +108,7 @@ class Parser
       substart = @i
 
       res = new Expression
-      while sub = (@label() || @paren() || @scope())
+      while sub = (@label() || @quoted_label() || @paren() || @scope())
          res.append(@with_range(new Expression(sub), substart))
          # Expand the expression range (exclude trailing whitespace)
          end = @i
@@ -112,7 +131,7 @@ class Serializer
       {contents, next} = node
       
       if contents instanceof Label
-         text += '"'+contents.alien+'"'
+         text += '“'+contents.alien+'”'
          text += ' ' if next
       
       if contents instanceof Expression

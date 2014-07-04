@@ -37,6 +37,18 @@ describe 'Parser', ->
       expect(expr.contents.alien.toString()).to.be('hello')
       expect(expr.next.contents).to.be.a(Paws.Label)
       expect(expr.next.contents.alien.toString()).to.be('world')
+   
+   # FIXME: This doesn't even *begin* to be well-exercised.
+   it 'should parse quoted labels', ->
+      expr = parser.parse('"hello, world!"').next
+      expect(expr.contents).to.be.a(Paws.Label)
+      expect(expr.contents.alien.toString()).to.be('hello, world!')
+      
+      expr = parser.parse('hello “elliott cable”').next
+      expect(expr.contents).to.be.a(Paws.Label)
+      expect(expr.contents.alien.toString()).to.be('hello')
+      expect(expr.next.contents).to.be.a(Paws.Label)
+      expect(expr.next.contents.alien.toString()).to.be('elliott cable')
 
    it 'should parse subexpressions', ->
       expr = parser.parse('[hello] [world]').next
@@ -118,20 +130,20 @@ describe 'Serializer', ->
    
    it 'generates quotes around Labels', ->
       expr = parser.parse('foo')
-      expect(expr.serialize()).to.be '"foo"'
+      expect(expr.serialize()).to.be '“foo”'
    
    it 'generates parenthesis around sub-expressions', ->
       expr = parser.parse('[foo]')
-      expect(expr.serialize()).to.be '["foo"]'
+      expect(expr.serialize()).to.be '[“foo”]'
    
    it 'puts spaces between adjacent Labels', ->
       expr = parser.parse('foo bar')
-      expect(expr.serialize()).to.be '"foo" "bar"'
+      expect(expr.serialize()).to.be '“foo” “bar”'
    
    it 'puts no space inside the start or end of expressions', ->
       expr = parser.parse('abc [def] ghi')
-      expect(expr.serialize()).to.be '"abc" ["def"] "ghi"'
+      expect(expr.serialize()).to.be '“abc” [“def”] “ghi”'
    
    it 'handles complex nested expressions', ->
       expr = parser.parse('[bar [[foo]]] baz')
-      expect(expr.serialize()).to.be '["bar" [["foo"]]] "baz"'
+      expect(expr.serialize()).to.be '[“bar” [[“foo”]]] “baz”'

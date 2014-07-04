@@ -31,7 +31,7 @@ implementation void[]
       my.routine                                                                                   ]
 [  # execution stage[]
      [# affix[] [# get[] [locals] [# length[] [locals]]] ]
-      {  implementation console print Phew,that.worked.  }                                         ]
+      {  implementation console print “Phew, that worked.”  }                                      ]
 
 
 -- Next, we want to access the `my.routine locals`, but we can't get that by combining, because
