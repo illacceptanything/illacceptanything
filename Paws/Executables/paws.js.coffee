@@ -20,9 +20,10 @@ prettify = require('pretty-error').start ->
    help = ->
       process.removeListener 'exit', exit
       
+      seperator = T.invert( new Array(Math.ceil((T.columns + 1) / 2)).join('- ') )
+      
       #  -- standard 80-column terminal ------------------------------------------------|
-      usage = T.invert( new Array(Math.ceil((T.columns + 1) / 2)).join('- ') ) +
-         "\n" + _(figlets).sample() + """
+      usage = seperator + "\n" + _(figlets).sample() + """
          
 {{#title}}Usages:{{/title}}
 {{#pre}}   > paws.js [{{#flag}}flags{{/flag}}] {{#op}}operation{{/op}} [params]
@@ -75,7 +76,8 @@ prettify = require('pretty-error').start ->
          Say hi:        <{{#link}}http://twitter.com/ELLIOTTCABLE{{/link}}>
                      or <{{#link}}http://ell.io/IRC{{/link}}> ({{#b}}#ELLIOTTCABLE{{/b}} on the Freenode IRC network)
          
-      """
+         
+      """ + seperator
       #  -- standard 80-column terminal -------------------------------------------------|
       
       err.write mustache.render usage+"\n",
@@ -102,8 +104,12 @@ prettify = require('pretty-error').start ->
       version()
    
    version = ->
+      # TODO: Extract this `git describe`-style, platform-independant?
+      release      = module.package['version'].split('.')[0]
+      release_name = module.package['version-name']
       err.write """
-         Paws.js version #{module.package.version} (Paws 10p)
+         Paws.js release #{release}, “#{release_name}”
+            conforming to: Paws' Nucleus 10 (ish.)
       """ + "\n"
       process.exit 1
    

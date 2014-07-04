@@ -1,36 +1,37 @@
-{     "author" : "ELLIOTTCABLE (http://ell.io/tt)"
-   
-,       "name" : "Paws.js"
-,    "private" :  true
-,    "version" : "4.0.0"
+{        "author" : "ELLIOTTCABLE (http://ell.io/tt)"
 
-,       "main" : "Library/Paws.js"
+,          "name" : "Paws.js"
+,       "private" :  true
+,       "version" : "4.0.0"
+,  "version-name" : "brillig paws"
 
-,        "bin" : {"paws.js" : "Executables/paws.js"}
+,          "main" : "Library/Paws.js"
 
-,    "scripts" :{
-     "preinstall" : "printf \"%s\\n%s\" '#!/usr/bin/env node' \"$(coffee -cbp --no-header ./Executables/paws.js.coffee)\" > ./Executables/paws.js"
+,           "bin" : {"paws.js" : "Executables/paws.js"}
 
-,          "repl" : "./Scripts/repl.js"
-,          "test" : "./Scripts/test.sh"
-,         "clean" : "./Scripts/clean.sh"
-,      "coverage" : "./Scripts/coverage.sh 3> ./Library/Coverage.html"
-,     "coveralls" : "./Scripts/coveralls.sh"
-,     "install-git-hooks" :
-                    "./Scripts/install-git-hooks.sh"
-}
+,       "scripts" :{
+        "preinstall" : "printf \"%s\\n%s\" '#!/usr/bin/env node' \"$(coffee -cbp --no-header ./Executables/paws.js.coffee)\" > ./Executables/paws.js"
+
+,             "repl" : "./Scripts/repl.js"
+,             "test" : "./Scripts/test.sh"
+,            "clean" : "./Scripts/clean.sh"
+,         "coverage" : "./Scripts/coverage.sh 3> ./Library/Coverage.html"
+,        "coveralls" : "./Scripts/coveralls.sh"
+,   "install-git-hooks" :
+                       "./Scripts/install-git-hooks.sh"
+}   
 
 ,     "config" :{
-           "dirs" :{"source"  :"Source"
-                  , "test"    :"Test"
+           "dirs" :{"source"     : "Source"
+                  , "test"       : "Test"
                   , "instrumentation"
-                              :"Source" }
+                                 : "Source" }
 ,         "mocha" :{"files"      : "Test/*.coffee"
                   , "ui"         : "bdd"
                   , "reporter"   : "spec"
                   , "ENV"        : "test" }
  }
-   
+
 ,          "engines" :{"node":"~0.10.7"}
 ,     "dependencies" :{"minimist"               : "~0.0.9"
                      , "mustache"               : "~0.8.1"
