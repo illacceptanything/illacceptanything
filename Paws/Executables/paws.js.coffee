@@ -18,8 +18,6 @@ prettify = require('pretty-error').start ->
    salutation = 'Paws loves you. Bye!'
    
    help = ->
-      process.removeListener 'exit', exit
-      
       seperator = T.invert( new Array(Math.ceil((T.columns + 1) / 2)).join('- ') )
       
       #  -- standard 80-column terminal ------------------------------------------------|
@@ -125,7 +123,7 @@ prettify = require('pretty-error').start ->
       """ + "\n"
       process.exit 1
    
-   exit = ->
+   goodbye = (code = 0)->
       length = salutation.length + 3
       if Paws.use_colour()
          # Get rid of the "^C",
@@ -138,10 +136,9 @@ prettify = require('pretty-error').start ->
       salutation = '~ '+salutation+' '+ (if Paws.use_colour() then heart else '<3') + "\n"
       err.write if T.colors == 256 then T.xfg 219, salutation else T.fg 5, salutation
       
-      process.exit 0
+      process.exit code
    
-   process.on 'exit', exit
-   process.on 'SIGINT', -> process.exit 0
+   process.on 'SIGINT', -> goodbye 255
    
    # TODO: More robust file resolution
    readFilesAsync = (files)->
@@ -176,7 +173,9 @@ prettify = require('pretty-error').start ->
       
       when 'in', 'interact', 'interactive'
          Interactive = require '../Source/interactive.coffee'
-         new Interactive().start()
+         interact = new Interactive
+         interact.on 'close', -> goodbye 0
+         interact.start()
       
       when 'st', 'start'
          readFilesAsync(argv).then (files)->

@@ -5,13 +5,14 @@ T = Paws.debugging.tput
 
 PrettyError = require('pretty-error')
 
+{EventEmitter} = require 'events'
 readline = require 'readline'
 readline.vim = try require 'readline-vim' catch error
                   throw error unless error.code == 'MODULE_NOT_FOUND'
 
 
 module.exports = Interactive =
-parameterizable class Interactive
+parameterizable class Interactive extends EventEmitter
    
    constructor: ->
       # XXX: Not sure if I can create the readline instance early, before I use it. This may need to
@@ -77,6 +78,7 @@ parameterizable class Interactive
          @readline.write @readline.clear_style
          @readline.close()
          process.stdin.destroy()
+         @emit 'close'
       @readline.on 'close', SIGTERM
       process.on 'SIGTERM', SIGTERM
       
