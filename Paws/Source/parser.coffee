@@ -94,7 +94,7 @@ class Parser
    # Subexpression
    paren: -> @braces('[]', (it)-> it)
    # Execution
-   scope: -> @braces('{}', Paws.Native)
+   scope: -> @braces('{}', Paws.Execution)
 
    # Parses an expression
    expr: ->

@@ -143,8 +143,8 @@ Paws.Label = Label = class Label extends Thing
    clone: (to)->
       super (to ?= new Label)
       to.alien = @alien
-      to.alien.native
       return to
+   
    compare: (to)->
       to instanceof Label and
       to.alien == @alien
@@ -158,37 +158,47 @@ Paws.Label = Label = class Label extends Thing
 
 
 Paws.Execution = Execution = class Execution extends Thing
-   constructor: constructify (first)->
-      unless this instanceof Alien or this instanceof Native
-         return (if typeof first == 'function' then Alien else Native).apply this, arguments
+   constructor: constructify(return:@) (@position)-> 
+   constructor: constructify (@position)->
+      if typeof @position == 'function' then return Alien.apply this, arguments
       
       @pristine = yes
       @locals = new Thing().rename 'locals'
       @locals.push Thing.pair 'locals', @locals.irresponsible()
       this   .push Thing.pair 'locals', @locals.responsible()
+      
+      @stack = new Array
+      
+      return this
    
    # XXX: Defined later, in `reactor.coffee`. These definitions have to be deferred, because
    #      `Execution` isn't defined yet.
    receiver: undefined
    
+   complete:-> not this.position? and !this.stack.length
+   
    # This method of the `Execution` types will copy all data relevant to advancement of the
-   # execution to a `Execution` instance. This includes the pristine-state, any `Alien`'s `bits`, or
-   # a `Native`'s `stack` and `position`. A clone made thus can be advanced just as the original
+   # execution to a `Execution` instance. This includes the pristine-state, the `stack` and
+   # `position`, or any `Alien`'s `bits`. A clone made thus can be advanced just as the original
    # would have been, without affecting the original's advancement-state.
    # 
    # Of note: along with all the other data copied from the old instance, the new clone will inherit
    # the original `locals`. This is intentional.
    # 
    #---
-   # NOTE: This will never be called directly, as the Execution constructor ensures that actual
-   #       instances of raw Execution are impossible, and both Alien and Native wrap this.
    # FIXME: ‘Cloning’ locals ... *isn't*, here. I need to figure out what I want to do with this.
    # TODO: nuke-API equivalent of lib-API's `branch()()`
    clone: (to)->
-      super to
+      super (to ?= new Execution)
       to.pristine    = @pristine
       to.locals      = @locals
       to.resumptions = @resumptions if @resumptions?
+      
+      if @position? and @stack?
+         to.position = @position
+         to.stack = @stack.slice 0
+      
+      return to
 
 Paws.Alien = Alien = class Alien extends Execution
    
@@ -219,6 +229,9 @@ Paws.Alien = Alien = class Alien extends Execution
    # `Alien` object referred to during the invocation of subsequent bits may *not* be the same, as
    # the `Alien` may have been branched!)
    constructor: constructify(return:@) (@bits...)->
+      delete @position
+      delete @stack
+      
       @resumptions = @bits.length
    
    complete: -> !this.bits.length
@@ -319,17 +332,6 @@ Paws.Alien = Alien = class Alien extends Execution
          
          return this
       body.apply new Execution(->)
-
-Paws.Native = Native = class Native extends Execution
-   constructor: constructify(return:@) (@position)-> @stack = new Array
-   
-   complete:-> not this.position? and !this.stack.length
-   
-   clone: (to)->
-      super (to ?= new Native)
-      to.position = @position
-      to.stack = @stack.slice 0
-      return to
 
 
 # Debugging output

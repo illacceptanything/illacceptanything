@@ -248,19 +248,19 @@ describe 'The Paws reactor:', ->
          
          expect(an_alien.complete()).to.be.ok()
       
-      it 'should not modify a completed Native', ->
-         completed_native = new Native undefined
+      it 'should not modify a completed `execution`', ->
+         completed_native = new Execution undefined
          expect(completed_native.complete()).to.be.ok()
          
          expect(advance completed_native, new Thing).to.be undefined
       
       it 'should not choke on a simple expression', ->
-         an_xec = new Native parse 'abc def'
+         an_xec = new Execution parse 'abc def'
          expect(-> advance an_xec, null ).to.not.throwError()
       
       it 'should generate a simple combination against a previous result', ->
          root = parse 'something other'; other = root.next.next
-         an_xec = new Native root
+         an_xec = new Execution root
          advance an_xec, null
          
          something = new Thing
@@ -270,7 +270,7 @@ describe 'The Paws reactor:', ->
          
       it 'should combine against locals at the beginning of an Execution', ->
          root = parse 'something'; something = root.next
-         an_xec = new Native root
+         an_xec = new Execution root
          
          combo = advance an_xec, null
          expect(combo.subject).to.be an_xec.locals
@@ -278,7 +278,7 @@ describe 'The Paws reactor:', ->
       
       it 'should dive into sub-expressions, combining against locals again', ->
          root = parse 'something [other]'; expr = root.next.next; other = expr.contents.next
-         an_xec = new Native root
+         an_xec = new Execution root
          advance an_xec, null
          
          something = new Thing
@@ -289,7 +289,7 @@ describe 'The Paws reactor:', ->
       it "should retain the previous result at the parent's level,
           and juxtapose against that when exiting", ->
          root = parse 'something [other]'
-         an_xec = new Native root
+         an_xec = new Execution root
          advance an_xec, null
          
          something = new Thing
@@ -302,7 +302,7 @@ describe 'The Paws reactor:', ->
       
       it 'should descend into multiple levels of nested-immediate sub-expressions', ->
          root = parse 'something [[[other]]]'
-         an_xec = new Native root
+         an_xec = new Execution root
          advance an_xec, null
          # ~locals <- 'something'
          
@@ -330,7 +330,7 @@ describe 'The Paws reactor:', ->
       
       it 'should handle an *immediate* sub-expression', ->
          root = parse '[something] other'; other = root.next.next
-         an_xec = new Native root
+         an_xec = new Execution root
          advance an_xec, null
          # ~locals <- 'something'
          
@@ -348,7 +348,7 @@ describe 'The Paws reactor:', ->
       
       it 'should descend into multiple levels of *immediate* nested sub-expressions', ->
          root = parse '[[[other]]]'
-         an_xec = new Native root
+         an_xec = new Execution root
          advance an_xec, null
          # ~locals <- 'other'
          
@@ -505,7 +505,7 @@ describe 'The Paws reactor:', ->
       it 'succeeds a tick if advance cannot succeed' # XXX: wat.
       it 'gives any requested ownership'
       it "calls the advance'd bit for Aliens"
-      it "clones the current combination-subject's receiver for Natives"
+      it "clones the current combination-subject's receiver for `execution`s"
       it "stages the the subject's receiver's clone"
       it 'invalidates all ownership for the stagee, if it has been completed'
    

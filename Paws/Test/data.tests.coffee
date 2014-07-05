@@ -236,31 +236,86 @@ describe 'The Paws API:', ->
    
    
    describe 'Execution', ->
-      Alien  = Paws.Alien
-      Native = Paws.Native
+      Execution = Paws.Execution
+      Alien     = Paws.Alien
       
-      it 'should construct as either a Native or an Alien or a native', ->
+      Expression = Paws.parser.Expression
+      
+      it 'should construct an Alien when passed function-bits', ->
          expect(new Execution ->).to.be.an Alien
-         expect(new Execution {}).to.be.a Native
-         expect(new Execution)   .to.be.a Native
       
-      it 'should begin life as pristine', ->
+      it 'should not construct an Alien when passed an expression', ->
+         expect(new Execution new Expression).to.be.an Execution
+         expect(new Execution new Expression).not.to.be.an Alien
+         
+         expect(new Execution).to.be.an Execution
+         expect(new Execution).not.to.be.an Alien
+      
+      it 'should begin life in a pristine state', ->
          expect((new Execution).pristine).to.be yes
+      
       it 'should have locals', ->
          exe = new Execution
          expect(exe.locals).to.be.a Thing
          expect(exe.locals.metadata).to.have.length 2
          
+         # Seperate locals-tests into their own suite
          expect(exe.find 'locals').to.not.be.empty()
          expect(exe       .at(1).valueish()).to.be exe.locals
          expect(exe       .at(1).metadata[2].isResponsible).to.be true
          expect(exe.locals.at(1).valueish()   ).to.be exe.locals
          expect(exe.locals.at(1).metadata[2].isResponsible).to.be false
       
-      describe '(Alien / nukespace code)', ->
+      it 'should take a position', ->
+         expr = new Expression
+         
+         expect(-> new Execution expr).to.not.throwException()
+         expect(  (new Execution expr).position).to.be expr
+      
+      it 'should know whether it is complete', ->
+         ex = new Execution (new Expression)
+         expect(ex.complete()).to.be false
+         
+         ex.position = null
+         ex.stack.push 42
+         expect(ex.complete()).to.be false
+         
+         ex.stack.length = 0
+         expect(ex.complete()).to.be true
+      
+      it 'can be cloned', ->
+         ex = new Execution Expression()
+         expect(-> ex.clone()).to.not.throwException()
+         expect(   ex.clone()).to.be.an Execution
+         
+      it 'preserves the position and stack when cloning', ->
+         pos1 = new Expression
+         pos2 = new Expression
+         ex = new Execution pos1
+         
+         clone1 = ex.clone()
+         expect(clone1.position).to.be pos1
+         expect(clone1.stack).to.not.be ex.stack
+         expect(clone1.stack).to.eql ex.stack
+         
+         ex.position = pos2
+         ex.stack.push new Label 'intermediate value'
+         clone2 = ex.clone()
+         expect(clone2.position).to.be pos2
+         expect(clone2.stack).to.have.length 1
+         expect(clone2.stack).to.not.be ex.stack
+         expect(clone2.stack).to.eql ex.stack
+      
+      it 'shares locals with clones', ->
+         ex = new Execution Expression()
+         clone = ex.clone()
+         
+         expect(clone.locals).to.equal ex.locals
+       
+      describe 'as an Alien', ->
          it 'should take a series of procedure-bits', ->
             a = (->); b = (->); c = (->)
-
+            
             expect(-> new Execution a, b, c).to.not.throwException()
             expect(   new Execution a, b, c).to.be.an Alien
             
@@ -447,54 +502,3 @@ describe 'The Paws API:', ->
                   expect(some_function.firstCall.thisValue).to.have.property 'unit'
                  #expect(some_function.firstCall.thisValue.unit).to.be.a Unit # FIXME
                   expect(some_function.firstCall.thisValue.unit).to.be a.unit
-      
-      describe '(Native / libspace code)', ->
-         Expression = Paws.parser.Expression
-         
-         it 'should take a position', ->
-            expr = new Expression
-            
-            expect(-> new Execution expr).to.not.throwException()
-            expect(   new Execution expr).to.be.an Native
-            
-            expect(  (new Execution expr).position).to.be.ok()
-         
-         it 'should know whether it is complete', ->
-            ex = new Execution (new Expression)
-            expect(ex.complete()).to.be false
-            
-            ex.position = null
-            ex.stack.push 42
-            expect(ex.complete()).to.be false
-            
-            ex.stack.length = 0
-            expect(ex.complete()).to.be true
-         
-         it 'can be cloned', ->
-            ex = new Execution Expression()
-            expect(-> ex.clone()).to.not.throwException()
-            expect(   ex.clone()).to.be.an Native
-            
-         it 'preserves the position and stack when cloning', ->
-            pos1 = new Expression
-            pos2 = new Expression
-            ex = new Execution pos1
-            
-            clone1 = ex.clone()
-            expect(clone1.position).to.be pos1
-            expect(clone1.stack).to.not.be ex.stack
-            expect(clone1.stack).to.eql ex.stack
-            
-            ex.position = pos2
-            ex.stack.push new Label 'intermediate value'
-            clone2 = ex.clone()
-            expect(clone2.position).to.be pos2
-            expect(clone2.stack).to.have.length 1
-            expect(clone2.stack).to.not.be ex.stack
-            expect(clone2.stack).to.eql ex.stack
-         
-         it 'shares locals with clones', ->
-            ex = new Execution Expression()
-            clone = ex.clone()
-            
-            expect(clone.locals).to.equal ex.locals
