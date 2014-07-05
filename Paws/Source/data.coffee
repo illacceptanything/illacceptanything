@@ -23,27 +23,27 @@ Paws.Thing = Thing = parameterizable class Thing
    
    rename: (name)-> @name = name ; return this
    
-   # Construct a generic ‘key/value’ style `Thing` from a JavaScript `Object`-representation thereof.
-   # These representations will have JavaScript strings as the keys (which will be converted into the
-   # `Label` of a pair), and a Paws `Object`-type as the values.
+   # Construct a generic ‘key/value’ style `Thing` from a JavaScript `Object`-representation
+   # thereof. These representations will have JavaScript strings as the keys (which will be
+   # converted into the `Label` of a pair), and a Paws `Object`-type as the values.
    # 
    # For instance, given `{foo: thing_A, bar: thing_B}` will be constructed into the following:
    #    
    #    [, [, ‘foo’, thing_B], [, ‘bar’, thing_B]]
    # 
-   # The ‘pair-ish’ values are always owned by the generated structure; as are, by default, the objects
-   # passed in. The latter is overridable with `.with(responsible: no)`.
+   # The ‘pair-ish’ values are always owned by the generated structure; as are, by default, the
+   # objects passed in. The latter is overridable with `.with(own: no)`.
    # 
-   # @option responsible: Whether to mark the structure as `responsible` for the objects passed in.
+   # @option own: Whether to construct the structure's `Relation`s as `own`ing the objects passed in
    #---
    # TODO: Support functions, so this can replace µPaws' applyGlobals.
    @construct: (representation)->
       members = for key, value of representation
-         value = Alien.synchronous value if _.isFunction value
+         value = Native.synchronous value if _.isFunction value
          value = @construct value unless value instanceof Thing
          value.rename key if @_?.names
-         relation = Relation(value, @_?.responsible ? yes)
-         Thing.pair( key, relation ).responsible()
+         relation = Relation(value, @_?.own ? yes)
+         Thing.pair( key, relation ).owned()
       
       return Thing members...
    
@@ -64,7 +64,7 @@ Paws.Thing = Thing = parameterizable class Thing
       @metadata.unshift noughty
       result
    unshift: (other)->
-      # TODO: include-noughtie option
+      # TODO: include-noughtie optional
       noughty = @metadata.shift()
       @metadata.unshift other
       @metadata.unshift noughty
@@ -74,7 +74,7 @@ Paws.Thing = Thing = parameterizable class Thing
    # Creates a copy of the `Thing` it is called on. Alternatively, can be given an extant `Thing`
    # copy this `Thing` *to*, over-writing that `Thing`'s metadata. In the process, the
    # `Relation`s within this relation are themselves cloned, so that changes to the new clone's
-   # responsibility don't affect the original.
+   # ownership don't affect the original.
    clone: (to)->
       to ?= new Thing.with(noughtify: no)()
       to.metadata = @metadata.map (rel)-> rel?.clone()
@@ -86,8 +86,8 @@ Paws.Thing = Thing = parameterizable class Thing
    # This implements the core algorithm of the default jux-receiver; this algorithm is very
    # crucial to Paws' object system:
    # 
-   # Working through the metadata in reverse, select those items whose *first* (not the naughty;
-   # subscript-1) item `compare()`s truthfully to the searched-for key. Return them in the order
+   # Working through the metadata in reverse, select those items whose *first* (not the noughty; but
+   # subscript-one) item `compare()`s truthfully to the searched-for key. Return them in the order
    # found (thus, “in reverse”), such that the latter-most item in the metadata that was found to
    # match is returned as the first match. For libside purposes, only this (the very latter-most
    # matching item) is used.
@@ -105,36 +105,36 @@ Paws.Thing = Thing = parameterizable class Thing
    
    toArray: (cb)-> @metadata.map (rel)-> (cb ? identity) rel?.to
    
-   # TODO: Figure out whether pairs should be responsible for their children
    @pair: (key, value)->
       new Thing(Label(key), value)
    isPair:   -> @metadata[1] and @metadata[2]
    keyish:   -> @at 1
    valueish: -> @at 2
    
-   responsible:   -> new Relation this, yes
-   irresponsible: -> new Relation this, no
+   owned:    -> new Relation this, yes
+   disowned: -> new Relation this, no
 
 Paws.Relation = Relation = parameterizable delegated('to', Thing) class Relation
    # Given a `Thing` (or `Array`s thereof), this will return a `Relation` to that thing.
    # 
-   # @option responsible: Whether to create new relations as `responsible`
+   # @option own: Whether to create new `Relation`s as `owns: yes`
    @from: (it)->
       if it instanceof Relation
-         it.responsible @_?.responsible ? it.isResponsible
+         it.owned @_?.own ? it.owns
          return it
             
       if it instanceof Thing
-         return new Relation(it, @_?.responsible ? false)
+         return new Relation(it, @_?.own ? no)
       if _.isArray(it)
          return it.map (el) => @from el
    
-   constructor: constructify (@to, @isResponsible = false)->
+   constructor: constructify (@to, @owns = false)->
+      @to.clone this if @to instanceof Relation
    
-   clone: -> new Relation @to, @isResponsible
+   clone: -> new Relation @to, @owns
    
-   responsible:   chain (val)-> @isResponsible = val ? true
-   irresponsible: chain      -> @isResponsible = false
+   owned:    chain (val)-> @owns = val ? yes
+   disowned: chain      -> @owns = no
 
 
 Paws.Label = Label = class Label extends Thing
@@ -160,12 +160,12 @@ Paws.Label = Label = class Label extends Thing
 Paws.Execution = Execution = class Execution extends Thing
    constructor: constructify(return:@) (@position)-> 
    constructor: constructify (@position)->
-      if typeof @position == 'function' then return Alien.apply this, arguments
+      if typeof @position == 'function' then return Native.apply this, arguments
       
       @pristine = yes
       @locals = new Thing().rename 'locals'
-      @locals.push Thing.pair 'locals', @locals.irresponsible()
-      this   .push Thing.pair 'locals', @locals.responsible()
+      @locals.push Thing.pair 'locals', @locals.disowned()
+      this   .push Thing.pair 'locals', @locals.owned()
       
       @stack = new Array
       
@@ -179,7 +179,7 @@ Paws.Execution = Execution = class Execution extends Thing
    
    # This method of the `Execution` types will copy all data relevant to advancement of the
    # execution to a `Execution` instance. This includes the pristine-state, the `stack` and
-   # `position`, or any `Alien`'s `bits`. A clone made thus can be advanced just as the original
+   # `position`, or any `Native`'s `bits`. A clone made thus can be advanced just as the original
    # would have been, without affecting the original's advancement-state.
    # 
    # Of note: along with all the other data copied from the old instance, the new clone will inherit
@@ -200,23 +200,25 @@ Paws.Execution = Execution = class Execution extends Thing
       
       return to
 
-Paws.Alien = Alien = class Alien extends Execution
+Paws.Native = Native = class Native extends Execution
    
-   # An `Alien` is an `Execution` that's implemented with JavaScript code, instead of as a series of
-   # Paws combinations. These are the primitive building-blocks with which Paws programs are built.
+   # An `Native` is an `Execution` that's implemented with JavaScript code, instead of as a series
+   # of Paws combinations. These are the primitive building-blocks with which Paws programs are
+   # built.
    # 
-   # Most `Alien`s are exposed to Paws code through 'bags' of `Alien`s stored under useful names on
-   # the `locals` of the first (root-level) `Execution` in a Paws program; notably, the primitives
-   # described by the Paws specification are exposed in such a bag, named "infrastructure."
+   # Most `Native`s are exposed to Paws code through ‘bags’ of `Native`s stored under useful names
+   # on the `locals` of the first (root-level) `Execution` in a Paws program; notably, the
+   # primitives described by the Paws specification are exposed in such a bag, named
+   # “infrastructure.”
    # 
-   # `Alien`s in this implementation consist of a series of 'bits', each of which is a JavaScript
-   # `Function`. Each 'bit' of the `Alien` implements a (clearly synchronous, as they are written in
-   # JavaScript) set of operations to be preformed upon the next resumption of the `Execution`
-   # represented by this `Alien`. (It can be easier to conceptualize an `Alien` as an explicit
+   # `Native`s in this implementation consist of a series of ‘bits’, each of which is a JavaScript
+   # `Function`. Each ‘bit’ of the `Native` implements a (clearly synchronous, as they are written
+   # in JavaScript) set of operations to be preformed upon the next resumption of the `Execution`
+   # represented by this `Native`. (It can be easier to conceptualize an `Native` as an explicit
    # coroutine, with the `return` statement of one bit and the arguments of the following bit acting
    # somewhat like a traditional `yield` statement.)
    # 
-   # The first `Function`-bit will be invoked upon resumption of the `Alien`, and then discarded
+   # The first `Function`-bit will be invoked upon resumption of the `Native`, and then discarded
    # (thus causing the following `Function` to receive the resumption thereafter.) Upon resumption,
    # the `Function` will be invoked with the following arguments and environment:
    # 
@@ -224,10 +226,10 @@ Paws.Alien = Alien = class Alien extends Execution
    #  2. `unit` (optional), the `Unit` in which this resumption is relevant (thus providing access
    #     to the current `Unit`'s staging-`queue` and responsibility-`table`.)
    #  
-   # In addition, the `this` at invocation will be the `Alien` itself, giving the bit-body
+   # In addition, the `this` at invocation will be the `Native` itself, giving the bit-body
    # convenient access to a place to store incrementally-constructed results. (Note that the actual
-   # `Alien` object referred to during the invocation of subsequent bits may *not* be the same, as
-   # the `Alien` may have been branched!)
+   # `Native` object referred to during the invocation of subsequent bits may *not* be the same, as
+   # the `Native` may have been branched!)
    constructor: constructify(return:@) (@bits...)->
       delete @position
       delete @stack
@@ -237,7 +239,7 @@ Paws.Alien = Alien = class Alien extends Execution
    complete: -> !this.bits.length
    
    clone: (to)->
-      super (to ?= new Alien)
+      super (to ?= new Native)
       _.map Object.getOwnPropertyNames(this), (key)=> to[key] = this[key]
       to.bits = @bits.slice 0
       return to
@@ -245,34 +247,34 @@ Paws.Alien = Alien = class Alien extends Execution
    # This alternative constructor will automatically generate a series of ‘bits’ that will curry the
    # appropriate number of arguments into a single, final function.
    # 
-   # Instead of having to write individual function-bits for your Alien that collect the appropriate
-   # set of resumption-values into a series of “arguments” that you need for your task, you can use
-   # this convenience constructor for the common situation that you're treating an Execution as
-   # equivalent to a synchronous JavaScript function.
+   # Instead of having to write individual function-bits for your `Native` that collect the
+   # appropriate set of resumption-values into a series of “arguments” that you need for your task,
+   # you can use this convenience constructor for the common situation that you're treating an
+   # `Execution` as equivalent to a synchronous JavaScript function.
    # 
    # ----
    # 
    # This takes a single function, and checks the number of arguments it requires before generating
    # the corresponding bits to acquire those arguments.
    # 
-   # Then, once it's been resumed the appropriate number of times (plus one extra initial resumption
-   # with a `caller` as the resumption-value, as is standard coproductive practice in Paws), the
-   # synchronous JavaScript passed in as the argument here will be invoked.
+   # Then, once the resultant `Native` has been resumed the appropriate number of times (plus one
+   # extra initial resumption with a `caller` as the resumption-value, as is standard coproductive
+   # practice in Paws), the synchronous JavaScript passed in as the argument here will be invoked.
    # 
    # That invocation will provide the arguments recorded in the function's implementation, as well
    # as a context-object containing the following information as `this`:
    # 
    # caller
-   #  : The first resumption-value provided to the generated `Execution`. Usually, itself, an
+   #  : The first resumption-value provided to the generated `Native`. Usually, itself, an
    #    `Execution`, in the coproductive pattern.
    # this
-   #  : The original `this`. That is, the generated `Execution` that's currently being run.
+   #  : The original `this`. That is, the generated `Native` that's currently being run.
    # unit
-   #  : The current `Unit` at the time of execution, as provided by the reactor.
+   #  : The current `Unit` at the time of realization, as provided by the reactor.
    # 
    # After your function executes, if it provides a non-null JavaScript return value, then the
    # `caller` provided as the first resumption-value Paws-side will be resumed one final time with
-   # that as the resumption-value. (Hence the name of this method: it provides a ‘synchronous’
+   # that as the resumption-value. (Hence the name of this method: it provides a ‘synchronous’ (ish)
    # result after all arguments have been acquired.)
    # 
    # @param { function(... [Thing]
@@ -306,9 +308,10 @@ Paws.Alien = Alien = class Alien extends Execution
          
          # Now, the complex part. The *final* bit has quite a few arguments curried into it:
          # 
-         #  - First, we *immediately* (at generate-time) contribute the locals we'll need within the
-         #    body: the `Paws` API, and the `func` we were passed
-         #  - Second, the `caller` curried in by the first bit
+         #  - Immediately (at generate-time), the locals we'll need within the body: the `Paws` API,
+         #    and the `func` we were passed. This is necessary, because we're building the body in a
+         #    new closure environment, via the `eval`-y `Function` constructor.
+         #  - Second (later-on, at stage-time), the `caller` curried in by the first bit
          #  - Third, any *actual arguments* curried in by intermediate bits
          # 
          # In addition to these, it's got one final argument (the actual resumption-value with which
@@ -331,7 +334,7 @@ Paws.Alien = Alien = class Alien extends Execution
          @bits[arity] = _.partial @bits[arity], Paws, func
          
          return this
-      body.apply new Execution(->)
+      body.apply new Native
 
 
 # Debugging output

@@ -60,7 +60,7 @@ describe 'Parser', ->
    it 'should parse Execution', ->
       expr = parser.parse('{ hello world }').next
       expect(expr.contents).to.be.a(Paws.Execution)
-      expect(expr.contents).to.not.be.a(Paws.Alien)
+      expect(expr.contents).to.not.be.a(Paws.Native)
 
    it 'should keep track of locations', ->
       expr = parser.parse('hello world')

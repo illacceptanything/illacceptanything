@@ -35,22 +35,22 @@ describe 'The Paws API:', ->
                expect(Relation.from array).to.be.an 'array'
                expect(Relation.from(array).every (el) -> el instanceof Relation).to.be.ok()
             
-            it 'should be able to change the responsibility of relations', ->
+            it 'should be able to change the ownership of relations', ->
                thing1 = new Thing; thing2 = new Thing; thing3 = new Thing
                array = [thing1, new Relation(thing2, false), new Relation(thing3, true)]
                expect( # TODO: This could be cleaner.
-                  Relation.with(responsible: yes).from(array).every (el) -> el.isResponsible
+                  Relation.with(own: yes).from(array).every (el) -> el.owns
                ).to.be.ok()
                
-         it 'should default to being irresponsible', ->
-            expect((new Relation).isResponsible).to.be false
+         it 'should default to non-owning', ->
+            expect((new Relation).owns).to.be false
          
          describe '#clone', ->
             it 'should return a new Relation', ->
-               rel = new Relation(new Thing, true)
+               rel = new Relation(new Thing, yes)
                expect(rel.clone()).to.not.be rel
                expect(rel.clone().to).to.be rel.to
-               expect(rel.clone().isResponsible).to.be rel.isResponsible
+               expect(rel.clone().owns).to.be rel.owns
       
       describe '##construct', ->
          it 'should construct a Thing', ->
@@ -78,18 +78,18 @@ describe 'The Paws API:', ->
             expect(constructee.find('foo')[0].valueish()).to.be thing_1
             expect(constructee.find('bar')[0].valueish()).to.be thing_2
          
-         it 'should flag the construct as responsible as for its pairs', ->
+         it 'should flag the construct as owning its pairs', ->
             constructee = Thing.construct {something: new Thing}
-            expect(constructee.metadata[1]).to.be.responsible()
+            expect(constructee.metadata[1]).to.be.owned()
          
-         it 'should flag the construct as responsible as for its members, by default', ->
+         it 'should flag the construct as owning its members, by default', ->
             constructee = Thing.construct {something: new Thing}
-            expect(constructee.find('something')[0].metadata[2]).to.be.responsible()
+            expect(constructee.find('something')[0].metadata[2]).to.be.owned()
          
-         it 'should accept an option to create irresponsible structures', ->
-            constructee = Thing.with(responsible: no).construct {something: new Thing}
-            expect(constructee.metadata[1]).to.be.responsible()
-            expect(constructee.find('something')[0].metadata[2]).to.not.be.responsible()
+         it "should accept an option to create structures that don't own their members", ->
+            constructee = Thing.with(own: no).construct {something: new Thing}
+            expect(constructee.metadata[1]).to.be.owned()
+            expect(constructee.find('something')[0].metadata[2]).to.not.be.owned()
          
          it 'generates nested Things', ->
             constructee = Thing.construct { foo: { bar: {baz: something = new Thing} } }
@@ -109,7 +109,7 @@ describe 'The Paws API:', ->
             expect(third_pair.keyish().alien).to.be 'baz'
             expect(third_pair.valueish()    ).to.be something
          
-         it 'passes Functions to Alien.synchronous', ->
+         it 'passes Functions to Native.synchronous', ->
             constructee = Thing.construct {foo: new Function}
             expect(constructee.metadata).to.have.length 2
             
@@ -237,19 +237,19 @@ describe 'The Paws API:', ->
    
    describe 'Execution', ->
       Execution = Paws.Execution
-      Alien     = Paws.Alien
+      Native    = Paws.Native
       
       Expression = Paws.parser.Expression
       
-      it 'should construct an Alien when passed function-bits', ->
-         expect(new Execution ->).to.be.an Alien
+      it 'should construct an Native when passed function-bits', ->
+         expect(new Execution ->).to.be.an Native
       
-      it 'should not construct an Alien when passed an expression', ->
+      it 'should not construct an Native when passed an expression', ->
          expect(new Execution new Expression).to.be.an Execution
-         expect(new Execution new Expression).not.to.be.an Alien
+         expect(new Execution new Expression).not.to.be.an Native
          
          expect(new Execution).to.be.an Execution
-         expect(new Execution).not.to.be.an Alien
+         expect(new Execution).not.to.be.an Native
       
       it 'should begin life in a pristine state', ->
          expect((new Execution).pristine).to.be yes
@@ -262,9 +262,9 @@ describe 'The Paws API:', ->
          # Seperate locals-tests into their own suite
          expect(exe.find 'locals').to.not.be.empty()
          expect(exe       .at(1).valueish()).to.be exe.locals
-         expect(exe       .at(1).metadata[2].isResponsible).to.be true
+         expect(exe       .at(1).metadata[2].owns).to.be yes
          expect(exe.locals.at(1).valueish()   ).to.be exe.locals
-         expect(exe.locals.at(1).metadata[2].isResponsible).to.be false
+         expect(exe.locals.at(1).metadata[2].owns).to.be no
       
       it 'should take a position', ->
          expr = new Expression
@@ -312,12 +312,12 @@ describe 'The Paws API:', ->
          
          expect(clone.locals).to.equal ex.locals
        
-      describe 'as an Alien', ->
+      describe 'as an Native', ->
          it 'should take a series of procedure-bits', ->
             a = (->); b = (->); c = (->)
             
             expect(-> new Execution a, b, c).to.not.throwException()
-            expect(   new Execution a, b, c).to.be.an Alien
+            expect(   new Execution a, b, c).to.be.an Native
             
             expect(  (new Execution a, b, c).bits).to.have.length 3
             expect(  (new Execution a, b, c).bits).to.eql [a, b, c]
@@ -332,7 +332,7 @@ describe 'The Paws API:', ->
          it 'can be cloned', ->
             ex = new Execution ->
             expect(-> ex.clone()).to.not.throwException()
-            expect(   ex.clone()).to.be.an Alien
+            expect(   ex.clone()).to.be.an Native
             
          it 'has the same bits after cloning', ->
             funcs =
@@ -352,13 +352,13 @@ describe 'The Paws API:', ->
             expect(clone.locals).to.equal ex.locals
          
          describe '##synchronous', ->
-            synchronous = Alien.synchronous
+            synchronous = Native.synchronous
             it 'accepts a function', ->
                expect(   synchronous).to.be.ok()
                expect(-> synchronous ->).to.not.throwException()
             
-            it 'results in a new Alien', ->
-               expect(synchronous ->).to.be.an Alien
+            it 'results in a new Native', ->
+               expect(synchronous ->).to.be.an Native
             
             it 'adds bits corresponding to the arity of the function', ->
                expect( (synchronous (a, b)->)       .bits).to.have.length 3

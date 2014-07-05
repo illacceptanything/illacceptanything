@@ -226,22 +226,22 @@ describe 'The Paws reactor:', ->
       parse = Paws.parser.parse
       advance = reactor.advance
       
-      it 'should not modify a completed Alien', ->
-         completed_alien = new Alien
+      it 'should not modify a completed Native', ->
+         completed_alien = new Native
          expect(completed_alien.complete()).to.be.ok()
          
          expect(advance completed_alien, new Thing).to.be undefined
          
-      it 'should flag a modified Alien as un-pristine', ->
+      it 'should flag a modified Native as un-pristine', ->
          func1 = new Function; func2 = new Function
-         an_alien = new Alien func1, func2
+         an_alien = new Native func1, func2
          
          advance an_alien, new Thing
          expect(an_alien.pristine).to.be no
          
-      it 'should advance the bits of an Alien', ->
+      it 'should advance the bits of an Native', ->
          func1 = new Function; func2 = new Function
-         an_alien = new Alien func1, func2
+         an_alien = new Native func1, func2
          
          expect(advance an_alien, new Thing).to.be func1
          expect(advance an_alien, new Thing).to.be func2
@@ -504,7 +504,7 @@ describe 'The Paws reactor:', ->
       it 'succeeds a tick if a stagee is complete'
       it 'succeeds a tick if advance cannot succeed' # XXX: wat.
       it 'gives any requested ownership'
-      it "calls the advance'd bit for Aliens"
+      it "calls the advance'd bit for Natives"
       it "clones the current combination-subject's receiver for `execution`s"
       it "stages the the subject's receiver's clone"
       it 'invalidates all ownership for the stagee, if it has been completed'

@@ -17,7 +17,7 @@ reactor.Mask = Mask = class Mask
    flatten: ()->
       recursivelyMask = (set, root)->
          set.push root
-         _(root.metadata).filter().filter('isResponsible').pluck('to').reduce recursivelyMask, set
+         _(root.metadata).filter().filter('owns').pluck('to').reduce recursivelyMask, set
       
       _.uniq recursivelyMask new Array, @root
    
@@ -36,10 +36,11 @@ reactor.Mask = Mask = class Mask
       _(this.flatten()).difference(others).isEmpty()
 
 # This acts as a `Unit`'s store of access knowledge: `Executions` are matched to the `Mask`s they've
-# successfully requested a form of access to.
+# been given responsibility for
 #
-# I'd *really* like to see a better data-structure; but my knowledge of such things is insufficient to
-# apply a truly appropriate one. For now, just a simple mapping of `Mask`s to accessors (`Executions`).
+# I'd *really* like to see a better data-structure; but my knowledge of such things is insufficient
+# to apply a truly appropriate one. For now, just a simple mapping of `Mask`s to accessors
+# (`Executions`).
 reactor.Table = Table = class Table
    constructor: ->
       @content = new Array
@@ -87,7 +88,7 @@ reactor.Combination = Combination = class Combination
 
 
 # The default receiver for `Thing`s preforms a ‘lookup’ (described in `data.coffee`).
-Paws.Thing::receiver = new Alien (rv, world)->
+Paws.Thing::receiver = new Native (rv, world)->
    [_, caller, subject, message] = rv.toArray()
    results = subject.find message
    # FIXME: Welp, this is horrible error-handling. "Print a warning and freeze forevah."
@@ -97,7 +98,7 @@ Paws.Thing::receiver = new Alien (rv, world)->
 
 # `Execution`'s default-receiver preforms a “call”-patterned staging; that is, cloning the subject
 # `Execution`, staging that clone, and leaving the caller unstaged.
-Paws.Execution::receiver = new Alien (rv, world)->
+Paws.Execution::receiver = new Native (rv, world)->
    [_, caller, subject, message] = rv.toArray()
    world.stage subject.clone(), message
 .rename 'execution✕'
@@ -116,14 +117,15 @@ Paws.Execution::receiver = new Alien (rv, world)->
 #      within the rest of the data-types, and so moved here) to be A) simpler, and B) integrated
 #      tighter with the rest of the reactor. For now, however, it's a direct port from `µpaws.js`.
 # TODO: REPEAT. REFACTOR THIS SHIT.
-# XXX: The original implementation .bind()ed aliens' bits to the Alien object (`this` at call-time.)
-#      For the moment, I've nixed this, depending on the reactor loop to handle that with `apply`.
+# XXX: The original implementation .bind()ed natives' bits to the `Native` object (`this` at call-
+#      time.) For the moment, I've nixed this, depending on the reactor loop to handle that with
+#      `apply`.
 reactor.advance = (exec, result)-> advance.call exec, result
 
 advance = (response)->
    return if @complete()
    
-   if this instanceof Alien
+   if this instanceof Native
       @pristine = no
       return @bits.shift()
    
@@ -192,7 +194,7 @@ reactor.Unit = Unit = parameterizable class Unit
       @schedule() if @_?.incrementAwaiting != no
    
    
-   # This method looks for the foremost request of the queue that either:
+   # This method looks for the foremost staging of the queue that either:
    # 
    #  1. doesn’t have an associated `requestedMask`,
    #  2. is already responsible for a mask equivalent to the one requested,
@@ -228,7 +230,7 @@ reactor.Unit = Unit = parameterizable class Unit
       # If the staging has passed #next, then it's safe to grant it the ownership it's requesting
       @table.give stagee, requestedMask if requestedMask
       
-      # If we're looking at an alien, then we received a bit-function from #advance
+      # If we're looking at an native, then we received a bit-function from #advance
       if typeof combo == 'function'
          combo.apply stagee, [result, this]
       

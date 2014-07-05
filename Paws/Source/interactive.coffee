@@ -33,7 +33,7 @@ parameterizable class Interactive extends EventEmitter
       @here = new reactor.Unit
       @shared_locals = (Paws.generateRoot()).locals
       
-      inspector = new Alien (result)->
+      inspector = new Native (result)->
          process.stdout.write Paws.inspect(result) + "\n"
       .rename '<interact: inspect result>'
       @shared_locals.push Thing.pair '<inspect>', inspector
@@ -118,9 +118,9 @@ parameterizable class Interactive extends EventEmitter
       Paws.info "-- Generated expression to evaluate: " +
          expr.with(context: yes, tag: no).toString()
       
-      # Now, we put both those in the queue, giving the first ownership of the mutex. This prevents
-      # the resumer from realizing until the interact-line has become complete(), and thus had its
-      # ownership invalidated.
+      # Now, we put both those in the queue, giving the first responsibility for the mutex. This
+      # prevents the resumer from realizing until the interact-line has become complete(), and thus
+      # had its responsibility invalidated.
       execution = Paws.generateRoot expr
       execution.locals = @shared_locals
       execution.rename '<interact: interactive input>'
@@ -132,7 +132,7 @@ parameterizable class Interactive extends EventEmitter
    
    
    # Generates an `Execution` that will clean up the `mutex` and then print the next prompt.
-   generateResumer: -> new Alien =>
+   generateResumer: -> new Native =>
       @mutex = undefined
       @prompt()
    .rename '<interact: resume prompt>'
