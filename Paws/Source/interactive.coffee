@@ -36,7 +36,7 @@ parameterizable class Interactive extends EventEmitter
       inspector = new Native (result)->
          process.stdout.write Paws.inspect(result) + "\n"
       .rename '<interact: inspect result>'
-      @shared_locals.push Thing.pair '<inspect>', inspector
+      @shared_locals.push Thing.pair '_INTERACTIVE_INSPECT', inspector
    
    prompt: -> @readline.prompt()
    
@@ -106,14 +106,14 @@ parameterizable class Interactive extends EventEmitter
       
       # We generate a wrapper-Expression for the input, turning it into:
       # 
-      #     <inspector> (expr)
+      #     _INTERACTIVE_INSPECT (expr)
       if code instanceof parser.Expression
-         inspector = new parser.Expression new Label '<inspector>'
+         inspector = new parser.Expression new Label '_INTERACTIVE_INSPECT'
          superexpr = new parser.Expression code
          inspector.append superexpr
          expr = inspector
       else
-         expr = parser.parse '<inspect> ['+code+']'
+         expr = parser.parse '_INTERACTIVE_INSPECT ['+code+']'
       
       Paws.info "-- Generated expression to evaluate: " +
          expr.with(context: yes, tag: no).toString()
