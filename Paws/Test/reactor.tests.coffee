@@ -8,6 +8,8 @@ Paws.utilities.infect global, Paws
 
 describe 'The Paws reactor:', ->
    reactor = Paws.reactor
+   parse   = Paws.parser.parse
+   advance = reactor.advance
    
    Table   = reactor.Table
    Mask    = reactor.Mask
@@ -223,8 +225,6 @@ describe 'The Paws reactor:', ->
    
    
    describe 'Execution#advance', ->
-      parse = Paws.parser.parse
-      advance = reactor.advance
       
       it 'should not modify a completed Native', ->
          completed_alien = new Native
@@ -500,19 +500,104 @@ describe 'The Paws reactor:', ->
    
    
    describe 'Realization', ->
-      it 'fails a tick if no staging is eligible'
-      it 'succeeds a tick if a stagee is complete'
-      it 'succeeds a tick if advance cannot succeed' # XXX: wat.
-      it 'gives any requested ownership'
-      it "calls the advance'd bit for Natives"
-      it "clones the current combination-subject's receiver for `execution`s"
-      it "stages the the subject's receiver's clone"
-      it 'invalidates all ownership for the stagee, if it has been completed'
+      here = null
+      beforeEach ->
+         here = new Unit
+      
+      it 'fails a tick if there are no queued stagings', ->
+         expect(here.realize()).to.not.be.ok()
+      
+      # This may be redundant, but I like that it's a little less dependant on other parts of the
+      # system. Correspondantly, though, it's *very* tightly coupled to the current implementation
+      # of `realize()`.
+      it 'fails a tick if no staging is eligible', ->
+         sinon.stub(here, 'next').returns undefined
+         expect(here.realize()).to.not.be.ok()
+      
+      it 'fails a tick if available stagings request conflicting responsibility', ->
+         mutex = new Thing
+         owner = new Native ->
+         here.table.give owner, new Mask mutex
+         
+         requestor = new Native ->
+         here.with(incrementAwaiting: no).stage requestor, undefined, new Mask mutex
+         expect(here.realize()).to.not.be.ok()
+      
+      it 'succeeds a tick if a complete stagee is removed from the queue', ->
+         stagee = new Execution
+         here.with(incrementAwaiting: no).stage stagee
+         expect(here.realize()).to.be.ok()
+      
+      it 'succeeds a tick if advance fails?'
+         # FIXME: WAT. I have no idea how advance() could possibly fail.
+      
+      it 'gives a realizable stagee any requested ownership', ->
+         mutex = new Thing
+         requestor = new Native ->
+         here.with(incrementAwaiting: no).stage requestor, undefined, new Mask mutex
+         expect(here.realize()).to.be.ok()
+         
+         expect(here.table.has requestor, new Mask mutex)
+         
+      it "calls the next bit for realizable Natives", ->
+         body = sinon.spy()
+         stagee = new Native body
+         here.with(incrementAwaiting: no).stage stagee
+         expect(here.realize()).to.be.ok()
+         
+         expect(body).was.calledOnce()
+      
+      it "stages a *clone* of the current combination-subject's receiver", ->
+         receiver = new Native ->
+         clone = receiver.clone()
+         sinon.stub(receiver, 'clone').returns clone
+         
+         foo = (new Thing).rename 'foo'
+         foo.receiver = receiver
+         
+         stagee = new Execution parse "foo bar"
+         combo = advance stagee, undefined
+         
+         here.with(incrementAwaiting: no).stage stagee, foo
+         
+         expect(receiver.complete()).to.be no
+         expect(here.realize()).to.be.ok()
+         expect(receiver.clone).was.calledOnce()
+         
+         expect(here.realize()).to.be.ok()
+         expect(receiver.complete()).to.be no
+         expect(clone.complete()).to.be yes
+      
+      it 'invalidates all ownership for the stagee, if it has been completed', ->
+         thing = new Thing
+         owner = new Native ->
+         here.table.give owner, new Mask thing
+         
+         expect(here.table.has owner, new Mask thing).to.be yes
+         
+         here.with(incrementAwaiting: no).stage owner
+         expect(here.realize()).to.be.ok()
+         
+         expect(here.table.has owner, new Mask thing).to.be no
+         
    
       describe 'scheduling', ->
-         it 'causes realization'
-         it 'schedules an extra realization-loop if called during a realization tick'
-         it 'iterates as many times as ticks are scheduled'
+         it 'causes realization', ->
+            sinon.stub(here, 'realize').returns yes
+            
+            here.schedule()
+            expect(here.realize).was.calledOnce()
+         
+         it 'causes an extra, *deferred*, realization; if called during a realization tick', ->
+            here.with(incrementAwaiting: no).stage new Native ->
+               expect(here.queue).to.have.length 1
+               here.schedule()
+               expect(here.queue).to.have.length 1
+            here.with(incrementAwaiting: no).stage new Native ->
+            
+            expect(here.queue).to.have.length 2
+            here.schedule()
+            expect(here.queue).to.have.length 0
          
          it 'can be started'
          it 'can be stopped'

@@ -120,7 +120,7 @@ Paws.Execution::receiver = new Native (rv, world)->
 # XXX: The original implementation .bind()ed natives' bits to the `Native` object (`this` at call-
 #      time.) For the moment, I've nixed this, depending on the reactor loop to handle that with
 #      `apply`.
-reactor.advance = (exec, result)-> advance.call exec, result
+reactor.advance = (exec, response)-> advance.call exec, response
 
 advance = (response)->
    return if @complete()
@@ -251,6 +251,8 @@ reactor.Unit = Unit = parameterizable class Unit
    #
    # Immediately after incrementing the count of awaiting-combinations, this will start the reactor
    # attempting to process those combinations
+   #---
+   # FIXME: I'm pretty sure `@awaitingTicks` can be replaced with `@queue.length`...
    schedule: ->
       ++@awaitingTicks
       return if @current?
