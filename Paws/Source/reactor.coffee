@@ -217,9 +217,10 @@ reactor.Unit = Unit = parameterizable class Unit
       {stagee, result, requestedMask} = staging
       prior_position = stagee.position
       
+      # Remove complete stagees from the queue, with no further action.
       return yes if stagee.complete()
-      return yes unless combo = reactor.advance stagee, result
       
+      combo = reactor.advance stagee, result
       @current = stagee
       
       if process.env['TRACE_REACTOR']
