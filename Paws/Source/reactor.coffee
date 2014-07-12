@@ -191,7 +191,7 @@ reactor.Unit = Unit = parameterizable class Unit
    # simultaneous access to the `queue` and `table`.
    stage: (execution, result, requestedMask)->
       @queue.push new Staging execution, result, requestedMask
-      @schedule() if @_?.incrementAwaiting != no
+      @schedule() if @_?.immediate != no
    
    
    # This method looks for the foremost staging of the queue that either:

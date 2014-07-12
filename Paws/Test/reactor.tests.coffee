@@ -466,7 +466,7 @@ describe 'The Paws reactor:', ->
          it "can be told not to increment realization-count", ->
             an_exec = new Execution; something = new Thing
             
-            here.with(incrementAwaiting: no).stage an_exec, something
+            here.with(immediate: no).stage an_exec, something
             expect(here.realize).was.notCalled()
       
       describe '#next', ->
@@ -479,20 +479,20 @@ describe 'The Paws reactor:', ->
             
             a_thing = Thing.construct foo: another_thing = new Thing
             here.table.give new Execution, new Mask another_thing
-            here.with(incrementAwaiting: no).stage new Execution, null, new Mask a_thing
+            here.with(immediate: no).stage new Execution, null, new Mask a_thing
             expect(here.next()).to.be undefined
             
          it 'returns an available staging', ->
             an_exec = new Execution; a_thing = new Thing; another_thing = new Thing
             here.table.give new Execution, new Mask another_thing
-            here.with(incrementAwaiting: no).stage an_exec, null, new Mask a_thing
+            here.with(immediate: no).stage an_exec, null, new Mask a_thing
             
             staging = here.next()
             expect(staging).to.be.ok()
             expect(staging.stagee).to.be an_exec
             
          it 'removes the staging from the queue', ->
-            here.with(incrementAwaiting: no).stage new Execution, new Thing
+            here.with(immediate: no).stage new Execution, new Thing
             
             expect(here.queue).to.have.length 1
             staging = here.next()
@@ -520,12 +520,12 @@ describe 'The Paws reactor:', ->
          here.table.give owner, new Mask mutex
          
          requestor = new Native ->
-         here.with(incrementAwaiting: no).stage requestor, undefined, new Mask mutex
+         here.with(immediate: no).stage requestor, undefined, new Mask mutex
          expect(here.realize()).to.not.be.ok()
       
       it 'succeeds a tick if a complete stagee is removed from the queue', ->
          stagee = new Execution
-         here.with(incrementAwaiting: no).stage stagee
+         here.with(immediate: no).stage stagee
          expect(here.realize()).to.be.ok()
       
       it 'succeeds a tick if advance fails?'
@@ -534,7 +534,7 @@ describe 'The Paws reactor:', ->
       it 'gives a realizable stagee any requested ownership', ->
          mutex = new Thing
          requestor = new Native ->
-         here.with(incrementAwaiting: no).stage requestor, undefined, new Mask mutex
+         here.with(immediate: no).stage requestor, undefined, new Mask mutex
          expect(here.realize()).to.be.ok()
          
          expect(here.table.has requestor, new Mask mutex)
@@ -542,7 +542,7 @@ describe 'The Paws reactor:', ->
       it "calls the next bit for realizable Natives", ->
          body = sinon.spy()
          stagee = new Native body
-         here.with(incrementAwaiting: no).stage stagee
+         here.with(immediate: no).stage stagee
          expect(here.realize()).to.be.ok()
          
          expect(body).was.calledOnce()
@@ -558,7 +558,7 @@ describe 'The Paws reactor:', ->
          stagee = new Execution parse "foo bar"
          combo = advance stagee, undefined
          
-         here.with(incrementAwaiting: no).stage stagee, foo
+         here.with(immediate: no).stage stagee, foo
          
          expect(receiver.complete()).to.be no
          expect(here.realize()).to.be.ok()
@@ -575,7 +575,7 @@ describe 'The Paws reactor:', ->
          
          expect(here.table.has owner, new Mask thing).to.be yes
          
-         here.with(incrementAwaiting: no).stage owner
+         here.with(immediate: no).stage owner
          expect(here.realize()).to.be.ok()
          
          expect(here.table.has owner, new Mask thing).to.be no
@@ -589,11 +589,11 @@ describe 'The Paws reactor:', ->
             expect(here.realize).was.calledOnce()
          
          it 'causes an extra, *deferred*, realization; if called during a realization tick', ->
-            here.with(incrementAwaiting: no).stage new Native ->
+            here.with(immediate: no).stage new Native ->
                expect(here.queue).to.have.length 1
                here.schedule()
                expect(here.queue).to.have.length 1
-            here.with(incrementAwaiting: no).stage new Native ->
+            here.with(immediate: no).stage new Native ->
             
             expect(here.queue).to.have.length 2
             here.schedule()
