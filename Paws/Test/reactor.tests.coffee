@@ -599,5 +599,37 @@ describe 'The Paws reactor:', ->
             here.schedule()
             expect(here.queue).to.have.length 0
          
-         it 'can be started'
-         it 'can be stopped'
+         afterEach -> here.stop()
+         
+         it 'immediately realizes when started', ->
+            body = sinon.spy()
+            here.with(immediate: no).stage new Native body
+            
+            expect(body).was.notCalled()
+            here.start()
+            expect(body).was.calledOnce()
+         
+         it 'causes further realization after the start', (done)->
+            @timeout 150
+            here.interval = 10
+            here.start()
+            
+            body = sinon.spy()
+            here.with(immediate: no).stage new Native body
+            
+            setTimeout ->
+               expect(body).was.calledOnce()
+               done()
+            , 17
+         
+         it 'can be stopped', (done)->
+            @timeout 150
+            here.start()
+            
+            here.with(immediate: no).stage new Native ->
+               expect().to.fail() # Should never be realized.
+            
+            process.nextTick ->
+               here.stop()
+            
+            setTimeout done, 17
