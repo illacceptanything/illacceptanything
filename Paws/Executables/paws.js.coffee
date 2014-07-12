@@ -156,6 +156,7 @@ prettify = require('pretty-error').start ->
    if (argf.version)
       return version()
    
+   # TODO: Decouple this from file-reading
    sources = _([argf.e, argf.expr, argf.expression])
       .flatten().compact().map (expression)-> { from: expression, code: expression }
       .value()
@@ -178,6 +179,7 @@ prettify = require('pretty-error').start ->
          interact.start()
       
       when 'st', 'start'
+         # TODO: D.R.Y. up file-reading
          readFilesAsync(argv).then (files)->
             sources.push files...
             _.forEach sources, (source)->
@@ -187,6 +189,7 @@ prettify = require('pretty-error').start ->
                here = new Paws.reactor.Unit
                here.stage root
                
+               # TODO: Use queue-flushing for optional exiting, instead of --no-start
                here.start() unless argf.start == false
       
       else argv.unshift('start', operation) and choose()
