@@ -165,7 +165,8 @@ describe 'The Paws API:', ->
       
       describe '#toArray', ->
          it 'reduces Things to an Array'
-         it 'leaves empty slots untouched'
+         it 'excludes the noughty by default'
+         it 'maintains indices'
          it 'contains Things, not the Relation members of the Thing'
       
       it 'compares by identity', ->

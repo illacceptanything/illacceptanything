@@ -103,7 +103,8 @@ Paws.Thing = Thing = parameterizable class Thing
          rel?.to?.isPair?() and key.compare rel.to.at 1
       _.pluck(results.reverse(), 'to')
    
-   toArray: (cb)-> @metadata.map (rel)-> (cb ? identity) rel?.to
+   # TODO: Option to include the noughty
+   toArray: (cb)-> @metadata.slice(1).map (rel)-> (cb ? identity) rel?.to
    
    @pair: (key, value)->
       new Thing(Label(key), value)

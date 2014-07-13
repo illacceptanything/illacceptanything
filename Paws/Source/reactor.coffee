@@ -89,7 +89,7 @@ reactor.Combination = Combination = class Combination
 
 # The default receiver for `Thing`s preforms a ‘lookup’ (described in `data.coffee`).
 Paws.Thing::receiver = new Native (rv, world)->
-   [_, caller, subject, message] = rv.toArray()
+   [caller, subject, message] = rv.toArray()
    results = subject.find message
    # FIXME: Welp, this is horrible error-handling. "Print a warning and freeze forevah."
    Paws.notice "No results on #{Paws.inspect subject} for #{Paws.inspect message}" unless results[0]
@@ -99,7 +99,7 @@ Paws.Thing::receiver = new Native (rv, world)->
 # `Execution`'s default-receiver preforms a “call”-patterned staging; that is, cloning the subject
 # `Execution`, staging that clone, and leaving the caller unstaged.
 Paws.Execution::receiver = new Native (rv, world)->
-   [_, caller, subject, message] = rv.toArray()
+   [caller, subject, message] = rv.toArray()
    world.stage subject.clone(), message
 .rename 'execution✕'
 
