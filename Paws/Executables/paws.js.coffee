@@ -172,6 +172,30 @@ prettify = require('pretty-error').start ->
                expr = Paws.parser.parse source.code, root: true
                out.write expr.serialize() + "\n"
       
+      when 'ch', 'check'
+         {Collection} = require '../Source/rule.coffee'
+         readFilesAsync(argv).then (files)->
+            sources.push files...
+            _.forEach sources, (source)->
+               Paws.info "-- Staging '#{T.bold source.from}' from the command-line ..."
+               root = Paws.generateRoot source.code
+               root.locals.inject Thing.with(names: yes).construct Paws.primitives 'specification'
+               collection = new Collection
+               collection.dispatch()
+               collection.report()
+               
+               here = new Paws.reactor.Unit
+               
+               # FIXME: This is a bit of a hack. Need a first-class citizen methdoology to predicate
+               #        code on the completion of a Unit, *and* some better way to determine when to
+               #        dispatch tests.
+               here.on 'flushed', ->
+                  if root.complete() and here.listeners('flushed').length == 1 
+                     collection.complete()
+               
+               here.stage root
+               here.start() if argf.start == true
+      
       when 'in', 'interact', 'interactive'
          Interactive = require '../Source/interactive.coffee'
          interact = new Interactive
