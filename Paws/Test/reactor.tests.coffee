@@ -536,7 +536,7 @@ describe 'The Paws reactor:', ->
          here.with(immediate: no).stage new Native ->
          
          listener = sinon.spy()
-         here.on 'flushed', listener
+         here.once 'flushed', listener
          
          expect(here.realize()).to.be.ok()
          expect(listener).was.notCalled()
@@ -545,7 +545,7 @@ describe 'The Paws reactor:', ->
          here.with(immediate: no).stage new Native ->
          
          listener = sinon.spy()
-         here.on 'flushed', listener
+         here.once 'flushed', listener
          
          expect(here.realize()).to.be.ok()
       
@@ -560,7 +560,7 @@ describe 'The Paws reactor:', ->
          here.with(immediate: no).stage requestor, undefined, new Mask mutex
          
          listener = sinon.spy()
-         here.on 'flushed', listener
+         here.once 'flushed', listener
          
          expect(here.realize()).to.be.ok()
          expect(listener).was.calledWith 1
