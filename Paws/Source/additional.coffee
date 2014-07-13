@@ -132,4 +132,4 @@ class BrowserDebugging extends Debugging
 
 module.exports = additional =
    
-   debugging: new (if process?.browser then BrowserDebugging else CommandLineDebugging)
+   debugging: debugging = new (if process?.browser then BrowserDebugging else CommandLineDebugging)
