@@ -54,6 +54,9 @@ Paws.Thing = Thing = parameterizable class Thing
    at: (idx)->       @metadata[idx]?.to
    set: (idx, to)->  @metadata[idx] = Relation.from to
    
+   inject: (things...)->
+      @push ( _.flatten _.map things, (thing)-> thing.toArray() )...
+   
    push: (elements...)->
       @metadata = @metadata.concat Relation.from elements
    pop: ->

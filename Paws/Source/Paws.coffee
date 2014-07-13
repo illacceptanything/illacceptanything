@@ -18,8 +18,8 @@ Paws.generateRoot = (code = '')->
    code = Paws.parser.parse code, root: true if typeof code == 'string'
    code = new Execution code
    
-   code.locals.push Thing.with(names: yes).construct(Paws.primitives 'infrastructure').at 1
-   code.locals.push Thing.with(names: yes).construct(Paws.primitives 'implementation').at 1
+   code.locals.inject Thing.with(names: yes).construct Paws.primitives 'infrastructure'
+   code.locals.inject Thing.with(names: yes).construct Paws.primitives 'implementation'
    
    return code
 
