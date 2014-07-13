@@ -99,6 +99,7 @@ Paws.Thing = Thing = parameterizable class Thing
    # most *intended* purposes, this should work fine; but it departs slightly from the spec.
    # We'll see if we keep it that way.
    #---
+   # TODO: `pair` option, can be disabled to return the 'valueish' things, instead of the pairs
    # TODO: `raw` option, to return the `Relation`s, instead of the wrapped `Thing`s
    find: (key)->
       key = new Label(key) unless key instanceof Thing
@@ -195,7 +196,10 @@ Paws.Execution = Execution = class Execution extends Thing
    clone: (to)->
       super (to ?= new Execution)
       to.pristine    = @pristine
-      to.locals      = @locals
+      
+      to.locals      = @locals.clone().rename('locals')
+      to.push Thing.pair 'locals', to.locals.owned()
+      
       to.resumptions = @resumptions if @resumptions?
       
       if @position? and @stack?

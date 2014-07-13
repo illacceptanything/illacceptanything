@@ -307,11 +307,20 @@ describe 'The Paws API:', ->
          expect(clone2.stack).to.not.be ex.stack
          expect(clone2.stack).to.eql ex.stack
       
-      it 'shares locals with clones', ->
+      it 'clones locals when cloned', ->
          ex = new Execution Expression()
          clone = ex.clone()
          
-         expect(clone.locals).to.equal ex.locals
+         expect(clone.locals).to.not.equal ex.locals
+         expect(clone.find('locals')[0].valueish()).to.equal clone.locals
+         expect(clone.locals.toArray()).to.eql ex.locals.toArray()
+      
+      it 'retains a reference to old locals when cloned', ->
+         ex = new Execution Expression()
+         clone = ex.clone()
+         
+         expect(clone.locals).to.not.equal ex.locals
+         expect(clone.find('locals')[1].valueish()).to.equal ex.locals
        
       describe 'as an Native', ->
          it 'should take a series of procedure-bits', ->
