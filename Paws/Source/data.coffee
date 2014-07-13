@@ -3,17 +3,23 @@ require('./utilities.coffee').infect global
 
 uuid = require 'uuid'
 util = require 'util'
+{EventEmitter} = require 'events'
+
+{debugging} = require('./additional.coffee')
 
 
 module.exports =
    Paws = new Object
 
-{debugging} = require('./additional.coffee')
 debugging.inject Paws
+
 
 # Core data-types
 # ---------------
-Paws.Thing = Thing = parameterizable class Thing
+
+#---
+# XXX: I'm not sure of the consequences of making all Things into EventEmitters ...
+Paws.Thing = Thing = parameterizable class Thing extends EventEmitter
    constructor: constructify(return:@) (elements...)->
       @id = uuid.v4()
       @metadata = new Array
