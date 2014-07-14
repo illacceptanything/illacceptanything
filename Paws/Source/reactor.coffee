@@ -215,18 +215,23 @@ reactor.Unit = Unit = parameterizable class Unit
    realize: ->
       return no unless staging = @next()
       {stagee, result, requestedMask} = staging
-      prior_position = stagee.position
+      
+      if process.env['TRACE_REACTOR']
+         exec_printout = if not stagee.position? then '' else
+            ("\n" + stagee.position.with(context: yes, tag: no).toString())
+            .replace /\n/g, "\n   │  "
+         Paws.warning ">> #{stagee} ← #{result}" + exec_printout
       
       # Remove complete stagees from the queue, with no further action.
-      return yes if stagee.complete()
+      if stagee.complete()
+         Paws.warning "   ╰┄ complete!" if process.env['TRACE_REACTOR']
+         return yes
       
       combo = reactor.advance stagee, result
       @current = stagee
       
-      if process.env['TRACE_REACTOR']
-         Paws.alert ">> #{stagee} ← #{result}"
-         Paws.alert "   #{prior_position.with(context: yes, tag: no).toString()}" if prior_position?
-         Paws.alert "   ┗> #{combo.subject} × #{combo.message}" if combo.subject?
+      if process.env['TRACE_REACTOR'] and combo.subject?
+         Paws.warning "   ╰┄ combo: #{combo.subject} × #{combo.message}"
       
       # If the staging has passed #next, then it's safe to grant it the ownership it's requesting
       @table.give stagee, requestedMask if requestedMask
