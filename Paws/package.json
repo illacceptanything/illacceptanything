@@ -41,6 +41,8 @@
                      , "uuid"                   : "~1.4.1"
                      , "bluebird"               : "~1.2.4"
                      , "lodash"                 : "~2.4.1"                                        }
+,  "optionalDependencies" :{
+                       "yamljs"                 : "~0.1.5"                                        }
 ,  "devDependencies" :{"glob"                   : "~3.2.9"
                      , "browserify"             : "~3.33.0"
                      , "coffeeify"              : "~0.6.0"

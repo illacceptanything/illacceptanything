@@ -172,29 +172,43 @@ prettify = require('pretty-error').start ->
                expr = Paws.parser.parse source.code, root: true
                out.write expr.serialize() + "\n"
       
+      # FIXME: Single TAP count / output, for all Collections
       when 'ch', 'check'
          {Collection} = require '../Source/rule.coffee'
          readFilesAsync(argv).then (files)->
-            sources.push files...
-            _.forEach sources, (source)->
-               Paws.info "-- Staging '#{T.bold source.from}' from the command-line ..."
-               root = Paws.generateRoot source.code
-               root.locals.inject Thing.with(names: yes).construct Paws.primitives 'specification'
-               collection = new Collection
+            # FIXME: Promisify this a bit more.
+            _.forEach files, (file)->
+               if /\.rules\.yaml$/i.test file.from then rule_file file else sources.push file
+            
+            _.forEach sources, (source)-> rule_unit source
+         
+         rule_file = (source)->
+            Paws.info "-- Staging rules in '#{T.bold source.from}' from the command-line ..."
+            _.forEach _.values(require('yamljs').parse source.code), (book)->
+               collection = Collection.from book
                collection.dispatch()
                collection.report()
-               
-               here = new Paws.reactor.Unit
-               
-               # FIXME: This is a bit of a hack. Need a first-class citizen methdoology to predicate
-               #        code on the completion of a Unit, *and* some better way to determine when to
-               #        dispatch tests.
-               here.on 'flushed', ->
-                  if root.complete() and here.listeners('flushed').length == 1 
-                     collection.complete()
-               
-               here.stage root
-               here.start() if argf.start == true
+               collection.complete()
+         
+         rule_unit = (source)->
+            Paws.info "-- Staging '#{T.bold source.from}' from the command-line ..."
+            root = Paws.generateRoot source.code
+            root.locals.inject Thing.with(names: yes).construct Paws.primitives 'specification'
+            collection = new Collection
+            collection.dispatch()
+            collection.report()
+            
+            here = new Paws.reactor.Unit
+            
+            # FIXME: This is a bit of a hack. Need a first-class citizen methdoology to predicate
+            #        code on the completion of a Unit, *and* some better way to determine when to
+            #        dispatch tests.
+            here.on 'flushed', ->
+               if root.complete() and here.listeners('flushed').length == 1 
+                  collection.complete()
+            
+            here.stage root
+            here.start() if argf.start == true
       
       when 'in', 'interact', 'interactive'
          Interactive = require '../Source/interactive.coffee'
