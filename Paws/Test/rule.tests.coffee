@@ -115,6 +115,48 @@ describe "Paws' Rulebook support:", ->
             rule.dispatch()
             expect(after).was.notCalled()
       
+      describe 'construct()', ->
+         it 'should return null if no Rule can be constructed', ->
+            rule = Rule.construct {}
+            expect(rule).to.be null
+         
+         it 'should return a Rule', ->
+            rule = Rule.construct {name: 'a test', body: 'pass[]'}
+            expect(rule).to.be.a Rule
+         
+         it 'should set the rule title', ->
+            rule = Rule.construct {name: 'a test', body: 'pass[]'}
+            expect(rule.title.alien).to.be 'a test'
+         
+         it 'should construct the rule body', ->
+            rule = Rule.construct {name: 'a test', body: 'pass[]'}
+            
+            expect(rule.body).to.be.an Execution
+            expect(rule.body.position.next.contents.alien).to.be 'pass' # FIXME: terrible test.
+         
+         it 'should have a default title', ->
+            rule = Rule.construct {body: 'pass[]'}
+            expect(rule.title.alien).to.be '<untitled>'
+         
+         it 'should pend a body-less rule', ->
+            rule = Rule.construct {name: 'a test'}
+            
+            expect(rule.body).to.be.a Native
+            rule.environment.unit.stage rule.body, undefined
+            expect(rule.status).to.be 'NYI'
+         
+         it 'should generate a new Unit for each rule', ->
+            rule = Rule.construct {name: 'a test', body: 'pass[]'}
+            expect(rule.environment.unit).to.be.a reactor.Unit
+         
+         it "should support an optional 'eventually' block", ->
+            eventually = sinon.spy Rule::, 'eventually'
+            
+            rule = Rule.construct {name: 'a test', body: 'pass[]', eventually: 'fail[]'}
+            expect(eventually).was.calledOnce()
+         
+         it "should accept string keywords to generate the 'eventually' block"
+      
       describe 'Collections', ->
          it 'should exist', ->
             expect(Collection).to.be.ok()

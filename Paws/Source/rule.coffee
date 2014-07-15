@@ -7,6 +7,24 @@ infect global, Paws
 # FIXME: Refactor this entire thing to use isaacs' `node-tap`
 
 module.exports = Rule = class Rule extends Thing
+   
+   @construct: (schema, collection = Collection.current())->
+      return null unless schema.name? or schema.body?
+      name = new Label schema.name ? '<untitled>'
+      body = if schema.body
+           new Execution Paws.parser.parse schema.body
+      else new Native -> rule.NYI()
+      
+      # XXX: Each rule in its own Unit?
+      rule = new Rule {unit: new reactor.Unit}, name, body, collection
+      if schema.eventually
+         rule.eventually switch schema.eventually
+            when 'pass' then new Native -> rule.pass()
+            when 'fail' then new Native -> rule.fail()
+            else             new Execution Paws.parser.parse schema.eventually
+      
+      return rule
+   
    #---
    # NOTE: Expects an @environment similar to Execution.synchronous's `this`. Must contain `.unit`,
    #       and may contain `.caller`.
@@ -36,6 +54,7 @@ module.exports = Rule = class Rule extends Thing
    
    pass: -> @status = true;  @complete()
    fail: -> @status = false; @complete()
+   NYI:  -> @status = 'NYI'; @complete()
    
    complete: ->
       Paws.info "-- Completed (#{@status}):", Paws.inspect this
@@ -52,6 +71,21 @@ module.exports = Rule = class Rule extends Thing
       @environment.unit.once 'flushed', @eventually_listener if @dispatched
    
 Rule.Collection = Collection = class Collection
+   
+   # Construct a Collection (and member Rules) from an array of rule-structures (usually from a
+   # Rulebook / YAML file.)
+   #
+   # Example:
+   #     [{ name: 'a test',
+   #        body: "implementation void[] [pass[]]"
+   #        eventually: 'fail' },
+   #      ... ]
+   #---
+   # TODO: Nested Collections
+   @from: (schemas)->
+      collection = new Collection
+      collection.rules = _.filter _.map schemas, (schema)-> Rule.construct schema
+      return collection
    
    _current = undefined
    @current: -> _current ?= new Collection
@@ -95,7 +129,7 @@ Rule.Collection = Collection = class Collection
       status = switch rule.status
          when true      then 'ok'
          when false     then 'not ok'
-         when 'pending' then 'not ok'
+         when 'NYI'     then 'not ok'
          else           rule.status
       directive = " # TODO" if rule.status == 'pending'
       
