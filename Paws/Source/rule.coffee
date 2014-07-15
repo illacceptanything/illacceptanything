@@ -19,6 +19,10 @@ module.exports = Rule = class Rule extends Thing
          @body.locals.inject Paws.primitives 'infrastructure'
          @body.locals.inject Paws.primitives 'implementation'
       
+      block_locals = require('./primitives/specification.coffee').generate_members this
+      @body.locals.inject block_locals
+      this        .inject block_locals
+      
       @collection.push this
    
    maintain_locals: (@locals)->
