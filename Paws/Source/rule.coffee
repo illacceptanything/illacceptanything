@@ -4,6 +4,8 @@ require('./utilities.coffee').infect global
 Paws = require './Paws.coffee'
 infect global, Paws
 
+primitives = require('./primitives/specification.coffee')
+
 # FIXME: Refactor this entire thing to use isaacs' `node-tap`
 
 module.exports = Rule = class Rule extends Thing
@@ -37,9 +39,8 @@ module.exports = Rule = class Rule extends Thing
          @body.locals.inject Paws.primitives 'infrastructure'
          @body.locals.inject Paws.primitives 'implementation'
       
-      block_locals = require('./primitives/specification.coffee').generate_members this
-      @body.locals.inject block_locals
-      this        .inject block_locals
+      @body.locals.inject primitives.generate_block_locals this
+      this        .inject primitives.generate_members this
       
       @collection.push this
    
