@@ -1,6 +1,16 @@
 `                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 Paws = require './data.coffee'
 
+try
+   parser = require '../Library/cPaws-parser.js'
+catch e
+   Paws.warning "!! Compiled parser not found! Dynamically building one from the grammar now ..."
+   Paws.warning "   (This should have happened on `npm install`. Run that, if you haven't yet.)"
+   PEG = require('pegjs'); fs = require('fs'); path = require('path')
+   grammar = fs.readFileSync path.join(__dirname, 'cPaws.pegjs'), encoding: 'utf8'
+   parser = PEG.buildParser grammar
+
+
 class SourceRange
    constructor: (@text, @begin, @end)->
 
