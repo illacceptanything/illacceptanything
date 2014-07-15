@@ -8,11 +8,17 @@ infect global, Paws
 
 module.exports = Rule = class Rule extends Thing
    #---
-   # NOTE: Expects an @environment similar to Execution.synchronous's `this`. Must contain .caller
-   #       and .unit.
+   # NOTE: Expects an @environment similar to Execution.synchronous's `this`. Must contain `.unit`,
+   #       and may contain `.caller`.
    constructor: constructify(return:@) (@environment, @title, @body, @collection = Collection.current())->
       @title = new Label @title unless @title instanceof Label
-      @body.locals = @environment.caller.locals.clone()
+      
+      if @environment.caller?
+         @body.locals = @environment.caller.clone().locals
+      else
+         @body.locals.inject Paws.primitives 'infrastructure'
+         @body.locals.inject Paws.primitives 'implementation'
+      
       @collection.push this
    
    maintain_locals: (@locals)->
