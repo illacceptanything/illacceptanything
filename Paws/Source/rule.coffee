@@ -26,13 +26,13 @@ module.exports = Rule = class Rule extends Thing
       return rule
    
    #---
-   # NOTE: Expects an @environment similar to Execution.synchronous's `this`. Must contain `.unit`,
+   # NOTE: Expects an environment similar to Execution.synchronous's `this`. Must contain `.unit`,
    #       and may contain `.caller`.
-   constructor: constructify(return:@) (@environment, @title, @body, @collection = Collection.current())->
+   constructor: constructify(return:@) ({@caller, @unit}, @title, @body, @collection = Collection.current())->
       @title = new Label @title unless @title instanceof Label
       
-      if @environment.caller?
-         @body.locals = @environment.caller.clone().locals
+      if @caller?
+         @body.locals = @caller.clone().locals
       else
          @body.locals.inject Paws.primitives 'infrastructure'
          @body.locals.inject Paws.primitives 'implementation'
@@ -49,8 +49,8 @@ module.exports = Rule = class Rule extends Thing
    dispatch: ->
       Paws.notice '-- Dispatching:', Paws.inspect this
       @dispatched = true
-      @environment.unit.once 'flushed', @eventually_listener if @eventually_listener?
-      @environment.unit.stage @body
+      @unit.once 'flushed', @eventually_listener if @eventually_listener?
+      @unit.stage @body
    
    pass: -> @status = true;  @complete()
    fail: -> @status = false; @complete()
@@ -58,7 +58,7 @@ module.exports = Rule = class Rule extends Thing
    
    complete: ->
       Paws.info "-- Completed (#{@status}):", Paws.inspect this
-      @environment.unit.removeListener 'flushed', @eventually_listener if @eventually_listener?
+      @unit.removeListener 'flushed', @eventually_listener if @eventually_listener?
       @emit 'complete', @status
    
    # FIXME: repeated calls?
@@ -67,8 +67,8 @@ module.exports = Rule = class Rule extends Thing
       block.locals.inject @locals if @locals?
       @eventually_listener = =>
          Paws.info "-- Firing 'eventually' for ", Paws.inspect this
-         @environment.unit.stage block, undefined
-      @environment.unit.once 'flushed', @eventually_listener if @dispatched
+         @unit.stage block, undefined
+      @unit.once 'flushed', @eventually_listener if @dispatched
    
 Rule.Collection = Collection = class Collection
    

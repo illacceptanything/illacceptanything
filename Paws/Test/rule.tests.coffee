@@ -142,12 +142,12 @@ describe "Paws' Rulebook support:", ->
             rule = Rule.construct {name: 'a test'}
             
             expect(rule.body).to.be.a Native
-            rule.environment.unit.stage rule.body, undefined
+            rule.unit.stage rule.body, undefined
             expect(rule.status).to.be 'NYI'
          
          it 'should generate a new Unit for each rule', ->
             rule = Rule.construct {name: 'a test', body: 'pass[]'}
-            expect(rule.environment.unit).to.be.a reactor.Unit
+            expect(rule.unit).to.be.a reactor.Unit
          
          it "should support an optional 'eventually' block", ->
             eventually = sinon.spy Rule::, 'eventually'
