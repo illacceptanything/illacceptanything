@@ -162,10 +162,10 @@ utilities =
    # Another “tag” for CoffeeScript classes, to cause them to delegate any undefined methods to
    # another class, if they *are* defined on that other class.
    delegated: (member, delegatee)-> (klass)->
-      functions = _(delegatee::).functions().map (f)->
+      funcs = functions(delegatee::).map (f)->
          mapped = -> delegatee::[f].apply this[member], arguments
          [f, mapped]
-      _.defaults klass::, functions.object().valueOf()
+      _.defaults klass::, funcs.object().valueOf()
       
       return klass
    
@@ -174,3 +174,18 @@ utilities =
    
    
    infect: (globals, wif = utilities)-> _.assign globals, wif
+
+# lodash's `functions()` only handles *enumerable* properties. `Array`, etc's prototypal functions
+# aren't enumerable. Ugh.
+#
+# (Returns a lodash-chainable.)
+#---
+# FIXME: Calling uniq() multiple times, meh
+functions = (prototype, uuntil = Object.prototype)->
+   # FIXME: This clearly won't work in IEs ... ugh.
+   metaproto = prototype.__proto__
+   
+   _(Object.getOwnPropertyNames prototype)
+   .filter (prop)-> typeof prototype[prop] == 'function'
+   .concat(unless metaproto is uuntil then functions metaproto else [])
+   .uniq().without('constructor')

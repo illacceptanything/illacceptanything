@@ -202,3 +202,29 @@ describe "Paws' utilities:", ->
             constructor: (@foo)->
          
          expect(Object.getOwnPropertyNames Something::).to.not.contain 'somebody'
+      
+      it 'should delegate to ancestors', ->
+         class Ancestor
+            operate: (arg)-> return this: this, argument: arg
+         
+         class Delegatee extends Ancestor
+         
+         Something = utilities.delegated('a_member', Delegatee) class Something
+            constructor: (@a_member)->
+         
+         expect(Something::operate).to.be.ok()
+         
+         foo = new Delegatee
+         instance = new Something(foo)
+         expect(instance.operate('bar').this).to.be foo
+         expect(instance.operate('bar').argument).to.be 'bar'
+      
+      it 'should handle built-ins well /reg', ->
+         Something = utilities.delegated('stuff', Array) class Something
+            constructor: (@stuff)->
+         
+         expect(Something::shift).to.be.ok()
+         
+         instance = new Something([1, 2, 3])
+         expect(instance.shift()).to.be 1
+         expect(instance.stuff).to.have.length 2
