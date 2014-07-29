@@ -68,7 +68,7 @@ describe "Paws' utilities:", ->
             constructor: Ctor = constructify ->
          Ctor()
          expect(-> new Klass).to.throwException()
-      it 'can be called multiple times /re', ->
+      it 'can be called multiple times /reg', ->
          Ctor1 = constructify ->
          expect(-> new Ctor1).to.not.throwException()
          expect(-> new Ctor1).to.not.throwException()
@@ -158,20 +158,47 @@ describe "Paws' utilities:", ->
          , 0
    
    describe 'delegated()', ->
-      class Delegatee
-         shadowed: ->
-         operate: (arg)-> return [this, arg]
-      
-      correct_shadowed = ->
-      utilities.delegated('foo', Delegatee) class Something
-         shadowed: correct_shadowed
-         constructor: (@foo)->
-      
-      it 'should delegate calls to missing methods, if possible', ->
-         something = new Something(new Delegatee)
+      it 'should create definitions for super methods', ->
+         class Delegatee
+            operate: (arg)-> return this: this, argument: arg
+         
+         Something = utilities.delegated('a_member', Delegatee) class Something
+            constructor: (@a_member)->
+         
          expect(Something::operate).to.be.ok()
-         expect(-> something.operate()).to.not.throwException()
-         expect(something.operate 123).to.eql [something.foo, 123]
+      
+      it 'should delegate calls to missing methods', ->
+         class Delegatee
+            operate: (arg)-> return this: this, argument: arg
+         
+         Something = utilities.delegated('a_member', Delegatee) class Something
+            constructor: (@a_member)->
+         
+         expect(Something::operate).to.be.ok()
+         
+         foo = new Delegatee
+         instance = new Something(foo)
+         expect(-> instance.operate()).to.not.throwException()
+         expect(instance.operate('bar').this).to.be foo
+         expect(instance.operate('bar').argument).to.be 'bar'
       
       it 'should not shadow re-implemented methods', ->
+         correct_shadowed = ->
+         class Delegatee
+            shadowed: ->
+         
+         Something = utilities.delegated('foo', Delegatee) class Something
+            shadowed: correct_shadowed
+            constructor: (@foo)->
+         
          expect(Something::shadowed).to.be correct_shadowed
+      
+      it 'should not delegate non-function properties', ->
+         class Delegatee
+            somebody: 'Micah'
+         correct_shadowed = ->
+         
+         Something = utilities.delegated('foo', Delegatee) class Something
+            constructor: (@foo)->
+         
+         expect(Object.getOwnPropertyNames Something::).to.not.contain 'somebody'
