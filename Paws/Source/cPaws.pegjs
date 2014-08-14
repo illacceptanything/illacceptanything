@@ -9,7 +9,7 @@
 
 {
    function label(string)        { return { type: 'label',     string: string                   } }
-   function execution(sequence)  { return { type: 'execution', expressions: sequence            } }
+   function execution(sequence)  { return { type: 'execution', sequence: sequence               } }
    
    function R(begin, contents) { return function(it){
       it.source = {begin:begin, contents:contents, end:begin + contents.length}; return it } }
