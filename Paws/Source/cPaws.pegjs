@@ -12,7 +12,8 @@
    function execution(sequence)  { return { type: 'execution', sequence: sequence               } }
    
    function R(begin, contents) { return function(it){
-      it.source = {begin:begin, contents:contents, end:begin + contents.length}; return it } }
+      // I'm still fucking unsure whether end is off-by-one.
+      it.source = {begin:begin, contents:contents, end:begin + contents.length - 1}; return it } }
 }
 
 __ENTER = Sequence

@@ -11,6 +11,7 @@ catch e
    grammar = fs.readFileSync path.join(__dirname, 'cPaws.pegjs'), encoding: 'utf8'
    PEG.buildParser grammar
 
+
 # Instances of this can be associated with Paws objects (and parser-types) to contextualize them
 # with information about ‘where they came from.’
 exports.Context = Context =
@@ -82,14 +83,14 @@ delegated('words', Array) class Expression
       
       return it
    
-   constructor: -> @words = new Array
+   constructor: constructify(return:@) -> @words = new Array
    
    at: (idx)-> @words[idx]
 
 
 parse = (text)->
-   context_from = (representation, object)->
-      Context.on object, text, representation.begin, representation.end
+   context_from = (source_information, object)->
+      Context.on object, text, source_information.begin, source_information.end
       return object
    
    # Translates a given PEG-output node into one of our parser nodes:
@@ -99,16 +100,16 @@ parse = (text)->
             seq = new Sequence
             seq.expressions = _.map representation, (expr)-> node_from expr
             seq.expressions.push new Expression unless seq.expressions.length
-            context_from representation, seq
+            context_from representation.source, seq
          
          when 'expression'
             expr = new Expression
             expr.words      = _.map representation, (word)-> node_from word
-            context_from representation, expr
+            context_from representation.source, expr
          
          when 'label'
             label = new Label representation.string
-            context_from representation, label
+            context_from representation.source, label
          
          when 'execution'
             execution = new Execution node_from representation.sequence
