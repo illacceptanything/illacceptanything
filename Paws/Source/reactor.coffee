@@ -161,7 +161,7 @@ reactor.Unit = Unit = parameterizable class Unit
       # If the staging has passed #next, then it's safe to grant it the ownership it's requesting
       @table.give stagee, requestedMask if requestedMask
       
-      # If we're looking at an native, then we received a bit-function from #advance
+      # If we're looking at a native, then we received a bit-function from #advance
       if typeof combo == 'function'
          combo.apply stagee, [result, this]
       

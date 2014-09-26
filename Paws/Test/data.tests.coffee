@@ -240,14 +240,14 @@ describe 'The Paws API:', ->
       Execution = Paws.Execution
       Native    = Paws.Native
       
-      Expression = Paws.parser.Expression
+      Sequence = Paws.parse.Sequence
       
       it 'should construct an Native when passed function-bits', ->
          expect(new Execution ->).to.be.an Native
       
       it 'should not construct an Native when passed an expression', ->
-         expect(new Execution new Expression).to.be.an Execution
-         expect(new Execution new Expression).not.to.be.an Native
+         expect(new Execution new Sequence).to.be.an Execution
+         expect(new Execution new Sequence).not.to.be.an Native
          
          expect(new Execution).to.be.an Execution
          expect(new Execution).not.to.be.an Native
@@ -268,13 +268,14 @@ describe 'The Paws API:', ->
          expect(exe.locals.at(1).metadata[2].owns).to.be no
       
       it 'should take a position', ->
-         expr = new Expression
+         seq = new Sequence
          
-         expect(-> new Execution expr).to.not.throwException()
-         expect(  (new Execution expr).position).to.be expr
+         expect(-> new Execution seq).to.not.throwException()
+         expect(  (new Execution seq).position).to.be seq
       
+      # FIXME: This test is too tightly-coupled
       it 'should know whether it is complete', ->
-         ex = new Execution (new Expression)
+         ex = new Execution (new Sequence)
          expect(ex.complete()).to.be false
          
          ex.position = null
@@ -285,13 +286,13 @@ describe 'The Paws API:', ->
          expect(ex.complete()).to.be true
       
       it 'can be cloned', ->
-         ex = new Execution Expression()
+         ex = new Execution (new Sequence)
          expect(-> ex.clone()).to.not.throwException()
          expect(   ex.clone()).to.be.an Execution
          
       it 'preserves the position and stack when cloning', ->
-         pos1 = new Expression
-         pos2 = new Expression
+         pos1 = new Sequence
+         pos2 = new Sequence
          ex = new Execution pos1
          
          clone1 = ex.clone()
@@ -308,7 +309,7 @@ describe 'The Paws API:', ->
          expect(clone2.stack).to.eql ex.stack
       
       it 'clones locals when cloned', ->
-         ex = new Execution Expression()
+         ex = new Execution (new Sequence)
          clone = ex.clone()
          
          expect(clone.locals).to.not.equal ex.locals
@@ -316,7 +317,7 @@ describe 'The Paws API:', ->
          expect(clone.locals.toArray()).to.eql ex.locals.toArray()
       
       it 'retains a reference to old locals when cloned', ->
-         ex = new Execution Expression()
+         ex = new Execution (new Sequence)
          clone = ex.clone()
          
          expect(clone.locals).to.not.equal ex.locals

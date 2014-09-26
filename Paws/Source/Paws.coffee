@@ -7,7 +7,7 @@ Paws = require './data.coffee'
 Paws.debugging = require('./additional.coffee').debugging
 Paws.utilities = require './utilities.coffee'
 
-Paws.parser  = require './parser.coffee'
+Paws.parse   = require './parser.coffee'
 Paws.reactor = require './reactor.coffee'
 
 

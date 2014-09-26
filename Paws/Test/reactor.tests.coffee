@@ -8,7 +8,7 @@ Paws.utilities.infect global, Paws
 
 describe 'The Paws reactor:', ->
    reactor = Paws.reactor
-   parse   = Paws.parser.parse
+   parse   = Paws.parse
    advance = reactor.advance
    
    Table   = reactor.Table
@@ -382,7 +382,7 @@ describe 'The Paws reactor:', ->
          a_thing = Thing.construct foo: another_thing = new Thing
          params = Unit.receiver_parameters caller, a_thing, new Label 'foo'
          
-         bit = reactor.advance receiver, params
+         bit = receiver.advance params
          bit.apply receiver, [params, here]
          
          expect(here.stage).was.calledOnce()
@@ -391,7 +391,7 @@ describe 'The Paws reactor:', ->
          a_thing = Thing.construct foo: another_thing = new Thing
          params = Unit.receiver_parameters caller, a_thing, new Label 'bar'
          
-         bit = reactor.advance receiver, params
+         bit = receiver.advance params
          bit.apply receiver, [params, here]
          
          expect(here.stage).was.notCalled()
@@ -400,7 +400,7 @@ describe 'The Paws reactor:', ->
          a_thing = Thing.construct foo: another_thing = new Thing
          params = Unit.receiver_parameters caller, a_thing, new Label 'foo'
          
-         bit = reactor.advance receiver, params
+         bit = receiver.advance params
          bit.apply receiver, [params, here]
          
          result = here.stage.getCall(0).args[1]
@@ -419,7 +419,7 @@ describe 'The Paws reactor:', ->
          
          sinon.spy an_exec, 'clone'
          
-         bit = reactor.advance receiver, params
+         bit = receiver.advance params
          bit.apply receiver, [params, here]
          
          expect(an_exec.clone).was.called()
@@ -428,7 +428,7 @@ describe 'The Paws reactor:', ->
          an_exec = new Execution; something = new Thing
          params = Unit.receiver_parameters caller, an_exec, something
          
-         bit = reactor.advance receiver, params
+         bit = receiver.advance params
          bit.apply receiver, [params, here]
          
          expect(here.stage).was.calledWith sinon.match.any, something
@@ -437,7 +437,7 @@ describe 'The Paws reactor:', ->
          an_exec = new Execution; something = new Thing
          params = Unit.receiver_parameters caller, an_exec, something
          
-         bit = reactor.advance receiver, params
+         bit = receiver.advance params
          bit.apply receiver, [params, here]
          
          expect(here.stage).was.neverCalledWith caller, sinon.match.any
@@ -524,7 +524,7 @@ describe 'The Paws reactor:', ->
          expect(here.realize()).to.not.be.ok()
       
       it 'succeeds a tick if a complete stagee is removed from the queue', ->
-         stagee = new Execution
+         stagee = new Native
          here.with(immediate: no).stage stagee
          expect(here.realize()).to.be.ok()
       
@@ -556,7 +556,7 @@ describe 'The Paws reactor:', ->
          foo.receiver = receiver
          
          stagee = new Execution parse "foo bar"
-         combo = advance stagee, undefined
+         combo = stagee.advance()
          
          here.with(immediate: no).stage stagee, foo
          
