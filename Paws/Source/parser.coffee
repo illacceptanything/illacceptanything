@@ -87,6 +87,12 @@ delegated('words', Array) class Expression
    
    at: (idx)-> @words[idx]
 
+# Prepares some raw text for parsing (primarily removing artifacts, such as shebangs.) Returns the
+# (possibly modified) text.
+exports.prepare = (text)->
+   text = text.split("\n").slice(1).join("\n") if text.slice(0,2) == '#!'
+   text
+
 
 parse = (text)->
    context_from = (source_information, object)->

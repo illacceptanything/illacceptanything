@@ -15,7 +15,7 @@ Paws.primitives = (bag)->
    require("./primitives/#{bag}.coffee")
 
 Paws.generateRoot = (code = '')->
-   code = Paws.parser.parse code, root: true if typeof code == 'string'
+   code = Paws.parse Paws.parse.prepare code if typeof code == 'string'
    code = new Execution code
    
    code.locals.inject Thing.with(names: yes).construct Paws.primitives 'infrastructure'

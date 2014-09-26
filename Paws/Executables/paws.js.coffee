@@ -168,7 +168,7 @@ prettify = require('pretty-error').start ->
             sources.push files...
             _.forEach sources, (source)->
                Paws.info "-- Parse-tree for '#{T.bold source.from}':"
-               expr = Paws.parser.parse source.code, root: true
+               expr = Paws.parse Paws.parse.prepare source.code
                out.write expr.serialize() + "\n"
       
       when 'in', 'interact', 'interactive'
