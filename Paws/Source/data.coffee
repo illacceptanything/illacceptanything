@@ -168,17 +168,71 @@ Paws.Label = Label = class Label extends Thing
       it
 
 
+# A `Combination` represents a single operation in the Paws semantic. An instance of this class
+# contains the information necessary to process a pending combo (as returned by
+# `Execution#next`).
+Paws.Combination = Combination = class Combination
+   constructor: constructify (@subject, @message)->
+
+# A `Position` records the last element of a given expression from which a `Combination` was
+# generated. It also contains the information necessary to find the *next* element of that
+# expression's sequence (i.e. the indices of both the element within the expression, and the
+# expression within the sequence.)
+#
+# This class is considered immutable.
+Paws.Position = Position = class Position
+   constructor: constructify (@_sequence, @expression_index = 0, @index = 0)->
+      # FIXME: argument validation.
+      #unless _.isArray(@_sequence) and _.isArray(@_sequence[0])
+   
+   sequence:   -> @_sequence
+   expression: -> @_sequence?.at @expression_index
+   valueOf:    -> @_sequence?.at(@expression_index)?.at @index
+   
+   clone: ->
+      new Position @_sequence, @expression_index, @index
+   
+   # Returns a new `Position`, representing the next element of the parent sequence needing
+   # combination. (If the current element is the last word of the last expression in the sequence,
+   # returns `undefined`.)
+   next: ->
+      if @expression().at(@index + 1)?
+         return new Position @_sequence, @expression_index, @index + 1
+      if @sequence().at(@expression_index + 1)?
+         return new Position @_sequence, @expression_index + 1
+
+# `Execution`s store the context necessary to ‘hold’ a Paws script, partially-executed, until the
+# next time it is advanced to produce a `Combination` for the reactor.
+#
+# Each time an `Execution` is advanced, that ‘current location’ at which it will be held is moved
+# forward; either along the chain of words in the current expression, or diving into (or later back
+# out of) sub-expressions within the current expression. That ‘current location’ is encoded into a
+# stack of `Position`s stored in `instructions`; each time a new sub-expression is entered, a new
+# `Position` for that expression is shifted onto the `instructions` stack. (Correspondingly, when a
+# sequence of expressions is completed, that element is discarded from the stack.) *NB: This means
+# the `instructions` stack lists *completed* nodes; ones for which a `Combination` has already been
+# generated.)*
+#
+# In addition, the `results` of previous combinations, for each layer of the `instructions` stack,
+# are stored in a second stack. These are used as the left-hand side of combinations (as well as the
+# right-hand side when dropping out of a sub-expression.)
+#
+# Finally, an `Execution` contains the objective evaluation context of the instructions it contains;
+# this is in the form of a `locals` object, against which the initial word in any expression will be
+# combined.
 Paws.Execution = Execution = class Execution extends Thing
-   constructor: constructify(return:@) (@position)-> 
-   constructor: constructify (@position)->
-      if typeof @position == 'function' then return Native.apply this, arguments
+   constructor: constructify (@begin)->
+      if typeof @begin == 'function' then return Native.apply this, arguments
+      if @begin instanceof Paws.parse.Expression then @begin = new Paws.parse.Sequence(@begin)
+      if @begin instanceof Paws.parse.Sequence   then @begin = new Position(@begin)
+      
+      @instructions = [ @begin ]
+      @results      = [ null   ]
       
       @pristine = yes
       @locals = new Thing().rename 'locals'
       @locals.push Thing.pair 'locals', @locals.disowned()
       this   .push Thing.pair 'locals', @locals.owned()
-      
-      @stack = new Array
       
       return this
    
@@ -186,18 +240,16 @@ Paws.Execution = Execution = class Execution extends Thing
    #      `Execution` isn't defined yet.
    receiver: undefined
    
-   complete:-> not this.position? and !this.stack.length
+   complete:-> !this.instructions.length and !this.stack.length
    
    # This method of the `Execution` types will copy all data relevant to advancement of the
-   # execution to a `Execution` instance. This includes the pristine-state, the `stack` and
-   # `position`, or any `Native`'s `bits`. A clone made thus can be advanced just as the original
-   # would have been, without affecting the original's advancement-state.
+   # execution to a `Execution` instance. This includes the pristine-ness (boolean), the `results`
+   # and `instructions` stacks (or for a `Native`, any `bits`.) A clone made thus can be advanced
+   # just as the original would have been, without affecting the original's position.
    # 
    # Of note: along with all the other data copied from the old instance, the new clone will inherit
    # the original `locals`. This is intentional.
-   # 
    #---
-   # FIXME: ‘Cloning’ locals ... *isn't*, here. I need to figure out what I want to do with this.
    # TODO: nuke-API equivalent of lib-API's `branch()()`
    clone: (to)->
       super (to ?= new Execution)
@@ -208,11 +260,106 @@ Paws.Execution = Execution = class Execution extends Thing
       
       to.resumptions = @resumptions if @resumptions?
       
-      if @position? and @stack?
-         to.position = @position
-         to.stack = @stack.slice 0
+      if @instructions? and @results?
+         to.instructions = @instructions.slice 0
+         to.results      = @results.slice 0
       
       return to
+   
+   # This informs an `Execution` of the ‘result’ of the last `Combination` returned from `next`.
+   # This value is stored in the `results` stack, and is later used as one of the values in furhter
+   # `Combination`s.
+   respond: (response)-> @results[0] = response
+   
+   # Returns the next `Combination` that needs to be preformed for the advancement of this
+   # `Execution`. This is a mutating call, and each time it is called, it will produce a new
+   # (subsequent) `Combination` for this `Execution`.
+   #
+   # It usually only makes sense for this to be called after a response to the *previous*
+   # combination has been signaled by `respond` (obviously unless this is the first time it's being
+   # advanced.) This also accepts an optional argument, the passing of which is identical to calling
+   # `respond` with that value before-hand.
+   # 
+   # For combinations involving the start of a new expression, `null` will be returned as one part
+   # of the `Combination`; this indicates no meaningful data from the stack for that node. (The
+   # reactor will interpret this as an instruction to insert this `Execution`'s `locals` into that
+   # combo, instead.)
+   advance: (response)->
+      return undefined if @complete()
+      
+      if this instanceof Native
+         @pristine = no
+         return @bits.shift()
+      
+      @respond response if response?
+      
+      # If we're continuing to advance a partially-completed `Execution`, ...
+      completed = @instructions[0]
+      previous_response = @results[0]
+      if not @pristine
+         
+         # Gets the next instruction from the current sequence (via `Position#next`)
+         @instructions[0] =
+         upcoming = completed.next()
+         
+         # If we've completed the current sub-expression (a sequence.), then we're going to step out
+         # (pop the stack.) and preform the indirected combination.
+         if not upcoming?
+            outer_current_value = @results[1]
+            @instructions.shift(); @results.shift()
+            return new Combination outer_current_value, previous_response
+         
+         # Discards the last response at the current stack-level, if this is the beginning of a new
+         # semicolon-delimited expression.
+         if upcoming.index is 0
+            @results[0] =
+            previous_response = null
+         
+         it = upcoming.valueOf()
+        
+         # If the current node is a `Thing`, we combine it against the top of the `results`-stack
+         # (either another Thing, or `null` if this is the start of an expression.)
+         if it instanceof Thing
+            upcoming_value = it
+            return new Combination previous_response, upcoming_value
+         
+         # If it's not a `Thing`, it must be a sub-expression (that is, a `parse.Sequence`).
+         else
+            upcoming = new Position it
+            
+            # If we've got what appears to be an empty sub-expression, then we're dealing with the
+            # special-case syntax for referencing the Paws equivalent of `this`. We treat this like
+            # a simple embedded-`Thing` combination, except with the current `Execution` as the
+            # `Thing` in question:
+            if not upcoming.valueOf()?
+               return new Combination previous_response, this
+            
+            # Else, the ‘upcoming’ node is a real sub-expression, and we're going to ‘dive’ into it
+            # (push it onto the stack.)
+            @instructions.unshift upcoming; @results.unshift null
+      
+      # At this point, we're left at the *beginning* of a new expression. Either we'll be looking at
+      # a `Thing`, or a nested series of ‘immediate’ (i.e. `[[[foo ...`) sub-expressions, eventually
+      # ending in a `Thing` (since truly empty sub-expressions are impossible.)
+      @pristine = no
+      
+      # If we *are* looking at another (or an arbitrary number of further) immediate
+      # sub-expression(s), we need to push it (all of them) onto the stack.
+      while (it = @instructions[0].valueOf())? and it not instanceof Thing
+         @instructions.unshift new Position it; @results.unshift null
+      
+      upcoming = @instructions[0]
+      
+      # (another opportunity for an empty sub-expression / self-reference)
+      if not upcoming.valueOf()?
+         return new Combination previous_response, this
+      
+      # At this point, through one of several paths above, we've definitely descended into a (or
+      # several) sub-expression(s), and are definitely looking at the first `Thing` in a new
+      # expression.
+      upcoming_value = upcoming.valueOf()
+      return new Combination null, upcoming_value
+
 
 Paws.Native = Native = class Native extends Execution
    
@@ -245,8 +392,9 @@ Paws.Native = Native = class Native extends Execution
    # `Native` object referred to during the invocation of subsequent bits may *not* be the same, as
    # the `Native` may have been branched!)
    constructor: constructify(return:@) (@bits...)->
-      delete @position
-      delete @stack
+      delete @begin
+      delete @instructions
+      delete @results
       
       @resumptions = @bits.length
    

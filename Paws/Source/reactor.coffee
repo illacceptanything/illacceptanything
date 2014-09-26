@@ -83,9 +83,6 @@ reactor.Table = Table = class Table
 reactor.Staging = Staging = class Staging
    constructor: constructify (@stagee, @result, @requestedMask)->
 
-reactor.Combination = Combination = class Combination
-   constructor: constructify (@subject, @message)->
-
 
 # The default receiver for `Thing`s preforms a ‘lookup’ (described in `data.coffee`).
 Paws.Thing::receiver = new Native (rv, world)->
@@ -102,78 +99,6 @@ Paws.Execution::receiver = new Native (rv, world)->
    [caller, subject, message] = rv.toArray()
    world.stage subject.clone(), message
 .rename 'execution✕'
-
-
-# Given an `Execution`, this will preform the functions of the `reactor` necessary to advance that
-# `Execution` one ‘step’, or combination. This requires a `response` (usually the ‘result’ of the
-# previous combination; more specifically, whatever the thing that queued this `Execution` passed to
-# it.)
-#
-# This will mutate the `position` counter of the `Execution` (hence the name of `advance()`), as
-# well as managing the `stack` thereof.
-#---
-# XXX: At some point, I want to refactor this function (originally, a method of Execution, that I
-#      decided was more in-kind with the rest of `reactor` instead of with anything implemented
-#      within the rest of the data-types, and so moved here) to be A) simpler, and B) integrated
-#      tighter with the rest of the reactor. For now, however, it's a direct port from `µpaws.js`.
-# TODO: REPEAT. REFACTOR THIS SHIT.
-# XXX: The original implementation .bind()ed natives' bits to the `Native` object (`this` at call-
-#      time.) For the moment, I've nixed this, depending on the reactor loop to handle that with
-#      `apply`.
-reactor.advance = (exec, response)-> advance.call exec, response
-
-advance = (response)->
-   return if @complete()
-   
-   if this instanceof Native
-      @pristine = no
-      return @bits.shift()
-   
-   unless @pristine
-      # ... we're continuing an existing execution
-      
-      unless @position?
-         # ... that's previously reached the *end* of an expression, so we step ‘up’ the stack.
-         {value, next} = @stack.pop()
-         @position = next
-         return new Combination value, response
-      
-      {contents, next} = @position
-      unless @position.contents instanceof parser.Expression
-         # The upcoming node being neither the end of an expression, nor the beginning of a new one,
-         # then it must be a Thing. We combine that against the response passed-in.
-         @position = next
-         return new Combination response, contents
-      else
-         # Else, we're going to dive into the new expression, and then go through all of the below.
-         @position = contents
-         @stack.push value: response, next: next
-      
-   # We've exhausted the easy situations. Either we're looking at the beginning of a new expression,
-   # in a non-pristine Execution, or we're at the beginning of a pristine Execution.
-   @pristine = no
-   
-   # Even if we've already dug into a new expression above, there's still possibly *more*
-   # expressions nested immediately (that is, as the first node in the previous one). We drill down
-   # through all of those, if so, until we get to a ‘real’ node (that is, a node whose `contents`
-   # isn't another Expression, but rather a `Thing`.)
-   while @position.next?.contents instanceof parser.Expression
-      {contents, next} = @position
-      @position = next.contents
-      # DOCME: wat is this:
-      @stack.push value: @locals, next: next.next
-   
-   upcoming = @position
-   unless upcoming.next?
-      # DOCME: wat.
-      {value, next} = @stack.pop()
-      @position = next
-      return new Combination value, upcoming.contents ? this # Special-cased self-reference, `[]`
-   
-   # DOCME: wat.
-   {contents, next} = @position
-   @position = next.next
-   return new Combination contents ? @locals, next.contents
 
 
 # The Unitary design (i.e. distribution) isn't complete, at all. At the moment, a `Unit` is just a
@@ -227,7 +152,7 @@ reactor.Unit = Unit = parameterizable class Unit
          Paws.warning "   ╰┄ complete!" if process.env['TRACE_REACTOR']
          return yes
       
-      combo = reactor.advance stagee, result
+      combo = stagee.advance result
       @current = stagee
       
       if process.env['TRACE_REACTOR'] and combo.subject?
