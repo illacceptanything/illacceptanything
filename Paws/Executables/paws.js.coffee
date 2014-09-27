@@ -160,7 +160,8 @@ prettify = require('pretty-error').start ->
       .flatten().compact().map (expression)-> { from: expression, code: expression }
       .value()
    
-   help() if _.isEmpty argv[0]
+   help() if _.isEmpty(argv[0]) and !sources.length
+   
    choose = -> switch operation = argv.shift()
       
       when 'pa', 'parse'
@@ -178,16 +179,21 @@ prettify = require('pretty-error').start ->
          interact.start()
       
       when 'st', 'start'
-         readFilesAsync(argv).then (files)->
-            sources.push files...
-            _.forEach sources, (source)->
-               Paws.info "-- Staging '#{T.bold source.from}' from the command-line ..."
-               root = Paws.generateRoot source.code
-               
-               here = new Paws.reactor.Unit
-               here.stage root
-               
-               here.start() unless argf.start == false
+         go = -> _.forEach sources, (source)->
+            Paws.info "-- Staging '#{T.bold source.from}' from the command-line ..."
+            root = Paws.generateRoot source.code
+            
+            here = new Paws.reactor.Unit
+            here.stage root
+            
+            here.start() unless argf.start == false
+         
+         if _.isEmpty argv[0]
+            go()
+         else
+            readFilesAsync(argv).then (files)->
+               sources.push files...
+               go()
       
       else argv.unshift('start', operation) and choose()
    
