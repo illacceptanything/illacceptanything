@@ -155,9 +155,6 @@ reactor.Unit = Unit = parameterizable class Unit
       combo = stagee.advance result
       @current = stagee
       
-      if process.env['TRACE_REACTOR'] and combo.subject?
-         Paws.warning "   ╰┄ combo: #{combo.subject} × #{combo.message}"
-      
       # If the staging has passed #next, then it's safe to grant it the ownership it's requesting
       @table.give stagee, requestedMask if requestedMask
       
@@ -166,8 +163,14 @@ reactor.Unit = Unit = parameterizable class Unit
          combo.apply stagee, [result, this]
       
       else
-         @stage combo.subject.receiver.clone(),
-            Unit.receiver_parameters stagee, combo.subject, combo.message
+         subject = combo.subject ? stagee.locals
+         message = combo.message ? stagee.locals
+         
+         if process.env['TRACE_REACTOR']
+            Paws.warning "   ╰┄ combo: #{combo.subject} × #{combo.message}"
+         
+         @stage subject.receiver.clone(),
+            Unit.receiver_parameters stagee, subject, message
       
       @table.remove accessor: stagee if stagee.complete()
       
