@@ -107,16 +107,13 @@ parameterizable class Interactive extends EventEmitter
       # We generate a wrapper-Expression for the input, turning it into:
       # 
       #     _INTERACTIVE_INSPECT (expr)
-      if code instanceof parser.Expression
-         inspector = new parser.Expression new Label '_INTERACTIVE_INSPECT'
-         superexpr = new parser.Expression code
-         inspector.append superexpr
-         expr = inspector
+      if code instanceof parse.Expression
+         expr = parse.Sequence.from [new Label '_INTERACTIVE_INSPECT', code]
       else
-         expr = parser.parse '_INTERACTIVE_INSPECT ['+code+']'
+         expr = parse '_INTERACTIVE_INSPECT ['+code+']'
       
-      Paws.info "-- Generated expression to evaluate: " +
-         expr.with(context: yes, tag: no).toString()
+     #Paws.info "-- Generated expression to evaluate: " +
+     #   expr.with(context: yes, tag: no).toString()
       
       # Now, we put both those in the queue, giving the first responsibility for the mutex. This
       # prevents the resumer from realizing until the interact-line has become complete(), and thus
@@ -125,8 +122,8 @@ parameterizable class Interactive extends EventEmitter
       execution.locals = @shared_locals
       execution.rename '<interact: interactive input>'
       
-      @here.stage execution, null, new reactor.Mask @mutex
-      @here.stage @generateResumer(), null, new reactor.Mask @mutex
+      @here.stage execution, undefined, new reactor.Mask @mutex
+      @here.stage @generateResumer(), undefined, new reactor.Mask @mutex
       
       return execution
    
