@@ -277,14 +277,14 @@ describe 'The Paws API:', ->
          exec = new Execution seq
          expect(exec.instructions[0].sequence()).to.be seq
       
-      it.skip 'should know whether it is complete', ->
+      it 'should know whether it is complete', ->
          ex = new Execution Expression.from ['foo']
          expect(ex.complete()).to.be false
          
          ex.advance()
          expect(ex.complete()).to.be false
          
-         ex.stack.length = 0
+         ex.advance()
          expect(ex.complete()).to.be true
       
       it 'can be cloned', ->
@@ -350,9 +350,18 @@ describe 'The Paws API:', ->
             
             expect(an_alien.complete()).to.be.ok()
          
-         it.skip "doesn't modify a completed `execution`", ->
-            completed_native = new Execution undefined
-            expect(completed_native.complete()).to.be yes
+         it 'completes Executions', ->
+            an_xec = new Execution Expression.from ['something']
+            
+            an_xec.advance()
+            an_xec.advance()
+            
+            expect(an_xec.complete()).to.be yes
+         
+         it 'does nothing with a completed Execution', ->
+            completed_native = new Execution Expression.from ['something']
+            completed_native.advance()
+            completed_native.advance()
             
             expect(completed_native.advance()).to.be undefined
          
