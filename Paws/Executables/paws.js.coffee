@@ -32,7 +32,7 @@ choose = ->
    if (argf.version)
       return version()
    
-   help() if _.isEmpty argv[0]
+   help() if _.isEmpty(argv[0]) and !sources.length
    
    switch operation = argv.shift()
       
@@ -51,16 +51,21 @@ choose = ->
          interact.start()
       
       when 'st', 'start'
-         readSourcesAsync(argv).then (files)->
-            sources.push files...
-            _.forEach sources, (source)->
-               Paws.info "-- Staging '#{T.bold source.from}' from the command-line ..."
-               root = Paws.generateRoot source.code
-               
-               here = new Paws.reactor.Unit
-               here.stage root
-               
-               here.start() unless argf.start == false
+         go = -> _.forEach sources, (source)->
+            Paws.info "-- Staging '#{T.bold source.from}' from the command-line ..."
+            root = Paws.generateRoot source.code
+            
+            here = new Paws.reactor.Unit
+            here.stage root
+            
+            here.start() unless argf.start == false
+         
+         if _.isEmpty argv[0]
+            go()
+         else
+            readSourcesAsync(argv).then (files)->
+               sources.push files...
+               go()
       
       else argv.unshift('start', operation) and choose()
 
