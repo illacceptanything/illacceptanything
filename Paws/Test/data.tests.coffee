@@ -240,7 +240,9 @@ describe 'The Paws API:', ->
       Execution = Paws.Execution
       Native    = Paws.Native
       
-      Sequence = Paws.parse.Sequence
+      parse      = Paws.parse
+      Sequence   = parse.Sequence
+      Expression = parse.Expression
       
       it 'should construct an Native when passed function-bits', ->
          expect(new Execution ->).to.be.an Native
@@ -271,15 +273,15 @@ describe 'The Paws API:', ->
          seq = new Sequence
          
          expect(-> new Execution seq).to.not.throwException()
-         expect(  (new Execution seq).position).to.be seq
+         
+         exec = new Execution seq
+         expect(exec.instructions[0].sequence()).to.be seq
       
-      # FIXME: This test is too tightly-coupled
-      it 'should know whether it is complete', ->
-         ex = new Execution (new Sequence)
+      it.skip 'should know whether it is complete', ->
+         ex = new Execution Expression.from ['foo']
          expect(ex.complete()).to.be false
          
-         ex.position = null
-         ex.stack.push 42
+         ex.advance()
          expect(ex.complete()).to.be false
          
          ex.stack.length = 0
@@ -290,23 +292,23 @@ describe 'The Paws API:', ->
          expect(-> ex.clone()).to.not.throwException()
          expect(   ex.clone()).to.be.an Execution
          
-      it 'preserves the position and stack when cloning', ->
-         pos1 = new Sequence
-         pos2 = new Sequence
-         ex = new Execution pos1
+      it 'preserves the instructions and results when cloning', ->
+         seq1 = new Sequence
+         seq2 = new Sequence
+         ex = new Execution seq1
          
          clone1 = ex.clone()
-         expect(clone1.position).to.be pos1
-         expect(clone1.stack).to.not.be ex.stack
-         expect(clone1.stack).to.eql ex.stack
+         expect(clone1.instructions[0].sequence()).to.be seq1
+         expect(clone1.results).to.not.be ex.results
+         expect(clone1.results).to.eql ex.results
          
-         ex.position = pos2
-         ex.stack.push new Label 'intermediate value'
+         ex.instructions[0] = new Paws.Position seq2
+         ex.results.unshift new Label 'intermediate value'
          clone2 = ex.clone()
-         expect(clone2.position).to.be pos2
-         expect(clone2.stack).to.have.length 1
-         expect(clone2.stack).to.not.be ex.stack
-         expect(clone2.stack).to.eql ex.stack
+         expect(clone2.instructions[0].sequence()).to.be seq2
+         expect(clone2.results).to.have.length 2
+         expect(clone2.results).to.not.be ex.results
+         expect(clone2.results).to.eql ex.results
       
       it 'clones locals when cloned', ->
          ex = new Execution (new Sequence)
@@ -322,6 +324,153 @@ describe 'The Paws API:', ->
          
          expect(clone.locals).to.not.equal ex.locals
          expect(clone.find('locals')[1].valueish()).to.equal ex.locals
+      
+      describe '#advance', ->
+         parse   = Paws.parse
+         
+         it "doesn't modify a completed Native", ->
+            completed_alien = new Native
+            expect(completed_alien.complete()).to.be.ok()
+            
+            expect(completed_alien.advance new Thing).to.be undefined
+            
+         it 'flags a modified Native as un-pristine', ->
+            func1 = new Function; func2 = new Function
+            an_alien = new Native func1, func2
+            
+            an_alien.advance new Thing
+            expect(an_alien.pristine).to.be no
+            
+         it 'advances the bits of an Native', ->
+            func1 = new Function; func2 = new Function
+            an_alien = new Native func1, func2
+            
+            expect(an_alien.advance new Thing).to.be func1
+            expect(an_alien.advance new Thing).to.be func2
+            
+            expect(an_alien.complete()).to.be.ok()
+         
+         it.skip "doesn't modify a completed `execution`", ->
+            completed_native = new Execution undefined
+            expect(completed_native.complete()).to.be yes
+            
+            expect(completed_native.advance()).to.be undefined
+         
+         it "doesn't choke on a simple expression", ->
+            an_xec = new Execution Expression.from ['abc', 'def']
+            expect(-> an_xec.advance()).to.not.throwError()
+         
+         it 'can generate a simple combination against a previous result', ->
+            expr = Expression.from ['something','other']; other = expr.at(1)
+            an_xec = new Execution expr
+            an_xec.advance()
+            
+            something = new Thing
+            combo = an_xec.advance something
+            expect(combo.subject).to.be something
+            expect(combo.message).to.be other
+            
+         it 'implicitly combines against locals at the beginning of an Execution', ->
+            expr = Expression.from ['something']; something = expr.at(0)
+            an_xec = new Execution expr
+            
+            combo = an_xec.advance()
+            expect(combo.subject).to.be null
+            expect(combo.message).to.be something
+         
+         it 'will dive into sub-expressions, again implicitly combining against locals', ->
+            expr = Expression.from ['something', ['other']]; other = expr.at(1).at(0,0)
+            an_xec = new Execution expr
+            c1 = an_xec.advance()
+            
+            something = (new Thing).rename 'something'
+            combo = an_xec.advance something
+            expect(combo.subject).to.be null
+            expect(combo.message).to.be other
+         
+         it "should retain the previous result at the parent's level,
+             and juxtapose against that when exiting", ->
+            expr = Expression.from ['something', ['other']]
+            an_xec = new Execution expr
+            an_xec.advance()
+            
+            something = new Thing
+            an_xec.advance something
+            
+            other = new Object
+            combo = an_xec.advance other
+            expect(combo.subject).to.be something
+            expect(combo.message).to.be other
+         
+         it 'should descend into multiple levels of nested-immediate sub-expressions', ->
+            expr = Expression.from ['something', [[['other']]]]
+            an_xec = new Execution expr
+            an_xec.advance()
+            # ~locals <- 'something'
+            
+            something = new Thing
+            an_xec.advance something
+            # ~locals <- 'other'
+            
+            other = new Thing
+            combo = an_xec.advance other
+            expect(combo.subject).to.be null
+            expect(combo.message).to.be other
+            # ~locals <- other
+            
+            meta_other = new Thing
+            combo = an_xec.advance meta_other
+            expect(combo.subject).to.be null
+            expect(combo.message).to.be meta_other
+            # ~locals <- <meta-other>
+            
+            meta_meta_other = new Thing
+            combo = an_xec.advance meta_meta_other
+            expect(combo.subject).to.be something
+            expect(combo.message).to.be meta_meta_other
+            # something <- <meta-meta-other>
+         
+         it 'should handle an *immediate* sub-expression', ->
+            expr = Expression.from [['something'], 'other']; other = expr.at(1)
+            an_xec = new Execution expr
+            an_xec.advance()
+            # ~locals <- 'something'
+            
+            something = new Thing
+            combo = an_xec.advance something
+            expect(combo.subject).to.be null
+            expect(combo.message).to.be something
+            # ~locals <- something
+            
+            meta_something = new Thing
+            combo = an_xec.advance meta_something
+            expect(combo.subject).to.be meta_something
+            expect(combo.message).to.be other
+            # <meta-something> <- 'other'
+         
+         it 'should descend into multiple levels of *immediate* nested sub-expressions', ->
+            expr = Expression.from [[[['other']]]]
+            an_xec = new Execution expr
+            an_xec.advance()
+            # ~locals <- 'other'
+            
+            other = new Thing
+            combo = an_xec.advance other
+            expect(combo.subject).to.be null
+            expect(combo.message).to.be other
+            # ~locals <- other
+            
+            meta_other = new Thing
+            combo = an_xec.advance meta_other
+            expect(combo.subject).to.be null
+            expect(combo.message).to.be meta_other
+            # ~locals <- <meta-other>
+            
+            meta_meta_other = new Thing
+            combo = an_xec.advance meta_meta_other
+            expect(combo.subject).to.be null
+            expect(combo.message).to.be meta_meta_other
+            # ~locals <- <meta-meta-other>
        
       describe 'as an Native', ->
          it 'should take a series of procedure-bits', ->
