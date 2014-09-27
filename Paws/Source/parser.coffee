@@ -32,9 +32,17 @@ class Context
 # A simple container for a series of sequentially-executed `Expression`s.
 exports.Sequence = Sequence =
 delegated('expressions', Array) class Sequence
+   # A convenience method that simply wraps a single result of `Expression#from` in a `Sequence`.
+   from: (representation)->
+      return new Sequence Expression.from(representation)
+   
    constructor: (@expressions...)->
    
-   at: (idx)-> @expressions[idx]
+   # Can either grab an expression out of this sequence (one index passed), or an object out of a
+   # specific expression (two indices passed.)
+   at: (expr_idx, idx)->
+      expression = @expressions[expr_idx]
+      return if idx? then expression.at(idx) else expression
 
 # Represents a single expression (or sub-expression). Contains `words`, each of which may be either
 # a Paws `Thing`, or an array of sub-`Expression`s. JavaScript strings will be constructed into
