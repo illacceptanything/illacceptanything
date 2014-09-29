@@ -1,29 +1,54 @@
-- (new:<issue>)* indicates new functionality, features, documentation, et cetera are introduced in this commit [optionally includes related issue ID]
-- (fix:<issue>)* indicates changes that fix outstanding bugs or problems in some way [optionally includes issue ID]
-- (re)* indicates changes that subtly change things for the better, possibly without changing the actual effect of any code (short for ‘refactor’)
-# [*]: At least one of these should apply to every commit!
+- (new:<issue>)† indicates new functionality, features, documentation, et cetera are introduced in
+  this commit [optionally includes related issue ID]
+- (fix:<issue>)† indicates changes that fix outstanding bugs or problems in some way [optionally
+  includes issue ID]
+- (re)† indicates changes that subtly change things for the better, possibly without changing the
+  actual effect of any code (short for ‘refactor’)
+# [†]: At least one of these should apply to every commit!
 
-- (-) indicates a relatively minor or unimportant commit, worthy of being ignored by most interested parties
+- (!!) used on commits that are extremely important, or that introduce *widespread* changes
+- (-) indicates a relatively minor or unimportant commit, worthy of being ignored by most parties
 
-- (api) indicates this commit modifies existing (usually documented) embedder-APIs in some (usually breaking) way, while nominally not affecting the interpreter's functionality
-   - (vis) aplies to commits that modify the interpreter's functionality, as seen from *within the language* (i.e. affecting libspace) (for ‘visible API’, meaning visible-from-libspace)
-# note: (fix), (api), and (new) *change how things operate* from the viewpoint of an API consumer or extension
-#       developer (when not combined with a form of (noop)), whereas (re) causes no operational changes (from
-#       said point of view), instead improving the overall quality of the code in some way, such as causing it to
-#       execute faster or require fewer resources
+- (API) indicates this commit modifies existing (usually documented) embedder-APIs in some (usually
+  breaking) way, while nominally not affecting the interpreter's functionality
+# note: (fix), (API), and (new) *change how things operate* from the viewpoint of an API consumer
+#       or extension developer (when not combined with a form of (noop)), whereas (re) causes no
+#       operational changes (from said point of view), instead improving the overall quality of the
+#       code in some way, such as causing it to execute faster or require fewer resources
+  - (vis!) aplies to commits that modify the interpreter's functionality, as seen from *within the
+    language* (i.e. affecting libspace) (for ‘visible API’, meaning visible-from-libspace)
+# note: (vis!) means *a change in the language itself*. Usually, this would, at least ideally, be a
+#       bugfix; but at these early stages of development, it often means actual intentional changes
+#       of the public API used from within the language.
 
-- (incomplete) indicates a (rare!) commit that applies code that is *known at commit time* to not pass its own tests, or meet its own goals
-  - (HARM) indicates an (even rarer!) commit that is known (at the time of committing) to *break* the codebase
-- (completes:<commit>) indicates that this commit completes the work introduced or begun in another (incomplete) or (HARM) <commit>
-# note: it’s *never* safe to check-out and compile code between an (incomplete) (or (harm))
-#       commit, and its corresponding (completes:) commit!
+- (inc!) indicates a (rare!) commit that applies code that is *known at commit time* to not pass its
+  own tests, or meet its own goals
+- (completes:<commit>) indicates that this commit completes the work introduced or begun in another 
+  (inc!) or (HARM) <commit>
+# note: it’s *never* safe to check-out and compile code between an (inc!) (or (harm)) commit, and
+#       its corresponding (completes:) commit!
 
-- (tests) indicates a commit that does *not* modify any implementation code, in any way (instead, indicates modifying code in the test suite)
-- (noop) as (tests), except indicates that a commit does not modify any code belonging to the test suite either. Usually not used, see the below alternatives
-  - (style) indicates a commit that only changes alignment/spacing/visual orientation of code or documentation
-  - (doc) indicates commits that change commentary, documentation, etc (exclusive of actual *executed* code)
+- (dep) is a change to the dependencies of the library
+  - (up) is a change that only updates the versions of dependencies which we rely upon. (usually,
+    makes most sense paired with (meta).)
+- (tests) indicates a commit that does *not* modify any implementation code, in any way (instead,
+  indicates modifying code in the test suite)
+- (noop) as (tests), except indicates that a commit does not modify any code belonging to the test
+  suite either. Usually not used, see the below alternatives
+  - (style) indicates a commit that only changes alignment, spacing, or visual orientation of some
+    code or documentation
+  - (doc) indicates commits that change commentary, documentation, etc (exclusive of actual
+    *executed* code)
     - (meta) indicates meta-project changes, not applying to the codebase, tests, or documentation
 
+
+# A couple random common ones:
+- (syn) relating to the syntax or the parser
+- (CLI) involves modifications to the CLI-API or CLI-user-interface, instead of the library-API (but
+  otherwise similar to (API))
+- (debug) improvements to the debugging system / logging-output
+- (UX) vaguely, a commit designed to improve the user-experience of the program
+- (fun) something every codebase should have a little of.
 
 
 # --- ---- --- -- /!\ -- --- ---- --- #
