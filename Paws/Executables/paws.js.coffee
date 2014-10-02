@@ -4,9 +4,11 @@ bluebird = require 'bluebird'
 minimist = require 'minimist'
 mustache = require 'mustache'
 prettify = require('pretty-error').start()
-fs = bluebird.promisifyAll require 'fs'
 
-Paws = require '../Library/Paws.js'
+path     = require 'path'
+fs       = bluebird.promisifyAll require 'fs'
+
+Paws     = require '../Library/Paws.js'
 T = Paws.debugging.tput
 _ = Paws.utilities._
 
@@ -67,11 +69,17 @@ process.nextTick choose
 
 # ---- --- ---- --- ----
 
-help = ->
-   seperator = T.invert( new Array(Math.ceil((T.columns + 1) / 2)).join('- ') )
+figlets = path.join __dirname, 'Extras', 'figlets.asv'
+
+help = -> fs.readFileAsync(figlets, 'utf8').then (figlets)->
+   # Using ASCII-delimited records: http://ell.io/i10pCz
+   record_seperator = String.fromCharCode 30
+   figlets = figlets.split record_seperator
+   
+   divider = T.invert( new Array(Math.ceil((T.columns + 1) / 2)).join('- ') )
    
    #  -- standard 80-column terminal ------------------------------------------------|
-   usage = seperator + "\n" + _(figlets).sample() + """
+   usage = divider + "\n" + _(figlets).sample() + """
       
 {{#title}}Usage:{{/title}}
 {{#pre}}{{prompt}} paws.js [{{#bgflag}}flags{{/bgflag}}] {{#bgop}}operation{{/bgop}} [operation parameters]
@@ -134,7 +142,7 @@ help = ->
                   or <{{#link}}http://ell.io/IRC{{/link}}> ({{#b}}#ELLIOTTCABLE{{/b}} on the Freenode IRC network)
       
       
-   """ + seperator
+   """ + divider
    #  -- standard 80-column terminal -------------------------------------------------|
    
    err.write mustache.render usage+"\n",
@@ -202,95 +210,3 @@ prettify.skipNodeFiles()
 bluebird.onPossiblyUnhandledRejection (error)->
    console.error prettify.render error
    process.exit 1
-
-
-# ---- --- ---- --- ----
-
-figlets = [ """
-Hi! My name's
-__________                               __        
-\\______   \\_____ __  _  ________        |__| ______
- |     ___/\\__  \\\\ \\/ \\/ /  ___/        |  |/  ___/
- |    |     / __ \\\\     /\\___ \\         |  |\\___ \\ 
- |____|    (____  /\\\/\\_//____  > /\\ /\\__|  /____  >
-                \\\/           \\\/  \\\/ \\______|    \\/ 
-                                    ... and I love you lots. {{{heart}}}
-""", """
-Hi! My name's
-  _____                     _     
- |  __ \\                   (_)    
- | |__) |_ ___      _____   _ ___ 
- |  ___/ _` \\ \\ /\\ / / __| | / __|
- | |  | (_| |\\ V  V /\\__ \\_| \\__ \\
- |_|   \\__,_| \\_/\\_/ |___(_) |___/  ... and I love you lots. {{{heart}}}
-                          _/ |
-                         |__/
-""", """
-Hi! My name's
-██████╗  █████╗ ██╗    ██╗███████╗        ██╗███████╗
-██╔══██╗██╔══██╗██║    ██║██╔════╝        ██║██╔════╝
-██████╔╝███████║██║ █╗ ██║███████╗        ██║███████╗
-██╔═══╝ ██╔══██║██║███╗██║╚════██║   ██   ██║╚════██║
-██║     ██║  ██║╚███╔███╔╝███████║██╗╚█████╔╝███████║
-╚═╝     ╚═╝  ╚═╝ ╚══╝╚══╝ ╚══════╝╚═╝ ╚════╝ ╚══════╝
-                                    ... and I love you lots. {{{heart}}}
-""", """
-Hi! My name's
-   ___                      _
-  / _ \\___ __    _____     (_)
- / ___/ _ `/ |/|/ (_-<_   / (_-<
-/_/   \\_,_/|__,__/___(_)_/ /___/  ... and I love you lots. {{{heart}}}
-                      |___/
-""", """
-Hi! My name's
- ______   ______     __     __     ______       __     ______    
-/\\  == \\ /\\  __ \\   /\\ \\  _ \\ \\   /\\  ___\\     /\\ \\   /\\  ___\\   
-\\ \\  _-/ \\ \\  __ \\  \\ \\ \\/ ".\\ \\  \\ \\___  \\   _\\_\\ \\  \\ \\___  \\  
- \\ \\_\\    \\ \\_\\ \\_\\  \\ \\__/".~\\_\\  \\/\\_____\\ /\\_____\\  \\/\\_____\\ 
-  \\/_/     \\/_/\\/_/   \\/_/   \\/_/   \\/_____/ \\/_____/   \\/_____/ 
-                                    ... and I love you lots. {{{heart}}}
-""","""
-Hi! My name's
- ██▓███   ▄▄▄       █     █░  ██████       ▄▄▄██▀▀▀██████ 
-▓██░  ██▒▒████▄    ▓█░ █ ░█░▒██    ▒         ▒██ ▒██    ▒ 
-▓██░ ██▓▒▒██  ▀█▄  ▒█░ █ ░█ ░ ▓██▄           ░██ ░ ▓██▄   
-▒██▄█▓▒ ▒░██▄▄▄▄██ ░█░ █ ░█   ▒   ██▒     ▓██▄██▓  ▒   ██▒
-▒██▒ ░  ░ ▓█   ▓██▒░░██▒██▓ ▒██████▒▒ ██▓  ▓███▒ ▒██████▒▒
-▒▓▒░ ░  ░ ▒▒   ▓▒█░░ ▓░▒ ▒  ▒ ▒▓▒ ▒ ░ ▒▓▒  ▒▓▒▒░ ▒ ▒▓▒ ▒ ░
-░▒ ░       ▒   ▒▒ ░  ▒ ░ ░  ░ ░▒  ░ ░ ░▒   ▒ ░▒░ ░ ░▒  ░ ░
-░░         ░   ▒     ░   ░  ░  ░  ░   ░    ░ ░ ░ ░  ░  ░  
-               ░  ░    ░          ░    ░   ░   ░       ░  
-                                       ░  ... and I love you lots. {{{heart}}}
-""","""
-Hi! My name's
-╔═╗┌─┐┬ ┬┌─┐  ┬┌─┐
-╠═╝├─┤│││└─┐  │└─┐
-╩  ┴ ┴└┴┘└─┘o└┘└─┘  ... and I love you lots. {{{heart}}}
-
-""","""
-Hi! My name's
- _|_|_|                                                _|            
- _|    _|    _|_|_|  _|      _|      _|    _|_|_|            _|_|_|  
- _|_|_|    _|    _|  _|      _|      _|  _|_|          _|  _|_|      
- _|        _|    _|    _|  _|  _|  _|        _|_|      _|      _|_|  
- _|          _|_|_|      _|      _|      _|_|_|    _|  _|  _|_|_|    
-                                                       _|            
-                                                     _|              
-                                    ... and I love you lots. {{{heart}}}
-""","""
-Hi! My name's
- ______                          __        
-|   __ \\.---.-.--.--.--.-----.  |__|.-----.
-|    __/|  _  |  |  |  |__ --|__|  ||__ --|
-|___|   |___._|________|_____|__|  ||_____|  ... and I love you lots. {{{heart}}}
-                               |___|       
-""","""
-Hi! My name's
-    _____                         
-   (, /   )                ,    
-    _/__ / _  _   _ _        _  
-    /     (_(_(_(/ /_)_ o /_/_)_  ... and I love you lots. {{{heart}}}
- ) /                   .-/      
-(_/                   (_/       
-
-"""]
