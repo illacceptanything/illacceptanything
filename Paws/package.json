@@ -33,25 +33,29 @@
  }
 
 ,          "engines" :{"node":"~0.10.7"}
-,     "dependencies" :{"minimist"               : "~0.0.9"
+,     "dependencies" :{"coffee-script"          : "~1.7.1"
+                     , "uuid"                   : "~1.4.1"
+                     
+                     , "minimist"               : "~0.0.9"
                      , "mustache"               : "~0.8.1"
                      , "blessed"                : "~0.0.29"
-                     , "coffee-script"          : "~1.7.1"
+                     
                      , "pretty-error"           : "~0.1.18"
-                     , "uuid"                   : "~1.4.1"
                      , "bluebird"               : "~1.2.4"
                      , "lodash"                 : "~2.4.1"                                        }
+
 ,  "devDependencies" :{"glob"                   : "~3.2.9"
                      , "browserify"             : "~3.33.0"
                      , "coffeeify"              : "~0.6.0"
-                     , "coffee-coverage"        : "~0.4.2"
-                     , "mocha-lcov-reporter"    : "~0.0.1"
-                     , "coveralls"              : "~2.10.0"
                      , "docco"                  : "~0.6.3"
+                     
                      , "mocha"                  : "~1.18.2"
+                     , "mocha-lcov-reporter"    : "~0.0.1"
                      , "expect.js"              : "~0.3.0"
                      , "sinon"                  : "~1.9.0"
-                     , "sinon-expect"           : "~0.2.0"                                        }
+                     , "sinon-expect"           : "~0.2.0"
+                     , "coffee-coverage"        : "~0.4.2"
+                     , "coveralls"              : "~2.10.0"                                       }
 
 ,   "testling" :{
           "files" : "Test/*.coffee"
