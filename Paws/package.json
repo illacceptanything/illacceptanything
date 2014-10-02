@@ -30,6 +30,7 @@
                   , "ui"         : "bdd"
                   , "reporter"   : "spec"
                   , "ENV"        : "test" }
+,           "git" :{"hooks"      : "pre-commit post-merge post-checkout" }
  }
 
 ,          "engines" :{"node":"~0.10.7"}
