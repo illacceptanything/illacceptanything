@@ -3,7 +3,7 @@ module.package = require '../package.json'
 bluebird = require 'bluebird'
 minimist = require 'minimist'
 mustache = require 'mustache'
-prettify = require 'pretty-error'
+prettify = require('pretty-error').start()
 fs = bluebird.promisifyAll require 'fs'
 
 Paws = require '../Library/Paws.js'
@@ -62,7 +62,7 @@ choose = ->
       
       else argv.unshift('start', operation) and choose()
 
-prettify = prettify.start choose
+process.nextTick choose
 
 
 # ---- --- ---- --- ----
