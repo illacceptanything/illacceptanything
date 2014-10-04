@@ -10,7 +10,7 @@
 ,           "bin" : {"paws.js" : "Executables/paws.js"}
 
 ,       "scripts" :{
-        "preinstall" : "printf \"%s\\n%s\" '#!/usr/bin/env node' \"$(coffee -cbp --no-header ./Executables/paws.js.coffee)\" > ./Executables/paws.js"
+        "preinstall" : "./Scripts/build.sh"
 
 ,             "repl" : "./Scripts/repl.js"
 ,             "test" : "./Scripts/test.sh"
@@ -34,6 +34,7 @@
 
 ,          "engines" :{"node":"~0.10.7"}
 ,     "dependencies" :{"minimist"               : "~0.0.9"
+                     , "pegjs"                  : "~0.8.0"
                      , "mustache"               : "~0.8.1"
                      , "blessed"                : "~0.0.29"
                      , "coffee-script"          : "~1.7.1"
