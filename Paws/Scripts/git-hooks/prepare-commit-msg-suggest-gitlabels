@@ -1,0 +1,57 @@
+#!/bin/sh
+# 
+# This script searches recent git commits' messages for [git labels][], adds a list of suggested
+# labels to the forthcoming `git commit` template, additionally adding the explanations in
+# the project's `.gitlabels` file as hints to the end of that same template.
+# 
+# Author: twitter.com/@ELLIOTTCABLE
+# 
+# [git labels]: <https://github.com/ELLIOTTCABLE/.gitlabels>
+#    "gitlabels, a system for ‘tagging’ git commits"
+
+# == Configuration variables ==
+MAX_SUGGESTIONS='10'    # Present this many label suggestions to the committer
+MAX_COMMITS='1000'      # No more than this number of commits will be checked for labels
+MAX_COMMIT_AGE='1.year' # Commits older than this will not be checked for labels
+
+
+# == Hook parameters ==
+COMMIT_FILENAME="${1:-.git/COMMIT_EDITMSG}"  # (filename of the generated commit message)
+COMMIT_TYPE="$2"                             # (one of <empty>|message|template|merge|squash|commit)
+COMMIT_ORIGINAL_SHA="$3"                     # (if this is an `--ammend` commit)
+
+
+# ASCII 30, “Record Separator.”
+SEPARATOR="$(printf '\036')"
+
+# First we have to find the git-hooks dir, from which the hooks may be symlinked;
+SCRIPT="$(
+   cd "$(dirname "${BASH_SOURCE[0]}")"
+   SCRIPT="$(basename "${BASH_SOURCE[0]}")"
+   
+   while [ -L "$SCRIPT" ]; do
+      SCRIPT="$(readlink "$SCRIPT")"
+      cd     "$(dirname "$SCRIPT")"
+      SCRIPT="$(basename "$SCRIPT")"
+   done
+   
+   PHYS_DIR="$(pwd -P)"
+   echo "$PHYS_DIR/$SCRIPT"
+)"
+SCRIPTDIR="$(dirname "$SCRIPT")"
+
+# ... and then we invoke the `rank-gitlabels.js` script therein, to get a list of labels.
+SUGGESTIONS="$(
+   "${SCRIPTDIR}/rank-gitlabels.js" yes "$MAX_COMMIT_AGE" "$MAX_COMMITS" \
+    | head -n $MAX_SUGGESTIONS                                           \
+    | tr '\n' "$SEPARATOR" | sed "s/$SEPARATOR/  /g"                     \
+)"
+
+# FIXME: The `-i ''` syntax is exclusive to non-OSX
+# FIXME: The `1,` is also an OSX-ism; I need to actually *test* this on *nix.
+sed -i '' '1,/^#/{/^#/i\
+# Suggested gitlabels:\
+#    '"$SUGGESTIONS"'\
+# \
+
+}' "$COMMIT_FILENAME"

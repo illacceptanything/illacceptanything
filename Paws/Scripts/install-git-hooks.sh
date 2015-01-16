@@ -17,10 +17,6 @@ requested_hook="$1"
 # space-delimited string for this.  /=
 default_hooks="$npm_package_config_git_hooks"
 
-if [ ! -d "$hook_dir" ]; then
-   puts 'You must be in the root directory of a `git` project to use this script!' >&2
-   exit 1                                                                                        ;fi
-
 
 # FIXME: This should really support comma-seperated DEBUG values, as per `node-debug`:
 #        https://github.com/visionmedia/debug
@@ -32,6 +28,12 @@ if [ ! -d "$hook_dir" ]; then
    "Requested hook:        '$1'"                               \
    "Default hooks:         '$npm_package_config_git_hooks'"    \
    "" >&2
+
+if [ ! -d ".git" ]; then
+   puts 'You must be in the root directory of a `git` project to use this script!' >&2
+   exit 1                                                                                        ;fi
+
+mkdir -p "$hook_dir"
 
 
 install_hook() {
