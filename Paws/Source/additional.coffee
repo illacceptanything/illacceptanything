@@ -1,4 +1,3 @@
-`                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 # This file includes some additional APIs, both internal and external, that we expose on the `Paws`
 # exports-object. It's called as the first action in `Paws.coffee`.
 util = require 'util'

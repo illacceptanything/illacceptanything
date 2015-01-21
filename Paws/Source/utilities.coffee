@@ -1,4 +1,3 @@
-`                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 require('./additional.coffee').debugging.inject Paws = new Object
 
 module.exports =

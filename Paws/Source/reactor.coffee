@@ -1,4 +1,3 @@
-`                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 require('./utilities.coffee').infect global
 
 Paws = require './data.coffee'

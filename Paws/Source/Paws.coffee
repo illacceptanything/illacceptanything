@@ -1,4 +1,10 @@
-`                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
+# Hello! I am Paws! Come read about me, and find out how I work.
+#
+#                        ,d88b.d88b,
+#                        88888888888
+#                        `Y8888888Y'
+#                          `Y888Y'
+#                            `Y'
 
 process.title = 'paws.js'
 
