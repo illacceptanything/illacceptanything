@@ -52,7 +52,11 @@ var git_log = 'git --no-pager log'
     git_log += " --no-notes"
     git_log += ' --format="' + 'format:'+format_code_body+format_code_separator + '"'
 
-child_process.exec(git_log, function(err, log){ var labels, extract_labels, occurrences = new Object
+child_process.exec(git_log, function(err, log){ var extract_labels
+    , cases = new Object
+    , case_labels, labels
+    , case_occurrences = new Object, occurrences = new Object
+   
    if (err) throw err
    
    // This will iterate record-wise over each commit-message selected above, extracting gitlabels
@@ -91,18 +95,29 @@ child_process.exec(git_log, function(err, log){ var labels, extract_labels, occu
       return labels.concat(these_labels)
    }
    
-   labels = log.split(separator).reduce(extract_labels, new Array)
+   case_labels = log.split(separator).reduce(extract_labels, new Array)
+   
+   case_labels.forEach(function(original){ var lowercase = original.toLowerCase()
+      cases[lowercase] = cases[lowercase] || new Array
+      
+      if (cases[lowercase].indexOf(original) === -1)
+          cases[lowercase].push(original)
+      
+      // Now we're going to count the occurrences of each label; both case-sensitively (to decide
+      // which case of a given label is the most common), and case-insensitively (to acutally
+      // display the counts).
+           occurrences[lowercase] =      occurrences[lowercase] + 1 || 1
+      case_occurrences[original]  = case_occurrences[original]  + 1 || 1 })
+   
+   labels = Object.keys(cases)
+   labels.forEach(function(lowercase){
+      cases[lowercase].sort(function(a,b){ return case_occurrences[b] - case_occurrences[a] }) })
+   
+   labels = labels.sort(function(a,b){ return occurrences[b] - occurrences[a] })          // sort
    
    labels.forEach(function(label){
-      occurrences[label] = occurrences[label] + 1 || 1 })
-   
-   labels = labels.sort(function(a,b){ return occurrences[b] - occurrences[a] })
-   labels = labels.filter(function(e, idx, labels){ return labels.indexOf(e) === idx })
-   
-   
-   labels.forEach(function(label){
-      if (decorate) 
-         console.log('('+label+'): ' + occurrences[label])
+      if (decorate)
+         console.log('('+cases[label][0]+'): ' + occurrences[label])
       else
          console.log(label) })
 }) }()
