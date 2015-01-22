@@ -50,8 +50,9 @@ SUGGESTIONS="$(
 # FIXME: The `-i ''` syntax is exclusive to non-OSX
 # FIXME: The `1,` is also an OSX-ism; I need to actually *test* this on *nix.
 sed -i '' '1,/^#/{/^#/i\
+# \
 # Suggested gitlabels:\
 #    '"$SUGGESTIONS"'\
-# \
+\
 
 }' "$COMMIT_FILENAME"
