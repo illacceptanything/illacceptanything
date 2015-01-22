@@ -30,30 +30,36 @@
                   , "ui"         : "bdd"
                   , "reporter"   : "spec"
                   , "ENV"        : "test" }
+,           "git" :{"hooks"      : "prepare-commit-msg pre-commit post-merge post-checkout" }
  }
 
 ,          "engines" :{"node":"~0.10.7"}
-,     "dependencies" :{"minimist"               : "~0.0.9"
-                     , "mustache"               : "~0.8.1"
-                     , "blessed"                : "~0.0.29"
-                     , "coffee-script"          : "~1.7.1"
-                     , "pretty-error"           : "~0.1.18"
+,     "dependencies" :{"coffee-script"          : "~1.8.0"
                      , "uuid"                   : "~1.4.1"
-                     , "bluebird"               : "~1.2.4"
+                     
+                     , "minimist"               : "~1.1.0"
+                     , "mustache"               : "~0.8.2"
+                     , "blessed"                : "~0.0.37"
+                     
+                     , "pretty-error"           : "~1.1.1"
+                     , "bluebird"               : "~2.3.4"
                      , "lodash"                 : "~2.4.1"                                        }
+
 ,  "optionalDependencies" :{
                        "yamljs"                 : "~0.1.5"                                        }
+
 ,  "devDependencies" :{"glob"                   : "~3.2.9"
                      , "browserify"             : "~3.33.0"
                      , "coffeeify"              : "~0.6.0"
-                     , "coffee-coverage"        : "~0.4.2"
-                     , "mocha-lcov-reporter"    : "~0.0.1"
-                     , "coveralls"              : "~2.10.0"
                      , "docco"                  : "~0.6.3"
-                     , "mocha"                  : "~1.18.2"
-                     , "expect.js"              : "~0.3.0"
-                     , "sinon"                  : "~1.9.0"
-                     , "sinon-expect"           : "~0.2.0"                                        }
+                     
+                     , "mocha"                  : "~1.21.4"
+                     , "mocha-lcov-reporter"    : "~0.0.1"
+                     , "expect.js"              : "~0.3.1"
+                     , "sinon"                  : "~1.10.3"
+                     , "sinon-expect"           : "~0.2.0"
+                     , "coffee-coverage"        : "~0.4.2"
+                     , "coveralls"              : "~2.11.2"                                       }
 
 ,   "testling" :{
           "files" : "Test/*.coffee"

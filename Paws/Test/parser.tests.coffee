@@ -1,4 +1,3 @@
-`                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 expect = require 'expect.js'
 
 Paws   = require '../Source/Paws.coffee'

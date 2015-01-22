@@ -1,4 +1,3 @@
-`                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 assert = require 'assert'
 sinon  = require 'sinon'
 expect = require('sinon-expect').enhance require('expect.js'), sinon, 'was'
