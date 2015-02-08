@@ -4,8 +4,6 @@ require('./utilities.coffee').infect global
 Paws = require './Paws.coffee'
 infect global, Paws
 
-primitives = require('./primitives/specification.coffee')
-
 # FIXME: Refactor this entire thing to use isaacs' `node-tap`
 
 module.exports = Rule = class Rule extends Thing
@@ -135,3 +133,6 @@ Rule.Collection = Collection = class Collection
       directive = " # TODO" if rule.status == 'pending'
       
       process.stdout.write "#{status} #{number} #{rule.title.alien}#{directive||''}\n"
+
+# Fucking Node.js. ddis
+primitives = require('./primitives/specification.coffee')
