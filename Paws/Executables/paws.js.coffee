@@ -79,6 +79,8 @@ help = -> readFilesAsync([extra('help.mustache'), extra('figlets.mustache.asv')]
    
    divider = T.invert( new Array(Math.ceil((T.columns + 1) / 2)).join('- ') )
    
+   prompt = '>'
+   
    usage = divider + "\n" + _(figlets).sample() + template + divider
    #  -- standard 80-column terminal -------------------------------------------------|
    
@@ -96,14 +98,18 @@ help = -> readFilesAsync([extra('help.mustache'), extra('figlets.mustache.asv')]
       title: ->(text, r)-> T.bold T.underline r text
       link:  ->(text, r)->
          if Paws.use_colour() then T.sgr(34) + T.underline(r text) + T.sgr(39) else r text
-      prompt: -> T.bg 7,'$'
+      prompt: -> # Probably only makes sense inside {{pre}}. Meh.
+         T.sgr(27) + T.csi('3D') + T.fg(7, prompt+' ') + T.sgr(7) + T.sgr(90)
       pre:  ->(text, r)->
          lines = text.split "\n"
          lines = _(lines).map (line)->
             line = r line
-            sgr_sanitized_line = line.replace /\033.*?m/g, ''
-            spacing = new Array(T.columns - sgr_sanitized_line.length - 4).join(' ')
-            '  ' + (if Paws.use_colour() then T.invert T.fg 10, ' ' + line + spacing else line) + '  '
+            sgr_sanitized_line = line.replace /\033.*?[ABCDGsum]/g, ''
+            spacing = T.columns - sgr_sanitized_line.length - 6
+            spacing = spacing + 3 if sgr_sanitized_line.charAt(0) == prompt
+            if Paws.use_colour()
+               line = T.invert T.fg 10, ' ' + line + new Array(spacing).join(' ')
+            "   #{line}   "
          lines.join("\n")
    
    version()

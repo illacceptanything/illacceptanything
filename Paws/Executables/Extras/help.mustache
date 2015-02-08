@@ -1,12 +1,12 @@
 {{! -- standard 80-column terminal ------------------------------------------ }}
       
 {{#title}}Usage:{{/title}}
-{{#pre}}{{prompt}} paws.js [{{#bgflag}}flags{{/bgflag}}] {{#bgop}}operation{{/bgop}} [operation parameters]
-     
-  # for example,
-{{prompt}} paws.js {{#u}}foo.paws{{/u}} [[--] arguments]
-{{prompt}} paws.js {{#bgop}}interact{{/bgop}}
-{{prompt}} paws.js {{#bgop}}parse{{/bgop}} {{#u}}bar.paws{{/u}}{{/pre}}
+{{#pre}}{{{prompt}}} paws.js [{{#bgflag}}flags{{/bgflag}}] {{#bgop}}operation{{/bgop}} [operation parameters]
+
+# for example,
+{{{prompt}}} paws.js {{#u}}foo.paws{{/u}} [[--] arguments]
+{{{prompt}}} paws.js {{#bgop}}interact{{/bgop}}
+{{{prompt}}} paws.js {{#bgop}}parse{{/bgop}} {{#u}}bar.paws{{/u}}{{/pre}}
      
      The first non-flag argument will be an operation to perform; the second depends
      on the operation, but is usually a path to a file to load. If no operation is
