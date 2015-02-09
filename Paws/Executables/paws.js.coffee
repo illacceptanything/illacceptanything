@@ -19,12 +19,16 @@ heart = '💖 '
 salutation = 'Paws loves you. Bye!'
 
 # TODO: Ensure this works well for arguments passed to shebang-files
-argf = minimist process.argv.slice 2
+argf = minimist process.argv.slice(2), boolean: true
 argv = argf._
 
 sources = _([argf.e, argf.expr, argf.expression])
    .flatten().compact().map (expression)-> { from: expression, code: expression }
    .value()
+
+Paws.info "-- Arguments: ", argv.join(' :: ')
+Paws.info "-- Flags: ", argf
+Paws.info "-- Sources: ", sources
 
 choose = ->
    if (argf.help)
@@ -58,6 +62,12 @@ choose = ->
             Paws.info "-- Staging rules in '#{T.bold source.from}' from the command-line ..."
             _.forEach _.values(require('yamljs').parse source.code), (book)->
                collection = Collection.from book
+               
+               if argf['expose-specification'] == true
+                  (new Collection).activate()
+                  _.forEach collection.rules, (rule)->
+                     rule.body.locals.inject Paws.primitives 'specification' 
+               
                collection.dispatch()
                collection.report()
                collection.complete()
@@ -65,7 +75,16 @@ choose = ->
          rule_unit = (source)->
             Paws.info "-- Staging '#{T.bold source.from}' from the command-line ..."
             root = Paws.generateRoot source.code
-            root.locals.inject Paws.primitives 'specification'
+            
+            if argf['expose-specification'] == true
+               root.locals.inject Paws.primitives 'specification' 
+            
+            # FIXME: Rules created in libspace using the `specification` namespace will get added to
+            #        the same `Collection` as the ‘root’ rules. This is fixed for YAML rulebooks,
+            #        wherein we can specifically add the rulebook rules to their own collection, and
+            #        then instantiate a new `Collection` for any rules created during the tests; but
+            #        it's broken here. (This may not matter, as the only rulebooks actually
+            #        *testing* `specification` functionality are currently, intentionally, in YAML.)
             collection = new Collection
             collection.dispatch()
             collection.report()
