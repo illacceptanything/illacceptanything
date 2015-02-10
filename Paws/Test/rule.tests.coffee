@@ -40,7 +40,7 @@ describe "Paws' Rulebook support:", ->
          thing = new Thing
          
          rule.maintain_locals Thing.construct {key: thing}
-         expect(body.locals.at(2).valueish()).to.be thing
+         expect(body.locals.find('key')[0].valueish()).to.be thing
       
       it 'should be able to be dispatched', ->
          body  = sinon.spy()
@@ -91,7 +91,7 @@ describe "Paws' Rulebook support:", ->
             
             block = new Execution
             rule.eventually block
-            expect(block.locals.at(2).valueish()).to.be thing
+            expect(block.locals.find('key')[0].valueish()).to.be thing
          
          it 'should ensure the eventually-block runs after exhaustion of the body', ->
             body  = sinon.spy()
@@ -185,16 +185,18 @@ describe "Paws' Rulebook support:", ->
          
          it 'prints nothing when not reporting', ->
             coll = new Collection
-            print = sinon.spy coll, 'print'
+            coll.print = sinon.spy()
             
             rule = new Rule env, 'a test', new Execution, coll
-            expect(print).was.notCalled()
+            expect(coll.print).was.notCalled()
             rule.pass()
-            expect(print).was.notCalled()
+            expect(coll.print).was.notCalled()
          
+         # FIXME: These shoudln't squat on `stdout.write`.
          it 'prints completed rules when reporting is called', ->
             coll = new Collection
             coll.print = sinon.spy()
+            orig_write = process.stdout.write; process.stdout.write = new Function
             
             rule = new Rule env, 'a test', new Execution, coll
             rule.pass()
@@ -202,13 +204,19 @@ describe "Paws' Rulebook support:", ->
             expect(coll.print).was.notCalled()
             coll.report()
             expect(coll.print).was.calledOnce()
+            
+            process.stdout.write = orig_write
          
          it 'immediately prints rules on completion, when reporting', ->
             coll = new Collection
             coll.print = sinon.spy()
+            orig_write = process.stdout.write; process.stdout.write = new Function
+            
             coll.report()
             expect(coll.print).was.notCalled()
             
             rule = new Rule env, 'a test', new Execution, coll
             rule.pass()
             expect(coll.print).was.calledOnce()
+            
+            process.stdout.write = orig_write
