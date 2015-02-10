@@ -37,7 +37,7 @@ module.exports = Rule = class Rule extends Thing
          @body.locals.inject Paws.primitives 'implementation'
       
       @body.locals.inject primitives.generate_block_locals this
-      this        .inject primitives.generate_members this
+      this        .inject primitives.generate_members this if @caller
       
       @collection.push this
    
@@ -45,8 +45,10 @@ module.exports = Rule = class Rule extends Thing
       @body.locals.inject @locals
    
    dispatch: ->
+      return if @dispatched
       Paws.notice '-- Dispatching:', Paws.inspect this
       @dispatched = true
+      @unit.once 'flushed', => @flushed = true
       @unit.once 'flushed', @eventually_listener if @eventually_listener?
       @unit.stage @body
    
@@ -61,12 +63,19 @@ module.exports = Rule = class Rule extends Thing
    
    # FIXME: repeated calls?
    eventually: (block)->
-      Paws.info "-- Registering 'eventually' for ", Paws.inspect this
-      block.locals.inject @locals if @locals?
-      @eventually_listener = =>
-         Paws.info "-- Firing 'eventually' for ", Paws.inspect this
+      block.locals.inject @body.locals
+      
+      if not @flushed
+         Paws.info "-- Registering 'eventually' for ", Paws.inspect this
+         @eventually_listener = =>
+            Paws.info "-- Firing 'eventually' for ", Paws.inspect this
+            @unit.stage block, undefined
+         @unit.once 'flushed', @eventually_listener if @dispatched
+      
+      else
+         Paws.info "-- Immediately firing 'eventually' for already-flushed ", Paws.inspect this
          @unit.stage block, undefined
-      @unit.once 'flushed', @eventually_listener if @dispatched
+   
    
 Rule.Collection = Collection = class Collection
    
