@@ -64,7 +64,6 @@ choose = ->
                collection = Collection.from book
                
                if argf['expose-specification'] == true
-                  (new Collection).activate()
                   _.forEach collection.rules, (rule)->
                      rule.body.locals.inject Paws.primitives 'specification' 
                
