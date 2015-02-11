@@ -37,12 +37,17 @@ choose = ->
    switch operation = argv.shift()
       
       when 'pa', 'parse'
-         readSourcesAsync(argv).then (files)->
-            sources.push files...
-            _.forEach sources, (source)->
-               Paws.info "-- Parse-tree for '#{T.bold source.from}':"
-               expr = Paws.parser.parse source.code, root: true
-               out.write expr.serialize() + "\n"
+         go = -> _.forEach sources, (source)->
+            Paws.info "-- Parse-tree for '#{T.bold source.from}':"
+            expr = Paws.parser.parse source.code, root: true
+            out.write expr.serialize() + "\n"
+         
+         if _.isEmpty argv[0]
+            go()
+         else
+            readSourcesAsync(argv).then (files)->
+               sources.push files...
+               go()
       
       when 'in', 'interact', 'interactive'
          Interactive = require '../Source/interactive.coffee'
