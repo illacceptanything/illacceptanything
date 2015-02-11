@@ -5,6 +5,7 @@ util = require 'util'
 class Debugging
 
 class CommandLineDebugging extends Debugging
+   # FIXME: Make these ‘instance’ variables
    use_colour = true # Default
    verbosity = 4 # Default
    max_verbosity = Infinity
@@ -41,6 +42,7 @@ class CommandLineDebugging extends Debugging
       @tput.bold      = (text)-> if use_colour then @sgr(1) + text + @sgr(22) else text
       @tput.underline = (text)-> if use_colour then @sgr(4) + text + @sgr(24) else text
       @tput.invert    = (text)-> if use_colour then @sgr(7) + text + @sgr(27) else text
+   
    # This is an exposed, bi-directional mapping of verbosity-names:
    # 
    #     Paws.verbosities[4] === Paws.verbosities['warning']
@@ -61,8 +63,13 @@ class CommandLineDebugging extends Debugging
    else
       write_cli
    
-   debug: -> null # NYI
-      
+   
+   # Create a reporting function on a given object (of note, the root `Paws` object) for each
+   # `verbosity` string (for instance, `Paws.warning`, or `Paws.info`) that calls `debugging.write`
+   # if the debugging-level is set high enough.
+   #
+   # Also sets a few other debugging-relating settings (`Paws.use_colour()`, `Paws.is_silent()`,
+   # `Paws.colour(...)`, and so on.)
    inject: (exports)->
       exports.verbosity  = -> verbosity
       exports.is_silent  = -> verbosity == 0
@@ -78,7 +85,6 @@ class CommandLineDebugging extends Debugging
             
             write.apply debugging, arguments
       
-      variables = silent: 0, quiet: 2, verbose: 8, WTF: 9
       # We configure the `verbosity` itself in one of two ways: by calling an internal API at
       # runtime; or by setting an environment-variable before entry to the Paws library. (The
       # latter cannot affect the verbosity after the execution of this file.)
@@ -96,8 +102,9 @@ class CommandLineDebugging extends Debugging
       # ----
       # TODO: Verify that this is compatible all the way back to IE6. I'm a bit iffy about the
       #       isFinite() shit.
+      variables = SILENT: 0, QUIET: 2, VERBOSE: 8, WTF: 9
+      
       for own name, ddefault of variables
-         name = name.toUpperCase()
          exports[name] = do (name, ddefault)-> (level = true, opts = {environmental: no})->
             if isFinite (l = parseInt level, 10)
                verbosity = l
@@ -110,6 +117,7 @@ class CommandLineDebugging extends Debugging
             
             exports.wtf "-- Verbosity set to: #{verbosity}/#{verbosities[verbosity] ? '???'}"
          
+         # FIXME: Move this out into its own function, and invoke upon ‘construction’ by data.coffee
          if process.env[name]? and (max_verbosity == Infinity)
             exports[name](process.env[name], environmental: yes) 
       

@@ -10,7 +10,6 @@ process.title = 'paws.js'
 
 Paws = require './data.coffee'
 
-Paws.debugging = require('./additional.coffee').debugging
 Paws.utilities = require './utilities.coffee'
 
 Paws.parser  = require './parser.coffee'

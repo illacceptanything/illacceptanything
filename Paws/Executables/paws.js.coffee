@@ -9,8 +9,8 @@ path     = require 'path'
 fs       = bluebird.promisifyAll require 'fs'
 
 Paws     = require '../Library/Paws.js'
-T = Paws.debugging.tput
-_ = Paws.utilities._
+T        = Paws.debugging.tput
+_        = Paws.utilities._
 
 out = process.stdout
 err = process.stderr
@@ -19,12 +19,26 @@ heart = '💖 '
 salutation = 'Paws loves you. Bye!'
 
 # TODO: Ensure this works well for arguments passed to shebang-files
+# TODO: Use minimist's aliasing-functionality
+# TODO: Rename to `flags`
 argf = minimist process.argv.slice 2
 argv = argf._
+
+# TODO: Support -VV / -VVV
+if argf.V || argf.verbose
+   Paws.VERBOSE 6
+
 
 sources = _([argf.e, argf.expr, argf.expression])
    .flatten().compact().map (expression)-> { from: expression, code: expression }
    .value()
+
+Paws.info "-- Arguments: ", argv.join(' :: ')
+Paws.info "-- Flags: ", argf
+Paws.info "-- Sources: ", sources
+
+Paws.debug "-- Environment variables:"
+Paws.debug process.env
 
 choose = ->
    if (argf.help)
@@ -167,5 +181,5 @@ records_from = (asv)->
 
 prettify.skipNodeFiles()
 bluebird.onPossiblyUnhandledRejection (error)->
-   console.error prettify.render error
+   console.error error.stack
    process.exit 1
