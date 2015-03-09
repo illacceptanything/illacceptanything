@@ -22,7 +22,7 @@ default_hooks="$npm_package_config_git_hooks"
 #        https://github.com/visionmedia/debug
 [ "$DEBUG" = 'Paws.js:scripts' ] && DEBUG_SCRIPTS=0
 [ -n "$DEBUG_SCRIPTS" ] && puts "Script debugging enabled (in: `basename $0`)." >&2
-[ -n "$DEBUG_SCRIPTS" ] && VERBOSE=0
+[ -n "$DEBUG_SCRIPTS" ] && VERBOSE="${VERBOSE:-7}"
 
 [ -n "$DEBUG_SCRIPTS" ] && puts \
    "Requested hook:        '$1'"                               \

@@ -17,7 +17,7 @@ if [ "$npm_package_config_mocha_reporter" != 'mocha-lcov-reporter' ]; then
 #        https://github.com/visionmedia/debug
 [ "$DEBUG" = 'Paws.js:scripts' ] && DEBUG_SCRIPTS=0
 [ -n "$DEBUG_SCRIPTS" ] && puts "Script debugging enabled (in: `basename $0`)." >&2
-[ -n "$DEBUG_SCRIPTS" ] && VERBOSE=0
+[ -n "$DEBUG_SCRIPTS" ] && VERBOSE="${VERBOSE:-7}"
 
 [ -n "$DEBUG_SCRIPTS" ] && puts "
    Mocha reporter:        '$npm_package_config_mocha_reporter'
