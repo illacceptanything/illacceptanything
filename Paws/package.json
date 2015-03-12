@@ -46,9 +46,6 @@
                      , "bluebird"               : "~2.3.4"
                      , "lodash"                 : "~2.4.1"                                        }
 
-,  "optionalDependencies" :{
-                       "yamljs"                 : "~0.1.5"                                        }
-
 ,  "devDependencies" :{"glob"                   : "~3.2.9"
                      , "browserify"             : "~3.33.0"
                      , "coffeeify"              : "~0.6.0"
@@ -60,7 +57,10 @@
                      , "sinon"                  : "~1.10.3"
                      , "sinon-expect"           : "~0.2.0"
                      , "coffee-coverage"        : "~0.4.2"
-                     , "coveralls"              : "~2.11.2"                                       }
+                     , "coveralls"              : "~2.11.2"
+
+                     , "taper"                  : "~0.4.0"
+                     , "yamljs"                 : "~0.1.5"                                        }
 
 ,   "testling" :{
           "files" : "Test/*.coffee"
