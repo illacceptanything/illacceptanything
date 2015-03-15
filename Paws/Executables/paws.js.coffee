@@ -233,5 +233,6 @@ records_from = (asv)->
 
 prettify.skipNodeFiles()
 bluebird.onPossiblyUnhandledRejection (error)->
-   console.error error.stack
+   Paws.debug "!! Possibly unhandled rejection:"
+   console.error error.stack if error.stack
    process.exit 1

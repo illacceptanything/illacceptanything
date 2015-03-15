@@ -128,7 +128,13 @@ parse = (text)->
             execution = new Execution node_from representation.sequence
             context_from representation.source, execution
    
-   node_from PARSER.parse(text)
+   try intermediate = PARSER.parse(text)
+   catch parser_error
+      err = new SyntaxError
+      err.message = parser_error.message
+      throw err
+   
+   node_from intermediate
 
 module.exports = parse
 Paws.utilities.infect module.exports, exports
