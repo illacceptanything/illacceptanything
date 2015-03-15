@@ -286,6 +286,21 @@ describe 'The Paws API:', ->
          ex.advance()
          expect(ex.complete()).to.be true
       
+      it 'provides access to its current position', ->
+         seq = parse 'abc def'
+         ex = new Execution seq
+         
+         expect(-> ex.current()).to.not.throwException()
+         expect(   ex.current()).to.be.a Position
+
+         expect(   ex.current().sequence()).to.be seq
+         expect(   ex.current().valueOf().alien).to.be 'abc'
+         
+         ex.advance()
+         ex.advance new Thing
+         expect(   ex.current().sequence()).to.be seq
+         expect(   ex.current().valueOf().alien).to.be 'def'
+         
       it 'can be cloned', ->
          ex = new Execution (new Sequence)
          expect(-> ex.clone()).to.not.throwException()
@@ -325,8 +340,6 @@ describe 'The Paws API:', ->
          expect(clone.find('locals')[1].valueish()).to.equal ex.locals
       
       describe '#advance', ->
-         parse   = Paws.parse
-         
          it "doesn't modify a completed Native", ->
             completed_alien = new Native
             expect(completed_alien.complete()).to.be.ok()
