@@ -5,7 +5,7 @@ language: node_js
 node_js:
  - "0.11"
  - "0.10"
- - "0.8"
+#- "0.8"
 
 script: 
  - npm run-script coveralls ; true
@@ -13,8 +13,7 @@ script:
 
 matrix:
    allow_failures:
-    - node_js: "0.8"
-    - node_js: "0.11"
+#   - node_js: "0.8"
 
 notifications:
    email: false
@@ -28,3 +27,5 @@ notifications:
       template:
        - "%{repository_name}/%{branch} @%{commit} %{author}: #%{build_number} %{message}"
        - "(Details: %{build_url})"
+   slack:
+      secure: "KTSaXaGAug+R8boN522JxPVXQaFiAKyebVvANcRGRCJPajEz12Dd3jo8aoE4r8zVFuuHUs8gQsOJoAu3w2j5FJo1ECq5OioPQqtYX7nJ6brtf/zVA2VTHmFueTeialOkNabhHJx+2Eh4J7JPVIb7MiLzaKqSLWHKHoB48HMaTCE="

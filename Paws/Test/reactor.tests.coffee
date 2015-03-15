@@ -1,4 +1,3 @@
-`                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 assert = require 'assert'
 sinon  = require 'sinon'
 expect = require('sinon-expect').enhance require('expect.js'), sinon, 'was'
@@ -383,6 +382,40 @@ describe 'The Paws reactor:', ->
       
       it 'succeeds a tick if advance fails?'
          # FIXME: WAT. I have no idea how advance() could possibly fail.
+      
+      it "doesn't flush when the queue is populated", ->
+         here.with(immediate: no).stage new Native ->
+         here.with(immediate: no).stage new Native ->
+         
+         listener = sinon.spy()
+         here.once 'flushed', listener
+         
+         expect(here.realize()).to.be.ok()
+         expect(listener).was.notCalled()
+      
+      it 'emits flush when the queue is emptied', ->
+         here.with(immediate: no).stage new Native ->
+         
+         listener = sinon.spy()
+         here.once 'flushed', listener
+         
+         expect(here.realize()).to.be.ok()
+      
+      it 'emits flush (with deferred-count) when no more stagings are realizable', ->
+         mutex = new Thing
+         owner = new Execution
+         here.table.give owner, new Mask mutex
+         
+         requestor = new Native ->
+         
+         here.with(immediate: no).stage new Native ->
+         here.with(immediate: no).stage requestor, undefined, new Mask mutex
+         
+         listener = sinon.spy()
+         here.once 'flushed', listener
+         
+         expect(here.realize()).to.be.ok()
+         expect(listener).was.calledWith 1
       
       it 'gives a realizable stagee any requested ownership', ->
          mutex = new Thing

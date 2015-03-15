@@ -4,6 +4,8 @@ node_modules/
 Executables/**/*.js
 Source/**/*.js
 Test/**/*.js
+Test/Rulebook/
+
 Documentation/
 Library/*.bundle.js
 Library/*-parser.js

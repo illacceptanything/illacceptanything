@@ -1,0 +1,67 @@
+{{! -- minimum 80-column terminal ------------------------------------------- }}
+{{#title}}Usage:{{/title}}
+{{#pre}}{{{prompt}}} paws.js [{{#bgflag}}flags{{/bgflag}}] {{#bgop}}operation{{/bgop}} [operation parameters]
+
+# for example,
+{{{prompt}}} paws.js {{#u}}foo.paws{{/u}} [[--] arguments]
+{{{prompt}}} paws.js {{#bgop}}interact{{/bgop}}
+{{{prompt}}} paws.js {{#bgop}}parse{{/bgop}} {{#u}}bar.paws{{/u}}{{/pre}}
+
+The first non-flag argument will be an operation to perform; the second depends
+on the operation, but is usually a path to a file to load. If no operation is
+given, then the {{#op}}start{{/op}} operation is assumed.
+
+In true UNIX style, single-letter flags may be combined serially; that is, {{#c}}-aBc{{/c}}
+is synonymous with {{#c}}-a -B -c{{/c}}. Furthermore, all arguments following a bare {{#c}}--{{/c}} are
+passed to the program un-parsed (that is, even if it's a flag that would
+otherwise be interpreted by the Paws.js CLI, it will be ignored and passed
+verbatim to the Paws program being run.)
+
+{{#title}}Operations:{{/title}}
+   {{#op}}start{{/op}} {{#u}}filename.paws{{/u}}           Start the Paws reactor, load the given unit
+   {{#op}}parse{{/op}} {{#u}}filename.paws{{/u}}           Show the computed parse-tree for a cPaws file
+   {{#op}}interact{{/op}}                      Begin an interactive Paws session (a ‘repl’)
+   
+{{#title}}Flags:{{/title}}
+{{#flag}}   --help{{/flag}}:        Show this usage information
+{{#flag}}   --version{{/flag}}:     Show version information
+   
+{{#flag}}   -e "EXPR"{{/flag}},{{#flag}} --expression="EXPR"{{/flag}}:
+      For {{#op}}parse{{/op}} and {{#op}}start{{/op}}, allows you to provide a cPaws expression at the
+      command-line, to substitute for a file. (If at least one {{#c}}--expression{{/c}} is
+      included, the filname for those operations, normally a required parameter,
+      may be omitted.)
+   
+{{#flag}}   --[no-]start{{/flag}}:
+      Disable the self-scheduling reactor functionality.
+      
+      Under normal circumstances (i.e. {{#c}}--start{{/c}}, the default) a Paws reactor
+      runs indefinately, processing combinations when they become available.
+      With the {{#c}}--no-start{{/c}} flag, however, the reactor will shut down as soon as
+      all ‘immediately’ queued stagings have been completed.
+      
+      This means your program will more intuitively ‘automatically exit,’ but
+      it also means any deferred stagings in your code (stagings that cannot
+      immediately execute, for instance those with ownership-conflicts, or
+      those deferred by timing primitives) may not complete before the reactor
+      shuts down.
+      
+      This is usually a bad thing. Avoid this flag without good reason.
+   
+{{#title}}Variables:{{/title}}
+Paws.js pays attention to several environment variables. These can be passed at
+invocation-time via whatever methodology your shell provides; ex.:
+{{#pre}}{{{prompt}}} VAR=value paws.js ...{{/pre}}
+   
+   {{#b}}SILENT{{/b}}=[true|false]           Suppress all output from Paws.js itself
+   {{#b}}VERBOSE{{/b}}=[0-10]                Manually adjust the logging level [default: {{#b}}4{{/b}}]
+   {{#b}}COLOUR{{/b}}=[true|false]           Enable coloured output [default: {{#b}}true{{/b}}]
+   
+{{#title}}Community:{{/title}}
+Paws homepage: <{{#link}}http://Paws.mu{{/link}}>
+Report bugs:   <{{#link}}https://github.com/ELLIOTTCABLE/Paws.js/issues{{/link}}>
+
+Say hi:        <{{#link}}http://twitter.com/ELLIOTTCABLE{{/link}}>
+            or <{{#link}}http://ell.io/IRC{{/link}}> ({{#b}}#ELLIOTTCABLE{{/b}} on the Freenode IRC network)
+
+{{! -- minimum 80-column terminal ------------------------------------------- }}

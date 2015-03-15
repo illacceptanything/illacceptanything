@@ -1,4 +1,3 @@
-`                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 support = require './support.coffee'
 
 assert  = require 'assert'

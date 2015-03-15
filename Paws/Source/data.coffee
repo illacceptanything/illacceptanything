@@ -1,17 +1,15 @@
-`                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 require('./utilities.coffee').infect global
 
 uuid = require 'uuid'
 util = require 'util'
 {EventEmitter} = require 'events'
 
-{debugging} = require('./additional.coffee')
-
 
 module.exports =
    Paws = new Object
 
-debugging.inject Paws
+Paws.debugging = require('./additional.coffee').debugging
+Paws.debugging.inject Paws
 
 
 # Core data-types
@@ -501,7 +499,7 @@ Paws.Native = Native = class Native extends Execution
 
 # Debugging output
 # ----------------
-T = debugging.tput
+T = Paws.debugging.tput
 
 # Convenience to call whatever string-making methods are available on the passed object.
 Paws.inspect = (object)->

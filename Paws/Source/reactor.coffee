@@ -1,5 +1,6 @@
-`                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 require('./utilities.coffee').infect global
+
+{EventEmitter} = require 'events'
 
 Paws = require './data.coffee'
 infect global, Paws
@@ -89,7 +90,7 @@ Paws.Thing::receiver = new Native (rv, world)->
    [caller, subject, message] = rv.toArray()
    results = subject.find message
    # FIXME: Welp, this is horrible error-handling. "Print a warning and freeze forevah."
-   Paws.notice "No results on #{Paws.inspect subject} for #{Paws.inspect message}" unless results[0]
+   Paws.notice "~~ No results on #{Paws.inspect subject} for #{Paws.inspect message}." unless results[0]
    world.stage caller, results[0].valueish() if results[0]
 .rename 'thing✕'
 
@@ -107,7 +108,7 @@ Paws.Execution::receiver = new Native (rv, world)->
 # Theoretically, this should be enough to, at least, run two Units *at once*, even if there's
 # currently no design for the ways I want to allow them to interact.
 # More on that later.
-reactor.Unit = Unit = parameterizable class Unit
+reactor.Unit = Unit = parameterizable class Unit extends EventEmitter
    constructor: constructify(return:@) ->
       @queue = new Array
       @table = new Table
@@ -126,9 +127,18 @@ reactor.Unit = Unit = parameterizable class Unit
    #  3. or whose requested mask doesn’t conflict with any existing ones, excluding its own.
    # 
    # If no request is currently valid, it returns undefined.
-   next: ->
-      _(@queue).findWhere (staging, idx)=>
-         @queue.splice(idx, 1)[0] if @table.allowsStagingOf staging
+   next: -> _(@queue).findWhere (staging, idx)=>
+              @queue.splice(idx, 1)[0]    if @table.allowsStagingOf staging
+   upcoming: ->
+      results = _.filter @queue, (staging)=> @table.allowsStagingOf staging
+      return if results.length then results else undefined
+   
+   #---
+   # XXX: Exists soely for debugging purposes. Could just emit *inside* `realize`.
+   flushed: ->
+      if process.env['TRACE_REACTOR']
+         Paws.verbose "~~ Queue flushed#{if @queue.length then ' @ '+@queue.length else ''}."
+      @emit 'flushed', @queue.length
    
    # Generate the form of object passed to receivers.
    @receiver_parameters: (stagee, subject, message)->
@@ -137,8 +147,14 @@ reactor.Unit = Unit = parameterizable class Unit
    # The core reactor of this implementation, `#realize` will ‘process’ a single `Staging` from this
    # `Unit`'s queue. Returns `true` if a `Staging` was acquired and in some way processed, and
    # `false` if no processing was possible.
+   #
+   # Emits a 'flushed' event if there's no executions in the queue (at least, none that are valid
+   # for staging.) Listeners will be passed the number of unrealizable executions still in the
+   # queue, if any are present.
    realize: ->
-      return no unless staging = @next()
+      unless staging = @next()
+         @awaitingTicks = 0
+         return no
       {stagee, result, requestedMask} = staging
       
       if process.env['TRACE_REACTOR']
@@ -147,9 +163,10 @@ reactor.Unit = Unit = parameterizable class Unit
             .replace /\n/g, "\n   │  "
          Paws.warning ">> #{stagee} ← #{result}" + exec_printout
       
-      # Remove complete stagees from the queue, with no further action.
+      # Remove completed stagees from the queue, with no further action.
       if stagee.complete()
          Paws.warning "   ╰┄ complete!" if process.env['TRACE_REACTOR']
+         @flushed() unless @upcoming()
          return yes
       
       combo = stagee.advance result
@@ -174,6 +191,7 @@ reactor.Unit = Unit = parameterizable class Unit
       
       @table.remove accessor: stagee if stagee.complete()
       
+      @flushed() unless @upcoming()
       delete @current
       return yes
 

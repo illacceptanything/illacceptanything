@@ -1,4 +1,3 @@
-`                                                                                                                 /*|*/ require = require('../Library/cov_require.js')(require)`
 Paws = require './Paws.coffee'
 Paws.infect global
 T = Paws.debugging.tput
