@@ -239,6 +239,9 @@ Paws.Execution = Execution = class Execution extends Thing
    receiver: undefined
    
    complete:-> !this.instructions.length
+
+   # Responds with the *current* `Position`; i.e. the top element of the `instructions` stack.
+   current:-> @instructions[0]
    
    # This method of the `Execution` types will copy all data relevant to advancement of the
    # execution to a `Execution` instance. This includes the pristine-ness (boolean), the `results`

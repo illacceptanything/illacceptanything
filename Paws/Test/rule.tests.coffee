@@ -131,7 +131,8 @@ describe "Paws' Rulebook support:", ->
             rule = Rule.construct {name: 'a test', body: 'pass[]'}
             
             expect(rule.body).to.be.an Execution
-            expect(rule.body.position.next.contents.alien).to.be 'pass' # FIXME: terrible test.
+            expect(rule.body.current().valueOf()).to.be.a Label
+            expect(rule.body.current().valueOf().alien).to.be 'pass'
          
          it 'should have a default title', ->
             rule = Rule.construct {body: 'pass[]'}
