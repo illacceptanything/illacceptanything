@@ -23,7 +23,7 @@ __ENTER = Sequence
 Sequence = seq:Expression*
    { seq.type = 'sequence';    return R(offset(), text())(seq) }
 
-Expression = _ expr:Partial _ END
+Expression = _ expr:Partial _ END _
    { expr.type = 'expression'; return R(offset(), text())(expr) }
 
 Partial
