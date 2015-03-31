@@ -6,7 +6,10 @@
 # the Paws rulebooks.
 # 
 #    npm test
-#    RUN_LETTERS=yes npm test    # To execute the Letters, as well
+#    MOCHA_FLAGS='--grep Parser' nrs test # Run a specific test-suite
+#    RESPECT_TRACING=no npm test          # Disable debugging and tracing during the tests
+#    RUN_RULEBOOK=no npm test             # Ignore the Rulebook, even if present
+#    RUN_LETTERS=yes npm test             # To execute the Letters, as well
 puts() { printf %s\\n "$@" ;}
 pute() { printf %s\\n "~~ $*" >&2 ;}
 
@@ -53,6 +56,8 @@ go env NODE_ENV="$test_env" ./node_modules/.bin/mocha    \
 
 # FIXME: Check if the directories exist, but are empty.
 if [ -d "$PWD/$npm_package_config_dirs_rulebook" ]; then
+   if [ -n "${RUN_RULEBOOK##[YTyt]*}" ]; then exit 0; fi
+
    if [ -d "$PWD/$npm_package_config_dirs_rulebook/The Ladder/" ]; then
       go env NODE_ENV="$test_env" ./node_modules/.bin/taper       \
          --runner "$PWD/Executables/paws.js"                      \
