@@ -82,11 +82,18 @@ parameterizable class Interactive extends EventEmitter
       process.on 'SIGTERM', SIGTERM
       
       SIGTSTP = =>
-         process.once 'SIGCONT', =>
+         continued = false
+         
+         SIGCONT = =>
+            return if continued
+            continued = true
             @readline.input.pause()
             @readline.input.resume()
             @readline._setRawMode true
             @readline._refreshLine()
+         
+         process.once 'SIGCONT', SIGCONT
+         process.nextTick SIGCONT
          
          @readline.output.write @readline.clear_style
          @readline._setRawMode false
@@ -140,32 +147,50 @@ parameterizable class Interactive extends EventEmitter
    hackReadline: ->
       exportz = readline
       
-      _refreshLine = @readline._refreshLine
-      @readline._refreshLine = =>
-         [clearScreenDown, exportz.clearScreenDown] = [exportz.clearScreenDown, haxClearScreenDown]
-         _refreshLine.apply @readline
-         exportz.clearScreenDown = clearScreenDown
+      _interface = @readline
+      _interface._refreshLine = ->
+         input = @_prompt + @line
+         lastLineLength = input.length % @columns
+         rows = (input.length - lastLineLength) / @columns
+         
+         cursorPos = @_getCursorPos()
+         
+         # No idea what function this is supposed to preform.
+         prevRows = @prevRows || 0;
+         if prevRows > 0
+            exportz.moveCursor @output, 0, -prevRows
+         
+         exportz.cursorTo @output, 0
+         exportz.clearScreenDown @output
+         
+         printable = input + new Array(@columns - lastLineLength).join ' '
+         @output.write T.block printable, (line)->
+            _interface.line_style + line
+         
+         if lastLineLength < @columns
+            @output.write ' '
+         
+         exportz.cursorTo @output, cursorPos.cols
+         
+         diff = rows - cursorPos.rows
+         if diff > 0
+            exportz.moveCursor @output, 0, -diff
+         
+         @prevRows = cursorPos.rows
       
-      # This ensures our custom line-styles get applied every time the line is refreshed
-      haxClearScreenDown = (stream)=>
-         stream.write '\x1b[0J'
-         stream.write T.column_address(0)
-         stream.write T.sgr(7)+(new Array(T.columns+1).join ' ')
-         stream.write T.column_address(0)
-         stream.write @readline.line_style
       
-      _ttyWrite = @readline._ttyWrite
+      _ttyWrite = _interface._ttyWrite
       # These replace the usual behavior of pausing the input-stream (which means all input while
       # paused is buffered, and will eventually be dumped back out), and simply *ignores* all input
       # until unpaused. No buffering.
-      @readline.pause = ->
+      _interface.pause = ->
          return if @paused
          @_ttyWrite = haxTtyWrite
          @paused = true
          @emit 'pause'
          return this
       
-      @readline.resume = ->
+      _interface.resume = ->
          return unless @paused
          @_ttyWrite = _ttyWrite
          @paused = false
