@@ -179,25 +179,28 @@ parameterizable class Interactive extends EventEmitter
          @prevRows = cursorPos.rows
       
       
-      _ttyWrite = _interface._ttyWrite
       # These replace the usual behavior of pausing the input-stream (which means all input while
       # paused is buffered, and will eventually be dumped back out), and simply *ignores* all input
       # until unpaused. No buffering.
       _interface.pause = ->
          return if @paused
-         @_ttyWrite = haxTtyWrite
+         @_ttyWrite = paused_ttyWrite
          @paused = true
          @emit 'pause'
          return this
       
       _interface.resume = ->
          return unless @paused
-         @_ttyWrite = _ttyWrite
+         @_ttyWrite = active_ttyWrite
          @paused = false
          @emit 'resume'
          return this
       
-      haxTtyWrite = (s, key)->
+      active_ttyWrite = (s, key)->
+         if key.ctrl and key.name == 'd' then @close()
+         else _ttyWrite.apply this, arguments
+      
+      paused_ttyWrite = (s, key)->
          if key.ctrl
             switch key.name
                when 'c' then @emit 'SIGINT'     # ^c (interrupt)
@@ -205,3 +208,5 @@ parameterizable class Interactive extends EventEmitter
                when 'z'                         # ^z (process backgrounding)
                   return if process.platform == 'win32'
                   @emit 'SIGTSTP'
+
+      [_ttyWrite, _interface._ttyWrite] = [_interface._ttyWrite, active_ttyWrite]
