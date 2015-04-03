@@ -170,18 +170,17 @@ help = -> readFilesAsync([extra('help.mustache'), extra('figlets.mustache.asv')]
       link:  ->(text, r)->
          if Paws.use_colour() then T.sgr(34) + T.underline(r text) + T.sgr(39) else r text
       prompt: -> # Probably only makes sense inside {{pre}}. Meh.
-         T.sgr(27) + T.csi('3D') + T.fg(7, prompt+' ') + T.sgr(7) + T.sgr(90)
-      pre:  ->(text, r)->
-         lines = text.split "\n"
-         lines = _(lines).map (line)->
-            line = r line
-            sgr_sanitized_line = line.replace /\033.*?[ABCDGsum]/g, ''
-            spacing = T.columns - sgr_sanitized_line.length - 6
-            spacing = spacing + 3 if sgr_sanitized_line.charAt(0) == prompt
-            if Paws.use_colour()
-               line = T.invert T.fg 10, ' ' + line + new Array(spacing).join(' ')
-            "   #{line}   "
-         lines.join("\n")
+         if Paws.use_colour() then T.sgr(27) + T.csi('3D') + T.fg(7, prompt+' ') + T.sgr(7) + T.sgr(90) else prompt
+      pre:  ->(text, r)-> T.block r(text), (line, _, sanitized)->
+         line = if Paws.use_colour() and sanitized.charAt(0) == prompt
+            line.slice 0, -3 # Compensate for columns lost to `prompt`'s ANSI ‘CUB’
+         else
+            line.slice 0, -6
+         
+         if Paws.use_colour()
+            "   #{T.invert T.fg 10, " #{line}"}   "
+         else
+            "   #{line}"
    
    version()
 

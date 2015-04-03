@@ -39,6 +39,15 @@ class CommandLineDebugging extends Debugging
       @tput.xbg = (colour, text)->
          if use_colour then @sgr(48,5,colour) + text + @sgr(49) else text
       
+      @tput.block = (text, cb)=>
+         lines = text.split "\n"
+         lines = _(lines).map (line, i)=>
+            sanitized_line = if use_colour then line.replace /\033.*?[ABCDGsum]/g, '' else line
+            spacing = Math.max 0, @tput.columns - sanitized_line.length
+            line = line + new Array(spacing).join ' '
+            if cb then cb line, i, sanitized_line, text else line
+         lines.join "\n"
+      
       @tput.bold      = (text)-> if use_colour then @sgr(1) + text + @sgr(22) else text
       @tput.underline = (text)-> if use_colour then @sgr(4) + text + @sgr(24) else text
       @tput.invert    = (text)-> if use_colour then @sgr(7) + text + @sgr(27) else text
