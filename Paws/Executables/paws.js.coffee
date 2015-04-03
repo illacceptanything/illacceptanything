@@ -16,7 +16,15 @@ out = process.stdout
 err = process.stderr
 
 heart = '💖 '
-salutation = 'Paws loves you. Bye!'
+salutations = [
+   'Paws loves you.'
+   'ELLIOTTCABLE loves you, too.'
+   "Don't be a stranger"
+   'Miss you already'
+   'You look amazing today!'
+   'Best friends forever,'
+   'Bye!'
+]
 
 # TODO: Ensure this works well for arguments passed to shebang-files
 # TODO: Use minimist's aliasing-functionality
@@ -195,14 +203,15 @@ version = ->
    process.exit 1
 
 goodbye = (code = 0)->
+   salutation = _(salutations).sample()
    length = salutation.length + 3
    if Paws.use_colour()
       # Get rid of the "^C",
       err.write T.cursor_left() + T.cursor_left()
       err.write T.clr_eol()
       
-      err.write T.column_address(T.columns - 1 - length - 2)
-      err.write T.enter_blink_mode() unless process.env['NOBLINK']
+      err.write T.column_address T.columns - 1 - length - 2
+      err.write T.enter_blink_mode() unless /[nf]/i.test process.env['BLINK']
    
    salutation = '~ '+salutation+' '+ (if Paws.use_colour() then heart else '<3') + "\n"
    err.write if T.colors == 256 then T.xfg 219, salutation else T.fg 5, salutation

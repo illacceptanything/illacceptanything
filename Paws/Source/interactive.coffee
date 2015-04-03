@@ -73,7 +73,6 @@ parameterizable class Interactive extends EventEmitter
       
       SIGTERM = =>
          @here.stop()
-         @readline.output.write "\x1b[2K\x1b[0G" # Zero cursor.
          @readline.output.write @readline.clear_style
          @readline.close()
          process.stdin.destroy()
@@ -196,11 +195,11 @@ parameterizable class Interactive extends EventEmitter
          @emit 'resume'
          return this
       
-      active_ttyWrite = (s, key)->
+      active_ttyWrite = (s, key = {})->
          if key.ctrl and key.name == 'd' then @close()
          else _ttyWrite.apply this, arguments
       
-      paused_ttyWrite = (s, key)->
+      paused_ttyWrite = (s, key = {})->
          if key.ctrl
             switch key.name
                when 'c' then @emit 'SIGINT'     # ^c (interrupt)
