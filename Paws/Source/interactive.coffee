@@ -47,7 +47,7 @@ parameterizable class Interactive extends EventEmitter
       @readline.on 'line', (line)=>
          return shortcircuit = false if shortcircuit # ???
          return @readline.prompt() unless line.length
-         @readline.write @readline.clear_style
+         @readline.output.write @readline.clear_style
          
          # FIXME: Input during the processing is currently all processed immediately after a prompt
          #        is next shown. This is rather icky when the user ^C's a ton, and then externally
@@ -66,15 +66,15 @@ parameterizable class Interactive extends EventEmitter
          if @mutex then @here.table.remove mask: new reactor.Mask @mutex
          else
             shortcircuit = true # ???
-            @readline.write "\n"
+            @readline.output.write "\n"
             @prompt()
       @readline.on 'SIGINT', SIGINT
       process  .on 'SIGINT', SIGINT
       
       SIGTERM = =>
          @here.stop()
-         @readline.write "\x1b[2K\x1b[0G" # Zero cursor.
-         @readline.write @readline.clear_style
+         @readline.output.write "\x1b[2K\x1b[0G" # Zero cursor.
+         @readline.output.write @readline.clear_style
          @readline.close()
          process.stdin.destroy()
          @emit 'close'
@@ -88,7 +88,7 @@ parameterizable class Interactive extends EventEmitter
             @readline._setRawMode true
             @readline._refreshLine()
          
-         @readline.write @readline.clear_style
+         @readline.output.write @readline.clear_style
          @readline._setRawMode false
          process.kill process.pid, 'SIGTSTP'
          
@@ -176,7 +176,7 @@ parameterizable class Interactive extends EventEmitter
          if key.ctrl
             switch key.name
                when 'c' then @emit 'SIGINT'     # ^c (interrupt)
-               when 'd' then @close             # ^d (EOF)
+               when 'd' then @close()           # ^d (EOF)
                when 'z'                         # ^z (process backgrounding)
                   return if process.platform == 'win32'
                   @emit 'SIGTSTP'
