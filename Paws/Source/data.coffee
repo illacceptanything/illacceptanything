@@ -1,6 +1,6 @@
 require('./utilities.coffee').infect global
 
-uuid = require 'uuid'
+uuid = require 'node-uuid'
 util = require 'util'
 {EventEmitter} = require 'events'
 
