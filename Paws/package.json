@@ -10,7 +10,7 @@
 ,           "bin" : {"paws.js" : "Executables/paws.js"}
 
 ,       "scripts" :{
-        "preinstall" : "./Scripts/build.sh"
+        "prepublish" : "./Scripts/build.sh"
 
 ,             "repl" : "./Scripts/repl.js"
 ,             "test" : "./Scripts/test.sh"

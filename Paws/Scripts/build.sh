@@ -5,8 +5,7 @@
 # This preforms the various compilation / build steps necessary to use this implementation. It's
 # automatically run on `npm install`.
 # 
-#     npm run-script coverage
-#     # ./Scripts/coverage.sh 3>./Library/coverage.html
+#     npm run-script build
 
 # FIXME: The existence of this script is very problematic. This basically means Windows users
 #        (especially those using PowerShell instead of, say, cygwin) cannot clone-and-immediately-
