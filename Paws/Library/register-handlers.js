@@ -5,7 +5,9 @@ if (process.env['NODE_ENV'] === 'coverage')
     , basePath: require('path').resolve(__dirname, '../')
     , exclude: [
          'Test', 'node_modules', '.git'
+       , 'Source/primitives'
        , 'Source/additional.coffee'
+       , 'Executables' // This feels like cheating.
       ]
     , initAll: true
    })

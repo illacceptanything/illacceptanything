@@ -21,7 +21,7 @@ if [ "$npm_package_config_mocha_reporter" != 'mocha-lcov-reporter' ]; then
 
 [ -n "$DEBUG_SCRIPTS" ] && puts "
    Mocha reporter:        '$npm_package_config_mocha_reporter'
-   Mocha files:           '$npm_package_config_mocha_files'
+   Mocha files:           '$npm_package_config_test_files'
 " >&2
 
 [ -n "$DEBUG_SCRIPTS" ] && set -o verbose
@@ -31,4 +31,4 @@ env NODE_ENV='coverage' \
 ./node_modules/.bin/mocha \
    --compilers 'coffee:coffee-script/register' --require 'Library/register-handlers.js' \
    --reporter "$npm_package_config_mocha_reporter" \
-   "$npm_package_config_mocha_files" >&3
+   "$npm_package_config_test_files" >&3
