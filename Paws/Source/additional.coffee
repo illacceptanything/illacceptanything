@@ -42,7 +42,7 @@ class CommandLineDebugging extends Debugging
       @tput.block = (text, cb)=>
          lines = text.split "\n"
          lines = _(lines).map (line, i)=>
-            sanitized_line = if use_colour then line.replace /\033.*?[ABCDGsum]/g, '' else line
+            sanitized_line = if use_colour then line.replace /\x1b.*?[ABCDGsum]/g, '' else line
             spacing = Math.max 0, @tput.columns - sanitized_line.length
             line = line + new Array(spacing).join ' '
             if cb then cb line, i, sanitized_line, text else line
