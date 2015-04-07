@@ -7,9 +7,14 @@ node_js:
  - "0.10"
 #- "0.8"
 
-script: 
- - npm run-script coveralls ; true
+before_install:
+ - git clone https://github.com/Paws/Rulebook.git ./Test/Rulebook
+
+script:
  - npm run-script test
+
+after_success:
+ - npm run-script coveralls
 
 matrix:
    allow_failures:
