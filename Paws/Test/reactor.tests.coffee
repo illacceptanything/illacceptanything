@@ -326,6 +326,7 @@ describe 'The Paws reactor:', ->
          beforeEach ->
             here = new Unit
          
+         # FIXME: These tests are too tightly-coupled to #stage. /=
          it 'returns undefined if no staging is available', ->
             expect(here.next()).to.be undefined
             

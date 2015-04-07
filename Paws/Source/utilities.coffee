@@ -3,7 +3,7 @@ require('./additional.coffee').debugging.inject Paws = new Object
 module.exports =
 utilities =
    
-   _:_ = require 'lodash/dist/lodash.compat.min'
+   _:_ = require 'lodash-compat'
 
    
    # Third-order function to pass-through the arguments to the first-order body

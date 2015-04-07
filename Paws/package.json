@@ -45,7 +45,7 @@
                      
                      , "pretty-error"           : "~1.1.1"
                      , "bluebird"               : "~2.3.4"
-                     , "lodash"                 : "~2.4.1"                                        }
+                     , "lodash-compat"          : "~3.6.0"                                        }
 
 ,  "devDependencies" :{"glob"                   : "~3.2.9"
                      , "browserify"             : "~3.33.0"

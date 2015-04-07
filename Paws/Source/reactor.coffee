@@ -18,7 +18,10 @@ reactor.Mask = Mask = class Mask
    flatten: ()->
       recursivelyMask = (set, root)->
          set.push root
-         _(root.metadata).filter().filter('owns').pluck('to').reduce recursivelyMask, set
+         _(root.metadata)
+            .filter().filter('owns')
+            .pluck('to')
+            .reduce(recursivelyMask, set)
       
       _.uniq recursivelyMask new Array, @root
    
@@ -27,14 +30,14 @@ reactor.Mask = Mask = class Mask
       others = others.reduce ((others, other)->
          others.concat other.flatten() ), new Array
       
-      _(others).some (thing)=> _(this.flatten()).contains thing
+      _(others).some (thing)=> _(@flatten()).contains thing
    
    # Explores other `Mask`'s graphs, returning `true` if they include *all* of this `Mask`'s nodes.
    containedBy: (others...)->
       others = others.reduce ((others, other)->
          others.concat other.flatten() ), new Array
       
-      _(this.flatten()).difference(others).isEmpty()
+      _(@flatten()).difference(others).isEmpty()
 
 # This acts as a `Unit`'s store of access knowledge: `Executions` are matched to the `Mask`s they've
 # been given responsibility for
@@ -59,10 +62,10 @@ reactor.Table = Table = class Table
    # FIXME: Test the remove-conflicting-masks functionality
    remove: ({accessor, mask})->
       return unless accessor? or mask?
-      _(@content).remove (entry)->
+      _.remove @content, (entry)->
          return false if accessor? and entry.accessor != accessor
          return true unless mask
-         _(entry.masks).remove (m)-> m.conflictsWith mask
+         _.remove entry.masks, (m)-> m.conflictsWith mask
          entry.masks.length == 0
    
    # Returns `true` if a given `Mask` is fully contained by the set of responsibility that a given
@@ -127,8 +130,11 @@ reactor.Unit = Unit = parameterizable class Unit extends EventEmitter
    #  3. or whose requested mask doesn’t conflict with any existing ones, excluding its own.
    # 
    # If no request is currently valid, it returns undefined.
-   next: -> _(@queue).findWhere (staging, idx)=>
-              @queue.splice(idx, 1)[0]    if @table.allowsStagingOf staging
+   #---
+   # FIXME: Ugly.
+   next: ->
+      idx = _(@queue).findIndex (staging)=> @table.allowsStagingOf staging
+      @queue.splice(idx, 1)[0] if idx != -1
    upcoming: ->
       results = _.filter @queue, (staging)=> @table.allowsStagingOf staging
       return if results.length then results else undefined
