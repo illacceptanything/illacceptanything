@@ -39,29 +39,29 @@
                      , "node-uuid"              : "~1.4.3"
                      , "pegjs"                  : "~0.8.0"
                      
-                     , "minimist"               : "~1.1.0"
-                     , "mustache"               : "~0.8.2"
-                     , "blessed"                : "~0.0.37"
+                     , "minimist"               : "~1.1.1"
+                     , "mustache"               : "~2.0.0"
+                     , "blessed"                : "~0.0.51"
                      
-                     , "pretty-error"           : "~1.1.1"
-                     , "bluebird"               : "~2.3.4"
+                     , "pretty-error"           : "~1.1.2"
+                     , "bluebird"               : "~2.9.24"
                      , "lodash-compat"          : "~3.6.0"                                        }
 
-,  "devDependencies" :{"glob"                   : "~3.2.9"
+,  "devDependencies" :{"glob"                   : "~5.0.3"
                      , "browserify"             : "~3.33.0"
                      , "coffeeify"              : "~0.6.0"
-                     , "docco"                  : "~0.6.3"
+                     , "docco"                  : "~0.7.0"
                      
-                     , "mocha"                  : "~1.21.4"
-                     , "mocha-lcov-reporter"    : "~0.0.1"
+                     , "mocha"                  : "~2.2.1"
+                     , "mocha-lcov-reporter"    : "~0.0.2"
                      , "expect.js"              : "~0.3.1"
-                     , "sinon"                  : "~1.10.3"
+                     , "sinon"                  : "~1.14.1"
                      , "sinon-expect"           : "~0.2.0"
-                     , "coffee-coverage"        : "~0.4.2"
+                     , "coffee-coverage"        : "~0.4.5"
                      , "coveralls"              : "~2.11.2"
 
                      , "taper"                  : "~0.5.0"
-                     , "yamljs"                 : "~0.1.5"                                        }
+                     , "yamljs"                 : "~0.2.1"                                        }
 
 ,   "testling" :{
           "files" : "Test/*.coffee"
