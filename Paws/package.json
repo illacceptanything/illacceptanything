@@ -60,7 +60,7 @@
                      , "coffee-coverage"        : "~0.4.2"
                      , "coveralls"              : "~2.11.2"
 
-                     , "taper"                  : "~0.4.0"
+                     , "taper"                  : "~0.5.0"
                      , "yamljs"                 : "~0.1.5"                                        }
 
 ,   "testling" :{
