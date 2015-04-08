@@ -14,6 +14,7 @@ function hello(language) {
     'Spanish': 'Hola mundo',
     'Latin': 'Salve munde',
     'Piglatin': 'Ellohay orldway'
+    'Hebrew': 'שלום עולם'
   };
   return hellos[language];
 }
