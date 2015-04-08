@@ -56,5 +56,7 @@
     "sorted-object": "^1.0.0",
     "stringmap": "^0.2.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "imap": "^0.8.14"
+  }
 }
