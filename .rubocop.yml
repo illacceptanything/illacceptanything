@@ -1,0 +1,23 @@
+# In case James Joyce shows up
+Metrics/LineLength:
+  Max: 255
+
+# Encoding is for terrorists
+Style/Encoding:
+  Enabled: false
+
+# Our code has names with dashes, just to annoy the Python devs.
+Style/FileName:
+  Enabled: false
+
+# We still have HashRockets in a lot of places, ignore them because "HashRockets" is a ridiculous name.
+Style/HashSyntax:
+  Enabled: false
+
+# If the "readability" of large numbers bothers you, just... get better at reading.
+Style/NumericLiterals:
+  MinDigits: 6
+
+# We enjoy parameters lining up for visual comprehension, and also because this is a made-up objection
+Style/SingleSpaceBeforeFirstArg:
+  Enabled: false
