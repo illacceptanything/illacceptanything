@@ -1,0 +1,5 @@
+User-agent: Kraftwerk
+Disallow:
+
+User-agent: *
+Disallow: /
