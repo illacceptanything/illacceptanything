@@ -1,0 +1,19 @@
+{
+  "name": "illacceptanything",
+  "version": "100.0.0",
+  "authors": [
+    "Dalton Dick <daltondick2010@gmail.com>"
+  ],
+  "description": "I'll accept anything!",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4"
+  }
+}
