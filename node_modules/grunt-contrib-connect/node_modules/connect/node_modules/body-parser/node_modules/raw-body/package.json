@@ -1,0 +1,61 @@
+{
+  "name": "raw-body",
+  "description": "Get and validate the raw body of a readable stream.",
+  "version": "1.1.6",
+  "author": {
+    "name": "Jonathan Ong",
+    "email": "me@jongleberry.com",
+    "url": "http://jongleberry.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stream-utils/raw-body.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stream-utils/raw-body/issues"
+  },
+  "dependencies": {
+    "bytes": "1"
+  },
+  "devDependencies": {
+    "readable-stream": "~1.0.17",
+    "co": "3",
+    "gnode": "~0.0.4",
+    "mocha": "^1.14.0",
+    "through2": "~0.4.1",
+    "request": "^2.27.0",
+    "assert-tap": "~0.1.4"
+  },
+  "scripts": {
+    "test": "NODE=gnode make test && node ./test/acceptance.js"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "homepage": "https://github.com/stream-utils/raw-body",
+  "_id": "raw-body@1.1.6",
+  "dist": {
+    "shasum": "98e9df9a7e2df994931b7cdb4b2a6b9694a74f02",
+    "tarball": "http://registry.npmjs.org/raw-body/-/raw-body-1.1.6.tgz"
+  },
+  "_from": "raw-body@1.1.6",
+  "_npmVersion": "1.4.3",
+  "_npmUser": {
+    "name": "dougwilson",
+    "email": "doug@somethingdoug.com"
+  },
+  "maintainers": [
+    {
+      "name": "jongleberry",
+      "email": "jonathanrichardong@gmail.com"
+    },
+    {
+      "name": "dougwilson",
+      "email": "doug@somethingdoug.com"
+    }
+  ],
+  "directories": {},
+  "_shasum": "98e9df9a7e2df994931b7cdb4b2a6b9694a74f02",
+  "_resolved": "https://registry.npmjs.org/raw-body/-/raw-body-1.1.6.tgz"
+}

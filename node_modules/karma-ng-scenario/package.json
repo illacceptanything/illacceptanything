@@ -1,0 +1,64 @@
+{
+  "name": "karma-ng-scenario",
+  "version": "0.1.0",
+  "description": "A Karma plugin. Adapter for Angular's Scenario Runner.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/karma-runner/karma-ng-scenario.git"
+  },
+  "keywords": [
+    "karma-plugin",
+    "karma-adapter",
+    "angular",
+    "e2e",
+    "scenario-runner"
+  ],
+  "author": {
+    "name": "Vojta Jina",
+    "email": "vojta.jina@gmail.com"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.6",
+    "karma": "~0.9",
+    "karma-jasmine": "*",
+    "karma-chrome-launcher": "*",
+    "karma-firefox-launcher": "*",
+    "grunt-karma": "~0.4",
+    "grunt-bump": "~0.0.11",
+    "grunt-npm": "~0.0.2",
+    "grunt-auto-release": "~0.0.3"
+  },
+  "peerDependencies": {
+    "karma": ">=0.9"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/karma-runner/karma-ng-scenario/issues"
+  },
+  "_id": "karma-ng-scenario@0.1.0",
+  "dist": {
+    "shasum": "0d7c8f1348597252178aab450866507f384d08a3",
+    "tarball": "http://registry.npmjs.org/karma-ng-scenario/-/karma-ng-scenario-0.1.0.tgz"
+  },
+  "_from": "karma-ng-scenario@0.1.0",
+  "_npmVersion": "1.3.2",
+  "_npmUser": {
+    "name": "vojtajina",
+    "email": "vojta.jina@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "vojtajina",
+      "email": "vojta.jina@gmail.com"
+    }
+  ],
+  "directories": {},
+  "_shasum": "0d7c8f1348597252178aab450866507f384d08a3",
+  "_resolved": "https://registry.npmjs.org/karma-ng-scenario/-/karma-ng-scenario-0.1.0.tgz"
+}

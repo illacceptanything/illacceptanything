@@ -1,0 +1,62 @@
+{
+  "name": "cookie-parser",
+  "version": "1.1.0",
+  "description": "cookie parsing with signatures",
+  "keywords": [
+    "cookie",
+    "middleware"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/expressjs/cookie-parser.git"
+  },
+  "author": {
+    "name": "TJ Holowaychuk",
+    "email": "tj@vision-media.ca",
+    "url": "http://tjholowaychuk.com"
+  },
+  "dependencies": {
+    "cookie": "0.1.2",
+    "cookie-signature": "1.0.3"
+  },
+  "devDependencies": {
+    "mocha": "~1.18.2",
+    "supertest": "~0.12.1"
+  },
+  "licenses": "MIT",
+  "main": "./index.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "mocha --ui bdd --reporter list -- test/*.js"
+  },
+  "bugs": {
+    "url": "https://github.com/expressjs/cookie-parser/issues"
+  },
+  "homepage": "https://github.com/expressjs/cookie-parser",
+  "_id": "cookie-parser@1.1.0",
+  "dist": {
+    "shasum": "2f8265aa3b55733a85eef207f0e2530c3e8cf705",
+    "tarball": "http://registry.npmjs.org/cookie-parser/-/cookie-parser-1.1.0.tgz"
+  },
+  "_from": "cookie-parser@1.1.0",
+  "_npmVersion": "1.4.3",
+  "_npmUser": {
+    "name": "dougwilson",
+    "email": "doug@somethingdoug.com"
+  },
+  "maintainers": [
+    {
+      "name": "shtylman",
+      "email": "shtylman@gmail.com"
+    },
+    {
+      "name": "dougwilson",
+      "email": "doug@somethingdoug.com"
+    }
+  ],
+  "directories": {},
+  "_shasum": "2f8265aa3b55733a85eef207f0e2530c3e8cf705",
+  "_resolved": "https://registry.npmjs.org/cookie-parser/-/cookie-parser-1.1.0.tgz"
+}

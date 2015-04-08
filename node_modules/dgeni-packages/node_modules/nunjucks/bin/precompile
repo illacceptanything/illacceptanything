@@ -1,0 +1,63 @@
+#!/usr/bin/env node
+var path = require('path');
+var precompile = require('../src/precompile').precompile;
+var Environment = require('../src/environment').Environment;
+var lib = require('../src/lib');
+
+var optimist = require('optimist')
+
+    .usage('$0 [-f|--force] [-a|--filters <filters>] [-n|--name <name>] [-i|--include <regex>] [-x|--exclude <regex>] <path>')
+    .wrap(80)
+
+    .describe('help', 'Display this help message')
+        .boolean('help')
+        .alias('h', 'help')
+        .alias('?', 'help')
+
+    .describe('force', 'Force compilation to continue on error')
+        .boolean('force')
+        .alias('f', 'force')
+
+    .describe('filters', 'Give the compiler a comma-delimited list of asynchronous filters, required for correctly generating code')
+        .string('filters')
+        .alias('a', 'filters')
+
+    .describe('name', 'Specify the template name when compiling a single file')
+        .string('name')
+        .alias('n', 'n')
+
+    .describe('include', 'Include a file or folder which match the regex but would otherwise be excluded. You can use this flag multiple times')
+        .string('include' )
+        .default('include', ['\\.html$', '\\.jinja$'])
+        .alias('i', 'include')
+
+    .describe('exclude', 'Exclude a file or folder which match the regex but would otherwise be included. You can use this flag multiple times')
+        .string('exclude' )
+        .default('exclude', [])
+        .alias('x', 'exclude')
+
+    .demand(1);
+
+var argv = optimist.argv;
+
+if (argv.help) {
+    optimist.showHelp();
+    process.exit(1);
+}
+
+var env = new Environment([]);
+
+lib.each([].concat(argv.filters).join(',').split(','), function(name) {
+    env.addFilter(name.trim(), function() {}, true);
+});
+
+console.log(precompile(argv._[0], {
+
+    env : env,
+    force : argv.force,
+    name : argv.name,
+
+    include : [].concat(argv.include),
+    exclude : [].concat(argv.exclude)
+
+}));

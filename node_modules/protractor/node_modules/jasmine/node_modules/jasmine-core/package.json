@@ -1,0 +1,52 @@
+{
+  "name": "jasmine-core",
+  "license": "MIT",
+  "version": "2.1.3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pivotal/jasmine.git"
+  },
+  "description": "Official packaging of Jasmine's core files for use by Node.js projects.",
+  "homepage": "http://jasmine.github.io",
+  "main": "./lib/jasmine-core.js",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.7.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-compass": "~0.6.0",
+    "grunt-contrib-compress": "~0.5.2",
+    "shelljs": "~0.1.4",
+    "glob": "~3.2.9",
+    "jasmine": "https://github.com/pivotal/jasmine-npm/archive/master.tar.gz",
+    "load-grunt-tasks": "^0.4.0"
+  },
+  "gitHead": "b56c2a69ac8ca6dab78418e71bfbdd7ee79f5336",
+  "bugs": {
+    "url": "https://github.com/pivotal/jasmine/issues"
+  },
+  "_id": "jasmine-core@2.1.3",
+  "scripts": {},
+  "_shasum": "83c4467a2250578e19e916cf8a2404a8c9841b39",
+  "_from": "jasmine-core@>=2.1.0 <2.2.0",
+  "_npmVersion": "1.4.16",
+  "_npmUser": {
+    "name": "slackersoft",
+    "email": "gregg@slackersoft.net"
+  },
+  "maintainers": [
+    {
+      "name": "dwfrank",
+      "email": "dwfrank@pivotallabs.com"
+    },
+    {
+      "name": "slackersoft",
+      "email": "gregg@slackersoft.net"
+    }
+  ],
+  "dist": {
+    "shasum": "83c4467a2250578e19e916cf8a2404a8c9841b39",
+    "tarball": "http://registry.npmjs.org/jasmine-core/-/jasmine-core-2.1.3.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/jasmine-core/-/jasmine-core-2.1.3.tgz"
+}

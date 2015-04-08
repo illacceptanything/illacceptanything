@@ -1,0 +1,50 @@
+{
+  "name": "csrf-tokens",
+  "description": "primary logic behind csrf tokens",
+  "version": "1.0.4",
+  "author": {
+    "name": "Jonathan Ong",
+    "email": "me@jongleberry.com",
+    "url": "http://jongleberry.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/expressjs/csrf-tokens"
+  },
+  "dependencies": {
+    "rndm": "1",
+    "uid2": "~0.0.2",
+    "scmp": "~0.0.3"
+  },
+  "devDependencies": {
+    "mocha": "1"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "bugs": {
+    "url": "https://github.com/expressjs/csrf-tokens/issues"
+  },
+  "homepage": "https://github.com/expressjs/csrf-tokens",
+  "_id": "csrf-tokens@1.0.4",
+  "_shasum": "49672568b2703348644eacaf61cdbdc054ba56f2",
+  "_from": "csrf-tokens@>=1.0.2 <1.1.0",
+  "_npmVersion": "1.4.9",
+  "_npmUser": {
+    "name": "jongleberry",
+    "email": "jonathanrichardong@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "jongleberry",
+      "email": "jonathanrichardong@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "49672568b2703348644eacaf61cdbdc054ba56f2",
+    "tarball": "http://registry.npmjs.org/csrf-tokens/-/csrf-tokens-1.0.4.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/csrf-tokens/-/csrf-tokens-1.0.4.tgz"
+}

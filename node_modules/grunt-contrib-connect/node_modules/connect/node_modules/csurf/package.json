@@ -1,0 +1,77 @@
+{
+  "name": "csurf",
+  "description": "CSRF token middleware",
+  "version": "1.2.1",
+  "author": {
+    "name": "Jonathan Ong",
+    "email": "me@jongleberry.com",
+    "url": "http://jongleberry.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/expressjs/csurf"
+  },
+  "dependencies": {
+    "csrf-tokens": "~1.0.2"
+  },
+  "devDependencies": {
+    "cookie-session": "*",
+    "body-parser": "*",
+    "cookie-parser": "*",
+    "mocha": ">= 1.17.0 < 2",
+    "should": ">= 3.0.0 < 4",
+    "supertest": "*",
+    "connect": "*"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "bugs": {
+    "url": "https://github.com/expressjs/csurf/issues"
+  },
+  "homepage": "https://github.com/expressjs/csurf",
+  "_id": "csurf@1.2.1",
+  "_shasum": "3928fa237592ed5824a7c221d8581bf356a9da76",
+  "_from": "csurf@1.2.1",
+  "_npmVersion": "1.4.9",
+  "_npmUser": {
+    "name": "jongleberry",
+    "email": "jonathanrichardong@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "jongleberry",
+      "email": "jonathanrichardong@gmail.com"
+    },
+    {
+      "name": "dougwilson",
+      "email": "doug@somethingdoug.com"
+    },
+    {
+      "name": "shtylman",
+      "email": "shtylman@gmail.com"
+    },
+    {
+      "name": "tjholowaychuk",
+      "email": "tj@vision-media.ca"
+    },
+    {
+      "name": "mscdex",
+      "email": "mscdex@mscdex.net"
+    },
+    {
+      "name": "fishrock123",
+      "email": "fishrock123@rocketmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "3928fa237592ed5824a7c221d8581bf356a9da76",
+    "tarball": "http://registry.npmjs.org/csurf/-/csurf-1.2.1.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/csurf/-/csurf-1.2.1.tgz"
+}

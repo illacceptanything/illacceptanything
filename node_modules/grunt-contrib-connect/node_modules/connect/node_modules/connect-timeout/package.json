@@ -1,0 +1,78 @@
+{
+  "name": "connect-timeout",
+  "description": "timeout middleware",
+  "version": "1.1.0",
+  "author": {
+    "name": "Jonathan Ong",
+    "email": "me@jongleberry.com",
+    "url": "http://jongleberry.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/expressjs/timeout.git"
+  },
+  "bugs": {
+    "url": "https://github.com/expressjs/timeout/issues"
+  },
+  "dependencies": {
+    "debug": "0.8.1"
+  },
+  "devDependencies": {
+    "mocha": ">= 1.18.0 < 2.0",
+    "should": ">= 3.3.0 < 4.0",
+    "supertest": "*",
+    "connect": "*"
+  },
+  "engines": {
+    "node": ">= 0.8"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec --require should"
+  },
+  "homepage": "https://github.com/expressjs/timeout",
+  "_id": "connect-timeout@1.1.0",
+  "dist": {
+    "shasum": "fc80615fc7a5b3863bd0319af2491d2d7fdc5f05",
+    "tarball": "http://registry.npmjs.org/connect-timeout/-/connect-timeout-1.1.0.tgz"
+  },
+  "_from": "connect-timeout@1.1.0",
+  "_npmVersion": "1.4.3",
+  "_npmUser": {
+    "name": "dougwilson",
+    "email": "doug@somethingdoug.com"
+  },
+  "maintainers": [
+    {
+      "name": "aaron",
+      "email": "aaron.heckmann+github@gmail.com"
+    },
+    {
+      "name": "rauchg",
+      "email": "rauchg@gmail.com"
+    },
+    {
+      "name": "jongleberry",
+      "email": "jonathanrichardong@gmail.com"
+    },
+    {
+      "name": "dougwilson",
+      "email": "doug@somethingdoug.com"
+    },
+    {
+      "name": "shtylman",
+      "email": "shtylman@gmail.com"
+    },
+    {
+      "name": "tjholowaychuk",
+      "email": "tj@vision-media.ca"
+    },
+    {
+      "name": "mscdex",
+      "email": "mscdex@mscdex.net"
+    }
+  ],
+  "directories": {},
+  "_shasum": "fc80615fc7a5b3863bd0319af2491d2d7fdc5f05",
+  "_resolved": "https://registry.npmjs.org/connect-timeout/-/connect-timeout-1.1.0.tgz"
+}

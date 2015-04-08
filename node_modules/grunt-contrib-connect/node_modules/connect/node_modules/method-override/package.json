@@ -1,0 +1,83 @@
+{
+  "name": "method-override",
+  "description": "Override HTTP verbs",
+  "version": "2.0.2",
+  "author": {
+    "name": "Jonathan Ong",
+    "email": "me@jongleberry.com",
+    "url": "http://jongleberry.com"
+  },
+  "contributors": [
+    {
+      "name": "Douglas Christopher Wilson",
+      "email": "doug@somethingdoug.com"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/expressjs/method-override"
+  },
+  "dependencies": {
+    "methods": "1.0.1",
+    "parseurl": "1.0.1",
+    "vary": "0.1.0"
+  },
+  "devDependencies": {
+    "istanbul": "0.2.10",
+    "mocha": "~1.20.0",
+    "supertest": "~0.13.0"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "mocha --reporter dot test/",
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot test/",
+    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec test/"
+  },
+  "bugs": {
+    "url": "https://github.com/expressjs/method-override/issues"
+  },
+  "homepage": "https://github.com/expressjs/method-override",
+  "_id": "method-override@2.0.2",
+  "dist": {
+    "shasum": "00531278c79789640bf27e97e26a3a5a1f7cca73",
+    "tarball": "http://registry.npmjs.org/method-override/-/method-override-2.0.2.tgz"
+  },
+  "_from": "method-override@2.0.2",
+  "_npmVersion": "1.4.3",
+  "_npmUser": {
+    "name": "dougwilson",
+    "email": "doug@somethingdoug.com"
+  },
+  "maintainers": [
+    {
+      "name": "jongleberry",
+      "email": "jonathanrichardong@gmail.com"
+    },
+    {
+      "name": "dougwilson",
+      "email": "doug@somethingdoug.com"
+    },
+    {
+      "name": "shtylman",
+      "email": "shtylman@gmail.com"
+    },
+    {
+      "name": "tjholowaychuk",
+      "email": "tj@vision-media.ca"
+    },
+    {
+      "name": "mscdex",
+      "email": "mscdex@mscdex.net"
+    },
+    {
+      "name": "fishrock123",
+      "email": "fishrock123@rocketmail.com"
+    }
+  ],
+  "directories": {},
+  "_shasum": "00531278c79789640bf27e97e26a3a5a1f7cca73",
+  "_resolved": "https://registry.npmjs.org/method-override/-/method-override-2.0.2.tgz"
+}

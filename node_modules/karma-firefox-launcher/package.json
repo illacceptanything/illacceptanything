@@ -1,0 +1,90 @@
+{
+  "name": "karma-firefox-launcher",
+  "version": "0.1.3",
+  "description": "A Karma plugin. Launcher for Firefox.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/karma-runner/karma-firefox-launcher.git"
+  },
+  "keywords": [
+    "karma-plugin",
+    "karma-launcher",
+    "firefox"
+  ],
+  "author": {
+    "name": "Vojta Jina",
+    "email": "vojta.jina@gmail.com"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "karma": ">=0.9"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-npm": "~0.0.2",
+    "grunt-bump": "~0.0.7",
+    "grunt-auto-release": "~0.0.2"
+  },
+  "contributors": [
+    {
+      "name": "Friedel Ziegelmayer",
+      "email": "friedel.ziegelmayer@gmail.com"
+    },
+    {
+      "name": "Michał Gołębiowski",
+      "email": "m.goleb@gmail.com"
+    },
+    {
+      "name": "Žilvinas Urbonas",
+      "email": "zilvinas.urbon@gmail.com"
+    },
+    {
+      "name": "Andrei Khveras",
+      "email": "Andrei_Khveras@epam.com"
+    },
+    {
+      "name": "Erwann Mest",
+      "email": "erwann.mest@gmail.com"
+    },
+    {
+      "name": "Liam Newman",
+      "email": "lnewman@book.com"
+    },
+    {
+      "name": "Parashuram",
+      "email": "code@nparashuram.com"
+    },
+    {
+      "name": "Schaaf, Martin",
+      "email": "mschaaf@datameer.com"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/karma-runner/karma-firefox-launcher/issues"
+  },
+  "_id": "karma-firefox-launcher@0.1.3",
+  "dist": {
+    "shasum": "88c8a06f55debbe64f8ca4b1f68b0b8a1f3be514",
+    "tarball": "http://registry.npmjs.org/karma-firefox-launcher/-/karma-firefox-launcher-0.1.3.tgz"
+  },
+  "_from": "karma-firefox-launcher@0.1.3",
+  "_npmVersion": "1.3.11",
+  "_npmUser": {
+    "name": "vojtajina",
+    "email": "vojta.jina@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "vojtajina",
+      "email": "vojta.jina@gmail.com"
+    }
+  ],
+  "directories": {},
+  "_shasum": "88c8a06f55debbe64f8ca4b1f68b0b8a1f3be514",
+  "_resolved": "https://registry.npmjs.org/karma-firefox-launcher/-/karma-firefox-launcher-0.1.3.tgz"
+}
