@@ -1,0 +1,14 @@
+out
+/out
+/target
+/classes
+/checkouts
+pom.xml
+pom.xml.asc
+*.js
+*.jar
+*.class
+/.lein-*
+/.nrepl-port
+examples/history
+*init.clj

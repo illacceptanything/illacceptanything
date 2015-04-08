@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <style>
+            #app {
+               width: 300px;
+            }
+            .sortable {
+               width: 300px;
+            }
+            ul {
+               border-top: 1px solid #ccc;
+               border-left: 1px solid #ccc;
+               border-right: 1px solid #ccc;
+               margin: 0;
+               padding: 0;
+            }
+            li {
+               background-color: white;
+               padding: 4px;
+               list-style: none;
+               border-bottom: 1px solid #ccc;
+               user-select: none;
+               -moz-user-select: none;
+               -webkit-user-select: none;
+               cursor: move;
+               box-sizing: border-box;
+               -moz-box-sizing: border-box;
+               -webkit-box-sizing: border-box;
+            }
+            li.dragging {
+               border: 1px solid #ccc;
+            }
+            p {
+               padding: 0;
+               margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app"></div>
+        <script src="out/goog/base.js" type="text/javascript"></script>
+        <script src="main.js" type="text/javascript"></script>
+        <script type="text/javascript">goog.require("examples.sortable.core");</script>
+    </body>
+</html>
