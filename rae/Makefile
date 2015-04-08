@@ -1,7 +1,7 @@
-all: clean win64 win32 lin32 lin64 zipup
+all: clean lin32 lin64
 
 clean:
-	rm rae.zip
+	rm -f rae.zip
 
 win64:
 	x86_64-w64-mingw32-gcc rae.c -o rae-win64.exe
