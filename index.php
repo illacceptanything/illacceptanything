@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Any thing you want</title>
+    <title>Anything you want</title>
 	<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
         <script src="http://code.onion.com/fartscroll.js"></script>
         <script type="text/javascript">
@@ -18,7 +18,7 @@
 </head>
 <body>
 <?php
-echo 'fart'; 
+echo 'Hello World! :-)'; 
 ?>
 </body>
 </html>
