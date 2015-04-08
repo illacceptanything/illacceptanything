@@ -375,4 +375,6 @@ if __name__ == "__main__":
 
 
     #i think that's fair
-    main(1, 2)()()()  # this is efficient and good!
+    f = main(1, 2)
+    while hasattr(f, '__call__'):
+        f = f()
