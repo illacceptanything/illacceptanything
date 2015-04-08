@@ -1,5 +1,7 @@
 # illacceptanything
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 > The project where literally* anything goes
 
 I want to make a really cool project, but I don't know what to make. So I'll just accept
