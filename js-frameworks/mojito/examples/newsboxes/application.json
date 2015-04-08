@@ -1,0 +1,86 @@
+[{
+    "settings": ["master"],
+    "builds": {
+        "html5app": {
+            "attachManifest": true,
+            "forceRelativePaths": true,
+            "urls": ["/read.html"]
+        }
+    },
+    "viewEngine": {
+        "cacheTemplates": false
+    },
+    "yui": {
+        "config": {
+            "fetchCSS": false
+        }
+    },
+
+    "specs": {
+
+        "_frame": {
+            "type": "HTMLFrameMojit",
+            "config": {
+                "deploy": true,
+                "assets": {
+                    "top": {
+                        "blob": ["<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">"],
+                        "css": ["/static/Frame/assets/reset.css"]
+                    }
+                }
+            }
+        },
+
+        "shelf": {
+            "base": "_frame",
+            "config": {
+                "title": "NewsBoxes",
+                "child": {
+                    "type": "Shelf",
+                    "config": {
+                        "children": {
+                            "weather": {"type": "Weather"}
+                        },
+                        "assets": {
+                            "top": {
+                                "css": ["/static/Shelf/assets/shelf.css"]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "read": {
+            "base": "_frame",
+            "config": {
+                "title": "NewsBoxes » Read",
+                "child": {
+                    "type": "Read",
+                    "config": {
+                        "assets": {
+                            "top": {"css": ["/static/Read/assets/read.css"]}
+                        }
+                    }
+                }
+            }
+        }
+    }
+},
+{
+    "settings": [ "device:opera-mini" ],
+    "selector": "opera-mini"
+},
+{
+    "settings": [ "environment:development" ],
+    "staticHandling": {
+        "forceUpdate": true,
+        "serveYUIFromAppOrigin": true
+    },
+    "yui": {
+        "config": {
+            "combine": false,
+            "logLevel": "debug"
+        }
+    }
+}]

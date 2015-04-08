@@ -1,0 +1,18 @@
+<div id="{{mojit_view_id}}" class="mojit">
+    <div class="mod" id="gallery">
+        <h3>
+            <strong>{{title}}</strong>
+            <a title="minimize module" class="min" href="#">-</a>
+            <a title="close module" class="close" href="#">x</a>
+        </h3>
+        <div class="inner galleryFlow">
+            <ul>
+                {{#results}}
+                    {{#json}}
+                        <li><a href="http://yuilibrary.com/gallery/buildtag/{{.}}">{{.}}</a></li>
+                    {{/json}}
+                {{/results}}
+            </ul>
+        </div>
+    </div>
+</div>

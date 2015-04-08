@@ -1,0 +1,10 @@
+.SenderMojit h3 {
+    width: 250px;
+    margin: 0 auto;
+    text-align: right;
+}
+
+.SenderMojit ul {
+    padding-left: 200px;
+    width: 100px;
+}

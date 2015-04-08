@@ -1,0 +1,305 @@
+.container {
+    position: relative;
+    width: 240px;
+    height: 300px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+#spinner {
+    position: absolute;
+    bottom: 30px;
+    left: 40px;
+    font-family: verdana, sans-serif;
+    color: #777;
+    font-size: 200%;
+}
+
+.hidden {
+    display: none;
+}
+
+.container .main-sv {
+    position: relative;
+    display: -webkit-box;
+    display: -moz-box;
+}
+
+.container .main-sv .item-sv {
+    width: 240px;
+    height: 350px;
+    overflow: hidden;
+}
+
+.container .main-sv .item-sv .content-box {
+    position: relative;
+    margin: 5px;
+    padding: 5px;
+    width: 220px;
+    height: 280px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+
+.container .main-sv .item-sv .content-box .content {
+    position: absolute;
+    top: 30px;
+    margin: 20px 10px;
+    height: 200px;
+    overflow: auto;
+}
+
+.container .contents-nav {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    font-size:8px;
+}
+
+.container .url-nav {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+}
+
+.container .contentsnav a, .container .url-nav a, .container .iframe-nav a {
+    display: block;
+    padding: 5px 5px;
+    color: #aaa;
+    text-decoration: none;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    background: #fff;
+    font-size:8px;
+}
+
+.container .contents-nav a:hover {
+    background: #eee;
+}
+
+.container .nav {
+    position: absolute;
+    top: 270px;
+    width: 240px;
+    text-align: center;
+}
+
+.container .nav span {
+    font-size: 100%;
+    color: #eee;
+}
+
+.container .nav span.selected {
+    color: #777;
+}
+
+.container .iframe {
+    position: absolute;
+    top: 270px;
+    left: 0px;
+    width: 240px;
+    height: 300px;
+    overflow: hidden;
+    background: #fff;
+    border-top: 2px solid #777;
+}
+
+.container .iframe-header {
+    position: relative;
+    height: 65px;
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(235,235,235)),
+        color-stop(0.63, rgb(255,255,255))
+    );
+    background-image: -moz-linear-gradient(
+        center bottom,
+        rgb(235,235,235) 0%,
+        rgb(255,255,255) 63%
+    );
+    border-bottom: 5px solid #777;
+}
+
+.container .iframe-nav {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.container .iframe iframe {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    width: 240px;
+    height: 260px;
+    border-top: 0px solid #ccc;
+}
+
+.content-box .content-title {
+    position: absolute;
+    top: 25px;
+    width: 220px;
+    color: #888;
+    text-align: center;
+}
+
+.content-box .image-blocker {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 50px;
+    width: 220px;
+    background: #fff;
+}
+
+.style-simple {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    background: #fff;
+    color: #555;
+    font-size: 12px;
+    line-height: 120%;
+    padding: 2px;
+}
+
+.style-simple a {
+    color: blue;
+    text-decoration: underline;
+}
+
+
+.style-simple .images {
+    display: none;
+}
+
+.style-simple h1, .style-simple h2, .style-simple h3, .style-simple h4 {
+    display: block;
+    color: #222;
+    width: 100%;
+    font-weight: bold;
+}
+
+.style-simple h2 {
+    border-bottom: 1px solid #333;
+    font-size: 15px;
+}
+
+.style-simple h3, .style-simple h4 {
+    font-size: 12px;
+}
+
+.style-simple blockquote {
+    margin-left: 3em;
+    margin-right: 3em;
+}
+
+.style-simple.large, .style-simple.xx-large, .style-simple.x-large,.style-simple.*{
+    height: 200px;
+    left: 10px;
+    margin: 5px;
+    overflow: hidden;
+    position: absolute;
+    text-overflow: ellipsis;
+    top: 40px;
+}
+
+.style-simple.medium {
+    font-size: 100%;
+    padding: 5px;
+}
+.nav-arrow .link-prev, .nav-arrow .link-next {
+    position: absolute;
+    z-index: 10000;
+    display: block;
+    padding: 10px;
+    font-size: 100%;
+    text-decoration: none;
+    color: black;
+    bottom: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.bar1 {
+    -moz-transform: rotate(0deg) translate(0pt, -40px);
+    -webkit-transform: rotate(0deg) translate(0pt, -40px);
+    opacity: 0.12;
+}
+
+.bar2 {
+    -moz-transform: rotate(45deg) translate(0pt, -40px);
+    -webkit-transform: rotate(45deg) translate(0pt, -40px);
+    opacity: 0.25;
+}
+
+.bar3 {
+    -moz-transform: rotate(90deg) translate(0pt, -40px);
+    -webkit-transform: rotate(90deg) translate(0pt, -40px);
+    opacity: 0.37;
+}
+
+.bar4 {
+    -moz-transform: rotate(135deg) translate(0pt, -40px);
+    -webkit-transform: rotate(135deg) translate(0pt, -40px);
+    opacity: 0.5;
+}
+
+.bar5 {
+    -moz-transform: rotate(180deg) translate(0pt, -40px);
+    -webkit-transform: rotate(180deg) translate(0pt, -40px);
+    opacity: 0.62;
+}
+
+.bar6 {
+    -moz-transform: rotate(225deg) translate(0pt, -40px);
+    -webkit-transform: rotate(225deg) translate(0pt, -40px);
+    opacity: 0.75;
+}
+
+.bar7 {
+    -moz-transform: rotate(270deg) translate(0pt, -40px);
+    -webkit-transform: rotate(270deg) translate(0pt, -40px);
+    opacity: 0.87;
+}
+
+.bar8 {
+    -moz-transform: rotate(315deg) translate(0pt, -40px);
+    -webkit-transform: rotate(315deg) translate(0pt, -40px);
+    opacity: 1;
+}
+
+#spinner {
+    -moz-transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+    top: 45%;
+    left: 45%;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    float: none;
+    -webkit-animation-name: rotateThis;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+}
+
+#spinner div {
+    background: none repeat scroll 0 0 #000000;
+    height: 30px;
+    left: 45px;
+    position: absolute;
+    top: 35px;
+    width: 10px;
+}
+
+@-webkit-keyframes rotateThis {
+    from {-webkit-transform:scale(0.5) rotate(0deg);}
+    to {-webkit-transform:scale(0.5) rotate(360deg);}
+}
+
+.videobox {
+	margin: 1em auto;
+}

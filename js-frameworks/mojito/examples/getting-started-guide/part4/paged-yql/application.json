@@ -1,0 +1,38 @@
+[
+    {
+        "settings": [ "master" ],
+        "specs": {
+            "flickr": {
+                "type": "HTMLFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "child": {
+                        "type": "PagedFlickr"
+                    },
+                    "assets": {
+                        "top": {
+                            "css": [
+                                "/static/PagedFlickr/assets/css/style.css"
+                            ]
+                        }
+                    }
+                }
+            },
+            "paged": {
+                "type": "PagedFlickr"
+            }
+        }
+    },
+    {
+        "settings": [ "device:iphone" ],
+        "selector": "iphone"
+    },
+    {
+        "settings": [ "device:android" ],
+        "selector": "droid"
+    },
+    {
+        "settings": [ "device:android", "environment:dev" ],
+        "selector": "devdroid"
+    }
+]

@@ -1,0 +1,15 @@
+.pics .pic img {
+    height: 200px;
+    width: 200px;
+}
+#paginate span { margin:1em 3em; }
+
+ul.pics {
+    width: 700px;
+    height: 660px;
+    list-style-type: none;
+}
+ul.pics .pic { 
+    float: left; padding: 5px;
+}
+

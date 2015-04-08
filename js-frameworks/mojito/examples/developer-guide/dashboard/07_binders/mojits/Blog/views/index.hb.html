@@ -1,0 +1,19 @@
+<div id="{{mojit_view_id}}" class="mojit">
+    <div class="mod" id="blog">
+        <h3>
+            <strong>{{title}}</strong>
+            <a title="minimize module" class="min" href="#">-</a>
+            <a title="close module" class="close" href="#">x</a>
+        </h3>
+        <div class="inner">
+            <ul>
+                {{#results}}
+                    <li>
+                        <a href="{{link}}">{{title}}</a>
+                        <span class="desc" title="AUTHOR: [ {{creator}} ] DESC: {{description}} DATE: ( {{pubDate}} )">{{description}}</span>
+                    </li>
+                {{/results}}
+            </ul>
+        </div>
+    </div>
+</div>

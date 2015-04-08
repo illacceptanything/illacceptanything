@@ -1,0 +1,48 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+     <title>{{title}}</title>
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '',
+        COLLAPSE_INDEX: true,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/theme_extras.js"></script>
+   </head> 
+{{ head }}
+     <div class="header"><h1 class="heading"><a href="#">
+          <span>{{docstitle}}</span></a></h1>
+      </div>
+      <div class="topnav">
+        <p>
+        <a class="uplink" href="../">Mojito Documentation</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="{{ pathto(master_doc) }}" title="{{ docstitle }}">{{ docstitle }}</a>
+        &#160;&#160;::&#160;&#160;
+        {% if prev %}
+           <a href="{{ prev.link|e }}">{{ prev.title }}</a>
+        &#160;&#160;::&#160;&#160;
+        {% endif %}
+        {% if next %}
+           <a href="{{ next.link|e }}">{{ next.title }}</a>
+        {% endif %}
+        </p>
+
+      </div>
+      <div class="content">
+   {{ body }}
+   </div>
+{{ footer }}
+

@@ -1,0 +1,26 @@
+[
+    {
+        "settings": [ "master" ],
+        "specs": {
+            "frame": {
+                "type": "HTMLFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "child": {
+                        "type": "Container",
+                        "config": {
+                            "children": {
+                                "speakers": {
+                                    "type": "YuiTweets"
+                                },
+                                "tweets": {
+                                    "type": "TweetView"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+]

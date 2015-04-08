@@ -1,0 +1,67 @@
+# Copyright (c) 2012 Yahoo! Inc. All rights reserved.
+---
+  appConfigBase:
+
+    actionTimeout: 60000
+
+    mojitsDirs:
+        - "mojits"
+
+    routesFiles:
+        - "routes.json"
+
+    tunnelPrefix: "/tunnel"
+
+    yui:
+        # To facilitate debugging on the client side you can
+        # set this flag to true. It is false by default.
+        ## showConsoleInClient: false
+
+        # This block will be used as the basic static configuration
+        # for YUI on the client and server.
+        config:
+            logLevelOrder:
+                - "debug"
+                - "mojito"
+                - "info"
+                - "warn"
+                - "error"
+                - "none"
+            seed:
+                - "yui-base"
+                - "loader-base"
+                - "loader-yui3"
+                - "loader-app"
+                - "loader-app-base{langPath}"
+
+    specs:
+        tunnelProxy:
+            type: "TunnelProxy"
+
+    staticHandling:
+
+        prefix: "static"
+
+        # If you want to server YUI from mojito, you have to
+        # set this flag to true. It is false by default.
+        ## serveYUIFromAppOrigin: false
+
+    viewEngine:
+
+        # If you want to preload all templates and partials
+        # in memory during the booting process, you have to
+        # set this flag to true. It is false by default.
+        ## preloadTemplates: false
+
+        # If you do NOT want to cache templates and partials,
+        # you have to set this flag to false.
+        # It is false by default.
+        ## cacheTemplates: true
+
+  defaultRoutes:
+
+    _default_path:
+        verbs:
+            - "GET"
+        path: "/:module/:action"
+        call: "*.*"

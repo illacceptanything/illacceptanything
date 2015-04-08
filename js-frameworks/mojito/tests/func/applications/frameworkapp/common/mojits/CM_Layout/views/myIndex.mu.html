@@ -1,0 +1,20 @@
+<div id="{{mojit_view_id}}" class="mojit">
+	<h1 id="cmtitle">{{title}}</h1>
+
+    <h3 id="cmtitle3">Info about all the children:</h3>
+    {{#childData}}
+    <p id="childrenconfig"><u id="childrenname">{{name}}: </u>{{specs}}</p>
+    {{/childData}}
+	
+   <div class="nav">
+      {{{nav}}}
+   </div>
+
+   <div class="content">
+      {{{news}}}
+   </div>
+
+   <div class="footer">
+      {{{footer}}}
+   </div>
+</div>

@@ -1,0 +1,8 @@
+[
+    {
+        "settings": [ "master" ],
+        "testKey1": "testVal1-app2",
+        "testKey2": "testVal2-app2",
+        "testKey3": "testVal3-app2"
+    }
+]

@@ -1,0 +1,15 @@
+[
+    {
+        "settings": [ "master" ],
+        "mojitotitle" : "Mojito Twitter mentions",
+        "yuititle" : "YUI Twitter mentions",
+        "yuiquery" : "@yuilibrary",
+        "mojitoquery" : "#Mojito yahoo",
+        "oauth": {
+            "consumer_key": "[consumer key here]",
+            "consumer_secret": "[consumer secret here]",
+            "access_token_key": "[access token here]",
+            "access_token_secret": "[access token secret here]"
+        }
+    }
+]

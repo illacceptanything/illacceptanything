@@ -1,0 +1,16 @@
+#calendar h3 strong {
+    background-image: url(/static/Calendar/assets/favicon-calendar.png);
+}
+#calendar .inner li {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+#calendar .inner li span {
+    padding-right: 4px;
+    font-size: .8em;
+    display: inline-block;
+    width: 106px;
+    max-width: 7.6 em;
+    overflow: hidden;
+}

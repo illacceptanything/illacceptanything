@@ -1,0 +1,36 @@
+{
+    "name": "inter-mojit",
+    "description": "My hackday 2011 Mojito application",
+    "version": "0.1.0",
+    "author": "Kaamini kaamini@yahoo-inc.com",
+    "contributors": [
+          {
+              "name": "Kaamini",
+              "email": "kaamini@yahoo-inc.com"
+          }
+    ],
+    "yahoo": {
+          "bugzilla" : {
+              "product" : "mojito",
+              "component" : "General"
+           },
+           "dist-package" : {
+              "tag-name-with-userid" : true,
+              "srcdirs" : ["http://svn.corp.yahoo.com/view/yahoo/mobile/cocktails/mojito/open_mojito/trunk/examples/developer-guide/inter-mojit/"]
+           }
+    },
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "debug": "*",
+        "mojito": "~0.9.0"
+    },
+    "devDependencies": {
+        "mojito-cli": ">= 0.2.0"
+    },
+    "engines": {
+        "node": "*"
+    }
+}
+

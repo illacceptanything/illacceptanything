@@ -1,0 +1,180 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "routing",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+			"application" : {
+				"name":"routing",
+	            "path": "./frameworkapp/routing",
+				"type": "mojito"
+			}
+        },
+
+        "dataprovider" : {
+            "BasicRouting1" : {
+                "group" : "functional,smoke,routing",
+                "params" : {
+                    "test" : "testbasicrouting1.js",
+                    "page" : "$$config.baseUrl$$/route-1/index"
+                }
+            },
+            "BasicRouting2" : {
+                 "group" : "functional,smoke,routing",
+                 "params" : {
+                     "test" : "testbasicrouting2.js",
+                     "page" : "$$config.baseUrl$$/route-2/index"
+                }
+            },
+            "BasicRouting3" : {
+                 "group" : "functional,smoke,routing",
+                 "params" : {
+                     "test" : "testbasicrouting3.js",
+                     "page" : "$$config.baseUrl$$/myAction"
+                }
+            },
+            "BasicRouting4" : {
+                 "group" : "functional,smoke,routing",
+                 "params" : {
+                     "test" : "testbasicrouting4.js",
+                     "page" : "$$config.baseUrl$$/route-2/myPath"
+                }
+            },
+            "BasicRouting5" : {
+                 "group" : "functional,smoke,routing",
+                 "params" : {
+                     "test" : "testbasicrouting5.js",
+                     "page" : "$$config.baseUrl$$/route1/anything"
+                }
+            },
+            "BasicRouting6" : {
+                "group" : "functional,smoke,routing",
+                "params" : {
+                    "test" : "testbasicrouting6.js",
+                    "page" : "$$config.baseUrl$$/anything/route2"
+                }
+            },
+            "BasicRouting7" : {
+                "group" : "functional,smoke,routing",
+                "params" : {
+                    "scenario": [
+                         {
+                             "page" : "$$config.baseUrl$$/route-1/run_index"
+                         },
+                         {
+                             "test" : "testbasicrouting7-1.js"
+                         },
+                         {
+                             "page" : "$$config.baseUrl$$/route-2/run_index"
+                         },
+                         {
+                             "test" : "testbasicrouting7-2.js"
+                         }
+                   ]
+                }
+            },
+            "BasicRouting8" : {
+                "group" : "functional,smoke,routing",
+                "params" : {
+                    "scenario": [
+                         {
+                             "page" : "$$config.baseUrl$$/routepostget"
+                         },
+                         {
+                             "test" : "testbasicrouting8.js"
+                         },
+                         {
+                             "controller": "locator",
+                             "params": {
+                                   "value": "#postinput",
+                                   "click": true
+                             }
+                         },
+                         {
+                             "test" : "testbasicrouting8-1.js"
+                         },
+                         {
+                             "page" : "$$config.baseUrl$$/routepostget"
+                         },
+                         {
+                             "controller": "locator",
+                             "params": {
+                                   "value": "#getinput",
+                                   "click": true
+                             }
+                         },
+                         {
+                             "test" : "testbasicrouting8-2.js"
+                         }
+                   ]
+                }
+            },
+            "BasicRouting9" : {
+                "group" : "functional,smoke,routing",
+                "params" : {
+                    "scenario": [
+                         {
+                             "page" : "$$config.baseUrl$$/showurl?mojit_name=route-2&mojit_action=index"
+                         },
+                         {
+                             "test" : "testbasicrouting9-1.js"
+                         },
+                         {
+                             "page" : "$$config.baseUrl$$/showurl?mojit_name=route-1&mojit_action=myAction"
+                         },
+                         {
+                             "test" : "testbasicrouting9-2.js"
+                         }
+                   ]
+                }
+            },
+            "BasicRouting10" : {
+                "group" : "functional,smoke,routing",
+                "params" : {
+                    "scenario": [
+                         {
+                             "page" : "$$config.baseUrl$$/showurl?mojit_name=route-2&mojit_action=nothing&mojit_urlparams=http://www.abc.com"
+                         },
+                         {
+                             "test" : "testbasicrouting10-1.js"
+                         },
+                         {
+                             "page" : "$$config.baseUrl$$/showurl?mojit_name=route-2&mojit_action=nothing&mojit_verbs=POST"
+                         },
+                         {
+                             "test" : "testbasicrouting10-2.js"
+                         }
+                   ]
+                }
+            },
+            "BasicRoutingNeg1" : {
+                "group" : "functional,smoke,routing",
+                "params" : {
+                    "test" : "testbasicroutingneg1.js",
+                    "page" : "$$config.baseUrl$$/route-2/myAction"
+                }
+            },
+            "BasicRoutingNeg2" : {
+                "group" : "functional,smoke,routing",
+                "params" : {
+                    "test" : "testbasicroutingneg2.js",
+                    "page" : "$$config.baseUrl$$/complete/invalid/path"
+                }
+            },
+            "BasicRoutingNeg3" : {
+                "group" : "functional,smoke,routing",
+                "params" : {
+                    "test" : "testbasicroutingneg3.js",
+                    "page" : "$$config.baseUrl$$/showurl?mojit_name=route-2&mojit_action=nothing"
+                }
+            }
+        }
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

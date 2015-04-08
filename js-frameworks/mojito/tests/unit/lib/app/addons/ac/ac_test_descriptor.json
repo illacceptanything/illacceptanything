@@ -1,0 +1,128 @@
+[
+    {
+        "settings": [ "master" ],
+        "name": "ac-addon-unit-tests",
+        "config": {
+            "lib": "../../../../../../lib",
+            "base": "../../../../../base"
+        },
+        "commonlib": "$$config.base$$/mojito-test.js,$$config.lib$$/app/autoload/util.common.js",
+        "dataprovider": {
+            "analytics.common": {
+                "params": {
+                    "lib": "$$config.lib$$/app/addons/ac/analytics.common.js",
+                    "test": "./test-analytics.common.js",
+                    "page": "$$config.base$$/mojito-test.html"
+                },
+                "group": "fw,client,server"
+            },
+            "assets.common": {
+                "params": {
+                    "lib": "$$config.lib$$/app/addons/ac/assets.common.js",
+                    "test": "./test-assets.common.js",
+                    "page": "$$config.base$$/mojito-test.html"
+                },
+                "group": "fw,client,server"
+            },
+            "composite.common": {
+                "params": {
+                    "lib": "$$config.lib$$/app/addons/ac/composite.common.js,../../../../../../lib/app/autoload/output-buffer.common.js",
+                    "test": "./test-composite.common.js",
+                    "page": "$$config.base$$/mojito-test.html"
+                },
+                "group": "fw,client,server"
+            },
+            "config.common": {
+                "params": {
+                    "lib": "$$config.lib$$/app/addons/ac/config.common.js",
+                    "test": "./test-config.common.js",
+                    "page": "$$config.base$$/mojito-test.html"
+                },
+                "group": "fw,client,server"
+            },
+            "cookie.client": {
+                "params": {
+                    "lib": "$$config.lib$$/app/addons/ac/cookie.client.js",
+                    "test": "./test-cookie.client.js",
+                    "page": "$$config.base$$/mojito-test.html"
+                },
+                "group": "fw,client"
+            },
+            "cookie.server": {
+                "params": {
+                    "lib": "$$config.lib$$/app/addons/ac/cookie.server.js",
+                    "test": "./test-cookie.server.js",
+                    "driver": "nodejs"
+                },
+                "group": "fw,server"
+            },
+            "deploy.server": {
+                "params": {
+                    "lib": "$$config.lib$$/app/addons/ac/deploy.server.js,../../../../../../lib/app/addons/ac/http.server.js",
+                    "test": "./test-deploy.server.js",
+                    "driver": "nodejs"
+                },
+                "group": "fw,server"
+            },
+            "http.server": {
+                "params": {
+                    "lib": "$$config.lib$$/app/addons/ac/http.server.js",
+                    "test": "./test-http.server.js",
+                    "driver": "nodejs"
+                },
+                "group": "fw,server"
+            },
+            "intl.common": {
+                "params": {
+                    "lib": "$$config.lib$$/app/addons/ac/intl.common.js",
+                    "test": "./test-intl.common.js",
+                    "page": "$$config.base$$/mojito-test.html"
+                },
+                "group": "fw,client,server"
+            },
+            "meta.common": {
+                "params": {
+                    "lib": "$$config.lib$$/app/addons/ac/meta.common.js",
+                    "test": "./test-meta.common.js",
+                    "page": "$$config.base$$/mojito-test.html"
+                },
+                "group": "fw,client,server"
+            },
+            "params.common": {
+                "params": {
+                    "lib": "$$config.lib$$/app/addons/ac/params.common.js",
+                    "test": "./test-params.common.js",
+                    "page": "$$config.base$$/mojito-test.html"
+                },
+                "group": "fw,client,server"
+            },
+            "partial.common": {
+                "params": {
+                    "lib": "$$config.lib$$/app/addons/ac/partial.common.js,../../../../../../lib/app/autoload/output-buffer.common.js",
+                    "test": "./test-partial.common.js",
+                    "page": "$$config.base$$/mojito-test.html"
+                },
+                "group": "fw,client,server"
+            },
+            "url.common": {
+                "params": {
+                    "lib": "$$config.lib$$/app/addons/ac/url.common.js,../../../../../../lib/app/autoload/route-maker.common.js",
+                    "test": "./test-url.common.js",
+                    "page": "$$config.base$$/mojito-test.html"
+                },
+                "group": "fw,client,server"
+            },
+            "models.common": {
+                "params": {
+                    "lib": "$$config.lib$$/app/addons/ac/models.common.js",
+                    "test": "./test-models.common.js",
+                    "page": "$$config.base$$/mojito-test.html"
+                },
+                "group": "fw,client,server"
+            }
+        }
+    },
+    {
+        "settings": [ "environment:development" ]
+    }
+]

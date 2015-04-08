@@ -1,0 +1,21 @@
+<div id="{{mojit_view_id}}" class="mojit">
+    <div class="mod" id="youtube">
+        {{> widget_heading}}
+        <div class="inner">
+            <ul>
+                {{#results}}
+                    <li>
+                        <div>{{#title}}{{content}}{{/title}}</div>
+                        <iframe
+                            class="youtube-player"
+                            type="text/html"
+                            width="320"
+                            height="130"
+                            src="http://www.youtube.com/embed/{{id}}?html5=1" allowfullscreen frameborder="0">
+                        </iframe>
+                    </li>
+                {{/results}}
+            </ul>
+        </div>
+    </div>
+</div>

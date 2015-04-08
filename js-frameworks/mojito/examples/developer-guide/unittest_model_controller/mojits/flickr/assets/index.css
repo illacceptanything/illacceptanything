@@ -1,0 +1,21 @@
+body {
+  margin:0;
+  padding:0;
+}
+.tile li {
+  display:inline;
+  border-style: none;
+  margin:0;
+  padding:0;
+}
+.tile img { 
+  height:80px;
+  width:80px;
+}
+.tile a img {
+  border:4px solid;
+  -webkit-border-radius:6px;
+  -moz-border-radius:6px;
+  border-radius:6px;
+  border-color:#000;
+}

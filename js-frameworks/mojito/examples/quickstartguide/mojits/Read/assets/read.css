@@ -1,0 +1,263 @@
+/*
+ * Copyright (c) 2011-2013, Yahoo! Inc.  All rights reserved.
+ * Copyrights licensed under the New BSD License.
+ * See the accompanying LICENSE file for terms.
+ */
+
+.container p {
+    padding-bottom: 20px;
+}
+
+.container ul {
+    padding-bottom: 0px;
+}
+
+.container {
+    position: relative;
+    overflow: hidden;
+}
+
+.hidden {
+    display: none;
+}
+
+.container .content-box {
+    max-width: 100%;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    background-color: white;
+}
+
+.container .content-box .content {
+    margin: 30px;
+    margin-bottom: 5px;
+}
+
+.container .contents-nav {
+    background-color: white;
+    position: fixed;
+    width:100%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-bottom: 1px dotted #888;
+    text-align: center;
+}
+
+.container .content-pagecnt {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #888;
+}
+
+.container .url-nav {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.container .contents-nav a, .container .url-nav a, .link-bottom a {
+    display: inline-block;
+    padding: 5px 10px;
+    color: #aaa;
+    text-decoration: none;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: #fff;
+    text-align: center;
+}
+
+.container .contents-nav a:hover {
+    background: #eee;
+}
+
+.container .nav {
+    position: absolute;
+    top: 690px;
+    width: 1023px;
+    text-align: center;
+}
+
+.container .nav span {
+    font-size: 200%;
+    color: #eee;
+}
+
+.container .nav span.selected {
+    color: #777;
+}
+
+.content-box .content-title {
+    color: #888888;
+    font-size: 180%;
+    padding-top: 70px;
+    text-align: center;
+    top: 30px;
+}
+
+.content-box .image-blocker {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 50px;
+    width: 1023px;
+    background: #fff;
+}
+
+.style-simple {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    background: #fff;
+    color: #555;
+    line-height: 150%;
+    padding: 20px;
+    padding-bottom: 0px;
+    /* Auto hyphenation */
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+}
+.style-simple li ul {
+    padding-top: 5px;
+}
+.style-simple p {
+  padding-bottom: 5px;
+}
+.style-simple li p {
+    padding: 0px;
+    line-height: 100%;
+}
+.style-simple ol li {
+  list-style-type: decimal;
+  padding: 0px;
+  line-height: 100%;
+  margin-left: 1em;
+}
+.style-simple ul li {
+  list-style-type: disc;
+  line-height: 100%;
+  padding: 0px;
+  margin-left: 1em;
+}
+.style-simple a {
+    color: blue;
+    text-decoration: underline;
+}
+
+.style-simple * {
+    margin-bottom: 16px;
+    border: none;
+    background: none;
+}
+
+.style-simple .images {
+    display: none;
+}
+
+.style-simple h1, .style-simple h2, .style-simple h3, .style-simple h4 {
+    padding-top: 5px;
+    display: block;
+    color: #222;
+    width: 100%;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+.style-simple h2 {
+    border-bottom: 1px solid #CCCCCC;
+    font-size: 1.3em;
+}
+
+.style-simple h3, .style-simple h4 {
+    font-size: 1.2em;
+}
+.style-simple blockquote {
+    margin-left: 3em;
+    margin-right: 3em;
+}
+
+.style-simple.xx-large {
+    font-size: 100%;
+    padding: 40px 60px;
+}
+
+.style-simple.x-large {
+    font-size: 100%;
+    padding: 40px 60px;
+}
+
+.style-simple.large {
+    font-size: 100%;
+    padding: 40px 60px;
+}
+
+.style-simple.medium {
+    font-size: 100%;
+    padding: 20px 60px;
+}
+
+
+.style-simple em {
+    font-size: 110%;
+	font-style:italic;
+}
+
+.style-simple pre code {
+    font-size: 120%;
+    line-height: 1.2em;
+}
+
+.link {
+    width: 10%;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #ccc;
+    top: 0px;
+}
+
+.link-prev {
+    right: 0px;
+}
+
+.link-next {
+    left: 0px;
+}
+
+.link-home {
+    width: 50%;
+}
+
+
+.link-bottom {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.link-bottom p {
+    /* title at footer */
+    display: inline-block;
+    color: #888;
+    font-size: 80%;
+}
+
+.hidden {
+    display: none;
+}
+
+.videobox {
+	margin: 1em auto;
+}
+
+#desc pre {
+        border:1px dashed #E1E1E1;
+        color:#333344;
+        background:#FAFAFA;
+        font-family:monospace;
+        overflow:auto;
+        font-size: 90%;
+        line-height: 100%;
+        padding: 0.5em;
+}
+#desc strong {
+  font-weight: 600;
+}

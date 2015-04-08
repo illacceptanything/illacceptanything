@@ -1,0 +1,38 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "using_configs",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"using_configs",
+                "path": "../../../examples/developer-guide/using_configs"
+            }
+        },
+
+        "dataprovider" : {    
+           "usingconfigs" : {
+                "group" : "developerguide,using_configs",
+                "params" : {
+                    "scenario": [
+                        {
+                            "test" : "test_using_configs.js",
+                            "page" : "$$config.baseUrl$$/"
+                        },
+                        {
+                            "test" : "test_using_configs2.js",
+                            "page" : "$$config.baseUrl$$/booyah"
+                        }
+                     ]
+                }
+            }
+        }     
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

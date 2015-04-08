@@ -1,0 +1,12 @@
+.nav {
+   background-color: pink;
+}
+.nav li {
+   list-style: none;
+}
+.mojit {
+    border: dotted black 1px;
+}
+.alert {
+	background-color: red;
+}

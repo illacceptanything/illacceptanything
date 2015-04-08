@@ -1,0 +1,24 @@
+<div id="post_params">
+  <h2>Form for Posting Parameters</h2>
+  <form method="post">
+    <p>
+      Framework: <input type="text" name="framework" value="Mojito"/><br/>
+      Addon Used: <input type="text" name="addon" value="params"/><br/>
+      Method Called: <input type="text" name="method" value="getFromBody()"/><br/>
+      <h3>Type of Parameters Passed</h3>
+      <input type="radio" name="param_type" value="POST" checked> POST Body</input><br/>
+      <input type="radio" name="param_type" value="query string"> Query String</input><br/><br/>
+      <input type="submit" value="Submit"/>
+      <input type="reset"/>
+    </p>
+  </form>
+</div>
+<div id="{{mojit_uuid}}" class="mojit">
+  <h2>{{title}}</h2>
+  List of key value pairs:
+  <ul>
+    {{#params}}
+    <li>{{key}} => {{value}}</li>
+    {{/params}}
+  </ul>
+</div>

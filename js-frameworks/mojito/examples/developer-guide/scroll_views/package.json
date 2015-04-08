@@ -1,0 +1,26 @@
+{
+    "name": "scroll_views",
+    "description": "My hackday 2011 Mojito application",
+    "version": "0.1.0",
+    "author": "Your Name <nobody@yahoo-inc.com>",
+    "contributors": [
+          {
+              "name": "Your Name",
+              "email": "nobody@yahoo-inc.com"
+          }
+    ],
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "debug": "*",
+        "mojito": "~0.9.0"
+    },
+    "devDependencies": {
+        "mojito-cli": ">= 0.2.0"
+    },
+    "engines": {
+        "node": "*"
+    }
+}
+

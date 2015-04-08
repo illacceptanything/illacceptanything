@@ -1,0 +1,27 @@
+---
+# Copyright (c) 2011-2013, Yahoo! Inc.  All rights reserved.
+# Copyrights licensed under the New BSD License.
+# See the accompanying LICENSE file for terms.
+
+# The routes.json file contains the routing configuration information in JSON. The JSON consists of an array of 
+# one or more configuration objects that include route objects specifying route paths, parameters, HTTP methods, 
+# and actions.
+# For more info, visit: http://developer.yahoo.com/cocktails/mojito/docs/intro/mojito_configuring.html#routing
+
+# YAML supports commenting, JSON doesn't
+- settings:
+  - master
+  # Route instance name. Not the actual URI
+  # Moving this route definition to app.js to work with the mojito-router
+  # /:
+  #   # "shelf" is defined in https://github.com/yahoo/mojito/blob/develop/examples/quickstartguide/application.yaml#L18-L33
+  #   # this calls "index" method of "Shelf" mojit in https://github.com/yahoo/mojito/blob/develop/examples/quickstartguide/mojits/Shelf/controller.common.js#L61-L100
+  #   call: shelf.index
+  #   # path can be either "/" or "/index.html"
+  #   path: /(|index.html)
+  /read.html:
+    # "read" is defined in https://github.com/yahoo/mojito/blob/develop/examples/quickstartguide/application.yaml#L34-L46
+    # this calls "index" method of "Read" mojit in https://github.com/yahoo/mojito/blob/develop/examples/quickstartguide/mojits/Read/controller.common.js#L102-L132
+    call: read.index
+    path: /read.html
+...

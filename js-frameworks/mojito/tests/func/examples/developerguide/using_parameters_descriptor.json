@@ -1,0 +1,30 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "using_parameters",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"using_parameters",
+                "path": "../../../examples/developer-guide/using_parameters"
+            }
+        },
+
+        "dataprovider" : {    
+           "usingparameters" : {
+                 "group" : "developerguide,using_parameters",
+                 "params" : {
+                             "test" : "test_using_parameters.js",
+                             "page" : "$$config.baseUrl$$/example1?foo=bar&bar=foo"
+                }
+            }
+        }     
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

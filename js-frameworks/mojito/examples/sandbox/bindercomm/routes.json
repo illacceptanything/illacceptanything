@@ -1,0 +1,19 @@
+[{
+    "settings": [ "master" ],
+
+    "root": {
+        "verbs": ["get"],
+        "path": "/",
+        "call": "frame.index"
+    },
+    "static": {
+        "verbs": ["get"],
+        "path": "/static",
+        "call": "frame.static"
+    },
+    "dyno": {
+        "verbs": ["get"],
+        "path": "/dyno",
+        "call": "frame.dyno"
+    }
+}]

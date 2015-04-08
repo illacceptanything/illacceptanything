@@ -1,0 +1,35 @@
+[
+  {
+    "settings": [ "master" ],
+    "staticHandling": {
+        "cache": false,
+        "forceUpdate": true
+    },
+    "specs": {
+      "frame": {
+        "type": "HTMLFrameMojit",
+        "config":{
+          "deploy": true,
+          "child":{
+            "type": "log"
+          }
+        }
+      }
+    },
+    "yui": {
+      "config": {
+        "debug": true,
+        "logLevel": "debug"
+      }
+    }
+  },
+  {
+    "settings": [ "runtime:client" ],
+    "yui": {
+      "config": {
+        "debug": true,
+        "logLevel": "info"
+      }
+    }
+  }
+]

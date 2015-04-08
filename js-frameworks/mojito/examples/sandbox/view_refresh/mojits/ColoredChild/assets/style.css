@@ -1,0 +1,9 @@
+.coloredChild h2 {
+    font-size: 40pt;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+.coloredChild p {
+    font-size: 12pt;
+}

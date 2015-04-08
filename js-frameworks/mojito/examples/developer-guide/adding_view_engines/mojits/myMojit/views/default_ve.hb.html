@@ -1,0 +1,16 @@
+<h2>{{title}}</h2>
+<div id="{{mojit_view_id}}">
+  <h3>
+  {{#ul}}
+    {{title}}
+  {{/ul}}
+  {{^ul}}
+    Besides Handlebars, here are some other rendering engines:
+  {{/ul}}
+  </h3>
+  <ul>
+  {{#view_engines}}
+    <li>{{name}}</li>
+  {{/view_engines}}
+  </ul>
+</div>

@@ -1,0 +1,10 @@
+[
+    {
+        "settings": ["master"],
+
+        "type": "TestMojit2",
+        "config": {
+            "testKey1": "testVal1"
+        }
+    }
+]

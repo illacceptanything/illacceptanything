@@ -1,0 +1,39 @@
+[
+    {
+        "settings": [ "master" ],
+        "staticHandling": {
+            "cache": false,
+            "forceUpdate": true
+        },
+        "specs": {
+            "frame": {
+                "type": "HTMLFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "child": {
+                        "type": "Master",
+                        "config":{
+                            "children": {
+                                "sender": {
+                                    "type": "Sender"
+                                },
+                                "receiver": {
+                                    "type": "Receiver"
+                                }
+                            }
+                        }
+                    },
+                    "assets": { 
+                        "top": {
+                            "css":[
+                                "/static/MasterMojit/assets/css/style.css",
+                                "/static/SenderMojit/assets/css/style.css",
+                                "/static/ReceiverMojit/assets/css/style.css"
+                            ]
+                        }
+                    }
+                } 
+            }
+        }
+    }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "settings": [ "master" ],
+    "mainPage": {
+      "verbs": ["get"],
+      "path": "/",
+      "call": "testpage.index"
+    }
+  }
+]

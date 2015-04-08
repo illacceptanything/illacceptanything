@@ -1,0 +1,36 @@
+{
+    "key0": {
+        "key1": "value1",
+        "key2": "value2",
+        "key3": "value3",
+        "key3": "$$key0.key1$$",
+        "key4": "The value of key0.key2 is $$key0.key2$$"
+    },
+    "key5": "$$key0$$",
+    "key6": {
+        "key7": {
+            "key8": "$$key5$$"
+        },
+        "key9": [
+            1,
+            2,
+            "$$key0.key4$$",
+            3,
+            4
+        ]
+    },
+    "$$key0.key1$$": null,
+    "$$key6.key7$$": null,
+    "key10": {
+        "key11": {
+            "$$key5$$": null
+        }
+    },
+    "key11": [
+        "a",
+        "b",
+        "$$key6.key9$$",
+        "c",
+        "d"
+    ]
+}

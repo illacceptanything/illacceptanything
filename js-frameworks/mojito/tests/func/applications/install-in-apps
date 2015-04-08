@@ -1,0 +1,67 @@
+#!/usr/bin/env node
+// vim: ft=javascript:
+
+
+var libchild = require('child_process'),
+    libfs = require('fs'),
+    libpath = require('path');
+
+
+function list_apps() {
+    var a, app, apps = [],
+        file = libfs.readFileSync('./apps.json', 'utf-8'),
+        json = JSON.parse(file);
+    for (a = 0; a < json.applications.length; a += 1) {
+        app = json.applications[a];
+        if (app.enabled) {
+            base = __dirname;
+            app.fullpath = libpath.join(base, app.path)
+            apps.push(app);
+        }
+    }
+    return apps;
+}
+
+
+function main() {
+    var pkgs = process.argv.slice(2),
+        apps = list_apps();
+
+    function installOne() {
+        if (!apps.length) {
+            return;
+        }
+        var app = apps.shift();
+        console.log('----------------------------------------------------- APP -- ' + app.name);
+
+        if (!libpath.existsSync(app.fullpath)) {
+            console.log('--SKIPPED-- ' + app.name + ' -- ' + app.path);
+            installOne();
+            return;
+        }
+
+        var cmd = 'sudo /home/y/bin/ynpm install --cache=/home/y/tmp --registry=http://ynpm-registry.corp.yahoo.com:4080/ ' + pkgs.join(' ');
+        var opts = { cwd: app.fullpath };
+        console.log('--------------------------------- CMD -- ' + app.name);
+        console.log(cmd);
+        libchild.exec(cmd, opts, function(error, stdout, stderr) {
+            if (error) {
+                console.log('--------------------------------- ERROR -- ' + app.name);
+                console.log(app);
+                throw error;
+            }
+            console.log('--------------------------------- STDOUT -- ' + app.name);
+            console.log(stdout);
+            console.log('--------------------------------- STDERR -- ' + app.name);
+            console.log(stderr);
+
+            installOne();
+        });
+    }
+    installOne();
+}
+
+
+main();
+
+

@@ -1,0 +1,78 @@
+html, body {
+    margin:0;
+    padding:0;
+    font-family: arial,helvetica,clean,sans-serif;    
+}
+
+#scrollview {
+    border:2px solid #000;
+    -webkit-border-radius:6px;
+    -moz-border-radius:6px;
+    border-radius:6px;
+}
+
+#scrollview-content img {
+    border:2px solid;
+    -webkit-border-radius:6px;
+    -moz-border-radius:6px;
+    border-radius:6px;
+    width: 300px;
+    margin: 2px -1px 2px 6px;
+    -webkit-transform: translate3d(0, 0, 0); 
+}
+
+/* To layout horizontal LIs */
+#scrollview-content {
+    white-space:nowrap;
+}
+
+#scrollview-content li {
+    display:inline-block;
+    background-color:#fff;
+}
+
+/* For IE 6/7 - needs inline block hack */
+#scrollview-content li {
+    *display:inline;
+    *zoom:1;
+}
+
+/* === scrollview container and header styles === */
+#scrollview-container {
+    float:left;
+    margin:10px;
+}
+
+#scrollview-header {
+    height:44px;
+    *width:320px;
+
+    border: 1px solid #9c9c9c; /* Fallback style */
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: .5em;
+    -webkit-border-top-left-radius: .5em;
+    -webkit-border-top-right-radius: .5em;
+    -webkit-border-bottom-left-radius: .5em;
+    -webkit-border-bottom-right-radius: .5em;
+    -moz-border-radius: .5em;
+    border-radius: .5em;
+
+    background: #141414;
+    background: -webkit-gradient(linear, left top, left bottom, from(#656565), to(#141414) );
+    background: -moz-linear-gradient(-90deg, #656565, #141414);
+    filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#656565', EndColorStr='#141414');
+}
+
+#scrollview-header h1 {
+    color: #fff;
+    margin:0;
+    padding:10px 0;
+    text-align:center;
+    font-size:150%;
+    font-weight:bold;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.7);    
+}
+
+#scrollview-pager {
+    padding:5px;
+}

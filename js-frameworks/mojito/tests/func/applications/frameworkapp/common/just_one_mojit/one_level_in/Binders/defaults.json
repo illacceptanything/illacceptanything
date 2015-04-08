@@ -1,0 +1,9 @@
+[
+    {
+        "settings": ["master"],
+        "config": {
+            "name": "Binders",
+            "version": "0.1.0"
+        }
+    }
+]

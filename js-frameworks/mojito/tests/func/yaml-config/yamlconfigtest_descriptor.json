@@ -1,0 +1,38 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "yaml-config",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                 "name":"yaml-config",
+                 "path": "./frameworkapp/yaml-config",
+                 "type": "mojito"
+            }
+        },
+
+        "dataprovider" : {
+           "yamlconfig1" : {
+                "group" : "smoke,yaml",
+                "params" : {
+                    "test" : "testyamlconfig1.js",
+                    "page" : "$$config.baseUrl$$/"
+                }
+            },
+            "yamlconfig2" : {
+                 "group" : "smoke,yaml",
+                 "params" : {
+                     "test" : "testyamlconfig2.js",
+                     "page" : "$$config.baseUrl$$/spec"
+                }
+            }
+        }
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

@@ -1,0 +1,12 @@
+.FlickrDetail.info {
+    text-align: center;
+    vertical-align: middle;
+    padding: 1em;
+    color: #666;
+}
+.FlickrDetail.error {
+    text-align: center;
+    vertical-align: middle;
+    padding: 1em;
+    color: #844;
+}

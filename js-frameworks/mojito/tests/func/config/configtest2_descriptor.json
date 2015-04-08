@@ -1,0 +1,66 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "config",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"configapp",
+                "path": "./frameworkapp/configapp",
+                "param": "environment:testing"
+            }
+        },
+
+        "dataprovider" : {     
+            "TestingEnv1" : {
+                "group" : "functional,smoke,config,testgroup2",
+                "params" : {
+                    "test" : "testtestingenv1.js",
+                    "page" : "$$config.baseUrl$$"
+                }
+            },
+            "TestingEnv2" : {
+                "group" : "functional,smoke,config,testgroup2",
+                "params" : {
+                    "test" : "testtestingenv2.js",
+                    "page" : "$$config.baseUrl$$/?lang=de"
+                }
+            },
+            "TestingEnv3" : {
+                "group" : "functional,smoke,config,testgroup2",
+                "params" : {
+                    "test" : "testtestingenv3.js",
+                    "page" : "$$config.baseUrl$$/?lang=fr"
+                }
+            },
+            "TestingEnv4" : {
+                "group" : "functional,smoke,config,testgroup2",
+                "params" : {
+                    "test" : "testtestingenv4.js",
+                    "page" : "$$config.baseUrl$$/?lang=fr-CA"
+                }
+            },
+            "TestingEnv5" : {
+                "group" : "functional,smoke,config,testgroup2",
+                "params" : {
+                    "test" : "testtestingenv5.js",
+                    "page" : "$$config.baseUrl$$/?subject=math"
+                }
+            },
+            "TestingEnv6" : {
+                "group" : "functional,smoke,config,testgroup2",
+                "params" : {
+                    "test" : "testtestingenv6.js",
+                    "page" : "$$config.baseUrl$$/?subject=math&lang=de"
+                }
+            }
+        }     
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

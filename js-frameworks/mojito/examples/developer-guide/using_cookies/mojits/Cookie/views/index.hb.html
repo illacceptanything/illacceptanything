@@ -1,0 +1,24 @@
+<div id="{{mojit_view_id}}" class="mojit">
+  <h2>{{title}}</h2>
+  <div>
+    <p>This is a demo showing how to read cookies from the browser and how to write cookies to the browser from the Mojit.</p>
+  </div>
+  <div>
+    <p>Value of request cookie sent by browser: {{request_cookie_value}}</p>
+  </div>
+  <div>
+    <p>The response cookie written by the server should be displayed in browser as an alert.</p>
+  </div>
+</div>
+<script type="text/javascript" src="http://yui.yahooapis.com/3.3.0/build/yui/yui-min.js"></script>
+<script type="text/javascript">YUI().use('cookie', 'node', function(Y) {
+  // Create a request cookie and set its value
+  Y.Cookie.set('request_cookie', 'request cookie value');   
+  function showResponseCookie() {
+    var responseCookieValue = Y.Cookie.get('response_cookie');
+    Y.log('RESPONSE COOKIE VALUE: ' + responseCookieValue);
+    alert('Response Cookie Value: ' + responseCookieValue);
+  }
+  Y.on('domready', showResponseCookie);
+  });
+</script>

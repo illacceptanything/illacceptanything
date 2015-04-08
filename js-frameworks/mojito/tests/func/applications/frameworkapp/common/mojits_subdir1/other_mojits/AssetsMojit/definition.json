@@ -1,0 +1,27 @@
+[
+    {
+        "settings": [ "master" ],
+        "assets": {
+           "top": {
+               "css" : [
+                   "/static/AssetsMojit/assets/css/css1.css",
+				   "/static/Binders/assets/css/css_in_binders.css"
+               ],
+			   "js": [
+			       "./js/js2.js"
+			   ],
+			   "blob": [
+			       "<style type=\"text/css\">body{background-color:pink}</style>"
+			   ]
+           },
+           "bottom": {
+               "js": [
+                   "/static/AssetsMojit/assets/js/js1.js"
+               ],
+			   "css": [
+			      "/static/AssetsMojit/assets/css/css_not_present.css"
+			   ]
+           }
+        }
+    }
+]

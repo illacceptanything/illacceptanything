@@ -1,0 +1,49 @@
+[
+    {
+        "settings": [ "master" ],
+		"appPort": 4082,
+        "specs": {
+            "route-1": {
+                "type": "SimpleRoute",
+                "config": {
+                    "id": "route-1"
+                }
+            },
+            "route-2": {
+                "type": "SimpleRoute2",
+                "config": {
+                    "id": "route-2"
+                }
+            },
+            "route-2-wildcard": {
+                "type": "SimpleRoute2",
+                "config": {
+                    "id": "route-2-wildcard"
+                }
+            },
+            "route-base": {
+                "type": "SimpleRoute2",
+                "config": {
+                    "id": "route-base"
+                }
+            },
+            "ShowUrl": {
+                "type": "ShowUrl"
+            },
+            "Poster": {
+                "type":  "Poster"
+            },
+            "Coverage": {
+                "type": "Coverage"
+            }
+        }
+    },
+    { "settings": [ "device:android" ], "selector": "android" },
+    { "settings": [ "device:blackberry" ], "selector": "blackberry" },
+    { "settings": [ "device:iemobile" ], "selector": "iemobile" },
+    { "settings": [ "device:ipad" ], "selector": "ipad" },
+    { "settings": [ "device:iphone" ], "selector": "iphone" },
+    { "settings": [ "device:kindle" ], "selector": "kindle" },
+    { "settings": [ "device:opera-mini" ], "selector": "opera-mini" },
+    { "settings": [ "device:palm" ], "selector": "palm" }
+]

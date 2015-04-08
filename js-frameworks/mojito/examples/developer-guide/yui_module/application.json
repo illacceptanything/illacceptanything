@@ -1,0 +1,24 @@
+[{
+    "settings": [ "master" ],
+    "staticHandling": {
+        "cache": false,
+        "forceUpdate": true
+    },
+    "yui": {
+        "config": {
+            "combine": false
+        }
+    },
+    "specs": {
+        "notepad": {
+            "type": "HTMLFrameMojit",
+            "config": {
+                "deploy": true,
+                "title": "Notepad example",
+                "child": {
+                    "type": "Notepad"
+                }
+            }
+        }
+    }
+}]

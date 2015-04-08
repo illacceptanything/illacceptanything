@@ -1,0 +1,21 @@
+.red {
+    background-color: #ff9999;
+}
+.blue {
+    background-color: #00ccff;
+}
+.green {
+    background-color: #00FF00;
+}
+.child {
+    border:  solid 1px red;
+    width: 100px;
+    height: 100px;
+}
+
+.hover {
+    background-color: #ffff00;
+}
+.surrounding {
+    background-color: #808000;
+}

@@ -1,0 +1,14 @@
+[
+    {
+        "settings": [ "master" ],
+        "key": "myMojit value in master"
+    },
+	{
+        "settings": [ "subject:math" ],
+        "key": "myMojit overridevalue in subject"
+    },
+    {
+        "settings": [ "lang:fr" ],
+        "key": "myMojit override value in fr"
+    }
+]

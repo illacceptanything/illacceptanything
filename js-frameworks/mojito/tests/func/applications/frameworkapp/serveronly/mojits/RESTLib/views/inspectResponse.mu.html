@@ -1,0 +1,18 @@
+<div id="{{mojit_view_id}}">
+    <p>Below are the fragments of the response:
+    <ul>
+        <li id="code">Status Code: {{statusCode}}</li>
+        <li id="msg">Status Message: {{statusMsg}}</li>
+		<li id="header">Headers:
+			<ul>
+				<li id="complete_header">{{headers}}</li>
+				<li id="header1">x-powered-by: {{header_powered_by}}</li>
+				<li id="header2">content-type: {{header_content_type}}</li>
+				<li id="header3">transfer-encoding: {{header_encoding}}</li>
+				<li id="header4">invalid header: {{header_not_exist}}</li>
+			</ul>
+		</li>
+    </ul>
+    </p>
+    {{{body}}}
+</div>

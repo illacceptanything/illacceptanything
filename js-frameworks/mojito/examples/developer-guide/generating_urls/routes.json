@@ -1,0 +1,15 @@
+[
+  {
+    "settings": ["master"],
+    "root": {
+      "verbs": ["get"],
+      "path": "/", 
+      "call": "mymojit.index"
+    },
+    "contactus": {
+      "verbs": ["get"],
+      "path": "/some-really-long-url-that-we-dont-need-to-remember-contactus",
+      "call": "mymojit.contactus"
+    }
+  }
+]

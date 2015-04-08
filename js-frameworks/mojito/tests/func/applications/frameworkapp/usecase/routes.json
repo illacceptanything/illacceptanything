@@ -1,0 +1,44 @@
+[
+    {
+        "settings": [ "master" ],
+        "i18n-3": {
+            "verb": ["get"],
+            "path": "/i18n-3",
+            "call": "i18n-3.index"
+        },
+        "flickr_base": {
+            "verb": ["get"],
+            "path": "/flickr",
+            "call": "flickr.index"
+        },
+
+        "flickr2_base": {
+            "verb": ["get"],
+            "path": "/flickr2",
+            "call": "flickr2.index"
+        },
+        
+        "flickr_by_page": {
+            "verb": ["get"],
+            "path": "/flickr/page/:page",
+            "call": "flickr3.index"
+        },
+        "flickr_by_page5": {
+            "verb": ["get"],
+            "path": "/flickr5/page/:page/image/:image",
+            "call": "flickr5.index"
+        },
+
+        "flickr_base5": {
+            "verb": ["get"],
+            "path": "/DO_NOT_USE_flickr5",
+            "param": "image=0&page=1",
+            "call": "DO_NOT_USE_flickr5.index"
+        },
+        "lone_detail": {
+            "verb": ["get"],
+            "path": "/detail/:image",
+            "call": "detail.index"
+        }
+    }
+]

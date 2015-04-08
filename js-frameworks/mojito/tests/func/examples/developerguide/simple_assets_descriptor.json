@@ -1,0 +1,69 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "simple_assets",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"simple_assets",
+                "path": "../../../examples/developer-guide/simple_assets"
+            }
+        },
+
+        "dataprovider" : {    
+            "simpleassets" : {
+                "group" : "developerguide,simple_assets",
+                "params" : {
+                    "scenario": [
+                        {
+                            "page" : "$$config.baseUrl$$/"
+                        },
+                        {
+                            "controller": "locator",
+                            "params": {
+                                "using": "xpath",
+                                "value": "/html/body/div/ul/li/a",
+                                "click": true
+                            }
+                        },
+                        {
+                            "test" : "test_simple_assets.js",
+                            "testName": "first"
+                        },
+                        {
+                            "controller": "locator",
+                            "params": {
+                                "using": "xpath",
+                                "value": "/html/body/div/ul/li[2]/a",
+                                "click": true
+                            }
+                        },
+                        {
+                            "test" : "test_simple_assets.js",
+                            "testName": "second"
+                        },
+                        {
+                            "controller": "locator",
+                            "params": {
+                                "using": "xpath",
+                                "value": "/html/body/div/ul/li[3]/a",
+                                "click": true
+                            }
+                        },
+                        {
+                            "test" : "test_simple_assets.js",
+                            "testName": "third"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

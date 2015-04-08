@@ -1,0 +1,14 @@
+[
+  {
+    "settings": [ "master" ],
+    "staticHandling": {
+        "cache": false,
+        "forceUpdate": true
+    },
+    "specs": {
+      "myMojit": {
+        "type": "myMojit"
+      }
+    }
+  }
+]

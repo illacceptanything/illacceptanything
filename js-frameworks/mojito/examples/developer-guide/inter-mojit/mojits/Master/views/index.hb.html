@@ -1,0 +1,20 @@
+<div id="{{mojit_view_id}}" class="MasterMojit">
+    <div id="header">
+        This example demonstrates inter mojit communication on a page. 
+        The mojit on the left side contains a list of image links.
+        The mojit on the right side will display the image whenever a link 
+        in the left mojit is clicked on.
+        
+
+    </div>
+    <table>
+        <tr>
+            <td class="left">
+                {{{sender}}}
+            </td>
+            <td class="right">
+                {{{receiver}}}
+            </td>
+        </tr>
+    </table>
+</div>

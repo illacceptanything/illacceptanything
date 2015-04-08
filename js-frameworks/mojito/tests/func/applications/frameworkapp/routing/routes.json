@@ -1,0 +1,61 @@
+[
+    {
+        "settings": [ "master" ],
+        "root": {
+            "verbs": ["get"],
+            "path": "/route1",
+            "call": "route-1.index"
+        },
+        "route1-post": {
+            "verbs": ["post"],
+            "path": "/route1",
+            "call": "route-1.myAction"
+        },
+        "myAction": {
+            "verbs": ["get"],
+            "path": "/myAction",
+            "call": "route-1.myAction"
+        },
+        "route-1": {
+            "verbs": ["get"],
+            "path": "/route-1/index",
+            "call": "route-1.index"
+        },
+        "route-1-wild2": {
+            "verbs": ["get"],
+            "path": "/route1/*",
+            "call": "route-1.index"
+        },
+        "route-2": {
+            "verbs": ["get"],
+            "path": "/route-2/myPath",
+            "call": "route-2.index"
+        },
+        "route-1-copy-with-route-2": {
+            "verbs": ["get"],
+            "path": "/route-1/index",
+            "call": "XXXXroute-2.index"
+        },
+        "route-2-wild3": {
+            "verbs": ["get"],
+            "path": "/*/route2",
+            "call": "route-2-wildcard.index"
+        },
+        "showurl": {
+            "verbs": ["get"],
+            "path": "/showurl",
+            "call": "ShowUrl.index"
+        },
+        "routepost": {
+            "verb": ["get"],
+            "path": "/routepostget",
+            "call": "Poster.index"
+        },
+        "testing-ac-url-find": {
+            "verb": ["get"],
+            "path": "/you/found/a/good/path",
+            "params": "secret=garden",
+            "call": "goodaction.goodindex"
+        }
+    }
+]

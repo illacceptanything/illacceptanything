@@ -1,0 +1,12 @@
+<div id="{{mojit_view_id}}" class="mojit">
+    <div class="mod" id="github">
+        {{> widget_refresh_heading}}
+        <div class="inner">
+            <ul>
+                {{#results}}
+                    <li><a href="http://github.com/{{username}}">{{username}}</a> - <a href="{{link}}">{{message}}</a></li>
+                {{/results}}
+            </ul>
+        </div>
+    </div>
+</div>

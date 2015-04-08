@@ -1,0 +1,21 @@
+[
+    {
+        "settings": [ "master" ],
+        "def1": "This is the definition for def1",
+        "defArray1":[
+            "defArray1Value1",
+            "defArray1Value2",
+            "defArray1Value3"
+        ],
+		"nested":{
+		    "subset1": "Subset from definition",
+			"subset2": {
+			    "subsubset1": "inner subset from def",
+				"subsubsetArray" : [
+				    "innerArrayValue1",
+					"innerArrayValue2"
+				]
+			} 
+		}
+    }
+]

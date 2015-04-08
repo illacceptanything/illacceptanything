@@ -1,0 +1,26 @@
+<style>
+/* Avoid resource latency for these, since they hide unenhanced content */
+.yui3-js-enabled .yui3-scrollview-loading {
+    visibility:hidden;
+}
+#additional-content {
+    display:none;
+}
+</style>
+
+<div id="{{mojit_view_id}}" class="mojit">
+    <div id="scrollview-container">
+        <div id="scrollview-header">
+            <h1>{{title}}</h1>
+        </div>
+
+        <div id="scrollview-content" class="yui3-scrollview-loading">
+            <ul>
+            {{#photos}}
+                <li><img src="{{url}}" alt="{{alt}}"></li>
+            {{/photos}}
+            </ul>
+        </div>
+    </div>
+</div>
+

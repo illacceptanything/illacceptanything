@@ -1,0 +1,20 @@
+<h1>Input Parameters Example</h1>
+
+<h2>MERGED Parameters</h2>
+
+<p>{{desc}}</p>
+
+<div style="font-size: 30pt; font-weight: bold; color: red">{{name}} likes {{thing}}?</div>
+
+<p>Hey, is that what you entered in the form? If not, here's why...</p>
+
+<div>
+    {{#paramGroup}}
+        {{desc}}
+        <ul>
+            {{#params}}
+                <li>{{key}} ==> {{value}}</li>
+            {{/params}}
+        </ul>
+    {{/paramGroup}}
+</div>

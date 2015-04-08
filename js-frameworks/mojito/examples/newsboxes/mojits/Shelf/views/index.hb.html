@@ -1,0 +1,13 @@
+<div id="{{mojit_view_id}}" class="container">
+    <div class="logo-nav">
+        <h1>News<em>Boxes</em></h1>
+    </div>
+    <div id="toc" class="toc">
+        <ul>
+            {{{weather}}}
+            {{#tiles}}
+            <li><a href="{{link}}">{{name}}</a></li>
+            {{/tiles}}
+        </ul>
+    </div>
+</div>

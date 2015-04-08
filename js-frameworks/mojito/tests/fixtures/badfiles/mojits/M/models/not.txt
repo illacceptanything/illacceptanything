@@ -1,0 +1,14 @@
+YUI.add('MModelNot', function(Y) {
+
+    Y.mojito.models.MModelNot = {
+
+        init: function(config) {
+        },
+
+        getMessage: function(callback) {
+            callback(null, 'Mojito is working');
+        }
+
+    };
+
+}, '0.0.1', {requires: []});

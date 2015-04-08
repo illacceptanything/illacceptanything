@@ -1,0 +1,32 @@
+[
+    {
+        "settings": [ "master" ],
+        "name" : "view-engine-addon-unit-tests",
+        "config" : {
+            "lib": "../../../../../../lib",
+            "base": "../../../../../base"
+        },
+        "commonlib": "$$config.base$$/mojito-test.js,$$config.lib$$/app/autoload/util.common.js",
+        "dataprovider" : {
+            "hb.client" : {
+                "params" : {
+                    "page": "$$config.base$$/mojito-test.html",
+                    "lib": "$$config.lib$$/app/addons/view-engines/hb.client.js",
+                    "test" : "./test-hb.client.js"
+                },
+                "group" : "fw,client"
+            },
+            "hb.server" : {
+                "params" : {
+                    "lib": "$$config.lib$$/app/addons/view-engines/hb.server.js",
+                    "test" : "./test-hb.server.js",
+                    "driver": "nodejs"
+                },
+                "group" : "fw,server"
+            }
+        }
+    },
+    {
+        "settings": [ "environment:development" ]
+    }
+]

@@ -1,0 +1,412 @@
+[
+  {
+    "settings": [ "master" ],
+    "staticHandling": {
+      "forceUpdate": true
+    },
+    "resourceStore": {
+        "lazyMojits": true,
+        "lazyLangs": true
+    },
+    "config": {
+      "myconfig0": "This is myconfig0 from top application.json",
+      "myconfig1": "This is myconfig1 from top application.json",
+      "myconfig2": "This is myconfig2 from top application.json",
+      "myconfig3": "This is myconfig3 from top application.json"
+    },
+    "appPort": 8666,
+    "yui": {
+      "config": {
+        "debug": true,
+        "logLevel": "debug",
+        "root": "static/yui",
+        "combine": false
+      }
+    },
+    "builds": {
+      "html5app": {
+        "forceRelativePaths": true,
+        "urls": [
+          "/mytestpath/index.html"
+          ]
+      }
+    },
+    "mojitsDirs": [
+      "mojits/",
+      "mojits_subdir1/*/",
+      "mojits_subdir2/*/",
+      "../test_files/mojits/"
+      ],
+      "mojitDirs": [
+        "just_one_mojit/one_level_in/Binders",
+        "mojits_params/*"
+        ],
+        "staticHandling": {
+          "appName": "myNewAppName"
+        },
+        "specs": {
+          "frame": {
+            "type": "HTMLFrameMojit",
+            "config": {
+              "deploy": true,
+              "child": {
+                "type": "TestsLayout",
+                "config": {
+                  "children": {
+                    "SimpleModel": {
+                      "base": "SimpleModel",
+                      "config": {
+                        "myUrls": [
+                          "/SimpleModel/simpleModel",
+                          "/SimpleModel/configModel"
+                          ]
+                      }
+                    },
+                    "LazyLoadRPC": {
+                      "type": "LazyLoadRPC"
+                    },
+                    "LazyLoadClientMojit": {
+                      "type": "LazyLoadClientMojit"
+                    },
+                    "ACMojit": {
+                      "base": "ACMojit",
+                      "config": {
+                        "myUrls": [
+                          "/ACMojit/acMojit?test=done1"
+                          ]
+                      }
+                    },
+                    "GetParams": {
+                      "base": "GetParams",
+                      "config": {
+                        "myUrls": [
+                          "/GetParams/allParams?foo=123&bar=2&test=no",
+                          "/GetParams/paramsByValue?foo=abc",
+                          "/GetParams/allParamsSimple?foo=123&bar=2&test=no",
+                          "/GetParams/paramsByValueSimple?foo=abc"
+                          ]
+                      }
+                    },
+                    "PostParams": {
+                      "base": "PostParams",
+                      "config": {
+                        "myUrls": [
+                          "/Poster/index"
+                        ]
+                      }
+                    },
+                    "MergeParams": {
+                      "base": "MergeParams",
+                      "config": {
+                        "myUrls": [
+                          "/MergePoster/index"
+                          ]
+                      }
+                    },
+                    "RouteParams": {
+                      "type": "RouteParams",
+                      "config": {
+                        "myUrls": [
+                          "/RouteParams",
+                          "/RouteParamsSimple"
+                          ]
+                      }
+                    },
+                    "ClientCookie": {
+                      "type": "ClientCookie",
+                      "config": {
+                        "myUrls": [
+                          "/@ClientCookie/setCookies",
+                          "/@ClientCookie/catch"
+                        ]
+                      }
+                    },
+                    "ControllerCaching": {
+                      "base": "ControllerCaching"
+                    },
+                    "MojitContainer": {
+                      "type": "MojitContainer",
+                      "config": {
+                        "children": {
+                          "a": {
+                            "base": "ControllerCaching"
+                          },
+                          "b": {
+                            "base": "ControllerCaching"
+                          }
+                        }
+                      }
+                    },
+                    "BroadCast": {
+                      "type": "BroadCast",
+                      "config": {
+                        "children": {
+                          "devil": {
+                            "type": "RedChild"
+                          },
+                          "socks": {
+                            "type": "RedChild"
+                          },
+                          "jeans": {
+                            "type": "BlueChild"
+                          },
+                          "jay": {
+                            "type": "BlueChild"
+                          },
+                          "happy": {
+                            "type": "GreenChild"
+                          },
+                          "sad": {
+                            "type": "GreenChild"
+                          },
+                          "grape": {
+                            "type": "PurpleChild"
+                          }
+                        }
+                      }
+                    },
+                    "MojitProxyMojit": {
+                      "type": "MojitProxyMojit"
+                    },
+                    "PartialMojit": {
+                      "type": "PartialMojit",
+                      "config": {
+                        "myUrls": [
+                          "/@PartialMojit/mytest",
+                          "/@PartialMojit/myinvoke"
+                          ]
+                      }
+                    },
+                    "DepCheckParent": {
+                      "type":  "DepCheckParent",
+                      "config": {
+                        "children": {
+                          "meta": {
+                            "type": "MetaChild"
+                          }
+                        }
+                      }
+                    },
+                    "LazyParent": {
+                      "type": "LazyParent",
+                      "config": {
+                        "children": {
+                          "LazyDefer": {
+                            "type": "LazyChild",
+                            "action": "hello",
+                            "defer": true
+                          }
+                        }
+                      }
+                    },
+                    "CompositeMojit": {
+                      "base": "CM_Layout"
+                    },
+                    "SimpleBinders": {
+                      "base": "Binders",
+                      "config": {
+                        "myUrls": [
+                          "/binderframe"
+                          ]
+                      }
+                    },
+                    "Configs": {
+                      "base": "MyConfig",
+                      "config": {
+                        "myUrls": [
+                          "/MyConfig/myIndex"
+                          ]
+                      }
+                    },
+                    "Assets": {
+                      "base": "MyAssets",
+                      "config": {
+                        "myUrls": [
+                          "/assetsframeloc",
+                          "/assetsframedefault"
+                          ]
+                      }
+                    },
+                    "Coverage_Client": {
+                      "base": "CoverageClient"
+                    }
+                  }
+                }
+              },
+              "assets": {
+                "top": {
+                  "css": [
+                    "/static/TestsLayout/assets/index.css"
+                          ]
+                },
+                "bottom": {
+                  "js": [
+                    "/static/TestsLayout/assets/main.js"
+                    ]
+                }
+              }
+            }
+          },
+          "SimpleModel": {
+            "type": "SimpleModel",
+            "config": {
+              "myconfig0": "This is myconfig0 from application.json",
+              "myconfig1": "This is myconfig1 from application.json"
+            }
+          },
+          "ACMojit": {
+            "type": "ACMojit"
+          },
+          "GetParams": {
+            "type": "GetParams"
+          },
+          "Poster": {
+            "type": "Poster"
+          },
+          "PostParams": {
+            "type": "PostParams"
+          },
+          "MergePoster": {
+            "type": "MergePoster"
+          },
+          "MergeParams": {
+            "type": "MergeParams"
+          },
+          "RouteParams": {
+            "type": "RouteParams"
+
+          },
+          "SearchMojit":{
+            "type": "HTMLFrameMojit",
+            "config": {
+              "deploy": true,
+              "title": "Search Mojit",
+              "child": {
+                "type": "SearchMojit"
+              }
+            }
+          },
+          "ControllerCaching": {
+            "type": "Stateful"
+          },
+          "Binders_HTMLFrame": {
+            "type": "HTMLFrameMojit",
+            "config": {
+              "deploy": true,
+              "child": {
+                "base": "Binders"
+              }
+            }
+          },
+          "Binders": {
+            "type": "Binders",
+            "config": {
+              "id": "myId",
+              "config_data": "This is the data coming from the config",
+              "extra": "This is extra text from the config file"
+            }
+          },
+          "CM_Footer": {
+            "type": "CM_Footer"
+          },
+          "CM_Layout_HTMLFrame": {
+            "type": "HTMLFrameMojit",
+            "config": {
+              "deploy": true,
+              "child": {
+                "base": "CM_Layout"
+              }
+            }
+          },
+          "CM_Layout" :{
+            "type": "CM_Layout",
+            "config": {
+              "id": "layout",
+              "children": {
+                "nav": {
+                  "type": "CM_Nav",
+                  "config":{
+                    "id": "nav"
+                  }
+                },
+                "news": {
+                  "type": "CM_News",
+                  "config":{
+                    "id": "news"
+                  }
+                },
+                "footer": {
+                  "base": "CM_Footer",
+                  "config":{
+                    "id": "footer_id"
+                  }
+                }
+              }
+            }
+          },
+          "CM_Footer": {
+            "type": "CM_Footer"
+          },
+          "MyConfig": {
+            "type":  "ConfigMojit",
+            "config":{
+              "config1": "This is the config for config1 in application.yaml",
+              "commonKey1": "Value of commonKey1 in application.yaml",
+              "configArray1":[
+                "configArray1Value1",
+                "configArray1Value2",
+                "configArray1Value3"
+              ],
+              "config2":{
+                "config2Key1": "config2Key1 value from application.yaml",
+                "config2Key2": {
+                  "config2Key2Key1": "It gets complicated here- config2Key2Key1 value in application.yaml",
+                  "config2Key2Key2": "config2Key2Key2 value in application.yaml"
+                },
+                "config2Key3Array1": [
+                  "config2Key3Array1Value1",
+                  "config2Key3Array1Value2",
+                  "config2Key3Array1Value3"
+                  ]
+              }
+            }
+          },
+          "MyAssets_HTMLFrame": {
+            "type": "HTMLFrameMojit",
+            "config": {
+              "deploy": true,
+              "child": {
+                "base": "MyAssets"
+              }
+            }
+          },
+          "MyAssets": {
+            "type": "AssetsMojit",
+            "config": {
+            }
+          },
+          "AppLevelMojit": {
+            "type": "GlobalMojit"
+          },
+          "GetAppLevelInfo": {
+            "type": "AccessGlobalMojit"
+          },
+          "mobiledevices": {
+            "type": "MobileDevices"
+          },
+          "Coverage": {
+            "type": "Coverage"
+          },
+          "CoverageClient": {
+            "type": "CoverageClient"
+          }
+        }
+  },
+  { "settings": [ "device:android" ], "selector": "android" },
+  { "settings": [ "device:blackberry" ], "selector": "blackberry" },
+  { "settings": [ "device:iemobile" ], "selector": "iemobile" },
+  { "settings": [ "device:iphone" ], "selector": "iphone" },
+  { "settings": [ "device:kindle" ], "selector": "kindle" },
+  { "settings": [ "device:opera-mini" ], "selector": "opera-mini" },
+  { "settings": [ "device:palm" ], "selector": "palm" }
+]

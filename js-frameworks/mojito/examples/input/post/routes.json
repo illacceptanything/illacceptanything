@@ -1,0 +1,18 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "pitch": {
+            "verbs": ["get"],
+            "path": "/pitch",
+            "call": "poster.index"
+        },
+
+        "catch": {
+            "verbs": ["post"],
+            "path": "/catch",
+            "call": "catcher.index"
+        }
+
+    }
+]

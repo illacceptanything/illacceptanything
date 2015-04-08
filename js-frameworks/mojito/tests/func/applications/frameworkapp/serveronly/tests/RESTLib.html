@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Simple view test</title>
+        <meta name="http-equiv" content="Content-type: text/html; charset=UTF-8"/>
+        <script type="text/javascript" src="http://yui.yahooapis.com/combo?3.4.1/build/yui/yui-min.js">
+        </script>
+    </head>
+    <body class="yui3-skin-sam">
+        <h1>Simple view test</h1>
+        <iframe id='frame' src='about:blank' style='width: 700px; height: 500px; border: 1px solid gray'>
+        </iframe>
+    </body>
+    <script type="text/javascript">
+        YUI({
+            useConsoleOutput: true,
+            logInclude: {
+                TestRunner: true
+            }
+        }).use('node', 'node-event-simulate', 'test', 'console', function(Y){
+        
+            (new Y.Console({
+                verbose: true,
+                newestOnTop: false,
+                height: '200px',
+                width: '600px',
+                style: 'block'
+            })).render();
+            
+            var frame, frameNode;
+            var remoteServerName = "severaleast.corp.yahoo.com";
+            var remoteServerPort = "8083";
+            var remoteServerPath = "/remote";
+            
+            Y.Test.Runner.add(new Y.Test.Case({
+            
+                setUp: function(){
+                    frame = Y.one('#frame');
+                    frameNode = Y.Node.getDOMNode(frame);
+                },
+                
+                registerLoadHandler: function(callback){
+                
+                    var that = this;
+                    
+                    frame.once('load', function(){
+                        YUI({
+                            win: frameNode.contentWindow,
+                            doc: frameNode.contentDocument || frameNode.contentWindow.document
+                        }).use('*', function(Z){
+                            that.resume(function(){
+                                callback(Z);
+                            });
+                        });
+                    });
+                },
+                
+                //need to provide a robust implementation of this for tests to use, so that we can avoid frame load race conditions
+                onFrameLoad: function(url, timeout, callback){
+                
+                    if (typeof timeout === 'function') {
+                        callback = timeout;
+                        timeout = 10000;
+                    }
+                    
+                    this.registerLoadHandler(callback);
+                    frameNode.src = url; //the alternative frame.set('src',url) doesn't seem to work for some reason, why?
+                    this.wait(timeout);
+                },
+                
+                onClickLink: function(node, timeout, callback){
+                    if (typeof timeout === 'function') {
+                        callback = timeout;
+                        timeout = 10000;
+                    }
+                    
+                    this.registerLoadHandler(callback);
+                    node.simulate('click');
+                    this.wait(timeout);
+                },
+                "should execute simpleWSCallServer": function(){
+                    var that = this;
+                    this.onFrameLoad('/restWSFrame/index', function(Y){
+                        that.onClickLink(Y.one('#a_simpleWS'), function(Y){
+                            Y.Assert.areEqual('This is a very simple web service', Y.one('#output').get('innerHTML'));
+                        });
+                    });
+                },
+                "TODO: execute simpleWSCallClient": function(){
+                    var that = this;
+                    this.onFrameLoad('/restWSFrame/index', function(Y){
+                        that.onClickLink(Y.one('#p_simpleWS'), function(Y){
+							console.log(Y.one('#td_simpleWS').get('innerHTML'));
+                            //Y.Assert.areEqual('This is a very simple web service', Y.one('#output').get('innerHTML'));
+                        });
+                    });
+                },
+				//TODO: All the client tests
+				"should execute inspectResponseServer": function(){
+                    var that = this;
+                    this.onFrameLoad('/restWSFrame/index', function(Y){
+                        that.onClickLink(Y.one('#a_inspectResp'), function(Y){
+                            Y.Assert.areEqual('Status Code: 200', Y.one('#code').get('innerHTML'));
+							Y.Assert.areEqual('Status Message: OK', Y.one('#msg').get('innerHTML'));
+							Y.Assert.areEqual('This is a very simple web service', Y.one('#output').get('innerHTML'));
+                        });
+                    });
+                },
+				"should execute inspectHeadersServer": function(){
+                    var that = this;
+                    this.onFrameLoad('/restWSFrame/index', function(Y){
+                        that.onClickLink(Y.one('#a_inspectResp'), function(Y){
+							var complete_header = Y.one('#complete_header').get('innerHTML');
+                            Y.Assert.areEqual(complete_header.match(/\"x-powered-by\":\"Express\"/gi), "\"x-powered-by\":\"Express\"");
+							//Y.Assert.areEqual(complete_header.match(/\"content-type\":\"text/html/gi), "\"content-type\":\"text/html");
+                            Y.Assert.areEqual('x-powered-by: Express', Y.one('#header1').get('innerHTML'));
+							Y.Assert.areEqual('content-type: text/html; charset=\"utf-8\"', Y.one('#header2').get('innerHTML'));
+							Y.Assert.areEqual('transfer-encoding: chunked', Y.one('#header3').get('innerHTML'));
+                            Y.Assert.areEqual('invalid header: ', Y.one('#header4').get('innerHTML'));
+                        });
+                    });
+                },
+                "should execute inspectErrorServer": function(){
+                    var that = this;
+                    this.onFrameLoad('/restWSFrame/index', function(Y){
+                        that.onClickLink(Y.one('#a_inspectErr'), function(Y){
+							//TODO: how to find the response code for the browser...it needs to be 404
+                            Y.Assert.areEqual('Error: 404', Y.one('h1').get('innerHTML'));
+                        });
+                    });
+                },
+                "should execute testGETWithParamsServer": function(){
+                    var that = this;
+                    this.onFrameLoad('/restWSFrame/index', function(Y){
+                        that.onClickLink(Y.one('#a_getParam'), function(Y){
+                            Y.Assert.areEqual('(METHOD: GET) This is sprint 4 for the project Mojito', Y.one('#output').get('innerHTML'));
+                        });
+                    });
+                },
+                "should execute testGETWithParamsNegativeServer": function(){
+                    var that = this;
+                    this.onFrameLoad('/restWSFrame/index', function(Y){
+                        that.onClickLink(Y.one('#a_getParamNegative'), function(Y){
+                            Y.Assert.areEqual('(METHOD: POST) This is sprint undefined for the project undefined', Y.one('#output').get('innerHTML'));
+                        });
+                    });
+                },
+                "should execute testPOSTWithParamsServer": function(){
+                    var that = this;
+                    this.onFrameLoad('/restWSFrame/index', function(Y){
+                        that.onClickLink(Y.one('#a_postParam'), function(Y){
+                            Y.Assert.areEqual('(METHOD: POST) This is sprint 4 for the project Mojito', Y.one('#output').get('innerHTML'));
+                        });
+                    });
+                },
+                "should execute testPOSTWithParamsNegativeServer": function(){
+                    var that = this;
+                    this.onFrameLoad('/restWSFrame/index', function(Y){
+                        that.onClickLink(Y.one('#a_postParamNegative'), function(Y){
+                            Y.Assert.areEqual('(METHOD: GET) This is sprint undefined for the project undefined', Y.one('#output').get('innerHTML'));
+                        });
+                    });
+                }
+            }));
+            
+            Y.Test.Runner.run();
+            
+        });
+    </script>
+</html>

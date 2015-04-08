@@ -1,0 +1,65 @@
+[
+    {
+        "dimensions": [
+            {
+                "environment": {
+                    "development": null,
+                    "testing": null,
+                    "preproduction": null,
+                    "production": null
+                }
+            },
+            {
+                "cluster": {}
+            },
+            {
+                "netzone": {}
+            },
+            {
+                "xxx": {}
+            },
+            {
+                "site": {}
+            },
+            {
+                "device": {}
+            },
+            {
+                "lang": {
+                    "en": {
+                        "en_GB": null,
+                        "en_US": null,
+                        "en_CA": null
+                    },
+                    "fr": {
+                        "fr_FR": {
+                            "fr_CA": null
+                        }
+                    }
+                }
+            },
+            {
+                "region": {
+                    "us": null,
+                    "ca": null,
+                    "gb": {
+                        "ir": null
+                    },
+                    "fr": null
+                }
+            },
+            {
+                "jurisdiction": {}
+            },
+            {
+                "bucket": {}
+            },
+            {
+                "flavor": {
+                    "att": null,
+                    "bt": null
+                }
+            }
+        ]
+    }
+]

@@ -1,0 +1,69 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "device_assets",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"device_assets",
+                "path": "../../../examples/developer-guide/device_assets"
+            }
+        },
+
+        "dataprovider" : {    
+            "deviceassets" : {
+                "group" : "developerguide,device_assets",
+                "params" : {
+                    "scenario": [
+                        {
+                            "page" : "$$config.baseUrl$$/"
+                        },
+                        {
+                            "controller": "locator",
+                            "params": {
+                                "using": "xpath",
+                                "value": "/html/body/div/ul/li/a",
+                                "click": true
+                            }
+                        },
+                        {
+                            "test" : "test_device_assets.js",
+                            "testName": "first"
+                        },
+                        {
+                            "controller": "locator",
+                            "params": {
+                                "using": "xpath",
+                                "value": "/html/body/div/ul/li[2]/a",
+                                "click": true
+                            }
+                        },
+                        {
+                            "test" : "test_device_assets.js",
+                            "testName": "second"
+                        },
+                        {
+                            "controller": "locator",
+                            "params": {
+                                "using": "xpath",
+                                "value": "/html/body/div/ul/li[3]/a",
+                                "click": true
+                            }
+                        },
+                        {
+                            "test" : "test_device_assets.js",
+                            "testName": "third"
+                        }
+                    ]
+                }
+            }
+        }     
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

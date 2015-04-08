@@ -1,0 +1,30 @@
+<h1>Merged Parameters Test</h1>
+
+<h2>POST Parameters</h2>
+
+<p>{{desc}}</p>
+
+<form id='posttest' action="/MergeParams?name=Hillary%20Clinton" method="POST">
+    <input type="text" name="name" id="name"/><br/>
+    <select name="likes" id="likes">
+        <option value="pizza">pizza</option>
+        <option value="ice cream">ice cream</option>
+        <option value="spinach">spinach</option>
+        <option value="popcorn">popcorn</option>
+    </select><br/>
+    <input id="submitbutton" type="submit" value="Submit"/>
+</form>
+
+<p>{{desc1}}</p>
+
+<form id='postsimpletest' action="/MergeParamsSimple?name=Hillary%20Clinton" method="POST">
+    <input type="text" name="name" id="nameSimple"/><br/>
+    <select name="likes" id="likesSimple">
+        <option value="pizza">pizza</option>
+        <option value="ice cream">ice cream</option>
+        <option value="spinach">spinach</option>
+        <option value="popcorn">popcorn</option>
+    </select><br/>
+    <input id="submitsimplebutton" type="submit" value="Submit"/>
+</form>
+

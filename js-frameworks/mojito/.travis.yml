@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "0.10"
+env:
+  - "testtype=unit"
+  - "testtype=func"
+script:
+  - "cd tests && sh runall.sh $testtype"
+before_install:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - "wget -nv http://selenium.googlecode.com/files/selenium-server-standalone-2.39.0.jar"
+  - "java -jar selenium-server-standalone-2.39.0.jar -p 4444 > /dev/null &"
+  - "sleep 6"

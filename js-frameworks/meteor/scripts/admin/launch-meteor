@@ -1,0 +1,93 @@
+#!/bin/bash
+
+# This is the script that we install somewhere in your $PATH (as "meteor")
+# when you run
+#   $ curl https://install.meteor.com/ | sh
+# It's the only file that we install globally on your system; each user of
+# Meteor gets their own personal package and tools repository, called the
+# warehouse (or, for 0.9.0 and newer, the "tropohouse"), in ~/.meteor/. This
+# means that a user can share packages among multiple apps and automatically
+# update to new releases without having to have permissions to write them to
+# anywhere global.
+#
+# All this script does is exec ~/.meteor/meteor. But what if you don't have it
+# yet? In that case, it downloads a "bootstrap tarball", which contains the
+# latest version of the Meteor tools, and plops it down at ~/.meteor. In fact,
+# once you've run this once, you don't even really need this script: you can put
+# ~/.meteor/ into your PATH, or a symlink to ~/.meteor/meteor into some other
+# PATH directory. No special permissions needed!
+#
+# To uninstall Meteor from your system, just delete this shell script, and
+# delete your warehouse (~/.meteor/).
+
+
+set -e
+set -u
+set -o pipefail  # so curl failure triggers the "set -e"
+
+BOOTSTRAP_URL='https://packages.meteor.com/bootstrap-link'
+METEOR_WAREHOUSE_DIR="${METEOR_WAREHOUSE_DIR:-$HOME/.meteor}"
+
+if [ ! -x "$METEOR_WAREHOUSE_DIR/meteor" ]; then
+  if [ -e "$METEOR_WAREHOUSE_DIR" ]; then
+    echo "'$METEOR_WAREHOUSE_DIR' exists, but '$METEOR_WAREHOUSE_DIR/meteor' is not executable." 1>&2
+    echo 1>&2
+    echo "Remove it and try again." 1>&2
+    exit 1
+  fi
+
+  # Bootstrap .meteor from a tarball. First, figure out our architecture.
+
+  UNAME=$(uname)
+  if [ "$UNAME" != "Linux" -a "$UNAME" != "Darwin" ] ; then
+      echo "Sorry, this OS is not supported yet."
+      exit 1
+  fi
+
+  if [ "$UNAME" = "Darwin" ] ; then
+      ### OSX ###
+      if [ "i386" != "$(uname -p)" -o "1" != "$(sysctl -n hw.cpu64bit_capable 2>/dev/null || echo 0)" ] ; then
+          # Can't just test uname -m = x86_64, because Snow Leopard can
+          # return other values.
+          echo "Only 64-bit Intel processors are supported at this time."
+          exit 1
+      fi
+      PLATFORM="os.osx.x86_64"
+  elif [ "$UNAME" = "Linux" ] ; then
+      ### Linux ###
+      LINUX_ARCH=$(uname -m)
+      if [ "${LINUX_ARCH}" = "i686" ] ; then
+          PLATFORM="os.linux.x86_32"
+      elif [ "${LINUX_ARCH}" = "x86_64" ] ; then
+          PLATFORM="os.linux.x86_64"
+      else
+          echo "Unusable architecture: ${LINUX_ARCH}"
+          echo "Meteor only supports i686 and x86_64 for now."
+          exit 1
+      fi
+  fi
+
+  # This returns something like:
+  #   https://asdfasdfasdf.cloudfront.net/packages-bootstrap/1.2.3
+  ROOT_URL="$(curl -s --fail $BOOTSTRAP_URL)"
+  TARBALL_URL="${ROOT_URL}/meteor-bootstrap-${PLATFORM}.tar.gz"
+
+  INSTALL_TMPDIR="$(dirname "$METEOR_WAREHOUSE_DIR")/.meteor-install-tmp"
+  rm -rf "$INSTALL_TMPDIR"
+  mkdir "$INSTALL_TMPDIR"
+  if [ -n "$USER" ]; then
+    echo "$USER, this is your first time using Meteor!" 1>&2
+  else
+    echo "This is your first time using Meteor!" 1>&2
+  fi
+  echo "Installing a Meteor distribution in your home directory." 1>&2
+  curl --progress-bar --fail "$TARBALL_URL" | tar -xzf - -C "$INSTALL_TMPDIR"
+  # bomb out if it didn't work, eg no net
+  test -x "${INSTALL_TMPDIR}/.meteor/meteor"
+  mv "${INSTALL_TMPDIR}/.meteor" "$METEOR_WAREHOUSE_DIR"
+  rmdir "${INSTALL_TMPDIR}"
+  # just double-checking :)
+  test -x "$METEOR_WAREHOUSE_DIR/meteor"
+fi
+
+exec "$METEOR_WAREHOUSE_DIR/meteor" "$@"

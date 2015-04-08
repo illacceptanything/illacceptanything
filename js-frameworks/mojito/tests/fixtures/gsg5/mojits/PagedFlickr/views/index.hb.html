@@ -1,0 +1,21 @@
+<div id="{{mojit_view_id}}" class="mojit">
+    <h2>{{ greeting }} - {{ date }}</h2>
+    <ul class="pics">
+        {{#images}}
+            <li class="pic"><a href="{{detail_url}}"><img src="{{url}}" alt="{{title}}"/></a></li>
+        {{/images}}
+    </ul>
+    <div id="paginate">
+        <span>
+            {{#prev}}
+                <a href="{{{url}}}">{{title}}</a>
+            {{/prev}}
+        </span>
+        <span>
+            {{#next}}
+                <a href="{{{url}}}">{{title}}</a>
+            {{/next}}
+        </span>
+        <span>
+    </div>
+</div>

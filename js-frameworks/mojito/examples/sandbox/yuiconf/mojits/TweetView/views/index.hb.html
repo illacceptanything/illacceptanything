@@ -1,0 +1,13 @@
+<div id="{{mojit_view_id}}" class="tweet-view">
+
+    <h2>{{screenName}}'s Tweets</h2>
+
+    <ul class="tweets">
+        {{#tweets}}
+            <li class="tweet">
+                <p class="text">{{text}}</p>
+                <p class="date">{{created_at}}</p>
+            </li>
+        {{/tweets}}
+    </ul>
+</div>

@@ -1,0 +1,64 @@
+[
+    {
+        "settings": [ "master" ],
+        "name": "rs-addon-unit-tests",
+        "config": {
+            "lib": "../../../../../../lib",
+            "base": "../../../../../base"
+        },
+        "commonlib": "$$config.base$$/mojito-test.js,$$config.lib$$/app/autoload/util.common.js",
+        "dataprovider": {
+            "config.server": {
+                "params": {
+                    "lib": "$$config.lib$$/app/addons/rs/config.js",
+                    "test": "./test-config.js",
+                    "driver": "nodejs"
+                },
+                "group": "fw,server"
+            },
+            "dispatch-helper.server": {
+                "params": {
+                    "lib": "$$config.lib$$/app/addons/rs/dispatch-helper.js,$$config.lib$$/app/addons/rs/config.js,$$config.lib$$/app/addons/rs/selector.js,$$config.lib$$/app/addons/rs/yui.js,$$config.lib$$/app/autoload/store.server.js,$$config.lib$$/app/addons/rs/url.js",
+                    "test": "./test-dispatch-helper.js",
+                    "driver": "nodejs"
+                },
+                "group": "fw,server"
+            },
+            "mime.server": {
+                "params": {
+                    "lib": "$$config.lib$$/app/addons/rs/mime.js",
+                    "test": "./test-mime.js",
+                    "driver": "nodejs"
+                },
+                "group": "fw,server"
+            },
+            "selector.server": {
+                "params": {
+                    "lib": "$$config.lib$$/app/addons/rs/selector.js,$$config.lib$$/app/addons/rs/config.js",
+                    "test": "./test-selector.js",
+                    "driver": "nodejs"
+                },
+                "group": "fw,server"
+            },
+            "url.server": {
+                "params": {
+                    "lib": "$$config.lib$$/app/addons/rs/url.js",
+                    "test": "./test-url.js",
+                    "driver": "nodejs"
+                },
+                "group": "fw,server"
+            },
+            "yui.server": {
+                "params": {
+                    "lib": "$$config.lib$$/app/addons/rs/yui.js,$$config.lib$$/app/addons/rs/config.js,$$config.lib$$/app/addons/rs/selector.js,$$config.lib$$/app/addons/rs/url.js,$$config.lib$$/app/autoload/store.server.js",
+                    "test": "./test-yui.js",
+                    "driver": "nodejs"
+                },
+                "group": "fw,server"
+            }
+        }
+    },
+    {
+        "settings": [ "environment:development" ]
+    }
+]

@@ -1,0 +1,51 @@
+<div id="{{mojit_view_id}}" class="container">
+    <div id="spinner">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+        <div class="bar4"></div>
+        <div class="bar5"></div>
+        <div class="bar6"></div>
+        <div class="bar7"></div>
+        <div class="bar8"></div>
+    </div>
+    <ul class="main-sv">
+        {{#stories}}
+        <li class="item-sv">
+            <div class="content-box">
+                <div class="content-title">
+                    <h2>{{feedname}}</h2>
+                </div>
+                <div class="contents-nav">
+                    <a href="index.html">Contents</a>
+                </div>
+                <div class="url-nav">
+                    <a href="{{link}}" target="blank">Source</a>
+                </div>
+                <div class="content style-simple {{css_style}}">
+                    <h3>{{{title}}}</h3>
+                    <div id="desc">
+                        {{{description}}}
+                    </div>
+                </div>
+                <div>
+                    <a class="link-prev" href="{{prev}}">&laquo;</a>
+                    <a class="link-next" href="{{next}}">&raquo;</a>
+                </div>
+            </div>
+        </li>
+        {{/stories}}
+    </ul>
+    <div class="nav hidden">
+        {{#navdots}}
+        <span>&bull;</span>
+        {{/navdots}}
+    </div>
+    <div class="iframe hidden">
+        <div class="iframe-header">
+            <div class="iframe-nav">
+                <a href="#">Close</a>
+            </div>
+        </div>
+    </div>
+</div>

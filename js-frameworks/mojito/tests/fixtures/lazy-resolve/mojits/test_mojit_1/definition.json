@@ -1,0 +1,8 @@
+[
+    {
+        "settings": [ "master" ],
+        "models": {
+            "other_1": "/path/to/other_1"
+        }
+    }
+]

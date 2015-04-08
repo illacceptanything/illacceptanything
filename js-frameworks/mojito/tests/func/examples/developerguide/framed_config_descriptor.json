@@ -1,0 +1,30 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "framed_config",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"framed_config",
+                "path": "../../../examples/developer-guide/framed_config"
+            }
+        },
+
+        "dataprovider" : {    
+            "framedconfig" : {
+                 "group" : "developerguide,framed_config",
+                 "params" : {
+                             "test" : "test_framed_config.js",
+                             "page" : "$$config.baseUrl$$/"
+                }
+            }
+        }     
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

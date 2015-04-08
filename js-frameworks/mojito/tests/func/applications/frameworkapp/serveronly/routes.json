@@ -1,0 +1,79 @@
+[{
+    "settings": ["master"],
+	"root": {
+        "verbs": ["get", "post", "put", "head", "delete"],
+        "path": "/frame",
+        "call": "frame.index"
+    },
+    "cookie": {
+        "verbs": ["get"],
+        "path": "/cookietest",
+        "call": "cookies.index"
+    },
+	"show cookies": {
+        "verbs": ["get"],
+        "path": "/cookies",
+        "call": "cookies.showCookies"
+    },
+    "servercookie": {
+        "verbs": ["get"],
+        "path": "/serverCookie",
+        "call": "serverCookie.index"
+    },
+	"YivParams": {
+        "verbs": ["get"],
+        "path": "/YivParams",
+        "call": "YivParams.filteredParams"
+    },
+    "yca": {
+        "verbs": ["get"],
+        "path": "/yca/index",
+        "call": "Yca.index"
+    },
+    "inst2": {
+        "call": "inst2.index",
+        "path": "/inst2"
+    },
+    "inst1": {
+        "call": "inst1.",
+        "path": "/inst1"
+    },
+    "inst01": {
+        "call": "inst01.",
+        "path": "/inst01"
+    },
+    "inst0": {
+        "call": "inst0.",
+        "path": "/inst0"
+    },
+    "others": {
+        "verbs": ["get"],
+        "path": "/otherFeatures/index",
+        "call": "otherFeatures.index"
+    },
+    "rest-ws1": {
+        "verbs": ["get"],
+        "path": "/rest/index",
+        "call": "restWS.simpleWSCall"
+    },
+    "rest-ws2": {
+        "verbs": ["get"],
+        "path": "/rest/inspect_response",
+        "call": "restWS.inspectResponse"
+    },
+    "rest-ws3": {
+        "verbs": ["get"],
+        "path": "/rest/myws",
+        "call": "restWS.myWS"
+    },
+    "rest-ws4": {
+        "verbs": ["get"],
+        "path": "/rest/timeout_ws",
+        "call": "restWS.WSTimeout"
+    },
+    "refresh": {
+        "verbs": ["get"],
+        "path": "/refreshview",
+        "call": "refreshViewFrame.index"
+    }
+}]

@@ -1,0 +1,50 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "device_views",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"device_views",
+                "path": "../../../examples/developer-guide/device_views"
+            }
+        },
+
+        "dataprovider" : {    
+           "deviceviews" : {
+                 "group" : "developerguide,device_views",
+                 "params" : {
+                    "scenario": [
+                        {
+                            "test" : "test_device_views.js",
+                            "page" : "$$config.baseUrl$$/",
+                            "testName": "Default"
+                        },
+                        {
+                            "test" : "test_device_views.js",
+                            "page" : "$$config.baseUrl$$/?device=iphone",
+                            "testName": "iPhone"
+                        },
+                        {
+                            "test" : "test_device_views.js",
+                            "page" : "$$config.baseUrl$$/?device=android",
+                            "testName": "Android"
+                        },
+                        {
+                            "test" : "test_device_views.js",
+                            "page" : "$$config.baseUrl$$/?device=blackberry",
+                            "testName": "BlackBerry"
+                        }
+                    ]
+                }
+            }
+        }     
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

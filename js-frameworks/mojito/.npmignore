@@ -1,0 +1,15 @@
+.DS_Store
+.git/
+.lock-wscript
+.svn/
+*.bak
+*~
+/docs
+/tests
+arrowreport
+artifacts
+examples
+flatfile
+Makefile
+*_descriptor-report.json
+*_descriptor-report.xml

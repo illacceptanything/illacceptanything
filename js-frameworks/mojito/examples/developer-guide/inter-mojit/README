@@ -1,0 +1,46 @@
+
+Example:
+
+This demo shows how to configure mojits for inter communication between themselves.
+
+
+Summary:
+
+This demo shows how to:
+- Layout your mojits so that they can communicate with each other
+- Implement the binder for each mojit for binding, triggering and listening for events
+
+Review the examples on deploying mojit to client and binding events before going through
+this example.
+
+- SenderMojit: fires event in response to user action
+- MasterMojit: captures that event, and re fires another event to notify all its children
+  listening to that event
+- ReceiverMojit: captures the event from the MasterMojit and takes action.
+
+Specifics:
+- application.json
+- routes.json
+- mojits/MasterMojit/controller.server.js 
+- mojits/MasterMojit/binders/binder.js
+- mojits/ReceiverMojit/controller.server.js 
+- mojits/ReceiverMojit/binders/binder.js
+- mojits/ReceiverMojit/views/index.html
+- mojits/SenderMojit/controller.serverjs 
+- mojits/SenderMojit/binders/binder.js
+- mojits/SenderMojit/views/index.html
+
+
+Relevant Files:
+./mojits/SenderMojit/controller.server.js
+./routes.json
+./application.json
+./mojits/SenderMojit/views/index.html
+- mojits/SenderMojit/binders/binder.js
+
+Modified Files:
+./application.json
+./routes.json
+./mojits/SenderMojit/controller.server.js
+./mojits/SenderMojit/views/index.html
+- mojits/SenderMojit/binders/binder.js

@@ -1,0 +1,23 @@
+{
+    "name": "simple_config_test",
+    "description": "My Mojito application",
+    "version": "0.0.1",
+    "author": "Your Name <nobody@yahoo-inc.com>",
+    "contributors": [
+          {
+              "name": "Your Name",
+              "email": "nobody@yahoo-inc.com"
+          }
+    ],
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "mojito": ">= 0.8.0"
+    },
+    "devDependencies": {},
+    "engines": {
+        "node": "*"
+    }
+}
+

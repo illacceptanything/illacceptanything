@@ -1,0 +1,31 @@
+[
+    {
+        "settings": [ "master" ],
+        "name" : "trib_app",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"input",
+                "path": "../"
+            }
+        },
+        "dataprovider" : { 
+            "test trib app index page" : {
+                "group" : "tribapp",
+                "params" : {
+                    "scenario": [
+                        {
+                            "test" : "test_yui_dashboard.js",
+                            "page" : "$$config.baseUrl$$"
+                        }
+                     ]
+                }
+            }
+        }    
+    },
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

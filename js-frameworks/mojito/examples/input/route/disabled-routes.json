@@ -1,0 +1,12 @@
+[
+    {
+        "settings": [ "master" ],
+        
+        "root": {
+            "verbs": ["get"],
+            "path": "/",
+            "call": "route-grabber.index",
+            "params": "foo=fooval&bar=barval"
+        }
+    }
+]

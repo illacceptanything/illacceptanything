@@ -1,0 +1,28 @@
+[
+    {
+        "settings": [ "master" ],
+        "config": {
+            "myenv": "This is from defaults.json:master",
+           	"mysubject": "This is from defaults.json:master",
+			"mylang": "This is from defaults.json:master"
+        }
+    },
+    {
+        "settings": [ "runtime:server" ],
+        "config": {
+            "myenv": "This is from defaults.json:runtime:server"
+        }
+    },
+    {
+        "settings": [ "subject:math" ],
+        "config": {
+            "mysubject": "This is from defaults.json:subject:math"
+        }
+    },
+    {
+        "settings": [ "lang:de" ],
+        "config": {
+            "mylang": "This is from defaults.json:lang:de"
+        }
+    }
+]

@@ -1,0 +1,8 @@
+# The the routes file
+-
+    # These are the dimensions that will be affected by these settings
+    settings: [master]
+
+    type: "simple"
+    config:
+        message: "YAML Config from a spec file."

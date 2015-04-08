@@ -1,0 +1,17 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "specs": {
+            "home": {
+                "type": "HTMLFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "child": {
+                        "type": "ClickLog"
+                    }
+                }
+            }
+        }
+    }
+]

@@ -1,0 +1,34 @@
+[{
+    "settings": [ "master" ],
+    "staticHandling": {
+        "cache": false,
+        "forceUpdate": true
+    },
+    "specs": {
+        "corporate": {
+            "type": "HTMLFrameMojit",
+            "config": {
+                "deploy": true,
+                "title": "using configs",
+                "child": {
+                    "type": "ContactUs"
+                }
+            }
+        },
+
+        "subsidiary": {
+            "base": "corporate",
+            "config": {
+                "deploy": true,
+                "child": {
+                    "type": "ContactUs",
+                    "config": {
+                        "company": "BooYah Inc. (a WooHah company)",
+                        "copyright": "Copyright BooYah Inc. 2012 (a WooHah subsidiary)",
+                        "key": "subsidiary"
+                    }
+                }
+            }
+        }
+    }
+}]

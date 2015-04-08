@@ -1,0 +1,21 @@
+Example:
+This is the HTML Frame Application configuration example.
+
+Summary:
+By defining "HTMLFrameMojit" as the parent mojit, Mojito framework will automatically wrapped
+any child mojit with proper open and close <HTML> tags.
+
+Specifics:
+- application.yaml: see how an HTMLFrameMojit is defined as a parent mojit, and how a child mojit is added to the HTMLFrameMojit
+- routes.json: simplest routing configuration to set up the path "/" to call the mojit
+
+Relevant Files:
+./application.json
+./routes.json
+
+Modified Files:
+./application.json
+./routes.json
+./mojits/MainMojit/views/index.hb.html
+./mojits/MainMojit/controller.server.js
+

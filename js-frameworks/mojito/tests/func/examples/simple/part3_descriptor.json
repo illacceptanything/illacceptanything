@@ -1,0 +1,30 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "part3",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"part3",
+                "path": "../../../examples/simple/part3"
+            }
+        },
+
+        "dataprovider" : { 
+            "part3" : {
+                 "group" : "simple,part3",
+                 "params" : {
+                      "test" : "test_part3.js",
+                      "page" : "$$config.baseUrl$$/myBase/index"
+                }
+            }
+        }     
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

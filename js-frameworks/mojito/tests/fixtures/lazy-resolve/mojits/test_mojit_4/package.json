@@ -1,0 +1,11 @@
+{
+    "name": "TestMojit4",
+    "yahoo": {
+        "mojito": {
+            "package": "public"
+        }
+    },
+    "engines": {
+        "mojito": "<0.1.0"
+    }
+}

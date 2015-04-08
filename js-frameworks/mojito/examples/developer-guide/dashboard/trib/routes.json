@@ -1,0 +1,15 @@
+[{
+    "settings": [ "master" ],
+    "root": {
+        "verbs": ["get"],
+        "path": "/",
+        "call": "tribframe.index",
+        "params": {"view_type": "yui"}
+    },
+    "mojito_view":{
+        "verbs": ["get"],
+        "path": "/mojito",
+        "call": "tribframe.index",
+        "params": {"view_type": "mojito"}
+    }
+}]

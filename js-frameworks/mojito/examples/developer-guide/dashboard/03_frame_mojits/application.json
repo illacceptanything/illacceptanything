@@ -1,0 +1,28 @@
+[
+    {
+        "settings": [ "master" ],
+        "specs": {
+           "tribframe": {
+              "type": "HTMLFrameMojit",
+              "config": {
+                 "deploy": true,
+                 "title": "Trib - YUI/Mojito Developer Dashboard",
+                 "child": {
+                     "type": "Github"
+                  },
+                 "assets": {
+                    "top": {
+                        "css": ["/static/03_frame_mojits/assets/trib.css"]
+                    }
+                 }
+              }
+           }
+        }
+    },
+    {
+        "settings": [ "environment:development" ],
+        "staticHandling": {
+            "forceUpdate": true
+        }
+    }
+]

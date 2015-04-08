@@ -1,0 +1,11 @@
+/dist/
+mootools-core.tmproj
+mootools-core.esproj
+mootools-core-mobile.js
+.DS_Store
+*~
+node_modules
+mootools-all.js
+mootools-nocompat.js
+mootools-specs.js
+sauce*.log

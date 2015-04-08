@@ -1,0 +1,28 @@
+[
+    {
+        "settings": [ "master" ],
+        "specs": {
+           "github": {
+               "type": "Github",
+               "config": {
+                   "title": "Trib - YUI/Mojito Developer Dashboard"
+               }
+           },
+           "header": {
+               "type": "Header"
+           },
+           "body": {
+               "type": "Body"
+           },
+           "footer": {
+               "type": "Footer"
+           }
+       }
+    },
+    {
+        "settings": [ "environment:development" ],
+        "staticHandling": {
+            "forceUpdate": true
+        }
+    }
+]

@@ -1,0 +1,12 @@
+[{
+    "settings": [ "master" ],
+    
+    "config": {
+        "testKey4": "testVal4",
+        "testKey5": "testVal5",
+        "testKey6": {
+            "testKey7": "testVal7"
+        }
+    }
+
+}]

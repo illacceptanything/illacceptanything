@@ -1,0 +1,81 @@
+{
+    "name": "mojito",
+    "version": "0.9.8",
+    "description": "Mojito provides an architecture, components and tools for developers to build complex web applications faster.",
+    "author": "Drew Folta <folta@yahoo-inc.com>",
+    "contributors": [
+        "Ric Allinson <allinson@yahoo-inc.com>",
+        "Matt Taylor <mtaylor@yahoo-inc.com>",
+        "Chris Klaiber <cklaiber@yahoo-inc.com>",
+        "Drew Folta <folta@yahoo-inc.com>",
+        "Martin Cooper <mcooper@yahoo-inc.com>",
+        "Isao Yagi <isao@yahoo-inc.com>",
+        "Michael Ridgway <mridgway@yahoo-inc.com>",
+        "Caridy Patino <caridy@yahoo-inc.com>",
+        "Alberto Chan <albertoc@yahoo-inc.com>",
+        "Lichun Zhan <lzhan@yahoo-inc.com>",
+        "Albert Jimenez <jimenez@yahoo-inc.com>"
+    ],
+    "dependencies": {
+        "debug": "0.8.x",
+        "express-state": "1.1.x",
+        "express-map": "0.1.x",
+        "glob": "3.2.x",
+        "js-yaml": "3.0.x",
+        "mime": "1.2.x",
+        "request": "2.34.x",
+        "semver": "2.2.x",
+        "ycb": "1.1.x",
+        "yui": "3.18.x"
+    },
+    "keywords": [
+        "framework",
+        "modown",
+        "webapp"
+    ],
+    "main": "lib/mojito",
+    "directories": [
+        "bin",
+        "docs",
+        "lib"
+    ],
+    "engines": {
+        "node": ">0.6",
+        "npm": ">1.0"
+    },
+    "devDependencies": {
+        "async": "0.6.x",
+        "benchmark": "1.x",
+        "commander": "1.0.1",
+        "express": "3.5.x",
+        "minimist": "~0.0.5",
+        "mockery": "~1.4.0",
+        "mojito-cli": "~0.1",
+        "node-static": ">0.6.8",
+        "wrench": "~1.3.9",
+        "yahoo-arrow": "0.5.x",
+        "portfinder": "0.2.1"
+    },
+    "optionalDependencies": {
+        "phantomjs": ">=1.8.0"
+    },
+    "scripts": {
+        "test": "cd tests && node run.js test --browser phantomjs",
+        "unit": "cd tests && node run.js test -u --browser phantomjs",
+        "func": "cd tests && node run.js test -f --browser phantomjs",
+        "lint": "mojito jslint app --ex examples --ex docs -p",
+        "docs": "mojito docs mojito"
+    },
+    "homepage": "http://developer.yahoo.com/cocktails/mojito/",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/yahoo/mojito.git"
+    },
+    "bugs": "https://github.com/yahoo/mojito/issues",
+    "yahoo": {
+        "mojito": {
+            "type": "bundle",
+            "location": "lib/app"
+        }
+    }
+}

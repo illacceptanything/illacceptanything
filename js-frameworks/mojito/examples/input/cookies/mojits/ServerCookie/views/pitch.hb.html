@@ -1,0 +1,26 @@
+<h1>Cookies</h1>
+<h2>Writing cookies on the server</h2>
+<p>You should have 2 visible cookies on your client right now, and here they are:</p>
+
+<div id="cookies">
+    <ul></ul>
+</div>
+
+<p>You should NOT see an HTTP Only cookie called "noClient". But if you look in your browser cookie cache, you'll see it.</p>
+
+<p>Now click <a href="/server/catch">here</a> to see an example of the server reading these cookies back.</p>
+
+<!-- JS -->
+<script type="text/javascript" src="http://yui.yahooapis.com/combo?3.3.0/build/yui/yui-debug.js&3.3.0/build/cookie/cookie-debug.js&3.3.0/build/oop/oop-debug.js&3.3.0/build/dom/dom-base-debug.js&3.3.0/build/dom/selector-native-debug.js&3.3.0/build/dom/selector-css2-debug.js&3.3.0/build/event-custom/event-custom-base-debug.js&3.3.0/build/event/event-base-debug.js&3.3.0/build/node/node-base-debug.js&3.3.0/build/event/event-base-ie-debug.js&3.3.0/build/dump/dump-debug.js"></script>
+
+<script>
+    YUI().use('cookie', 'node', function(Y) {
+        var name = Y.Cookie.get('name'),
+            city = Y.Cookie.get('city'),
+            all = document.cookie,
+            target = Y.one('#cookies ul');
+        target.append('<li>name: ' + name + '</li>');
+        target.append('<li>city: ' + city + '</li>');
+        target.append('<li>all cookies: ' + all + '</li>');
+    });
+</script>

@@ -1,0 +1,14 @@
+[
+  {
+    "settings": [ "master" ],
+    "staticHandling": {
+        "cache": false,
+        "forceUpdate": true
+    },
+    "specs": {
+      "mymojit": {
+        "type": "GenerateURL"
+      }
+    }
+  }
+]

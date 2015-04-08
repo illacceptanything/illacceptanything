@@ -1,0 +1,62 @@
+[
+    {
+        "settings": [ "master" ],
+        "name" : "trib_app",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"input",
+                "path": "../"
+            }
+        },
+        "dataprovider" : {
+            "test trib app index page" : {
+                "group" : "tribapp",
+                "params" : {
+                    "scenario": [
+                        {
+                            "test" : "test_yui_dashboard.js",
+                            "page" : "$$config.baseUrl$$"
+                        },
+                        {
+                            "test" : "test_en-US_title.js",
+                            "page": "$$config.baseUrl$$?lang=en-US"
+                        },
+                        {
+                            "test" : "test_zh-Hans_title.js",
+                            "page": "$$config.baseUrl$$?lang=zh-Hans"
+                        },
+                        {
+                            "test" : "test_es-419_title.js",
+                            "page": "$$config.baseUrl$$?lang=es-419"
+                        },
+                        {
+                           "controller": "locator",
+                           "params": {
+                                  "value": "a.yui3-button.swap",
+                                  "click": true
+                           }
+                        },
+                        {
+                           "test" : "test_mojito_dashboard.js"
+                        },
+                        {
+                           "controller": "locator",
+                           "params": {
+                                  "value": "a.yui3-button.swap",
+                                  "click": true
+                           }
+                        },
+                        {
+                           "test" : "test_yui_dashboard.js"
+                        }
+                     ]
+                }
+            }
+        }
+    },
+    {
+        "settings": [ "environment:development" ]
+    }
+]

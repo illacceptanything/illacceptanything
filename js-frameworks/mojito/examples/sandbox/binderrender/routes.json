@@ -1,0 +1,10 @@
+[{
+    "settings": ["master"],
+
+    "home": {
+        "verbs": ["get"],
+        "path": "/",
+        "call": "home.index"
+    }
+
+}]

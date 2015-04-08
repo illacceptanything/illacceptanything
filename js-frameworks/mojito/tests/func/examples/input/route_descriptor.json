@@ -1,0 +1,30 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "route",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"route",
+                "path": "../../../examples/input/route"
+            }
+        },
+
+        "dataprovider" : { 
+            "route" : {
+                "group" : "input,route",
+                "params" : {
+                    "test" : "test_route.js",
+                    "page" : "$$config.baseUrl$$"
+                }
+            }
+        }     
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

@@ -1,0 +1,61 @@
+[{
+    "settings": ["master"],
+    "root": {
+        "verbs": ["get", "post", "put", "head", "delete"],
+        "path": "/",
+        "call": "frame.index"
+    },
+	"default-for-html5app": {
+        "verbs": ["get"],
+        "path": "/mytestpath/index.html",
+        "call": "frame.index"
+    },
+	"flatfilechecking1": {
+        "verbs": ["get", "post", "put", "head", "delete"],
+        "path": "/test1/url1/flatfile1.html",
+        "call": "Binders_HTMLFrame.myIndex"
+    },
+	"flatfilechecking2": {
+        "verbs": ["get", "post", "put", "head", "delete"],
+        "path": "/test2/url2/flatfile2.html",
+        "call": "CM_Layout_HTMLFrame.myIndex"
+    },
+    "CM_Layout_HTML": {
+        "verbs": ["get", "post"],
+        "path": "/cmframe",
+        "call": "CM_Layout_HTMLFrame.myIndex"
+    },
+    "Binders_HTML": {
+        "verbs": ["get", "post"],
+        "path": "/binderframe",
+        "call": "Binders_HTMLFrame.myIndex"
+    },
+    "Assets_HTML_Location": {
+        "verbs": ["get", "post"],
+        "path": "/assetsframeloc",
+        "call": "MyAssets_HTMLFrame.assetsWithLocation"
+    },
+    "Assets_HTML_Default": {
+        "verbs": ["get", "post"],
+        "path": "/assetsframedefault",
+        "call": "MyAssets_HTMLFrame.assetsByDefault"
+    },
+    "mergeposter": {
+        "verbs": ["get"],
+        "path": "/MergePost",
+        "call": "MergePoster.index"
+    },
+
+    "searchmojit": {
+        "verbs": ["get"],
+        "path": "/SearchMojit",
+        "call": "SearchMojit.index"
+    },
+	"Access_AppLevel_Model_Data": {
+        "verbs": ["get"],
+        "path": "/getModelInfo",
+        "call": "GetAppLevelInfo.accessModel"
+    }
+
+
+}]

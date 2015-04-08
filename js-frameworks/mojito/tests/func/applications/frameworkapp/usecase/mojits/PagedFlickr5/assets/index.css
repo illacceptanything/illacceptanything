@@ -1,0 +1,12 @@
+.pics .pic img {
+    height: 60px;
+    width: 60px;
+}
+#paginate span { margin:1em; }
+
+ul.pics {
+    list-style-type: none;
+}
+ul.pics .pic { 
+    padding: 1px;
+}

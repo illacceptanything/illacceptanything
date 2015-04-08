@@ -1,0 +1,15 @@
+[
+    {
+        "settings": [ "master" ],
+        "flickr_by_page": {
+            "verbs": ["get"],
+            "path": "/flickr/page/:page",
+            "call": "flickr.index"
+        },
+        "flickr_base": {
+            "verbs": ["get"],
+            "path": "/flickr",
+            "call": "flickr.index"
+        }
+    }
+]

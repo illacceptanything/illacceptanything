@@ -1,0 +1,14 @@
+<div id="{{mojit_view_id}}" class="mojit">
+    <div class="mod" id="gallery">
+        {{> widget_heading}}
+        <div class="inner galleryFlow">
+            <ul>
+                {{#results}}
+                    {{#json}}
+                        <li>{{{linker this "http://yuilibrary.com/gallery/buildtag/" this }}}</a></li>
+                    {{/json}}
+                {{/results}}
+            </ul>
+        </div>
+    </div>
+</div>

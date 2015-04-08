@@ -1,0 +1,138 @@
+body {
+    background-color: #F8F8F8;
+    padding-left: 8px;
+}
+
+div {
+    xborder: 1px solid red;
+}
+
+.pageLayout {
+    padding-top: 30px;
+}
+
+.mymodule {
+    border: 1px solid #2d2d2d;
+    margin: 8px;
+    padding: 16px;
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px #DDDDDD;
+
+    /** temp until get grids going **/
+    float: left;
+}
+
+.mymodule h3 {
+    margin: 0px;
+    padding: 0px;
+    font-weight: bold;
+}
+
+.myfooter {
+    clear: left;
+}
+
+.bodytext {
+    padding-left: 4px;
+}
+div.mod{
+    background-color: #F9F9FC;
+    border: 1px solid #D4D8EB;
+    border-radius: 4px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.15);
+    margin: 15px 8px;
+    xpadding-bottom: 1px;
+}
+
+div.mod h3 {
+    position: relative;
+    background-color: #E5E6F1;
+    border-radius: 4px 4px 0 0;
+    color: #5E6BA4;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin: 0;
+    padding: 4px 7px 5px;
+}
+
+div.mod h3 strong {
+    font-weight: bold;
+    padding-left: 25px;
+    background-repeat: no-repeat;
+    background-position: 2px;
+}
+
+/** for each mojit, add a bgimage for logo **/
+
+
+div.mod h3 a.close,
+div.mod h3 a.min {
+    background-color: #F9F9FC;
+    border:1px solid #E5E6F1;
+    color: #5E6BA4;
+    text-align: center;
+    display: block;
+    height: 19px;
+    width: 17px;
+    text-decoration: none;
+    font-weight: bold;
+    right: 4px;
+    top: 1px;
+    position: absolute;
+    font-size: 80%;
+    margin: 2px;
+    padding: 0;
+}
+div.mod h3 a.min {
+    right: 25px;
+}
+div.minned h3 a.min {
+    right: 25px;
+}
+div.mod div.inner {
+    overflow: hidden;
+    xpadding-right: 8px;
+}
+div.inner ul {
+    margin: 0;
+    padding: 0;
+}
+
+div.inner ul li {
+    list-style-type: none;
+    margin: 0;
+    padding: 8px 4px;
+    border-top: 1px solid #ececec;
+}
+
+div.inner ul li a {
+    text-decoration: none;
+    color: #000;
+}
+
+div.inner ul li {
+    background: rgb(255,255,255); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(241,241,241,1) 48%, rgba(225,225,225,1) 100%, rgba(246,246,246,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(48%,rgba(241,241,241,1)), color-stop(100%,rgba(225,225,225,1)), color-stop(100%,rgba(246,246,246,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(241,241,241,1) 48%,rgba(225,225,225,1) 100%,rgba(246,246,246,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(241,241,241,1) 48%,rgba(225,225,225,1) 100%,rgba(246,246,246,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(241,241,241,1) 48%,rgba(225,225,225,1) 100%,rgba(246,246,246,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(241,241,241,1) 48%,rgba(225,225,225,1) 100%,rgba(246,246,246,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0 ); /* IE6-9 */
+}
+
+.myfooter {
+    clear: left;
+}
+
+.bodytext {
+    padding-left: 4px;
+}
+
+.galleryFlow {
+    position:relative;
+    overflow: hidden;
+    height: 10.1em;
+
+}
+

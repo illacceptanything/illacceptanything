@@ -1,0 +1,6 @@
+[
+    {
+        "settings": [ "master" ],
+        "dependencies": [ "ColorChild" ]
+    }
+]

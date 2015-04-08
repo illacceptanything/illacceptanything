@@ -1,0 +1,111 @@
+[
+    {
+        "settings": [ "master" ],
+        "specs": {
+            "testpage": {
+                "type": "myMojit"
+            },
+			"Coverage": {
+				"type": "Coverage"
+			}
+        }
+    },
+    {
+        "settings": [ "environment:production" ],
+        "specs": {
+            "testpage": {
+                "type": "myMojit",
+                "config": {
+                    "myenv": "This is from application.json:environment:production"
+                }
+            },
+			"Coverage": {
+				"type": "Coverage"
+			}
+        }
+    },
+    {
+        "settings": [ "environment:testing" ],
+        "specs": {
+            "testpage": {
+                "type": "myMojit",
+                "config": {
+                    "myenv": "This is from application.json:environment:testing"
+                }
+            },
+			"Coverage": {
+				"type": "Coverage"
+			}
+        }
+    },
+    {
+        "settings": [ "environment:testing", "subject:math" ],
+        "specs": {
+            "testpage": {
+                "type": "myMojit",
+                "config": {
+                    "mysubject": "This is from application.json:environment:testing,subject:math"
+                }
+            },
+			"Coverage": {
+				"type": "Coverage"
+			}
+        }
+    },
+	{
+        "settings": [ "environment:testing", "subject:chemistry" ],
+        "specs": {
+            "testpage": {
+                "type": "myMojit",
+                "config": {
+                    "mysubject": "This is from application.json:environment:testing,subject:chemistry"
+                }
+            },
+			"Coverage": {
+				"type": "Coverage"
+			}
+        }
+    },
+    {
+        "settings": [ "environment:testing", "subject:science" ],
+        "specs": {
+            "testpage": {
+                "type": "myMojit",
+                "config": {
+                    "mysubject": "This is from application.json:environment:testing,subject:science"
+                }
+            },
+			"Coverage": {
+				"type": "Coverage"
+			}
+        }
+    },
+	{
+        "settings": [ "environment:testing", "lang:fr" ],
+        "specs": {
+            "testpage": {
+                "type": "myMojit",
+                "config": {
+                    "mylang": "This is from application.json:environment:testing,lang:fr"
+                }
+            },
+			"Coverage": {
+				"type": "Coverage"
+			}
+        }
+    },
+    {
+        "settings": [ "environment:testing", "lang:de" ],
+        "specs": {
+            "testpage": {
+                "type": "myMojit",
+                "config": {
+                    "mylang": "This is from application.json:environment:testing,lang:de"
+                }
+            },
+			"Coverage": {
+				"type": "Coverage"
+			}
+        }
+    }
+]

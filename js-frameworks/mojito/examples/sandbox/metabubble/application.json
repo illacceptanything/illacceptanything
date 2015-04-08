@@ -1,0 +1,68 @@
+[
+{
+    "settings": ["master"],
+    "specs": {
+        "frame": {
+            "type": "HTMLFrameMojit",
+            "config": {
+                "deploy": true,
+                "assets": {
+                    "top": {
+                        "css": ["/static/Parent/assets/style.css"]
+                    }
+                },
+                "child": {
+                    "type": "Parent",
+                    "config": {
+                        "children": {
+                            "one": {
+                                "type": "Child",
+                                "config": {
+                                    "color": "red"
+                                }
+                            },
+                            "two": {
+                                "type": "Child",
+                                "config": {
+                                    "color": "blue"
+                                }
+                            },
+                            "three": {
+                                "type": "Child",
+                                "config": {
+                                    "color": "yellow"
+                                }
+                            },
+                            "four": {
+                                "type": "Parent",
+                                "config": {
+                                    "children": {
+                                        "one": {
+                                            "type": "Child",
+                                            "config": {
+                                                "color": "purple"
+                                            }
+                                        },
+                                        "two": {
+                                            "type": "Child",
+                                            "config": {
+                                                "color": "orange"
+                                            }
+                                        },
+                                        "three": {
+                                            "type": "Child",
+                                            "config": {
+                                                "color": "green"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+]

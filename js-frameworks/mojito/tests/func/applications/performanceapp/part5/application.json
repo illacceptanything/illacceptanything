@@ -1,0 +1,25 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "specs": {
+            "myBase": {
+                "type": "HTMLFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "child": {
+                        "type": "myMojit"
+                    }
+                }
+            }
+        }
+    },
+    { "settings": [ "device:android" ], "selector": "android" },
+    { "settings": [ "device:blackberry" ], "selector": "blackberry" },
+    { "settings": [ "device:iemobile" ], "selector": "iemobile" },
+    { "settings": [ "device:ipad" ], "selector": "ipad" },
+    { "settings": [ "device:iphone" ], "selector": "iphone" },
+    { "settings": [ "device:kindle" ], "selector": "kindle" },
+    { "settings": [ "device:opera-mini" ], "selector": "opera-mini" },
+    { "settings": [ "device:palm" ], "selector": "palm" }
+]

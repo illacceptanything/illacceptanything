@@ -1,0 +1,15 @@
+[
+    {
+        "settings": ["master"],
+        "root": {
+            "verb": ["get"],
+            "path": "/",
+            "call": "frame.index"
+        },
+        "receiver": {
+            "verb": ["get"],
+            "path": "/receiver/show",
+            "call": "receiver.show"
+        }
+    }
+]

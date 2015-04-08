@@ -1,0 +1,13 @@
+<div id="{{mojit_view_id}}">
+    <h3>Test refreshing with unknown number of children</h3>
+    <form action="/localsearch">
+        <label>Search For: <input type="text" name="query" value="{{query}}"></label>
+        <label>Near: <input type="text" name="zip" value="{{zip}}"></label> 
+        <input type="submit" value="Search">
+    </form>
+    <ul class="results">
+    {{#results}}
+        <li class="result">{{{output}}}</li>
+    {{/results}}
+    </ul>
+</div>

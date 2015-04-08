@@ -1,0 +1,43 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "model_yql",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"model_yql",
+                "path": "../../../examples/developer-guide/model_yql"
+            }
+        },
+
+        "dataprovider" : {    
+            "modelyql" : {
+                "group" : "developerguide,model_yql",
+                "params" : {
+                    "scenario": [
+                        {
+                            "page" : "$$config.baseUrl$$/?environment=development"
+                        },
+                        {
+                            "controller": "locator",
+                            "params": {
+                                "using": "xpath",
+                                "value": "/html/body/div/ul/li/a/img"
+                            }
+                        },
+                        {
+                            "test" : "test_modelyql.js"
+                        }
+                    ]
+                }
+            }
+        }     
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

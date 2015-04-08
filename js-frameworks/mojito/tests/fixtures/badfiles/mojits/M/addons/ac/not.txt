@@ -1,0 +1,18 @@
+YUI.add('addon-ac-not', function(Y, NAME) {
+
+    function NotAddon(command, adapter, ac) {}
+
+    NotAddon.prototype = {
+
+        namespace: 'meta',
+
+        x: function() {},
+        y: function() {},
+
+        mergeMetaInto: function(meta) {}
+
+    };
+
+    Y.mojito.addons.ac.not = NotAddon;
+
+}, '0.1.0', {requires: []});

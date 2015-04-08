@@ -1,0 +1,26 @@
+{
+    "name": "server_side",
+    "description": "My Mojito application",
+    "version": "0.0.1",
+    "contributors": [
+          {
+              "name": "Your Name",
+              "email": "nobody@yahoo-inc.com"
+          }
+    ],
+    "config": {
+        "mojito": {
+            "version": "*"
+        }
+    },
+    "dependencies": {
+        "mojito": ">= 0.8.0"
+    },
+    "engines": {
+        "node": ">= 0.8"
+    },
+    "scripts": {
+        "start": "mojito start"
+    }
+}
+

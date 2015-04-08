@@ -1,0 +1,11 @@
+<div id="{{mojit_view_id}}">
+<h1>Cookies</h1>
+<h2>Reading cookies on the client</h2>
+<p>Here are the cookies the client found:</p>
+
+<ul>
+    {{#cookies}}
+        <li>{{key}} ==> {{value}}</li>
+    {{/cookies}}
+</ul>
+</div>

@@ -1,0 +1,183 @@
+[
+    {
+        "settings": [ "master" ],
+		"appPort": 8666,
+		"YouCanSeeMe": {
+			"youcanseeme": "itispublic"
+		},
+		"yui": {
+		    "config": {
+		        "fetchCSS": false,
+		        "testingyuiconfig": "myyuiconfig"
+		    },
+			"extraModules": ["plugin","jsonp","piechart","profiler","record","timeaxis","curveutil","axis","circle","column","cookie","dial","fills","graph","intl","panel","plots","node-event-delegate","transition","event-move","calendar","Array","ArrayList","ArraySort"]
+		},
+        "specs": {
+            "YivParams": {
+                "type":  "YivParams"
+            },
+            "Yca": {
+                "type":  "Yca"
+            },
+            "httpParent": {
+                "type":  "HttpAddonParent",
+                "config": {
+                     "children": {
+                          "httpChild": {
+                                "type": "HttpAddonChild"
+                          }
+                     }
+                 }
+            },
+            "restWSFrame": {
+                "type":  "HTMLFrameMojit",
+                "id": "restWSFrame",
+                "config": {
+                "deploy": true,
+                    "child": {
+                        "type": "RESTLib",
+                        "config": {
+                            "id": "myRestClient"
+                        }
+                    }
+                }
+            },
+            "cookies": {
+                "type": "HTMLFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "child": {
+                            "type": "Cookies"
+                    }
+                }
+            },
+            "serverCookie": {
+                "type":  "ServerCookie"
+            },
+            "inst2": {
+                "type": "Container",
+                "config": {
+                    "children": {
+                         "child1": {
+                             "type": "MultiAction",
+		                     "action": "index"
+                         },
+                         "child2": {
+                             "type": "MultiAction",
+		                     "action": "inst1"
+                         }
+                     }
+                }
+            },
+            "inst1": {
+	            "type": "HTMLFrameMojit",
+	            "config": {
+	                "child": {
+	                    "base": "inst0",
+	                    "action": "inst1",
+	                    "config": {
+	                        "#": "before pull 130 pt2 this displayed 'index action'"
+	                    }
+	                }
+	            }
+	        },
+	        "inst01": {
+	            "type": "MultiAction",
+	            "action": "inst1"
+	        },
+	        "inst0": {
+	            "type": "MultiAction",
+	            "action": "index"
+	        },
+			"otherFeatures": {
+                "type":  "OtherFeatures"
+            },
+            "restWS": {
+                "type":  "RESTLib"
+            },
+            "refreshViewFrame": {
+                  "type": "HTMLFrameMojit",
+                  "config": {
+                      "deploy": true,
+                      "child": {
+                  		"type": "RefreshParent",
+		                  "config": {
+		                      "children": {
+		                          "child1": {
+		                             "type": "RefreshChild"
+		                         },
+		                         "child2": {
+		                             "type": "RefreshChild"
+		                         },
+		                         "child3": {
+		                             "type": "RefreshChild"
+		                         },
+		                         "child4": {
+		                             "type": "RefreshChild"
+		                         }
+		                      }
+		                  }
+		               }
+		           }
+             },
+			"Coverage": {
+				"type": "Coverage"
+			},
+			"frame": {
+                "type": "HTMLFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "child": {
+                        "type": "ConfigExpose",
+                        "config": {
+							"public": "public",
+							"title": "</script><script>alert('testing xss');</script>"
+						}
+                    }
+                }
+            }
+		}
+    },
+	{
+	    "settings": [ "runtime:server" ],
+	    "ShouldNotSeeFromClient": {
+			"shouldnotseefromclient": "mysecret"
+		},
+	    "specs": {
+            "frame": {
+                "type": "HTMLFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "child": {
+                        "type": "ConfigExpose"
+                    }
+                }
+            }
+	  	}
+	},
+	{
+	    "settings": [ "runtime:client" ],
+	    "CanSeeFromClient": {
+			"canseefromclient": "notasecret"
+		},
+	    "specs": {
+            "frame": {
+                "type": "HTMLFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "child": {
+                        "type": "ConfigExpose"
+                    }
+                }
+            }
+	  	}
+	},
+    { "settings": [ "device:android" ], "selector": "android" },
+    { "settings": [ "device:blackberry" ], "selector": "blackberry" },
+    { "settings": [ "device:iemobile" ], "selector": "iemobile" },
+    { "settings": [ "device:ipad" ], "selector": "ipad" },
+    { "settings": [ "device:iphone" ], "selector": "iphone" },
+    { "settings": [ "device:kindle" ], "selector": "kindle" },
+    { "settings": [ "device:opera-mini" ], "selector": "opera-mini" },
+    { "settings": [ "device:palm" ], "selector": "palm" }
+]

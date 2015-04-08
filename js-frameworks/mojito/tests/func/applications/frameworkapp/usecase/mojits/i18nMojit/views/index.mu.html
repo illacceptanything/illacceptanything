@@ -1,0 +1,14 @@
+<div id="{{mojit_view_id}}" class="mojit">
+	<h2>{{ greeting }} - {{ date }}</h2>
+	<ul>
+	    {{#images}}
+	        <li><a href="{{url}}">{{title}}</a></li>
+	    {{/images}}
+	<ul>
+    <h3>Pick your order</h3>
+    <ul>
+    	<li id="order1">{{ order1 }}</li>
+		<li id="order2">{{ order2 }}</li>
+		<li id="order3">{{ order3 }}</li>
+	</ul>
+</div>

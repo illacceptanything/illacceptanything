@@ -1,0 +1,9 @@
+[
+    {
+        "settings": [ "master" ],
+        # Depends on ColorChild for its model
+        # Depends on RedChild for its controller
+        # Depends on BlueChild for its binder
+        "dependencies": [ "ColorChild", "RedChild", "BlueChild" ]
+    }
+]

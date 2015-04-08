@@ -1,0 +1,20 @@
+[
+  {
+    "settings": [ "master" ],
+    "route one": {
+        "verbs": [ "get" ],
+        "path": "/flickr",
+        "call": "flickr.index"
+    },
+    "route two": {
+        "verbs": [ "get" ],
+        "path": "/booyah",
+        "call": "flickr.index"
+    },
+    "route three": {
+        "verbs": [ "get" ],
+        "path": "/pineapples",
+        "call": "flickr.index"
+    }
+  }
+]

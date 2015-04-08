@@ -1,0 +1,76 @@
+[
+    {
+        "settings": [ "master" ],
+        "mojitDirs": [
+            "soloMojit"
+        ],
+
+        "testKey1": "testVal1",
+        "testKey2": "testVal2",
+        "testKey3": "testVal3",
+        "specs": {
+            "test1": {
+                "type": "test_mojit_1"
+            },
+            "single": {
+                "type": "HTMLFrameMojit",
+                "config": {
+                    "child": {
+                        "type": "page",
+                        "config": {
+                            "children": {
+                                "weather": {
+                                    "type": "weather",
+                                    "action": "index"
+                                },
+                                "stream": {
+                                    "type": "stream",
+                                    "action": "stream"
+                                }
+                            }
+                        }
+
+                    }
+                }
+            },
+            "multiple": {
+                "type": "HTMLFrameMojit",
+                "config": {
+                    "child": {
+                        "type": "page"
+                    }
+                }
+            }
+
+        }
+    },
+    {
+        "settings": [ "runtime:server" ],
+
+        "selector": "shelves",
+        "testKey1": "testVal1-server",
+        "pathos": "portended"
+    },
+    {
+        "settings": [ "runtime:client" ],
+
+        "selector": "right",
+        "testKey2": "testVal2-client",
+        "testKey4": "testVal4-client"
+    },
+    {
+        "settings": [ "device:iphone" ],
+
+        "selector": "iphone"
+    },
+    {
+        "settings": [ "device:android" ],
+
+        "selector": "droid"
+    },
+    {
+        "settings": [ "device:android", "environment:dev" ],
+
+        "selector": "devdroid"
+    }
+]

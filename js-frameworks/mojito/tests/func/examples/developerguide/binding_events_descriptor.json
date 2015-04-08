@@ -1,0 +1,54 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "binding_events",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"binding_events",
+                "path": "../../../examples/developer-guide/binding_events"
+            }
+        },
+
+        "dataprovider" : {    
+           "bindingevents" : {
+                "group" : "developerguide,binding_events",
+                "params" : {
+                    "scenario": [
+                        {
+                            "test" : "test_binding_events.js",
+                            "page" : "$$config.baseUrl$$/?environment=development"
+                        },
+                        {
+                           "controller": "locator",
+                           "params": {
+                                  "value": "#nav a",
+                                  "click": true
+                           }
+                        },
+                        {
+                           "test" : "test_binding_events2.js"
+                        },
+                        {
+                           "controller": "locator",
+                           "params": {
+                                  "value": "#nav a",
+                                  "click": true
+                           }
+                        },
+                        {
+                           "test" : "test_binding_events.js"
+                        }
+                     ]
+                }
+            }
+        }     
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

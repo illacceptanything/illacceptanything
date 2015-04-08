@@ -1,0 +1,32 @@
+div.ClickLog {
+    background-color: #FB8;
+    border: 1px solid #962;
+    -moz-border-radius: 0.4em;
+    border-radius: 0.4em;
+}
+.ClickLog {
+    font-family: 'arial', 'helvetica', 'sans-serif';
+}
+.ClickLog .clicker {
+    margin: 2em;
+}
+.ClickLog .clicker a {
+    padding: 0.4em;
+    color: #922;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: #F88;
+    border: 1px solid #922;
+    -moz-border-radius: 0.4em;
+    border-radius: 0.4em;
+}
+.ClickLog .log {
+    margin: 2em;
+}
+.ClickLog .log .entry {
+    padding: 0.4em;
+    background-color: #FF8;
+    border: 1px solid #992;
+    -moz-border-radius: 0.4em;
+    border-radius: 0.4em;
+}

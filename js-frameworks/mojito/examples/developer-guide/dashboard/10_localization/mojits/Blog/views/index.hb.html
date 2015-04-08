@@ -1,0 +1,15 @@
+<div id="{{mojit_view_id}}" class="mojit">
+    <div class="mod" id="blog">
+        {{> widget_heading}}
+        <div class="inner">
+            <ul>
+                {{#results}}
+                    <li>
+                       {{{linker title link}}} 
+                        <span class="desc" title="AUTHOR: [ {{creator}} ] DESC: {{description}} DATE: ( {{pubDate}} )">{{description}}</span>
+                    </li>
+                {{/results}}
+            </ul>
+        </div>
+    </div>
+</div>

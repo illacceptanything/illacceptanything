@@ -1,0 +1,28 @@
+<script type="text/javascript">
+  // Note: JavaScript code should not be hard coded into the view template. It's done 
+  // here to simplify the code example.
+  window.addEventListener('load', function() {
+    setTimeout(updateView);
+  }, false);
+  var lastWidth = 0;
+  var updateView = function() {
+    window.scrollTo(0,1);
+    if (window.innerWidth != lastWidth) {
+      lastWidth = window.innerWidth;
+      var orient = (lastWidth == 320) ? "portrait" : "landscape";
+      document.body.setAttribute("orient", orient);
+    } 
+  };
+  // Changes background color of the header. 
+  function setColor(id, color) {
+    document.getElementById(id).style.backgroundColor = color;
+  }
+</script>
+<div id="{{mojit_view_id}}" class="mojit">
+  <h2 id="header">{{title}}</h2>
+  <ul class="toolbar">
+    {{#colors}}
+    <li><a href="#" onClick="setColor('header','{{rgb}}');">{{id}}</a></li>
+    {{/colors}}
+  </ul>
+</div>

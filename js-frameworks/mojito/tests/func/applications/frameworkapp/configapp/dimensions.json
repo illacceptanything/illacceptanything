@@ -1,0 +1,90 @@
+[
+    {
+        "dimensions": [
+            {
+                "runtime": {
+                    "common": {
+                        "client": null,
+                        "server": null
+                    }
+                }
+            },
+            {
+                "environment": {
+                    "development": null,
+                    "testing": null,
+                    "preproduction": null,
+                    "production": null
+                }
+            },
+            {
+                "cluster": {}
+            },
+            {
+                "netzone": {}
+            },
+            {
+                "subject": {
+                    "math": {
+                        "algebra": null,
+                        "geometry": null,
+                        "discrete": null
+                    },
+                    "chemistry": {
+                        "biochemistry": {
+                            "bc-100": null,
+                            "bc-200": null
+                        }
+                    },
+                    "science": null
+                }
+            },
+            {
+                "site": {}
+            },
+            {
+                "device": {}
+            },
+            {
+                "lang": {
+                    "en": {
+                        "en-GB": null,
+                        "en-US": null,
+                        "en-CA": null
+                    },
+                    "fr": {
+                        "fr-FR": {
+                            "fr-CA": null
+                        }
+                    },
+                    "de": null,
+                    "zh": {
+                        "CN": null
+                    }
+                }
+            },
+            {
+                "region": {
+                    "us": null,
+                    "ca": null,
+                    "gb": {
+                        "ir": null
+                    },
+                    "fr": null
+                }
+            },
+            {
+                "jurisdiction": {}
+            },
+            {
+                "bucket": {}
+            },
+            {
+                "flavor": {
+                    "att": null,
+                    "bt": null
+                }
+            }
+        ]
+    }
+]

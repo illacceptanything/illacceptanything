@@ -1,0 +1,17 @@
+[
+    {
+        "settings": [ "master" ],
+        "yui": {
+            "config": {
+                "debug": true,
+                "logLevel": "debug"
+            }
+        },
+        "appPort": 4001,
+        "specs": {
+            "simple": {
+                "type": "simple"
+            }
+        }
+    }
+]
