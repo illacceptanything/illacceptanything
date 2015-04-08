@@ -253,8 +253,7 @@ def get_key( key ) :
 
 # Program entry
 def main() :
-  global object_list
-  global enemy_list
+  global object_list, enemy_list, player_score, advance_rate
 
   colorama.init()
 
@@ -269,6 +268,7 @@ def main() :
 
   while keep_running :
     player_score  = 0
+    advance_rate  = 0
 
     player        = Ship( )
     generate_new_wave()
