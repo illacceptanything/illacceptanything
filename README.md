@@ -1,6 +1,6 @@
 # illacceptanything
 
-> The project where [literally](http://www.buzzfeed.com/jessicamisener/the-wrong-definition-of-literally-is-literally-going-in-the#.chA7QxZ9n)* anything goes
+> The project where [literally](https://xkcd.com/725/)* anything goes
 
 I want to make a really cool project, but I don't know what to make. So I'll just accept
 every Pull Request submitted and see what happens.
