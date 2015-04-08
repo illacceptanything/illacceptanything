@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>$PUBLIC_URL FILES</title>
+
+    <!-- Bootstrap core CSS -->
+	<!-- TODO: pull from nginx instead! -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/bootstrap/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css">
+	<link href='//fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
+
+    <style type="text/css">
+	  body {
+		font-family: Nunito, sans-serif;
+	  }
+	
+	  .list-group-item {
+		/*height: 4.2em;*/
+		font-size: medium;
+	  }
+	
+	  /*.btn-group {
+		position: absolute;
+		right: 1em;
+	  }*/
+	</style>
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="/">$PUBLIC_URL</a>
+	    </div>
+		<!-- Bits that sit in the menu. Can collapse on mobile. -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+			<p class="navbar-text">$DISK_SPACE remaining</p>
+		  </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	
+	  <ol class="breadcrumb">
+	    $BREADCRUMB
+	  </ol>
+	</nav>
+
+	<!-- File upload control -->
+    <div class="container" id="uploadalong" style="display: none">
+	  <input id="upload" name="upload" type="file" multiple=true class="file-loading">
+	  <p style="font-size: medium;">If there's already a file with the same name, <b>YOU WILL OVERWRITE IT</b>.</p>
+    </div>
+	
+	<center>
+	<button class="btn btn-success" id="uploadbutton" onclick="javascript:$('#uploadalong').show();$('#uploadbutton').hide();"><span class="glyphicon glyphicon-arrow-up"></span> Upload</button>
+	</center>
+	
+	<hr>
+	
+	<!-- Directory listing -->
+	<div class="container">
+	
+	  <ul class="list-group">
+		$DIRECTORY_LISTING
+	  </ul>
+
+    </div>
+	
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+	<script src="/bootstrap/js/fileinput.min.js"></script>
+	<script>
+	  $("#upload").fileinput({
+		uploadUrl: '$UPLOAD_URL',
+		uploadAsync: true,
+		maxFileCount: 10
+	  });
+	</script>
+
+  </body>
+</html>
