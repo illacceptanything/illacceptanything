@@ -14,3 +14,6 @@ I love you.
 I want to be loved :(
 
 ---
+Penny, I love you. You are the best dog I have ever had the great pleasure to know.
+-Dolores
+---
