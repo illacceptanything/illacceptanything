@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8">
+    <title>mrkrstphr</title>
+    <style type="text/css">
+      body {
+        background-color: #000;
+        color: #ccc;
+        font-size: 9px;
+        margin: 0;
+        padding: 0;
+      }
+      pre {
+        margin: 300px auto 0 auto;
+        width: 660px;
+      }
+    </style>
+  </head>
+  <body>
+    <pre>
+      ___           ___           ___           ___           ___                       ___         ___           ___     
+     /__/\         /  /\         /__/|         /  /\         /  /\          ___        /  /\       /__/\         /  /\    
+    |  |::\       /  /::\       |  |:|        /  /::\       /  /:/_        /  /\      /  /::\      \  \:\       /  /::\   
+    |  |:|:\     /  /:/\:\      |  |:|       /  /:/\:\     /  /:/ /\      /  /:/     /  /:/\:\      \__\:\     /  /:/\:\  
+  __|__|:|\:\   /  /:/~/:/    __|  |:|      /  /:/~/:/    /  /:/ /::\    /  /:/     /  /:/~/:/  ___ /  /::\   /  /:/~/:/  
+ /__/::::| \:\ /__/:/ /:/___ /__/\_|:|____ /__/:/ /:/___ /__/:/ /:/\:\  /  /::\    /__/:/ /:/  /__/\  /:/\:\ /__/:/ /:/___
+ \  \:\~~\__\/ \  \:\/:::::/ \  \:\/:::::/ \  \:\/:::::/ \  \:\/:/~/:/ /__/:/\:\   \  \:\/:/   \  \:\/:/__\/ \  \:\/:::::/
+  \  \:\        \  \::/~~~~   \  \::/~~~~   \  \::/~~~~   \  \::/ /:/  \__\/  \:\   \  \::/     \  \::/       \  \::/~~~~ 
+   \  \:\        \  \:\        \  \:\        \  \:\        \__\/ /:/        \  \:\   \  \:\      \  \:\        \  \:\     
+    \  \:\        \  \:\        \  \:\        \  \:\         /__/:/          \__\/    \  \:\      \  \:\        \  \:\    
+     \__\/         \__\/         \__\/         \__\/         \__\/                     \__\/       \__\/         \__\/          
+    </pre>
+
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        var $pre = $("pre");
+        (function changeColor () {
+          var r = Math.floor(Math.random() * 156) + 100,
+              g = Math.floor(Math.random() * 156) + 100,
+              b = Math.floor(Math.random() * 156) + 100;
+          $pre.css("color", "rgb(" + r + ", " + g + ", " + b + ")"); 
+          window.setTimeout(changeColor, 50);
+        })();
+      });
+    </script>
+  </body>
+</html>
+
