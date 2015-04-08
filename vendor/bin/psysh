@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+SRC_DIR="`pwd`"
+cd "`dirname "$0"`"
+cd "../psy/psysh/bin"
+BIN_TARGET="`pwd`/psysh"
+cd "$SRC_DIR"
+"$BIN_TARGET" "$@"

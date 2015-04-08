@@ -1,0 +1,46 @@
+{
+    "name": "illuminate/queue",
+    "description": "The Illuminate Queue package.",
+    "license": "MIT",
+    "homepage": "http://laravel.com",
+    "support": {
+        "issues": "https://github.com/laravel/framework/issues",
+        "source": "https://github.com/laravel/framework"
+    },
+    "authors": [
+        {
+            "name": "Taylor Otwell",
+            "email": "taylorotwell@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/console": "5.0.*",
+        "illuminate/contracts": "5.0.*",
+        "illuminate/container": "5.0.*",
+        "illuminate/http": "5.0.*",
+        "illuminate/support": "5.0.*",
+        "symfony/process": "2.6.*",
+        "nesbot/carbon": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Illuminate\\Queue\\": ""
+        },
+        "classmap": [
+            "IlluminateQueueClosure.php"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "5.0-dev"
+        }
+    },
+    "suggest": {
+        "aws/aws-sdk-php": "Required to use the SQS queue driver (~2.4).",
+        "illuminate/redis": "Required to use the redis queue driver (5.0.*).",
+        "iron-io/iron_mq": "Required to use the iron queue driver (~1.5).",
+        "pda/pheanstalk": "Required to use the beanstalk queue driver (~3.0)."
+    },
+    "minimum-stability": "dev"
+}
