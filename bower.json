@@ -1,10 +1,11 @@
 {
   "name": "illacceptanything",
-  "version": "0.0.0",
-  "homepage": "https://github.com/micahlmartin/illacceptanything",
+  "version": "100.0.0",
   "authors": [
+    "Dalton Dick <daltondick2010@gmail.com>",
     "Micah Martin <micahlmartin@gmail.com>"
   ],
+  "description": "I'll accept anything!",
   "license": "MIT",
   "ignore": [
     "**/.*",

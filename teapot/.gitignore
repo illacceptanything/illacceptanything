@@ -1,0 +1,6 @@
+*teapot*  # Dont want any other sneaky teapots getting into our repo
+.ropeproject
+env
+*.pyc
+*.swp
+

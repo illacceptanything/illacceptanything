@@ -1,0 +1,6 @@
+[submodule "this"]
+	path = this
+	url = https://github.com/mrkrstphr/illacceptanything.git
+[submodule "self"]
+	path = self
+	url = https://github.com/mrkrstphr/illacceptanything.git
