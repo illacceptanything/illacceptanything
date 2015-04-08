@@ -1,4 +1,4 @@
-- No porn.
-- Nothing illegal.
-- Can't violate GitHub terms of service.
-- Don't be a dick.
+ - No porn.
+ - Nothing illegal.
+ - Can't violate GitHub terms of service.
+ - Don't be a dick.
