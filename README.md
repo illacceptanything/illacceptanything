@@ -1,4 +1,4 @@
-# illacceptanything
+# iwontacceptanything
 
 > The project where [literally](http://www.buzzfeed.com/jessicamisener/the-wrong-definition-of-literally-is-literally-going-in-the#.chA7QxZ9n)* anything goes
 
