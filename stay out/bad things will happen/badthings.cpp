@@ -2,6 +2,7 @@
 
 int main()
 {
-	while(1){	std::cout << "Bad things are currently happening."; };
-	return 0;
+	while(false){	std::cout << "Bad things are currently happening."; };
+	//badthings failed to happen.
+	return 1;
 }
