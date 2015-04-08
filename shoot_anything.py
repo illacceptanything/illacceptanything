@@ -13,6 +13,7 @@ import colorama
 import copy
 import os
 import random
+import sys
 import time
 import win32api
 import win32con
@@ -206,6 +207,8 @@ def draw_game( dt ) :
     # Show the object
     print("\033[{};{}H{}".format( obj.pos.y, obj.pos.x, obj.char ) )
 
+  sys.stdout.flush()
+
 def draw_gameover() :
   print("\033[2J")
 
@@ -265,6 +268,8 @@ def main() :
       break
 
   while keep_running :
+    player_score  = 0
+
     player        = Ship( )
     generate_new_wave()
 
