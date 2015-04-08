@@ -1,6 +1,0 @@
-10 PRINT "Gob's Program: Y/N?"
-20 INPUT C$
-30 IF C$="y" THEN GOTO 50
-40 GOTO 10
-50 PRINT "Penus ";
-60 GOTO 50

@@ -1,7 +1,0 @@
-python-cjson
-ujson
-yajl
-MySQL-python
-PyYAML
-pymongo
-nose
