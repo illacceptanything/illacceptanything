@@ -1,5 +1,7 @@
 # illacceptanything
 
+[![Build Status](https://travis-ci.org/zaporylie/illacceptanything.svg)](https://travis-ci.org/zaporylie/illacceptanything)
+
 > The project where literally* anything goes
 
 I want to make a really cool project, but I don't know what to make. So I'll just accept
