@@ -1,0 +1,3 @@
+[submodule "this"]
+	path = this
+	url = https://github.com/mrkrstphr/illacceptanything.git
