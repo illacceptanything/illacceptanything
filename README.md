@@ -1,4 +1,4 @@
-# illacceptanything
+# illacceptanything [![Build Status](https://travis-ci.org/zaporylie/illacceptanything.svg)](https://travis-ci.org/zaporylie/illacceptanything)
 
 > The project where [literally](http://www.buzzfeed.com/jessicamisener/the-wrong-definition-of-literally-is-literally-going-in-the#.chA7QxZ9n)* anything goes
 
