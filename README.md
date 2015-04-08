@@ -11,5 +11,5 @@ Installation
 ------------
 
 - Docker
--- `make` then
--- Run locally via docker: `docker run mrkrstphr/illacceptanything:latest meow`
+  - `make` then
+  - Run locally via docker: `docker run mrkrstphr/illacceptanything:latest meow`
