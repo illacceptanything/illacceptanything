@@ -2,7 +2,7 @@
 
 int main()
 {
-	std::cout << "Bad things are currently happening.";
+	std::cout << "Bad things will happen...";
 	system("PAUSE");
 	return 0;
 }
