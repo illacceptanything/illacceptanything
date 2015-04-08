@@ -1,7 +1,7 @@
 function hello(language) {
   var hellos = {
     'Chinese': '你好世界',
-    'Dutch': 'Hello wereld',
+    'Dutch': 'Hallo wereld',
     'English': 'Hello world',
     'French': 'Bonjour monde',
     'German': 'Hallo Welt',
