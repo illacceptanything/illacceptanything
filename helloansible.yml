@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Welcome the new guy
+      debug: msg="*** Greetings! Ansibler"
+
+# vim: set sw=2 ts=2:

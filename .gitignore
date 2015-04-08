@@ -1,0 +1,6 @@
+bower_components/
+.idea
+__pycache__
+*.pyc
+*.swp
+.ropeproject
