@@ -1,6 +1,6 @@
 # illacceptanything
 
-[![Build Status](https://travis-ci.org/zaporylie/illacceptanything.svg)](https://travis-ci.org/zaporylie/illacceptanything)
+[![Build Status](https://travis-ci.org/mrkrstphr/illacceptanything.svg?branch=master)](https://travis-ci.org/mrkrstphr/illacceptanything)
 
 > The project where literally* anything goes
 
