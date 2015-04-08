@@ -1,2 +1,3 @@
-console.log("insert app.js here, be sure to include all the js libraries ever.");
-// TODO: write the rest of app.js
+// Run some python
+var execSync = require('child_process').execSync;
+process.stdout.write(execSync('python -c "print(\'hello world\')"').toString());
