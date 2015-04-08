@@ -18,7 +18,11 @@
 </head>
 <body>
 <?php
-echo 'fart'; 
+try {
+    echo 'fart'; 
+} catch (PoopException $e) {
+    echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
 ?>
 </body>
 </html>
