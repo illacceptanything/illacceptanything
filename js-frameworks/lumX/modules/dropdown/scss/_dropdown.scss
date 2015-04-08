@@ -1,0 +1,86 @@
+///*------------------------------------*\
+//    #OBJECTS-DROPDOWN
+//\*------------------------------------*/
+
+// Dropdown base styles
+.dropdown {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+
+
+
+// Dropdown menu
+.dropdown-menu {
+    position: absolute;
+    z-index: 1000;
+    border-radius: $base-round;
+    background-color: $white;
+    text-align: left;
+    opacity: 0;
+    overflow: hidden;
+    @include z-depth(1);
+
+    ul {
+        @extend %bare-list;
+
+        & > li {
+            position: relative;
+        }
+    }
+}
+
+.dropdown__menu--is-dropped {
+    .dropdown-menu__content {
+        opacity: 1;
+    }
+}
+    
+    // Dropdown menu content
+    .dropdown-menu__content {
+        padding: $base-spacing-unit 0;
+        opacity: 0;
+        @include transition-property(opacity);
+        @include transition-duration(0.2s);
+    }
+
+
+
+
+
+// Dropdown divider
+.dropdown-divider {
+    height: 1px;
+    margin-top: $base-spacing-unit;
+    margin-bottom: $base-spacing-unit;
+    background-color: $black-4;
+}
+
+
+
+
+
+// Dropdown link
+.dropdown-link {
+    display: block;
+    height: $base-spacing-unit * 4;
+    padding: 0 $base-spacing-unit * 2;
+    cursor: pointer;
+    @include font-size(14px);
+    color: $black-1;
+    line-height: 32px;
+    text-decoration: none;
+    white-space: nowrap;
+
+    &:not(.dropdown-link--is-header):hover {
+        background-color: $grey-200;
+    }
+}
+
+.dropdown-link--is-header {
+    color: $black-3;
+    cursor: default;
+}

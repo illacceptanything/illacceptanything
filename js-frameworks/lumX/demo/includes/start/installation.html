@@ -1,0 +1,97 @@
+<!-- Sidebar -->
+<ng-include src="'/includes/sidebar/sidebar-start.html'"></ng-include>
+
+<div class="main-section">
+    <h3 class="main-section__title">Installation</h3>
+
+    <p class="main-section__intro">
+        LumX is the first responsive front-end framework based on AngularJS & Google Material Design specifications.<br />
+        It provides a full CSS Framework built with Sass and a bunch of AngularJS components.
+    </p>
+
+    <div class="main-section__content">
+        <div class="paragraph">
+            <h4 class="main-section__subtitle">Use LumX in your project</h4>
+
+            <p>
+                LumX is available through Bower:<br />
+                <code>bower install lumx</code>
+            </p>
+
+            <p>
+                Don’t use bower?<br />
+                You first need to download all these dependencies:
+            </p>
+
+            <ul>
+                <li>AngularJS</li>
+                <li>jQuery</li>
+                <li>Velocity</li>
+                <li>Moment.js</li>
+                <li>Bourbon (scss only)</li>
+                <li>Material Design Icons (scss only)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-section__content">
+        <div class="paragraph">
+            <h4 class="main-section__subtitle">Include files</h4>
+
+            <p>
+                All needed files are in the <code>dist</code> folder.<br />
+                You can include LumX files and dependencies in your html template.
+            </p>
+        </div>
+
+        <div class="example mt++">
+            <!-- Example -->
+            <div class="example__code" hljs include="'/includes/start/installation/includes.html'" language="html"></div>
+            <!-- /Example -->
+        </div>
+
+        <div class="paragraph">
+            <p>
+                Moreover, you can include the main sccs file in your Sass project instead of including the compiled file.<br />
+                You'll get all all variables and mixins available: <a href="/getting-started/customization">read more</a>.
+            </p>
+        </div>
+    </div>
+
+    <div class="main-section__content">
+        <div class="paragraph">
+            <h4 class="main-section__subtitle">Use the AngularJS directives and services</h4>
+
+            <p>
+                When you have downloaded all the dependencies you need to add dependencies on the LumX AngularJS module:<br />
+                <code>angular.module('myModule', ['lumx']);</code>
+            </p>
+        </div>
+    </div>
+
+    <div class="main-section__content">
+        <div class="paragraph">
+            <h4 class="main-section__subtitle">Why these dependencies?</h4>
+
+            <p>
+                Our CSS framework is based on bourbon, a simple and lightweight mixin library for Sass:<br />
+                <a href="http://bourbon.io" target="_blank">http://bourbon.io</a>
+            </p>
+
+            <p>
+                Material Design icons are based on Austin Andrews iconic font:<br />
+                <a href="http://materialdesignicons.com" target="_blank">http://materialdesignicons.com</a>
+            </p>
+
+            <p>
+                Velocity is used to provide smooth animations:<br />
+                <a href="http://julian.com/research/velocity" target="_blank">http://julian.com/research/velocity</a><br />
+            </p>
+
+            <p>
+                Moment.js is used to manipulate dates for our date picker:<br />
+                <a href="http://momentjs.com" target="_blank">http://momentjs.com</a>
+            </p>
+        </div>
+    </div>
+</div>

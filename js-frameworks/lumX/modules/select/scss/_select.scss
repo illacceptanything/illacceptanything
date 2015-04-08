@@ -1,0 +1,193 @@
+///*------------------------------------*\
+//    #OBJECTS-SELECT
+//\*------------------------------------*/
+
+// Select base styles
+.lx-select {
+    position: relative;
+    margin-top: $base-spacing-unit * 4;
+    padding-bottom: $base-spacing-unit;
+
+    &:before {
+        content: '';
+        @include position(absolute, null 0 $base-spacing-unit - 1 0);
+        height: 1px;
+        border-bottom: 1px solid $black-4;
+    }
+
+    .dropdown {
+        display: block;
+    }
+}
+
+    // Select floating label
+    .lx-select__floating-label {
+        color: $black-3;
+        @include position(absolute, -20px null null 0);
+        @include transform(scale(0.75));
+        @include transform-origin(bottom left);
+    }
+
+    // Select selected
+    .lx-select__selected {
+        position: relative;
+        padding-right: $base-spacing-unit * 3;
+        cursor: pointer;
+        white-space: nowrap;
+
+        &:after {
+            @include mdi;
+            content: '\f35e';
+            @include position(absolute, null $base-spacing-unit $base-spacing-unit null);
+            @include font-size(14px);
+            color: $black-3;
+            line-height: 16px;
+        }
+
+        &:hover {
+            .lx-select__close {
+                opacity: 1;
+            }
+        }
+
+        .ripple {
+            background-color: $grey-500;
+        }
+    }
+
+    .lx-select__selected--is-unique {
+        line-height: $base-spacing-unit * 4;
+    }
+
+    .lx-select__selected--is-multiple {
+        padding-top: 6px;
+        padding-bottom: 2px;
+    }
+
+    .lx-select__selected--placeholder {
+        padding-top: 0 !important;
+        color: $black-3;
+        line-height: $base-spacing-unit * 4 !important;
+    }
+
+    // Select close
+    .lx-select__close {
+        display: block;
+        @include position(absolute, $base-spacing-unit $base-spacing-unit * 3 null null);
+        opacity: 0;
+        line-height: $base-spacing-unit * 4;
+        @include transition-property(opacity, color);
+        @include transition-duration(0.2s);
+
+        &:hover {
+            color: $red-500;
+        }
+    }
+
+    // Select tag
+    .lx-select__tag {
+        position: relative;
+        float: left;
+        margin-right: $base-spacing-unit / 2;
+        margin-bottom: $base-spacing-unit / 2;
+        padding: 0 $base-spacing-unit / 2;
+        border-radius: $base-round;
+        background-color: $grey-100;
+        @include font-size(13px);
+        line-height: 20px;
+        @include user-select(none);
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    // Select choices
+    .lx-select__choices {
+        margin-left: -($base-spacing-unit * 2);
+        margin-top: -($base-spacing-unit * 1.5);
+
+        .dropdown-menu__content {
+            padding-top: 0;
+        }
+    }
+
+    // Select choice
+    .lx-select__choice--is-multiple {
+        position: relative;
+        padding-left: 40px;
+
+        &:before,
+        &:after {
+            @include mdi;
+            @include position(absolute, 0 null null $base-spacing-unit * 2);
+            @include font-size(18px);
+            line-height: 32px;
+            @include transition-property(transform);
+            @include transition-duration(0.2s);
+        }
+
+        &:before {
+            content: '\f1d6';
+            @include transform(scale(1));
+        }
+
+        &:after {
+            content: '\f1d7';
+            @include transform(scale(0));
+            color: $teal-500;
+        }
+    }
+
+    .lx-select__choice--is-selected {
+        &:before {
+            @include transform(scale(0));
+        }
+
+        &:after {
+            @include transform(scale(1));
+        }
+    }
+
+    // Select help
+    .lx-select__help {
+        height: $base-spacing-unit * 4;
+        padding: 0 $base-spacing-unit * 2;
+        @include font-size(14px);
+        color: $black-3;
+        line-height: $base-spacing-unit * 4;
+        white-space: nowrap;
+    }
+
+    // Select loader
+    .lx-select__loader {
+        height: $base-spacing-unit * 4;
+        line-height: $base-spacing-unit * 4;
+        text-align: center;
+
+        .mdi {
+            @include animation(spin 1.5s linear infinite);
+        }
+    }
+
+    // Select chosen
+    .lx-select__chosen {
+        display: block;
+        min-height: $size-xl;
+        padding: 0 $base-spacing-unit * 5 0 $base-spacing-unit * 2;
+        border-bottom: 1px solid $black-4;
+        line-height: $size-xl;
+    }
+
+    .lx-select__chosen--is-multiple {
+        padding-top: 18px;
+        padding-bottom: 14px;
+        @include clearfix;
+    }
+
+    // Select filter
+    .lx-select__filter {
+        padding: $base-spacing-unit / 4 $base-spacing-unit;
+        margin-bottom: $base-spacing-unit;
+        border-bottom: 1px solid $black-4;
+    }

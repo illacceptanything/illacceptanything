@@ -1,0 +1,55 @@
+<!-- Sidebar -->
+<ng-include src="'/includes/sidebar/sidebar-css.html'"></ng-include>
+
+<div class="main-section">
+    <h3 class="main-section__title">Mixins</h3>
+
+    <p class="main-section__intro">
+        We provide some mixins in order to help you building great applications faster.
+    </p>
+
+    <div class="main-section__content">
+        <div class="paragraph">
+            <h4 class="main-section__subtitle">Font size</h4>
+
+            <p>
+                The rem font-size unit is similar to em, only instead of cascading it's always relative to the root (html) element.<br />
+                This mixin convert pixel font-size to rem font-size.
+            </p>
+        </div>
+
+        <div class="example mt++">
+            <!-- Example -->
+            <div class="example__code" hljs include="'/includes/css/mixins/font-size.html'" language="scss"></div>
+            <!-- /Example -->
+        </div>
+    </div>
+
+    <div class="main-section__content">
+        <div class="paragraph">
+            <h4 class="main-section__subtitle">Media queries</h4>
+
+            <p>
+                A simple mixin to quickly generate whole media queries from the aliases and conditions defined in <code>dist/scss/settings/_responsive.scss</code>.<br />
+                Of course, you can override these settings in your own settings file as described in <a href="/getting-started/customization">customization section</a>.
+            </p>
+        </div>
+
+        <div class="example mt++">
+            <!-- Example -->
+            <div class="example__code" hljs include="'/includes/css/mixins/media-query.html'" language="scss"></div>
+            <!-- /Example -->
+        </div>
+    </div>
+
+    <div class="main-section__content">
+        <div class="paragraph">
+            <h4 class="main-section__subtitle">Bourbon</h4>
+
+            <p>
+                Many other mixins are available with Bourbon. Check the documentation here:<br />
+                <a href="http://bourbon.io/docs" target="_blank">http://bourbon.io/docs</a>
+            </p>
+        </div>
+    </div>
+</div>

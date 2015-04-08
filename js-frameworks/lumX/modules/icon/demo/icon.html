@@ -1,0 +1,52 @@
+<!-- Sidebar -->
+<ng-include src="'/includes/sidebar/sidebar-css.html'"></ng-include>
+
+<div class="main-section">
+    <h3 class="main-section__title">Icons</h3>
+
+    <p class="main-section__intro">
+        LumX provide Material Design iconic font based on <a href="http://materialdesignicons.com" target="_blank">Austin Andrews work</a>.
+    </p>
+
+    <div class="main-section__content">
+        <div class="paragraph">
+            <h4 class="main-section__subtitle">Simple icons</h4>
+
+            <p>
+                Simply use <code>mdi</code> class with <code>mdi-{icon}</code> modifier to display icon.<br />
+                <a href="http://materialdesignicons.com" target="_blank">You can get icon labels here.</a>
+            </p>
+        </div>
+
+        <div class="example mt++">
+            <div class="example__content">
+                <ng-include src="'/includes/modules/icon/includes/simple-icons.html'"></ng-include>
+            </div>
+
+            <!-- Example -->
+            <div class="example__code" hljs include="'/includes/modules/icon/includes/simple-icons.html'" language="html"></div>
+            <!-- /Example -->
+        </div>
+    </div>
+
+    <div class="main-section__content">
+        <div class="paragraph">
+            <h4 class="main-section__subtitle">Styled icons</h4>
+
+            <p>
+                We provide some helpers to help you build styled icons.<br />
+                You can create icon with 2 different sizes, and primary colors defined in settings.
+            </p>
+        </div>
+
+        <div class="example mt++">
+            <div class="example__content">
+                <ng-include src="'/includes/modules/icon/includes/styled-icons.html'"></ng-include>
+            </div>
+
+            <!-- Example -->
+            <div class="example__code" hljs include="'/includes/modules/icon/includes/styled-icons.html'" language="html">
+            <!-- /Example -->
+        </div>
+    </div>
+</div>

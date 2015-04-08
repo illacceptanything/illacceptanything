@@ -1,0 +1,10 @@
+///*------------------------------------*\
+//    #OBJECTS-Z-DEPTH
+//\*------------------------------------*/
+
+// Z-depth classes
+@for $i from 1 through 3 {
+    .z-depth#{$i} {
+        @include z-depth($i);
+    }
+}

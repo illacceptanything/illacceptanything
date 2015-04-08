@@ -1,0 +1,95 @@
+///*------------------------------------*\
+//    #OBJECTS-RADIO-BUTTON
+//\*------------------------------------*/
+
+// Radio group
+.radio-group {
+    .radio-button {
+        margin-bottom: $base-spacing-unit;
+    }
+}
+
+
+
+
+
+// Radio button base styles
+.radio-button {}
+
+    // Radio button input
+    .radio-button__input {
+        @extend %visuallyhidden;
+
+        &:not(:checked) {
+            & + .radio-button__label {
+                &:before {
+                    @include transform(scale(1));
+                }
+
+                &:after {
+                    @include transform(scale(0));
+                }
+            }
+        }
+
+        &:checked {
+            & + .radio-button__label {
+                &:before {
+                    @include transform(scale(0));
+                }
+
+                &:after {
+                    @include transform(scale(1));
+                }
+            }
+        }
+
+        &[disabled] {
+            & + .radio-button__label {
+                cursor: not-allowed;
+                
+                &:before,
+                &:after {
+                    color: $black-3;
+                }
+            }
+        }
+    }
+
+    // Radio button label
+    .radio-button__label {
+        display: block;
+        position: relative;
+        padding-left: $base-spacing-unit * 4;
+        font-weight: 400;
+        line-height: $size-xs;
+        cursor: pointer;
+
+        &:before,
+        &:after {
+            @include mdi;
+            @include position(absolute, 0 null null 0);
+            @include font-size($size-xs);
+            line-height: $size-xs;
+            @include transition-property(transform);
+            @include transition-duration(0.2s);
+        }
+
+        &:before {
+            content: '\f3fb';
+        }
+
+        &:after {
+            content: '\f3fc';
+            color: $teal-500;
+        }
+    }
+
+    // Radio button help
+    .radio-button__help {
+        display: block;
+        padding-left: $base-spacing-unit * 4;
+        @extend %fs-caption;
+        color: $black-2;
+        text-align: left;
+    }

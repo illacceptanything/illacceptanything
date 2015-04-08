@@ -1,0 +1,61 @@
+///*------------------------------------*\
+//    #OBJECTS-ICON
+//\*------------------------------------*/
+
+// Button vars
+$icon-font-size:   ('xs': 10px, 's': 12px, 'm': 14px, 'l': 18px, 'xl': 26px);
+
+
+
+
+
+// Icon base styles
+.icon {
+    vertical-align: top;
+    text-align: center;
+}
+
+
+
+
+
+// Icon sizes
+@each $key, $size in $sizes {
+    .icon--#{$key} {
+        @include size($size);
+        line-height: $size !important;
+
+        &.icon--circled {
+            @include font-size(map-get($icon-font-size, $key));
+        }
+
+        &.icon--flat {
+            @include font-size($size - 6);
+        }
+    }
+}
+
+
+
+
+
+// Icon colors
+@each $key, $color in $colors {
+    .icon--circled.icon--#{$key} {
+        color: $white-1;
+        background-color: $color;
+    }
+
+    .icon--flat.icon--#{$key} {
+        color: $color;
+    }
+}
+
+
+
+
+
+// Icon types
+.icon--circled {
+    border-radius: 50%;
+}

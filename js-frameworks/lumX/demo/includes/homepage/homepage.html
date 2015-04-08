@@ -1,0 +1,98 @@
+<!-- Banner -->
+<div class="banner">
+    <div class="banner__logo">
+        <img src="/images/logo/lumx-color.png">
+    </div>
+
+    <h2 class="banner__subtitle">
+        The first responsive front-end framework based on AngularJS & Google Material Design specifications.
+    </h2>
+
+    <a ng-href="{{ repo.lastRelease.url }}" class="banner__dl-btn btn btn--xl btn--white btn--raised" lx-ripple>
+        Download LumX
+    </a>
+
+    <span class="banner__version">{{ repo.lastRelease.tag }}</span>
+</div>
+
+<!-- Github activity -->
+<div class="github-activity">
+    <div class="wrapper">
+        <div class="github-activity__update">
+            <span>Latest Update on GitHub</span>
+            <strong>{{ repo.lastCommit.date | date }}:</strong>
+            <a ng-href="{{ repo.lastCommit.url }}">Commit {{ repo.lastCommit.sha }}</a>
+        </div>
+
+        <div class="github-activity__contribute">
+            <a href="https://github.com/lumapps/lumx/" class="btn btn--m btn--white btn--raised" lx-ripple>Contribute now</a>
+        </div>
+    </div>
+</div>
+
+<!-- Features -->
+<div class="wrapper">
+    <div class="features">
+        <header class="features-header">
+            <h3 class="features-header__title">
+                Made with the latest technologies
+            </h3>
+
+            <p class="features-header__subtitle">
+                LumX will help you to design beautiful applications, faster and easier. We’ve built it based on google guidelines, respecting metrics in a pixel perfect way.
+            </p>
+        </header>
+
+        <div flex-container="row" flex-gutter="24">
+            <div flex-item>
+                <div class="feature">
+                    <div class="feature__picture-box">
+                        <img src="/images/feature/sass.png" alt="Sass">
+                    </div>
+
+                    <h4 class="feature-title">Sass Preprocessor</h4>
+
+                    <p class="feature-description">
+                        Built with Sass, Bourbon and Neat, you'll be able to quickly customize your application design. Moreover, your Sass and Javascript files will be automatically optimized with Gulp to improve your application performance.
+                    </p>
+                </div>
+            </div>
+
+            <div flex-item>
+                <div class="feature">
+                    <div class="feature__picture-box">
+                        <img src="/images/feature/angular.png" alt="Angular JS">
+                    </div>
+
+                    <h4 class="feature-title">AngularJS</h4>
+
+                    <p class="feature-description">
+                        We've choosen AngularJS for LumX because we think it's the best Javascript MVC Framework to build robust and fast one-page applications. And of course, because it has been made and is still maintained by Google.
+                    </p>
+                </div>
+            </div>
+
+            <div flex-item>
+                <div class="feature">
+                    <div class="feature__picture-box">
+                        <img src="/images/feature/javascript.png" alt="Javascript" />
+                    </div>
+
+                    <h4 class="feature-title">Just a little bit of jQuery</h4>
+
+                    <p class="feature-description">
+                        Performance is highly important for any web application. That's why we only use jQuery without any of its plugin. Each component was then home made to be perfectly plugged to your AngularJS application.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <span>Made by</span>
+
+    <a href="http://www.lumapps.com" class="footer__link">
+        <img src="/images/logo/lumapps.png" alt="LumApps">
+    </a>
+</footer>

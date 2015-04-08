@@ -1,0 +1,44 @@
+{
+  "name": "lumX",
+  "version": "1.0.0",
+  "description": "lumX",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "del": "^1.1.1",
+    "event-stream": "^3.1.7",
+    "gulp": "^3.8.10",
+    "gulp-cached": "^1.0.1",
+    "gulp-concat": "^2.3.4",
+    "gulp-connect": "^2.2.0",
+    "gulp-insert": "^0.4.0",
+    "gulp-jshint": "^1.8.4",
+    "gulp-load-plugins": "^0.7.0",
+    "gulp-minify-css": "^0.3.7",
+    "gulp-plumber": "^0.6.6",
+    "gulp-remember": "^0.2.1",
+    "gulp-remove-lines": "~0.1.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-replace": "^0.4.0",
+    "gulp-ruby-sass": "^0.7.1",
+    "gulp-templatecache": "0.0.3",
+    "gulp-uglify": "^1.0.0",
+    "gulp-watch": "^0.7.0",
+    "jshint-summary": "^0.4.0",
+    "merge-stream": "^0.1.5",
+    "minimist": "^1.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lumapps/lumx.git"
+  },
+  "author": "LumApps",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lumapps/lumx/issues"
+  },
+  "homepage": "https://github.com/lumapps/lumx"
+}

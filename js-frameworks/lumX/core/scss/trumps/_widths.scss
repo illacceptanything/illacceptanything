@@ -1,0 +1,78 @@
+///*------------------------------------*\
+//    #TRUMPS-WIDTHS
+//\*------------------------------------*/
+
+// A series of width helper classes that you can use to size things like grid
+// systems.
+
+// Whole.
+.zero-whole          { width: 0 !important; }
+.one-whole           { width: 100% !important; }
+
+// Halves.
+.one-half,
+.two-quarters,
+.three-sixths,
+.four-eighths,
+.five-tenths,
+.six-twelfths        { width: 50% !important; }
+
+// Thirds.
+.one-third,
+.two-sixths,
+.three-ninths,
+.four-twelfths       { width: 33.3333333% !important; }
+.two-thirds,
+.four-sixths,
+.six-ninths,
+.eight-twelfths      { width: 66.6666666% !important; }
+
+// Quarters.
+.one-quarter,
+.two-eighths,
+.three-twelfths      { width: 25% !important; }
+.three-quarters,
+.six-eighths,
+.nine-twelfths       { width: 75% !important; }
+
+// Fifths.
+.one-fifth,
+.two-tenths          { width: 20% !important; }
+.two-fifths,
+.four-tenths         { width: 40% !important; }
+.three-fifths,
+.six-tenths          { width: 60% !important; }
+.four-fifths,
+.eight-tenths        { width: 80% !important; }
+
+// Sixths.
+.one-sixth,
+.two-twelfths        { width: 16.6666666% !important; }
+.five-sixths,
+.ten-twelfths        { width: 83.3333333% !important; }
+
+// Eighths.
+.one-eighth          { width: 12.5% !important; }
+.three-eighths       { width: 37.5% !important; }
+.five-eighths        { width: 62.5% !important; }
+.seven-eighths       { width: 87.5% !important; }
+
+// Ninths.
+.one-ninth           { width: 11.1111111% !important; }
+.two-ninths          { width: 22.2222222% !important; }
+.four-ninths         { width: 44.4444444% !important; }
+.five-ninths         { width: 55.5555555% !important; }
+.seven-ninths        { width: 77.7777777% !important; }
+.eight-ninths        { width: 88.8888888% !important; }
+
+// Tenths.
+.one-tenth           { width: 10% !important; }
+.three-tenths        { width: 30% !important; }
+.seven-tenths        { width: 70% !important; }
+.nine-tenths         { width: 90% !important; }
+
+// Twelfths.
+.one-twelfth         { width:  8.3333333% !important; }
+.five-twelfths       { width: 41.6666666% !important; }
+.seven-twelfths      { width: 58.3333333% !important; }
+.eleven-twelfths     { width: 91.6666666% !important; }

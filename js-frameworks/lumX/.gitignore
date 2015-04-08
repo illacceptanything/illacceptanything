@@ -1,0 +1,41 @@
+# Workspace files are user-specific
+*.sublime-workspace
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Various temp files
+.tmp
+.sass-cache
+.idea
+.ropeproject
+*.*~*
+
+# MacOS Files
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+
+# Thumbnails
+._*
+
+# Libs and builded files
+/node_modules/*
+/libs
+/build
+*.css.map
+
+# Codekit
+config.codekit
+
+# Python
+*.pyc

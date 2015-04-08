@@ -1,0 +1,46 @@
+$scope.notify = function(type)
+{
+    if (type === 'simple')
+    {
+        LxNotificationService.notify('Lorem Ipsum');
+    }
+    else if (type === 'sticky')
+    {
+        LxNotificationService.notify('Lorem Ipsum', undefined, true);
+    }
+    else if (type === 'icon')
+    {
+        LxNotificationService.notify('Lorem Ipsum', 'android');
+    }
+    else if (type === 'color')
+    {
+        LxNotificationService.notify('Lorem Ipsum', undefined, false, 'grey');
+    }
+    else if (type === 'info')
+    {
+        LxNotificationService.info('Lorem Ipsum');
+    }
+    else if (type === 'success')
+    {
+        LxNotificationService.success('Lorem Ipsum');
+    }
+    else if (type === 'warning')
+    {
+        LxNotificationService.warning('Lorem Ipsum');
+    }
+    else if (type === 'error')
+    {
+        LxNotificationService.error('Lorem Ipsum');
+    }
+};
+
+$scope.confirm = function(type)
+{
+    if (type === 1)
+    {
+        LxNotificationService.confirm('Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet urna quis nisi sodales semper pharetra eu augue.', { cancel:'Disagree', ok:'Agree' }, function(answer)
+        {
+            console.log(answer);
+        });
+    }
+};

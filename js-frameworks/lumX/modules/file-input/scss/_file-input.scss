@@ -1,0 +1,84 @@
+///*------------------------------------*\
+//    #OBJECTS-FILE-INPUT
+//\*------------------------------------*/
+
+// Input file base styles
+.input-file {
+    position: relative;
+    padding-top: $base-spacing-unit * 4;
+    padding-bottom: $base-spacing-unit;
+
+    &:before,
+    &:after {
+        content: '';
+    }
+
+    &:before {
+        @include position(absolute, null 0 $base-spacing-unit - 1 0);
+        height: 1px;
+        border-bottom: 1px solid $black-4;
+    }
+
+    &:after {
+        @include position(absolute, null 0 $base-spacing-unit - 2 0);
+        height: 2px;
+        background-color: $blue-500;
+        @include transform(scale(0));
+        @include transition-property(transform);
+        @include transition-duration(0.6s);
+        @include transition-timing-function($ease-out-quint);
+    }
+}
+
+.input-file--is-active {
+    .input-file__label {
+        @include transform(scale(0.75) translateY(0));
+    }
+
+    .input-file__filename {
+        opacity: 1;
+    }
+}
+
+.input-file--is-focused {
+    &:after {
+        @include transform(scale(1));
+    }
+
+    .input-file__label {
+        color: $blue-500;
+    }
+}
+    
+    // Input file label
+    .input-file__label {
+        display: block;
+        @include position(absolute, $base-spacing-unit null null 0);
+        color: $black-3;
+        line-height: 32px;
+        pointer-events: none;
+        @include transform(translateY($base-spacing-unit * 3));
+        @include transform-origin(bottom left);
+        @include transition-property(transform, color);
+        @include transition-duration(0.4s);
+        @include transition-timing-function($ease-out-quint);
+    }
+
+    // Input file filename
+    .input-file__filename {
+        display: block;
+        @include size(100% $base-spacing-unit * 4);
+        overflow: hidden;
+        opacity: 0;
+        line-height: 32px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    // Input file input
+    .input-file__input {
+        @include position(absolute, $base-spacing-unit * 4 null null 0);
+        @include size(100% 32px);
+        opacity: 0;
+        cursor: pointer;
+    }

@@ -1,0 +1,40 @@
+<header class="header">
+    <div class="menubar">
+        <button class="btn btn--m btn--icon btn--white" lx-ripple="white" ng-click="Sidebar.toggleSidebar()">
+            <i class="mdi mdi-menu"></i>
+        </button>
+    </div>
+
+    <h1 class="main-logo">
+        <a href="/" class="main-logo__link" lx-ripple="white">
+            <img src="/images/logo/lumx-white.png">
+        </a>
+    </h1>
+    
+
+    <nav class="main-nav main-nav--lap-and-up">
+        <ul>
+            <li><a href="/getting-started/installation" class="main-nav__link" lx-ripple="white">Getting started</a></li>
+            <li><a href="/css/mixins" class="main-nav__link" lx-ripple="white">CSS</a></li>
+            <li><a href="/directives/dropdowns" class="main-nav__link" lx-ripple="white">Directives</a></li>
+            <li><a href="/services/notifications" class="main-nav__link" lx-ripple="white">Services</a></li>
+        </ul>
+    </nav>
+
+    <nav class="main-nav main-nav--palm">
+        <lx-dropdown position="right" from-top>
+            <button class="btn btn--m btn--white btn--icon" lx-ripple="white" lx-dropdown-toggle>
+                <i class="mdi mdi-dots-vertical"></i>
+            </button>
+
+            <lx-dropdown-menu>
+                <ul>
+                    <li><a href="/getting-started/installation" class="dropdown-link">Getting started</a></li>
+                    <li><a href="/css/mixins" class="dropdown-link">CSS</a></li>
+                    <li><a href="/directives/dropdowns" class="dropdown-link">Directives</a></li>
+                    <li><a href="/services/notifications" class="dropdown-link">Services</a></li>
+                </ul>
+            </lx-dropdown-menu>
+        </lx-dropdown>
+    </nav>
+</header>

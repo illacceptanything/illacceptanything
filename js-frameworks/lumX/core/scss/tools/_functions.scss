@@ -1,0 +1,27 @@
+///*------------------------------------*\
+//    #TOOLS-FUNCTIONS
+//\*------------------------------------*/
+
+// Maths helpers.
+//
+// Halve and double numbers, returning rounded integers. E.g.:
+//
+// .foo {
+//     padding: halve(3.2px);
+// }
+
+@function quarter($number) {
+    @return round($number / 4);
+}
+
+@function halve($number) {
+    @return round($number / 2);
+}
+
+@function double($number) {
+    @return round($number * 2);
+}
+
+@function quadruple($number) {
+    @return round($number * 4);
+}

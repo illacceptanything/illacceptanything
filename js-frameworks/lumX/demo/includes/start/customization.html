@@ -1,0 +1,61 @@
+<!-- Sidebar -->
+<ng-include src="'/includes/sidebar/sidebar-start.html'"></ng-include>
+
+<div class="main-section">
+    <h3 class="main-section__title">Customization</h3>
+
+    <p class="main-section__intro">
+        You can use LumX in your Sass project to get all variables and mixins available.<br />
+        <a href="/css/mixins">Check what amazing things you can do</a>.
+    </p>
+
+    <div class="main-section__content">
+        <div class="paragraph">
+            <h4 class="main-section__subtitle">Common settings</h4>
+
+            <p>
+                You can override LumX default settings <code>dist/scss/settings/_defaults.scss</code> if you want to change sizes, main colors, etc.<br />
+                For example, in a settings file located in your project <code>scss/settings/_common.scss</code>:
+            </p>
+        </div>
+
+        <div class="example mt++">
+            <!-- Example -->
+            <div class="example__code" hljs include="'/includes/start/customization/variables.html'" language="scss"></div>
+            <!-- /Example -->
+        </div>
+    </div>
+
+    <div class="main-section__content">
+        <div class="paragraph">
+            <h4 class="main-section__subtitle">Main SCSS file</h4>
+
+            <p>
+                Then, create your main file where you will import your settings first and then LumX main scss file <code>dist/scss/_lumx.scss</code>.<br />
+                For example, in your main file located in your project <code>scss/my-project.scss</code>:
+            </p>
+        </div>
+
+        <div class="example mt++">
+            <!-- Example -->
+            <div class="example__code" hljs include="'/includes/start/customization/main.html'" language="scss"></div>
+            <!-- /Example -->
+        </div>
+    </div>
+    
+    <div class="main-section__content">
+        <div class="paragraph">
+            <h4 class="main-section__subtitle">Thanks to...</h4>
+
+            <p>
+                We’d like to thank Harry Roberts for his CSS framework, <a href="https://github.com/inuitcss" target="_blank">Inuitcss</a>, which is a powerful, scalable, Sass-based, BEM, OOCSS framework.<br />
+                LumX CSS framework is largely inspired from his work.
+            </p>
+
+            <p>
+                We invite you to follow these guidelines to build your project:<br />
+                <a href="https://github.com/csswizardry/CSS-Guidelines" target="_blank">https://github.com/csswizardry/CSS-Guidelines</a>
+            </p>
+        </div>
+    </div>
+</div>

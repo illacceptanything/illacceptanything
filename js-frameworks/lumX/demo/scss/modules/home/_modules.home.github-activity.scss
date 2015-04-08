@@ -1,0 +1,72 @@
+///*------------------------------------*\
+//    #MODULES-HOME-GITHUB-ACTIVITY
+//\*------------------------------------*/
+
+// Github activity base styles
+.github-activity {
+    background: #3bafda;
+
+    @include media-query(desk) {
+        height: 60px;
+        line-height: 60px;
+    }
+
+    @include media-query(portable) {
+        padding: 20px 0;
+        text-align: center;
+    }
+}
+
+    // Github activity update
+    .github-activity__update {
+        color: #fff;
+
+        @include media-query(desk) {
+            float: left;
+        }
+
+        span,
+        strong,
+        a {
+            @include media-query(portable) {
+                display: block;
+            }
+        }
+
+        span {
+            color: #abdaed;
+        }
+
+        strong {
+            padding: 0 0 0 $base-spacing-unit;
+        }
+
+        a {
+            color: #d0e9f4;
+            text-decoration: none;
+            @include transition(color 0.3s);
+
+            @include media-query(portable) {
+                @include font-size(10px);
+            }
+
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+
+    // Github activity contribute
+    .github-activity__contribute {
+        @include media-query(desk) {
+            float: right;
+        }
+
+        @include media-query(portable) {
+            margin: 0;
+        }
+
+        .btn {
+            margin-top: 12px;
+        }
+    }

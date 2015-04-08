@@ -1,0 +1,82 @@
+///*------------------------------------*\
+//    #MODULES-COMMON-SIDEBAR
+//\*------------------------------------*/
+
+// Sidebar filter
+.sidebar-filter {
+    @include position(fixed, 0 0 0 0);
+    z-index: 998;
+    background-color: rgba(0,0,0,0.5);
+    opacity: 0;
+    pointer-events: none;
+    @include transition-property(opacity);
+    @include transition-duration(0.6s);
+    @include transition-timing-function($ease-out-quint);
+}
+
+.sidebar-filter--is-shown {
+    @include media-query(portable) {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+
+
+
+
+// Sidebar base styles
+.sidebar {
+    z-index: 998;
+    width: 260px;
+    border-right: solid 1px #ddd;
+    background-color: #fff;
+    @include transition-property(box-shadow, transform);
+    @include transition-duration(0.6s);
+    @include transition-timing-function($ease-out-quint);
+    overflow: auto;
+
+    @include media-query(desk) {
+        @include position(fixed, 60px null 0 null);
+    }
+
+    @include media-query(portable) {
+        @include position(fixed, 60px null 0 -260px);
+    }
+}
+
+.sidebar--is-shown {
+    @include media-query(portable) {
+        box-shadow: 3px 0 6px rgba(0, 0, 0, 0.4);
+        @include transform(translateX(260px));
+    }
+}
+
+
+
+
+
+// Sidebar menu
+.sidebar-menu {
+    padding: $base-spacing-unit 0;
+
+    ul {
+        @extend %bare-list;
+    }
+}
+
+    // Sidebar menu link
+    .sidebar-menu__link {
+        display: block;
+        padding: 0 $base-spacing-unit * 2;
+        cursor: pointer;
+        @include font-size(14px);
+        font-weight: 700;
+        color: #333;
+        line-height: $base-spacing-unit * 6;
+        text-decoration: none;
+
+        &:hover {
+            background-color: #eee;
+        }
+    }

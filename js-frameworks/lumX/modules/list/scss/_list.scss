@@ -1,0 +1,132 @@
+///*------------------------------------*\
+//    #OBJECTS-LIST
+//\*------------------------------------*/
+
+// List base styles
+.list {
+    @extend %bare-list;
+}
+
+
+
+
+
+// List row
+.list-row {
+    @include display(flex);
+    @include flex-direction(row);
+    position: relative;
+    padding: 0 $base-spacing-unit * 2;
+
+    &.list-row--multi-line {
+        .list-row__primary,
+        .list-row__secondary,
+        .list-primary-tile,
+        .list-secondary-tile {
+            padding: $base-spacing-unit * 2 0;
+        }
+    }
+
+    &:not(.list-row--multi-line) {
+        .list-row__primary,
+        .list-row__content,
+        .list-row__secondary,
+        .list-primary-tile,
+        .list-content-tile,
+        .list-secondary-tile {
+            @include justify-content(center);
+        }
+
+        .list-row__primary,
+        .list-row__secondary,
+        .list-primary-tile,
+        .list-secondary-tile {
+            padding: $base-spacing-unit 0;
+        }
+    }
+}
+
+.list-row--has-separator {
+    .list-row__content:after {
+        content: '';
+        @include position(absolute, null 0 0 0);
+        height: 1px;
+        background-color: $black-4;
+    }
+
+    &:last-child .list-row__content:after {
+        display: none;
+    }
+}
+
+.list-row--is-clickable {
+    cursor: pointer;
+}
+
+.list-row--is-clickable:hover,
+.list-row--is-active {
+    background-color: $grey-100;
+}
+    
+    // List tiles
+    .list-row__primary,
+    .list-row__content,
+    .list-row__secondary,
+    .list-primary-tile,
+    .list-content-tile,
+    .list-secondary-tile {
+        @include display(flex);
+        @include flex-direction(column);
+    }
+    
+    // List row primary
+    .list-row__primary,
+    .list-primary-tile {
+        width: $size-xl;
+    }
+    
+    // List row content
+    .list-row__content,
+    .list-content-tile {
+        position: relative;
+        @include flex(1);
+        padding: $base-spacing-unit * 1.5 0;
+    }
+
+    // List row secondary
+    .list-row__secondary,
+    .list-secondary-tile {
+        @include align-items(flex-end);
+        width: $size-l;
+    }
+
+
+
+
+
+// List divider
+.list-divider {
+    height: 1px;
+    margin-top: $base-spacing-unit;
+    margin-bottom: $base-spacing-unit;
+    background-color: $black-4;
+}
+
+.list-divider--is-pushed {
+    margin-left: $base-spacing-unit * 9;
+}
+
+
+
+
+
+// List subheader
+.list-subheader {
+    padding: $base-spacing-unit * 1.5 $base-spacing-unit * 2;
+    @extend %fs-subhead;
+    color: $black-2;
+}
+
+.list-subheader--is-pushed {
+    margin-left: $size-l + ($base-spacing-unit * 2);
+}

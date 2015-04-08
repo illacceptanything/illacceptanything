@@ -1,0 +1,73 @@
+///*------------------------------------*\
+//    #OBJECTS-DATA-TABLE
+//\*------------------------------------*/
+
+// Data table container
+.data-table-container {
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+
+
+
+// Data table base styles
+.data-table {
+    width: 100%;
+    margin: 0;
+
+    & > thead > tr > th,
+    & > tbody > tr > td {
+        height: $base-spacing-unit * 8;
+        padding: $base-spacing-unit $base-spacing-unit * 2;
+    }
+
+    & > thead > tr > th {
+        font-weight: 400;
+        text-align: left;
+        white-space: nowrap;
+    }
+}
+
+.data-table--has-primary {
+    & > thead > tr > th:first-child,
+    & > tbody > tr > td:first-child {
+        width: ($base-spacing-unit * 8) + $size-l;
+        padding-left: $base-spacing-unit * 4;
+        padding-right: $base-spacing-unit * 4;
+    }
+
+    & > tbody > tr > td:first-child {
+        img,
+        .thumbnail {
+            border-radius: 50%;
+            overflow: hidden;
+        }
+    }
+
+    & > thead > tr > th:nth-child(2),
+    & > tbody > tr > td:nth-child(2) {
+        padding-left: 0;
+    }
+}
+
+.data-table--has-secondary {
+    & > thead > tr > th:last-child,
+    & > tbody > tr > td:last-child {
+        padding: 0 $base-spacing-unit;
+        width: ($base-spacing-unit * 2) + $size-l;
+    }
+}
+
+    // Clickable row
+    .data-table__clickable-row {
+        cursor: pointer;
+
+        &:hover {
+            background-color: $grey-100;
+        }
+    }

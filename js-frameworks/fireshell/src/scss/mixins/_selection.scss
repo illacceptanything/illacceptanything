@@ -1,0 +1,12 @@
+@mixin selection($selection-bg: #333, $selection-c: #fff, $selection-ts: none) {
+  ::-moz-selection{
+    background: $selection-bg;
+    color: $selection-c;
+    text-shadow: $selection-ts;
+  }
+  ::selection{
+    background: $selection-bg;
+    color: $selection-c;
+    text-shadow: $selection-ts;
+  }
+}

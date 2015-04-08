@@ -1,0 +1,34 @@
+///*------------------------------------*\
+//    #OBJECTS-DIVIDER
+//\*------------------------------------*/
+
+// Divider base styles
+.divider {
+    height: 1px;
+}
+
+.divider--dark {
+    background-color: $black-4;
+}
+
+.divider--light {
+    background-color: $white-4;
+}
+
+
+
+
+
+// Divider applied on existing element
+.has-divider {
+    border-bottom-width: 1px;
+    border-bottom-style: solid; 
+}
+
+.has-divider--dark {
+    border-bottom-color: $black-4;
+}
+
+.has-divider--light {
+    border-bottom-color: $white-4;
+}

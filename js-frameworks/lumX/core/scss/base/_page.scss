@@ -1,0 +1,24 @@
+///*------------------------------------*\
+//    #BASE-PAGE
+//\*------------------------------------*/
+
+// High page-level styling.
+//
+// 1. Set the default `font-size` and `line-height` for the entire project,
+//    sourced from our default variables. The `font-size` is calculated to exist
+//    in ems, the `line-height` is calculated to exist unitlessly.
+// 2. Ensure the page always fills at least the entire height of the viewport.
+// 3. Prevent certain mobile browsers from automatically zooming fonts.
+// 4. Fonts on OSX will look more consistent with other systems that do not
+//    render text using sub-pixel anti-aliasing.
+html {
+    font-size: ($base-font-size / 16px) * 1em; // [1]
+    line-height: $base-line-height / $base-font-size; // [1]
+    background-color: $base-background-color;
+    color: $base-text-color;
+    min-height: 100%; // [2]
+    -webkit-text-size-adjust: 100%; // [3]
+        -ms-text-size-adjust: 100%; // [3]
+    -moz-osx-font-smoothing: grayscale; // [4]
+     -webkit-font-smoothing: antialiased; // [4]
+}

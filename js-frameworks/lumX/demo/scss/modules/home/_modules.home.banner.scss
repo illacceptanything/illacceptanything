@@ -1,0 +1,59 @@
+///*------------------------------------*\
+//    #MODULES-HOME-BANNER
+//\*------------------------------------*/
+
+// Banner base styles
+.banner {
+    background: url('../images/header/header.png') repeat 0 0 #4fc1e9;
+    padding: 60px 0;
+    color: white;
+    text-align: center;
+}
+
+    // Banner title
+    .banner__logo {
+        margin: 0;
+
+        img {
+            display: block;
+            margin: 0 auto;
+
+            @include media-query(desk) {
+                height: 90px;
+            }
+
+            @include media-query(portable) {
+                height: 60px;
+            }
+        }
+    }
+
+    // Banner subtitle
+    .banner__subtitle {
+        font-weight: 300;
+
+        @include media-query(desk) {
+            margin: 40px;
+            @include font-size(32px);
+            line-height: 40px;
+        }
+
+        @include media-query(portable) {
+            margin: 20px;
+            @include font-size(24px);
+            line-height: 32px;
+        }
+    }
+
+    // Banner download button
+    .banner__dl-btn {
+        //display: block;
+    }
+
+    // Banner version
+    .banner__version {
+        display: block;
+        margin-top: $base-spacing-unit * 1.5;
+        @include font-size(14px);
+        color: rgba(255,255,255,0.8);
+    }

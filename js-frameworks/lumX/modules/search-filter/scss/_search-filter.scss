@@ -1,0 +1,102 @@
+///*------------------------------------*\
+//    #OBJECTS-SEARCH-FILTER
+//\*------------------------------------*/
+
+// Search filter base styles
+.search-filter {
+    position: relative;
+    overflow: hidden;
+}
+
+.search-filter--is-closed {
+    width: $size-l;
+}
+
+.search-filter--is-focused {
+    .search-filter__cancel {
+        @include transform(translateX(0));
+    }
+}
+
+.search-filter--dark-theme {
+    .search-filter__label {
+        color: $white-1;
+    }
+
+    .search-filter__input {
+        color: $white-1;
+    }
+
+    .search-filter__cancel {
+        color: $white-1;
+    }
+}
+
+.search-filter--light-theme {
+    .search-filter__label {
+        color: $black-1;
+    }
+
+    .search-filter__input {
+        color: $black-1;
+    }
+
+    .search-filter__cancel {
+        color: $black-1;
+    }
+}
+
+    // Search filter container
+    .search-filter__container {
+        position: relative;
+        @include size(240px $size-l);
+        padding: 0 $size-l 0 $size-xl;
+    }
+
+    // Search filter label
+    .search-filter__label {
+        @include position(absolute, 0 null null 0);
+        @include size($size-l);
+        @include font-size(24px);
+        cursor: pointer;
+        
+        .mdi {
+            @include position(absolute, 9px null null 8px);
+        }
+    }
+
+    // Search filter input
+    .search-filter__input {
+        display: block;
+        @include size(100% $size-l);
+        margin: 0;
+        padding: 0;
+        border: none;
+        outline: none;
+        background: none;
+
+        @include placeholder {
+            color: $black-3;
+
+            .search-filter--dark-theme & {
+                color: $white-2;
+            }
+        }
+    }
+
+    // Search filter cancel
+    .search-filter__cancel {
+        @include position(absolute, 0 0 null null);
+        @include size($size-l);
+        @include font-size(24px);
+        text-align: center;
+        cursor: pointer;
+        @include transform(translateX($size-l));
+        @include transition-property(transform);
+        @include transition-duration(0.4s);
+        @include transition-timing-function($ease-out-quint);
+
+        .mdi {
+            line-height: $size-l;
+        } 
+    }

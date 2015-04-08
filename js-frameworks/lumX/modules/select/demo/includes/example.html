@@ -1,0 +1,56 @@
+<div flex-container="row" flex-gutter="24">
+    <div flex-item>
+        <lx-select ng-model="selects.selectedPerson" placeholder="Lorem Ipsum" choices="people" floating-label>
+            <lx-select-selected>
+                {{ $selected.name }} - {{ $selected.age }}
+            </lx-select-selected>
+
+            <lx-select-choices>
+                {{ $choice.email }}
+            </lx-select-choices>
+        </lx-select>
+    </div>
+
+    <div flex-item>
+        <lx-select ng-model="ajax.selected" change="cbSelect.exec(newValue, oldValue)" placeholder="Lorem Ipsum"
+                   choices="ajax.list"  filter="ajax.update(newValue, oldValue)" loading="{{ ajax.loading }}"
+                   min-length="2" allow-clear="true" selection-to-model="ajax.toModel(data, callback)"
+                   model-to-selection="ajax.toSelection(data, callback)">
+            <lx-select-selected>
+                {{ $selected.Title }} ({{ $selected.Year }})
+            </lx-select-selected>
+
+            <lx-select-choices>
+                {{ $choice.Title }} - {{ $choice.Type }}
+            </lx-select-choices>
+        </lx-select>
+
+        <button class="btn btn--m btn--blue btn--raised mt" ng-click="ajax.selected = 'Inception'" lx-ripple>Set to 'Inception'</button>
+    </div>
+</div>
+
+<div flex-container="row" flex-gutter="24">
+    <div flex-item>
+        <lx-select ng-model="selects.selectedPersons" placeholder="Lorem Ipsum" choices="people" multiple floating-label>
+            <lx-select-selected>
+                {{ $selected.name }} - {{ $selected.age }}
+            </lx-select-selected>
+
+            <lx-select-choices>
+                {{ $choice.email }}
+            </lx-select-choices>
+        </lx-select>
+    </div>
+
+    <div flex-item>
+        <lx-select ng-model="selects.selectedPersons2" placeholder="Lorem Ipsum" choices="selectSections" multiple floating-label>
+            <lx-select-selected>
+                {{ $selected.uid }} - {{ $selected.name }}
+            </lx-select-selected>
+
+            <lx-select-choices>
+                {{ $choice.name }}
+            </lx-select-choices>
+        </lx-select>
+    </div>
+</div>

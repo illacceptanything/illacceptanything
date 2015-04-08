@@ -1,0 +1,77 @@
+<div class="lx-date" ng-class="{ 'lx-date--fixed-label': fixedLabel(),
+                                 'lx-date--with-icon': icon && fixedLabel() }">
+
+    <div class="text-field__icon" ng-if="icon && fixedLabel() ">
+        <i class="mdi mdi-{{ icon }}"></i>
+    </div>
+
+    <!-- Date picker input -->
+    <lx-text-field class="lx-date-input" label="{{ label }}" ng-click="openPicker()">
+        <input type="text" ng-model="selected.model" ng-disabled="true">
+    </lx-text-field>
+
+    <!-- Date picker -->
+    <div class="lx-date-picker">
+        <!-- Current day of week -->
+        <div class="lx-date-picker__current-day-of-week">
+            <span>{{ moment(selected.date).format('dddd') }}</span>
+        </div>
+
+        <!-- Current date -->
+        <div class="lx-date-picker__current-date">
+            <span ng-class="{ 'tc-white-1': !yearSelection, 'tc-white-3': yearSelection }">{{ moment(selected.date).format('MMM') }}</span>
+            <strong ng-class="{ 'tc-white-1': !yearSelection, 'tc-white-3': yearSelection }">{{ moment(selected.date).format('DD') }}</strong>
+            <a ng-class="{ 'tc-white-3': !yearSelection, 'tc-white-1': yearSelection }" ng-click="displayYearSelection()">{{ moment(selected.date).format('YYYY') }}</a>
+        </div>
+
+        <!-- Calendar -->
+        <div class="lx-date-picker__calendar" ng-if="!yearSelection">
+            <div class="lx-date-picker__nav">
+                <button class="btn btn--xs btn--teal btn--icon" lx-ripple ng-click="previousMonth()">
+                    <i class="mdi mdi-chevron-left"></i>
+                </button>
+
+                <span>{{ activeDate.format('MMMM YYYY') }}</span>
+
+                <button class="btn btn--xs btn--teal btn--icon" lx-ripple ng-click="nextMonth()">
+                    <i class="mdi mdi-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="lx-date-picker__days-of-week">
+                <span ng-repeat="day in daysOfWeek">{{ day }}</span>
+            </div>
+
+            <div class="lx-date-picker__days">
+                <span class="lx-date-picker__day lx-date-picker__day--is-empty"
+                      ng-repeat="x in emptyFirstDays">&nbsp;</span><!--
+
+             --><div class="lx-date-picker__day"
+                     ng-class="{ 'lx-date-picker__day--is-selected': day.selected,
+                                 'lx-date-picker__day--is-today': day.today }"
+                     ng-repeat="day in days">
+                    <a ng-click="select(day)">{{ day ? day.format('D') : '' }}</a>
+                </div><!--
+
+             --><span class="lx-date-picker__day lx-date-picker__day--is-empty"
+                      ng-repeat="x in emptyLastDays">&nbsp;</span>
+            </div>
+        </div>
+
+        <!-- Year selection -->
+        <div class="lx-date-picker__year-selector" ng-show="yearSelection">
+            <a class="lx-date-picker__year"
+                 ng-class="{ 'lx-date-picker__year--is-active': year == activeDate.format('YYYY') }"
+                 ng-repeat="year in years"
+                 ng-click="selectYear(year)"
+                 ng-if="yearSelection">
+                <span>{{ year }}</span>
+            </a>
+        </div>
+
+        <!-- Actions -->
+        <div class="lx-date-picker__actions">
+            <button class="btn btn--m btn--teal btn--flat" lx-ripple ng-click="closePicker()">Ok</button>
+        </div>
+    </div>
+</div>

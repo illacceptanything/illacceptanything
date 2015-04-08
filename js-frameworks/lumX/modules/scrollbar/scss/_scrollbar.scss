@@ -1,0 +1,60 @@
+///*------------------------------------*\
+//    #OBJECTS-SCROLLBAR
+//\*------------------------------------*/
+
+// Scrollbar containerbase style
+.scrollbar-container {
+    @include media-query(portable) {
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    @include media-query(desk) {
+        position: relative;
+        overflow: hidden;
+    }
+}
+
+.scrollbar-container:hover,
+.scrollbar-y-axis--is-dragging {
+    .scrollbar-y-axis__handle {
+        opacity: 1;
+    }
+}
+
+
+
+
+
+// Scrollbar Y axis base style
+.scrollbar-y-axis {
+    @include position(absolute, 0 0 null null);
+    width: 10px;
+
+    &:before {
+        content: '';
+        @include position(absolute, 0 0 0 0);
+        background-color: rgba(255,255,255,0.6);
+        opacity: 0;
+        @include transition-property(opacity);
+        @include transition-duration(0.2s);
+    }
+}
+
+.scrollbar-y-axis:hover,
+.scrollbar-y-axis--is-dragging {
+    &:before {
+        opacity: 1;
+    }
+}
+    
+    // Scrollbar Y axis handle
+    .scrollbar-y-axis__handle {
+        @include position(absolute, 0 null null 2px);
+        width: 6px;
+        border-radius: 3px;
+        background-color: rgba(0,0,0,0.4);
+        opacity: 0;
+        @include transition-property(opacity);
+        @include transition-duration(0.2s);
+    }

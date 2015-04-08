@@ -1,0 +1,50 @@
+///*------------------------------------*\
+//    #TRUMPS-HELPERS
+//\*------------------------------------*/
+
+// Clearfix.
+.clearfix { @include clearfix; }
+
+
+
+
+
+// Add/remove floats.
+.float-right   { float:right !important; }
+.float-left    { float:left  !important; }
+.float-none    { float:none  !important; }
+
+
+
+
+
+// Text alignment.
+.text-left     { text-align: left   !important; }
+.text-center   { text-align: center !important; }
+.text-right    { text-align: right  !important; }
+
+
+
+
+
+// Display block.
+.display-block {
+    display: block;
+}
+
+
+
+
+
+// Hide content off-screen without resorting to `display:none;`.
+.visuallyhidden,
+%visuallyhidden {
+    border: 0 !important;
+    clip: rect(0 0 0 0) !important;
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+}

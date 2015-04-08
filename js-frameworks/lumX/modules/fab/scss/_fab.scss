@@ -1,0 +1,118 @@
+///*------------------------------------*\
+//    #OBJECTS-FAB
+//\*------------------------------------*/
+
+// FAB base styles
+.fab {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+
+    &:hover {
+        .fab__primary .mdi {
+            &:nth-of-type(1) {
+                @include transform(scale(0));
+            }
+
+            &:last-child {
+                @include transform(scale(1));
+            }
+        }
+
+        .fab__actions {
+            pointer-events: auto;
+
+            .btn {
+                @include transform(scale(1));
+            }
+        }
+    }
+}
+
+    // FAB primary button
+    .fab__primary {
+        .mdi {
+            @include position(absolute, 0 0 0 0);
+            @include transition-property(transform);
+            @include transition-duration(0.2s);
+
+            &:last-child {
+                @include transform(scale(0));
+            }
+        }
+    }
+
+    // FAB actions
+    .fab__actions {
+        z-index: 999;
+        pointer-events: none;
+
+        .btn {
+            display: block;
+            @include transform(scale(0));
+            @include transition-property(transform);
+            @include transition-duration(0.2s);
+        }
+    }
+
+    // FAB actions directions
+    .fab__actions--up,
+    .fab__actions--left {
+        .btn {
+            @for $i from 1 through 10 {
+                &:nth-child(#{$i}) {
+                    @include transition-delay(0.02s * (10 / $i));
+                }
+            }
+        }
+    }
+
+    .fab__actions--down,
+    .fab__actions--right {
+        .btn {
+            @for $i from 1 through 10 {
+                &:nth-child(#{$i}) {
+                    @include transition-delay(0.05s * $i);
+                }
+            }
+        }
+    }
+
+    .fab__actions--left,
+    .fab__actions--right {
+        @include display(flex);
+        @include flex-direction(row);
+        @include flex-wrap(nowrap);
+    }
+
+    .fab__actions--up {
+        @include position(absolute, null null $size-xl 7px);
+
+        .btn {
+            margin-bottom: $base-spacing-unit;
+        }
+    }
+
+    .fab__actions--down {
+        @include position(absolute, $size-xl null null 7px);
+
+        .btn {
+            margin-top: $base-spacing-unit;
+        }
+    }
+
+    .fab__actions--left {
+        @include position(absolute, null $size-xl 7px null);
+
+        .btn {
+            margin-right: $base-spacing-unit;
+        }
+    } 
+
+    .fab__actions--right {
+        @include position(absolute, null null 7px $size-xl); 
+
+        .btn {
+            margin-left: $base-spacing-unit;
+        }
+    }

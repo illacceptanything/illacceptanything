@@ -1,0 +1,138 @@
+///*------------------------------------*\
+//    #OBJECTS-TOOLTIP
+//\*------------------------------------*/
+
+// Tooltip base styles
+.tooltip {
+	position: absolute;
+	z-index: 999;
+	border-radius: $base-round;
+	opacity: 0;
+	overflow: hidden;
+	pointer-events: none;
+	@include transition-property(opacity, transform);
+    @include transition-duration(0.6s);
+   	@include transition-timing-function($ease-out-quint);
+}
+
+.tooltip--is-active {
+	opacity: 1;
+
+	&.tooltip--top {
+		@include transform(translateY(-($base-spacing-unit)));
+	}
+
+	&.tooltip--bottom {
+		@include transform(translateY($base-spacing-unit));
+	}
+
+	&.tooltip--left {
+		@include transform(translateX(-($base-spacing-unit)));
+	}
+
+	&.tooltip--right {
+		@include transform(translateX($base-spacing-unit));
+	}
+}
+
+	// Tooltip background
+	.tooltip__background {
+		@include position(absolute, 0 0 0 0);
+		z-index: -1;
+		border-radius: 50%;
+		@include transform(scale(0) translateY(50%));
+		@include transition-property(transform);
+   		@include transition-duration(0.6s);
+   		@include transition-timing-function($ease-out-quint);
+	}
+
+	// Tooltip label
+	.tooltip__label {
+		display: block;
+		padding: 0 $base-spacing-unit;
+		@include font-size(11px);
+		line-height: 22px;
+		white-space: nowrap;
+	}
+
+
+
+
+
+// Tooltip skin modifiers
+.tooltip--black {
+	.tooltip__background {
+		background-color: $grey-600;
+	}
+
+	.tooltip__label {
+		color: $white-1;
+	}
+}
+
+.tooltip--white {
+	.tooltip__background {
+		background-color: $grey-200;
+	}
+
+	.tooltip__label {
+		color: $black-1;
+	}
+}
+
+
+
+
+
+// Tooltip direction modifiers
+.tooltip--top {
+	.tooltip__background {
+		@include transform(scale(0) translateY(50%));
+		@include transform-origin(center bottom);
+	}
+}
+
+.tooltip--top.tooltip--is-active {
+	.tooltip__background {
+		@include transform(scale(3) translateY(50%));
+	}
+}
+
+.tooltip--bottom {
+	.tooltip__background {
+		@include transform(scale(0) translateY(-50%));
+		@include transform-origin(center top);
+	}
+}
+
+.tooltip--bottom.tooltip--is-active {
+	.tooltip__background {
+		@include transform(scale(3) translateY(-50%));
+	}
+}
+
+.tooltip--left {
+	.tooltip__background {
+		@include transform(scale(0) translateX(50%));
+		@include transform-origin(right center);
+	}
+}
+
+.tooltip--left.tooltip--is-active {
+	.tooltip__background {
+		@include transform(scale(3) translateX(50%));
+	}
+}
+
+.tooltip--right {
+	.tooltip__background {
+		@include transform(scale(0) translateX(-50%));
+		@include transform-origin(left center);
+	}
+}
+
+.tooltip--right.tooltip--is-active {
+	.tooltip__background {
+		@include transform(scale(3) translateX(-50%));
+	}
+}

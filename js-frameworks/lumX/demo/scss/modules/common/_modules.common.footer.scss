@@ -1,0 +1,19 @@
+///*------------------------------------*\
+//    #MODULES-COMMON-FOOTER
+//\*------------------------------------*/
+
+// Header base styles
+.footer {
+	padding-bottom: $base-spacing-unit * 3;
+	@include font-size(14px);
+	line-height: 32px;
+	text-align: center;
+}
+
+	// Footer Link
+	.footer__link img {
+		display: inline-block;
+		vertical-align: top;
+		height: 32px;
+		margin-left: $base-spacing-unit;
+	}
