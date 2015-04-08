@@ -1,0 +1,78 @@
+#!/usr/local/bin/guile \
+-e main -s
+!#
+;;; fixkana
+;;; Copyright (C) 2015 Jordan Russell <jordan.likes.curry@gmail.com>
+;;;
+;;; This program is free software: you can redistribute it and/or
+;;; modify it under the terms of the GNU General Public License as
+;;; published by the Free Software Foundation, either version 3 of the
+;;; License, or (at your option) any later version.
+;;;
+;;; This program is distributed in the hope that it will be useful,
+;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;;; General Public License for more details.
+;;;
+;;; You should have received a copy of the GNU General Public License
+;;; along with this program.  If not, see
+;;; <http://www.gnu.org/licenses/>.
+
+
+(use-modules
+  (srfi srfi-1)
+  (srfi srfi-9)
+  (ice-9 rdelim))
+
+(define-record-type
+  <csv-entry>
+  (%make-csv null kanji reading meaning)
+  csv-entry?
+  (null null-entry?)
+  (kanji get-kanji)
+  (reading get-reading)
+  (meaning get-meaning))
+
+(define (make-entry kanji reading meaning)
+  (%make-csv #f
+             kanji reading meaning))
+
+(define the-null-entry
+  (%make-csv #t #f #f #f))
+
+(define (format-entry out entry)
+  (format out
+          "~a\t~a\t~a\n"
+          (get-kanji entry)
+          (get-reading entry)
+          (get-meaning entry)))
+          
+;; Use match instead
+(define (string->fixed-entry str)
+  (let* ((splat (string-split str #\tab))
+         (num-entrys (length splat)))
+    (cond ((= num-entrys 3)
+           (make-entry (car splat)
+                       (cadr splat)
+                       (caddr splat)))
+          ((= num-entrys 2)
+           (make-entry (car splat)
+                       (car splat)
+                       (cadr splat)))
+          (else the-null-entry))))
+
+(define (main args)
+  (let* ((inf (if (= (length args) 2)
+               (cadr args)
+               (current-input-port)))
+         (lines (if (port? inf)
+                  (string-split (read-string inf) #\newline)
+                  (call-with-input-file
+                    inf
+                    (lambda (port)
+                      (string-split (read-string port) #\newline))))))
+    (for-each (lambda (line)
+                (let ((fixed (string->fixed-entry line)))
+                  (when (not (null-entry? fixed))
+                    (format-entry #t fixed))))
+              lines)))
