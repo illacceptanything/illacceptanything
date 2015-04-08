@@ -1,11 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-</head>
-<body>
-	<img src="pusheen/pusheen1.png">
-	<img src="pusheen/pusheen2.jpg">
-	<img src="pusheen/pusheen3.gif">
-</body>
+<!doctype html>
+<title>Todo app</title>
+<script src="mithril.min.js"></script>
+<script>
+//This repo needs more new trendy frameworks
+var trendyApp = {};
 
-</html>
+trendyApp.vm = {
+    init: function() {
+        trendyApp.vm.imageInfo = [
+            {
+                number: 1,
+                type: 'png'
+            }, {
+                number: 2,
+                type: 'jpg'
+            }, {
+                number: 3,
+                type: 'gif'
+            }];
+    }
+};
+
+trendyApp.controller = function () {
+	trendyApp.vm.init();
+}
+
+trendyApp.view = function() {
+    return m("html", [
+        m("body",
+            trendyApp.vm.imageInfo.map(function (d) {
+            	return m("img", {src: 'pusheen/pusheen' + d.number + '.' + d.type});
+            })
+        )
+    ]);
+};
+
+m.module(document, {controller: trendyApp.controller, view: trendyApp.view});
+</script>
