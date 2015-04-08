@@ -1,0 +1,37 @@
+=columns($arg: auto)
+  // <column-count> || <column-width>
+  +prefixer(columns, $arg, webkit moz spec)
+
+=column-count($int: auto)
+  // auto || integer
+  +prefixer(column-count, $int, webkit moz spec)
+
+=column-gap($length: normal)
+  // normal || length
+  +prefixer(column-gap, $length, webkit moz spec)
+
+=column-fill($arg: auto)
+  // auto || length
+  +prefixer(columns-fill, $arg, webkit moz spec)
+
+=column-rule($arg)
+  // <border-width> || <border-style> || <color>
+  +prefixer(column-rule, $arg, webkit moz spec)
+
+=column-rule-color($color)
+  +prefixer(column-rule-color, $color, webkit moz spec)
+
+=column-rule-style($style: none)
+  // none | hidden | dashed | dotted | double | groove | inset | inset | outset | ridge | solid
+  +prefixer(column-rule-style, $style, webkit moz spec)
+
+=column-rule-width($width: none)
+  +prefixer(column-rule-width, $width, webkit moz spec)
+
+=column-span($arg: none)
+  // none || all
+  +prefixer(column-span, $arg, webkit moz spec)
+
+=column-width($length: auto)
+  // auto || length
+  +prefixer(column-width, $length, webkit moz spec)

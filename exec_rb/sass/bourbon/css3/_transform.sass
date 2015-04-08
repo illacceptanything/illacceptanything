@@ -1,0 +1,12 @@
+=transform($property: none)
+  //  none | <transform-function>
+  +prefixer(transform, $property, webkit moz ms o spec)
+
+=transform-origin($axes: 50%)
+  // x-axis - left | center | right  | length | %
+  // y-axis - top  | center | bottom | length | %
+  // z-axis -                          length
+  +prefixer(transform-origin, $axes, webkit moz ms o spec)
+
+=transform-style($style: flat)
+  +prefixer(transform-style, $style, webkit moz ms o spec)

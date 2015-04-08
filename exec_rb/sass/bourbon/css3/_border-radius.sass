@@ -1,0 +1,18 @@
+//************************************************************************//
+// Shorthand Border-radius mixins
+//************************************************************************//
+=border-top-radius($radii)
+  +prefixer(border-top-left-radius, $radii, spec)
+  +prefixer(border-top-right-radius, $radii, spec)
+
+=border-bottom-radius($radii)
+  +prefixer(border-bottom-left-radius, $radii, spec)
+  +prefixer(border-bottom-right-radius, $radii, spec)
+
+=border-left-radius($radii)
+  +prefixer(border-top-left-radius, $radii, spec)
+  +prefixer(border-bottom-left-radius, $radii, spec)
+
+=border-right-radius($radii)
+  +prefixer(border-top-right-radius, $radii, spec)
+  +prefixer(border-bottom-right-radius, $radii, spec)
