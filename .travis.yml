@@ -1,0 +1,4 @@
+language: c
+
+script:
+  - echo "Passed"
