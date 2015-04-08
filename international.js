@@ -10,10 +10,11 @@ function hello(language) {
     'Japanese': 'こんにちは世界',
     'Korean': '안녕하세요 세계',
     'Portuguese': 'Olá mundo',
-    'Russian': 'Здравствулте мир',
+    'Russian': 'Здравствуй мир',
     'Spanish': 'Hola mundo',
     'Latin': 'Salve munde',
-    'Piglatin': 'Ellohay orldway'
+    'Piglatin': 'Ellohay orldway',
+    'Ukrainian': 'Привіт, світ!'
   };
   return hellos[language];
 }
