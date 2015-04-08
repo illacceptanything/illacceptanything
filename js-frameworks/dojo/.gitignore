@@ -1,0 +1,5 @@
+node_modules
+html-report
+sauce_connect.log
+coverage-final.json
+npm-debug.log

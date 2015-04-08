@@ -1,0 +1,2 @@
+module("deprecated", { teardown: moduleTeardown });
+

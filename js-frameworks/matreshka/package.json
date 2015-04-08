@@ -1,0 +1,28 @@
+{
+  "name": "matreshka",
+  "version": "1.0.4",
+  "description": "JavaScript framework for programmers",
+  "bugs": {
+    "url": "https://github.com/finom/matreshka/issues"
+  },
+  "author": {
+    "name": "Andrey Gubanov",
+    "email": "a@odessite.com.ua"
+  },
+  "license": "MIT",
+  "homepage": "http://matreshka.io",
+  "devDependencies": {
+    "grunt": "~0.4",
+    "grunt-contrib-requirejs": "~0.4.4",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-uglify": "~0.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/finom/matreshka.git"
+  },
+  "dependencies": {
+    "es5-shim": "~2.1",
+    "jquery": "~1.11"
+  }
+}

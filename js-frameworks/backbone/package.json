@@ -1,0 +1,36 @@
+{
+  "name"          : "backbone",
+  "description"   : "Give your JS App some Backbone with Models, Views, Collections, and Events.",
+  "url"           : "http://backbonejs.org",
+  "keywords"      : ["model", "view", "controller", "router", "server", "client", "browser"],
+  "author"        : "Jeremy Ashkenas <jeremy@documentcloud.org>",
+  "dependencies"  : {
+    "underscore"  : ">=1.7.0"
+  },
+  "devDependencies": {
+    "coffee-script": "1.7.1",
+    "docco": "0.6.3",
+    "karma": "^0.12.31",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-qunit": "^0.1.4",
+    "uglify-js": "^2.4.17"
+  },
+  "main": "backbone.js",
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma start && coffee test/model.coffee",
+    "build": "uglifyjs backbone.js --mangle --source-map backbone-min.map -o backbone-min.js",
+    "doc": "docco backbone.js && docco examples/todos/todos.js examples/backbone.localStorage.js",
+    "lint": "jsl -nofilelisting -nologo -conf docs/jsl.conf -process backbone.js"
+  },
+  "main"          : "backbone.js",
+  "version"       : "1.1.2",
+  "license"       : "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jashkenas/backbone.git"
+  },
+  "files": [
+    "backbone.js", "backbone-min.js", "backbone-min.map", "LICENSE"
+  ]
+}
+

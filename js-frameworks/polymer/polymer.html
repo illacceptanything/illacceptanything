@@ -1,0 +1,63 @@
+<!--
+ Copyright 2013 The Polymer Authors. All rights reserved.
+ Use of this source code is governed by a BSD-style
+ license that can be found in the LICENSE file.
+-->
+<link rel="import" href="../polymer-gestures/polymer-gestures.html">
+<link rel="import" href="../polymer-expressions/polymer-expressions.html">
+<link rel="import" href="layout.html">
+<script src="src/polymer.js"></script>
+<script src="src/boot.js"></script>
+<script src="src/system/module.js"></script>
+
+<!-- Do not load in the presence of webcomponents.js  -->
+<scripts>
+	<script>
+	(function() {
+		// evacipate all scripts in parent!
+		if (window.WebComponents) {
+			var scripts = document._currentScript.parentNode;
+			scripts.parentNode.removeChild(scripts);
+		}
+	})();
+	</script>
+	<script src="src/system/compat.js"></script>
+	<script src="src/system/HTMLImports/base.js"></script>
+	<script src="src/system/unresolved.js"></script>
+</scripts>
+
+<script src="../observe-js/src/observe.js"></script>
+<script src="../NodeBind/src/NodeBind.js"></script>
+<script src="../TemplateBinding/src/TemplateBinding.js"></script>
+<script src="../URL/url.js"></script>
+<script src="src/system/microtask.js"></script>
+<script src="src/system/flush.js"></script>
+
+<script src="src/lib/url.js"></script>
+<script src="src/lib/loader.js"></script>
+<script src="src/lib/styleloader.js"></script>
+<script src="src/lib/lang.js"></script>
+<script src="src/lib/job.js"></script>
+<script src="src/lib/dom.js"></script>
+<script src="src/lib/super.js"></script>
+<script src="src/lib/deserialize.js"></script>
+<script src="src/api.js"></script>
+<script src="src/instance/utils.js"></script>
+<script src="src/instance/events.js"></script>
+<script src="src/instance/attributes.js"></script>
+<script src="src/instance/properties.js"></script>
+<script src="src/instance/mdv.js"></script>
+<script src="src/instance/base.js"></script>
+<script src="src/instance/styles.js"></script>
+<script src="src/declaration/polymer.js"></script>
+<script src="src/declaration/path.js"></script>
+<script src="src/declaration/styles.js"></script>
+<script src="src/declaration/events.js"></script>
+<script src="src/declaration/properties.js"></script>
+<script src="src/declaration/attributes.js"></script>
+<script src="src/declaration/mdv.js"></script>
+<script src="src/declaration/prototype.js"></script>
+<script src="src/declaration/queue.js"></script>
+<script src="src/declaration/polymer-element.js"></script>
+<script src="src/lib/import.js"></script>
+<script src="src/lib/auto-binding.js"></script>

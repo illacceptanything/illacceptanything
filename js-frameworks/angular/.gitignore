@@ -1,0 +1,32 @@
+# Don’t commit the following directories created by pub.
+/dist/
+packages/
+.buildlog
+node_modules
+bower_components
+.pub
+.DS_STORE
+
+# Or the files created by dart2js.
+*.dart.js
+*.dart.precompiled.js
+*.js_
+*.js.deps
+*.js.map
+
+# Or type definitions we mirror from github
+**/typings/**/*.d.ts
+
+# Include when developing application packages.
+pubspec.lock
+.c9
+.idea/
+*.swo
+
+# Don't check in secret files
+*secret.js
+
+# Ignore npm debug log
+npm-debug.log
+
+/docs/bower_components/

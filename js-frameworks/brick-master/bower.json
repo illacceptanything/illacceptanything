@@ -1,0 +1,42 @@
+{
+  "name": "brick",
+  "version": "2.0.0-alpha",
+  "homepage": "http://mozilla.github.io/brick",
+  "authors": [
+    "Matt Claypotch <thepotch@gmail.com>"
+  ],
+  "description": "Web Components for Modern Webapps",
+  "main": "dist/brick.html",
+  "keywords": [
+    "webcomponents",
+    "mozilla"
+  ],
+  "license": "Apache License v2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "brick-action": "mozbrick/brick-action",
+    "brick-appbar": "mozbrick/brick-appbar",
+    "brick-button": "mozbrick/brick-button",
+    "brick-calendar": "mozbrick/brick-calendar",
+    "brick-deck": "mozbrick/brick-deck",
+    "brick-dialog": "mozbrick/brick-dialog",
+    "brick-flipbox": "mozbrick/brick-flipbox",
+    "brick-form": "mozbrick/brick-form",
+    "brick-input": "mozbrick/brick-input",
+    "brick-layout": "mozbrick/brick-layout",
+    "brick-listview": "mozbrick/brick-listview",
+    "brick-menu": "mozbrick/brick-menu",
+    "brick-storage-indexeddb": "mozbrick/brick-storage-indexeddb",
+    "brick-tabbar": "mozbrick/brick-tabbar",
+    "es6-promise": "components/es6-promise#~1.0.0"
+  },
+  "devDependencies": {
+    "platform": "Polymer/platform#~0.3.4"
+  }
+}

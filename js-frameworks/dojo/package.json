@@ -1,0 +1,41 @@
+{
+	"name": "dojo",
+	"version":"1.11.0-pre",
+	"directories": {
+		"lib": "."
+	},
+	"devDependencies": {
+		"intern-geezer": "2.2.2",
+		"http-proxy": "0.10.3",
+		"glob": "3.2.7",
+		"jsgi-node": "0.3.1",
+		"formidable": "1.0.14",
+		"sinon": "1.12.2",
+		"dojo": "1.10.0"
+	},
+	"main": "main",
+	"scripts": {
+		"test": "intern-client config=tests/dojo.intern",
+		"test-coverage": "intern-client config=tests/dojo.intern reporters=console reporters=lcovhtml",
+		"test-remote": "intern-runner config=tests/dojo.intern",
+		"test-remote-coverage": "intern-runner config=tests/dojo.intern reporters=runner reporters=lcovhtml",
+		"test-local": "intern-runner config=tests/dojo.intern.local",
+		"test-local-coverage": "intern-runner config=tests/dojo.intern.local reporters=runner reporters=lcovhtml",
+		"test-proxy": "intern-runner config=tests/dojo.intern.proxy proxyOnly=true"
+	},
+	"description": "Dojo core is a powerful, lightweight library that makes common tasks quicker and easier. Animate elements, manipulate the DOM, and query with easy CSS syntax, all without sacrificing performance.",
+	"licenses": [
+		 {
+				 "type": "AFLv2.1",
+				 "url": "http://trac.dojotoolkit.org/browser/dojo/trunk/LICENSE#L43"
+		 },
+		 {
+				 "type": "BSD",
+				 "url": "http://trac.dojotoolkit.org/browser/dojo/trunk/LICENSE#L13"
+		 }
+	],
+	"bugs": "http://bugs.dojotoolkit.org/",
+	"keywords": ["JavaScript", "Dojo", "Toolkit"],
+	"homepage": "http://dojotoolkit.org/",
+	"dojoBuild": "dojo.profile.js"
+}

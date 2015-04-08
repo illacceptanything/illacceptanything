@@ -1,0 +1,24 @@
+{
+  "name": "spine",
+  "description": "MVC Library.",
+  "version": "1.4.2",
+  "author": "maccman",
+  "keywords": ["spine", "coffeescript", "MVC"],
+  "contributors": ["maccman", "aeischeid", "cengebretson", "adambiggs"],
+  "devDependencies": {
+    "coffee-script": ">=1.9.1"
+  },
+  "licenses":
+    [{
+      "type": "MIT",
+      "url": "https://github.com/spine/spine/blob/master/LICENSE"
+    }],
+  "repository": {
+    "type" : "git",
+    "url": "http://github.com/spine/spine.git"
+  },
+  "main" : "./index.js",
+  "scripts": {
+    "test": "set -e; for i in test/*.html; do phantomjs test/lib/run-jasmine.phantom.js file://`pwd`/$i; done"
+  }
+}
