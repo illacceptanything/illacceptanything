@@ -9,6 +9,7 @@ every Pull Request submitted and see what happens.
  * Nothing illegal.
  * Can't violate GitHub terms of service.
  * Don't be a dick, or any other copulatory organ.
+ * Don't forget to write your commit messages in Esperanto whenever possible
 
 ![](https://i.imgur.com/ehUtz.gif)
 
