@@ -1,3 +1,6 @@
+# ssh-unlock
+## Written by Jason Kurtz (4/8/2015)
+## Version 1.0
 #!/bin/bash
 eval `ssh-agent -a $HOME/.ssh/agent`
 ssh-add $HOME/.ssh/id_rsa
