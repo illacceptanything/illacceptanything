@@ -1,0 +1,74 @@
+{
+  "name": "errorhandler",
+  "description": "connect's default error handler page",
+  "version": "1.0.2",
+  "author": {
+    "name": "Jonathan Ong",
+    "email": "me@jongleberry.com",
+    "url": "http://jongleberry.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/expressjs/errorhandler"
+  },
+  "devDependencies": {
+    "connect": "3",
+    "istanbul": "0.2.10",
+    "mocha": ">= 1.17.0 < 2",
+    "should": "~4.0.1",
+    "supertest": "~0.13.0"
+  },
+  "engines": {
+    "node": ">= 0.8"
+  },
+  "scripts": {
+    "test": "mocha --reporter dot test/",
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot test/",
+    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec test/"
+  },
+  "bugs": {
+    "url": "https://github.com/expressjs/errorhandler/issues"
+  },
+  "homepage": "https://github.com/expressjs/errorhandler",
+  "_id": "errorhandler@1.0.2",
+  "_shasum": "587d47bbbbc48cffe132c3acda7215c902558108",
+  "_from": "errorhandler@1.0.2",
+  "_npmVersion": "1.4.9",
+  "_npmUser": {
+    "name": "dougwilson",
+    "email": "doug@somethingdoug.com"
+  },
+  "maintainers": [
+    {
+      "name": "jongleberry",
+      "email": "jonathanrichardong@gmail.com"
+    },
+    {
+      "name": "dougwilson",
+      "email": "doug@somethingdoug.com"
+    },
+    {
+      "name": "shtylman",
+      "email": "shtylman@gmail.com"
+    },
+    {
+      "name": "tjholowaychuk",
+      "email": "tj@vision-media.ca"
+    },
+    {
+      "name": "mscdex",
+      "email": "mscdex@mscdex.net"
+    },
+    {
+      "name": "fishrock123",
+      "email": "fishrock123@rocketmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "587d47bbbbc48cffe132c3acda7215c902558108",
+    "tarball": "http://registry.npmjs.org/errorhandler/-/errorhandler-1.0.2.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/errorhandler/-/errorhandler-1.0.2.tgz"
+}

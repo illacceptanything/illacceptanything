@@ -1,0 +1,70 @@
+{
+  "name": "express-session",
+  "version": "1.2.1",
+  "author": {
+    "name": "TJ Holowaychuk",
+    "email": "tj@vision-media.ca",
+    "url": "http://tjholowaychuk.com"
+  },
+  "main": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/expressjs/session.git"
+  },
+  "dependencies": {
+    "utils-merge": "1.0.0",
+    "cookie": "0.1.2",
+    "cookie-signature": "1.0.3",
+    "on-headers": "0.0.0",
+    "uid2": "0.0.3",
+    "buffer-crc32": "0.2.1",
+    "debug": "0.8.1"
+  },
+  "devDependencies": {
+    "cookie-parser": "1.1.0",
+    "express": "~4.3.0",
+    "mocha": "~1.19.0",
+    "should": "~3.3.1",
+    "supertest": "~0.13.0"
+  },
+  "scripts": {
+    "test": "mocha --bail --ui bdd --reporter spec -- test/*.js"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "license": "MIT",
+  "description": "THIS REPOSITORY NEEDS A MAINTAINER. IF YOU'RE INTERESTED IN MAINTAINING THIS REPOSITORY, PLEASE LET US KNOW!",
+  "bugs": {
+    "url": "https://github.com/expressjs/session/issues"
+  },
+  "homepage": "https://github.com/expressjs/session",
+  "_id": "express-session@1.2.1",
+  "dist": {
+    "shasum": "2741a1661eb3a4a17a7db0a48049fbf05574e465",
+    "tarball": "http://registry.npmjs.org/express-session/-/express-session-1.2.1.tgz"
+  },
+  "_from": "express-session@1.2.1",
+  "_npmVersion": "1.4.3",
+  "_npmUser": {
+    "name": "dougwilson",
+    "email": "doug@somethingdoug.com"
+  },
+  "maintainers": [
+    {
+      "name": "shtylman",
+      "email": "shtylman@gmail.com"
+    },
+    {
+      "name": "dougwilson",
+      "email": "doug@somethingdoug.com"
+    },
+    {
+      "name": "mscdex",
+      "email": "mscdex@mscdex.net"
+    }
+  ],
+  "directories": {},
+  "_shasum": "2741a1661eb3a4a17a7db0a48049fbf05574e465",
+  "_resolved": "https://registry.npmjs.org/express-session/-/express-session-1.2.1.tgz"
+}

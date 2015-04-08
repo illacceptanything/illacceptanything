@@ -1,0 +1,63 @@
+{
+  "name": "multiparty",
+  "version": "3.2.8",
+  "description": "multipart/form-data parser which supports streaming",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:andrewrk/node-multiparty.git"
+  },
+  "keywords": [
+    "file",
+    "upload",
+    "formidable",
+    "stream",
+    "s3"
+  ],
+  "devDependencies": {
+    "findit": "0.1.1",
+    "hashish": "0.0.4",
+    "mocha": "~1.8.2",
+    "request": "~2.16.6",
+    "mkdirp": "~0.3.5",
+    "superagent": "~0.14.1"
+  },
+  "scripts": {
+    "test": "ulimit -n 500 && mocha --timeout 4000 --reporter spec --recursive test/test.js"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "readable-stream": "~1.1.9",
+    "stream-counter": "~0.2.0"
+  },
+  "bugs": {
+    "url": "https://github.com/andrewrk/node-multiparty/issues"
+  },
+  "homepage": "https://github.com/andrewrk/node-multiparty",
+  "_id": "multiparty@3.2.8",
+  "_shasum": "bde21301dad294286e155b2b60710c6ae04ae64f",
+  "_from": "multiparty@3.2.8",
+  "_npmVersion": "1.4.9",
+  "_npmUser": {
+    "name": "dougwilson",
+    "email": "doug@somethingdoug.com"
+  },
+  "maintainers": [
+    {
+      "name": "superjoe",
+      "email": "superjoe30@gmail.com"
+    },
+    {
+      "name": "dougwilson",
+      "email": "doug@somethingdoug.com"
+    }
+  ],
+  "dist": {
+    "shasum": "bde21301dad294286e155b2b60710c6ae04ae64f",
+    "tarball": "http://registry.npmjs.org/multiparty/-/multiparty-3.2.8.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/multiparty/-/multiparty-3.2.8.tgz"
+}

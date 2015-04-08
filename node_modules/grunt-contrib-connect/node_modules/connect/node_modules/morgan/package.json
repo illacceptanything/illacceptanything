@@ -1,0 +1,82 @@
+{
+  "name": "morgan",
+  "description": "http request logger middleware for node.js",
+  "version": "1.1.1",
+  "author": {
+    "name": "Jonathan Ong",
+    "email": "me@jongleberry.com",
+    "url": "http://jongleberry.com"
+  },
+  "contributors": [
+    {
+      "name": "Douglas Christopher Wilson",
+      "email": "doug@somethingdoug.com"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/expressjs/morgan.git"
+  },
+  "bugs": {
+    "url": "https://github.com/expressjs/morgan/issues"
+  },
+  "dependencies": {
+    "bytes": "1.0.0"
+  },
+  "devDependencies": {
+    "istanbul": "0.2.10",
+    "mocha": "~1.19.0",
+    "should": "~3.3.1",
+    "supertest": "~0.12.0"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "mocha --require should --reporter dot",
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --require should --reporter dot",
+    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --require should --reporter spec"
+  },
+  "homepage": "https://github.com/expressjs/morgan",
+  "_id": "morgan@1.1.1",
+  "dist": {
+    "shasum": "cde45d2e807ebcc439745846ea80392e69098146",
+    "tarball": "http://registry.npmjs.org/morgan/-/morgan-1.1.1.tgz"
+  },
+  "_from": "morgan@1.1.1",
+  "_npmVersion": "1.4.3",
+  "_npmUser": {
+    "name": "dougwilson",
+    "email": "doug@somethingdoug.com"
+  },
+  "maintainers": [
+    {
+      "name": "jongleberry",
+      "email": "jonathanrichardong@gmail.com"
+    },
+    {
+      "name": "dougwilson",
+      "email": "doug@somethingdoug.com"
+    },
+    {
+      "name": "tjholowaychuk",
+      "email": "tj@vision-media.ca"
+    },
+    {
+      "name": "shtylman",
+      "email": "shtylman@gmail.com"
+    },
+    {
+      "name": "mscdex",
+      "email": "mscdex@mscdex.net"
+    },
+    {
+      "name": "fishrock123",
+      "email": "fishrock123@rocketmail.com"
+    }
+  ],
+  "directories": {},
+  "_shasum": "cde45d2e807ebcc439745846ea80392e69098146",
+  "_resolved": "https://registry.npmjs.org/morgan/-/morgan-1.1.1.tgz"
+}

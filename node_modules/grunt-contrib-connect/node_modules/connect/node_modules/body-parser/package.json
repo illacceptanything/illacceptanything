@@ -1,0 +1,86 @@
+{
+  "name": "body-parser",
+  "description": "Node.js body parsing middleware",
+  "version": "1.3.1",
+  "author": {
+    "name": "Jonathan Ong",
+    "email": "me@jongleberry.com",
+    "url": "http://jongleberry.com"
+  },
+  "contributors": [
+    {
+      "name": "Douglas Christopher Wilson",
+      "email": "doug@somethingdoug.com"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/expressjs/body-parser"
+  },
+  "dependencies": {
+    "bytes": "1.0.0",
+    "qs": "0.6.6",
+    "raw-body": "1.1.6",
+    "type-is": "1.2.1"
+  },
+  "devDependencies": {
+    "istanbul": "0.2.10",
+    "mocha": "~1.20.1",
+    "should": "~4.0.4",
+    "supertest": "~0.13.0"
+  },
+  "engines": {
+    "node": ">= 0.8"
+  },
+  "scripts": {
+    "test": "mocha --require should --reporter dot",
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot",
+    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec"
+  },
+  "gitHead": "6c0a1dc628d98bfa586a424f93a45f431e3c6641",
+  "bugs": {
+    "url": "https://github.com/expressjs/body-parser/issues"
+  },
+  "homepage": "https://github.com/expressjs/body-parser",
+  "_id": "body-parser@1.3.1",
+  "_shasum": "1a74513fc7897d70db56589e0d03f0a13f1bfa94",
+  "_from": "body-parser@1.3.1",
+  "_npmVersion": "1.4.14",
+  "_npmUser": {
+    "name": "dougwilson",
+    "email": "doug@somethingdoug.com"
+  },
+  "maintainers": [
+    {
+      "name": "jongleberry",
+      "email": "jonathanrichardong@gmail.com"
+    },
+    {
+      "name": "dougwilson",
+      "email": "doug@somethingdoug.com"
+    },
+    {
+      "name": "tjholowaychuk",
+      "email": "tj@vision-media.ca"
+    },
+    {
+      "name": "shtylman",
+      "email": "shtylman@gmail.com"
+    },
+    {
+      "name": "mscdex",
+      "email": "mscdex@mscdex.net"
+    },
+    {
+      "name": "fishrock123",
+      "email": "fishrock123@rocketmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "1a74513fc7897d70db56589e0d03f0a13f1bfa94",
+    "tarball": "http://registry.npmjs.org/body-parser/-/body-parser-1.3.1.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/body-parser/-/body-parser-1.3.1.tgz"
+}

@@ -1,0 +1,79 @@
+{
+  "name": "response-time",
+  "description": "X-Response-Time header for node.js",
+  "version": "2.0.0",
+  "author": {
+    "name": "Jonathan Ong",
+    "email": "me@jongleberry.com",
+    "url": "http://jongleberry.com"
+  },
+  "contributors": [
+    {
+      "name": "Douglas Christopher Wilson",
+      "email": "doug@somethingdoug.com"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/expressjs/response-time.git"
+  },
+  "bugs": {
+    "url": "https://github.com/expressjs/response-time/issues"
+  },
+  "dependencies": {
+    "on-headers": "0.0.0"
+  },
+  "devDependencies": {
+    "mocha": "~1.20.0",
+    "supertest": "~0.13.0"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "mocha --reporter dot",
+    "test-travis": "mocha --reporter spec"
+  },
+  "homepage": "https://github.com/expressjs/response-time",
+  "_id": "response-time@2.0.0",
+  "_shasum": "65cb39fd50de2f4ffdbdd285f1855966bd6fcb36",
+  "_from": "response-time@2.0.0",
+  "_npmVersion": "1.4.9",
+  "_npmUser": {
+    "name": "dougwilson",
+    "email": "doug@somethingdoug.com"
+  },
+  "maintainers": [
+    {
+      "name": "jongleberry",
+      "email": "jonathanrichardong@gmail.com"
+    },
+    {
+      "name": "dougwilson",
+      "email": "doug@somethingdoug.com"
+    },
+    {
+      "name": "tjholowaychuk",
+      "email": "tj@vision-media.ca"
+    },
+    {
+      "name": "shtylman",
+      "email": "shtylman@gmail.com"
+    },
+    {
+      "name": "mscdex",
+      "email": "mscdex@mscdex.net"
+    },
+    {
+      "name": "fishrock123",
+      "email": "fishrock123@rocketmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "65cb39fd50de2f4ffdbdd285f1855966bd6fcb36",
+    "tarball": "http://registry.npmjs.org/response-time/-/response-time-2.0.0.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/response-time/-/response-time-2.0.0.tgz"
+}

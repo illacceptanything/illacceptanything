@@ -1,0 +1,81 @@
+{
+  "name": "accepts",
+  "description": "Higher-level content negotiation",
+  "version": "1.0.3",
+  "author": {
+    "name": "Jonathan Ong",
+    "email": "me@jongleberry.com",
+    "url": "http://jongleberry.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/expressjs/accepts"
+  },
+  "dependencies": {
+    "mime": "~1.2.11",
+    "negotiator": "0.4.6"
+  },
+  "devDependencies": {
+    "istanbul": "0.2.10",
+    "mocha": "*",
+    "should": "*"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "mocha --require should --reporter dot test/",
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --require should --reporter dot test/",
+    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --require should --reporter spec test/"
+  },
+  "gitHead": "b17538c271b31cdad481c29d1623d76561a69d81",
+  "bugs": {
+    "url": "https://github.com/expressjs/accepts/issues"
+  },
+  "homepage": "https://github.com/expressjs/accepts",
+  "_id": "accepts@1.0.3",
+  "_shasum": "92b1db0d4f3db47b0530df6e15ae97db514dc2f8",
+  "_from": "accepts@1.0.3",
+  "_npmVersion": "1.4.14",
+  "_npmUser": {
+    "name": "dougwilson",
+    "email": "doug@somethingdoug.com"
+  },
+  "maintainers": [
+    {
+      "name": "jongleberry",
+      "email": "jonathanrichardong@gmail.com"
+    },
+    {
+      "name": "federomero",
+      "email": "federomero@gmail.com"
+    },
+    {
+      "name": "dougwilson",
+      "email": "doug@somethingdoug.com"
+    },
+    {
+      "name": "tjholowaychuk",
+      "email": "tj@vision-media.ca"
+    },
+    {
+      "name": "shtylman",
+      "email": "shtylman@gmail.com"
+    },
+    {
+      "name": "mscdex",
+      "email": "mscdex@mscdex.net"
+    },
+    {
+      "name": "fishrock123",
+      "email": "fishrock123@rocketmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "92b1db0d4f3db47b0530df6e15ae97db514dc2f8",
+    "tarball": "http://registry.npmjs.org/accepts/-/accepts-1.0.3.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/accepts/-/accepts-1.0.3.tgz"
+}

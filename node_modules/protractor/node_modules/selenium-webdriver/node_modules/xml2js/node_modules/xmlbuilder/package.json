@@ -1,0 +1,59 @@
+{
+  "name": "xmlbuilder",
+  "version": "2.6.2",
+  "keywords": [
+    "xml",
+    "xmlbuilder"
+  ],
+  "homepage": "http://github.com/oozcitak/xmlbuilder-js",
+  "description": "An XML builder for node.js",
+  "author": {
+    "name": "Ozgur Ozcitak",
+    "email": "oozcitak@gmail.com"
+  },
+  "contributors": [],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/oozcitak/xmlbuilder-js.git"
+  },
+  "bugs": {
+    "url": "http://github.com/oozcitak/xmlbuilder-js/issues"
+  },
+  "main": "./lib/index",
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "dependencies": {
+    "lodash": "~3.5.0"
+  },
+  "devDependencies": {
+    "coffee-script": "*",
+    "mocha": "*"
+  },
+  "scripts": {
+    "prepublish": "coffee -co lib src",
+    "postpublish": "rm -rf lib",
+    "test": "mocha --ui tdd --reporter dot --compilers coffee:coffee-script/register --require test/common/common"
+  },
+  "_id": "xmlbuilder@2.6.2",
+  "dist": {
+    "shasum": "f916f6d10d45dc171b1be2e6e673fb6e0cc35d0a",
+    "tarball": "http://registry.npmjs.org/xmlbuilder/-/xmlbuilder-2.6.2.tgz"
+  },
+  "_from": "xmlbuilder@>=1.0.0",
+  "_npmVersion": "1.4.6",
+  "_npmUser": {
+    "name": "oozcitak",
+    "email": "oozcitak@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "oozcitak",
+      "email": "oozcitak@gmail.com"
+    }
+  ],
+  "directories": {},
+  "_shasum": "f916f6d10d45dc171b1be2e6e673fb6e0cc35d0a",
+  "_resolved": "https://registry.npmjs.org/xmlbuilder/-/xmlbuilder-2.6.2.tgz"
+}

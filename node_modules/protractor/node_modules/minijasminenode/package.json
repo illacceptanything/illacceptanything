@@ -1,0 +1,54 @@
+{
+  "name": "minijasminenode",
+  "version": "1.1.1",
+  "description": "Super simple wrapper around Jasmine 1.3 for Node",
+  "homepage": "https://github.com/juliemr/minijasminenode/tree/jasmine1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juliemr/minijasminenode.git"
+  },
+  "keywords": [
+    "testing",
+    "bdd"
+  ],
+  "author": {
+    "name": "Julie Ralph",
+    "email": "ju.ralph@gmail.com"
+  },
+  "licenses": [
+    "MIT"
+  ],
+  "dependencies": {},
+  "main": "lib/index.js",
+  "bin": {
+    "minijasminenode": "bin/minijn"
+  },
+  "scripts": {
+    "test": "node lib/cli.js spec/*_spec.js"
+  },
+  "devDependencies": {},
+  "gitHead": "82640f3b71ec0c9585e3b976b39644d66fdcdc01",
+  "bugs": {
+    "url": "https://github.com/juliemr/minijasminenode/issues"
+  },
+  "_id": "minijasminenode@1.1.1",
+  "_shasum": "7f9637d66428a531c05f4f10b69a311b5dfb60e9",
+  "_from": "minijasminenode@1.1.1",
+  "_npmVersion": "1.4.14",
+  "_npmUser": {
+    "name": "juliemr",
+    "email": "ju.ralph@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "juliemr",
+      "email": "ju.ralph@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "7f9637d66428a531c05f4f10b69a311b5dfb60e9",
+    "tarball": "http://registry.npmjs.org/minijasminenode/-/minijasminenode-1.1.1.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/minijasminenode/-/minijasminenode-1.1.1.tgz"
+}
