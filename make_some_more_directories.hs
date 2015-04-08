@@ -1,3 +1,5 @@
+-- This script makes lots of directories. Probably too many. Use with caution.
+
 import System.Directory
 import System.FilePath
 import Data.Tree
