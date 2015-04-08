@@ -9,5 +9,6 @@ every Pull Request submitted and see what happens.
  * Nothing illegal. 
  * Can't violate GitHub terms of service. 
  * Don't be a dick.
+ * #allowit
 
 ![](https://i.imgur.com/ehUtz.gif)
