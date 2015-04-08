@@ -1,0 +1,15 @@
+﻿/* MAIN */
+  Idea: Kristopher Wilson
+  Github: @mrkrstphr
+  Site: http://kristopherwilson.com
+
+/* SITE */
+  Created: 4/8/2014
+  Last update: 4/8/2015
+  Version: 0.0.1
+  Doctype: All
+  IDE: All
+
+/* SPECIAL THANKS */
+  Shugo Tanaka
+  Twitter: @shugoingplaces
