@@ -1,0 +1,7 @@
+{
+  "name": "welcome",
+  "description": "hello from cupertino",
+  "repository": "https://github.com/mrkrstphr/illacceptanything",
+  "logo": "http://doge2048.com/meta/doge-600.png",
+  "keywords": ["node", "express", "static"]
+}
