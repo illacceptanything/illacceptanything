@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>I will accept any pull request!</title>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,600,700' rel='stylesheet' type='text/css'>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://rawgit.com/lodash/lodash/3.0.1/lodash.min.js"></script>
+    <style>
+        body {
+            font-family: 'Raleway';
+            background: #5E9AAB;
+        }
+        #outlet {
+            text-align: center;
+            margin-top: 10%;
+            color: #E3DFAA;
+        }
+    </style>
+</head>
+<body>
+    <h2 id="outlet"></h1>
+<script id="jsbin-javascript">
+    /**
+     * Returns a random letter
+     */
+    function randomLetter() {
+        return _.shuffle("abcdefghijklmnopqrstuvwxyz".split(''))[0];
+    }
+
+    /**
+     * Generates a string of random letters of a specific length
+     */
+    function randomLetters(length) {
+        var output = "";
+        for (var i = 0; i < length; i++)
+            output += randomLetter();
+
+        return output;
+    }
+
+    /**
+     * Generates a string of random letters of a specific length
+     */
+    function animateText (selector, text) {
+        var queue = [];
+        var length = text.length;
+
+        // Generate a queue of strings to animate through
+        while (length--) {
+            var start = text.slice(0, (text.length - length));
+            var end = randomLetters(length) || "";
+            queue.push(start + end);
+        }
+
+        // Animate through each string in the queue
+        var interval = setInterval(function () {
+            var output = queue.shift() || text;
+            $(selector).html(output);
+
+            if (queue.length === 0) clearInterval(interval);
+        }, 100);
+    }
+
+    /**
+     * Main
+     */
+    $(document).ready(function () {
+        animateText("#outlet", "I will accept any pull request.");
+        setTimeout(function () {
+            animateText("#outlet", "I want to make a really cool project,");
+        }, 5000);
+        setTimeout(function () {
+            animateText("#outlet", "but I don't know what to make.");
+        }, 10000);
+        setTimeout(function () {
+            animateText("#outlet", "So, I'll just accept every Pull Request");
+        }, 15000);
+        setTimeout(function () {
+            animateText("#outlet", "submitted and see what happens.");
+        }, 20000);
+    });
+
+</script>
+</body>
+</html>
