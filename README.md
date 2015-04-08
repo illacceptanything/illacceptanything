@@ -1,9 +1,9 @@
-# illacceptanything
+# illacceptnothing
 
-> The project where literally* anything goes
+> The project where literally* nothing goes
 
-I want to make a really cool project, but I don't know what to make. So I'll just accept
-every Pull Request submitted and see what happens.
+I wanted to make a really cool project, but I didn't know what to make. So I'll just deny
+every Pull Request submitted and see what doesn't happen.
 
 \* No porn. Nothing illegal. Can't violate GitHub terms of service. Don't be a dick.
 
