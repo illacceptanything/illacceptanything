@@ -10,6 +10,8 @@ every Pull Request submitted and see what happens.
  * Can't violate GitHub terms of service.
  * Don't be a dick, or any other copulatory organ.
 
+![](http://apistoletov.ru/wp-content/uploads/2012/12/cropped-head.png)
+
 ![](https://i.imgur.com/ehUtz.gif)
 
 ![](http://i.imgur.com/F2zh7G4.gif)
