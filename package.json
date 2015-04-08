@@ -1,4 +1,8 @@
 {
+  "main": "./helloworld.js",
+  "scripts": {
+    "start": "node ./helloworld.js"
+  },
   "name": "illacceptanything",
   "scripts": {
     "lint": "jslint *.js"
