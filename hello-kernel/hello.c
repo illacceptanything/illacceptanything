@@ -15,7 +15,7 @@ int init_module(void)
 
 void cleanup_module(void)
 {
-        printk(KERN_ALERT "Goodbye, I'm out.\n");
+        printk(KERN_ALERT "Goodbye, I'm out for dinner.\n");
 }
 
 MODULE_LICENSE("GPL");
