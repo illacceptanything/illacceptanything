@@ -1,4 +1,8 @@
 {
+  "main": "./helloworld.js",
+  "scripts": {
+    "start": "node ./helloworld.js"
+  },
   "name": "illacceptanything",
   "devDependencies": {
     "benchmark": "1.x.x",
