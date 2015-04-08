@@ -19,8 +19,5 @@ public class AcceptAllPullRequestsTest {
         } else {
             throw new RuntimeException("You've got unmerged pull requests! Get to mergin', slacker!");
         }
-
     }
-
-
 }
