@@ -1,0 +1,28 @@
+language: php
+
+php: [5.3, 5.4, 5.5, 5.6, hhvm, hhvm-nightly]
+
+env:
+  - COMPOSER_OPTIONS='install'
+
+matrix:
+  include:
+    - php: 5.3.3
+      env: COMPOSER_OPTIONS='update --prefer-lowest'
+
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+before_install:
+  - echo 'hhvm.libxml.ext_entity_whitelist = file' > travis.hhvm.ini
+  - composer selfupdate
+
+install:
+  - COMPOSER_ROOT_VERSION=dev-master composer $COMPOSER_OPTIONS
+
+script:
+   - sh -c 'if [ "$TRAVIS_PHP_VERSION" = "hhvm" -o "$TRAVIS_PHP_VERSION" = "hhvm-nightly" ]; then hhvm -c travis.hhvm.ini bin/phpspec run; else bin/phpspec run; fi;'
+   - sh -c 'if [ "$TRAVIS_PHP_VERSION" = "hhvm" -o "$TRAVIS_PHP_VERSION" = "hhvm-nightly" ]; then hhvm -c travis.hhvm.ini ./vendor/behat/behat/bin/behat --format=pretty; else ./vendor/bin/behat --format=pretty; fi;'

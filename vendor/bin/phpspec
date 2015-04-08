@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+SRC_DIR="`pwd`"
+cd "`dirname "$0"`"
+cd "../phpspec/phpspec/bin"
+BIN_TARGET="`pwd`/phpspec"
+cd "$SRC_DIR"
+"$BIN_TARGET" "$@"

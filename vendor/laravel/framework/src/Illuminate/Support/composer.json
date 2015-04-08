@@ -1,0 +1,40 @@
+{
+    "name": "illuminate/support",
+    "description": "The Illuminate Support package.",
+    "license": "MIT",
+    "homepage": "http://laravel.com",
+    "support": {
+        "issues": "https://github.com/laravel/framework/issues",
+        "source": "https://github.com/laravel/framework"
+    },
+    "authors": [
+        {
+            "name": "Taylor Otwell",
+            "email": "taylorotwell@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "ext-mbstring": "*",
+        "illuminate/contracts": "5.0.*",
+        "doctrine/inflector": "~1.0",
+        "danielstjules/stringy": "~1.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Illuminate\\Support\\": ""
+        },
+        "files": [
+            "helpers.php"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "5.0-dev"
+        }
+    },
+    "suggest": {
+        "jeremeamia/superclosure": "Required to be able to serialize closures (~2.0)."
+    },
+    "minimum-stability": "dev"
+}

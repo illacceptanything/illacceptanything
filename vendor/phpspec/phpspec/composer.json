@@ -1,0 +1,56 @@
+{
+    "name":         "phpspec/phpspec",
+    "description":  "Specification-oriented BDD framework for PHP 5.3+",
+    "keywords":     ["BDD", "SpecBDD", "TDD", "spec", "specification", "tests", "testing"],
+    "homepage":     "http://phpspec.net/",
+    "type":         "library",
+    "license":      "MIT",
+    "authors":      [
+        {
+            "name":      "Konstantin Kudryashov",
+            "email":     "ever.zet@gmail.com",
+            "homepage":  "http://everzet.com"
+        },
+        {
+            "name":      "Marcello Duarte",
+            "homepage":  "http://marcelloduarte.net/"
+        }
+    ],
+
+    "require": {
+        "php":                      ">=5.3.3",
+        "phpspec/prophecy":         "~1.1",
+        "phpspec/php-diff":         "~1.0.0",
+        "sebastian/exporter":       "~1.0",
+        "symfony/console":          "~2.3",
+        "symfony/event-dispatcher": "~2.1",
+        "symfony/finder":           "~2.1",
+        "symfony/process":          "~2.1",
+        "symfony/yaml":             "~2.1",
+        "doctrine/instantiator":    "~1.0,>=1.0.1"
+    },
+
+    "require-dev": {
+        "behat/behat": "~3.0,>=3.0.11",
+        "bossa/phpspec2-expect": "~1.0",
+        "symfony/filesystem":    "~2.1"
+    },
+
+    "suggest": {
+        "phpspec/nyan-formatters": "~1.0 – Adds Nyan formatters"
+    },
+
+    "autoload": {
+        "psr-0": {
+            "PhpSpec": "src/"
+        }
+    },
+
+    "bin": ["bin/phpspec"],
+
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.1.x-dev"
+        }
+    }
+}
