@@ -3,7 +3,7 @@ function hello(language) {
     'Chinese': '你好世界',
     'Dutch': 'Hello wereld',
     'English': 'Hello world',
-    'French': 'Bonjour monde',
+    'French': 'Bonjour le monde',
     'German': 'Hallo Welt',
     'Greek': 'γειά σου κόσμος',
     'Italian': 'Ciao mondo',
