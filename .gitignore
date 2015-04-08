@@ -1,2 +1,4 @@
 bower_components/
-.gitignore
+.idea
+__pycache__
+*.pyc
