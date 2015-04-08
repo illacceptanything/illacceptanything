@@ -41,5 +41,5 @@ every Pull Request submitted and see what happens.
         \/     \/\/                \/        \//_____/    \/
 ```
 
-Darude is totally allowed tho. Darude is the real mvp.
+[Darude](http://www.reddit.com/r/Music/comments/31v7n0/i_am_darude_ama/) is totally allowed tho. Darude is the real mvp.
 ![darude-sandstorm](https://github.com/mrkrstphr/illacceptanything/blob/master/darude-sandstorm.gif.mp4.mov.wmv.png.jpeg)
