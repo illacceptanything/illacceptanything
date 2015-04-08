@@ -1,6 +1,12 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# Hi, I'm evride and I'm a pirate vagrant so I am commandeering this file
+# I'm currently in Odessa, TX trying to get to El Paso by hitchhiking.
+# Can somebody give me a ride?
+# In exchange I'll give you five (5) possibly-accurate facts about cats
+# kthxbye
+
 Vagrant.configure("2") do |config|
   config.vm.box = "puphpet/debian75-x32"
   config.vm.provision :shell, :inline => <<-END
