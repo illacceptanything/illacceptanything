@@ -6,6 +6,7 @@ function hello(language) {
     'French': 'Bonjour monde',
     'German': 'Hallo Welt',
     'Greek': 'γειά σου κόσμος',
+    'Indonesian': 'Halo dunia',
     'Italian': 'Ciao mondo',
     'Japanese': 'こんにちは世界',
     'Korean': '안녕하세요 세계',
