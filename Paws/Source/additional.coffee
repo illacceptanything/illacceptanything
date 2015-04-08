@@ -16,7 +16,7 @@ class CommandLineDebugging extends Debugging
       
       # Patching Tput's column measurement
       if not @tput?.columns? or @tput.columns == 80
-         @tput.columns = process.stdout.columns
+         @tput.columns = process.stdout.columns || 80
       process.stdout.on 'resize', => @tput.columns = process.stdout.columns
       
       @tput.sgr = (flags...)-> @csi flags.join(';') + 'm'
