@@ -1,0 +1,49 @@
+
+a {
+  color: #4242FF;
+}
+.navbar-inverse {
+  border-radius: 0;
+  background-color: #4242FF;
+  border-color: #4242FF;
+}
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
+  border-color: #4242FF;
+}
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav>li>a {
+  color: #F0F0F0;
+}
+a.navbar-brand {
+  padding-left: 50px;
+}
+a.navbar-brand img {
+  display: block;
+  position: absolute;
+  height: 32px;
+  margin: -8px 0 0 -42px;
+}
+footer.navbar-default {border-radius: 0; margin-bottom: 0;}
+.bs-sidebar .nav > .active > ul {
+    display: block;
+    margin-bottom: 4px;
+}
+li.github-icon {
+  padding-left: 10px;
+}
+li.github-icon a {
+  display: inline-block;
+  padding-left: 32px;
+  color: white;
+}
+li.github-icon a img {
+  display: block;
+  position: absolute;
+  width: 32px;
+  margin: -7px 0 0 -32px;
+  opacity: 0.9;
+}
+li.github-icon a:hover img {
+  opacity: 1.0;
+}
