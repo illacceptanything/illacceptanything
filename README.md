@@ -10,4 +10,4 @@ every Pull Request submitted and see what happens.
  * Can't violate GitHub terms of service. 
  * Don't be a dick.
 
-![](https://i.imgur.com/ehUtz.gif)
+![](https://i.imgur.com/JVYdHCh.gif)
