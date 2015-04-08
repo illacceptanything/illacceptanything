@@ -1,3 +1,18 @@
+# Our Search Engine, which art in heaven,
+# Hallowed be thy Name.
+# Thy index come.
+# Thy will be done in SERPs,
+# As it is in heaven.
+# Give us this day our daily traffic.
+# And forgive us our trespasses,
+# As we forgive those who build more links than us.
+# And lead us not into temptation,
+# But deliver us from doorway pages and cloaking.
+# For thine is the SERP,
+# The power, and the crawling,
+# For ever and ever.
+# Amen.
+
 User-agent: Kraftwerk
 Disallow:
 
