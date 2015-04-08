@@ -14,3 +14,11 @@ I love you.
 I want to be loved :(
 
 ---
+
+Rachael,
+
+I love you too.
+
+-Kristopher
+
+---
