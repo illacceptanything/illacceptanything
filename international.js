@@ -13,7 +13,8 @@ function hello(language) {
     'Russian': 'Здравствулте мир',
     'Spanish': 'Hola mundo',
     'Latin': 'Salve munde',
-    'Piglatin': 'Ellohay orldway'
+    'Piglatin': 'Ellohay orldway',
+    'Malay' : 'Assalamualaikum dunia'
   };
   return hellos[language];
 }
