@@ -1,1 +1,6 @@
 bower_components/
+
+*.pyc
+*.o
+*.class
+*.exe
