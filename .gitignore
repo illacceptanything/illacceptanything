@@ -1,1 +1,4 @@
 bower_components/
+
+# This is madness!
+[^.]*
