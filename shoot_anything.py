@@ -20,12 +20,13 @@ import win32con
 
 FRAME_RATE_LOCK   = 0.033   # Minimum delta time before advancing to the next frame
 X_MAX             = 80      # Maximum x position
-READ_MAX          = 512     # How many bytes do we read from each file?
+READ_MAX          = 255     # How many bytes do we read from each file?
 
 advance_rate      = 0.8     # Initial advance rate of enemies, make this lower to make them faster
 
 enemy_list        = []      # List of enemies
 object_list       = []      # List of all objects
+player_score      = 0
 
 # Really basic 2D vector class
 class Vector2 () :
@@ -107,10 +108,13 @@ class Ship ( GameObject ) :
 # Bullet class
 class Bullet ( GameObject ) :
   def update( self, dt ) :
+    global player_score
+
     # Check for collision
     for enemy in enemy_list :
       if self.pos == enemy.pos :
         # We hit an enemy, time to explode!
+        player_score += ord( enemy.char ) * 15
         enemy.kill()
         self.player.bullet = None
         self.kill()
@@ -166,13 +170,19 @@ def get_random_file( ) :
   # Search through directories recursively until we find a valid file
   while not os.path.isfile( f ) :
     filelist = os.listdir( p )
-    f = random.choice( filelist )
 
-    # Not a file, keep looking!
-    if not os.path.isfile( f ) :
-      p += "\\" + f
-      current_p += "\\" + f
+    if filelist :
+      f = random.choice( filelist )
 
+      # Not a file, keep looking!
+      if not os.path.isfile( f ) :
+        p += "\\" + f
+        current_p += "\\" + f
+    else :
+      return get_random_file( )
+
+  if current_p :
+    current_p += "\\"
   return current_p[1:] + f
 
 # Game logic and rendering functions
@@ -186,6 +196,7 @@ def draw_intro() :
 
 def draw_game( dt ) :
   print("\033[2J")  # Clear screen
+  print("SCORE: {:0>8}".format( player_score ) )
 
   for obj in object_list :
     # Don't draw objects off screen
@@ -203,9 +214,11 @@ def draw_gameover() :
 
 def gameloop( dt ) :
   global advance_rate
+  global player_score
 
   # If all the enemies are dead, spawn a new wave and speed up
   if len( enemy_list ) == 0 :
+    player_score += 100000
     advance_rate *= 0.75
     generate_new_wave()
 
@@ -216,7 +229,7 @@ def gameloop( dt ) :
 def generate_new_wave() :
   # Grab and open a random file
   with open( get_random_file() ) as f :
-    data = f.read( 512 )
+    data = f.read( READ_MAX )
     x, y = X_MAX, 5
 
     # Loop through our data
@@ -253,6 +266,7 @@ def main() :
 
   while keep_running :
     player        = Ship( )
+    generate_new_wave()
 
     while player in object_list :
       # Capture the frame start time
