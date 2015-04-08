@@ -1,0 +1,3 @@
+test:
+  pre:
+    - npm run lint
