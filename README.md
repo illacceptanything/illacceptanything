@@ -13,3 +13,6 @@ every Pull Request submitted and see what happens.
 ![](https://i.imgur.com/ehUtz.gif)
 
 ![](http://i.imgur.com/F2zh7G4.gif)
+
+Darude is totally allowed tho. Darude is the real mvp.
+![darude-sandstorm](https://github.com/mrkrstphr/illacceptanything/blob/master/darude-sandstorm.gif.mp4.mov.wmv.png.jpeg)
