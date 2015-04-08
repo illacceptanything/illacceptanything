@@ -2,3 +2,4 @@
 - Nothing illegal.
 - Can't violate GitHub terms of service.
 - Don't be a dick.
+- Must include photo of rubber duck.
