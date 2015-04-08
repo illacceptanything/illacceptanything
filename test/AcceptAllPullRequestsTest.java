@@ -2,7 +2,7 @@ import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class AcceptAllPullRequestsTest {
+public class AcceptAllPullRequestsTest implements IAcceptAllPullRequestsTestEnterpriceyTestAdaptorGeneratorFactoryHandler {
 
     public static void main(String[] args) throws IOException {
         URL url = new URL("https://api.github.com/repos/mrkrstphr/illacceptanything/pulls?state=open");
