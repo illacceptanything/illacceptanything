@@ -1,0 +1,4 @@
+#!/bin/bash
+pkill ssh-agent
+rm -rf ~/.ssh/agent
+rm -rf ~/.ssh/auth

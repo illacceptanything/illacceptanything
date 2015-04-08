@@ -1,0 +1,12 @@
+#!/bin/bash
+eval `ssh-agent -a $HOME/.ssh/agent`
+ssh-add $HOME/.ssh/id_rsa
+
+SOCK="$HOME/.ssh/agent"
+if [ -a $SOCK ] ;
+then
+    #rm -f $SOCK
+    #ln -sf $SSH_AUTH_SOCK $SOCK
+    export SSH_AUTH_SOCK=$SOCK
+fi
+
