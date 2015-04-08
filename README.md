@@ -28,6 +28,10 @@ every Pull Request submitted and see what happens.
  * Can't violate GitHub terms of service.
  * Don't be a dick, or any other copulatory organ.
 
+ To Run:
+
+ * run main.sh
+
 ![](https://i.imgur.com/ehUtz.gif)
 
 ![](http://i.imgur.com/F2zh7G4.gif)
