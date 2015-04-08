@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if true; then
+if true && !false; then
     echo "All tests passed.";
 else
     echo "Tests failed.";
