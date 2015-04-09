@@ -14,3 +14,17 @@ I love you.
 I want to be loved :(
 
 ---
+
+Bee, I love you.
+
+- Murilo
+
+---
+
+---
+
+Auntie Em,
+
+Hate you. Hate Kansas. Taking the dog.
+
+  – Dorothy

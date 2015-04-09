@@ -1,17 +1,20 @@
 function hello(language) {
   var hellos = {
     'Chinese': '你好世界',
-    'Dutch': 'Hello wereld',
+    'Dutch': 'Hallo wereld',
     'English': 'Hello world',
-    'French': 'Bonjour monde',
+    'Esperanto': 'Saluton mondo',
+    'French': 'Bonjour le monde',
     'German': 'Hallo Welt',
     'Greek': 'γειά σου κόσμος',
     'Italian': 'Ciao mondo',
     'Japanese': 'こんにちは世界',
     'Korean': '안녕하세요 세계',
     'Portuguese': 'Olá mundo',
-    'Russian': 'Здравствулте мир',
+    'Russian': 'Здравствуй мир',
     'Spanish': 'Hola mundo',
+    'Thai' : 'สวัสดีโลก',
+    'Turkish': 'Merhaba Dünya',
     'Latin': 'Salve munde',
     'Piglatin': 'Ellohay orldway',
     'Malay' : 'Assalamualaikum dunia'

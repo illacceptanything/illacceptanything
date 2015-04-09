@@ -1,6 +1,24 @@
+
+    ██╗    ██╗    ██╗██╗██╗     ██╗ 
+    ██║    ██║    ██║██║██║     ██║
+    ██║    ██║ █╗ ██║██║██║     ██║
+    ██║    ██║███╗██║██║██║     ██║
+    ██║    ╚███╔███╔╝██║███████╗███████╗
+    ╚█████╗ ╚██████╗ ██████╗███████╗██████╗ ████████╗
+    ██╔══██╗██╔════╝██╔════╝██╔════╝██╔══██╗╚══██╔══╝
+    ███████║██║     ██║     █████╗  ██████╔╝   ██║
+    ██╔══██║██║     ██║     ██╔══╝  ██╔═══╝    ██║
+    ██║  ██║╚██████╗╚██████╗███████╗██║        ██║
+    ╚█████╗╝███╗═══██╗██╗══╝██╗████████╗██╗  ██╗██╗███╗   ██╗ ██████╗
+    ██╔══██╗████╗  ██║╚██╗ ██╔╝╚══██╔══╝██║  ██║██║████╗  ██║██╔════╝
+    ███████║██╔██╗ ██║ ╚████╔╝    ██║   ███████║██║██╔██╗ ██║██║  ███╗
+    ██╔══██║██║╚██╗██║  ╚██╔╝     ██║   ██╔══██║██║██║╚██╗██║██║   ██║
+    ██║  ██║██║ ╚████║   ██║      ██║   ██║  ██║██║██║ ╚████║╚██████╔╝
+    ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝      ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝ ╚═════╝
+                                                                  
 # illacceptanything
 
-> The project where [literally](http://www.buzzfeed.com/jessicamisener/the-wrong-definition-of-literally-is-literally-going-in-the#.chA7QxZ9n)* anything goes
+> The project where [literally](https://xkcd.com/725/)* anything goes
 
 I want to make a really cool project, but I don't know what to make. So I'll just accept
 every Pull Request submitted and see what happens.
@@ -11,6 +29,9 @@ every Pull Request submitted and see what happens.
  * Don't be a dick, or any other copulatory organ.
 
 ![](https://i.imgur.com/ehUtz.gif)
+
+Leader of the FREE world
+![](http://cdn.makeagif.com/media/4-08-2015/tAagTa.gif)
 
 ![](http://i.imgur.com/F2zh7G4.gif)
 
@@ -23,5 +44,5 @@ every Pull Request submitted and see what happens.
         \/     \/\/                \/        \//_____/    \/
 ```
 
-Darude is totally allowed tho. Darude is the real mvp.
+[Darude](http://www.reddit.com/r/Music/comments/31v7n0/i_am_darude_ama/) is totally allowed tho. Darude is the real mvp.
 ![darude-sandstorm](https://github.com/mrkrstphr/illacceptanything/blob/master/darude-sandstorm.gif.mp4.mov.wmv.png.jpeg)
