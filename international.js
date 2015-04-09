@@ -20,6 +20,7 @@ function hello(language) {
     'Latin': 'Salve munde',
     'Piglatin': 'Ellohay orldway',
     'Malay' : 'Assalamualaikum dunia'
+    'Lithuanian': 'Labas pasauli'
   };
   return hellos[language];
 }
