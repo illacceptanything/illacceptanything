@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <title>{{ template "site-title" .}}</title>
+    <link href='//fonts.googleapis.com/css?family=Droid+Serif|Open+Sans+Condensed:300|PT+Sans|Open+Sans|Merriweather' rel='stylesheet' type='text/css'>
+    <link href="/static/css/site.css" rel="stylesheet" type="text/css">
+    <meta name="description" content="{{ .SiteDescription }}">
+  </head>
+  <body>
+    <div class="inner-content centered">
+      <header>
+        <a href="/"><small class="fingerprint">illacceptanything</small></a> &middot;
+          <a href="https://github.com/mrkrstphr/illacceptanything">Github</a>  &middot;
+      </header>
+    </div>
+    <div id="full-page-wrapper">
+      <div class="container">
+        <div class="inner-content">
+          {{template "body" .}}
+          <div class="infobox centered">
+            <p>illacceptanything</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
