@@ -1,0 +1,157 @@
+- (new:<issue>)† indicates new functionality, features, documentation, et cetera are introduced in
+  this commit [optionally includes related issue ID]
+- (fix:<issue>)† indicates changes that fix outstanding bugs or problems in some way [optionally
+  includes issue ID]
+- (re)† indicates changes that subtly change things for the better, possibly without changing the
+  actual effect of any code (short for ‘refactor’)
+# [†]: At least one of these should apply to every commit!
+
+- (!!) used on commits that are extremely important, or that introduce *widespread* changes
+- (-) indicates a relatively minor or unimportant commit, worthy of being ignored by most parties
+
+- (API) indicates this commit modifies existing (usually documented) embedder-APIs in some (usually
+  breaking) way, while nominally not affecting the interpreter's functionality
+# note: (fix), (API), and (new) *change how things operate* from the viewpoint of an API consumer
+#       or extension developer (when not combined with a form of (noop)), whereas (re) causes no
+#       operational changes (from said point of view), instead improving the overall quality of the
+#       code in some way, such as causing it to execute faster or require fewer resources
+  - (vis!) aplies to commits that modify the interpreter's functionality, as seen from *within the
+    language* (i.e. affecting libspace) (for ‘visible API’, meaning visible-from-libspace)
+# note: (vis!) means *a change in the language itself*. Usually, this would, at least ideally, be a
+#       bugfix; but at these early stages of development, it often means actual intentional changes
+#       of the public API used from within the language.
+
+- (inc!) indicates a (rare!) commit that applies code that is *known at commit time* to not pass its
+  own tests, or meet its own goals
+- (completes:<commit>) indicates that this commit completes the work introduced or begun in another 
+  (inc!) or (HARM) <commit>
+# note: it’s *never* safe to check-out and compile code between an (inc!) (or (harm)) commit, and
+#       its corresponding (completes:) commit!
+
+- (dep) is a change to the dependencies of the library
+  - (up) is a change that only updates the versions of dependencies which we rely upon. (usually,
+    makes most sense paired with (meta).)
+- (tests) indicates a commit that does *not* modify any implementation code, in any way (instead,
+  indicates modifying code in the test suite)
+- (noop) as (tests), except indicates that a commit does not modify any code belonging to the test
+  suite either. Usually not used, see the below alternatives
+  - (style) indicates a commit that only changes alignment, spacing, or visual orientation of some
+    code or documentation
+  - (doc) indicates commits that change commentary, documentation, etc (exclusive of actual
+    *executed* code)
+    - (meta) indicates meta-project changes, not applying to the codebase, tests, or documentation
+
+
+# A couple random common ones:
+- (syn) relating to the syntax or the parser
+- (CLI) involves modifications to the CLI-API or CLI-user-interface, instead of the library-API (but
+  otherwise similar to (API))
+- (debug) improvements to the debugging system / logging-output
+- (UX) vaguely, a commit designed to improve the user-experience of the program
+- (fun) something every codebase should have a little of.
+
+
+# --- ---- --- -- /!\ -- --- ---- --- #
+
+# What is this?
+# =============
+# [`.gitlabels`][gh] is a file that defines a series of “labels” that can be applied to [git][] commits.
+# 
+# Each label is intended to “describe” a given commit in a human- and machine-readable way. These can then be used
+# to search and filter commit lists, to bring more ‘signal’ out of the changeset ‘noise.’
+# 
+#   [git]: http://git-scm.com/ "Git: *Fast* version-control and source-code management system"
+#   [gh]: http://github.com/ELLIOTTCABLE/.gitlabels "The .gitlabels project"
+# 
+# Examples
+# --------
+# - filtering out typo-fixes and other drudgery by excluding all commits with the `(-)` label
+# - gathering a quick summary of the changes *you* need to know about in a new release of your favourite library by
+#   searching for commits between the git tags ‘v1.03’ and ‘v1.04’ that include the label `(api)`
+# - following the evolution of a particular developer’s personal style by filtering on commits by that developer
+#   using both of the `(style refactor)` labels
+# 
+# Usage
+# -----
+# Applying labels to your project is as simple as these two steps:
+# 
+# ### Add a `.gitlabels` file
+# Your file, like this one, should exist in your project’s root directory (just like `.gitignore` and
+# `.gitattributes`!), and should consist of lines of the following format:
+#     
+#     - (an-awesome-label:<argument_type>) some description of the label over here, guys!
+#     
+# Labels can be subcategorized under other labels by indenting the `-` preceding the label by two spaces. Filtering
+# against a label should theoretically apply to all results that match sublabels as well. Descriptions must be
+# entirely on the same line (sorry, guys, no hard-wrapping descriptions if they get long!).
+# 
+# Lines containing only whitespace or beginning with a number sign/hash (`#`) in the *first column* will be
+# discarded during parsing, and completely ignored. You may use these to provide commentary and rationale on your
+# project’s labeling system, or for any other purpose you desire.
+# 
+# The parenthesis may only contain a single label, that is, they may not contain any of the characters that are not
+# legal in label names, other than the colon (`:`) necessary to declare an optional argument and its type. The
+# argument declaration (see below) must be surrounded by angle brackets (`<` and `>`).
+# 
+# ### Label your commits
+# The fun part! Do what you like, just be *absolutely consistent* about it; if you collaborate with other
+# developers on the project, you should also document the labels using comments in `.gitlabels`, your README, or
+# some other source, and then encourage your collaborators to apply them as well.
+# 
+# Labels go at the very start of a commit’s commit message in parenthesis, separated by spaces or commas. For
+# instance:
+#     
+#     commit e17f638848fb05a43b2cb431fabdbebc84ac091a
+#     Author: elliottcable <splat@ell.io>
+#     Date:   Sat Feb 26 23:24:29 2011 -0500
+#     
+#     	(doc closes:1234 see:b3b2e05 -) I love pretty much anything that comes from pigflesh.
+#     
+# This commit’s labels comprises `(doc)`, `(closes)`, `(see)`, and `(-)`; in this example, perhaps, these could
+# mean that this commit comprises an unimportant (in the larger scheme of things) change to some documentation that
+# fixes some typos or something. Those typos would have been reported in the project’s issue tracker as issue
+# number 1234; the other commit whose ID began with b3b2e05 was somehow relevant as well.
+# 
+# Labels may include a single argument, if described by the `.gitlabels`, which documents a related piece of data.
+# These arguments may only be of a limited set of data types (defined by whatever label-parsing system you use, but
+# I suggest at least `<commit>` and `<issue>` types of data). These might include a `(closes:<issue>)` or
+# `(related:<commit>)` label, for example. Arguments are never “required,” but a given label may not necessarily
+# make a lot of sense without its intended payload.
+# 
+# Rationale
+# ---------
+# The purpose of this system is basically to encourage more *granular* committing—that is, creating more commits
+# for fewer changes, and ensuring each commit is more “enclosed.” I believe a project’s git commit-log should be
+# sufficient to describe the entire history of the project, *as it was experienced by the developers of the
+# project*; that is, allow any given ‘noob’ developer to browse the commit history and learn the same things that
+# the creators of the project learned through their work. The mistakes they made, the improvements they invented,
+# in a word, the *soul* of the project, should be evidenced by the commit log. “Labels” make this easier, as it’s
+# less intimidating to have a commit log with thousands of commits if you know people can ignore those commits that
+# are irrelevant to them.
+# 
+# Notes
+# -----
+# - The open-parenthesis (`(`) indicating the start of a commit’s labels must be the very first byte of a commit
+#   message, and there may be no close-parenthesis until the end of all labels
+# - The omission of an open-parenthesis (`(`), or the inclusion of an open-parenthesis in the first byte
+#   immediately followed by a closing-parenthesis (`()`, possibly with some meaningless whitespace/commas),
+#   indicates no labels apply
+# - Labels’ names themselves may contain any Unicode character *except*: whitespace, colons (`:`), commas (`,`), or
+#   parenthesis (`(` or `)`), as these characters are reserved for parsing label data
+# - Labels’ names are case-sensitive; `FOO` is not to be considered the same label as `foo`
+# - Descriptions in the `.gitlabels` file are not required, but are suggested; rationale is always a good thing!
+# - Not all labels must be included in `.gitlabels`, but labels will not include descriptions, be related (as
+#   parents or children) to other labels, or be legally allowed any arguments, if they are not so included
+# - Arguments are illegal for a given label unless they are included in `.gitlabels`
+# - An argumentative payload may be surrounded by a pair of double quotes (`"`) if it contains anything
+#   disallowed in a label’s name, such as whitespace (see above); it may not, under any circumstances, *contain*
+#   any double-quote characters
+# - The same label may appear multiple times on a single commit, and *may* include different arguments each time.
+# - *Any* series of whitespace and/or commas may separate labels (though newlines are inadvisable)
+# 
+# (I, elliottcable, hereby release everything below the line containing “What is this?” into the public domain.
+#  Use, distribute, and re-use as you please. Hell, I’d *love* it if you’d spread it around; maybe then, @GitHub
+#  would be forced to support label filtering on `/compare/` pages! :D
+#  
+#  I do, however, request that you either retain this explanatory document below the content of your `.gitlabels`
+#  file as I do, or include a link to http://github.com/elliottcable/.gitlabels instead. Help spread the word!)

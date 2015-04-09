@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+PRE_COMMIT=true exec npm --loglevel=silent run-script test

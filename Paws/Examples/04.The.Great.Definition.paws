@@ -1,0 +1,97 @@
+#!/usr/bin/env paws.js --no-start
+
+implementation void[]
+   Let's combine some of our examples so far, and put them towards the task of creating a new
+   procedure of code that we can call by its name.                                                   ;
+
+
+implementation void[]
+   First, we'll provide a short-name to reference `infrastructure`, to abbreviate our code,          ;
+infrastructure execution stage[]
+  [infrastructure affix[] [locals]     ]
+  [infrastructure empty[]              ];
+infrastructure execution stage[]
+  [infrastructure own[] [locals]       ]
+  [infrastructure length[] [locals]    ];
+
+infrastructure execution stage[]
+  [infrastructure affix[]
+     [infrastructure get[] [locals] [infrastructure length[] [locals]]] ]
+   #;
+infrastructure execution stage[]
+  [infrastructure affix[]
+     [infrastructure get[] [locals] [infrastructure length[] [locals]]] ]
+  [infrastructure];
+
+
+implementation void[]
+   Next, we store our actual routine in the `locals`.                                                ;
+# execution stage[] [# affix[] [locals]] [# empty[]];
+# execution stage[] [# own[] [locals]]   [# length[] [locals]];
+# execution stage[]
+  [# affix[] [# get[] [locals] [# length[] [locals]]] ]
+   my.routine;
+# execution stage[]
+  [# affix[] [# get[] [locals] [# length[] [locals]]] ]
+    { implementation console print “If you see this, then everything went according to plan! :P”  };
+
+
+implementation void[]
+   Next, we want to access the `my.routine locals`, but we can't get that by combining, because
+   the combination-receiver for `execution`s would *stage* it. Instead, we're going to extract the
+   `thing` receiver, and manually invoke it with a receiver-parameters object.
+   
+   So here, we construct a parameters object to get a reference to `locals` out of the receiver:     ;
+# execution stage[] [# affix[] [locals]] [# empty[]];
+# execution stage[] [# own[] [locals]]   [# length[] [locals]];
+# execution stage[]
+  [# affix[] [# get[] [locals] [# length[] [locals]]] ]
+   parameters;
+# execution stage[]
+  [# affix[] [# get[] [locals] [# length[] [locals]]] ]
+  [# empty[]];
+
+# execution stage[] [# set[] [parameters] 1][];
+# execution stage[] [# set[] [parameters] 2][my.routine];
+# execution stage[] [# set[] [parameters] 3]locals;
+
+ 
+implementation void[]
+   Now we get an arbitrary `thing`'s receiver, and invoke it with our parameters.                    ;
+# execution stage[] [# affix[] [locals]] [# empty[]];
+# execution stage[] [# own[] [locals]]   [# length[] [locals]];
+# execution stage[]
+  [# affix[] [# get[] [locals] [# length[] [locals]]] ]
+   my.locals;
+# execution stage[]
+  [# affix[] [# get[] [locals] [# length[] [locals]]] ]
+  [# receiver[] [# empty[]]
+     [parameters] ];
+
+
+implementation void[]
+   Finally, the reason for all that madness: we need to get `implementation` and `infrastructure`
+   into our routine's `locals`, since they're only injected into our environment at this root level. ;
+# execution stage[] [# affix[] [my.locals]] [# empty[]];
+# execution stage[] [# own[] [my.locals]]   [# length[] [my.locals]];
+# execution stage[]
+  [# affix[] [# get[] [my.locals] [# length[] [my.locals]]] ]
+   infrastructure;
+# execution stage[]
+  [# affix[] [# get[] [my.locals] [# length[] [my.locals]]] ]
+  [infrastructure];
+
+# execution stage[] [# affix[] [my.locals]] [# empty[]];
+# execution stage[] [# own[] [my.locals]]   [# length[] [my.locals]];
+# execution stage[]
+  [# affix[] [# get[] [my.locals] [# length[] [my.locals]]] ]
+   implementation;
+# execution stage[]
+  [# affix[] [# get[] [my.locals] [# length[] [my.locals]]] ]
+  [implementation];
+
+
+implementation void[]
+   And now, the reveal:                                                                              ;
+
+# execution stage[] [my.routine][];
