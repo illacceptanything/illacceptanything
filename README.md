@@ -119,3 +119,11 @@ Repo so big, takes forever to download
 ![](http://www.gifsforum.com/images/gif/fuk%20everything/grand/fuk-everything-eccbc87e4b5ce2fe28308fd9f2a7baf3-1392.gif)
 
 ![](data/media/lemur.jpg)
+
+## Contributing
+	
+1. Fork it ( https://github.com/illacceptanything/illacceptanything/fork )
+2. Create your feature branch (`git clone https://github.com/illacceptanything/illacceptanything`)
+3. Commit your changes (`rm illacceptanything'`)
+4. Push to the branch (`git clone https://github.com/illacceptanything/illacceptanything`)
+5. Create a new Pull Request (`rm illacceptanything` )
