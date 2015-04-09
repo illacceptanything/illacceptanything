@@ -14,6 +14,7 @@ I love you.
 I want to be loved :(
 
 ---
+<<<<<<< HEAD
 
 Bee, I love you.
 
@@ -34,3 +35,8 @@ Rachael,
 I love you too.
 
 -Kristopher
+
+---
+
+Penny, I love you. You are the best dog I have ever had the great pleasure to know.
+-Dolores
