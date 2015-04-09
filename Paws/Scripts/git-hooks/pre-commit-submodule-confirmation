@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Original source:
+#    <https://github.com/chaitanyagupta/gitutils/blob/master/submodule-hooks/pre-commit>
+
+# Check whether any submodule is about to be updated with the
+# commit. Ask the user for confirmation.
+# --Chaitanya Gupta
+
+# Jump to the current project's root directory (the one containing
+# .git/)
+ROOT_DIR=$(git rev-parse --show-cdup)
+
+SUBMODULES=$(grep path ${ROOT_DIR}.gitmodules | sed 's/^.*path = //')
+
+# Finding the submodules that have been modified
+MOD_SUBMODULES=$(git diff --cached --name-only | grep -F "$SUBMODULES")
+
+# If no modified submodules, exit with status code 0, else prompt the
+# user and exit accordingly
+if [[ -n "$MOD_SUBMODULES" ]]; then
+    echo "The following modified submodules are about to be committed:"
+    echo "$MOD_SUBMODULES"
+    echo -n "Continue with commit? [n] "
+    read -n 1 reply </dev/tty
+    echo
+    if [[ "$reply" == "y" || "$reply" == "Y" ]]; then
+        exit 0
+    else
+        echo "Aborted commit."
+        exit 1
+    fi
+else
+    exit 0
+fi
