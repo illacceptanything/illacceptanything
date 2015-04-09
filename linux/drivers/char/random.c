@@ -6,6 +6,6 @@ int random() {
 		      ppl =) like they say the more the merrier!!!! lol…neways i hope 2 make alot of freinds here so give me lots \
 		      of commentses!!!! DOOOOOMMMM!!!!!!!!!!!!!!!! <--- me bein random again _^ hehe…toodles!!!!! \
 		      love and waffles, \
-		      	t3h PeNgU1N oF d00m"
+		      	t3h PeNgU1N oF d00m";
 	return (int) seed[1];
 }
