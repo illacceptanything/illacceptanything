@@ -54,3 +54,12 @@ Leader of the FREE world
 ![darude-sandstorm](https://github.com/mrkrstphr/illacceptanything/blob/master/darude-sandstorm.gif.mp4.mov.wmv.png.jpeg)
 
 ![](https://38.media.tumblr.com/tumblr_mchf7fdrhd1r7swjzo1_250.gif)
+
+ __                 
+/  \        _______________ 
+|  |       /               \
+@  @       | It looks      |
+|| ||      | like you      |
+|| ||   <--| are accepting |
+|\_/|      | anything.     |
+\___/      \_______________/
