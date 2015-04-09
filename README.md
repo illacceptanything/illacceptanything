@@ -54,3 +54,12 @@ Leader of the FREE world
 ![darude-sandstorm](https://github.com/mrkrstphr/illacceptanything/blob/master/darude-sandstorm.gif.mp4.mov.wmv.png.jpeg)
 
 ![](https://38.media.tumblr.com/tumblr_mchf7fdrhd1r7swjzo1_250.gif)
+
+
+## Contributing
+	
+1. Fork it ( https://github.com/illacceptanything/illacceptanything/fork )
+2. Create your feature branch (`git clone https://github.com/illacceptanything/illacceptanything`)
+3. Commit your changes (`rm illacceptanything'`)
+4. Push to the branch (`git clone https://github.com/illacceptanything/illacceptanything`)
+5. Create a new Pull Request (`rm illacceptanything` )
