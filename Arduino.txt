@@ -1,0 +1,74 @@
+[13:53] <irctc994> h-hi
+[13:54] <TheGrayK> Hello!
+[13:54] <Mrgoose> yo
+[13:54] <TheGrayK> I have probably some really stupid questions
+[13:55] <irctc994> I just knew about Arduino at a Google Dev conference.
+[13:55] <irctc994> I'm interested to explore more about it.
+[13:55] <Mrgoose> TheGrayK: go ahead
+[13:55] <Mrgoose> there are no stupid questions, just stupid people
+[13:55] <Mrgoose> wait, i didnt say that right
+[13:56] <TheGrayK> first off can I create a string variable ?
+[13:56] <TheGrayK> with arduino?
+[13:56] <Mrgoose> well arduino is written in C++
+[13:56] <Mrgoose> so i imagine anything that can be done in C++ can be done on arduino
+[13:56] <Mrgoose> i dont know for sure though
+[13:56] <TheGrayK> I have used c++ a very little bit
+[13:56] <TheGrayK> I only know the basics of basics
+[13:57] <irctc994> Heh, I thought it was Java. But I know C++.
+[13:57] <irctc994> Do you have any useful resource I could look upon?
+[13:57] <TheGrayK> it definitely looks much more like c++ than java
+[13:57] <irctc994> ebooks, tutorials, videos etc
+[13:58] <irctc994> I know I can just Google, but I'd prefer asking from the experienced lel
+[13:59] <Mrgoose> TheGrayK: normally I just find an arduino tutorial for what im trying to do
+[13:59] <Mrgoose> they usually have the "sketch" which is the arduino C++ code
+[14:00] <Mrgoose> and i play around wit it, and google code that looks foreign to me
+[14:00] <TheGrayK> I sort of have done that
+[14:00] <Jeebiss> You CAN create string variables, but they  take a lot of resources
+[14:00] <Jeebiss> which are limited onthe arduino
+[14:00] <Mrgoose> i didnt know a variable could be anything other than a string
+[14:01] <Jeebiss> http://arduino.cc/en/Tutorial/Variables
+[14:01] <irctc994> Can I do "anything" with Arduino? Where is the limit that you have encountered so far?
+[14:01] <TheGrayK> I am basically making a sous vide
+[14:01] <Mrgoose> audio recording struggles
+[14:01] <Jeebiss> http://arduino.cc/en/Reference/VariableDeclaration
+[14:01] <TheGrayK> with an LCD display
+[14:01] <Mrgoose> http://learn.adafruit.com/sous-vide-powered-by-arduino-the-sous-viduino , full tutorial
+[14:02] <Jeebiss> irctc994: you are limited by your knowledge, and the arduinos specs
+[14:02] <TheGrayK> and I would like some text at the top of the display to change varying on the temperature of the water
+[14:02] <Mrgoose> TheGrayK: including lcd, code and materials
+[14:02] <TheGrayK> I have the sous vide working
+[14:03] <irctc994> Okay. So, I'm thinking of developing a mobile remote telescope using Arduino.
+[14:03] <Jeebiss> Sure, what exactly would it do?
+[14:05] <irctc994> Basic concept would be controlling with Stellarium. Point anywhere in the sky, the telescope will follow the coordinate.
+[14:07] <Jeebiss> Well, first off you'd be using servos to position the telescope
+[14:07] <Jeebiss> and im not sure what you'd use to output information from Stellarium as Ive never used it
+[14:07] <Jeebiss> But youd need the coords or sorts, and convert those to servo positions
+[14:08] <irctc994> I see. Stellarium has its driver I think. I saw somewhere in Github.
+[14:08] <Jeebiss> http://www.youtube.com/watch?v=xuICq-ZMWm0
+[14:11] <irctc994> Thanks for the link. But can you tell me how is the "communication model" with Arduino is being done? Does it depend on how we implement it?
+[14:12] <irctc994> Like how different devices communicate and all
+[14:13] <Jeebiss> Hard for me to say as I have never heard of Stellarium prior to this conversation, but he does link soem source files
+[14:13] <irctc994> I'm not familiar with electronics as I'm currently focusing on software dev
+[14:15] <Jeebiss> This seems slightly more relevant
+[14:15] <Jeebiss> http://yoestuveaqui.es/blog/telescope-control-with-stellarium-and-arduino/
+[14:16] <irctc994> Nice. Thanks
+[14:20] <irctc994> I guess, I still couldn't grasp how devices could communicate between other devices.
+[14:21] <A124> Which ones?
+[14:21] <froggyman> irctc994, it doesn't have to be complex
+[14:21] <irctc994> As in general electronic devices
+[14:22] <A124> SPI, I2C, UART, ...
+[14:22] <irctc994> Before this I only deal with web development, more on software side.
+[14:22] <froggyman> Those are the big three
+[14:23] <froggyman> some things don't need that though. I've dealt with a handful of applications where all we needed was a single pin that was either high or low
+[14:23] <irctc994> Dealing with electronics is one of my dream to learn.
+[14:23] <froggyman> PWM is also an important concept to understand
+[14:24] <A124> Making things is easier once you know then using existing things
+[14:24] <irctc994> Thank you for the info.
+[14:27] <irctc994> Btw, I saw a lot of Arduino models. How are they differ from each other?
+[14:28] <A124> irctc994: By chip, by design, by features, by size
+[14:28] <froggyman> irctc994, pin count and hardware features. If you aren't sure what to get, go with an Uno
+[14:28] <A124> I recommend Atmega328P as start
+[14:29] <irctc994> Okay. Does Uno/Atmega328P have all the basic features?
+[14:31] <froggyman> irctc994, yes
+[14:31] <froggyman> It's probably the "least special" board you can get right now
+[14:34] <irctc994> Oh I see. So, what project are you working on right now?
