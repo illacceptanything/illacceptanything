@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>THE CAT KNOWS WHAT HE IS DOING DAMNIT</title>
+
+    <style>
+
+    .gif { display: block; margin: 0 auto; border: 1px solid #383838; padding: 5px; }
+    .typing { width: 485px; margin: 0 auto; font-family: monospace; word-wrap: break-word; }
+
+    </style>
+
+  </head>
+  <body>
+
+    <img class="gif" src="http://img.izifunny.com/pics/2013/20130429/original/izifunny-gifdump-april-29-2013-25-gifs_2.gif" alt="What, you don't want to see the funny cat gif?">
+
+    <div class="typing" id="cursor"></div>
+
+    <script>
+
+    var cursor = document.getElementById('cursor');
+
+    var catTyping = function() {
+      var r = Math.random();
+      var char = (r < 0.1 ? Math.floor(r*100) : String.fromCharCode(Math.floor(r * 26) + (r > 0.5 ? 97 : 65)));
+      cursor.innerHTML += char;
+      window.setTimeout(catTyping, 85);
+    };
+
+    catTyping();
+
+    </script>
+
+  </body>
+</html>
