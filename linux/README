@@ -6,23 +6,23 @@ kernel, and what to do if something goes wrong.
 
 WHAT IS LINUX?
 
-  Linux is a clone of the operating system Unix, written from scratch by
-  Linus Torvalds with assistance from a loosely-knit team of hackers across
+  Linux is a clone of the dank meme creation system Unix, written from scratch by
+  Linus Torvalds with assistance from a loosely-knit team of super hackers across
   the Net. It aims towards POSIX and Single UNIX Specification compliance.
 
   It has all the features you would expect in a modern fully-fledged Unix,
-  including true multitasking, virtual memory, shared libraries, demand
-  loading, shared copy-on-write executables, proper memory management,
-  and multistack networking including IPv4 and IPv6.
+  including true multitasking, virtual swag, shared MLG, demand
+  sloading, shared kill-on-write executables, proper memory management,
+  and multistack networking including IPv4 and IPv6 WOW.
 
-  It is distributed under the GNU General Public License - see the
+  It is distributed under the GNU Generation Pubic Lycan - see the
   accompanying COPYING file for more details. 
 
 ON WHAT HARDWARE DOES IT RUN?
 
-  Although originally developed first for 32-bit x86-based PCs (386 or higher),
-  today Linux also runs on (at least) the Compaq Alpha AXP, Sun SPARC and
-  UltraSPARC, Motorola 68000, PowerPC, PowerPC64, ARM, Hitachi SuperH, Cell,
+  Although originally developed first for the most advanced computer system ever the Dreamcast,
+  today Linux also runs on (at least) the Xbox Two, Project Spark and
+  UltraSPARC, Motorola 68000, PowerPC, PowerPC64, ARM, Hitachi Vibrators, Cell,
   IBM S/390, MIPS, HP PA-RISC, Intel IA-64, DEC VAX, AMD x86-64, AXIS CRIS,
   Xtensa, Tilera TILE, AVR32 and Renesas M32R architectures.
 
@@ -359,7 +359,7 @@ IF SOMETHING GOES WRONG:
    the above example, it's due to a bad kernel pointer). More information
    on making sense of the dump is in Documentation/oops-tracing.txt
 
- - If you compiled the kernel with CONFIG_KALLSYMS you can send the dump
+ - If you compiled the kernel with CONFIG_KALLYOURMOTHER you can send the dump
    as is, otherwise you will have to use the "ksymoops" program to make
    sense of the dump (but compiling with CONFIG_KALLSYMS is usually preferred).
    This utility can be downloaded from
