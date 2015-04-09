@@ -1,10 +1,14 @@
 {
+  "main": "./helloworld.js",
+  "scripts": {
+    "start": "node ./helloworld.js"
+  },
   "name": "illacceptanything",
   "scripts": {
     "lint": "jslint *.js"
   },
   "devDependencies": {
-    "benchmark": "1.x.x"
+    "benchmark": "1.x.x",
     "bower": "~1.3.9",
     "browserstacktunnel-wrapper": "~1.3.1",
     "canonical-path": "0.0.2",

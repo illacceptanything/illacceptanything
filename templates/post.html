@@ -1,0 +1,8 @@
+{{define "body"}}
+<h2>{{ .CurrentPage.Title }} <small>{{ .CurrentPage.Date }}</small></h2>
+<div class="post-body">
+{{ .CurrentPage.FinalHTML }}
+</div>
+{{end}}
+
+{{define "site-title"}}{{ .SiteTitle}}: {{ .CurrentPage.Title }}{{end}}
