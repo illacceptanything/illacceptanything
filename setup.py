@@ -1,3 +1,5 @@
+# coding=utf-8
+
 """illacceptanything Python setup file.
 """
 
@@ -6,6 +8,18 @@ from setuptools import setup, find_packages
 # To use a consistent encoding
 from codecs import open
 from os import path
+
+print '''........... 
+...................__ 
+............./´¯/'...'/´¯¯`·¸ 
+........../'/.../..../......./¨¯\ 
+........('(...´...´.... ¯~/'...') 
+.........\.................'...../ 
+..........''...\.......... _.·´ 
+............\..............( 
+BRO FIST 
+
+IF YOU DONT POST THIS TO 5 BROS THEN YOU ARENT A BRO'''
 
 here = path.abspath(path.dirname(__file__))
 

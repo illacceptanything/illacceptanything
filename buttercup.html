@@ -1,0 +1,357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<style>
+
+*
+{
+	
+	margin:0px;
+	
+	
+	
+}
+
+	
+	
+body
+{
+	
+	background-color: #0099CC;
+}
+
+#container
+	{
+		
+		position: absolute;
+		top:30px;
+		left:40%;
+	}	
+	
+	
+	
+#round
+{
+	
+	width:250px;
+	height:180px;
+	border:solid 1px;
+	border-bottom-left-radius: 120px;
+	border-bottom-right-radius: 110px;
+	transform:rotate(10deg);
+	-webkit-transform:rotate(10deg);
+	background-color: #FFDAD0;
+}
+
+.eyes_layer_1
+	{
+		z-index: 2;
+		width:100px;
+		height:100px;
+		border:solid 1px;
+		border-radius:150px;
+		border-top:0px;
+		border-right:0px;
+		background-color:white;
+		float: left;
+		
+	}
+	
+	
+	.eyes_layer_2
+	{
+		
+		width:98px;
+		height:93px;
+		border:solid 1px;
+		border-radius:150px;
+		border-top:0px;
+		border-right:0px;
+		background-color:#6CBE42;
+		
+	}
+	
+	
+	.eyes_layer_3
+	{
+		
+		width:78px;
+		height:73px;
+		border:solid 1px;
+		border-radius:40px;
+		border-top:0px;
+		border-right:0px;
+		background-color:black;
+		margin-left: 10px;
+	}
+	
+	
+	
+	.eyes_layer_4
+	{
+		
+		width:30px;
+		height:30px;
+		border:solid 1px;
+		border-radius:80px;
+		border-top:0px;
+		border-right:0px;
+		background-color:white;
+		position:absolute;
+		left:20px;
+		margin-left: 10px;
+		margin-top: 0px;
+	}
+	
+	
+	
+	
+	.right
+	{
+		
+		position:absolute;
+		top:0px;
+		left:130px;
+	}
+	
+	
+	
+		
+	.eyes_layer_4_right
+	{
+		
+		width:30px;
+		height:30px;
+		border:solid 1px;
+		border-radius:80px;
+		border-top:0px;
+		border-right:0px;
+		background-color:white;
+		position:absolute;
+		left:20px;
+		margin-left:-6px;
+		margin-top: 10px;
+		z-index: 2;
+	}
+
+	
+	#hair
+	{
+		
+	width:270px;
+	height:250px;
+	
+	border:solid 1px;
+	border-radius: 150px;
+	position: relative;
+		top:160px;
+		left:3px;
+	border-bottom: none;
+	border-left: none;
+		background-color: black;
+	}
+	
+	.slit
+	{
+	
+		width:0px;
+
+		border:solid 30px #FFDAD0;
+				border-top-width:0px;
+		border-left:solid 12px transparent;
+		border-bottom:solid 35px #FFDAD0;
+		border-right:solid 12px transparent;
+		transform: rotate(30deg);
+		-webkit-transform: rotate(30deg);
+		position:relative;
+		left:120px;
+		top:70px;	
+		z-index: 3;
+	}
+	
+	
+	@keyframes kisss
+	{
+		
+		0%
+		{
+			width:30px;
+	height:5px;
+			
+		}
+		
+		100%
+		{
+		width:12px;
+		height:5px;
+			left:110px;
+		}
+		
+	}
+	
+	@-webkit-keyframes kisss
+	{
+		
+		0%
+		{
+			width:30px;
+	height:5px;
+			
+		}
+		
+		100%
+		{
+		width:12px;
+		height:5px;
+			left:110px;
+		}
+		
+	}
+	
+	.curve
+	{
+		
+		width:30px;
+		height:5px;
+		border:solid 1.8px;
+		position:relative;
+		top:120px;
+		left:100px;
+		border-bottom-left-radius: 15px;
+		border-bottom-right-radius: 15px;
+		background-color:#EF0E3C;
+		
+	}
+	
+	
+	.kiss
+	{
+		
+		
+		animation-name: kisss;
+		animation-duration: 1s;
+		animation-iteration-count:1;
+		animation-delay: 0.5s;
+		-webkit-animation-name: kisss;
+		-webkit-animation-duration: 1s;
+		-webkit-animation-iteration-count:1;
+		-webkit-animation-delay:0.5s;
+	}
+	
+	
+	.button
+	{
+	
+	position: absolute;
+	top:500px;
+	left:45%;
+	background-color: red;
+	color:white;
+	width: 150px;
+	height:30px;
+	line-height: 30px;
+	text-align: center;
+	font-family: sans-serif;
+	font-size: 18px;
+	}
+	
+
+	.bow_1
+	{
+		border-left: solid 0px ;
+		border-right: solid 20px red;		
+		border-bottom: solid 10px transparent;
+		border-top: solid 10px transparent;		
+		position:absolute;
+		top:180px;
+		left:90px;
+	}
+	
+		.bow_2
+	{
+		border-left: solid 20px red;
+		border-right: solid 0px ;		
+		border-bottom: solid 10px transparent;
+		border-top: solid 10px transparent;		
+		position:absolute;
+		top:180px;
+		left:72px;
+	}
+	
+</style>
+
+
+</head>
+
+
+<body>
+<div id="container">
+<div id="hair"><div class="slit"></div></div>
+	<div id="round">
+	
+	<div class="eyes_layer_1">
+		
+		
+		
+			<div class="eyes_layer_2">
+		
+		
+							<div class="eyes_layer_3">
+				
+				
+								
+							<div class="eyes_layer_4"></div>
+
+				
+				
+				</div>
+
+				</div>
+		</div>
+		
+		
+<div class="eyes_layer_1 right">
+		
+		
+		
+			<div class="eyes_layer_2">
+		
+		
+							<div class="eyes_layer_3">
+				
+				
+								
+							<div class="eyes_layer_4_right"></div>
+
+				
+				
+				</div>
+	
+	</div>
+		
+		
+		</div>				
+				<div class="curve kiss" id="mouth"></div>
+		
+		
+		
+		
+		
+		
+		</div>
+		
+		<div class="bow_2"></div>
+		<div class="bow_1"></div>
+		
+	
+	</div>
+	
+	
+	</body>

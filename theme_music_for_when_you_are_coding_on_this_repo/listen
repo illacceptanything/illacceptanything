@@ -1,0 +1,57 @@
+#!/usr/bin/env ruby
+
+require 'bundler'
+Bundler.setup
+
+require 'bloops'
+
+module Horse
+  # Ignore this name, it's from an old project
+  class PettingSong < Bloops
+    TUNE2 = %w{16:d3 16:g#3}
+    TUNE = %w{g4 16:g4 a4 b4 8:b4 c#5 d#5 8:d#5 d5 b4 16:f#5 16:g5 8:f#5 16:d#5
+              f4 32:g#3 32:g#3 32:g#3 64:g} * 2 + %w{64:a 64:b 64:c 64:d 64:c
+              64:b 64:a 64:g}
+
+    def start
+      @tune = TUNE.dup
+      @tune2 = TUNE2.dup
+
+      self.tempo = 200
+
+      s = sound(Bloops::SINE)
+      s.punch = 0.5
+      s.sustain = 0.5
+      s.decay = 0.2
+      s.lsweep = 0.1
+
+      s2 = sound(Bloops::SQUARE)
+      s2.slide = -0.1
+      s2.phase = 0.1
+      s2.psweep = 0.1
+      s2.vibe = 0.5
+      s2.dslide = 0.05
+      s2.vdelay = 0.2
+
+      loop do
+        if stopped?
+          clear
+          note = @tune2.shift
+          @tune2 << note
+          s2.dslide = rand / 100 * 5
+          tune(s2, note)
+          note = @tune.shift
+          @tune << note
+          tune(s, note)
+          play
+        else
+          sleep 0.003
+        end
+      end
+    end
+  end
+end
+
+puts "Let's get to work! Time to start coding!"
+
+Horse::PettingSong.new.start

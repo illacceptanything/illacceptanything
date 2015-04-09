@@ -1,0 +1,6 @@
+SOCK="$HOME/.ssh/agent"
+if [ -a $SOCK ] ;
+then
+    export SSH_AUTH_SOCK=$SOCK
+fi
+

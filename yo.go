@@ -1,9 +1,11 @@
 package main
 
 import (
-        "fmt"
+  "fmt"
+  "time"
 )
 
 func main() {
-        fmt.Printf("yo!!")
+  fmt.Printf("yo!!\n")
+  time.Sleep(time.Second)
 }

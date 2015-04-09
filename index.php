@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Any thing you want</title>
+    <title>Anything you want</title>
 	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
         <script src="http://code.onion.com/fartscroll.js"></script>
         <script type="text/javascript">
@@ -24,5 +24,7 @@ try {
     echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
 ?>
+<!-- best lyrics ever -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2HQaBWziYvY?autoplay=1" frameborder="0" allowfullscreen></iframe>
 </body>
 </html>

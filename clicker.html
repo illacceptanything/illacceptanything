@@ -1,0 +1,83 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Anything Clicker</title>
+    <style>
+      body { font-family: monospace; }
+      div { float:left; }
+      #ui { width:20%; }
+      #world { width:70%; }
+    </style>
+  </head>
+
+  <body>
+    <div id="ui">
+      <h1>Anything Clicker</h1>
+
+      <p>Anythings: <span id="anythings">0</span></p>
+      <p>Nothings: <span id="nothings">0</span></p>
+
+      <button id="accept">Accept</button>
+      <button id="buy">Buy Accepter (<span id="cost">10</span> anythings)</button>
+    </div>
+
+    <div id="world">
+      <div id="accepters"></div>
+    </div>
+
+    <script>
+    (function (doc) {
+      var anythings = 0,
+          nothings = 0,
+          accepters = 0,
+          cost = 10,
+          lastAuto = Date.now(),
+          anythings_ui = doc.getElementById('anythings'),
+          nothings_ui = doc.getElementById('nothings'),
+          cost_ui = doc.getElementById('cost'),
+          accepters_ui = doc.getElementById('accepters'),
+          accept_btn = doc.getElementById('accept'),
+          buy_btn = doc.getElementById('buy'),
+          acceptAnything = function (accepted) {
+            anythings += accepted;
+          },
+          buyAccepter = function () {
+            if (anythings >= cost) {
+              anythings -= cost;
+              nothings += cost;
+              accepters++;
+              accepters_ui.innerText += ' (o.o) ';
+              cost = Math.ceil(cost*1.4);
+            }
+          },
+          update = function () {
+            var now = Date.now();
+
+            if ((now - lastAuto) >= 1000) {
+              acceptAnything(accepters);
+              accepters_ui.innerText = accepters_ui.innerText.replace(/o/g, '-');
+
+              setTimeout(function () {
+                accepters_ui.innerText = accepters_ui.innerText.replace(/\-/g, 'o');
+              }, 200);
+              lastAuto = now;
+            }
+
+            cost_ui.innerText = cost;
+            nothings_ui.innerText = nothings;
+            anythings_ui.innerText = anythings;
+          };
+
+      accept_btn.addEventListener('click', function () {
+        acceptAnything(1);
+      });
+
+      buy_btn.addEventListener('click', buyAccepter);
+
+      setInterval(update, 0);
+    })(document);
+    </script>
+  </body>
+</html>
