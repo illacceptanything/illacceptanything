@@ -31,6 +31,8 @@ every Pull Request submitted and see what happens.
 
 ## [CLICK ME!](https://andrewsun.com/etc/special/m.html)
 
+![](http://apistoletov.ru/wp-content/uploads/2012/12/cropped-head.png)
+
 ![](https://i.imgur.com/ehUtz.gif)
 
 Leader of the FREE world
