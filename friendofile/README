@@ -1,0 +1,27 @@
+friendofile: simple-golang-file-upload
+======================================
+
+A stupidly simple file upload service written in Go.
+
+I've tried my best, but seriously - only let trusted users use this.
+Put it behind an auth gate.
+
+(Has a browse page - see screenshot.png!)
+
+Have a look in index.html and main.go for all the things you'll need to set up.
+
+Basically this listens on 127.0.0.1:8076/files/ and expects to have nginx
+sitting in front of it. Nginx is responsible for serving Bootstrap and the 
+like from /bootstrap/.
+ 
+It also wants a bunch of Bootstrap stuff and some jQuery and a jquery
+file upload control.
+
+I've stuffed what I think is necessary in bootstrap.zip.
+
+Due to use of syscall.Statfs, this expects to be running on a Unix-like.
+
+Licenses: Check the headers of all the Bootstrap stuff!
+I'm shipping someone's theme here.
+The license of the golang code is under MIT/public domain - your preference.
+
