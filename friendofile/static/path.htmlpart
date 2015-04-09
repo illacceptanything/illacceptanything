@@ -1,0 +1,9 @@
+	    <li class="list-group-item">
+			<a href="$PATH_LINK"><span class="glyphicon $PATH_ICON"></span> $PATH_NAME</a>
+			<!--<div class="btn-group" role="group">
+				<button type="button" class="btn btn-primary">Download</button>
+				<button type="button" class="btn btn-warning">Move (TODO)</button>
+				<button type="button" class="btn btn-danger">Delete (TODO)</button>
+			</div>-->
+			<span style="float: right">$FILE_SIZE</span>
+		</li>
