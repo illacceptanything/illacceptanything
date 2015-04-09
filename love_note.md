@@ -21,10 +21,16 @@ Bee, I love you.
 
 ---
 
----
-
 Auntie Em,
 
 Hate you. Hate Kansas. Taking the dog.
 
   – Dorothy
+
+---
+
+Rachael,
+
+I love you too.
+
+-Kristopher
