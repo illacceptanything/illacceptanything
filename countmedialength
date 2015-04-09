@@ -1,0 +1,14 @@
+#!/bin/bash
+global_total=0
+for x in "$@"; do
+    dur=`ffmpeg -i "$x" 2>&1|grep Duration|tr ',' ' '|cut -d' ' -f4`
+    centisecs=`echo $dur|cut -d. -f2`
+    secs=`echo $dur|cut -d: -f3|cut -d. -f1`
+    mins=`echo $dur|cut -d: -f2`
+    hours=`echo $dur|cut -d: -f1`
+    local_total=`expr $centisecs + $secs \* 100 + $mins \* 6000 + $hours \* 360000`
+    global_total=`expr $global_total + $local_total`
+    echo "$x:	$local_total centiseconds"
+done
+
+echo "All files:	$global_total centiseconds"
