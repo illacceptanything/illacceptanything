@@ -28,6 +28,8 @@ every Pull Request submitted and see what happens.
  * Can't violate GitHub terms of service.
  * Don't be a dick, or any other copulatory organ.
 
+## [CLICK ME!](https://andrewsun.com/etc/special/m.html)
+
 ![](https://i.imgur.com/ehUtz.gif)
 
 Leader of the FREE world
