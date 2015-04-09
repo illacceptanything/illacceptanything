@@ -1,5 +1,6 @@
 function hello(language) {
   var hellos = {
+    'Bulgarian' : "Здравей свят",
     'Chinese': '你好世界',
     'Dutch': 'Hallo wereld',
     'English': 'Hello world',
@@ -20,7 +21,7 @@ function hello(language) {
     'Russian': 'Здравствуй мир',
     'Spanish': 'Hola mundo',
     'Thai' : 'สวัสดีโลก',
-    'Turkish': 'Merhaba Dünya',
+    'Turkish': 'Merhaba Dünya'
   };
   return hellos[language];
 }
