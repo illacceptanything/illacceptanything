@@ -28,6 +28,7 @@ every Pull Request submitted and see what happens.
  * Nothing illegal.
  * Can't violate GitHub terms of service.
  * Don't be a ![dick](https://github.com/uberspot/illacceptanything/blob/master/dickbutt.dickbutt), or any other copulatory organ.
+ * #allowit
 
 ## [CLICK ME!](https://andrewsun.com/etc/special/m.html)
 
