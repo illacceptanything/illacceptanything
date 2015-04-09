@@ -4,4 +4,4 @@
   return function() {
     console.log.apply(console, arguments);
   };
-})()('hello world')
+})()('AYY LMAO WUSSUP MY HIZ HIZ')
