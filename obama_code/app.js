@@ -7,7 +7,7 @@ var opinion_poll = {
 
 function moveForward(id)
 {
-    throw "fixing a poll is not allowed."
+    throw new Error("fixing a poll is not allowed.")
 }
 
 // Obama wrote this line
