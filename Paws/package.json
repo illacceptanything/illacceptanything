@@ -1,0 +1,77 @@
+{        "author" : "ELLIOTTCABLE (http://ell.io/tt)"
+
+,          "name" : "Paws.js"
+,       "private" :  true
+,       "version" : "4.0.0"
+,  "version-name" : "brillig paws"
+
+,          "main" : "Library/Paws.js"
+
+,           "bin" : {"paws.js" : "Executables/paws.js"}
+
+,       "scripts" :{
+        "prepublish" : "./Scripts/build.sh"
+
+,             "repl" : "./Scripts/repl.js"
+,             "test" : "./Scripts/test.sh"
+,            "clean" : "./Scripts/clean.sh"
+,         "coverage" : "./Scripts/coverage.sh 3> ./Library/Coverage.html"
+,        "coveralls" : "./Scripts/coveralls.sh"
+,   "install-git-hooks" :
+                       "./Scripts/install-git-hooks.sh"
+}   
+
+,     "config" :{
+           "dirs" :{"source"     : "Source"
+                  , "test"       : "Test"
+                  , "rulebook"   : "Test/Rulebook"
+                  , "instrumentation"
+                                 : "Source" }
+,          "test" :{"ENV"        : "test"
+                  , "files"      : "Test/*.coffee" }
+,         "mocha" :{"ui"         : "bdd"
+                  , "reporter"   : "spec" }
+,           "git" :{"hooks"      : "prepare-commit-msg pre-commit post-merge post-checkout" }
+ }
+
+,          "engines" :{"node":"~0.10.7"}
+,     "dependencies" :{"coffee-script"          : "~1.9.1"
+                     , "node-uuid"              : "~1.4.3"
+                     , "pegjs"                  : "~0.8.0"
+                     
+                     , "minimist"               : "~1.1.1"
+                     , "mustache"               : "~2.0.0"
+                     , "blessed"                : "~0.0.51"
+                     
+                     , "pretty-error"           : "~1.1.2"
+                     , "bluebird"               : "~2.9.24"
+                     , "lodash-compat"          : "~3.6.0"                                        }
+
+,  "devDependencies" :{"glob"                   : "~5.0.3"
+                     , "browserify"             : "~3.33.0"
+                     , "coffeeify"              : "~0.6.0"
+                     , "docco"                  : "~0.7.0"
+                     
+                     , "mocha"                  : "~2.2.1"
+                     , "mocha-lcov-reporter"    : "~0.0.2"
+                     , "expect.js"              : "~0.3.1"
+                     , "sinon"                  : "~1.14.1"
+                     , "sinon-expect"           : "~0.2.0"
+                     , "coffee-coverage"        : "~0.4.5"
+                     , "coveralls"              : "~2.11.2"
+
+                     , "taper"                  : "~0.5.0"
+                     , "yamljs"                 : "~0.2.1"                                        }
+
+,   "testling" :{
+          "files" : "Test/*.coffee"
+   ,       "html" : "Library/TAP.html"
+   , "preprocess" : "cake --tests compile:client"
+   ,   "browsers" :{"ie":      [ 6, 7, 8, 9, 10 ]
+                  , "firefox": [ 3, 3.5, 3.6, 4, 5, 10, 19, "nightly" ]
+                  , "chrome":  [ 4, 5, 6, 7, 10, 15, 25, "canary" ]
+                  , "safari":  [ 4.0, "5.0.5", 5.1, 6.0 ]
+                  , "opera":   [ 10.0, 10.5, 11.0, 11.5, 11.6, 12.0, "next" ]
+                  , "iphone":  [ 6.0 ]
+                  , "ipad":    [ 6.0 ]
+                  , "android-browser": [ 4.2 ]                                                   }}}
