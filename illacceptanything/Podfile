@@ -1,2 +1,0 @@
-use_frameworks!
-pod 'Alamofire', '~> 1.1'
