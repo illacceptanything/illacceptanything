@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+echo "Money is never for free, ya dangus!"
+echo "You gotta get a job to support ya framily!"
+xdg-open drangus.jpg
