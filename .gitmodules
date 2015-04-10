@@ -8,5 +8,5 @@
 	path = lisp
 	url = git://git.code.sf.net/p/sbcl/sbcl
 [submodule "drive"]
-	path = drive
+	path = code/drive
 	url = https://github.com/odeke-em/drive
