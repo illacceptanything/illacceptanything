@@ -1,0 +1,107 @@
+# game
+
+Import qw( BASE_CFLAGS CONFIG_DIR BUILD_DIR BASEGAME CC CXX LINK );
+
+$env = new cons(
+	CC => $CC,
+	CXX => $CXX,
+	LINK => $LINK,
+  CPPPATH => '#../game:#../botai',
+  # NOTE TTimo what about the GAMEDLL define? where is it needed?
+  CFLAGS => $BASE_CFLAGS . '-fPIC -DGAMEDLL',
+  LDFLAGS => '-shared -ldl -lm'
+);
+
+@FILES = qw( 
+  ../game/ai_cast.c
+  ../game/ai_cast_characters.c
+  ../game/ai_cast_debug.c
+  ../game/ai_cast_events.c
+  ../game/ai_cast_fight.c
+  ../game/ai_cast_func_attack.c
+  ../game/ai_cast_func_boss1.c
+  ../game/ai_cast_funcs.c
+  ../game/ai_cast_script.c
+  ../game/ai_cast_script_actions.c
+  ../game/ai_cast_script_ents.c
+  ../game/ai_cast_sight.c
+  ../game/ai_cast_think.c
+  ../botai/ai_chat.c
+  ../botai/ai_cmd.c
+  ../botai/ai_dmnet.c
+  ../botai/ai_dmq3.c
+  ../botai/ai_main.c
+  ../botai/ai_team.c 
+  ../game/bg_animation.c
+  ../game/bg_misc.c
+  ../game/bg_pmove.c
+  ../game/bg_slidemove.c
+  ../game/g_active.c
+  ../game/g_alarm.c
+  ../game/g_bot.c
+  ../game/g_client.c
+  ../game/g_cmds.c
+  ../game/g_combat.c
+  ../game/g_items.c
+  ../game/g_main.c
+  ../game/g_mem.c
+  ../game/g_misc.c
+  ../game/g_missile.c
+  ../game/g_mover.c
+  ../game/g_props.c
+  ../game/g_save.c
+  ../game/g_script.c
+  ../game/g_script_actions.c
+  ../game/g_session.c
+  ../game/g_spawn.c
+  ../game/g_svcmds.c
+  ../game/g_syscalls.c
+  ../game/g_target.c
+  ../game/g_team.c
+  ../game/g_tramcar.c
+  ../game/g_trigger.c
+  ../game/g_utils.c
+  ../game/g_weapon.c
+  ../game/q_math.c
+  ../game/q_shared.c
+   );
+$FILESREF = \@FILES;
+
+# build a list of the *.c files in game/ for generation and dependencies
+# we exclude g_save of course
+$game_files_string = `ls -1 ../game/*.c | grep -v g_save`;
+@GAMES = split "\n",  $game_files_string;
+$GAMESREF = \@GAMES;
+# process into a friendly string for extractfunc
+$GAMES_STRING = "";
+$LDIR = `pwd`;
+chop $LDIR;
+$LDIR .= '/../game';
+for($i=0; $i<scalar(@GAMES); $i++)
+{
+  my $tmp = $GAMES[$i];
+  $tmp =~ s/\.\.\/game\/(.*)/\1/;
+  $GAMES_STRING .= "$tmp ";
+}
+
+# explicit perl code to generate the func headers
+# run extractfuncs with straight .c filenames, output to the right place
+sub build_funcs {
+  print "Building functions table\n";
+  system("LDIR=`pwd`; cd ../game; echo \"in `pwd`\"; \$LDIR/extractfuncs -o \$LDIR/$BUILD_DIR/game/g_funcs.h \$LDIR/$BUILD_DIR/game/g_func_decs.h $GAMES_STRING");
+  return 1;
+}
+
+# explicit dependency of those headers
+Depends $env ['../game/g_funcs.h', '../game/g_func_decs.h'], @$GAMESREF;
+Depends $env ['../game/g_funcs.h', '../game/g_func_decs.h'], '#extractfuncs';
+
+# generation command
+Command $env ['../game/g_funcs.h', '../game/g_func_decs.h'], "[perl] &build_funcs()";
+
+# FIXME CPU string
+# FIXME wolfgamei386.so ?
+# TODO use an ldd -r after .so build to catch unresolved symbols? (PostBuild command)
+Program $env 'qagamei386.so', @$FILESREF;
+
+Install $env '#' . $CONFIG_DIR . '/out/' . $BASEGAME, 'qagamei386.so';

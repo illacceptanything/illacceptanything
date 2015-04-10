@@ -1,0 +1,78 @@
+# bspc build script
+
+Import qw( BASE_CFLAGS CONFIG_DIR BUILD_DIR CC CXX LINK );
+
+@BSPC_FILES = qw(
+  ../bspc/aas_areamerging.c
+  ../bspc/aas_cfg.c
+  ../bspc/aas_create.c
+  ../bspc/aas_edgemelting.c
+  ../bspc/aas_facemerging.c
+  ../bspc/aas_file.c
+  ../bspc/aas_gsubdiv.c
+  ../bspc/aas_map.c
+  ../bspc/aas_prunenodes.c
+  ../bspc/aas_store.c
+  ../bspc/be_aas_bspc.c
+  ../botlib/be_aas_bspq3.c
+  ../botlib/be_aas_cluster.c
+  ../botlib/be_aas_move.c
+  ../botlib/be_aas_optimize.c
+  ../botlib/be_aas_reach.c
+  ../botlib/be_aas_sample.c
+  ../bspc/brushbsp.c
+  ../bspc/bspc.c
+  ../qcommon/cm_load.c
+  ../qcommon/cm_patch.c
+  ../qcommon/cm_test.c
+  ../qcommon/cm_trace.c
+  ../bspc/csg.c
+  ../bspc/faces.c
+  ../bspc/glfile.c
+  ../bspc/l_bsp_ent.c
+  ../bspc/l_bsp_hl.c
+  ../bspc/l_bsp_q1.c
+  ../bspc/l_bsp_q2.c
+  ../bspc/l_bsp_q3.c
+  ../bspc/l_bsp_sin.c
+  ../bspc/l_cmd.c
+  ../botlib/l_libvar.c
+  ../bspc/l_log.c
+  ../bspc/l_math.c
+  ../bspc/l_mem.c
+  ../bspc/l_poly.c
+  ../botlib/l_precomp.c
+  ../bspc/l_qfiles.c
+  ../botlib/l_script.c
+  ../botlib/l_struct.c
+  ../bspc/l_threads.c
+  ../bspc/l_utils.c
+  ../bspc/leakfile.c
+  ../bspc/map.c
+  ../bspc/map_hl.c
+  ../bspc/map_q1.c
+  ../bspc/map_q2.c
+  ../bspc/map_q3.c
+  ../bspc/map_sin.c
+  ../qcommon/md4.c
+  ../bspc/nodraw.c
+  ../bspc/portals.c
+  ../bspc/prtfile.c
+  ../bspc/textures.c
+  ../bspc/tree.c
+  ../qcommon/unzip.c
+  ../bspc/writebsp.c
+  );
+$BSPC_FILES_REF = \@BSPC_FILES;
+
+$env = new cons(
+	CC => $CC,
+	CXX => $CXX,
+	LINK => $LINK,
+  CFLAGS => $BASE_CFLAGS . '-DBSPC -DGTKRADIANT -I../../../../GtkRadiant',
+  LDFLAGS => '-lm'
+);
+
+Program $env 'bspc', @$BSPC_FILES_REF;
+Install $env '#' . $CONFIG_DIR . '/out', 'bspc' 
+  

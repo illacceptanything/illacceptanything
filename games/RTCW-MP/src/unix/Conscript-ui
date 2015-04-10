@@ -1,0 +1,52 @@
+# ui
+
+Import qw( BASE_CFLAGS CONFIG_DIR BUILD_DIR BASEGAME do_lddabort CC CXX LINK );
+
+$env = new cons(
+	CC => $CC,
+	CXX => $CXX,
+	LINK => $LINK,
+  CPPPATH => '#../game', # needed for ui_ files
+  CFLAGS => $BASE_CFLAGS . '-fPIC',
+  LDFLAGS => '-shared -ldl -lm'
+);
+
+# some files are compiled and linked in to several .so
+# this confuses gdb when setting breakpoints
+
+@UI_FILES_IN = qw (
+  ../game/bg_misc.c
+  ../game/q_math.c
+  ../game/q_shared.c
+	);
+
+# run through and process into ui specific
+my @UI_FILES_OUT;
+foreach (@UI_FILES_IN)
+{
+	$source = $_;
+	$source =~ s/.*\/(.*)/..\/ui\/ui_\1/;
+	push @UI_FILES_OUT, $source;
+}
+
+InstallAs $env [@UI_FILES_OUT], [@UI_FILES_IN];
+
+$UI_FILESREF = \@UI_FILES_OUT;
+
+@FILES = qw(
+  ../ui/ui_atoms.c
+  ../ui/ui_gameinfo.c
+  ../ui/ui_main.c
+  ../ui/ui_players.c
+  ../ui/ui_shared.c
+  ../ui/ui_syscalls.c
+  ../ui/ui_util.c
+  );
+$FILESREF = \@FILES;
+  
+# FIXME CPU string  
+Program $env 'ui.mp.i386.so', @$FILESREF, @$UI_FILESREF;
+my $path = FilePath('ui.mp.i386.so');
+AfterBuild $env 'ui.mp.i386.so', "[perl] &ldd_check::do_check(\'$path\', $do_lddabort)";
+
+Install $env '#' . $CONFIG_DIR . '/out/' . $BASEGAME, 'ui.mp.i386.so';

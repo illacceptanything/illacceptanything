@@ -1,0 +1,135 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Splines", "splines\Splines.vcproj", "{B6842D42-FBA7-4494-A393-802CA7E94351}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "botlib", "botlib\botlib.vcproj", "{4E5F4E34-0E6A-4200-916F-D33805505B54}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cgame", "cgame\cgame.vcproj", "{A16F9DCF-7F32-43AB-A044-74B7C660FC9B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "extractfuncs", "extractfuncs\extractfuncs.vcproj", "{E7BAACA8-3530-402D-9C27-947A36926100}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "game", "game\game.vcproj", "{47A33A98-87A5-4071-8608-3E6BC9EEC29E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "renderer", "renderer\renderer.vcproj", "{544C7EF5-2A74-4206-8B74-24D4FAD83048}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ui", "ui\ui.vcproj", "{64DCBC13-78A6-43E9-931D-B63FBB0421C7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wolf", "wolf.vcproj", "{3ACD01D0-DCF1-46A5-A477-7E8524032A02}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4E5F4E34-0E6A-4200-916F-D33805505B54} = {4E5F4E34-0E6A-4200-916F-D33805505B54}
+		{B6842D42-FBA7-4494-A393-802CA7E94351} = {B6842D42-FBA7-4494-A393-802CA7E94351}
+		{544C7EF5-2A74-4206-8B74-24D4FAD83048} = {544C7EF5-2A74-4206-8B74-24D4FAD83048}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug Dedicated|Win32 = Debug Dedicated|Win32
+		Debug|Win32 = Debug|Win32
+		Release Dedicated|Win32 = Release Dedicated|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6842D42-FBA7-4494-A393-802CA7E94351}.Debug Dedicated|Win32.ActiveCfg = Debug|Win32
+		{B6842D42-FBA7-4494-A393-802CA7E94351}.Debug Dedicated|Win32.Build.0 = Debug|Win32
+		{B6842D42-FBA7-4494-A393-802CA7E94351}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B6842D42-FBA7-4494-A393-802CA7E94351}.Debug|Win32.Build.0 = Debug|Win32
+		{B6842D42-FBA7-4494-A393-802CA7E94351}.Release Dedicated|Win32.ActiveCfg = Release|Win32
+		{B6842D42-FBA7-4494-A393-802CA7E94351}.Release Dedicated|Win32.Build.0 = Release|Win32
+		{B6842D42-FBA7-4494-A393-802CA7E94351}.Release|Win32.ActiveCfg = Release|Win32
+		{B6842D42-FBA7-4494-A393-802CA7E94351}.Release|Win32.Build.0 = Release|Win32
+		{4E5F4E34-0E6A-4200-916F-D33805505B54}.Debug Dedicated|Win32.ActiveCfg = Debug|Win32
+		{4E5F4E34-0E6A-4200-916F-D33805505B54}.Debug Dedicated|Win32.Build.0 = Debug|Win32
+		{4E5F4E34-0E6A-4200-916F-D33805505B54}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4E5F4E34-0E6A-4200-916F-D33805505B54}.Debug|Win32.Build.0 = Debug|Win32
+		{4E5F4E34-0E6A-4200-916F-D33805505B54}.Release Dedicated|Win32.ActiveCfg = Release|Win32
+		{4E5F4E34-0E6A-4200-916F-D33805505B54}.Release Dedicated|Win32.Build.0 = Release|Win32
+		{4E5F4E34-0E6A-4200-916F-D33805505B54}.Release|Win32.ActiveCfg = Release|Win32
+		{4E5F4E34-0E6A-4200-916F-D33805505B54}.Release|Win32.Build.0 = Release|Win32
+		{A16F9DCF-7F32-43AB-A044-74B7C660FC9B}.Debug Dedicated|Win32.ActiveCfg = Debug|Win32
+		{A16F9DCF-7F32-43AB-A044-74B7C660FC9B}.Debug Dedicated|Win32.Build.0 = Debug|Win32
+		{A16F9DCF-7F32-43AB-A044-74B7C660FC9B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A16F9DCF-7F32-43AB-A044-74B7C660FC9B}.Debug|Win32.Build.0 = Debug|Win32
+		{A16F9DCF-7F32-43AB-A044-74B7C660FC9B}.Release Dedicated|Win32.ActiveCfg = Release|Win32
+		{A16F9DCF-7F32-43AB-A044-74B7C660FC9B}.Release Dedicated|Win32.Build.0 = Release|Win32
+		{A16F9DCF-7F32-43AB-A044-74B7C660FC9B}.Release|Win32.ActiveCfg = Release|Win32
+		{A16F9DCF-7F32-43AB-A044-74B7C660FC9B}.Release|Win32.Build.0 = Release|Win32
+		{E7BAACA8-3530-402D-9C27-947A36926100}.Debug Dedicated|Win32.ActiveCfg = Debug|Win32
+		{E7BAACA8-3530-402D-9C27-947A36926100}.Debug Dedicated|Win32.Build.0 = Debug|Win32
+		{E7BAACA8-3530-402D-9C27-947A36926100}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E7BAACA8-3530-402D-9C27-947A36926100}.Debug|Win32.Build.0 = Debug|Win32
+		{E7BAACA8-3530-402D-9C27-947A36926100}.Release Dedicated|Win32.ActiveCfg = Release|Win32
+		{E7BAACA8-3530-402D-9C27-947A36926100}.Release Dedicated|Win32.Build.0 = Release|Win32
+		{E7BAACA8-3530-402D-9C27-947A36926100}.Release|Win32.ActiveCfg = Release|Win32
+		{E7BAACA8-3530-402D-9C27-947A36926100}.Release|Win32.Build.0 = Release|Win32
+		{47A33A98-87A5-4071-8608-3E6BC9EEC29E}.Debug Dedicated|Win32.ActiveCfg = Debug|Win32
+		{47A33A98-87A5-4071-8608-3E6BC9EEC29E}.Debug Dedicated|Win32.Build.0 = Debug|Win32
+		{47A33A98-87A5-4071-8608-3E6BC9EEC29E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{47A33A98-87A5-4071-8608-3E6BC9EEC29E}.Debug|Win32.Build.0 = Debug|Win32
+		{47A33A98-87A5-4071-8608-3E6BC9EEC29E}.Release Dedicated|Win32.ActiveCfg = Release|Win32
+		{47A33A98-87A5-4071-8608-3E6BC9EEC29E}.Release Dedicated|Win32.Build.0 = Release|Win32
+		{47A33A98-87A5-4071-8608-3E6BC9EEC29E}.Release|Win32.ActiveCfg = Release|Win32
+		{47A33A98-87A5-4071-8608-3E6BC9EEC29E}.Release|Win32.Build.0 = Release|Win32
+		{544C7EF5-2A74-4206-8B74-24D4FAD83048}.Debug Dedicated|Win32.ActiveCfg = Debug|Win32
+		{544C7EF5-2A74-4206-8B74-24D4FAD83048}.Debug Dedicated|Win32.Build.0 = Debug|Win32
+		{544C7EF5-2A74-4206-8B74-24D4FAD83048}.Debug|Win32.ActiveCfg = Debug|Win32
+		{544C7EF5-2A74-4206-8B74-24D4FAD83048}.Debug|Win32.Build.0 = Debug|Win32
+		{544C7EF5-2A74-4206-8B74-24D4FAD83048}.Release Dedicated|Win32.ActiveCfg = Release|Win32
+		{544C7EF5-2A74-4206-8B74-24D4FAD83048}.Release Dedicated|Win32.Build.0 = Release|Win32
+		{544C7EF5-2A74-4206-8B74-24D4FAD83048}.Release|Win32.ActiveCfg = Release|Win32
+		{544C7EF5-2A74-4206-8B74-24D4FAD83048}.Release|Win32.Build.0 = Release|Win32
+		{64DCBC13-78A6-43E9-931D-B63FBB0421C7}.Debug Dedicated|Win32.ActiveCfg = Debug|Win32
+		{64DCBC13-78A6-43E9-931D-B63FBB0421C7}.Debug Dedicated|Win32.Build.0 = Debug|Win32
+		{64DCBC13-78A6-43E9-931D-B63FBB0421C7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{64DCBC13-78A6-43E9-931D-B63FBB0421C7}.Debug|Win32.Build.0 = Debug|Win32
+		{64DCBC13-78A6-43E9-931D-B63FBB0421C7}.Release Dedicated|Win32.ActiveCfg = Release|Win32
+		{64DCBC13-78A6-43E9-931D-B63FBB0421C7}.Release Dedicated|Win32.Build.0 = Release|Win32
+		{64DCBC13-78A6-43E9-931D-B63FBB0421C7}.Release|Win32.ActiveCfg = Release|Win32
+		{64DCBC13-78A6-43E9-931D-B63FBB0421C7}.Release|Win32.Build.0 = Release|Win32
+		{3ACD01D0-DCF1-46A5-A477-7E8524032A02}.Debug Dedicated|Win32.ActiveCfg = Debug Dedicated|Win32
+		{3ACD01D0-DCF1-46A5-A477-7E8524032A02}.Debug Dedicated|Win32.Build.0 = Debug Dedicated|Win32
+		{3ACD01D0-DCF1-46A5-A477-7E8524032A02}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3ACD01D0-DCF1-46A5-A477-7E8524032A02}.Debug|Win32.Build.0 = Debug|Win32
+		{3ACD01D0-DCF1-46A5-A477-7E8524032A02}.Release Dedicated|Win32.ActiveCfg = Release Dedicated|Win32
+		{3ACD01D0-DCF1-46A5-A477-7E8524032A02}.Release Dedicated|Win32.Build.0 = Release Dedicated|Win32
+		{3ACD01D0-DCF1-46A5-A477-7E8524032A02}.Release|Win32.ActiveCfg = Release|Win32
+		{3ACD01D0-DCF1-46A5-A477-7E8524032A02}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 8
+		SccProjectUniqueName0 = splines\\Splines.vcproj
+		SccProjectName0 = \u0022$/Wolfenstein\u0020MP/src/splines\u0022,\u0020ENNAAAAA
+		SccLocalPath0 = splines
+		SccProvider0 = MSSCCI:NXN\u0020alienbrain
+		SccProjectUniqueName1 = botlib\\botlib.vcproj
+		SccProjectName1 = \u0022$/Wolfenstein\u0020MP/src/botlib\u0022,\u0020FTMAAAAA
+		SccLocalPath1 = botlib
+		SccProvider1 = MSSCCI:NXN\u0020alienbrain
+		SccProjectUniqueName2 = cgame\\cgame.vcproj
+		SccProjectName2 = \u0022$/Wolfenstein\u0020MP/src/cgame\u0022,\u0020HTMAAAAA
+		SccLocalPath2 = cgame
+		SccProvider2 = MSSCCI:NXN\u0020alienbrain
+		SccProjectUniqueName3 = extractfuncs\\extractfuncs.vcproj
+		SccProjectName3 = \u0022$/Wolf5/src/extractfuncs\u0022,\u0020JTMAAAAA
+		SccLocalPath3 = extractfuncs
+		SccProvider3 = MSSCCI:NXN\u0020alienbrain
+		SccProjectUniqueName4 = game\\game.vcproj
+		SccProjectName4 = \u0022$/Wolfenstein\u0020MP/src/game\u0022,\u0020LTMAAAAA
+		SccLocalPath4 = game
+		SccProvider4 = MSSCCI:NXN\u0020alienbrain
+		SccProjectUniqueName5 = renderer\\renderer.vcproj
+		SccProjectName5 = \u0022$/Wolfenstein\u0020MP/src/renderer\u0022,\u0020OTMAAAAA
+		SccLocalPath5 = renderer
+		SccProvider5 = MSSCCI:NXN\u0020alienbrain
+		SccProjectUniqueName6 = ui\\ui.vcproj
+		SccProjectName6 = \u0022$/Wolfenstein\u0020MP/src/ui\u0022,\u0020QTMAAAAA
+		SccLocalPath6 = ui
+		SccProvider6 = MSSCCI:NXN\u0020alienbrain
+		SccProjectUniqueName7 = wolf.vcproj
+		SccProjectName7 = \u0022$/Wolfenstein\u0020MP/src\u0022,\u0020DTMAAAAA
+		SccLocalPath7 = .
+		SccProvider7 = MSSCCI:NXN\u0020alienbrain
+	EndGlobalSection
+EndGlobal

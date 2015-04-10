@@ -1,0 +1,405 @@
+# Wolfenstein top-level Construct
+#
+# Sep. 2001 TTimo <ttimo@idsoftware.com>
+#
+
+# source the ldd utility
+BEGIN {
+  push @INC, ".";
+}
+use ldd_check;
+
+# the top directory is
+# <config>-<cpu>-<OS>-<libc version>
+# where:
+#   <config> is "debug" or "release"
+#   <cpu> is "x86" or "ppc"
+#   <OS> is "Linux" "BSD" "IRIX" etc.
+#   <libc version> is major.minor of libc config
+
+# parse command line arguments and do the setup
+
+# defaults
+$config = 'debug';
+$do_setup = 0;
+$do_demo = 0;
+$do_light = 0;
+$do_update = 0;
+$do_updateserver = 0;
+#$update_server = '';
+$do_lddabort = 1; 
+$do_pk3 = 0;
+# look for Conscript-client to decide about mod
+if (scalar(stat('Conscript-client')))
+{
+  $do_mod = 0;
+} else
+{
+  $do_mod = 1;
+}
+
+# compiler
+$CC='gcc -m32';
+$CXX='g++ -m32';
+$LINK=$CXX;
+
+# detection of CPU type
+$cpu = `uname -m`;
+chop ($cpu);
+if ($cpu +~ /i?86/)
+{
+  $cpu = 'x86';
+}
+# OS
+$OS = `uname`;
+chop ($OS);
+if ($OS =~ CYGWIN)
+{
+	$DO_WIN32 = 1;
+	$SHARED_DRIVE = "/cygdrive/e/incoming/Id/wolf-1.4";
+	print("Win32 build\n");
+
+	# do some blunt processing
+	# we don't really use any cons features
+
+	# TODO: read Release/Debug from cmdline
+	# TODO: option to override $RTCWBASE from command line
+	$WIN32_CONF = 'Release';
+
+	# build an mp_bin	
+	system("rm -rf mp_bin.tmp && mkdir mp_bin.tmp && cp ../$WIN32_CONF/cgame_mp_x86.dll ../$WIN32_CONF/ui_mp_x86.dll mp_bin.tmp");
+	system("cd mp_bin.tmp && zip -r mp_bin.pk3 *");
+
+	system("cp -v ../$WIN32_CONF/WolfMP.exe \$RTCWBASE");
+	system("cp -v ../$WIN32_CONF/cgame_mp_x86.dll \$RTCWBASE/Main");
+	system("cp -v ../$WIN32_CONF/qagame_mp_x86.dll \$RTCWBASE/Main");
+	system("cp -v ../$WIN32_CONF/ui_mp_x86.dll \$RTCWBASE/Main");	
+	system("cp -v mp_bin.tmp/mp_bin.pk3 \$RTCWBASE/Main");
+	# PB
+	system("rm -rf \$RTCWBASE/pb ; mkdir -p \$RTCWBASE/pb/htm");
+	system("cp -v ../pb/win32/*.dll \$RTCWBASE/pb");
+	system("cp -v ../pb/htm/*.htm \$RTCWBASE/pb/htm");
+	
+	# copy to shared drive
+	system("cp -v ../$WIN32_CONF/WolfMP.exe $SHARED_DRIVE");
+	system("cp -v ../$WIN32_CONF/cgame_mp_x86.dll $SHARED_DRIVE/Main");
+	system("cp -v ../$WIN32_CONF/qagame_mp_x86.dll $SHARED_DRIVE/Main");
+	system("cp -v ../$WIN32_CONF/ui_mp_x86.dll $SHARED_DRIVE/Main");	
+	system("cp -v mp_bin.tmp/mp_bin.pk3 $SHARED_DRIVE/Main");	
+	# PB
+	system("rm -rf $SHARED_DRIVE/pb ; mkdir -p $SHARED_DRIVE/pb/htm");
+	system("cp -v ../pb/win32/*.dll $SHARED_DRIVE/pb");
+	system("cp -v ../pb/htm/*.htm $SHARED_DRIVE/pb/htm");
+	
+	exit;
+}
+
+# libc .. do the little magic!
+$libc_cmd = '/lib/libc.so.6 |grep "GNU C "|grep version|awk -F "version " \'{ print $2 }\'|cut -b -3';
+$libc = `$libc_cmd`;
+chop ($libc);
+
+if(@ARGV gt 0)
+{
+  foreach $cmdopt (@ARGV)
+  {
+    if(lc($cmdopt) eq 'release')
+    {
+      $config = 'release';
+      next;
+    }
+    elsif(lc($cmdopt) eq 'debug')
+    {
+      $config = 'debug';
+      next;
+    }
+    elsif(lc($cmdopt) eq 'setup')
+    {
+      $do_setup = 1;
+      next;
+    }
+    elsif(lc($cmdopt) eq 'demo')
+    {
+      $do_demo = 1;
+      next;
+    }
+    elsif(lc($cmdopt) eq 'light')
+    {
+      $do_light = 1;
+      next;
+    }
+    elsif(lc($cmdopt) eq 'update')
+    {
+      $do_update = 1;
+      next;
+    }
+	elsif(lc($cmdopt) eq 'noldd')
+	{
+		$do_lddabort = 0;
+		next;
+	}
+	elsif(lc($cmdopt) eq 'pk3')
+	{
+		$do_pk3 = 1;
+		next;
+	}
+	elsif(lc($cmdopt) =~ 'update_server=.*')
+	{
+		$do_updateserver = 1;
+		$update_server = lc($cmdopt);
+		$update_server =~ s/update_server=(.*)/\1/;
+		next;
+	}
+	elsif(lc($cmdopt) =~ 'gcc=.*')
+    {
+      $CC=lc($cmdopt);
+      $CC =~ s/gcc=(.*)/\1/;
+      next;
+    }
+    elsif(lc($cmdopt) =~ 'g\+\+=.*')
+    {
+      $CXX=lc($cmdopt);
+      $CXX=~s/g\+\+=(.*)/\1/;
+      # ( looks like only 2.95 would link as C correctly )
+      $LINK=$CXX;
+      next;
+    }
+    else
+    {
+      # output an error & exit
+      print("Error\n  $0: Unknown command line option: [ $cmdopt ]\n");
+      system("cons -h");
+      exit;
+    }
+  }
+}
+
+if (($do_demo eq 1) && ($do_light eq 1))
+{
+  die "Can't mix demo and light";
+}
+
+$DEDICATED_NAME = 'wolfded.x86';
+# build the config directory
+$CONFIG_DIR = $config . '-' . $cpu . '-' . $OS . '-' . $libc;
+if ($do_demo eq 1)
+{
+  $CONFIG_DIR .= '-demo';
+}
+if ($do_light eq 1)
+{
+  $CONFIG_DIR .= '-light';
+}
+if ($do_update eq 1)
+{
+  $CONFIG_DIR .= '-update';
+  $DEDICATED_NAME = 'wolfupdate.x86';
+}
+
+# this is a safety, avoid releasing any setup with all debugging symbols :-)
+if (($do_setup eq 1) && ($do_demo eq 1) && ($config ne 'release'))
+{
+  print "Forcing release build for setup build\n";
+  $config = 'release';
+}
+
+# FIXME: we will have to parse command line between release and debug flags
+# NOTE TTimo PRE_RELEASE_DEMO define can be added as general flag for MP Test
+if ($do_demo eq 1)
+{
+  $COMMON_CFLAGS = '-pipe -fsigned-char -DPRE_RELEASE_DEMO ';
+  $BASEGAME = 'demomain';
+}
+elsif ($do_light eq 1)
+{
+  $COMMON_CFLAGS = '-pipe -fsigned-char -DDO_LIGHT_DEDICATED ';
+  $BASEGAME = 'main';
+}
+elsif ($do_update eq 1)
+{
+  $COMMON_CFLAGS = '-pipe -fsigned-char -DUPDATE_SERVER ';
+  $BASEGAME = 'main';
+}
+else
+{
+  $COMMON_CFLAGS = '-pipe -fsigned-char ';
+  $BASEGAME = 'main';
+}
+
+if ($do_updateserver eq 1)
+{
+  $COMMON_CFLAGS .= "-DAUTOUPDATE_SERVER_NAME=\\\"$update_server\\\" ";
+}
+
+# NOTE TTimo using -fshort-enums increases warnings on enum issues
+#   this is for debugging and QA ONLY, the flag has ABI issues (OpenGL headers)
+#$COMMON_CFLAGS = $COMMON_CFLAGS . '-fshort-enums ';
+
+if ($config eq 'debug')
+{
+  $BASE_CFLAGS = $COMMON_CFLAGS . '-g -Wall -O ';
+}
+else
+{
+  $BASE_CFLAGS = $COMMON_CFLAGS . '-DNDEBUG -O6 -mcpu=pentiumpro -march=pentium -fomit-frame-pointer -ffast-math -malign-loops=2 -malign-jumps=2 -malign-functions=2 -fno-strict-aliasing -fstrength-reduce ';
+}
+
+# extract the wolf version from q_shared.h
+$line = `cat ../game/q_shared.h | grep Q3_VERSION`;
+chomp $line;
+$line =~ s/.*Wolf\ (.*)\"/$1/;
+$WOLF_VER = $line;
+
+print "Wolfenstein version $WOLF_VER\n";
+print 'cpu : ' . $cpu . "\nOS  : " . $OS . "\nlibc: " . $libc . "\n";
+print "configured for $config build, in directory $CONFIG_DIR\n";
+if ($do_demo eq 1)
+{
+  print "building in demo mode\n";
+}
+if ($do_light eq 1)
+{
+  print "building light dedicated server\n";
+}
+print 'CFLAGS: ' . $BASE_CFLAGS . "\n";
+
+# by default, build everything below the config dir
+if ($do_pk3 eq 1)
+{
+  Default $CONFIG_DIR . '/out', 'auto-pk3';
+}
+else
+{
+  Default $CONFIG_DIR . '/out';
+}
+
+#----------------------------------------------
+if ($do_light eq 0 && $do_update eq 0 && $do_mod eq 0)
+{
+  $TARGET_DIR = 'full';
+
+  $BUILD_DIR = $CONFIG_DIR . '/' . $TARGET_DIR;
+
+  Link $BUILD_DIR => '..';
+
+  Export qw( BASE_CFLAGS CONFIG_DIR BUILD_DIR CC CXX LINK );
+
+  Build $BUILD_DIR . '/unix/Conscript-client';
+}
+
+#---------------------------------------------
+$TARGET_DIR = 'dedicated';
+
+$BUILD_DIR = $CONFIG_DIR . '/' . $TARGET_DIR;
+
+Export qw( BASE_CFLAGS CONFIG_DIR BUILD_DIR DEDICATED_NAME CC CXX LINK );
+
+Link $BUILD_DIR => '..';
+
+if ($do_mod eq 0)
+{
+  Build $BUILD_DIR . '/unix/Conscript-dedicated';
+}
+
+if ($do_update eq 0)
+{
+  $TARGET_DIR = 'game';
+
+  $BUILD_DIR = $CONFIG_DIR . '/' . $TARGET_DIR;
+
+  Link $BUILD_DIR => '..';
+
+  Export qw( BASE_CFLAGS CONFIG_DIR BUILD_DIR BASEGAME do_lddabort CC CXX LINK );
+
+  Build $BUILD_DIR . '/unix/Conscript-game';
+	
+  if ($do_light eq 0)
+  {
+    #----------------------------------------------
+    # NOTE TTimo for cgame and ui, we have to
+    #   link the dir starting below Wolfenstein/
+    #   because ui_shared.h reads in ../../MAIN/UI
+    $TARGET_DIR = 'cgame';
+
+    $BUILD_DIR = $CONFIG_DIR . '/' . $TARGET_DIR;
+
+    Link $BUILD_DIR => '../..';
+
+    Export qw( BASE_CFLAGS CONFIG_DIR BUILD_DIR BASEGAME do_lddabort CC CXX LINK );
+
+    Build $BUILD_DIR . '/src/unix/Conscript-cgame';
+
+    #----------------------------------------------
+    $TARGET_DIR = 'ui';
+  
+    $BUILD_DIR = $CONFIG_DIR . '/' . $TARGET_DIR;
+
+    Link $BUILD_DIR => '../..';
+
+    Export qw( BASE_CFLAGS CONFIG_DIR BUILD_DIR BASEGAME do_lddabort CC CXX LINK );
+
+    Build $BUILD_DIR . '/src/unix/Conscript-ui';
+  }
+}
+
+#----------------------------------------------
+# rebuild UI pk3 stuff on the fly too unless an override is provided
+if ($do_pk3 eq 1)
+{
+	$INSTALL_DIR = '';
+	$BUILD_DIR = $CONFIG_DIR;
+	Export qw( INSTALL_DIR BUILD_DIR CC CXX LINK );
+	Build "Conscript-pk3";
+}
+
+#----------------------------------------------
+if ($do_setup eq 1)
+{
+  # we bail out if config is not release
+  if ($config ne 'release')
+  {
+    print "Not building setups with debug config\n";
+    exit;
+  }
+  Link $CONFIG_DIR => '.';
+  Export qw( CONFIG_DIR WOLF_VER BASEGAME do_demo do_light CC CXX LINK );
+  Build $CONFIG_DIR . "/Conscript-setup";
+}
+#--------------------------------------------------
+# cons help for those that ask for it (with 'cons -h')
+Help 
+"
+Usage: cons [-h] [ -- [release|debug] [update_server=<host>] [noldd] [demo|light|update] [setup] [gcc=<gcc>] [g++=<g++>] ]
+
+options:
+[release|debug]
+ Default build type is Debug, specifying '-- release' on the
+ command line builds a Release version.
+ 
+[update_server=<host>]
+ Compile with a custom AUTOUPDATE_SERVER_NAME as given in <host>
+
+[noldd]
+Don't abort if ldd checks fail
+
+[pk3]
+Build the pk3s from Conscript-pk3 (default off)
+
+[demo]
+ This switch uses -DPRE_RELEASE_DEMO and builds for MPTest
+ 
+[light]
+ This switch builds the lightweight dedicated server
+ (only wolfded and qagame targets, -DDO_LIGHT_DEDICATED)
+
+[update]
+ This builds an update server, serves update installers 
+
+[setup]
+ 'cons -- setup' will build then execute the setup building scripts
+   NOTE: 'cons -- setup' will default to release configuration
+ you can use 'cons -- setup debug' to force debug setups building
+ reminder: distributed binaries must be configured in release 
+   and stripped from symbols
+"
+;

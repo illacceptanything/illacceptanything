@@ -1,0 +1,98 @@
+objectives, stuff to do, main problems:
+
+Objective
+=========
+
+light self-contained dedicated server download for the full game
+on win32 and linux (potentially Mac?)
+doesn't need full game
+doesn't allow to play full game client
+doesn't need a CD key
+
+Main issues
+===========
+
+- Building of a pk3
+the dedicated only reads a restricted subset of files
+DONE: have a 22Mb .pk3, can't make something smaller.
+(I may have forgotten some files .. or not)
+
+- binaries
+on linux, we know how to build a dedicated already, need to do that on win32
+win32 has dedicated binary too now, wasn't so difficult to come up with
+(compiles less stuff in, uses #define DEDICATED as does the linux build)
+
+we have main executable, and qagame shared object
+
+- sv_pure checksums
+light dedicated server needs to send fake checksums to the client
+i.e. we need to have them stored (hardcoded in the binary I guess)
+the lightweight binary needs some particular code, we use the following define
+#define DO_LIGHT_DEDICATED
+
+what about unpure server? in case of unpure, the binary should allow server
+running without restrictions.
+
+this is independant from the DLL checksuming stuff though:
+show_bug.cgi?id=406
+
+- needs to work with additional pk3s
+we only provide the light and sv_pure 1 capability for official maps
+need to be able to work with additional pk3s of course
+
+- checksuming the pak0.pk3 like we do for the demo?
+may be safer to prevent people trying weird stuff
+since the checksums are hardcoded in the binary, it's totally non advised
+to try running it with a different pk3
+
+Testing
+=======
+
+Tests to run prior to public version:
+
+1) Check coherency of dedicated with full version:
+run full server, with fs_debug 1 developer 1, log the client and server console
+  (i.e. server start, map start, player join)
+run the light dedicated equivalent, client and server console
+compare both sets of log, make sure the dedicated doesn't have noticeable diff
+
+PASSED:
+see dedicated/ dir for logs
+the light vs full server log shows mainly:
+- no sv_referencedPaks/sv_referencedPakNames passed (could be tweaked and fixed)
+- +set developer 1 on server shows bits of the purechecksum string incoming
+the light vs full server client log shows:
+- we don't get any sv_referencedPakNames (as expected)
+- there's a Cvar_Set2: sv_paks ... but it's the regular checksum (harmless) 
+
+
+2) Check that sv_pure system is still working for non-Id non-collapsed pk3s
+build a new pak from mp_trenchtoast with a different map name
+check what happens on connection, with/without autodownload
+
+PASSED:
+- build mp_pipo.pk3, successful connect and sv_referencedPaks in sv_pure 1 mode
+- if auto download disabled, correct message about missing pk3
+  if enabled, correct download trigger
+
+--
+tests below, perform with the release binaries:
+--
+
+3) Cross-platform:
+test all linux/win32 client/server combinations
+  (not necessary to watch the logs)
+
+PASSED:
+- connects ok between OSes and stuff, tested briefly the win32 binary
+
+4) Run a server on zerowing, wait and see
+
+PASSED:
+- it's up and running, let's wait and see
+
+Comments
+========
+
+Single fs_checksumFeed seed mode, intructions for getting the purechecksum
+string from a given fs_checksumFeed are given in files.c

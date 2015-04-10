@@ -1,0 +1,148 @@
+// !$*UTF8*$!
+{
+	00F5ED38FEBA95B7C697A12F = {
+		activeExec = 0;
+	};
+	00F5ED90FEBA9615C697A12F = {
+		activeExec = 0;
+	};
+	016EAE0300B4BDD1C697A10E = {
+		activeExec = 0;
+		customExecs = {
+		};
+	};
+	0170304B00B4885DC697A10E = {
+		activeExec = 0;
+		customExecs = {
+		};
+		targetExecs = {
+			macosx = (
+				0170305000B4885DC697A10E,
+			);
+		};
+	};
+	0170305000B4885DC697A10E = {
+		activeArgIndex = 2147483647;
+		argumentStrings = (
+		);
+		debuggerPlugin = GDBDebugging;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		isa = PBXExecutable;
+		sourceDirectories = (
+		);
+	};
+	0170311C00B49352C697A10E = {
+		activeExec = 0;
+		customExecs = {
+		};
+	};
+	02AEB49BFF86E6FFC697A10E = {
+		activeArgIndex = 2147483647;
+		argumentStrings = (
+		);
+		debuggerPlugin = GDBDebugging;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		isa = PBXExecutable;
+		sourceDirectories = (
+		);
+	};
+	0654BA41FE8ECEE0C697A12F = {
+		activeBuildStyle = 07F3F50CFFE98E8EC697A10E;
+		activeTarget = 0654BA5CFE8ECEE0C697A12F;
+		addToTargets = (
+			0654BA5CFE8ECEE0C697A12F,
+		);
+		perUserDictionary = {
+			PBXWorkspaceConfiguration = {
+				ContentSize = "{1119, 930}";
+				LeftSlideOut = {
+					ActiveTab = 2;
+					Frame = "{{0, 23}, {1119, 907}}";
+					Split0 = {
+						ActiveTab = 2;
+						Frame = "{{225, 0}, {894, 907}}";
+						Split0 = {
+							Frame = "{{0, 344}, {894, 563}}";
+						};
+						SplitCount = 1;
+						Tab0 = {
+							Debugger = {
+								Frame = "{{0, 0}, {484, 208}}";
+								Split0 = {
+									Frame = "{{0, 25}, {484, 183}}";
+									Split0 = {
+										Frame = "{{0, 0}, {236, 183}}";
+									};
+									Split1 = {
+										Frame = "{{245, 0}, {239, 183}}";
+									};
+									SplitCount = 2;
+								};
+								SplitCount = 1;
+								Tab0 = {
+									Frame = "{{0, 0}, {100, 50}}";
+								};
+								TabCount = 1;
+							};
+							Frame = "{{0, 0}, {484, 208}}";
+							LauncherConfigVersion = 4;
+						};
+						Tab1 = {
+							Frame = "{{0, 0}, {807, 157}}";
+							LauncherConfigVersion = 3;
+							Runner = {
+								Frame = "{{0, 0}, {807, 157}}";
+							};
+						};
+						Tab2 = {
+							BuildMessageFrame = "{{0, 0}, {898, 0}}";
+							BuildTranscriptFrame = "{{0, 9}, {898, 312}}";
+							Frame = "{{0, 0}, {894, 319}}";
+						};
+						Tab3 = {
+							Frame = "{{0, 0}, {807, 315}}";
+						};
+						TabCount = 4;
+					};
+					SplitCount = 1;
+					Tab0 = {
+						Frame = "{{0, 0}, {287, 907}}";
+					};
+					Tab1 = {
+						Frame = "{{0, 0}, {200, 919}}";
+					};
+					Tab2 = {
+						Frame = "{{0, 0}, {200, 907}}";
+						Split0 = {
+							Frame = "{{0, 0}, {200, 442}}";
+						};
+						Split1 = {
+							Frame = "{{0, 451}, {200, 456}}";
+						};
+						SplitCount = 2;
+					};
+					Tab3 = {
+						Frame = "{{0, 0}, {250, 100}}";
+					};
+					TabCount = 4;
+				};
+				WindowLoc = "{293, 4}";
+			};
+		};
+	};
+	0654BA5CFE8ECEE0C697A12F = {
+		activeExec = 0;
+		targetExecs = {
+			macosx = (
+				02AEB49BFF86E6FFC697A10E,
+			);
+		};
+	};
+}
+

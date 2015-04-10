@@ -1,0 +1,408 @@
+[CurrentProject]
+curproj=bspc.vpj
+[ProjectFiles]
+bspc.vpj
+cgame.vpj
+client.vpj
+extractfuncs.vpj
+game.vpj
+ui.vpj
+[ProjectDates]
+cgame.vpj=20020109181905000
+client.vpj=20020314112243000
+extractfuncs.vpj=20011206104449000
+game.vpj=20011207164812000
+ui.vpj=20011206104449000
+bspc.vpj=20020314121605000
+[TreeExpansion]
+bspc.vpj 0
+cgame.vpj 0
+client.vpj 1 1 1 0 0 1
+extractfuncs.vpj 0
+game.vpj 0
+ui.vpj 0
+[State]
+SCREEN: 1152 864 -2 -2 1152 779 0 0 N 0 0 0 0 923 479
+CWD: /home/timo/Id/WolfDev/WolfSP/src/unix
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/cgame/cg_event.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.55774 CL=68 LE=0 CX=67 CY=19 WI=5 BI=6 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/client/cl_cin.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.45142 CL=10 LE=0 CX=9 CY=17 WI=5 BI=9 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/cgame/src/cgame/cg_players.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.99528 CL=1 LE=0 CX=0 CY=17 WI=5 BI=10 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/full/botlib/be_interface.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.21700 CL=5 LE=0 CX=4 CY=19 WI=5 BI=11 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/full/client/snd_mix.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.17136 CL=45 LE=0 CX=44 CY=17 WI=5 BI=12 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/full/qcommon/common.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.62298 CL=1 LE=0 CX=0 CY=17 WI=5 BI=13 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/full/qcommon/files.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.11377 CL=33 LE=0 CX=32 CY=17 WI=5 BI=14 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/full/renderer/tr_image.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.56444 CL=1 LE=0 CX=0 CY=14 WI=5 BI=15 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/full/unix/unix_main.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.17765 CL=42 LE=0 CX=41 CY=20 WI=5 BI=70 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/botlib/be_aas.h"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.3460 CL=1 LE=0 CX=0 CY=20 WI=5 BI=48 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/aas_store.h"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.2002 CL=1 LE=0 CX=0 CY=18 WI=5 BI=49 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/botlib/l_script.h"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.4848 CL=44 LE=0 CX=43 CY=20 WI=5 BI=50 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/botlib/l_script.h"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.887 CL=95 LE=11 CX=83 CY=20 WI=5 BI=51 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/aas_cfg.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.671 CL=1 LE=0 CX=0 CY=20 WI=5 BI=52 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/aas_create.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.19936 CL=44 LE=0 CX=43 CY=17 WI=5 BI=53 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/aas_edgemelting.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.358 CL=21 LE=0 CX=20 CY=11 WI=5 BI=54 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/aas_facemerging.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.6692 CL=50 LE=0 CX=49 CY=17 WI=5 BI=55 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/aas_file.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.363 CL=21 LE=0 CX=20 CY=11 WI=5 BI=56 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/aas_gsubdiv.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.356 CL=14 LE=0 CX=13 CY=11 WI=5 BI=57 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/aas_map.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.452 CL=14 LE=0 CX=13 CY=15 WI=5 BI=58 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/aas_prunenodes.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.352 CL=21 LE=0 CX=20 CY=11 WI=5 BI=59 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/aas_store.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.27551 CL=38 LE=0 CX=37 CY=17 WI=5 BI=60 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/be_aas_bspc.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.8734 CL=37 LE=0 CX=36 CY=17 WI=5 BI=61 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/botlib/be_aas_cluster.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.2768 CL=1 LE=0 CX=0 CY=1 WI=5 BI=62 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/botlib/be_aas_cluster.h"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.358 CL=61 LE=0 CX=60 CY=15 WI=5 BI=63 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/brushbsp.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.46165 CL=3 LE=0 CX=2 CY=18 WI=5 BI=64 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/bspc.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.14278 CL=11 LE=0 CX=10 CY=17 WI=5 BI=65 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/botai/ai_main.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.27853 CL=1 LE=0 CX=0 CY=20 WI=5 BI=66 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/qcommon/files.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=608 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.8474 CL=11 LE=0 CX=10 CY=25 WI=5 BI=71 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/qcommon/qfiles.h"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.0 CL=1 LE=0 CX=0 CY=1 WI=5 BI=72 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/qcommon/qcommon.h"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=864 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.14925 CL=1 LE=0 CX=0 CY=6 WI=5 BI=73 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/unix_shared.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.5400 CL=26 LE=0 CX=25 CY=12 WI=5 BI=67 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/l_bsp_hl.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.18045 CL=1 LE=0 CX=0 CY=17 WI=5 BI=16 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/l_bsp_q2.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.7035 CL=3 LE=0 CX=2 CY=18 WI=5 BI=17 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/q3files.h"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.548 CL=3 LE=0 CX=2 CY=9 WI=5 BI=18 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/l_bsp_q3.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.7319 CL=6 LE=0 CX=5 CY=17 WI=5 BI=19 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/botlib/l_precomp.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.1341 CL=1 LE=0 CX=0 CY=20 WI=5 BI=20 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/l_qfiles.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.10818 CL=30 LE=0 CX=29 CY=17 WI=5 BI=21 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/botlib/l_script.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.1151 CL=33 LE=0 CX=32 CY=20 WI=5 BI=22 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/be_aas_bspc.h"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.443 CL=1 LE=0 CX=0 CY=0 WI=5 BI=23 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/botlib/l_script.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.1153 CL=1 LE=0 CX=0 CY=18 WI=5 BI=24 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/bspc/be_aas_bspc.h"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.442 CL=1 LE=0 CX=0 CY=13 WI=5 BI=25 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/l_utils.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.6151 CL=41 LE=0 CX=40 CY=20 WI=5 BI=26 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/leakfile.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.955 CL=31 LE=0 CX=30 CY=18 WI=5 BI=27 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/map.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.603 CL=19 LE=0 CX=18 CY=18 WI=5 BI=28 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/map_hl.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.28189 CL=27 LE=0 CX=26 CY=17 WI=5 BI=29 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/map_q1.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.30087 CL=28 LE=0 CX=27 CY=17 WI=5 BI=30 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/map_q2.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.620 CL=21 LE=0 CX=20 CY=17 WI=5 BI=31 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/map_q3.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.19500 CL=65 LE=0 CX=64 CY=17 WI=5 BI=32 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/map_sin.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.9183 CL=1 LE=0 CX=0 CY=18 WI=5 BI=33 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/portals.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.11867 CL=31 LE=0 CX=30 CY=17 WI=5 BI=34 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/bspc/be_aas_bspc.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.7246 CL=23 LE=0 CX=22 CY=17 WI=5 BI=35 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/botlib/be_aas_bsp.h"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.917 CL=1 LE=0 CX=0 CY=13 WI=5 BI=36 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/botlib/l_precomp.h"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.4511 CL=60 LE=0 CX=59 CY=14 WI=5 BI=37 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/bspc/aas_cfg.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.856 CL=34 LE=0 CX=33 CY=20 WI=5 BI=38 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/renderer/tr_cmds.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.11591 CL=4 LE=0 CX=3 CY=20 WI=5 BI=39 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/game/q_shared.h"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.18463 CL=1 LE=0 CX=0 CY=18 WI=5 BI=40 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/renderer/tr_init.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.1510 CL=19 LE=0 CX=18 CY=18 WI=5 BI=41 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/renderer/tr_local.h"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.28795 CL=33 LE=0 CX=32 CY=18 WI=5 BI=42 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/qcommon/cvar.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.15071 CL=1 LE=0 CX=0 CY=10 WI=5 BI=43 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/linux_glimp.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.33732 CL=1 LE=0 CX=0 CY=20 WI=5 BI=44 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/ChangeLog"
+BI: MA=1 74 1  TABS=1 9  WWS=1 IWT=1 ST=0 IN=1 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=Fundamental	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.200 CL=57 LE=0 CX=56 CY=4 WI=5 BI=68 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/renderer/qgl.h"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.5779 CL=44 LE=0 CX=43 CY=20 WI=5 BI=45 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/cgame/tr_types.h"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.8496 CL=1 LE=0 CX=0 CY=9 WI=5 BI=46 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/renderer/tr_main.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=0 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.3086 CL=37 LE=0 CX=36 CY=20 WI=5 BI=47 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/unix_main.c"
+BI: MA=1 74 1  TABS=1 3  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=864 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0
+VIEW: LN=.17261 CL=32 LE=0 CX=31 CY=20 WI=5 BI=69 HT=0 HN=0 HF=0 HC=4
+WINDOW: 150 150 623 323 0 0 N  WF=0 WT=56 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/full/unix/unix_main.c"
+VIEW: LN=.17765 CL=42 LE=0 CX=41 CY=20 WI=7 BI=70 HT=0 HN=0 HF=0 HC=4
+WINDOW: 0 0 623 323 0 0 N  WF=0 WT=12 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/botlib/be_aas.h"
+VIEW: LN=.3460 CL=1 LE=0 CX=0 CY=20 WI=8 BI=48 HT=0 HN=0 HF=0 HC=4
+WINDOW: 25 25 623 323 0 0 N  WF=0 WT=13 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/aas_store.h"
+VIEW: LN=.2002 CL=1 LE=0 CX=0 CY=18 WI=9 BI=49 HT=0 HN=0 HF=0 HC=4
+WINDOW: 50 50 623 323 0 0 N  WF=0 WT=14 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/botlib/l_script.h"
+VIEW: LN=.4848 CL=44 LE=0 CX=43 CY=20 WI=10 BI=50 HT=0 HN=0 HF=0 HC=4
+WINDOW: 75 75 623 323 0 0 N  WF=0 WT=15 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/botlib/l_script.h"
+VIEW: LN=.887 CL=95 LE=11 CX=83 CY=20 WI=11 BI=51 HT=0 HN=0 HF=0 HC=4
+WINDOW: 100 100 623 323 0 0 N  WF=0 WT=16 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/aas_cfg.c"
+VIEW: LN=.671 CL=1 LE=0 CX=0 CY=20 WI=12 BI=52 HT=0 HN=0 HF=0 HC=4
+WINDOW: 0 0 623 323 0 0 N  WF=0 WT=19 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/aas_create.c"
+VIEW: LN=.19936 CL=44 LE=0 CX=43 CY=17 WI=13 BI=53 HT=0 HN=0 HF=0 HC=4
+WINDOW: 25 25 623 323 0 0 N  WF=0 WT=20 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/aas_edgemelting.c"
+VIEW: LN=.358 CL=21 LE=0 CX=20 CY=11 WI=14 BI=54 HT=0 HN=0 HF=0 HC=4
+WINDOW: 50 50 623 323 0 0 N  WF=0 WT=21 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/aas_facemerging.c"
+VIEW: LN=.6692 CL=50 LE=0 CX=49 CY=17 WI=15 BI=55 HT=0 HN=0 HF=0 HC=4
+WINDOW: 75 75 623 323 0 0 N  WF=0 WT=22 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/aas_file.c"
+VIEW: LN=.363 CL=21 LE=0 CX=20 CY=11 WI=16 BI=56 HT=0 HN=0 HF=0 HC=4
+WINDOW: 100 100 623 323 0 0 N  WF=0 WT=23 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/aas_gsubdiv.c"
+VIEW: LN=.356 CL=14 LE=0 CX=13 CY=11 WI=17 BI=57 HT=0 HN=0 HF=0 HC=4
+WINDOW: 125 125 623 323 0 0 N  WF=0 WT=24 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/aas_map.c"
+VIEW: LN=.452 CL=14 LE=0 CX=13 CY=15 WI=18 BI=58 HT=0 HN=0 HF=0 HC=4
+WINDOW: 150 150 623 323 0 0 N  WF=0 WT=25 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/aas_prunenodes.c"
+VIEW: LN=.352 CL=21 LE=0 CX=20 CY=11 WI=19 BI=59 HT=0 HN=0 HF=0 HC=4
+WINDOW: 0 0 623 323 0 0 N  WF=0 WT=26 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/aas_store.c"
+VIEW: LN=.27551 CL=38 LE=0 CX=37 CY=17 WI=20 BI=60 HT=0 HN=0 HF=0 HC=4
+WINDOW: 25 25 623 323 0 0 N  WF=0 WT=27 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/be_aas_bspc.c"
+VIEW: LN=.8734 CL=37 LE=0 CX=36 CY=17 WI=21 BI=61 HT=0 HN=0 HF=0 HC=4
+WINDOW: 75 75 623 323 0 0 N  WF=0 WT=28 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/botlib/be_aas_cluster.c"
+VIEW: LN=.2768 CL=1 LE=0 CX=0 CY=1 WI=22 BI=62 HT=0 HN=0 HF=0 HC=4
+WINDOW: 125 125 623 323 0 0 N  WF=0 WT=30 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/botlib/be_aas_cluster.h"
+VIEW: LN=.358 CL=61 LE=0 CX=60 CY=15 WI=23 BI=63 HT=0 HN=0 HF=0 HC=4
+WINDOW: 150 150 623 323 0 0 N  WF=0 WT=31 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/brushbsp.c"
+VIEW: LN=.46165 CL=3 LE=0 CX=2 CY=18 WI=24 BI=64 HT=0 HN=0 HF=0 HC=4
+WINDOW: 0 0 623 323 0 0 N  WF=0 WT=32 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/bspc.c"
+VIEW: LN=.14278 CL=11 LE=0 CX=10 CY=17 WI=25 BI=65 HT=0 HN=0 HF=0 HC=4
+WINDOW: 25 25 623 323 0 0 N  WF=0 WT=53 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/botai/ai_main.c"
+VIEW: LN=.27853 CL=1 LE=0 CX=0 CY=20 WI=26 BI=66 HT=0 HN=0 HF=0 HC=4
+WINDOW: 50 50 623 323 0 0 N  WF=0 WT=54 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/qcommon/files.c"
+VIEW: LN=.8474 CL=11 LE=0 CX=10 CY=25 WI=27 BI=71 HT=0 HN=0 HF=0 HC=4
+WINDOW: 50 50 623 323 0 0 N  WF=0 WT=57 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/qcommon/qfiles.h"
+VIEW: LN=.0 CL=1 LE=0 CX=0 CY=1 WI=28 BI=72 HT=0 HN=0 HF=0 HC=4
+WINDOW: 75 75 623 323 0 0 N  WF=0 WT=58 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/qcommon/qcommon.h"
+VIEW: LN=.14925 CL=1 LE=0 CX=0 CY=6 WI=29 BI=73 HT=0 HN=0 HF=0 HC=4
+WINDOW: 100 100 623 323 0 0 N  WF=0 WT=55 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/unix_shared.c"
+VIEW: LN=.5400 CL=26 LE=0 CX=25 CY=12 WI=30 BI=67 HT=0 HN=0 HF=0 HC=4
+WINDOW: 75 75 623 323 0 0 N  WF=0 WT=35 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/l_bsp_hl.c"
+VIEW: LN=.18045 CL=1 LE=0 CX=0 CY=17 WI=31 BI=16 HT=0 HN=0 HF=0 HC=4
+WINDOW: 100 100 623 323 0 0 N  WF=0 WT=36 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/l_bsp_q2.c"
+VIEW: LN=.7035 CL=3 LE=0 CX=2 CY=18 WI=32 BI=17 HT=0 HN=0 HF=0 HC=4
+WINDOW: 125 125 623 323 0 0 N  WF=0 WT=37 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/q3files.h"
+VIEW: LN=.548 CL=3 LE=0 CX=2 CY=9 WI=33 BI=18 HT=0 HN=0 HF=0 HC=4
+WINDOW: 150 150 623 323 0 0 N  WF=0 WT=38 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/l_bsp_q3.c"
+VIEW: LN=.7319 CL=6 LE=0 CX=5 CY=17 WI=34 BI=19 HT=0 HN=0 HF=0 HC=4
+WINDOW: 0 0 623 323 0 0 N  WF=0 WT=39 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/botlib/l_precomp.c"
+VIEW: LN=.1341 CL=1 LE=0 CX=0 CY=20 WI=35 BI=20 HT=0 HN=0 HF=0 HC=4
+WINDOW: 25 25 623 323 0 0 N  WF=0 WT=40 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/l_qfiles.c"
+VIEW: LN=.10818 CL=30 LE=0 CX=29 CY=17 WI=36 BI=21 HT=0 HN=0 HF=0 HC=4
+WINDOW: 50 50 623 323 0 0 N  WF=0 WT=41 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/botlib/l_script.c"
+VIEW: LN=.1151 CL=33 LE=0 CX=32 CY=20 WI=37 BI=22 HT=0 HN=0 HF=0 HC=4
+WINDOW: 125 125 623 323 0 0 N  WF=0 WT=42 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/be_aas_bspc.h"
+VIEW: LN=.443 CL=1 LE=0 CX=0 CY=0 WI=38 BI=23 HT=0 HN=0 HF=0 HC=4
+WINDOW: 150 150 623 323 0 0 N  WF=0 WT=43 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/botlib/l_script.c"
+VIEW: LN=.1153 CL=1 LE=0 CX=0 CY=18 WI=39 BI=24 HT=0 HN=0 HF=0 HC=4
+WINDOW: 50 50 623 323 0 0 N  WF=0 WT=34 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/bspc/be_aas_bspc.h"
+VIEW: LN=.442 CL=1 LE=0 CX=0 CY=13 WI=40 BI=25 HT=0 HN=0 HF=0 HC=4
+WINDOW: 0 0 623 323 0 0 N  WF=0 WT=44 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/l_utils.c"
+VIEW: LN=.6151 CL=41 LE=0 CX=40 CY=20 WI=41 BI=26 HT=0 HN=0 HF=0 HC=4
+WINDOW: 25 25 623 323 0 0 N  WF=0 WT=45 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/leakfile.c"
+VIEW: LN=.955 CL=31 LE=0 CX=30 CY=18 WI=42 BI=27 HT=0 HN=0 HF=0 HC=4
+WINDOW: 50 50 623 323 0 0 N  WF=0 WT=46 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/map.c"
+VIEW: LN=.603 CL=19 LE=0 CX=18 CY=18 WI=43 BI=28 HT=0 HN=0 HF=0 HC=4
+WINDOW: 75 75 623 323 0 0 N  WF=0 WT=47 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/map_hl.c"
+VIEW: LN=.28189 CL=27 LE=0 CX=26 CY=17 WI=44 BI=29 HT=0 HN=0 HF=0 HC=4
+WINDOW: 100 100 623 323 0 0 N  WF=0 WT=48 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/map_q1.c"
+VIEW: LN=.30087 CL=28 LE=0 CX=27 CY=17 WI=45 BI=30 HT=0 HN=0 HF=0 HC=4
+WINDOW: 125 125 623 323 0 0 N  WF=0 WT=49 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/map_q2.c"
+VIEW: LN=.620 CL=21 LE=0 CX=20 CY=17 WI=46 BI=31 HT=0 HN=0 HF=0 HC=4
+WINDOW: 150 150 623 323 0 0 N  WF=0 WT=50 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/map_q3.c"
+VIEW: LN=.19500 CL=65 LE=0 CX=64 CY=17 WI=47 BI=32 HT=0 HN=0 HF=0 HC=4
+WINDOW: 0 0 623 323 0 0 N  WF=0 WT=51 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/map_sin.c"
+VIEW: LN=.9183 CL=1 LE=0 CX=0 CY=18 WI=48 BI=33 HT=0 HN=0 HF=0 HC=4
+WINDOW: 25 25 623 323 0 0 N  WF=0 WT=52 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/portals.c"
+VIEW: LN=.11867 CL=31 LE=0 CX=30 CY=17 WI=49 BI=34 HT=0 HN=0 HF=0 HC=4
+WINDOW: 100 100 623 323 0 0 N  WF=0 WT=29 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/bspc/be_aas_bspc.c"
+VIEW: LN=.7246 CL=23 LE=0 CX=22 CY=17 WI=50 BI=35 HT=0 HN=0 HF=0 HC=4
+WINDOW: 25 25 623 323 0 0 N  WF=0 WT=33 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/botlib/be_aas_bsp.h"
+VIEW: LN=.917 CL=1 LE=0 CX=0 CY=13 WI=51 BI=36 HT=0 HN=0 HF=0 HC=4
+WINDOW: 125 125 623 323 0 0 N  WF=0 WT=17 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/botlib/l_precomp.h"
+VIEW: LN=.4511 CL=60 LE=0 CX=59 CY=14 WI=52 BI=37 HT=0 HN=0 HF=0 HC=4
+WINDOW: 150 150 623 323 0 0 N  WF=0 WT=18 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/bspc/aas_cfg.c"
+VIEW: LN=.856 CL=34 LE=0 CX=33 CY=20 WI=53 BI=38 HT=0 HN=0 HF=0 HC=4
+WINDOW: 50 50 623 323 0 0 N  WF=0 WT=5 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/renderer/tr_cmds.c"
+VIEW: LN=.11591 CL=4 LE=0 CX=3 CY=20 WI=54 BI=39 HT=0 HN=0 HF=0 HC=4
+WINDOW: 0 0 623 323 0 0 N  WF=0 WT=11 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/game/q_shared.h"
+VIEW: LN=.18463 CL=1 LE=0 CX=0 CY=18 WI=55 BI=40 HT=0 HN=0 HF=0 HC=4
+WINDOW: 75 75 623 323 0 0 N  WF=0 WT=6 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/renderer/tr_init.c"
+VIEW: LN=.1510 CL=19 LE=0 CX=18 CY=18 WI=56 BI=41 HT=0 HN=0 HF=0 HC=4
+WINDOW: 100 100 623 323 0 0 N  WF=0 WT=7 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/renderer/tr_local.h"
+VIEW: LN=.28795 CL=33 LE=0 CX=32 CY=18 WI=57 BI=42 HT=0 HN=0 HF=0 HC=4
+WINDOW: 0 0 623 324 0 0 N  WF=0 WT=2 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/qcommon/cvar.c"
+VIEW: LN=.15071 CL=1 LE=0 CX=0 CY=10 WI=58 BI=43 HT=0 HN=0 HF=0 HC=4
+WINDOW: 0 0 623 323 0 0 N  WF=0 WT=1 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/linux_glimp.c"
+VIEW: LN=.33732 CL=1 LE=0 CX=0 CY=20 WI=59 BI=44 HT=0 HN=0 HF=0 HC=4
+WINDOW: 25 25 623 323 0 0 N  WF=0 WT=3 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/ChangeLog"
+VIEW: LN=.200 CL=57 LE=0 CX=56 CY=4 WI=60 BI=68 HT=0 HN=0 HF=0 HC=4
+WINDOW: 25 25 623 323 0 0 N  WF=0 WT=4 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/renderer/qgl.h"
+VIEW: LN=.5779 CL=44 LE=0 CX=43 CY=20 WI=61 BI=45 HT=0 HN=0 HF=0 HC=4
+WINDOW: 125 125 623 323 0 0 N  WF=0 WT=8 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/cgame/tr_types.h"
+VIEW: LN=.8496 CL=1 LE=0 CX=0 CY=9 WI=62 BI=46 HT=0 HN=0 HF=0 HC=4
+WINDOW: 0 0 623 323 0 0 N  WF=0 WT=10 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/renderer/tr_main.c"
+VIEW: LN=.3086 CL=37 LE=0 CX=36 CY=20 WI=63 BI=47 HT=0 HN=0 HF=0 HC=4
+WINDOW: 150 150 623 323 0 0 M  WF=0 WT=9 "OEM Fixed Font,10,0,1"
+BUFFER: BN="/home/timo/Id/WolfDev/WolfSP/src/unix/unix_main.c"
+VIEW: LN=.18949 CL=26 LE=0 CX=25 CY=32 WI=64 BI=69 HT=0 HN=0 HF=0 HC=4
+FILEHIST: 9
+/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/tools/bspc/bspc/bspc.c
+/home/timo/Id/WolfDev/WolfSP/src/botai/ai_main.c
+/home/timo/Id/WolfDev/WolfSP/src/unix/unix_shared.c
+/home/timo/Id/WolfDev/WolfSP/src/qcommon/qfiles.h
+/home/timo/Id/WolfDev/WolfSP/src/unix/debug-x86-Linux-2.2/full/unix/unix_main.c
+/home/timo/Id/WolfDev/WolfSP/src/unix/ChangeLog
+/home/timo/Id/WolfDev/WolfSP/src/qcommon/files.c
+/home/timo/Id/WolfDev/WolfSP/src/qcommon/qcommon.h
+/home/timo/Id/WolfDev/WolfSP/src/unix/unix_main.c

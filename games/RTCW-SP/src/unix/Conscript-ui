@@ -1,0 +1,30 @@
+# ui
+
+Import qw( BASE_CFLAGS CONFIG_DIR BUILD_DIR BASEGAME CC CXX LINK );
+
+$env = new cons(
+	CC => $CC,
+	CXX => $CXX,
+	LINK => $LINK,
+  CFLAGS => $BASE_CFLAGS . '-fPIC',
+  LDFLAGS => '-shared -ldl -lm'
+);
+
+@FILES = qw(
+  ../game/bg_misc.c
+  ../game/q_math.c
+  ../game/q_shared.c
+  ../ui/ui_atoms.c
+  ../ui/ui_gameinfo.c
+  ../ui/ui_main.c
+  ../ui/ui_players.c
+  ../ui/ui_shared.c
+  ../ui/ui_syscalls.c
+  ../ui/ui_util.c
+  );
+$FILESREF = \@FILES;
+  
+# FIXME CPU string  
+Program $env 'uii386.so', @$FILESREF;
+Install $env '#' . $CONFIG_DIR . '/out/' . $BASEGAME, 'uii386.so';
+
