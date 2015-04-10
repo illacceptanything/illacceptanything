@@ -51,7 +51,7 @@ function hexbeat {
   [[ $1 == "a" ]] && play 4 quarter beats
   [[ $1 == "b" ]] && play 4 eigth beats
   [[ $1 == "c" ]] && play 1 whole break
-  [[ $1 == "d" ]] && play 1 half beat
+  [[ $1 == "d" ]] && play 1 half break
   [[ $1 == "e" ]] && play 1 quarter break
   [[ $1 == "f" ]] && play 1 eigth break
 }
