@@ -3,7 +3,7 @@
 		         Version 0.0.1
 
                          README.install
------------------------------------------------------------------------
+----------------------------------------------------------------------
 
 
 Overview
@@ -15,6 +15,9 @@ It consists of the following sections:
    - Installation Instructions
    - Uninstallation Instructions
 
+Before to install the program, if you want to see Terminal DOGE execu-
+ting you can access: https://www.youtube.com/watch?v=QxyoltnQKLU and
+check a simple demonstration.
 
 Requirements
 ======================================================================
@@ -43,4 +46,5 @@ This section explains how to uninstall Terminal DOGE:
 
    # make clean
 
------------------------------------------------------------------------
+----------------------------------------------------------------------
+======================================================================
