@@ -1,0 +1,176 @@
+
+/* Variables */
+$lightBlue: #03a9f4;
+$turqoise: #1abc9c;
+$sunflower: #f1c40f;
+$pink: #e91e63;
+
+/* Blue Circle Animations */
+@-webkit-keyframes blueSwitch {
+	0% { background-color: $lightBlue; margin-top: 0;}
+	25% { margin-top: 100px; }
+	50% { background-color: $turqoise; margin-top: 50px;}
+	75% { margin-top: 100px; }
+	100% { background-color: $lightBlue; margin-top: 0;}
+}
+@-moz-keyframes blueSwitch {
+	0% { background-color: $lightBlue; margin-top: 0;}
+	25% { margin-top: 100px; }
+	50% { background-color: $turqoise; margin-top: 50px;}
+	75% { margin-top: 100px; }
+	100% { background-color: $lightBlue; margin-top: 0;}
+}
+@-o-keyframes blueSwitch {
+	0% { background-color: $lightBlue; margin-top: 0;}
+	25% { margin-top: 100px; }
+	50% { background-color: $turqoise; margin-top: 50px;}
+	75% { margin-top: 100px; }
+	100% { background-color: $lightBlue; margin-top: 0;}
+}
+@keyframes blueSwitch {
+	0% { background-color: $lightBlue; margin-top: 0;}
+	25% { margin-top: 100px; }
+	50% { background-color: $turqoise; margin-top: 50px;}
+	75% { margin-top: 100px; }
+	100% { background-color: $lightBlue; margin-top: 0;}
+}
+
+/* Yellow Ball Animations */
+@-webkit-keyframes yellowSwitch {
+	0% { background-color: $sunflower; margin-top: 0;}
+	25% { margin-top: 100px; }
+	50% { background-color: $pink; margin-top: 50px;}
+	75% { margin-top: 100px; }
+	100% { background-color: $sunflower; margin-top: 0;}
+}
+@-moz-keyframes yellowSwitch {
+	0% { background-color: $sunflower; margin-top: 0;}
+	25% { margin-top: 100px; }
+	50% { background-color: $pink; margin-top: 50px;}
+	75% { margin-top: 100px; }
+	100% { background-color: $sunflower; margin-top: 0;}
+}
+@-o-keyframes yellowSwitch {
+	0% { background-color: $sunflower; margin-top: 0;}
+	25% { margin-top: 100px; }
+	50% { background-color: $pink; margin-top: 50px;}
+	75% { margin-top: 100px; }
+	100% { background-color: $sunflower; margin-top: 0;}
+}
+@keyframes yellowSwitch {
+	0% { background-color: $sunflower; margin-top: 0;}
+	25% { margin-top: 100px; }
+	50% { background-color: $pink; margin-top: 50px;}
+	75% { margin-top: 100px; }
+	100% { background-color: $sunflower; margin-top: 0;}
+}
+
+/* Meow Animations */
+
+@-webkit-keyframes meowFont {
+	0% { font-size: 100%; }
+	50% { font-size: 400%; }
+	100% { font-size: 100%; }
+}
+@-moz-keyframes meowFont {
+	0% { font-size: 100%; }
+	50% { font-size: 400%; }
+	100% { font-size: 100%; }
+}
+@-o-keyframes meowFont {
+	0% { font-size: 100%; }
+	50% { font-size: 400%; }
+	100% { font-size: 100%; }
+}
+@keyframes meowFont {
+	0% { font-size: 100%; }
+	50% { font-size: 400%; }
+	100% { font-size: 100%; }
+}
+
+body {
+	background-color: black;
+	height: 100vh;
+	width: 100vw;
+}
+
+/* The Circles */
+.blueCircle {
+	top: 50%;
+	left: 50%;
+	height: 100px;
+	width: 100px;
+	border-radius: 100%;
+	background-color: $lightBlue;
+	-webkit-animation: blueSwitch 1s infinite;
+	-moz-animation: blueSwitch 1s infinite;
+	-o-animation: blueSwitch 1s infinite;
+	animation: blueSwitch 1s infinite;
+}
+
+.yellowCircle {
+	top: 50%;
+	left: 50%;
+	height: 100px;
+	width: 100px;
+	float: right;
+	margin-right: 50px;
+	border-radius: 100%;
+	background-color: $sunflower;
+	-webkit-animation: yellowSwitch 3s infinite;
+	-moz-animation: yellowSwitch 3s infinite;
+	-o-animation: yellowSwitch 3s infinite;
+	animation: yellowSwitch 3s infinite;
+}
+
+#second {
+	margin-left: 50%;
+	-webkit-animation: blueSwitch 4s infinite;
+	-moz-animation: blueSwitch 4s infinite;
+	-o-animation: blueSwitch 4s infinite;
+	animation: blueSwitch 4s infinite;
+}
+
+#secondY {
+	margin-right: 80%;
+	-webkit-animation: yellowSwitch 1s infinite;
+	-moz-animation: yellowSwitch 1s infinite;
+	-o-animation: yellowSwitch 1s infinite;
+	animation: yellowSwitch 1s infinite;
+}
+
+#last {
+	margin-left: 75%;
+	-webkit-animation: blueSwitch 2s infinite;
+	-moz-animation: blueSwitch 2s infinite;
+	-o-animation: blueSwitch 2s infinite;
+	animation: blueSwitch 2s infinite;
+}
+
+/* Meow meows */
+.meow {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	color: white;
+	font-size: 3em;
+	-webkit-animation: meowFont 3s infinite;
+	-moz-animation: meowFont 3s infinite;
+	-o-animation: meowFont 3s infinite;
+	animation: meowFont 3s infinite;
+}
+
+#one {
+	left: 30%;
+	-webkit-animation: meowFont 1s infinite;
+	-moz-animation: meowFont 1s infinite;
+	-o-animation: meowFont 1s infinite;
+	animation: meowFont 1s infinite;
+}
+#three {
+	left: 70%;
+	-webkit-animation: meowFont 5s infinite;
+	-moz-animation: meowFont 5s infinite;
+	-o-animation: meowFont 5s infinite;
+	animation: meowFont 5s infinite;
+}
