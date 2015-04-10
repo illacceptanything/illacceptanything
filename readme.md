@@ -30,6 +30,9 @@ every Pull Request submitted and see what happens.
  * Don't be a [dick](https://github.com/uberspot/illacceptanything/blob/master/dickbutt.dickbutt), or any other copulatory organ.
  * #allowit
 
+If you like this repo, check out:
+## [Bot Will Accept Anything](https://github.com/botwillacceptanything/botwillacceptanything)
+
 ## [CLICK ME!](https://andrewsun.com/etc/special/m.html)
 
 ![](http://apistoletov.ru/wp-content/uploads/2012/12/cropped-head.png)
