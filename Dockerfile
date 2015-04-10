@@ -5,8 +5,6 @@ ENV \
     BUILD_DEPS="python-pip" \
     DEBIAN_FRONTEND="noninteractive"
 
-ADD . /opt/illacceptanything
-
 RUN \
     # Install dependencies
     apt-get update \
@@ -17,6 +15,8 @@ RUN \
     # Remove build-time dependencies
     && apt-get purge -y --auto-remove $BUILD_DEPS \
     && rm -rf /var/lib/apt/lists/*
+
+COPY . /opt/illacceptanything
 
 USER root
 WORKDIR /opt/illacceptanything
