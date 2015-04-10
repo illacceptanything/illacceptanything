@@ -1,0 +1,28 @@
+# setup
+
+Import qw( CONFIG_DIR WOLF_VER BASEGAME do_demo );
+
+$env = new cons();
+
+sub launch {
+  if ($do_demo eq 1)
+  {
+    # for the SP demo, we build locally
+    system("sh ./build_setup.sh $CONFIG_DIR/out $WOLF_VER");
+  }
+  else
+  {
+    # the master code for the full setup sits in MP tree
+    print "Please run ./cons -- release setup in MP tree instead\n";
+  }  
+  # what we used prior to setup functionality
+  #system("./build_tarball.sh $CONFIG_DIR/out $WOLF_VER");
+  return 1;
+}
+
+Depends $env 'foo',
+  'out/wolfsp.x86',
+  'out/' . $BASEGAME . '/cgamei386.so',
+  'out/' . $BASEGAME . '/qagamei386.so',
+  'out/' . $BASEGAME . '/uii386.so';
+Command $env 'foo', "[perl] &launch()";

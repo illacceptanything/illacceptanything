@@ -1,0 +1,144 @@
+# build pk3 on the fly
+
+Import qw( INSTALL_DIR BUILD_DIR );
+
+#use Data::Dumper;
+
+$env = new cons(); # the env on which we will be working for all pk3s
+
+$hcf_do_exec = 1;
+sub do_command($)
+{
+  printf("@_[0]\n");
+  if ($hcf_do_exec)
+  {
+    system("@_[0]");
+  }
+}
+
+sub build_pk3 {
+
+	sub launch {
+		$Data::Dumper::Indent = 2;
+		#print "In launch\n";		
+		#print Dumper(@_);
+		$tmpdir = "/tmp/pk3-builder$$";
+		do_command("rm -rf $tmpdir");
+		
+		($target, $sets) = @_;
+		$base=`basename $target`; chomp($base);
+		$dirname=`dirname $target`; chomp($dirname);
+		
+		foreach (@{$sets})
+		{
+			($sourcepath, $destpath, $file) = @{$_};
+			#print "source: $sourcepath dest: $destpath file: $file\n";
+			do_command("mkdir -p $tmpdir/$destpath");
+			if ($sourcepath =~ /#.*/)
+			{
+				#print "$sourcepath is absolute\n";
+				$sourcepath =~ s/#//;
+				if (ref($file))
+				{
+					foreach(@{$file})
+					{
+						do_command("cp $sourcepath/$_ $tmpdir/$destpath/$_");
+					}
+				}
+				else
+				{
+					do_command("cp $sourcepath/$file $tmpdir/$destpath/$file");
+				}
+			}
+			else
+			{
+				#print "$sourcepath in linked dir\n";
+				if (ref($file))
+				{
+					foreach(@{$file})
+					{
+						do_command("cp $BUILD_DIR/$sourcepath/$_ $tmpdir/$destpath/$_");
+					}
+				}
+				else
+				{
+					do_command("cp $BUILD_DIR/$sourcepath/$file $tmpdir/$destpath/$file");
+				}
+			}			
+		}
+		
+		do_command("cd $tmpdir ; zip -r $base *");
+		do_command("mkdir -p $BUILD_DIR/$dirname");
+		do_command("cp $tmpdir/$base $BUILD_DIR/$target");
+		do_command("rm -rf $tmpdir");
+		
+		return 1;
+	}
+	
+	# extract the parameters
+	($target, $sets) = @_;
+	
+	$base=`basename $target`; chomp($base);
+	$dirname=`dirname $target`; chomp($dirname);
+	
+	# the build command is stored and called later on by cons
+	# this makes it impossible to have several build_pk3 working together
+	# there is probably a cleaner solution than this hack, but this works
+	$target_uniquename="target_$base";
+	$target_uniquename=~s/\.//g;
+	eval("\$$target_uniquename=\$target");
+	$sets_uniquename="sets_$base";
+	$sets_uniquename=~s/\.//g;
+	eval("\$$sets_uniquename=\$sets");
+	#print "name: $target_uniquename after the hack: $target_pak8pk3";
+	
+	# don't pass @{@_} .. since this will be called during the process
+	$command = "[perl] &launch( \$$target_uniquename, [ \@{\$$sets_uniquename} ] )";
+	#print "$command\n";
+		
+	foreach(@{$sets})
+	{
+		($sourcepath, $destpath, $file) = @{$_};
+		if (ref($file))
+		{
+			foreach(@{$file})
+			{
+				Depends $env $target, $sourcepath . '/' . $_;
+			}
+		}
+		else
+		{
+			Depends $env $target, $sourcepath . '/' . $file;
+		}
+	}
+	Command $env $target, $command;
+	Install $env $INSTALL_DIR . "/$dirname", $target;
+}
+
+@menus = qw(
+ error.menu serverinfo.menu urls.menu main.menu ingame_options.menu joinserver.menu auto_update.menu
+ createserver.menu controls.menu ingame_controls.menu ingame_callvote.menu ingame.menu filter.menu
+);
+$menus_ref = \@menus;
+
+#build_pk3('auto-pk3/mp_pak5.pk3',
+#	[ [ '#../../MAIN/ui_mp', 'ui_mp', 
+#		[ 'menus.txt', 'ingame.txt' ] ],
+#
+#		[ '#../../MAIN/translations', 'translations', 'translation-1_4.cfg' ],
+#
+#		[ '#../../MAIN/ui_mp', 'ui_mp', $menus_ref ],
+#		
+#		[ '#../../MAIN/ui_mp/french', 'ui_mp/french', $menus_ref ],
+#		[ '#../../MAIN/ui_mp/german', 'ui_mp/german', $menus_ref ],
+#		[ '#../../MAIN/ui_mp/italian', 'ui_mp/italian', $menus_ref ],
+#		[ '#../../MAIN/ui_mp/spanish', 'ui_mp/spanish', $menus_ref ],
+#		
+#		# some last minute additions
+#		[ '#../../MAIN/ui_mp/french', 'ui_mp/french', 'credit.menu' ],
+#		[ '#../../MAIN/ui_mp/german', 'ui_mp/german', [ 'credit.menu', 'options.menu' ] ],
+#		
+#	] );
+
+build_pk3('auto-pk3/mp_pak6.pk3',
+	[	[ '#../../MAIN/scripts', 'scripts', 'common.shader' ] ] );

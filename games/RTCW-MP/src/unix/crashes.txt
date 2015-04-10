@@ -1,0 +1,254 @@
+log of server crashes:
+
+9/22/2001 7pm CET
+
+I had the exact same crash as below again
+trying to look more precisely this time
+
+start=0x14 is fucked
+
+(gdb) frame
+#7  0x459bc9a1 in ClientDamage (clent=0x47841e3c, entnum=3, enemynum=74, 
+    id=182) at debug-x86-Linux-2.1/game/game/g_cmds.c:1970
+1970    in debug-x86-Linux-2.1/game/game/g_cmds.c
+
+(gdb) print enemy->client->ps.origin
+Cannot access memory at address 0x14.
+
+#0  0x805ee66 in CM_Trace (results=0xbfff6d60, start=0x14, end=0xbfff6ef8, 
+    mins=0x45a1e3c0, maxs=0x45a1e3c0, model=0, origin=0x80b97a0, 
+    brushmask=1, capsule=0, sphere=0x0)
+    at debug-x86-Linux-2.1/dedicated/qcommon/cm_trace.c:1170
+#1  0x805f390 in CM_BoxTrace (results=0xbfff6d60, start=0x14, 
+    end=0xbfff6ef8, mins=0x45a1e3c0, maxs=0x45a1e3c0, model=0, brushmask=1, 
+    capsule=0) at debug-x86-Linux-2.1/dedicated/qcommon/cm_trace.c:1343
+#2  0x8055f8e in SV_Trace (results=0xbfff6ec0, start=0x14, mins=0x45a1e3c0, 
+    maxs=0x45a1e3c0, end=0xbfff6ef8, passEntityNum=1023, contentmask=1, 
+    capsule=0) at debug-x86-Linux-2.1/dedicated/server/sv_world.c:610
+#3  0x804fdb3 in SV_GameSystemCalls (args=0xbfff6e2c)
+    at debug-x86-Linux-2.1/dedicated/server/sv_game.c:367
+#4  0x8071663 in VM_DllSyscall (arg=25)
+    at debug-x86-Linux-2.1/dedicated/qcommon/vm.c:331
+#5  0x459e48cb in trap_Trace (results=0xbfff6ec0, start=0x14, 
+    mins=0x45a1e3c0, maxs=0x45a1e3c0, end=0xbfff6ef8, passEntityNum=1023, 
+    contentmask=1) at debug-x86-Linux-2.1/game/game/g_syscalls.c:127
+#6  0x459bf429 in CanDamage (targ=0x47841e3c, origin=0x14)
+    at debug-x86-Linux-2.1/game/game/g_combat.c:1208
+#7  0x459bc9a1 in ClientDamage (clent=0x47841e3c, entnum=3, enemynum=74, 
+    id=182) at debug-x86-Linux-2.1/game/game/g_cmds.c:1970
+#8  0x459b1a2e in ClientThink_real (ent=0x47841e3c)
+    at debug-x86-Linux-2.1/game/game/g_active.c:819
+#9  0x459b2f4d in ClientThink (clientNum=3)
+    at debug-x86-Linux-2.1/game/game/g_active.c:1442
+#10 0x459c1b99 in vmMain (command=7, arg0=3, arg1=8, arg2=2, arg3=224, 
+    arg4=-1073777944, arg5=1160934604, arg6=-1073776792)
+    at debug-x86-Linux-2.1/game/game/g_main.c:253
+#11 0x8071d25 in VM_Call (vm=0x82615a0, callnum=7)
+    at debug-x86-Linux-2.1/dedicated/qcommon/vm.c:695
+#12 0x804f0bd in SV_ClientThink (cl=0x453274cc, cmd=0xbfff7320)
+    at debug-x86-Linux-2.1/dedicated/server/sv_client.c:1263
+#13 0x804f2c0 in SV_UserMove (cl=0x453274cc, msg=0xbfff7768, delta=qtrue)
+    at debug-x86-Linux-2.1/dedicated/server/sv_client.c:1359
+#14 0x804f3f1 in SV_ExecuteClientMessage (cl=0x453274cc, msg=0xbfff7768)
+    at debug-x86-Linux-2.1/dedicated/server/sv_client.c:1450
+#15 0x8053df3 in SV_PacketEvent (from={type = NA_IP, ip = "\030 \001[", 
+      ipx = "\000\000\000\000\000\000\000\000\000", port = 14445}, 
+    msg=0xbfff7768) at debug-x86-Linux-2.1/dedicated/server/sv_main.c:581
+#16 0x80620c1 in Com_RunAndTimeServerPacket (evFrom=0xbffff788, 
+    buf=0xbfff7768) at debug-x86-Linux-2.1/dedicated/qcommon/common.c:2011
+#17 0x806231e in Com_EventLoop ()
+    at debug-x86-Linux-2.1/dedicated/qcommon/common.c:2106
+#18 0x8062d8c in Com_Frame ()
+    at debug-x86-Linux-2.1/dedicated/qcommon/common.c:2647
+#19 0x8076771 in main (argc=18, argv=0xbffff87c)
+
+
+9/19/2001 9am CET
+
+#0  0x805d4de in CM_Trace (results=0xbfff6d7c, start=0x14, end=0xbfff6f10, 
+    mins=0x4521c260, maxs=0x4521c260, model=0, origin=0x80b7020, 
+    brushmask=1, capsule=0, sphere=0x0) at ..//qcommon/cm_trace.c:1170
+    
+ (gdb) print i
+$1 = 0
+(gdb) print tw.size[1][i]
+$2 = 0
+ (gdb) print offset[i]
+$4 = {0, -1.99550772, 2479.19385}
+ (gdb) print *start
+Cannot access memory at address 0x14.  
+    
+#1  0x805d9f1 in CM_BoxTrace (results=0xbfff6d7c, start=0x14, 
+    end=0xbfff6f10, mins=0x4521c260, maxs=0x4521c260, model=0, brushmask=1, 
+    capsule=0) at ..//qcommon/cm_trace.c:1343
+
+stub    
+    
+#2  0x8054826 in SV_Trace (results=0xbfff6edc, start=0x14, mins=0x4521c260, 
+    maxs=0x4521c260, end=0xbfff6f10, passEntityNum=1023, contentmask=1, 
+    capsule=0) at ..//server/sv_world.c:610
+    
+still getting start=0x14    
+    
+#3  0x804e85e in SV_GameSystemCalls (args=0xbfff6e44)
+    at ..//server/sv_game.c:367           
+#4  0x80725e7 in VM_DllSyscall (arg=25) at ..//qcommon/vm.c:340
+#5  0x451e2efe in trap_Trace (results=0xbfff6edc, start=0x14, 
+    mins=0x4521c260, maxs=0x4521c260, end=0xbfff6f10, passEntityNum=1023, 
+    contentmask=1) at ..//game/g_syscalls.c:127
+#6  0x451be6e5 in CanDamage (targ=0x47027848, origin=0x14)
+    at ..//game/g_combat.c:1208    
+#7  0x451bbcbc in ClientDamage (clent=0x47027848, entnum=5, enemynum=98, 
+    id=338) at ..//game/g_cmds.c:1970
+    
+(gdb) print enemy->client
+$12 = (struct gclient_s *) 0x0
+OMFG!    
+(gdb) print enemynum 
+$14 = -1073779816
+   
+#8  0x451b0fc1 in ClientThink_real (ent=0x47027848)
+    at ..//game/g_active.c:819
+    
+there's something wacky, computed from ucmd->cld   
+enemynum gets 
+(gdb) print (ucmd->cld >> 7) & 0x7F
+$20 = 82
+so we probably corrupted the value somehow?
+    
+#9  0x451b2526 in ClientThink (clientNum=5) at ..//game/g_active.c:1442
+#10 0x451c0d89 in vmMain (command=7, arg0=5, arg1=8, arg2=1, arg3=28, 
+    arg4=-1073777904, arg5=1153302564, arg6=-1073776760)
+    at ..//game/g_main.c:253
+#11 0x8072c7b in VM_Call (vm=0x8238f60, callnum=7) at ..//qcommon/vm.c:704
+#12 0x804dbd1 in SV_ClientThink (cl=0x44be0024, cmd=0xbfff732c)
+    at ..//server/sv_client.c:1247
+#13 0x804ddd0 in SV_UserMove (cl=0x44be0024, msg=0xbfff7788, delta=1)
+    at ..//server/sv_client.c:1343
+#14 0x804df01 in SV_ExecuteClientMessage (cl=0x44be0024, msg=0xbfff7788)
+    at ..//server/sv_client.c:1434
+#15 0x80526e7 in SV_PacketEvent (from={type = NA_IP, ip = "\030\003ÇV", 
+      ipx = "\000\000\000\000\000\000\000\000\000", port = 13394}, 
+    msg=0xbfff7788) at ..//server/sv_main.c:568
+#16 0x8060636 in Com_RunAndTimeServerPacket (evFrom=0xbffff7a0, 
+    buf=0xbfff7788) at ..//qcommon/common.c:2011
+#17 0x806089e in Com_EventLoop () at ..//qcommon/common.c:2106
+#18 0x80612da in Com_Frame () at ..//qcommon/common.c:2647
+#19 0x80a193a in main (argc=17, argv=0xbffff89c)
+    at ..//unix/unix_main.c:1248
+
+
+9/11/2001 8pm CET
+
+Program received signal SIGSEGV, Segmentation fault.
+0x45035007 in BG_EvaluateConditions (client=0, scriptItem=0x31203620)
+    at ..//game/bg_animation.c:1410
+    1410    ..//game/bg_animation.c: No such file or directory.
+    
+#1  0x450350c2 in BG_FirstValidItem (client=0, script=0x454ddfc8)
+    at ..//game/bg_animation.c:1448
+#2  0x45035445 in BG_AnimScriptAnimation (ps=0x46e92960, state=AISTATE_COMBAT, 
+    movetype=ANIM_MT_IDLE, isContinue=qtrue) at ..//game/bg_animation.c:1604
+#3  0x4503960a in PM_Footsteps () at ..//game/bg_pmove.c:1676
+#4  0x4503cdcf in PmoveSingle (pmove=0xbfff6f34) at ..//game/bg_pmove.c:4012
+#5  0x4503ce9e in Pmove (pmove=0xbfff6f34) at ..//game/bg_pmove.c:4081
+#6  0x4503f767 in ClientThink_real (ent=0x46eb4360) at ..//game/g_active.c:1064
+#7  0x450402d9 in ClientThink (clientNum=0) at ..//game/g_active.c:1432
+#8  0x4504ec09 in vmMain (command=7, arg0=0, arg1=8, arg2=2, arg3=56, 
+    arg4=-1073778336, arg5=1151410184, arg6=-1073777184)
+    at ..//game/g_main.c:251
+#9  0x8072d8b in VM_Call (vm=0x825f280, callnum=7) at ..//qcommon/vm.c:704
+#10 0x804ddd9 in SV_ClientThink (cl=0x44a12008, cmd=0xbfff7198)
+    at ..//server/sv_client.c:1246
+#11 0x804dfe0 in SV_UserMove (cl=0x44a12008, msg=0xbfff75e0, delta=qtrue)
+    at ..//server/sv_client.c:1342
+#12 0x804e111 in SV_ExecuteClientMessage (cl=0x44a12008, msg=0xbfff75e0)
+    at ..//server/sv_client.c:1433
+#13 0x8052833 in SV_PacketEvent (from={type = NA_IP, ip = ".... 
+    ipx = "\000\000\000\000\000\000\000\000\000", port = 14445},
+    msg=0xbfff75e0) at ..//server/sv_main.c:562
+#14 0x8060874 in Com_RunAndTimeServerPacket (evFrom=0xbffff600, buf=0xbfff75e0)
+    at ..//qcommon/common.c:2011
+#15 0x8060acc in Com_EventLoop () at ..//qcommon/common.c:2106
+#16 0x806150a in Com_Frame () at ..//qcommon/common.c:2647
+#17 0x80a1a4a in main (argc=6, argv=0xbffff6fc) at ..//unix/unix_main.c:1248
+	
+16/9/2001 10am CET
+
+#0  0x451a70e7 in BG_EvaluateConditions (client=1, 
+    scriptItem=0x33323120) at ..//game/bg_animation.c:1415
+
+(gdb) print scriptItem
+$2 = (animScriptItem_t *) 0x33323120
+(gdb) print scriptItem->conditions
+Cannot access memory at address 0x33323124.
+    
+
+#1  0x451a71a2 in BG_FirstValidItem (client=1, script=0x45655c0c)
+    at ..//game/bg_animation.c:1455
+    
+(gdb) print i
+$5 = 0
+(gdb) print script->items
+$6 = {0x33323120, 0x31203020, 0x20302033, 0x35322031, 0x30203820, 
+  0x30203920, 0x34203220, 0x20302036, 0x34312030, 0x38323120, 
+.. }
+script is delirious (infamous number of items)
+
+
+#2  0x451a7525 in BG_AnimScriptAnimation (ps=0x4700590c, 
+    state=AISTATE_COMBAT, movetype=ANIM_MT_IDLE, isContinue=qtrue)
+    at ..//game/bg_animation.c:1613
+    
+(gdb) print script
+$10 = (animScript_t *) 0x33323120
+(gdb) print &modelInfo->scriptAnims[ state ][ movetype ]
+$11 = (animScript_t *) 0x45655c0c
+(gdb) print state
+$13 = 4294967192
+  
+#3  0x451ab6aa in PM_Footsteps () at ..//game/bg_pmove.c:1677
+
+(gdb) print pm->ps->aiState
+$14 = AISTATE_COMBAT
+
+typedef enum
+{
+	AISTATE_RELAXED,
+	AISTATE_QUERY,
+	AISTATE_ALERT,
+	AISTATE_COMBAT,
+
+	MAX_AISTATES
+} aistateEnum_t;
+
+#4  0x451aee8f in PmoveSingle (pmove=0xbfff6ef4)
+    at ..//game/bg_pmove.c:4028
+#5  0x451aef5e in Pmove (pmove=0xbfff6ef4)
+    at ..//game/bg_pmove.c:4097
+#6  0x451b1837 in ClientThink_real (ent=0x470270d4)
+    at ..//game/g_active.c:1073
+#7  0x451b23b9 in ClientThink (clientNum=1)
+    at ..//game/g_active.c:1442
+#8  0x451c0d89 in vmMain (command=7, arg0=1, arg1=8, arg2=4, 
+    arg3=112, arg4=-1073778400, arg5=1151788788, arg6=-1073777248)
+    at ..//game/g_main.c:253
+#9  0x8072ccb in VM_Call (vm=0x825f140, callnum=7)
+    at ..//qcommon/vm.c:704
+#10 0x804db79 in SV_ClientThink (cl=0x44a6e6f4, cmd=0xbfff7190)
+    at ..//server/sv_client.c:1247
+   #11 0x804dd80 in SV_UserMove (cl=0x44a6e6f4, msg=0xbfff75a0, 
+    delta=qtrue) at ..//server/sv_client.c:1343
+#12 0x804deb1 in SV_ExecuteClientMessage (cl=0x44a6e6f4, 
+    msg=0xbfff75a0) at ..//server/sv_client.c:1434
+#13 0x8052613 in SV_PacketEvent (from={type = NA_IP, 
+      ip = "\030§\2039", 
+      ipx = "\000\000\000\000\000\000\000\000\000", port = 14445}, 
+    msg=0xbfff75a0) at ..//server/sv_main.c:568
+#14 0x8060664 in Com_RunAndTimeServerPacket (evFrom=0xbffff5c0, 
+    buf=0xbfff75a0) at ..//qcommon/common.c:2011
+#15 0x80608bc in Com_EventLoop () at ..//qcommon/common.c:2106
+#16 0x80612fa in Com_Frame () at ..//qcommon/common.c:2647
+#17 0x80a19ca in main (argc=9, argv=0xbffff6bc)
+    at ..//unix/unix_main.c:1248
+     		  

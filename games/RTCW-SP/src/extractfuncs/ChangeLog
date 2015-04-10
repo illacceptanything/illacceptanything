@@ -1,0 +1,17 @@
+2001-12-07  Timothee Besset <ttimo@idsoftware.com>
+
+Imported from the Wolf MP version, Mac/Linux friendly version
+Fixed argbase bug in *nix main
+Escape BoxOnPlaneSide on linux (taken out by preprocessing)
+
+2001-11-02  Timothee Besset <ttimo@idsoftware.com>
+
+Modified extractfuncs to works on linux
+Would still need to integrate it correctly with the build system
+Changed the command line syntax of the linux ver:
+screwup [-o <basename>] <file1> [<file2> ..]
+
+if none specified, <basename> is "g_funcs"
+
+on linux at least, those header files need to be tweaked by hand
+because unresolved externs are not ignored by gcc (otherwise harmless on win32)

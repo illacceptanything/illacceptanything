@@ -1,0 +1,148 @@
+// !$*UTF8*$!
+{
+	00F5ED38FEBA95B7C697A12F = {
+		activeExec = 0;
+	};
+	00F5ED90FEBA9615C697A12F = {
+		activeExec = 0;
+	};
+	012AD90C00868211C697A10E = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{19, 671}, {750, 502}}";
+		};
+	};
+	012AD92D00868211C697A10E = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{42, 650}, {750, 502}}";
+		};
+	};
+	016EAE0300B4BDD1C697A10E = {
+		activeExec = 0;
+	};
+	0170311C00B49352C697A10E = {
+		activeExec = 0;
+	};
+	0654BA41FE8ECEE0C697A12F = {
+		activeBuildStyle = 07F3F50BFFE98E8EC697A10E;
+		activeTarget = 0170311C00B49352C697A10E;
+		addToTargets = (
+			0654BA5CFE8ECEE0C697A12F,
+		);
+		perUserDictionary = {
+			PBXWorkspaceConfiguration = {
+				ContentSize = "{867, 645}";
+				LeftSlideOut = {
+					ActiveTab = 3;
+					Frame = "{{0, 23}, {867, 622}}";
+					Split0 = {
+						ActiveTab = 2;
+						Frame = "{{225, 0}, {642, 622}}";
+						Split0 = {
+							Frame = "{{0, 354}, {642, 268}}";
+						};
+						SplitCount = 1;
+						Tab0 = {
+							Debugger = {
+								Frame = "{{0, 0}, {484, 208}}";
+								Split0 = {
+									Frame = "{{0, 25}, {484, 183}}";
+									Split0 = {
+										Frame = "{{0, 0}, {236, 183}}";
+									};
+									Split1 = {
+										Frame = "{{245, 0}, {239, 183}}";
+									};
+									SplitCount = 2;
+								};
+								SplitCount = 1;
+								Tab0 = {
+									Frame = "{{0, 0}, {100, 50}}";
+								};
+								Tab1 = {
+									Frame = "{{0, 0}, {100, 50}}";
+								};
+								TabCount = 2;
+							};
+							Frame = "{{0, 0}, {484, 208}}";
+							LauncherConfigVersion = 4;
+						};
+						Tab1 = {
+							Frame = "{{0, 0}, {484, 208}}";
+							LauncherConfigVersion = 3;
+							Runner = {
+								Frame = "{{0, 0}, {484, 208}}";
+							};
+						};
+						Tab2 = {
+							BuildMessageFrame = "{{0, 0}, {644, 62}}";
+							BuildTranscriptFrame = "{{0, 71}, {644, 260}}";
+							Frame = "{{0, 0}, {642, 329}}";
+						};
+						Tab3 = {
+							Frame = "{{0, 0}, {642, 295}}";
+						};
+						TabCount = 4;
+					};
+					SplitCount = 1;
+					Tab0 = {
+						Frame = "{{0, 0}, {200, 622}}";
+					};
+					Tab1 = {
+						ClassesFrame = "{{0, 0}, {202, 56}}";
+						Frame = "{{0, 0}, {200, 100}}";
+						MembersFrame = "{{0, 65}, {202, 35}}";
+						OptionsSetName = "Hierarchy, all classes";
+					};
+					Tab2 = {
+						Frame = "{{0, 0}, {200, 100}}";
+					};
+					Tab3 = {
+						Frame = "{{0, 0}, {200, 622}}";
+						Split0 = {
+							Frame = "{{0, 0}, {200, 303}}";
+						};
+						Split1 = {
+							Frame = "{{0, 312}, {200, 310}}";
+						};
+						SplitCount = 2;
+					};
+					Tab4 = {
+						Frame = "{{0, 0}, {250, 100}}";
+					};
+					TabCount = 5;
+				};
+			};
+		};
+		wantsIndex = 1;
+		wantsSCM = -1;
+	};
+	0654BA5CFE8ECEE0C697A12F = {
+		activeExec = 0;
+		targetExecs = {
+			macosx = (
+				F5329FC401B6B31F01000114,
+			);
+		};
+	};
+	F5329FC401B6B31F01000114 = {
+		activeArgIndex = 2147483647;
+		argumentStrings = (
+		);
+		debuggerPlugin = GDBDebugging;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		isa = PBXExecutable;
+		shlibInfoDictList = (
+		);
+		sourceDirectories = (
+		);
+		startupPath = "/Volumes/BigQuicky/ Source/ WolfSP/Output";
+	};
+	F5329FC801B6B3F701000114 = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{65, 629}, {750, 502}}";
+		};
+	};
+}

@@ -1,0 +1,1463 @@
+2006-05-03  Timothee Besset  <ttimo@idsoftware.com>
+
+	* fixed a few warning and errors when compiling with gcc-4.0 ( didn't go all the way through, will stick to 2.95 )
+	* 1.41-3 Linux setup is hosed. it does not install the right binaries ( looks like the 1.40 stuff actually )
+	going to redo an installer from scratch more or less, and put everything right in there
+	recovered 1.41 mp_bin.pk3 cgame/ui from Win32 installation, need a qagame? ( I can compile a new one myself )
+
+2006-05-02 Timothee Besset <ttimo@idsoftware.com>
+	+ no working Mac source! latest Mac source is likely at Aspyr. requested it
+	+ revert changes to tr_shader.c and go back to the previous "broken" SkipBracedSection calls
+	need to release an updated binary to 1.41 and that fix would probably mean changing shaders as well
+
+2003-09-16 Timothee Besset <ttimo@idsoftware.com>
+	+ java master and auth code. bind to specify interface for operation on multi-homed etmaster (192.246.40.38)
+	+ wolfKEY is NOT checked in to CVS
+
+2003-08-31 Timothee Besset <ttimo@idsoftware.com>
+	+ show_bug.cgi?id=626
+	built new RTCW 1.41 setup working for more recent distributions (glibc 2.3 based ones)
+
+2003-01-22 Timothee Besset <ttimo@idsoftware.com>
+	+ fix typo in Sys_Chmod (linux)
+
+2003-01-16 Timothee Besset <ttimo@idsoftware.com>
+	+ update cons scripts for building on debian sid (default gcc version has changed)
+	+ show_bug.cgi?id=570
+		fixed SkipBracedSection usage to actually do it's job
+		fixed a syntax error in common.shader, updated version is REQUIRED to run current code
+		and yeah, that brings a considerable speedup to map loading
+
+2002-4-12 Timothee Besset <ttimo@idsoftware.com>
+  + releasing 1.41 update:
+    - modified the setup scripts to generate a 1.4 -> 1.41 incremental
+    - only putting the qagame as updated content
+    - adding RTCW-README-1.4.txt (server admin information) to the setup
+    - changed the INSTALL installation instructions to state about update and
+      not full setup
+    - commented out the full setup builds, update Conscript-setup if you need
+      them
+
+2002-13-11 Timothee Besset <ttimo@idsoftware.com>
+  + show_bug.cgi?id=569
+    merged Rhea's g_antilag.c changes
+    - cancel out syntax changes (makes diff harder to read)
+    - IS_ACTIVE macro replaces our former test:
+					  x->r.linked == qtrue && \
+					  x->client->ps.stats[STAT_HEALTH] > 0 && \
+					  x->client->sess.sessionTeam != TEAM_SPECTATOR && \
+					  (x->client->ps.pm_flags & PMF_LIMBO) == 0 \
+    - we only walk through active clients
+
+2002-12-11 Timothee Besset <ttimo@idsoftware.com>
+  + show_bug.cgi?id=569
+    fix for medic bug was validated with today's testing\
+    haven't merged against Rhea's code yet. will do
+
+2002-11-11 Timothee Besset <ttimo@idsoftware.com>
+  + show_bug.cgi?id=568
+    Rhea: better fix for loss of weapon functionality
+
+2002-11-5 Timothee Besset <ttimo@idsoftware.com>
+  + added in_subframe to toggle X subframe event handling
+  + reworked the timing code to be more reliable
+  + cleaned up dgamouse/in_mouse code, removed unnecessary dgamouse var
+  + made the mouse grabbing an in_nograb cvar, no longer a compile time option
+    in_nograb 1 forces in_dgamouse 0 and r_fullscreen 0 (any of those two will b0rk)
+	+ last safe check for screwed up X window server was too agressive
+	  tweaked to ignore when the subframe correction is too high
+
+2002-28-10 Timothee Besset <ttimo@idsoftware.com>
+  + ATVI Wolfenstein Misc #270
+    checking in a fix that doesn't crash g_syncronousClients
+  + no longer prevent demo record on g_synchronousClients 0, just warn
+  + ATVI Wolfenstein Misc #472
+    gun clipping, made the leaning bbox a bit bigger (along z<0) to cover gun clipping
+
+2002-25-10 Timothee Besset <ttimo@idsoftware.com>
+  + ATVI Wolfenstein Misc #474
+    spectator following a client, client gets kicked, was not sending spectator back to a correct free fly mode
+  + ATVI Wolfenstein Misc #462
+    added a 'noToggle' flag to itemDef, uses a CVAR_NOTOGGLE
+	this allows for ITEM_TYPE_YESNO that rely on an action uiScript to set their value (see sv_punkbuster in createserver.menu)
+	added trap_PbSetSvStatus, can't set Punkbuster on server side if not available
+	new mp_pak5 with updated createserver.menu (for all i18n)
+  + updated ui scripts for mp_pak5 against ATVI's latest version (merged back new elements)	
+
+2002-24-10 Timothee Besset <ttimo@idsoftware.com>
+  + ATVI Wolfenstein Misc #469
+    MG42 switching view angles to the player and back (prediction issue)
+  + ATVI Wolfenstein Misc #470
+    fixed MG42 repair hint to work again when crounching or standing on top of MG42
+	(breakage was a side effect of mg42 mount hint fix, see 2002-17-10)
+  + ATVI Wolfenstein Misc #413
+    maintain correct mp_currentTeam while doing free fly spectating (was causing problems joining teams)
+
+2002-21-10 Timothee Besset <ttimo@idsoftware.com>
+  + ATVI Wolfenstein Misc #461
+    'voting disabled on server' was not setting cg_draw2d to 0, parasite text was showing
+	tweaked the translation for 'or callvote a start_match' by 'or call a vote to start match'
+	wrote French traductions, others are pending (ATVI)
+
+2002-19-10 Timothee Besset <ttimo@idsoftware.com>
+  + ATVI Wolfenstein Misc #439
+	making sure we have a default empty error message for the connection diagnostics 
+	so that we don't pop ghost ones back
+  + ATVI Wolfenstein Misc #460
+	cleanly shutting down listen server when using "exit to main" from UI
+  + ATVI Wolfenstein Misc #467
+	mg42 client and client being pushed both become CONTENT_CORPSE till they get in a correct position again
+	problem was, the call to trap_EntitiesInBox returns the mg42 client to the list when it queries for itself
+	so numtouch stuck to 1, mg42 never returning to solid again
+	added a safe check that hit != self
+  + added g_dbgRevive to verbose the WolfReviveBBox stuff, was getting too noisy
+
+2002-17-10 Timothee Besset <ttimo@idsoftware.com>
+  + merged in mp_pak5.pk3 update from ATVI
+  + ATVI Wolfenstein Misc #433
+    Fixed the screen shaking situation on the client
+  
+  Arnout:
+  + Fixed double MG42 fire sound playing.
+  + ATVI Wolfenstein Misc #436
+    Fixed MG42 muzzle flash not always drawing.
+  + ATVI Wolfenstein Misc #437
+    Fixed revived client getting stuck in MG42 user client
+  + ATVI Wolfenstein Misc #438  
+    Fixed ability to use MG42's from above
+  + ATVI Wolfenstein Misc #449
+    Fixed client getting stuck in walls after MG42 gets destroyed
+  + Fixed MG42 hint icon not being consistent with the actual usage
+
+2002-16-10 Timothee Besset <ttimo@idsoftware.com>
+	+ show_bug.cgi?id=562
+		Rhea - sniper zoom bug when playing demos
+		applied fix to demo playing / sniper zoom
+
+2002-13-10 Timothee Besset <ttimo@idsoftware.com>
+	+ ATVI Wolfenstein Misc #414
+		anytime enterTime gets reset, player is forbidden to switch team for 30s
+		(with the exception of warmups and 10s after a map_restart)
+		if player went back to free fly from follow spectating, enterTime was reset. Fixed.
+		map_restart (i.e. warmup ends) was causing a reset of enterTime for all players. Fixed.
+		now we only reset enterTime and prevent joining new team only when player explicitely sets new team
+
+2002-12-10 Timothee Besset <ttimo@idsoftware.com>
+	+ ATVI Wolfenstein Misc #374
+		on first run the ui_vote* variables where not initialized, causing a g_voteFlags 0
+		(even if UI showed 'Voting Enabled', as long as you didn't raise the precise voting menu)
+		added a uiScript voteFlags open in the open menu to cope with this
+		affects all translations, new mp_pak5.pk3
+	+ show_bug.cgi?id=560
+		LT getting too much ammo (thks Rhea)
+
+2002-7-10 Timothee Besset <ttimo@idsoftware.com>
+	+ ATVI Wolfenstein Misc #304
+		setCvar "com_errorDiagnoseIP" "" is misread by the parser, second argument is ignored
+		adding a clearCvar ui script, and updating UI accordingly
+
+2002-2-10 Timothee Besset <ttimo@idsoftware.com>
+	+ ATVI Wolfenstein Misc #345
+		server URL message text lights up like a button - fixed
+		tweaked the layout of URL confirm and serverinfo dialogs for all i18n
+		made the various buttons look right (and not overflow their box and stuff)
+	+ ATVI Wolfenstein Misc #281
+		removed map_restart line from server creation menu (we never had that one in the UIs)
+
+2002-1-10 Timothee Besset <ttimo@idsoftware.com>
+	+ ATVI Wolfenstein Misc #339
+		added switch back to free spectating, binded to the activate key (usually enter)
+		you can't free spectate if you are in a team already (otherwise you could send indications)
+		had to go around some ugly things in the limbo management on client side
+	+ ATVI Wolfenstein Misc #350
+		made server prediction off by default		
+
+2002-28-9 Timothee Besset <ttimo@idsoftware.com>
+	+ merged a new mp_pak5.pk3 with ATVI updates
+
+2002-24-9 Timothee Besset <ttimo@idsoftware.com>
+	+ SV_CheckPaused using Cvar_Set "sv_paused" instead of setting the integer directly
+		could have bad consequences over PB cvar hack checks
+		actually this is not relevant to RTCW because cl_paused is never set to 1, always remains 0
+		  but it might matter later on, better be on the safe side of things
+	+ cons post build on win32 copies PB stuff
+
+2002-19-9 Timothee Besset <ttimo@idsoftware.com>
+	+ show_bug.cgi?id=543
+		more rcon fixes propagated from Q3		
+
+2002-18-9 Timothee Besset <ttimo@idsoftware.com>
+	+ ATVI Tracker Wolfenstein Misc #322
+		global 'Allow Voting' UI toggle was broken
+		g_allowVote toggles all g_voteFlags on or off when used
+	+ NOTE: we have newer ui_mp/french/filter.menu than the one that was in ATVI's Wolf14	zip
+		newer mp_pak5.pk3 altogether with #322
+
+2002-17-9 Timothee Besset <ttimo@idsoftware.com>
+	+ ATVI Tracker Wolfenstein Misc #320
+		line wrap + skipnotify bug
+	+ ATVI Tracker Wolfenstein Misc #336
+		show_bug.cgi?id=550
+		quick fix to new rcon code
+
+2002-5-9 Timothee Besset <ttimo@idsoftware.com>
+	+ ui_mp/ translations update from ATVI
+		translated french/filter.menu
+		FIXME: other filter.menu tranlsations still have to be done
+	+ update build system with an optional 'pk3' on build command line, defaults to off
+	+ show_bug.cgi?id=443
+		Linux client: propagated sub-frame event timing from Q3
+
+2002-2-9 Timothee Besset <ttimo@idsoftware.com>
+	+ added g_antilag in filter.menu (Both/Yes/No)
+	+ handy, keep around: __asm__ __volatile__ ("int $0x03");
+	+ show_bug.cgi?id=540
+		'ui failed pure server check' not doing UI properly was caused by the search path reorder on server join
+		using FS_Restart in FS_PureServerSetLoadedPaks to fix
+	+ copied over ingame.txt to menus.txt, even if menus.txt is not used, it's safer to have the same unique ver as ingame.txt (which is our actual reference)
+	+ fixed Com_DPrintf being fucked up in ui code
+	+ show_bug.cgi?id=541
+		XP backport (script_mover_blocked)
+	+ ATVI Tracker Wolfenstein Misc #263
+		non anti-lag servers have their ping highlighted in yellow
+
+2002-31-8 Timothee Besset <ttimo@idsoftware.com>
+	+ translations: got updated translations from John Fritts on 30/08
+		integrated, fixed french/createserver.menu french/serverinfo.menu which wouldn't load (missing newline)
+		French/German 'Friendly Fire' in filter.menu was still 'Both Yes No', replaced by correct phrasing
+		server browser was displaying server lines with Yes/No for punkbuster. Made it translation sensitive
+
+2002-30-8 Timothee Besset <ttimo@idsoftware.com>
+	+ ATVI Tracker Wolfenstein Misc #284
+		rcon commands where sent after being tokenized and rebuilt
+		that was breaking any quoting, for instance 'rcon g_motd "hooka pooka"'
+		added Cmd_Cmd() to retrieve the un-tokenized command and transmit as is on both ends
+
+2002-28-8 Timothee Besset <ttimo@idsoftware.com>
+	+ ATVI Tracker Wolfenstein Misc #263
+		renamed g_hitscanPredict into g_antilag, made it a CVAR_SERVERINFO
+		added UI in server creation menu (defaults to 1)
+	+ internationalisation:
+		  added placeholder ui_mp/french/ ui_mp/german etc. .menu files
+		  need the new ones to put into mp_pak5.pk3
+		hardcoded translations: translations/translation-1_4.cfg
+		  looks like the "WARNING: You are missing" is a mistake on my side. That has been removed.
+			NOTE: trailing \n can be omitted in the translation file
+			NOTE: no 'need paks' translation for spanish / 'need paks' is only printed to console, was not strongly necessary
+			NOTE: PROTOCOL_MISMATCH_ERROR is a server print, we can't translate this (we do PROTOCOL_MISMATCH_ERROR_LONG)
+			added CL_TranslateStringBuf and support for \n in translation files (for PROTOCOL_MISMATCH_ERROR_LONG)
+			NOTE:	PB_MESSAGE is server side too, can't deal with it
+
+2002-27-8 Timothee Besset <ttimo@idsoftware.com>
+	+ ATVI Tracker Wolfenstein Misc #218
+		using [skipnotify], only printing to console
+	+ ATVI Tracker Wolfenstein Misc #244
+		fixed Refresh button being broken in server browser server info dialog
+	+ ATVI Tracker Wolfenstein Misc #273
+		voting config defaulted to no, the g_voteFlags was initialized in game code only
+		if you go to ui first, you were getting g_voteFlags 0 (doesn't exist yet)
+		had to add the init in sv_init.c (which makes it kinda hardcoded, something I don't like)
+		for testing the fix, need to start from a fresh install (or delete wolfconfig_mp.cfg)
+	+ ATVI Tracker Wolfenstein Misc #270
+		disabled lean while tossing dynamite
+	+ ATVI Tracker Wolfenstein Misc #271
+		have serverinfo menu be modal over the ingame options window
+		had to remove the menus.txt + ingame.txt loading order and put everything seperate in menus.txt and ingame.txt
+		NOTE: the UI_LoadMenus is a mess, ingame or not, that's still ingame.txt that gets loads (previously menus.txt + ingame.txt)
+			in short, menus.txt is no longer used
+		
+2002-26-8 Timothee Besset <ttimo@idsoftware.com>
+	+ show_bug.cgi?id=472
+		propagate Linux client keyboard fix from Q3
+	+ show_bug.cgi?id=62
+		propagate the invisible players/entities fix from Q3
+		(not sure this had ever been happening in Wolf though)
+
+2002-23-8 Timothee Besset <ttimo@idsoftware.com>
+	+ ATVI Tracker Wolfenstein Misc #200 #201
+		fixed allies timeleft warning not working (was loading the wrong sound)
+		issue is not new in 1.4, we had that in 1.33 already
+	+ ATVI Tracker Wolfenstein Misc #221
+		colored g_motd string is now supported
+	+ improved the pre-map_restart ignoring of cient messages, handles multiple map_restarts in a row	
+	+ SV_InitGameVM: clearing the entity array before calling into the VM (reported by djbob, XP backport)
+		(NOTE: does this fix show_bug.cgi?id=62 invis player?)
+	+ reworked the server 'client text ignored' message to only trigger	when there's actually a message that doesn't get to the game VM
+	+ show_bug.cgi?id=376
+		had to shrink the rcon buffer to 256-16, seems it's the only value that won't cause to loose part of the output
+	+ ATVI Tracker Wolfenstein Misc #191
+    FF off + airstrike -> spectator was still hurting teammates
+  + updated cons script to run under win32 and do misc handy tasks
+
+2002-22-8 Timothee Besset <ttimo@idsoftware.com>
+	+ ATVI Tracker Wolfenstein Misc #196
+		fixed voting UI to remember settings with low ACCEPT and BACK buttons
+		fixed parasite grpVoting still showing when you go back to the menu
+	+ ATVI Tracker Wolfenstein Misc #210
+		fixed callvote UI getting messed up in Misc tab
+	+ ATVI Tracker Wolfenstein Misc #193 & #195
+		overflow causing stack trashing. We are lucky it didn't cause a crash
+		limit the numer of lines to 23 to keep in screen
+	+ ATVI Tracker Wolfenstein Misc #219
+		made g_motd a CVAR_ARCHIVE
+	+ ATVI Tracker Wolfenstein Misc #212
+		correct blue background on buttons in error diagnostic and server info
+
+2002-20-8 Timothee Besset <ttimo@idsoftware.com>
+	+ show_bug.cgi?id=536
+		tweaking the SV_ExecuteClientMessage code some more to also let through the messages
+		with bad serverId but last client command was a nextdl
+		kind of hackish, but that's really the only fix that I can see for now
+
+2002-15-8 Timothee Besset <ttimo@idsoftware.com>
+	+ show_bug.cgi?id=534
+		fixing rcon being broken on NT/XP with > 23 days uptime (or so)		
+		NOTE: this is ATVI Tracker Wolfenstein Misc #203
+
+2002-9-8 Timothee Besset <ttimo@idsoftware.com>
+	+ show_bug.cgi?id=500
+		re-enabled ingame (meaning, non PB) IP banning code with the needed fixes:
+		+ addip doesn't cause an ERR_DROP and overflow on the g_banIPs cvar anymore
+		+ syntax for subnet matching has changed: use 192.168.1.*
+			the former 192.168.1.0 syntax would have bad consequences,
+			see show_bug.cgi?id=529
+	+ added a 'Reconnect' button next to the 'OK' button on the diagnostic screen
+		(realized that not everyone does have the reflex to toggle console and hit 'reconnect')
+	+ updated build system, pushed version to 1.4	
+
+2002-8-8 Timothee Besset <ttimo@idsoftware.com>
+	+ show_bug.cgi?id=405
+		dedicated server signal handling fix, propagated from Q3
+	+ show_bug.cgi?id=480
+		dropped clients under heavy load, applied the patch, haven't been able to verify that it's an effective fix at this point
+	+ show_bug.cgi?id=425
+		splines code cleanup
+	+ fixed 'vote, die, vote again' exploit	
+
+2002-7-8 Timothee Besset <ttimo@idsoftware.com>
+	+ latching com_maxfps, this should considerably annoy everyone who's using it for various cheats
+	+ fixing lean / see through walls. this was happening because of bg_pmove.c and cg_view.c 
+		not computing the view offsets the same way.
+
+2002-6-8 Timothee Besset <ttimo@idsoftware.com>
+	+ prevent centerview exploit on sniper rifle recoil
+		blocking centerview for 1s after a zoomed sniper rifle shoot		
+
+2002-3-8 Timothee Besset <ttimo@idsoftware.com>
+	+ configure voting with the serverinfo cvar g_voteFlags
+		UI on server side startmenu
+		UI on client side: retrieve the vote flags, only show the allowed votes
+
+2002-1-8 Timothee Besset <ttimo@idsoftware.com>
+	+ fixed the AfterBuild code, now checking for unresolved in the DLLs
+		unfortunately, this is broken with pcons!
+	+ show_bug.cgi?id=498
+		fixed NET_AdrToString to print the port as unsigned int (for ports > 1^^15, was showing negative)
+	+ show_bug.cgi?id=524
+		changed default GL driver from libGL.so to libGL.so.1
+		see LSB 1.2 spec: http://www.linuxbase.org/spec/refspecs/LSB_1.2.0/gLSB/libgl.html
+
+2002-31-7 Timothee Besset <ttimo@idsoftware.com>
+	+ show_bug.cgi?id=517
+		ERR_DROP if PB client off / server on conflict when starting local server
+
+2002-30-7 Timothee Besset <ttimo@idsoftware.com>
+	+ flame thrower cheat, run and aim at your feet, you don't take damage
+		fixed by a server side trace, check hit on the ground within a small radius of the player
+		(might need to configure the tests some more if this triggers too easily)
+
+2002-24-7 Timothee Besset <ttimo@idsoftware.com>
+	+ on FF-off servers, if you drop an airstrike and join spectator, teammates would get killed
+	  now the airstrike won't hurt anyone, neither team or opponents
+	+ cleaned up cg_emtpySwitch. replaced by cg_autoReload, pollutes userinfo	
+  + move Sys_PBSendUdpPacket to qcommon/common.c to avoid dupe code win_net.c unix_net.c
+
+2002-23-7 Timothee Besset <ttimo@idsoftware.com>
+	+ merged autoreload branch back into RTCW-1_34
+	  cg_autoReload cvar (defaults to 1)
+	  finalized auto reload code, added UI in the Controls > Shoot menu (next to the reload weapon binding)
+	+ backported pmoveExt_t from XP, storing the auto reload settings for bg_* code there
+		(deals with transmission to the server too)
+	+ win32 .dsp: added RTCWBASE env variable, copying as post-build step
+	+ show_bug.cgi?id=512
+		Wolf server buffer overflow vulnerability, several vsprintf -> Q_vsnprintf to secure
+	+ MAX_SHADERS bumped from 2048 to 8192 (XP backport)	
+	+ backport of g_antilag.c from XP (Gordon code)
+	  included in build with appropriate modifs, udpated the data init and trace calls (Bullet_Fire_Extended)
+		TODO: in XP, we'll have to make antilag the default of regular game
+		also fixes the headshot behaviour, headshot was checked only if there's collision with main player bbox
+	+ all new g_antilag.c	stuff is controled by g_hitscanPredict cvar (default 1)
+	
+2002-12-7 Timothee Besset <ttimo@idsoftware.com>
+	+ lieutenant ammo pack gives 8 colt/luger rounds
+		NOTE: the max rounds are 32 for colt/luger, 90 for 2-handed weapon
+	+ using /kill while at MG42 forced player to stay in MG42 anim mode after respawn, fixed
+
+2002-10-7 Timothee Besset <ttimo@idsoftware.com>
+	+ Soldier/lieutenant could loose all weapon functionality when dropping weapon while throwing a grenade
+		fixed, can't drop weapon while holding grenade
+	+ updated the Linux build system, files with the same name compiled to both cgame and game or ui and game
+		files with same names are confusing gdb when setting breakpoints. dupe cgame files are prefixed with cg_
+		and dupe ui files are prefixed with ui_ (cons rocks)
+	
+2002-9-7 Timothee Besset <ttimo@idsoftware.com>
+	+ added ui in advanced server menu for g_useralliedmaxlives g_useraxismaxlives g_fastres and fastres milliseconds
+	+ added fastres milliseconds config to the game code (I thought this was in already, but it was not)
+
+2002-8-7 Timothee Besset <ttimo@idsoftware.com>
+	+ show_bug.cgi?id=509
+		strategy for referenced pk3 in mod dirs (fs_game) is now the same as in the basegame
+		post-connection diagnostic screen shows the list of missing pack files if any
+
+2002-6-7 Timothee Besset <ttimo@idsoftware.com>
+	+ not drawing motd while doing auto-download (there's download progress instead)
+	+ using a grey filled rectangle below autodownload messages for readability
+		misc UI tweaks
+
+2002-5-7 Timothee Besset <ttimo@idsoftware.com>
+	+ show_bug.cgi?id=509
+		see branch 'test_dl_ratio' for an experiment with pushing up the rate ratio specifically for downloads (foxed)
+		improved speed of the auto-download
+			regular server tops at 20kb/s max autodownload
+			tweaked update server tops at 30kb/s (by pushing up the sv_fps to 60)
+		added sv_dl_maxRate for independant autodownload max rate (autodownload used to be limited by sv_maxRate)
+	+ show_bug.cgi?id=491
+		SV_SendMessageToClient was defeating the sv_lanForceRate setting by forcing snapshot emitting for LAN clients
+
+2002-4-7 Timothee Besset <ttimo@idsoftware.com>
+	+ auto-update UI: now showing a modal dialog box on the main menu, forcing the user to click either 'OK' or 'Later'
+	+ misc Linux build system tweaking for auto-update server build
+
+2002-3-7 Timothee Besset <ttimo@idsoftware.com>
+	+ show_bug.cgi?id=490
+		draw motd on connection screen
+	+ drawing a grey rectangle below error message on connect screen, changed font scale (better readability)
+		fixed the global motd which was not displaying on connect screen (y offset was offscreen)
+
+2002-2-7 Timothee Besset <ttimo@idsoftware.com>
+  + modified edit field to prevent text getting written outside of it's bounding box
+	  the editfield scrolls like the console does
+	  fixes the "Say: " and Name edit field in limbo menu
+	+ added Paint_AutoWrapped_Text
+		the hardcoded ui areas (such as UI_LIMBOMENU) didn't allow text wrapping on proportional fonts so far
+		used the Paint_Text code to make a text wrapping version
+		also allows to evaluate the size requirements (number of lines) without actually drawing anything		
+	+ making limbo chat text wrap and be multiline (based on above)
+	  limbo chat prints text and scrolls irc-style, much more intuitive
+
+2002-28-6 Timothee Besset <ttimo@idsoftware.com>
+  + modified the protocol error code:
+	  the connect screen can't draw too much information, 256 chars is the max
+		then we print a more complete message in the error diagnostic screen 
+		(i.e. after the client hits esc and aborts connection)
+		TODO: i18n of those error messages?
+	+ tweaked the diagnostic window, have to click through a button to show server info in a new window
+	  the diagnostic window itself only has the error message and the URL buttons
+	+ reworked the URL button disclaimer completely, prompting each time an URL is going to be opened
+	  (reverted multi_setup.menu to it's old version, removed the persistent pref toggle)
+	+ unified the com_errorMessage code to use the same UI scripts wether or not a server IP is available for diagnostic
+	+ in-game server info button, in the Options menu
+	  the button is present / disabled depending wether the server is local
+		NOTE: it would be useful to have customizable origin for modal windows too
+
+2002-27-6 Timothee Besset <ttimo@idsoftware.com>
+  + show_bug.cgi?id=507
+	  adding a "com_errorDiagnoseIP"
+	  if this is set to a server IP, the UI error dialog switches to a different and more complete dialog
+		which displays server information with clickable URL buttons
+
+2002-26-6 Timothee Besset <ttimo@idsoftware.com>
+  + making protocol mismatch sending a print OOB message with a markup tag to propagate into a com_errorMessage
+  + made CL_DisconnectPacket use com_errorMessage too to provide a dialog box
+
+2002-25-6 Timothee Besset <ttimo@idsoftware.com>
+  + adding ui_doURL CVAR_ARCHIVE, editable in mutliplayer > multiplayer setup
+	+ adding MAIN/ui_mp/urls.menu (and binding into the loaded set)
+	+ adding SERVERINFO "URL" to g_main.c, defaults empty
+	+ adding 'modal' menuDef keyword, causes menus to be called as truly modal
+	  (the caller menu to return to is stored in a stack)
+		added WINDOW_MODAL window flag
+		existing menuStack array, re-using (only for modal windows though instead of at all times)
+
+2002-24-6 Timothee Besset <ttimo@idsoftware.com>
+  + adding CVAR_SERVERINFO|CVAR_ROM "mod_url" to g_main.c
+	  defaults to http://www.activision.com/games/wolfenstein/
+		this is meant to be configured programmatically by mod authors and not altered by server config
+	+ addding 'Go to server URL' 'Go to mod URL' to the server browser's serverinfo_popmenu
+	  (with toggles visible / non visible depending on presence of the variable)
+
+2002-21-6 Timothee Besset <ttimo@idsoftware.com>
+  + foreign characters in name confuse clients that don't use the matching locale
+    adding securities and cleanups to remove all foreign chars from CVAR_USERINFO cvars
+    (check in Cvar_Set2, and in Cvar_Get)
+    the cvar in the general case can hold foreign chars (ex. ui_objective), only CVAR_USERINFO are restricted
+    we could let in foreign chars with the userinfo if there's a cleanup client side
+      (wether or not the incoming name is in the same local as we are)
+      that would be a bunch of extra work, and is kinda overkill..
+
+2002-20-6 Timothee Besset <ttimo@idsoftware.com>
+  + show_bug.cgi?id=506
+    multiple/on-demand mp_bin management (mod request, and general utility otherwise)
+    made mp_bin referenced by server (that's for solving test case #1)
+	+ show_bug.cgi?id=506
+    client reorganizes the pk3 search order to match the server's
+		this solves test case #3, and makes likelyhood of 'invalid .PK3 files referenced' much lower.
+  + win32 fixups (win32 Sys_GetDLLName)
+
+2002-19-6 Timothee Besset <ttimo@idsoftware.com>
+  + cleanups, dead code removal
+  + tagging last 1.33 source before starting some 1.34 work
+      post-release-1_33
+	+ added securities ldd -r on the .so
+	  needs backporting to 1.33 mod source release
+	+ applying Xian g_maxlives and max lives enforcements code
+	  (with some tweaking)
+	+ propagate tr_image.c ResampleTexture overflow fix from Q3
+	
+2002-13-6 Timothee Besset <ttimo@idsoftware.com>
+  + SAD spawn bug has reappeared (Wolfenstein Misc #114)
+    attempting a fix: putting a correct srand call in SAD, storing a randomized table of the feeds
+
+2002-11-6 Timothee Besset <ttimo@idsoftware.com>
+  + built a seperate GOTY map pack
+    building release candidate for 1.33 full, 1.32->1.33 update, and Map Pack
+  + make lightded setup go look for the correct version string (in SP)  
+  + partly renamed some 'Light Dedicated' to 'Standalone Dedicated'  
+  + using new loki_setup code on the way
+
+2002-9-6 Timothee Besset <ttimo@idsoftware.com>
+  + tweaked the 'Server uses protocol %i' to 'Server uses protocol %i (your client is using %i)'
+  + show_bug.cgi?id=502
+    changed CopyDLLForMod to handle copy error correctly 
+    (only affects Linux client, suspect this could have caused sv_pure bypassing)
+
+2002-5-6 Timothee Besset <ttimo@idsoftware.com>
+  + fix a screwup in light ded code (something very weird broke the checksum generation)
+
+2002-4-6 Timothee Besset <ttimo@idsoftware.com>
+  + nobinaries="yes" in sdk setup, run sdk tests only on spoutnik
+
+2002-3-6 Timothee Besset <ttimo@idsoftware.com>
+  + build_sdk.sh script, added setup content, ready to release mod sdk for Linux
+
+2002-31-5 Timothee Besset <ttimo@idsoftware.com>
+  + cleared up bad fix on cl_guid (PB)
+	+ made g_enforcemaxlives a CVAR_ARCHIVE, and defaulted it to 1
+	  (cheat exploit protections should always be on by default)
+	+ moved ClearMaxLivesIP call post G_RegisterCvars (otherwise, filterban is not initialized)
+	+ fixed the g_filterBan disabled (forgot to comment out a line)
+	+ the IP information was not enforced in userinfo on server side, added a check in SV_UserinfoChanged
+	+ made sure we only do maxlives enforcement when a game with maxlives is actually running	
+
+2002-30-5 Timothee Besset <ttimo@idsoftware.com>
+  + PB DLLs for Mac (v 989) from Tray
+	+ show_bug.cgi?id=500
+	  disabled g_filterBan again (not functional yet, need good source for 1.33)
+	+ imported changes from Xian, polished and cleaned up a bit for Linux build	
+	+ show_bug.cgi?id=491
+	  added sv_lanForceRate, defaults to 1
+		if 0, the clients on a LAN are not forced by the server to max rate, server listens to their settings request
+	+ new WolfReviveBbox code from Splash Damage (fixes a medic revival stucking)
+	
+	Xian changes:
+		* Added g_axismaxlives and g_alliedmaxlives. These cvars superscede 
+		g_maxlives when set. Used for setting maxlives independantly for each team
+		* Added g_fastres 1 (Defaults to 0). Player instantly gets up, is instantly 
+		mobile, but is only invulnerable for a second vs 3 seconds the old way
+		* Added g_knifeonly 1 (defaults to 0). This is a novelty for the 
+		mp_destruction crowd on my servers. If this gets ganked, I won't lose any 
+		sleep over it.
+	
+		Players spawn in with knives only. Medics get 20 needles instead of 10 
+		and can drop health as normally. Engineers can drop and arm dynomite. All 
+		the MG42's are removed from the world.
+	
+		* Added g_enforcemaxlives 1 (defaults to 0). This code is still a little 
+		buggy for reasons unknown to me. Timothee will give it a once over. We may 
+		choose to make this undocumented.
+	
+		The way this works, is that when a client enters the game, their IP gets 
+		added to a list. Any IP on the list is banned from connecting until the 
+		next round starts. This is to prevent people from disconnecting and 
+		reconnecting to get by the maxlives limitation.
+	
+		* listmaxlivesip (debug console command). Prints the current list of 
+		clients who's IP's are being enforced with maxlives.
+
+2002-29-5 Timothee Besset <ttimo@idsoftware.com>
+  + PB 989 Linux from Tony (where are win32 DLLs?)
+  + tracker #414, missing g_filterBan, broken IP filtering
+  added g_filterBan back, and the corresponding IP filtering calls (upon client connection)
+
+2002-28-5 Timothee Besset <ttimo@idsoftware.com>
+  + adding pcons script, configuring for parallell build
+  + adding mp_pak4 to light ded checksum, updating the setup
+
+2002-23-5 Timothee Besset <ttimo@idsoftware.com>
+  + last minute update from Activision & SplashDamage for 1.32 setup
+
+2002-22-5 Timothee Besset <ttimo@idsoftware.com>
+  + 1.32 release, got win32 RC, building Linux RC
+    - some changes in main/
+    mp_pak4.pk3 was in SplashDamage's 1.32 zip, is not installed
+    new/modified files: mp_tram.pk3 sp_pak3.pk3
+    - no changes in Docs/, only installs PB manual
+  + updated rotate.cfg to rotate on mp_tram
+  + updated CHANGES file (public CHANGES file in setup)
+
+2002-13-5 Timothee Besset <ttimo@idsoftware.com>
+  + new code 1.32-MP from SplashDamage, rebuild
+  + merge back into trunk, there is going to be a new build
+  + 1.32g is in QA at Activision, creating a post-1_32g branch
+  + show_bug.cgi?id=476
+    CVAR_CHEAT|CVAR_LATCH .. the latching was happening before the cheating check
+    switched cheat check before latch
+  + added anjuta project file and run.sh wrappers  
+
+2002-12-5 Timothee Besset <ttimo@idsoftware.com>
+  + added TuxGames info in faq
+
+2002-7-5 Timothee Besset <ttimo@idsoftware.com>
+  + import of splashdamage's updated source
+  + cleared CG_SELECTEDPLAYER_ARMOR stuff, the menudefs.h doesn't have it
+
+2002-26-3  Timothee Besset <ttimo@idsoftware.com>
+  + SOS update, fixes shader overflow bug
+  show_bug.cgi?id=471
+
+2002-25-3  Timothee Besset <ttimo@idsoftware.com>
+  + 1.31 update, grabbed from SOS and rebuilt
+  + build_setup.sh update: antares needs -L option for cp, spoutnik doesn't
+  + new PB files, pb/htm/ directory
+
+2002-16-3  Timothee Besset <ttimo@idsoftware.com>
+  + new set of checksums for the light dedicated server (merged in the new mp_ice map pak)
+
+-- tagging tree as Release-1_3-tag
+
+  + last minute fix to build_setup.sh script
+  + built Wolf 1.3 setup
+
+2002-15-3  Timothee Besset <ttimo@idsoftware.com>
+  + blanking default CD path
+  + dedicated + mod -> cl_cdkey buffer overflow, causing a corrupted ucmds
+  static struct
+    cleaned up the cl_cdkey and associated functions stuff,
+    moved declaration to qcommon.h
+    and cl_cdkey alloc from server/cl_main.c to common/common.c
+  + media-only mods failed to load because the DLL was not found
+    we handle this a bit differently than how SP code does, if we can't find a
+    DLL, we will try to copy it from a search in the base game (with the usual
+    homepath/basepath search order)
+  + rebuilt light ded's pak0.pk3, generate new checksums
+
+2002-13-3  Timothee Besset <ttimo@idsoftware.com>
+  + merge from SOS, breaks the custom auto-update server compile time define
+  (going through several autoupdate servers now)
+
+2002-12-3  Timothee Besset <ttimo@idsoftware.com>
+  + wolf-beta/2002-March/000079.html
+  switched from system to execl in Sys_DoStartProcess
+  hacked around to keep a system() call when a command line is needed (HACK!) 
+  + text dialog installation: dialog box wraps the text
+
+2002-11-3  Timothee Besset <ttimo@idsoftware.com>
+  + modified setup, PB is in a seperate option, has his own license prompt
+
+2002-02-3  Timothee Besset <ttimo@idsoftware.com>
+  + autodownload was breaking for files > something between 3Mb and 6Mb
+    because of autoupdateFilename pointing to a char * returned by va()
+    (va wrapping past some critical size corrupted the name)
+  + fixed Cbuf_ExecuteText("quit") to Cbuf_ExecuteText("quit\n")  
+
+2002-28-2  Timothee Besset <ttimo@idsoftware.com>
+  + show_bug.cgi?id=464
+  changed the 'servers not listed' message, it was misleading
+  + added ./cons -- nograb compile option to avoid mouse grabbing / easier debug
+  + show_bug.cgi?id=463
+  checking the .so version in fs_homepath against main binary version to avoid outdated ones
+  + show_bug.cgi?id=462
+  send potential remaining fragmented packets before sending a gamestate
+
+2002-27-2  Timothee Besset <ttimo@idsoftware.com>
+  + 1.3.b1 with new setup code (xsu-enabled) + auto update server pointing to zerowing
+
+2002-26-2  Timothee Besset <ttimo@idsoftware.com>
+  + show_bug.cgi?id=455
+  removed old libMesaVoodooGL.so loading code
+  Voodoo cards should use XF4/DRI, that load code was outdated and confusing people with broken OpenGL
+  + bumped GL extension string buffer to avoid truncate
+  + added NV fog extension to MP, propagated existing SP code
+  added corresponding UI code
+  + validated on win32
+  + updated Linux faq
+  
+2002-02-25
+- fixed missing param in 'dropped gamestate, resending' Com_DPrintf message
+
+2002-02-21  Timothee Besset <ttimo@idsoftware.com>
+- update_mp_bin.sh to update new stripped .so to the mp_bin.pk3
+  ./update_mp_bin.sh <path to mp_bin.pk3> <cgame / ui .so dir>
+
+2002-02-20  Timothee Besset <ttimo@idsoftware.com>
+- tweaks to win32 auto-update Sys_StartProcess
+
+2002-02-19  Timothee Besset <ttimo@idsoftware.com>
+- adapted the auto-update code to linux
+  saving in the right spot, doing a chmod +x before execution
+- tweaking Sys_StartProcess on linux, kernel panic if no sleep() temporisation between the spawn and the exit
+- added a Sys_Chmod on linux  
+
+2002-02-18  Timothee Besset <ttimo@idsoftware.com>
+- merging in auto-update server code from SOS
+- added the appropriate build system changes to compile update server
+
+2002-02-17  Timothee Besset <ttimo@idsoftware.com>
+- merged DLL path in vm_s from SOS
+
+2002-02-15  Timothee Besset <ttimo@idsoftware.com>
+- merged all dllchecksum stuff to trunk
+- updated from more recent SOS
+- fixed win32, tested on win32, build light dedicated bins on win32
+
+--- branch dllchecksum ---
+
+  TODO: hanging at map load screen on disconnect is still present (linux client only issue AFAIK)
+
+- renamed FS_ExtractFromPakFile to FS_CL_ExtractFromPakFile, only compiled with client code
+
+- light dedicated server:
+  we won't collapse mp_bin.pk3 into the single light dedicated pak0
+  because it's bound to change regularly and that would mean recomputing the set of checksums each time
+  tested light dedicated to work the same against the test cases used for full server
+
+- isolated on branch for testing and polish of the dll checksum code / testing of light dedicated
+
+  TODO: if server w/ different mp_dll.pk3 than the client, doesn't pass the sv_pure check
+  client bails with:
+  Sys_Error: Couldn't extract ui.mp.i386.so
+  that would be the most common error users would get, would be better if we could go back to UI / Disconnect cleanly
+
+  TODO: need also to make sure that it's not possible to auto-download the mp_dll pk3? could be used to hack clients
+  from a fake server (this situation doesn't happen right now because of the above error)
+
+- cleanup to easier cross platformness of the DLL checksuming code
+- plugged destData mem leak in FS_ExtractFromPakFile
+- moved the declaration of FS_BuildOSPath and FS_ExtractFromPakFile to qcommon.h for cleaner stuff
+- adding centralized per-OS SYS_DLLNAME_* defines in qcommon.h for the DLL strings
+  (makes the code in SV_VerifyPaks_f and FS_ExtractFromPakFile unified between OSes)
+- string shifting func decs moved to qcommon.h
+
+2002-02-14  Timothee Besset <ttimo@idsoftware.com>
+- modified unix_main.c Sys_LoadDll to scan pwd/homepath/basepath (homepath/basepath only for release build)
+  made the basics of the DLL checksuming work on linux (SV_VerifyPaks_f, extraction of the DLL files)
+- sv_pure instead of cl_connectedToPureServer in Sys_LoadDll (so that dedicated builds too)
+  (TODO: same on win_main.c)
+- modified FS_ExtractFromPakFile to take the file to check as input
+  wrote the *nix-style path scanning in unix_main.c, passing to FS_ExtractFromPakFile
+  (TODO: fix the win32 build)
+
+2002-02-13  Timothee Besset <ttimo@idsoftware.com>
+- merging in sv_pure 1 / pb 0 DLL checksuming code
+  TODO: linux / linux client server
+        linux / win32 client server combinations
+	light dedicated
+  TODO: make sure disabled if PB is on
+  
+  TODO: start testing for mods too?  
+  
+  Current state:
+    builds on linux, won't run anything with sv_pure 1
+    (the linux parts of the checks are not in)
+
+2002-02-11  Timothee Besset <ttimo@idsoftware.com>
+- updated the cons build script
+
+2002-02-08  Timothee Besset <ttimo@idsoftware.com>
+- tweaking the 'out of disk space' error message for linux ver
+
+2002-02-06  Timothee Besset <ttimo@idsoftware.com>
+- client/cl_main.c, localisation code disabled on Mac
+- merged in latest version from SOS
+- looking at various constants that are different for the Mac version
+  client/snd_local.h 
+    MAX_CHANNELS was changed from 96 to 64 for Mac
+    MAX_STREAMINGSOUNDS from 24 to 12 for Mac
+  client/snd_mem.c
+    sfxScratchBuffer moved from malloc to Hunk_Alloc (all ver)
+  game/bg_public.h
+    various MAX_* constants:
+    #if defined(__MACOS__)	//DAJ HOG
+      #define	MAX_ANIMSCRIPT_MODELS		32		//DAJ tried 24 // allocated dynamically, so limit is scalable
+      #define	MAX_ANIMSCRIPT_ITEMS_PER_MODEL	1024	//512
+      #define	MAX_MODEL_ANIMATIONS		256		// animations per model
+      #define	MAX_ANIMSCRIPT_ANIMCOMMANDS	9
+      #define	MAX_ANIMSCRIPT_ITEMS		64
+    #else
+      #define	MAX_ANIMSCRIPT_MODELS		32
+      #define	MAX_ANIMSCRIPT_ITEMS_PER_MODEL	2048
+      #define	MAX_MODEL_ANIMATIONS		512		// animations per model
+      #define	MAX_ANIMSCRIPT_ANIMCOMMANDS	8
+      #define	MAX_ANIMSCRIPT_ITEMS		128
+    #endif
+  qcommon/common.c
+    MacOS isn't forced to a minimum 16Mb com_zoneMegs
+  server/sv_ccmds.c
+    sv_maxclients defaults to 16 on Mac (32 otherwise)
+  server/sv_init.c
+    sv_maxclients Cvar_Get default to 16 on Mac (20 otherwise) <- is this a dupe?
+  ui/ui_shared.c
+    Controls_SetConfig doesn't do a in_restart on Mac, does otherwise      
+
+2002-02-05  Timothee Besset <ttimo@idsoftware.com>
+- merged from WestLake-1_1b into the trunk
+- checked on win32 (full and light dedicated, + PB code)
+
+  -- branch WestLake-1_1b --
+- merging in Mac MP code update
+  byte swap for aas_routingcache_t
+  smaller memory footprint on some static structs (grep for HOG)
+  renderer/tr_model.c: the r_cache 1 (R_Hunk_Begin, R_Hunk_Alloc) code is disabled in the Mac version
+    relies on direct ri.Z_Malloc calls
+    keeping the original version working with a 24Mb hunk
+  in_restart command removed from Controls_SetConfig (ui_shared.c) 
+  adding the whole mac/ directory tree
+- guarding the #pragma export on/off with __MACOS__
+- guarding DLL_ONLY for __MACOS__
+- cl_main.c, 'Disconnected from server' message was commented out? (re-enabled)  
+- fixed dupe CL_SaveTranslations_f definition
+- tr_image.c R_FindImageFile, uppercase search with developer messages
+
+2002-2-4 Timothee Besset <ttimo@idsoftware.com>
+- bumped the versions to 1.2.b4
+- merged the lightweight dedicated server code from Release-1_1b-branch into trunk
+- merged and tested linux PB code
+- wrote linux setup code for light dedicated server (./cons -- release light setup)
+- upgrade makeself to fix a CRC bug
+
+2002-2-2 Timothee Besset <ttimo@idsoftware.com>
+- updated from SOS, more linux fixes around the PunkBuster code
+
+2002-1-30  Timothee Besset <ttimo@idsoftware.com>
+dedicated server branch
+  - defaulting to dedicated 2 (i.e. internet) in the dedicated server code
+  - started linux setup code for light dedicated
+
+2002-16-1  Timothee Besset <ttimo@idsoftware.com>
+- show_bug.cgi?id=441
+  adding brandelf calls to the setup building process so that our binaries run on BSD
+
+- preparing for 1.1b release, set version to 1.1b (first RC)
+
+2002-1-16 Timothee Besset <ttimo@idsoftware.com>
+- show_bug.cgi?id=452
+  if doexit, spawn the process at actual process exit
+  (after GL shutdown and other resources have been freed)
+- show_bug.cgi?id=439
+  Alt+ENTER fullscreen/windowed toggle  
+
+2002-1-15 Timothee Besset <ttimo@idsoftware.com>
+- show_bug.cgi?id=440
+  we were leaking 24Mb of RAM on each R_Init, 
+    re-allocating, not freeing existing chunk
+    not doing the re-alloc now, sticking to the initial mem chunk
+- finalize lightweight dedicated code after recent merges
+  allow .bsp load from pak0.pk3 in lightweight and demo..
+  generated 5 checksumfeed / pure checksums pairs to use randomly
+  shifted the strings stored in the .exe to be safe
+  validated individually each of the 5 checksum/string pairs
+	
+2002-1-11 Timothee Besset <ttimo@idsoftware.com>
+- merged in from SOS, PB stuff and new gameplay type
+- updated win32 project files, Dedicated Debug/Dedicated Release
+  added PB files to the .dsp
+  PB currently disabled on win32 light dedicated (and disabled on linux)
+
+2002-1-10 Timothee Besset <ttimo@idsoftware.com>
+- started internal testing on light dedicated, building test binaries
+- win32 fix: need to #define DEDICATED and DO_LIGHT_DEDICATED
+
+2002-1-8 Timothee Besset <ttimo@idsoftware.com>
+- implemented sv_pure checksums faking for light dedicated server
+  currently restricted, runs with an hardcoded fs_checksumFeed
+- fixed openurl.sh not being executable in setup  
+
+2002-1-7 Timothee Besset <ttimo@idsoftware.com>
+- building .pk3 for dedicated only server, 22Mb
+- unix/extract-dedicated.pl util script
+- unix/dedicated-only.txt
+- building a dedicated on win32, added Debug Dedicated and Release Dedicated
+  (also checked in the A3D .lib)
+
+2002-1-2 Timothee Besset <ttimo@idsoftware.com>
+- full Wolf setup on linux now includes SP stuff
+  will spawn cons in the SP tree for build and copy the binaries
+  added a WolfMP.xpm icon and the relevant script stuff
+  updated the INSTALL file displayed by the setup
+
+2002-1-1 Timothee Besset <ttimo@idsoftware.com>
+- updated FAQ with BSD info (bug #441)
+
+2001-12-31  Timothee Besset <ttimo@idsoftware.com>
+- bumped version to 1.2-MP
+- show_bug.cgi?id=419
+  reorganizing the Sys_OpenURL to use a working Sys_StartProcess
+  propagating that code to Wolf SP
+
+2001-12-25  Timothee Besset <ttimo@idsoftware.com>
+- building release setups for 1.1-MP (and Multiplayer DEMO)
+- tagging the tree Release-1_1-MP
+  (Wolfenstein WolfMedia-demo WolfMedia-main modules)
+	
+2001-12-24  Timothee Besset <ttimo@idsoftware.com>
+- show_bug.cgi?id=371
+  hacked out to force PROT_READ and safe memset code in all cases
+- show_bug.cgi?id=427
+  opening URL through an openurl.sh script file
+- Sys_OpenURL and Sys_StartProcess exit with Cbuf_ExecuteText( EXEC_APPEND, "quit" );
+
+2001-12-23  Timothee Besset <ttimo@idsoftware.com>
+- show_bug.cgi?id=422
+  using .mp. (qagame.mp.i386.so etc.) for all MP stuff
+- protocol 50 for the demo  
+- bringing the setups up to speed again, full setup and demo setup living together in the tree
+
+2001-12-13  Timothee Besset <ttimo@idsoftware.com>
+- Sys_OpenURL stub
+
+2001-12-12  Timothee Besset <ttimo@idsoftware.com>
+- show_bug.cgi?id=390
+  SIG_IGN on SIGTTIN SIGTTOU
+	
+2001-12-10  Timothee Besset <ttimo@idsoftware.com>
+- tweaking Sys_LoadDll load order: pwd first, then basepath
+  (NOTE: currently there's no homepath loading, should add that)
+- tweaked vm_* defaults code
+
+2001-12-06  Timothee Besset <ttimo@idsoftware.com>
+- show_bug.cgi?id=402
+  full scene bug fix
+
+2001-12-02  Timothee Besset <ttimo@idsoftware.com>
+- unix/const-arg.c file, about const vec3_t[3] problems
+
+2001-12-01  Timothee Besset <ttimo@idsoftware.com>
+- Wolf MP source passes the -Wall -Werror
+
+2001-11-30  Timothee Besset <ttimo@idsoftware.com>
+- Updated the Wolfenstein FAQ
+  http://zerowing.idsoftware.com/linux/wolf
+
+2001-11-29  Timothee Besset <ttimo@idsoftware.com>
+- Wolf 1.0.b3 Linux
+  fixed FreeBSD/OpenBSD/NetBSD setup
+
+2001-11-27  Timothee Besset <ttimo@idsoftware.com>
+- Wolf 1.0.b2 Linux
+  setup scripts and media for the complete multiplayer version of the game
+  single player spawn in the menu is inoperant
+	
+2001-11-19  Timothee Besset <ttimo@idsoftware.com>
+- show_bug.cgi?id=51
+  propagated a Q3 fix, Wolf 0.9.20-5
+
+2001-11-17  Timothee Besset <ttimo@idsoftware.com>
+- building 0.9.20-4 for release, tagging the tree as MPTest-0_9_20-4	
+- merging bug #371 fixes into trunk, 0.9.20-4	
+	
+2001-11-14  Timothee Besset <ttimo@idsoftware.com>
+- show_bug.cgi?id=388
+  server not restarting correctly at time wrap
+  modified the way we restart when time wrap occurs
+  will no longer hang with no server after some time
+
+2001-11-12  Timothee Besset <ttimo@idsoftware.com>
+- third iteration of sound code fixes, should be all good
+  and ready to rollback to Q3 source too
+
+2001-11-09  Timothee Besset <ttimo@idsoftware.com>
+- using temp branch Bug-371 for sound crash stuff testing (bug #371)
+  PROT_READ|PROT_WRITE fails on Alsa, defaulting to PROT_WRITE only after initial failure
+  (mmap failure returns -1 and not NULL, our failure check was bugged)	
+
+2001-11-08  Timothee Besset <ttimo@idsoftware.com>
+- setup script fix propagated from Q3 (correct return code)
+
+2001-11-04  Timothee Besset <ttimo@idsoftware.com>
+- removed game/g_arenas.c (SP stuff)
+
+2001-11-01  Timothee Besset <ttimo@idsoftware.com>
+- updating for MP test2, version 0.9.20
+  linux version of extractfuncs (has different cmd line)
+  -- demo switch in the cons scripts
+  updated the setup script, auto-extracting the Wolf version
+  no longer hacking our way to assemble the .nasm files
+
+2001-10-15  Timothee Besset <ttimo@idsoftware.com>
+- updated from the SOS source, rebuilt (added a dummy Sys_StartProcess)
+  branch Files-1_30, Q3 1.30's filesystem with ~/.wolf support
+
+- merging the Q3 filesystem code for home directory support:
+  files.c uses a MAX_ZPATH instead of MAX_QPATH for some names
+  wolf source has a fs_verbose cvar? (only read usage, removed it)
+  fs_basegame support is new
+  fs_patchpath and fs_patch_oldpath in Wolf? are used to generate lists
+    of the used files and generate a .bat of the files to remove
+    doesn't seem to be a Wolf addition, is not in Q3 .. getting rid of it
+  fs_filecompare removed
+  FS_Delete is not in Q3 1.30, but used in Wolf
+  some file streaming code not there either?
+  maintained mp_*.pk3 sp_*.pk3 code in FS_AddGameDirectory
+  FS_ComparePaks has unpure diagnostics (more verbosive)
+  FS_PatchDeletedFiles_r removed
+  leaving early exit FS_SetRestrictions (bypass copy protections)
+  updated qcommon.h for MAX_FILE_HANDLES
+  
+  Sys_DefaultInstallPath / sys_DefaultHomePath
+    we have implementation in unix/unix_shared.c
+    missing the win32 implementation, grabbing the one from Q3 (win_shared.c)
+    declaration is in qcommon.h
+    
+  TODO: qcommon/files.c has some Com_ReadCDKey code and stuff
+
+- fixed recursive errors related to logfile 1  
+
+2001-10-08  Timothee Besset <ttimo@idsoftware.com>
+- added PROT_READ to mmap on dma sound buffer (cf Q3 bug)
+show_bug.cgi?id=371
+Com_Memset on dma buffer in Wolf doesn't happen systematically on startup
+but happens on map load
+
+- applied Sys_LoadDll changes from Q3
+
+2001-09-28  Timothee Besset <ttimo@idsoftware.com>
+
+Planning the merge with wolfMPTest branch
+updated from SOS, merged current trunk content
+
+cvs merge with WolfMPTest branch
+checked build system, all fine
+there is new media, building from the MP Test and new stuff in SOS
+specifically ui_mp/ directory
+need to build as regular binary, dropping PRE_RELEASE_DEMO define
+dropping the -debug suffix on debug .so name, useless
+NOTE: should drop the loading into base path too, and use ./ ?
+
+Checked the merge result on win32:
+- cleaned CritialSection into CriticalSection
+- fixed extractfuncs to ignore "qmin" and "qmax" (OSX)
+
+WolfMPTest branch Changelog ========== BEGIN
+2001-09-28  Timothee Besset <ttimo@idsoftware.com>
+
+Updated the FAQ (http://zerowing.idosftware.com/linux)
+Answered some tech support email and started bug tracking
+This version is going to be merged back in the trunk
+Tagging it to WolfMPTest-Merge
+
+2001-09-21  Timothee Besset <ttimo@idsoftware.com>
+
+Current SOS is not compatible with MPTest
+branched in the last comaptible state
+building linux clients for release
+removing wolfconfig.cfg from the setup
+patched vm.c to vm_* 0
+
+added cons -- setup to call build_setup.sh
+heavily patched setup script to turn it into a full setup.
+updated the INSTALL file
+
+merging in Graeme's source
+merged in     - cgame/cg_main.c
+  Graeme particles re-init fixes
+I have newer  - cgame/cg_players.c CG_TrailItem
+  Darin / Version 2 on 09/18/2001
+  Don't draw icon above your own head
+  built cg_players.c.patch
+I have newer  - cgame/cg_scoreboard.c WM_DrawClientScore
+  Darin / Version 2 on 09/18/2001
+  added drawing of treasure holder in scoreboard
+  built cg_scoreboard.c.patch
+merged in     - cgame/cg_servercmds.c
+  Graeme CG_ClearTrails call commented out in CG_MapRestart
+replaced      - cgame/cg_trails.c
+  Graeme various changes
+merged in     - client/cl_cin.c
+  Graeme commented out some OSX only code
+I have newer  - client/cl_main.c
+  up to Sean / Version 11 on 09/18/2001
+  morv cvar inits in CL_Init mostly (other small fixes)
+  built cl_main.c.patch
+leaving as is - client/snd_dma.c
+  I have fixed Sys_InitializeCriticalSection (was missing a 'c')
+leaving as is - client/snd_mix.c
+  I have moved some vars to static for asm implementation snd_mixa.s
+leaving as is - client/snd_public.h
+  only comments differ
+I have newer  - extractfuncs/extractfuncs.h
+  SMF - workaround for Graeme's predifined MACOSX functions
+  built extractfuncs.c.patch
+I have newer  - game/bg_misc.c  
+  DHM - Nerve :: updated delay so prediction is correct (panzerfaust)
+  built bg_misc.c.patch
+leaving as is - game/g_client.c
+  comments differ
+I have newer  - game/g_cmds.c
+  Darin / Version 7 on 09/17/2001
+  Can't mount an mg42 while ducking
+  built g_cmds.c.patch
+reverting     - game/g_misc.c
+  my version has Darin / Version 3 on 09/17/2001
+  Testing new firing rate and damage
+  since it was testing we should probably not release a new server
+  that does the MG42 differently
+I have newer  - game/g_weapon.c
+  Darin / Version 7 on 09/17/2001
+  Don't allow engineer to repair mg42's if he is mounting one!
+  built g_weapon.c.patch
+merging in    - game/q_shared.c
+  MACOS_X implements qmax / qmin
+  FIXME: I also added #ifndef max #define max.. for linux in q_shared.h a while ago
+    should we use qmax everywhere instead? (prolly so)
+merging in    - game/q_shared.h
+  idSqrt ppc implementation
+  FIXME: this is currently guarded for OSX, it should be a CPU guard?
+  linux ppc for instance should benefit?
+replaced      - macosx/
+  copying over the whole macosx/ tree in my source
+  NOTE: newly added SOS files might be missed in the process,
+    hopefully there's none
+I have newer  - qcommon/common.c
+  changes 'generated by quake' into 'generated by RTCW'
+  built common.c.patch
+leaving as is - qcommon/qcommon.h
+  critical section missing a 'c'
+leaving as is - qcommon/unzip.c
+  my version has gcc warnings bug fixes, not important for OSX building
+partial merge - qcommon/vm.c
+  I have cleaned up vm_* init, but OSX should still init on vm_* 0
+    so I'm not building a patch for this
+  Graeme switched MACOS_X to original id code in VM_DllSyscall
+    (merged in)
+conflict      - renderer/tr_animation.c
+  merging in R_CalcBoneLerp, exiting in some cases
+    (OSX fails on random memory reads)
+  I had a different solution for baseIndex = ((int)pIndexes - tess.indexes);
+  in RB_SurfaceAnim .. used
+  baseIndex = (int)(pIndexes - (int *)tess.indexes);
+  that does a int difference
+  Graeme's fix denotes a better understanding of what's going on
+    using his code
+I have newer  - server/server.h
+  Sean / Version 3 on 09/17/2001
+  TA Merge - adds a qboolean connected; to challenge_t
+  built server.h.patch
+I have newer  - server/sv_client.c
+  Sean / Version 4 on 09/17/2001
+  TA Merge, see above
+  built sv_client.c.patch
+    NOTE: also has VM_Call( gvm, GAME_CLIENT_DISCONNECT, newcl - svs.clients ); commented out
+I have newer  - server/sv_main.c
+  Sean / Version 5 on 09/17/2001
+  TA Merge, see above
+  also has some comment of my own about rcon redirect issues
+  built sv_main.c.patch
+leaving as is - splines/splines.cpp
+  gcc warning fix and MSVC-isms
+  NOTE: still not sure the splines code is used in the client
+leaving as is - splines/splines.h
+  comments differ
+I have newer  - ui/ui_local.h
+  Sean / Version 2 on 09/18/2001
+  NERVE - SMF - new font stuff
+  built ui_local.h.patch
+I have newer  - ui/ui_main.c
+  Sean / Version 14 on 09/18/2001
+  NERVE - SMF - new font stuf
+  built ui_main.c.patch
+I have newer  - ui/ui_shared.c
+  see above
+  built ui_shared.c.patch
+I have newer  - ui/ui_shared.h
+  see above + MAIN/UI include case sensitivity fix
+  built ui_shared.h.patch
+leaving as is - unix/ChangeLog / Cons* / build_setup.sh
+  that's my stuff
+merging in    - unix/unix_net.c
+  OSX fixes
+merging in    - unix/unix_shared.c
+  Sys_DefaultBasePath deals with installPath
+  init critical section returns (void *)-1
+  NOTE: some changes by me, leaving as is for now
+leaving as is - unix/setup subdirectories
+leaving as is - win32
+
+got a crash on zerowing server, fixed in g_cmds.c
+rebuilt g_cmds.c.patch for zaphod
+same as previously happened:
+
+#0  0x805ee66 in CM_Trace (results=0xbfff6d60, start=0x14, end=0xbfff6ef8, 
+    mins=0x45a1e3c0, maxs=0x45a1e3c0, model=0, origin=0x80b97a0, 
+    brushmask=1, capsule=0, sphere=0x0)
+    at debug-x86-Linux-2.1/dedicated/qcommon/cm_trace.c:1170
+
+start=0x14 is fucked
+
+(gdb) frame
+#7  0x459bc9a1 in ClientDamage (clent=0x47841e3c, entnum=3, enemynum=74, 
+    id=182) at debug-x86-Linux-2.1/game/game/g_cmds.c:1970
+1970    in debug-x86-Linux-2.1/game/game/g_cmds.c
+
+(gdb) print enemy->client->ps.origin
+Cannot access memory at address 0x14.
+
+WolfMPTest branch Changelog ========== END
+
+2001-09-20  Timothee Besset <ttimo@idsoftware.com>
+
+First native linux Wolf client ran on:
+Thu Sep 20 09:53:38 CEST 2001
+
+some crashes because of my tr_animation.c stuff,
+need to use Graeme's .. patching from his info
+
+cleanup of cons script, building debug and release
+
+merging again against latest SOS
+recompiling and checking back in?
+NOOO .. the protocol has changed ..
+tagging the WolfMP test compatible as WolfMPTest
+
+no conflict M src/cgame/cg_event.c
+no conflict M src/cgame/cg_main.c
+no conflict M src/cgame/cg_newDraw.c
+no conflict M src/cgame/cg_players.c
+no conflict M src/cgame/cg_weapons.c
+no conflict M src/client/cl_main.c
+M src/game/bg_animation.c
+M src/game/bg_misc.c
+M src/game/bg_pmove.c
+M src/game/bg_public.h
+M src/game/g_client.c
+M src/game/g_cmds.c
+M src/game/g_missile.c
+M src/game/g_session.c
+M src/game/g_weapon.c
+M src/game/q_shared.h
+no conflict M src/qcommon/msg.c
+M src/qcommon/qcommon.h
+no conflict M src/ui/ui_players.c
+
+2001-09-19  Timothee Besset <ttimo@idsoftware.com>
+
+Merging new SOS stuff in my CVS, modified files are:
+M src/cgame/cg_main.c
+M src/cgame/cg_players.c
+M src/cgame/cg_scoreboard.c
+M src/cgame/cg_trails.c
+M src/client/cl_main.c
+merged M src/client/snd_public.h
+M src/extractfuncs/extractfuncs.c
+merged M src/game/bg_misc.c
+merged M src/game/g_client.c
+merged M src/game/g_cmds.c
+merged M src/game/g_misc.c
+merged M src/game/g_weapon.c
+merged M src/qcommon/common.c
+M src/qcommon/unzip.c
+M src/server/server.h
+merged M src/server/sv_client.c
+merged M src/server/sv_main.c
+M src/ui/ui_local.h
+M src/ui/ui_main.c
+M src/ui/ui_shared.c
+M src/ui/ui_shared.h
+
+Also need to add on Vendor side the files I added in SOS
+those files might have been modified by Id since then too!
+
+merged unix/unix_net.c
+merged unix/unix_shared.c
+
+#1 merge the ones we know
+#2 do a diff
+
+merge completed fine, gonna rebuild dbg of server and
+restart it on zerowing
+
+unzip.c modified to use statics (OSX conflict), merged with
+the Q3 version / comment out unused statics to fix gcc warnings
+
+using new version tag:
+Wolf 0.7.16-1 ( -1 for patchlevel 1 on linux, not checked in SOS)
+
+writing cons script for full client now
+would need to share some stuff?
+botlib dependency etc.?
+(different targets will need different compile flags and config,
+but the idea is that the files need to be listed only once
+in our scripts)
+
+additional issue: the splines code
+is that going to require g++ everywhere?
+or g++ for splines compile
+gcc for regular stuff
+g++ for linking
+
+copied back a bunch of stuff from Q3 source
+using snd_dma.s again for S_WriteLinearBlastStereo16
+
+2001-09-17  Timothee Besset <ttimo@idsoftware.com>
+
+Update from SOS, post MP Test from Nerve, OSX check-ins,
+merging everything and checking in too
+
+2001-09-16  Timothee Besset <ttimo@idsoftware.com>
+
+added -fshort-enums to the flags, catches enum warnings
+adding a -1 valued enum in enum declarations
+
+.//botlib/be_aas_entity.c:453:
+  // TTimo WTF?? qboolean blocking
+  // warning: comparison is always false due to limited range of data type
+  // 	if (VectorCompare( absmin, absmax ) && blocking < 0) {
+	if (VectorCompare( absmin, absmax )) {
+
+game/ai_cast_characters.c:1117
+  // TTimo gcc: warning: comparison is always false due to limited range of data type
+  // initial line: if (trap_GetTag( ent->s.number, painTagNames[0], &or ) < 0)
+	if (!trap_GetTag( ent->s.number, painTagNames[0], &or )) {
+
+game/ai_cast_characters.c:1128
+    // TTimo gcc: warning: comparison is always true due to limited range of data type
+    // initial line: if (trap_GetTag( ent->s.number, painTagNames[tagIndex], &or ) >= 0) 
+		if (trap_GetTag( ent->s.number, painTagNames[tagIndex], &or )) {
+
+2001-09-15  Timothee Besset <ttimo@idsoftware.com>
+
+cons-based building system is now equivalent to existing
+one based on "regular makefiles". not gonna use it for
+MP test builds though, don't want to take the risk.
+
+final MP Test source and media is ready
+updating the code and building final binaries
+merging with recent SOS changes
+new media!
+
+adding wolfconfig.cfg to the distribution (vm_game 0 etc.)
+there is a potential problem with the mp_beachtest.script
+it doesn't seem to be broadcasted to clients
+
+0.7.15 win32 release doesn't use Id's SOS source tree the
+linux dedicated got built upon.
+Patched qcommon/files.c to let .script files go through
+FS_FOpenFileRead outside of the directory (fs_restrict 1 test)
+
+2001-09-14  Timothee Besset <ttimo@idsoftware.com>
+
+updated from SOS, this is supposed to be the source used for the MP test release
+merging in with my CVS tree
+NOTE: CVS conflicts solving, only looking at the diff if the file is in the
+  list of modified files from SOS
+
+some of Zaphod's fixes overlap my stuff (OSX builds with gcc)
+
+nothing in botai
+
+nothing in botlib
+
+client:
+cl_cgame.c
+cl_parse.c
+not affecting my changes
+
+game:
+ok M src/game/ai_cast_script_actions.c
+ok M src/game/bg_animation.c
+ok M src/game/bg_misc.c
+ok M src/game/bg_pmove.c
+ok M src/game/bg_public.h
+ok M src/game/g_active.c
+ok M src/game/g_client.c
+ok M src/game/g_cmds.c
+ok (no diff) M src/game/g_local.h
+ok M src/game/g_mover.c
+ok M src/game/g_script.c
+ok M src/game/g_tramcar.c
+ok M src/game/g_weapon.c
+ok M src/game/q_shared.h
+
+nothing in qcommon
+
+in server:
+ok (no diff) sv_init.c
+
+2001-09-13  Timothee Besset <ttimo@idsoftware.com>
+
+patched the build system and pak checksum to run in demo mode
+
+2001-09-11  Timothee Besset <ttimo@idsoftware.com>
+
+setting -Werror back on
+cleaning up gcc warnings
+
+some non-benign things:
+
+ai_cast_think.c:739: warning: left-hand operand of comma expression has no effect
+// TTimo gcc: left-hand operand of comma expression has no effect
+// initial line was: for (i = 0; i < aicast_maxclients, clCount < level.numPlayingClients; i++, ent++)
+for (i = 0; ( i < aicast_maxclients ) && ( clCount < level.numPlayingClients ) ; i++, ent++)
+
+same on ai_cast_think.c:869
+
+g_items.c:1000: warning: left-hand operand of comma expression has no effect
+
+now builds completely without warnings
+
+next: build with cons?
+started putting up cons scripts, saw the major issues, no functional build system yet. have to switch to compile new binaries for Id testing this afternoon.
+
+2001-09-08  Timothee Besset <ttimo@idsoftware.com>
+
+building dedicated server:
+
+- game/bg_public.h uses key_t conflicts with 
+  /usr/include/sys/types.h:122: previous declaration of `key_t'
+  renamed to bg_key_t
+- some FS_ReadFile casting to (void **)
+- stricmp usage is banned for portability reasons, use Q_stricmp
+- pak checkum with unsigned ints (gcc warning)
+- md4.c guarded #pragma between #ifdef WIN32
+- net_chan.c comment out Netchan_ScramblePacket (defined but not used)
+- added () around TFL_DEFAULT #define
+- fixed some %d into %ld (warning: int format, long int arg (arg 3))
+- moved the key completion stuff from cl_key.c to common.c
+- be_aas_routetable.c is new
+- suspicious be_aas_routetable 954, while (trav = next)
+- SV_GetTag in server/sv_game.c
+- new function Sys_DefaultBasePath in win_main.c
+  used in Cvar_Get "fs_basepath" default in files.c (filesystem init)
+  Q3 uses Sys_DefaultInstallPath instead, stubs to Sys_Cwd as Sys_DefaultBasePath does for win32
+  adding equivalent Sys_DefaultBasePath to unix_shared.c
+  
+building game dll:
+
+- game compilation defines GAMEDLL
+- duplicate trunk_states in g_tramcar, named plane_states correctly
+- unresolved BoxOnPlaneSide
+  after looking at Q3 qagame source, the symbol is not used
+  but it's extracted from g_funcs.h and g_func_decs.h
+  patched the two files to solve the problem
+- other unresolved:
+  undefined symbol: strlwr	(debugi386-glibc/baseq3/qagamei386.so)
+  undefined symbol: stricmp	(debugi386-glibc/baseq3/qagamei386.so)
+    use of strlw and stricmp should be PROHIBITED for portability reasons, use the provided
+    Q_strlwr and Q_stricmp instead
+  undefined symbol: max	(debugi386-glibc/baseq3/qagamei386.so)
+  undefined symbol: min	(debugi386-glibc/baseq3/qagamei386.so)
+    added #define in q_shared.h
+    
+the very first linux RTCW dedicated server was born on Mon Sep 10 9:45:00 CEST 2001
+ran a few minutes, checked that I could join the game from win32 client
+
+since the g_func.h and g_func_dec.h had to be patched, gonna use linux_ prefixed one and maintain by hand

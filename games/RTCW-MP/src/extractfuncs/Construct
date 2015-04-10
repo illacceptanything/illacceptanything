@@ -1,0 +1,9 @@
+# extractfunc top-level Construct
+#
+# Sep. 2001 TTimo <ttimo@idsoftware.com>
+#
+
+Default '.';
+Link 'out' => '../..';
+Build 'out/src/extractfuncs/Conscript';
+

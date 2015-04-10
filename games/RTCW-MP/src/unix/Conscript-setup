@@ -1,0 +1,77 @@
+# setup
+
+Import qw( CONFIG_DIR WOLF_VER BASEGAME do_demo do_light );
+
+$env = new cons();
+
+sub launch {
+  if ($do_demo eq 1)
+  {
+    system("./build_setup.sh demo $CONFIG_DIR/out $WOLF_VER");
+  }
+  elsif ($do_light eq 1)
+  {
+    # need to get the correct version (i.e. from SP source)
+    $line = `cat ../../../WolfSP/src/game/q_shared.h | grep Q3_VERSION`;
+    chomp $line;
+    $line =~ s/.*Wolf\ (.*)\"/$1/;
+    $WOLF_SP_VER = $line;    
+    system("./build_setup.sh light $CONFIG_DIR/out $WOLF_SP_VER");
+  }
+  else
+  {
+    # unified setup: SP and MP code
+    # we need a version tag, not necessarily the MP one
+    
+    # get SP version as tag
+    # FIXME: at some point we will want to use a completely different tag
+    # such as '1.2' (being 1.2-MP and 1.2-SP inside)
+    # extract the wolf version from q_shared.h
+    $BASEPATH = '../../../WolfSP/src';
+    $line = `cat $BASEPATH/game/q_shared.h | grep Q3_VERSION`;
+    chomp $line;
+    $line =~ s/.*Wolf\ (.*)\"/$1/;
+    $WOLF_VER = $line;
+    
+    # we need to pass the path to the SP files
+    $line = `cd $BASEPATH/unix; ./cons -- release info`;
+    chomp $line;
+    $WOLFSPBIN = $BASEPATH . '/unix/' . $line . '/out';
+    
+    # spawn a cons build in the SP source tree prior to run unified setup
+    # this is hacky, but probably the least painful solution
+    # if SP building fails, it will abort and not try to build setup
+    system("cd $BASEPATH/unix; ./cons -- release");
+		#system("./build_setup.sh $CONFIG_DIR/out $WOLFSPBIN $WOLF_VER");
+
+    # now build the full setup
+    #system("./build_setup.sh full $CONFIG_DIR/out $WOLFSPBIN $WOLF_VER");
+
+    # and incremental
+    # NOTE: the content of this one changes for every release
+    system("./build_setup.sh incremental $CONFIG_DIR/out $WOLFSPBIN $WOLF_VER");
+  }
+  return 1;
+}
+
+# common dependency
+Depends $env 'out/foo',
+  'out/wolfded.x86',
+  'out/' . $BASEGAME . '/qagame.mp.i386.so';  
+
+# pb dependency
+Depends $env 'out/foo',
+  'out/pb/pbag.so',
+  'out/pb/pbcl.so',
+  'out/pb/pbsv.so';
+
+if ($do_light ne 1)
+{
+# additional dep, only for the full build
+Depends $env 'out/foo',
+  'out/wolf.x86',
+  'out/' . $BASEGAME . '/cgame.mp.i386.so',
+  'out/' . $BASEGAME . '/ui.mp.i386.so';
+}
+Command $env 'out/foo', "[perl] &launch()";
+

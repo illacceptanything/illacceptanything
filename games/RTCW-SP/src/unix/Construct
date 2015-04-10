@@ -1,0 +1,249 @@
+# Wolfenstein top-level Construct
+#
+# Sep. 2001 TTimo <ttimo@idsoftware.com>
+#
+
+# the top directory is
+# <config>-<cpu>-<OS>-<libc version>
+# where:
+#   <config> is "debug" or "release"
+#   <cpu> is "x86" or "ppc"
+#   <OS> is "Linux" "BSD" "IRIX" etc.
+#   <libc version> is major.minor of libc config
+
+# parse command line arguments and do the setup
+
+# defaults
+$config = 'debug';
+$do_setup = 0;
+$do_demo = 0;
+$do_info = 0;
+
+# compiler
+$CC='gcc -m32';
+$CXX='g++ -m32';
+$LINK=$CXX;
+
+# detection of CPU type
+$cpu = `uname -m`;
+chop ($cpu);
+if ($cpu +~ /i?86/)
+{
+  $cpu = 'x86';
+}
+# OS
+$OS = `uname`;
+chop ($OS);
+# libc .. do the little magic!
+$libc_cmd = '/lib/libc.so.6 |grep "GNU C "|grep version|awk -F "version " \'{ print $2 }\'|cut -b -3';
+$libc = `$libc_cmd`;
+chop ($libc);
+
+if(@ARGV gt 0)
+{
+  foreach $cmdopt (@ARGV)
+  {
+    if(lc($cmdopt) eq 'release')
+    {
+      $config = 'release';
+      next;
+    }
+    elsif(lc($cmdopt) eq 'debug')
+    {
+      $config = 'debug';
+      next;
+    }
+    elsif(lc($cmdopt) eq 'setup')
+    {
+      $do_setup = 1;
+      next;
+    }
+    elsif(lc($cmdopt) eq 'demo')
+    {
+      $do_demo = 1;
+      next;
+    }
+    elsif(lc($cmdopt) eq 'info')
+    {
+      $do_info = 1;
+      next;
+    }
+    else
+    {
+      # output an error & exit
+      print("Error\n  $0: Unknown command line option: [ $cmdopt ]\n");
+      system("cons -h");
+      exit;
+    }
+  }
+}
+
+# build the config directory
+$CONFIG_DIR = $config . '-' . $cpu . '-' . $OS . '-' . $libc;
+if ($do_demo eq 1)
+{
+  $CONFIG_DIR = $CONFIG_DIR . '-demo';
+}
+
+if ($do_info eq 1)
+{
+  print "$CONFIG_DIR\n";
+  exit;
+}
+
+# this is a safety, avoid releasing any setup with all debugging symbols :-)
+if (($do_setup eq 1) && ($do_demo eq 1) && ($config ne 'release'))
+{
+  print "Forcing release build for setup build\n";
+  $config = 'release';
+}
+
+if ($do_demo eq 1)
+{
+  $COMMON_CFLAGS = '-pipe -fsigned-char -DWOLF_SP_DEMO ';
+  $BASEGAME = 'demomain';
+}
+else
+{
+  $COMMON_CFLAGS = '-pipe -fsigned-char ';
+  $BASEGAME = 'main';
+}
+
+# NOTE TTimo using -fshort-enums increases warnings on enum issues
+#   this is for debugging and QA ONLY, the flag has ABI issues (OpenGL headers)
+#$COMMON_CFLAGS = $COMMON_CFLAGS . '-fshort-enums ';
+
+if ($config eq 'debug')
+{
+  # NOTE TTimo using -Werror on debug build for QA
+  #$BASE_CFLAGS = $COMMON_CFLAGS . '-g -O ';
+  #$BASE_CFLAGS = $COMMON_CFLAGS . '-g -Werror -O ';
+  $BASE_CFLAGS = $COMMON_CFLAGS . '-g -Wall -O ';
+  #$BASE_CFLAGS = $COMMON_CFLAGS . '-g -Wall -Werror -O ';
+}
+else
+{
+  $BASE_CFLAGS = $COMMON_CFLAGS . '-DNDEBUG -O6 -mcpu=pentiumpro -march=pentium -fomit-frame-pointer -ffast-math -malign-loops=2 -malign-jumps=2 -malign-functions=2 -fno-strict-aliasing -fstrength-reduce ';
+}
+
+# extract the wolf version from q_shared.h
+$line = `cat ../game/q_shared.h | grep Q3_VERSION`;
+chomp $line;
+$line =~ s/.*Wolf\ (.*)\"/$1/;
+$WOLF_VER = $line;
+
+print "Wolfenstein version $WOLF_VER\n";
+print 'cpu : ' . $cpu . "\nOS  : " . $OS . "\nlibc: " . $libc . "\n";
+print "configured for " . $config . " build\n";
+if ($do_demo eq 1)
+{
+  print "building in demo mode\n";
+}
+print 'CFLAGS: ' . $BASE_CFLAGS . "\n";
+
+# by default, build everything below the config dir
+Default '..';
+
+# Disabling BSPC build. We use the one in MP anyway
+##----------------------------------------------
+## build bspc
+#
+#$TARGET_DIR = 'tools/bspc';
+#$BUILD_DIR = $CONFIG_DIR . '/' . $TARGET_DIR;
+#Link $BUILD_DIR => '..';
+#Export qw( BASE_CFLAGS CONFIG_DIR BUILD_DIR CC CXX LINK );
+#Build $BUILD_DIR . '/unix/Conscript-bspc';
+
+#----------------------------------------------
+# build the extractfunc tool
+
+$BUILD_DIR = '../extractfuncs/out';
+Link $BUILD_DIR => '../..';
+Build $BUILD_DIR . '/src/extractfuncs/Conscript';
+
+#----------------------------------------------
+$TARGET_DIR = 'full';
+
+$BUILD_DIR = $CONFIG_DIR . "/" . $TARGET_DIR;
+
+Link $BUILD_DIR => '..';
+
+Export qw( BASE_CFLAGS CONFIG_DIR BUILD_DIR CC CXX LINK );
+
+Build $BUILD_DIR . "/unix/Conscript-client";
+
+#---------------------------------------------
+$TARGET_DIR = 'game';
+
+$BUILD_DIR = $CONFIG_DIR . "/" . $TARGET_DIR;
+
+Link $BUILD_DIR => '..';
+
+Export qw( BASE_CFLAGS CONFIG_DIR BUILD_DIR BASEGAME CC CXX LINK );
+
+Build $BUILD_DIR . "/unix/Conscript-game";
+
+#----------------------------------------------
+# NOTE TTimo for cgame and ui, we have to
+#   link the dir starting below Wolfenstein/
+#   because ui_shared.h reads in ../../MAIN/UI
+$TARGET_DIR = 'cgame';
+
+$BUILD_DIR = $CONFIG_DIR . "/" . $TARGET_DIR;
+
+Link $BUILD_DIR => '../..';
+
+Export qw( BASE_CFLAGS CONFIG_DIR BUILD_DIR BASEGAME CC CXX LINK );
+
+Build $BUILD_DIR . "/src/unix/Conscript-cgame";
+
+#----------------------------------------------
+$TARGET_DIR = 'ui';
+
+$BUILD_DIR = $CONFIG_DIR . "/" . $TARGET_DIR;
+
+Link $BUILD_DIR => '../..';
+
+Export qw( BASE_CFLAGS CONFIG_DIR BUILD_DIR BASEGAME CC CXX LINK );
+
+Build $BUILD_DIR . "/src/unix/Conscript-ui";
+
+#----------------------------------------------
+if ($do_setup eq 1)
+{
+  # we bail out if config is not release
+  if ($config ne 'release')
+  {
+    print "Not building setups with debug config\n";
+    exit;
+  }
+  Link $CONFIG_DIR => '.';
+  Export qw( CONFIG_DIR WOLF_VER BASEGAME do_demo CC CXX LINK );
+  Build $CONFIG_DIR . "/Conscript-setup";
+}
+#--------------------------------------------------
+# cons help for those that ask for it (with 'cons -h')
+Help 
+"
+Usage: cons [-h] [ -- [release|debug] [demo] [setup] [info]]
+
+options:
+[release|debug]
+ Default build type is Debug, specifying '-- release' on the
+ command line builds a Release version.
+ 
+[demo]
+ This switch uses -DPRE_RELEASE_DEMO and builds for MPTest
+
+[setup]
+ 'cons -- setup' will build then execute the setup building scripts
+   NOTE: 'cons -- setup' will default to release configuration
+ you can use 'cons -- setup debug' to force debug setups building
+ reminder: distributed binaries must be configured in release 
+   and stripped from symbols
+
+[info]
+ Will cause cons to print the build directory name and exit without performing
+ any build action (used by setup procedure).   
+"
+;

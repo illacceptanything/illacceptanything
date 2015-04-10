@@ -1,0 +1,9 @@
+# extractfuncs building
+
+$env = new cons(
+  CC => 'gcc',
+  CFLAGS => '-g -DSCREWUP '
+  );
+
+Program $env 'extractfuncs', 'extractfuncs.c', 'l_log.c', 'l_memory.c', 'l_precomp.c', 'l_script.c';
+Install $env '#', 'extractfuncs';

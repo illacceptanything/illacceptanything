@@ -1,0 +1,303 @@
+// !$*UTF8*$!
+{
+	00F5ED38FEBA95B7C697A12F = {
+		activeExec = 0;
+	};
+	00F5ED90FEBA9615C697A12F = {
+		activeExec = 0;
+	};
+	012ADA3E00868211C697A10E = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{107, 411}, {750, 502}}";
+		};
+	};
+	012ADA6200868211C697A10E = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{15, 495}, {750, 502}}";
+		};
+	};
+	012ADAFF00868211C697A10E = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{153, 369}, {750, 502}}";
+		};
+	};
+	012ADB0800868211C697A10E = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{84, 432}, {750, 502}}";
+		};
+	};
+	012ADB1B00868211C697A10E = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{15, 495}, {750, 502}}";
+		};
+	};
+	016EAE0300B4BDD1C697A10E = {
+		activeExec = 0;
+	};
+	0170311C00B49352C697A10E = {
+		activeExec = 0;
+	};
+	043627A700868916C697A10E = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{15, 495}, {750, 502}}";
+		};
+	};
+	04B344DA00B896237F000001 = {
+		activeArgIndex = 0;
+		argumentStrings = (
+			"+set fs_basepath /Users/zaphod/wolf +set fs_cdpath /Users/zaphod/wolf +set s_initsound 1 +set in_nomouse 1 ",
+		);
+		debuggerPlugin = GDBDebugging;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		isa = PBXExecutable;
+		shlibInfoDictList = (
+		);
+		sourceDirectories = (
+		);
+	};
+	0654BA41FE8ECEE0C697A12F = {
+		activeBuildStyle = 07F3F50CFFE98E8EC697A10E;
+		activeTarget = 0654BA5CFE8ECEE0C697A12F;
+		addToTargets = (
+			00F5ED90FEBA9615C697A12F,
+		);
+		breakpoints = (
+			F54C9F92013DAE9C01F6286D,
+			F54C9F94013DB00301F6286D,
+			F54C9F95013DB06101F6286D,
+			F54C9F96013DB06101F6286D,
+			F54C9F97013DB0F901F6286D,
+			F54C9F98013DB15C01F6286D,
+			F54C9F99013DB15C01F6286D,
+			F54C9F9A013DB19A01F6286D,
+			F54C9F9B013DB19A01F6286D,
+			F54C9F9C013DB19A01F6286D,
+			F54C9F9D013DB54A01F6286D,
+			F54C9F9E013DB5DA01F6286D,
+			F54C9F9F013DB7C701F6286D,
+			F54C9FA0013DB7C701F6286D,
+			F54C9FA1013DB85F01F6286D,
+			F5738813013EBB9E01F6286D,
+			F5DB5A70013EC97401F6286D,
+		);
+		perUserDictionary = {
+			PBXWorkspaceConfiguration = {
+				ContentSize = "{946, 938}";
+				LeftSlideOut = {
+					ActiveTab = 3;
+					Frame = "{{0, 23}, {946, 915}}";
+					Split0 = {
+						ActiveTab = 2;
+						Frame = "{{225, 0}, {721, 915}}";
+						Split0 = {
+							Frame = "{{0, 311}, {721, 604}}";
+						};
+						SplitCount = 1;
+						Tab0 = {
+							Debugger = {
+								ActiveTab = 1;
+								Frame = "{{0, 0}, {672, 518}}";
+								Split0 = {
+									Frame = "{{0, 174}, {672, 344}}";
+									Split0 = {
+										Frame = "{{0, 0}, {323, 344}}";
+									};
+									Split1 = {
+										Frame = "{{332, 0}, {340, 344}}";
+									};
+									SplitCount = 2;
+								};
+								SplitCount = 1;
+								Tab0 = {
+									Frame = "{{0, 0}, {1242, 50}}";
+								};
+								Tab1 = {
+									Frame = "{{0, 0}, {672, 149}}";
+								};
+								TabCount = 2;
+							};
+							Frame = "{{0, 0}, {672, 518}}";
+							LauncherConfigVersion = 4;
+						};
+						Tab1 = {
+							Frame = "{{0, 0}, {672, 208}}";
+							LauncherConfigVersion = 3;
+							Runner = {
+								Frame = "{{0, 0}, {672, 208}}";
+							};
+						};
+						Tab2 = {
+							BuildMessageFrame = "{{0, 0}, {723, 181}}";
+							BuildTranscriptFrame = "{{0, 190}, {723, 98}}";
+							Frame = "{{0, 0}, {721, 286}}";
+						};
+						Tab3 = {
+							Frame = "{{0, 0}, {672, 295}}";
+						};
+						TabCount = 4;
+					};
+					SplitCount = 1;
+					Tab0 = {
+						Frame = "{{0, 0}, {249, 915}}";
+					};
+					Tab1 = {
+						ClassesFrame = "{{0, 0}, {202, 521}}";
+						Frame = "{{0, 0}, {200, 857}}";
+						MembersFrame = "{{0, 530}, {202, 327}}";
+						OptionsSetName = "Hierarchy, all classes";
+					};
+					Tab2 = {
+						Frame = "{{0, 0}, {200, 887}}";
+					};
+					Tab3 = {
+						Frame = "{{0, 0}, {200, 915}}";
+						Split0 = {
+							Frame = "{{0, 0}, {200, 444}}";
+						};
+						Split1 = {
+							Frame = "{{0, 453}, {200, 462}}";
+						};
+						SplitCount = 2;
+					};
+					Tab4 = {
+						Frame = "{{0, 0}, {250, 887}}";
+					};
+					TabCount = 5;
+				};
+			};
+		};
+		userBookmarkGroup = F54C9FA2013DB95801F6286D;
+		wantsIndex = 1;
+		wantsSCM = -1;
+	};
+	0654BA5CFE8ECEE0C697A12F = {
+		activeExec = 0;
+		targetExecs = {
+			macosx = (
+				04B344DA00B896237F000001,
+			);
+		};
+	};
+	F54C9F92013DAE9C01F6286D = {
+		fileReference = 012ADB2100868211C697A10E;
+		isa = PBXFileBreakpoint;
+		lineNumber = 730;
+		state = 1;
+	};
+	F54C9F94013DB00301F6286D = {
+		fileReference = 012ADB2100868211C697A10E;
+		isa = PBXFileBreakpoint;
+		lineNumber = 724;
+		state = 1;
+	};
+	F54C9F95013DB06101F6286D = {
+		fileReference = 012ADB0A00868211C697A10E;
+		isa = PBXFileBreakpoint;
+		lineNumber = 289;
+		state = 2;
+	};
+	F54C9F96013DB06101F6286D = {
+		fileReference = 012ADB1B00868211C697A10E;
+		isa = PBXFileBreakpoint;
+		lineNumber = 381;
+		state = 2;
+	};
+	F54C9F97013DB0F901F6286D = {
+		fileReference = 012ADB0A00868211C697A10E;
+		isa = PBXFileBreakpoint;
+		lineNumber = 1268;
+		state = 1;
+	};
+	F54C9F98013DB15C01F6286D = {
+		fileReference = 012ADB1700868211C697A10E;
+		isa = PBXFileBreakpoint;
+		lineNumber = 274;
+		state = 1;
+	};
+	F54C9F99013DB15C01F6286D = {
+		fileReference = 012ADB1B00868211C697A10E;
+		isa = PBXFileBreakpoint;
+		lineNumber = 387;
+		state = 2;
+	};
+	F54C9F9A013DB19A01F6286D = {
+		fileReference = 012ADB2100868211C697A10E;
+		isa = PBXFileBreakpoint;
+		lineNumber = 714;
+		state = 1;
+	};
+	F54C9F9B013DB19A01F6286D = {
+		fileReference = 012ADB2100868211C697A10E;
+		isa = PBXFileBreakpoint;
+		lineNumber = 822;
+		state = 1;
+	};
+	F54C9F9C013DB19A01F6286D = {
+		fileReference = 012ADB2100868211C697A10E;
+		isa = PBXFileBreakpoint;
+		lineNumber = 897;
+		state = 2;
+	};
+	F54C9F9D013DB54A01F6286D = {
+		fileReference = 012ADB1800868211C697A10E;
+		isa = PBXFileBreakpoint;
+		lineNumber = 1067;
+		state = 1;
+	};
+	F54C9F9E013DB5DA01F6286D = {
+		fileReference = 012ADB1800868211C697A10E;
+		isa = PBXFileBreakpoint;
+		lineNumber = 692;
+		state = 2;
+	};
+	F54C9F9F013DB7C701F6286D = {
+		fileReference = 012ADB1800868211C697A10E;
+		isa = PBXFileBreakpoint;
+		lineNumber = 776;
+		state = 2;
+	};
+	F54C9FA0013DB7C701F6286D = {
+		fileReference = 012ADB1800868211C697A10E;
+		isa = PBXFileBreakpoint;
+		lineNumber = 720;
+		state = 2;
+	};
+	F54C9FA1013DB85F01F6286D = {
+		fileReference = 012ADB1800868211C697A10E;
+		isa = PBXFileBreakpoint;
+		lineNumber = 749;
+		state = 2;
+	};
+	F54C9FA2013DB95801F6286D = {
+		children = (
+			F54C9FA3013DB95801F6286D,
+		);
+		isa = PBXBookmarkGroup;
+		name = Root;
+	};
+	F54C9FA3013DB95801F6286D = {
+		fRef = 012ADB1800868211C697A10E;
+		isa = PBXTextBookmark;
+		name = "tr_model.c: R_LoadMDC";
+		rLen = 0;
+		rLoc = 24021;
+		rType = 0;
+		vrLen = 788;
+		vrLoc = 23631;
+	};
+	F5738813013EBB9E01F6286D = {
+		fileReference = 043627AB00868916C697A10E;
+		isa = PBXFileBreakpoint;
+		lineNumber = 46;
+		state = 2;
+	};
+	F5DB5A70013EC97401F6286D = {
+		fileReference = 043627AD00868916C697A10E;
+		isa = PBXFileBreakpoint;
+		lineNumber = 280;
+		state = 1;
+	};
+}

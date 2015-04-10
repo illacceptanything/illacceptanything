@@ -1,0 +1,74 @@
+# cgame
+
+Import qw( BASE_CFLAGS CONFIG_DIR BUILD_DIR BASEGAME do_lddabort CC CXX LINK );
+
+$env = new cons(
+	CC => $CC,
+	CXX => $CXX,
+	LINK => $LINK,
+  CPPPATH => '#../game:#../ui', # needed for cg_ files
+  CFLAGS => $BASE_CFLAGS . '-fPIC -DCGAMEDLL',
+  LDFLAGS => '-shared -ldl -lm'
+);
+
+# some files are compiled and linked in to several .so
+# this confuses gdb when setting breakpoints
+
+@CG_FILES_IN = qw (
+  ../game/bg_animation.c
+  ../game/bg_misc.c
+  ../game/bg_pmove.c
+  ../game/bg_slidemove.c
+  ../game/q_math.c
+  ../game/q_shared.c
+  ../ui/ui_shared.c
+	);
+
+# run through and process into cgame specific
+my @CG_FILES_OUT;
+foreach (@CG_FILES_IN)
+{
+	$source = $_;
+	$source =~ s/.*\/(.*)/..\/cgame\/cg_\1/;
+	push @CG_FILES_OUT, $source;
+}
+
+InstallAs $env [@CG_FILES_OUT], [@CG_FILES_IN];
+
+$CG_FILESREF = \@CG_FILES_OUT;
+
+@FILES = qw(
+  ../cgame/cg_consolecmds.c
+  ../cgame/cg_draw.c
+  ../cgame/cg_drawtools.c
+  ../cgame/cg_effects.c
+  ../cgame/cg_ents.c
+  ../cgame/cg_event.c
+  ../cgame/cg_flamethrower.c
+  ../cgame/cg_info.c
+  ../cgame/cg_localents.c
+  ../cgame/cg_main.c
+  ../cgame/cg_marks.c
+  ../cgame/cg_newDraw.c
+  ../cgame/cg_particles.c
+  ../cgame/cg_players.c
+  ../cgame/cg_playerstate.c
+  ../cgame/cg_predict.c
+  ../cgame/cg_scoreboard.c
+  ../cgame/cg_servercmds.c
+  ../cgame/cg_snapshot.c
+  ../cgame/cg_sound.c
+  ../cgame/cg_spawn.c
+  ../cgame/cg_syscalls.c
+  ../cgame/cg_trails.c
+  ../cgame/cg_view.c
+  ../cgame/cg_weapons.c
+  );
+$FILESREF = \@FILES;
+
+# FIXME CPU string  
+Program $env 'cgame.mp.i386.so', @$FILESREF, @$CG_FILESREF;
+my $path = FilePath('cgame.mp.i386.so');
+AfterBuild $env 'cgame.mp.i386.so', "[perl] &ldd_check::do_check(\'$path\', $do_lddabort)";
+
+Install $env '#' . $CONFIG_DIR . '/out/' . $BASEGAME, 'cgame.mp.i386.so';

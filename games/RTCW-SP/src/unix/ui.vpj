@@ -1,0 +1,31 @@
+[GLOBAL]
+workingdir=.
+version=6.0
+packname=GNU gcc or g++
+MACRO=\n
+[CONFIGURATIONS]
+activeconfig=,Release
+config=,Release
+[COMPILER.Release]
+compile=copts: concur|capture|menu: Compile:&Compilecmd: make %n.ootheropts: 
+make=copts: concur|capture|savemodified|menu: Build:&Buildcmd: consotheropts: 
+rebuild=copts: concur|capture|menu: Rebuild:&Rebuildcmd: otheropts: 
+debug=copts: |menu: Debug:&Debugcmd: xxgdb [exename-here]otheropts: 
+execute=copts: |menu: Execute:E&xecutecmd: uiotheropts: 
+includedirs=%(INCLUDE)
+reffile=
+[FILES]
+Conscript-ui
+Construct
+../ui/keycodes.h
+../ui/ui_atoms.c
+../ui/ui_gameinfo.c
+../ui/ui_local.h
+../ui/ui_main.c
+../ui/ui_players.c
+../ui/ui_public.h
+../ui/ui_shared.c
+../ui/ui_shared.h
+../ui/ui_syscalls.c
+../ui/ui_util.c
+[ASSOCIATION]

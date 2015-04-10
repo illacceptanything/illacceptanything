@@ -1,0 +1,50 @@
+# cgame
+
+Import qw( BASE_CFLAGS CONFIG_DIR BUILD_DIR BASEGAME CC CXX LINK );
+
+$env = new cons(
+	CC => $CC,
+	CXX => $CXX,
+	LINK => $LINK,
+  CFLAGS => $BASE_CFLAGS . '-fPIC -DCGAMEDLL',
+  LDFLAGS => '-shared -ldl -lm'
+);
+
+@FILES = qw(
+  ../game/bg_animation.c
+  ../game/bg_misc.c
+  ../game/bg_pmove.c
+  ../game/bg_slidemove.c
+  ../cgame/cg_consolecmds.c
+  ../cgame/cg_draw.c
+  ../cgame/cg_drawtools.c
+  ../cgame/cg_effects.c
+  ../cgame/cg_ents.c
+  ../cgame/cg_event.c
+  ../cgame/cg_flamethrower.c
+  ../cgame/cg_info.c
+  ../cgame/cg_localents.c
+  ../cgame/cg_main.c
+  ../cgame/cg_marks.c
+  ../cgame/cg_newDraw.c
+  ../cgame/cg_particles.c
+  ../cgame/cg_players.c
+  ../cgame/cg_playerstate.c
+  ../cgame/cg_predict.c
+  ../cgame/cg_scoreboard.c
+  ../cgame/cg_servercmds.c
+  ../cgame/cg_snapshot.c
+  ../cgame/cg_sound.c
+  ../cgame/cg_syscalls.c
+  ../cgame/cg_trails.c
+  ../cgame/cg_view.c
+  ../cgame/cg_weapons.c
+  ../game/q_math.c
+  ../game/q_shared.c
+  ../ui/ui_shared.c
+  );
+$FILESREF = \@FILES;
+
+# FIXME CPU string  
+Program $env 'cgamei386.so', @$FILESREF;
+Install $env '#' . $CONFIG_DIR . '/out/' . $BASEGAME, 'cgamei386.so';
