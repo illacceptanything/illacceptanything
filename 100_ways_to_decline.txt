@@ -1,0 +1,111 @@
+Got an invitation you'd rather decline?  No problem.  Just pick
+a number:
+
+I'd love to, but...
+
+  1    I have to floss my cat.
+  2    I've dedicated my life to linguine.
+  3    I want to spend more time with my blender.
+  4    The President said he might drop in.
+  5    The man on television told me to stay tuned.
+  6    I've been scheduled for a karma transplant.
+  7    I'm staying home to work on my cottage cheese sculpture.
+  8    It's my parakeet's bowling night.
+  9    It wouldn't be fair to the other Beautiful People.
+  10   I'm building a pig from a kit.
+  11   I did my own thing and now I've got to undo it.
+  12   I'm enrolled in aerobic scream therapy.
+  13   There's a disturbance in the Force.
+  14   I'm doing door-to-door collecting for static cling.
+  15   I have to go to the post office to see if I'm still wanted.
+  16   I'm teaching my ferret to yodel.
+  17   I have to check the freshness dates on my dairy products.
+  18   I'm going through cherry cheesecake withdrawal.
+  19   I'm planning to go downtown to try on gloves.
+  20   My crayons all melted together.
+  21   I'm trying to see how long I can go without saying yes.
+  22   I'm in training to be a household pest.
+  23   I'm getting my overalls overhauled.
+  24   My patent is pending.
+  25   I'm attending the opening of my garage door.
+  26   I'm sandblasting my oven.
+  27   I'm worried about my vertical hold.
+  28   I'm going down to the bakery to watch the buns rise.
+  29   I'm being deported.
+  30   The grunion are running.
+  31   I'll be looking for a parking space.
+  32   My Millard Fillmore Fan Club meets then.
+  33   The monsters haven't turned blue yet, and I have to eat more dots.
+  34   I'm taking punk totem pole carving.
+  35   I have to fluff my shower cap.
+  36   I'm converting my calendar watch from Julian to Gregorian.
+  37   I've come down with a really horrible case of something or other.
+  38   I made an appointment with a cuticle specialist.
+  39   My plot to take over the world is thickening.
+  40   I have to fulfill my potential.
+  41   I don't want to leave my comfort zone.
+  42   It's too close to the turn of the century.
+  43   I have some real hard words to look up in the dictionary.
+  44   My subconscious says no.
+  45   I'm giving nuisance lessons at a convenience store.
+  46   I left my body in my other clothes.
+  47   The last time I went, I never came back.
+  48   I've got a Friends of Rutabaga meeting.
+  49   I have to answer all of my "occupant" letters.
+  50   None of my socks match.
+  51   I have to be on the next train to Bermuda.
+  52   I'm having all my plants neutered.
+  53   People are blaming me for the Spanish-American War.
+  54   I changed the lock on my door and now I can't get out.
+  55   I'm making a home movie called "The Thing That Grew in My
+       Refrigerator."
+  56   I'm attending a perfume convention as guest sniffer.
+  57   My yucca plant is feeling yucky.
+  58   I'm touring China with a wok band.
+  59   My chocolate-appreciation class meets that night.
+  60   I never go out on days that end in "Y."
+  61   My mother would never let me hear the end of it.
+  62   I'm running off to Yugoslavia with a foreign-exchange student named
+       Basil Metabolism.
+  63   I just picked up a book called "Glue in Many Lands" and I can't put
+       it down.
+  64   I'm too old/young for that stuff.
+  65   I have to wash/condition/perm/curl/tease/torment my hair.
+  66   I have too much guilt.
+  67   There are important world issues that need worrying about.
+  68   I have to draw "Cubby" for an art scholarship.
+  69   I'm uncomfortable when I'm alone or with others.
+  70   I promised to help a friend fold road maps.
+  71   I feel a song coming on.
+  72   I'm trying to be less popular.
+  73   My bathroom tiles need grouting.
+  74   I have to bleach my hare.
+  75   I'm waiting to see if I'm already a winner.
+  76   I'm writing a love letter to Richard Simmons.
+  77   You know how we psychos are.
+  78   My favorite commercial is on TV.
+  79   I have to study for a blood test.
+  80   I'm going to be old someday.
+  81   I've been traded to Cincinnati.
+  82   I'm observing National Apathy Week.
+  83   I have to rotate my crops.
+  84   My uncle escaped again.
+  85   I'm up to my elbows in waxy buildup.
+  86   I have to knit some dust bunnies for a charity bazaar.
+  87   I'm having my baby shoes bronzed.
+  88   I have to go to court for kitty littering.
+  89   I'm going to count the bristles in my toothbrush.
+  90   I have to thaw some karate chops for dinner.
+  91   Having fun gives me prickly heat.
+  92   I'm going to the Missing Persons Bureau to see if anyone is looking
+       for me.
+  93   I have to jog my memory.
+  94   My palm reader advised against it.
+  95   My Dress For Obscurity class meets then.
+  96   I have to stay home and see if I snore.
+  97   I prefer to remain an enigma.
+  98   I think you want the OTHER  [your name].
+  99   I have to sit up with a sick ant.
+  100  I'm trying to cut down.
+
+

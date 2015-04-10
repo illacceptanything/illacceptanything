@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Read HN</title>
+  <style>
+    html, body {
+      background-color: #111;
+      height: 100%;
+      margin: 0;
+      width: 100%;
+    }
+
+    img {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <script>
+
+    // util method bc f jquery
+    function getJSON(url, callback) {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", url, true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+          var response = JSON.parse(xhr.responseText);
+          callback(response)
+        }
+      }
+      xhr.send();
+    }
+
+    // dynamically create a greeting
+    function getGreeting() {
+      var hour = new Date().getHours();
+
+      if (hour > 17) { return "Good Evening."; }
+      if (hour > 12) { return "Good Afternoon."; }
+      if (hour > 5) { return "Good Morning."; }
+
+      return "Why are you up so late? You should probably sleep...Anyways...";
+    }
+
+    // interface to speech api
+    function sayAnything(thing) {
+      var msg = new SpeechSynthesisUtterance(thing);
+      window.speechSynthesis.speak(msg);
+    }
+
+    // process data from HN api
+    function handleHN(articles) {
+      var greetingOpening = getGreeting();
+      var greetingClosing = "That's all for now. Goodbye."
+
+      sayAnything(greetingOpening);
+
+      articles.forEach(function(article) {
+        sayAnything(article.title + '.');
+      });
+
+      sayAnything(greetingClosing);
+    }
+
+    // callback factory to handle story api call
+    function handleStoryFactory(limit) {
+      var articles = [];
+
+      return function(res) {
+        articles.push(res);
+        if (articles.length === limit) {
+          handleHN(articles);
+        }
+      }
+    }
+
+    // callback to handle top stories api call
+    function handleTopStories(res) {
+      var numTopStories = 10;
+      var topTenStoriesIds = res.slice(0, numTopStories);
+      var storyCallback = handleStoryFactory(numTopStories);
+
+      topTenStoriesIds.forEach(function(id) {
+        getJSON("https://hacker-news.firebaseio.com/v0/item/" + id + ".json", storyCallback);
+      });
+    }
+
+    // get top articles
+    getJSON("https://hacker-news.firebaseio.com/v0/topstories.json", handleTopStories);
+
+  </script>
+
+  <img src="http://now-here-this.timeout.com/wp-content/uploads/2013/02/tumblr_lhjnfsdULm1qzp85mo1_500.gif" alt="reading...">
+</body>
+</html>

@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+set -e
+while true; do
+  netcat -lp 1234 -e '
+    read request_line
+    resource=$(echo $request_line | cut -f2 -d" " | cut -c 2-)
+    [ -n "$resource" ] || resource=.
+    say "Received request: $resource" 2> /dev/null
+    if [ -e "$resource" ]; then
+      echo "HTTP/1.0 200 OK"
+      if [ -d "$resource" ]; then
+        echo "Content-Type: text/html"
+        echo
+        ls "$resource" | while read file; do
+          if [ -d "$resource/$file" ]; then
+            echo "<a href=\"$resource/$file/\">$file/</a><br />"
+          else
+            echo "<a href=\"$resource/$file\">$file</a><br />"
+          fi
+        done
+      elif [[ "$resource" == *".php" ]]; then
+        echo
+        php -q "$resource"
+      else
+        echo
+        cat "$resource"
+      fi
+    else
+      echo "HTTP/1.0 404 Not Found"
+      echo "Content-Type: text/plain"
+      echo
+      echo "Resource \"$resource\" not found."
+    fi'
+done

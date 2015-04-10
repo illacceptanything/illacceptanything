@@ -1,0 +1,74 @@
+#!/bin/bash
+
+# hear the md5sum of a file! ♬ ♬ ♬ ♬
+# by liam (github.com/liamgriffiths)
+
+function beat { 
+  tput bel 
+}
+
+function beats { 
+  beat
+}
+
+function break { 
+  sleep 0.001 
+}
+
+function whole { 
+  $1 && sleep 1
+}
+
+function half { 
+  $1 && sleep 0.5
+}
+
+function quarter { 
+  $1 && sleep 0.25
+}
+
+function eighth { 
+  $1 && sleep 0.125
+}
+
+function play {
+  for n in `seq $1`; do 
+    $2 $3 
+  done
+}
+
+function hexbeat {
+  [[ $1 == "1" ]] && play 1 whole beat
+  [[ $1 == "2" ]] && play 1 half beat
+  [[ $1 == "3" ]] && play 1 quarter beat
+  [[ $1 == "4" ]] && play 1 eighth beat
+  [[ $1 == "5" ]] && play 2 whole beats
+  [[ $1 == "6" ]] && play 2 half beats
+  [[ $1 == "7" ]] && play 2 quarter beats
+  [[ $1 == "8" ]] && play 2 eighth beats
+  [[ $1 == "9" ]] && play 4 whole beats
+  [[ $1 == "0" ]] && play 4 half beats
+  [[ $1 == "a" ]] && play 4 quarter beats
+  [[ $1 == "b" ]] && play 4 eighth beats
+  [[ $1 == "c" ]] && play 1 whole break
+  [[ $1 == "d" ]] && play 1 half break
+  [[ $1 == "e" ]] && play 1 quarter break
+  [[ $1 == "f" ]] && play 1 eighth break
+}
+
+function usage {
+  echo "beatsum: hear the md5sum of a file"
+  echo "usage: $0 [file]"
+  exit 1
+}
+
+function main {
+  local hexstring=$(md5 -q $1)
+  for ((i=0; i < ${#hexstring}; i++)); do
+    hexbeat ${hexstring:$i:1}
+  done
+}
+
+[ $# -eq 0 ] && usage
+[ "$1" == "--help" ] && usage
+main $1

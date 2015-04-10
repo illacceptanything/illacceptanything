@@ -1,0 +1,50 @@
+======================================================================
+		         Terminal DOGE
+		         Version 0.0.1
+
+                         README.install
+----------------------------------------------------------------------
+
+
+Overview
+======================================================================
+This README.install file describes how to install Terminal DOGE
+
+It consists of the following sections:
+   - Requirements
+   - Installation Instructions
+   - Uninstallation Instructions
+
+Before to install the program, if you want to see Terminal DOGE execu-
+ting you can access: https://www.youtube.com/watch?v=QxyoltnQKLU and
+check a simple demonstration.
+
+Requirements
+======================================================================
+To install Terminal DOGE you will need:
+   - Linux with kernel 3.13 (recommended)
+   - g++ version 4.8.2 (recommended)
+   - cmake version 2.8.12.2 (recommended)
+
+Installation Instructions
+======================================================================
+
+There is the required steps to install Terminal DOGE:
+
+   1. Run theses following commands:
+
+   # cmake .
+   # make
+
+
+Uninstallation Instructions
+======================================================================
+
+This section explains how to uninstall Terminal DOGE: 
+
+   1. Uninstall Terminal DOGE with the command:
+
+   # make clean
+
+----------------------------------------------------------------------
+======================================================================
