@@ -1,0 +1,44 @@
+<html>
+<head>
+   <meta charset="utf-8">
+   <title>Paws.js Client Tests (T.A.P.)</title>
+   <style>
+      #explanation {
+         margin: 2.5em;
+         
+         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+         font-size: 135% }
+      #explanation span.code {
+         font-family: Menlo, Consolas, "Lucida Console", monospace }
+   </style>
+</head>
+<body>
+   <div id="mocha"></div>
+   <script src="../node_modules/mocha/mocha.js"></script>
+   <script>
+      mocha.setup('bdd')
+      mocha.reporter('tap')
+   </script>
+   <script src="./Paws.bundle.js"></script>
+   
+   <div id="explanation">
+      <p>This file is used by <a href="https://ci.testling.com">Testling-CI</a> to run the client-
+         side Paws tests in each browser I'm interested in testing against, automatically. It
+         outputs the information in <a href="http://testanything.org">Test-Anything-Protocol</a> (or
+         ‘TAP’) format to the browser's <span class='code'>console</span>.</p>
+      
+      <p>You'll see a <em>much</em> prettier version of our client-side tests if you run 
+         <span class='code'>cake test:client</span> in the project's directory.</p>
+      
+      <p><span class='code'>:)</span></p>
+   </div>
+   
+   <script>
+      window.onload = function(){
+         if (mocha.suite.suites.length >= 1)
+            mocha.run(function(){})
+         else
+            console.log("Bail out! No suites found. Something has gone wrong.") }
+   </script>
+</body>
+</html>

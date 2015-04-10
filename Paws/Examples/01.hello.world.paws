@@ -1,0 +1,3 @@
+#!/usr/bin/env paws.js --no-start
+
+implementation console print “Hello, world!”
