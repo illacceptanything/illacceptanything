@@ -1,12 +1,3 @@
-[submodule "this"]
-	path = this
-	url = https://github.com/mrkrstphr/illacceptanything.git
-[submodule "self"]
-	path = self
-	url = https://github.com/mrkrstphr/illacceptanything.git
-[submodule "lisp"]
-	path = lisp
-	url = git://git.code.sf.net/p/sbcl/sbcl
 [submodule "drive"]
 	path = code/drive
 	url = https://github.com/odeke-em/drive
