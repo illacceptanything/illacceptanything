@@ -29,6 +29,7 @@ every Pull Request submitted and see what happens.
  * No porn.
  * Nothing illegal.
  * Can't violate GitHub terms of service.
+ * Don't mess with the LICENSE file - we kind of need that intact!
  * Don't be a [dick](https://github.com/illacceptanything/illacceptanything/blob/master/data/dickbutt.dickbutt), or any other copulatory organ. This includes:
     - [Trying](https://github.com/illacceptanything/illacceptanything/pull/463) [to](https://github.com/illacceptanything/illacceptanything/pull/498) [delete](https://github.com/illacceptanything/illacceptanything/pull/545) [everything](https://github.com/illacceptanything/illacceptanything/pull/308) [in](https://github.com/illacceptanything/illacceptanything/pull/259) [the](https://github.com/illacceptanything/illacceptanything/pull/131) [repository](https://github.com/illacceptanything/illacceptanything/pull/396).
     - [Uploading](https://github.com/illacceptanything/illacceptanything/pull/423) [malicious](https://github.com/illacceptanything/illacceptanything/pull/404) [code](https://github.com/illacceptanything/illacceptanything/pull/492)
