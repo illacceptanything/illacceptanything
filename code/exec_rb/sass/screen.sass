@@ -1,0 +1,215 @@
+@import "compass/reset"
+@import "bourbon/bourbon"
+
+$background-color: #272822
+$font-color: #F8F8F2
+$font-size: 18px
+$prompt-color: #66D9EF
+$highlight-color: #AE81FF
+$alternate-color: #E6DB74
+$response-label-color: $highlight-color
+$response-color: $alternate-color
+$error-color: #F92672
+
+body, textarea
+  background: $background-color
+  color: $font-color
+  overflow: hidden
+
+body
+  font-family: monospace
+  font-size: $font-size
+  line-height: $font-size+2px
+
+a
+  color: $highlight-color
+  text-decoration: none
+
+  &:hover
+    text-decoration: underline
+
+hr
+  border-color: #444
+
+p
+  margin: 20px 0
+
+h1
+  font-size: $font-size*2
+  line-height: $font-size*2
+  color: $prompt-color
+  margin-bottom: 18px
+
+h2
+  font-weight: bold
+  margin-bottom: 8px
+
+#container
+  overflow-y: scroll
+  padding: 5px
+
+#shell
+  font-family: monospace
+  float: left
+  width: 100%
+
+  .prompt
+    color: $prompt-color
+
+  .prompt, #output .response span
+    margin-right: 5px
+    display: inline-block
+
+  p
+    margin: 0
+
+  #output
+    .session
+      color: $response-color
+    .error .value
+      color: $error-color
+    .value-prompt
+      color: $response-label-color
+      padding-right: 5px
+    .command
+      color: $font-color
+    .response
+      clear: left
+    .source
+      margin-left: 28px
+      min-height: 21px
+    .prompt
+      display: block
+      float: left
+
+  #command
+    .prompt, textarea
+      line-height: $font-size+2
+      height: $font-size+3
+    .prompt
+      float: left
+    textarea
+      border: none
+      padding: 0
+      width: 90%
+      margin-left: 5px
+
+      &:focus
+        outline: none
+
+#welcome
+  display: none
+  padding: 20px
+
+  #resources, #keyboard
+    font-size: 0.9em
+    float: left
+
+  #resources
+    width: 225px
+    ul
+      margin: 3px 0
+      list-style-type: disc
+      li
+        margin: 4px 0 4px 20px
+
+  #keyboard
+    padding-right: 10px
+    width: 272px
+    li
+      margin: 4px 0
+
+    span
+      +inline-block
+      background: #444
+      padding: 2px
+      border-radius: 3px
+      border: solid 2px #555
+
+  #action
+    clear: left
+    padding-top: 16px
+    text-align: center
+
+    a
+      @include button($highlight-color)
+      font-size: 24px
+      line-height: 34px
+
+  #attribution
+    clear: both
+    font-size: 11px
+    padding-top: 15px
+    text-align: center
+    opacity: 0.5
+
+#editor
+  margin-left: 28px
+
+#editor, .editor
+  position: relative !important
+  font-family: monospace !important
+  font-size: inherit !important
+  line-height: inherit
+  height: $font-size+3px
+  resize: none
+  width: 90%
+
+  .ace_sb
+    overflow-y: hidden !important
+  .ace_scroller
+    position: static
+    overflow-x: hidden !important
+  .ace_cursor
+    border-left: solid 2px white
+    opacity: 1
+
+.source.editor
+  .ace_cursor, .ace_cursor_layer
+    display: none
+
+
+#fork-me
+  img
+    position: absolute
+    top: 0
+    right: 0
+    border: 0
+    z-index: 10
+
+#basic-modal-content
+  display: none
+
+#simplemodal-overlay
+  background-color: #000
+
+#simplemodal-container
+  font-family: sans-serif
+  height: 512px
+  width: 565px
+  color: darken($font-color, 10%)
+  background-color: $background-color
+  border: 8px solid #444
+  padding: 12px
+
+#simplemodal-container code
+  background: #141414
+  border-left: 3px solid #65B43D
+  display: block
+  font-size: 12px
+  margin-bottom: 12px
+  padding: 4px 6px 6px
+
+#simplemodal-container a.modalCloseImg
+  background: url(../images/x.png) no-repeat
+  width: 25px
+  height: 29px
+  display: inline
+  z-index: 3200
+  position: absolute
+  top: -15px
+  right: -16px
+  cursor: pointer
+
+#simplemodal-container h3
+  color: #84b8d9

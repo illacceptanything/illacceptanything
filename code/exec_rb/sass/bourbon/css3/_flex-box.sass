@@ -1,0 +1,42 @@
+// CSS3 Flexible Box Model and property defaults
+
+// Custom shorthand notation for flexbox
+=box($orient: inline-axis, $pack: start, $align: stretch)
+  +display-box
+  +box-orient($orient)
+  +box-pack($pack)
+  +box-align($align)
+
+=display-box
+  display: -webkit-box
+  display: -moz-box
+  display: box
+
+=box-orient($orient: inline-axis)
+  // horizontal|vertical|inline-axis|block-axis|inherit
+  +prefixer(box-orient, $orient, webkit moz spec)
+
+=box-pack($pack: start)
+  // start|end|center|justify
+  +prefixer(box-pack, $pack, webkit moz spec)
+
+=box-align($align: stretch)
+  // start|end|center|baseline|stretch
+  +prefixer(box-align, $align, webkit moz spec)
+
+=box-direction($direction: normal)
+  // normal|reverse|inherit
+  +prefixer(box-direction, $direction, webkit moz spec)
+
+=box-lines($lines: single)
+  // single|multiple
+  +prefixer(box-lines, $lines, webkit moz spec)
+
+=box-ordinal-group($int: 1)
+  +prefixer(box-ordinal-group, $int, webkit moz spec)
+
+=box-flex($value: 0)
+  +prefixer(box-flex, $value, webkit moz spec)
+
+=box-flex-group($int: 1)
+  +prefixer(box-flex-group, $int, webkit moz spec)
