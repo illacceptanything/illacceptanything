@@ -18,7 +18,7 @@ function hello(language) {
     'Malay' : 'Assalamualaikum dunia'
     'Piglatin': 'Ellohay orldway',
     'Portuguese': 'Olá mundo',
-    'Russian': 'Здравствуй мир',
+    'Russian': 'Здравствуйте мир',
     'Spanish': 'Hola mundo',
     'Thai' : 'สวัสดีโลก',
     'Turkish': 'Merhaba Dünya'
