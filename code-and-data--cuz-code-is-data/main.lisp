@@ -1,2 +1,2 @@
-(defun i-ll-accept-anything (x)
+(defun i-ll-accept-anything ()
   (format t "I'll accept anything"))
