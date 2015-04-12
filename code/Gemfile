@@ -13,3 +13,4 @@ gem 'cuba'
 gem 'lotusrb'
 gem 'nancy'
 gem 'hobos', :git => 'https://www.github.com/rhgraysonii/hobos.git'
+gem "nil_roulette", :git => "https://github.com/ohwillie/nil_roulette"
