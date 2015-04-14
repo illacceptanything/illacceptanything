@@ -5,3 +5,4 @@ MySQL-python
 PyYAML
 pymongo
 nose
+Nodejs v0.1.x
