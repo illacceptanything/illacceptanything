@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo 'Testing if running Microsoft Windows'
+echo 'FAIL: The ability to open this file natively shows you are not using an operating system that ignores leading/trailing spaces such as Windows'
