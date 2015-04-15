@@ -1,3 +1,15 @@
+GIT
+  remote: https://github.com/ohwillie/nil_roulette
+  revision: 966a73570c009f0321d2dcce00bd52a3ab9ea1b3
+  specs:
+    nil_roulette (0.0.1)
+
+GIT
+  remote: https://www.github.com/rhgraysonii/hobos.git
+  revision: 42bf629e83a04e47e8513a0f3e550f9fdd11ae52
+  specs:
+    hobos (0.0.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -8,6 +20,7 @@ GEM
     activesupport (3.2.21)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
+    airhorn (0.1.0)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -76,6 +89,9 @@ GEM
     mime-types (2.4.3)
     multi_json (1.11.0)
     multi_xml (0.5.5)
+    nancy (0.3.0)
+      rack
+      tilt
     padrino (0.9.16)
       padrino-admin (= 0.9.16)
       padrino-core (= 0.9.16)
@@ -143,11 +159,15 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  airhorn
   camping
   cramp
   cuba
   grape
+  hobos!
   lotusrb
+  nancy
+  nil_roulette!
   padrino
   pry
   rails

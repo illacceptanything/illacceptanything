@@ -2,3 +2,5 @@ language: c
 
 script:
   - echo "Passed"
+notifications:
+    email: false
