@@ -1,9 +1,0 @@
-#!/bin/rm
-
-echo 'Testing if running in a Unix-like environment'
-
-if [ -e /bin/ec​ho ]; then
-  /bin/echo 'UNIX environment detected'
-else
-  echo 'FAILED: Not a Unix-like environment'
-fi
