@@ -30,7 +30,7 @@ every Pull Request submitted and see what happens.
  * Nothing illegal.
  * Can't violate GitHub terms of service.
  * Don't mess with the LICENSE file - we kind of need that intact!
- * Don't be a [dick](https://github.com/illacceptanything/illacceptanything/blob/master/data/dickbutt.dickbutt), or any other copulatory organ. This includes:
+ * Don't be a [dick](https://github.com/illacceptanything/illacceptanything/blob/master/dickbutt.dickbutt), or any other copulatory organ. This includes:
     - [Trying](https://github.com/illacceptanything/illacceptanything/pull/463) [to](https://github.com/illacceptanything/illacceptanything/pull/498) [delete](https://github.com/illacceptanything/illacceptanything/pull/545) [everything](https://github.com/illacceptanything/illacceptanything/pull/308) [in](https://github.com/illacceptanything/illacceptanything/pull/259) [the](https://github.com/illacceptanything/illacceptanything/pull/131) [repository](https://github.com/illacceptanything/illacceptanything/pull/396).
     - [Uploading](https://github.com/illacceptanything/illacceptanything/pull/423) [malicious](https://github.com/illacceptanything/illacceptanything/pull/404) [code](https://github.com/illacceptanything/illacceptanything/pull/492)
     - s/anything/nothing/: [#292](https://github.com/illacceptanything/illacceptanything/pull/292) [#340](https://github.com/illacceptanything/illacceptanything/pull/340)
@@ -92,10 +92,10 @@ Repo so big, takes forever to download
     \___)=(___/
 
 ```
-# Der Ulf war hier
+## Der Ulf war hier
 
-# Holy Religion of the Internet (besides porn)
+## Holy Religion of the Internet (besides porn)
 ![](http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg)
 
-# Best meme on the interwebz ⬇
+## Best meme on the interwebz ⬇
 ![](http://weknowmemes.com/wp-content/uploads/2012/01/if-you-touch-my-virginity-ill-stab-you.jpg)
