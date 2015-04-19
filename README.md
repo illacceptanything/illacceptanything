@@ -100,4 +100,4 @@ Repo so big, takes forever to download
 ## Best meme on the interwebz ⬇
 ![](http://weknowmemes.com/wp-content/uploads/2012/01/if-you-touch-my-virginity-ill-stab-you.jpg)
 
-![](http://www.ceolato.com/html/_images/python_powered.png)
+![](http://www.ceolato.com/html/_images/python_powered.png) ![](http://media.giphy.com/media/2gFM7CtCNfzP2/giphy.gif)
