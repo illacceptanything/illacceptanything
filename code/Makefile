@@ -7,6 +7,6 @@ all: ayylmao.o decss.o hw.o toxic.o yo.o yoda.o zefside.o simple-tictactoe.o
 	$(CC) $(CFLAGS) $< -o $@
 
 %.o: %.cpp
-	$(CPP) $(CFLAGS) $< -o $@
+	$(CPP) $(CPPFLAGS) $< -o $@
 
 .PHONY: all
