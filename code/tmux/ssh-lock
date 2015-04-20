@@ -1,7 +1,2 @@
-# ssh-lock
-## Written by Jason Kurtz (4/8/2015)
-## Version 1.0
-#!/bin/bash
-pkill ssh-agent
-rm -rf ~/.ssh/agent
-rm -rf ~/.ssh/auth
+#!/bin/sh
+exec ssh-add -x
