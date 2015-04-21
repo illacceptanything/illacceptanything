@@ -1,1 +1,1 @@
-# You're not my mom!
+# You're not my supervisor!
