@@ -1,0 +1,294 @@
+/* .im_drunk, .im_baked, .im_trippin, .im_blown */
+
+.mw-strobe_light {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100000;
+  background-color: rgba(250,250,250,0.8);
+  display: block;
+}
+
+.mw-harlem_shake_me {
+  transition: all 0.8s ease-in-out;
+  -moz-transition: all 0.8s ease-in-out;
+  -webkit-transition: all 0.8s ease-in-out;
+  -o-transition: all 0.8s ease-in-out;
+  -ms-transition: all 0.8s ease-in-out;
+
+  animation: spin 1s infinite linear;
+  -moz-animation: spin 1s infinite linear;
+  -webkit-animation: spin 1s infinite linear;
+  -o-animation: spin 1s infinite linear;
+  -ms-animation: spin 1s infinite linear;
+}
+
+.mw-harlem_shake_slow {
+   transition: all 3.2s ease-in-out;
+  -moz-transition: all 3.2s ease-in-out;
+  -webkit-transition: all 3.2s ease-in-out;
+  -o-transition: all 3.2s ease-in-out;
+  -ms-transition: all 3.2s ease-in-out;
+
+  animation: spin 4s infinite linear;
+  -moz-animation: spin 4s infinite linear;
+  -webkit-animation: spin 4s infinite linear;
+  -o-animation: spin 4s infinite linear;
+  -ms-animation: spin 4s infinite linear;
+}
+
+/*
+Animate.css - http://daneden.me/animate
+Licensed under the ☺ license (http://licence.visualidiot.com/)
+But we have it modified for our use.
+*/
+body {
+  -webkit-backface-visibility: hidden;
+}
+
+.mw-harlem_shake_me {
+  -webkit-animation-duration: .4s;
+     -moz-animation-duration: .4s;
+       -o-animation-duration: .4s;
+          animation-duration: .4s;
+  -webkit-animation-fill-mode: both;
+     -moz-animation-fill-mode: both;
+       -o-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+
+.mw-harlem_shake_slow {
+  -webkit-animation-duration: 1.6s;
+     -moz-animation-duration: 1.6s;
+       -o-animation-duration: 1.6s;
+          animation-duration: 1.6s;
+  -webkit-animation-fill-mode: both;
+     -moz-animation-fill-mode: both;
+       -o-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+
+
+.flash, .mw-strobe_light {
+  -webkit-animation-name: flash;
+  -moz-animation-name: flash;
+  -o-animation-name: flash;
+  animation-name: flash;
+}
+
+
+
+@-webkit-keyframes shake {
+  0%, 100% {-webkit-transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {-webkit-transform: translateX(-10px);}
+  20%, 40%, 60%, 80% {-webkit-transform: translateX(10px);}
+}
+
+@-moz-keyframes shake {
+  0%, 100% {-moz-transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {-moz-transform: translateX(-10px);}
+  20%, 40%, 60%, 80% {-moz-transform: translateX(10px);}
+}
+
+@-o-keyframes shake {
+  0%, 100% {-o-transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {-o-transform: translateX(-10px);}
+  20%, 40%, 60%, 80% {-o-transform: translateX(10px);}
+}
+
+@keyframes shake {
+  0%, 100% {transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
+  20%, 40%, 60%, 80% {transform: translateX(10px);}
+}
+
+.shake, .im_baked {
+  -webkit-animation-name: shake;
+  -moz-animation-name: shake;
+  -o-animation-name: shake;
+  animation-name: shake;
+}
+
+
+
+
+.swing, .im_drunk {
+  -webkit-transform-origin: top center;
+  -moz-transform-origin: top center;
+  -o-transform-origin: top center;
+  transform-origin: top center;
+  -webkit-animation-name: swing;
+  -moz-animation-name: swing;
+  -o-animation-name: swing;
+  animation-name: swing;
+}
+
+@-webkit-keyframes wobble {
+  0% { -webkit-transform: translateX(0%); }
+  15% { -webkit-transform: translateX(-15%) rotate(-4deg); }
+  30% { -webkit-transform: translateX(12%) rotate(3deg); }
+  45% { -webkit-transform: translateX(-9%) rotate(-2deg); }
+  60% { -webkit-transform: translateX(6%) rotate(2deg); }
+  75% { -webkit-transform: translateX(-3%) rotate(-1deg); }
+  100% { -webkit-transform: translateX(0%); }
+}
+
+@-moz-keyframes wobble {
+  0% { -moz-transform: translateX(0%); }
+  15% { -moz-transform: translateX(-15%) rotate(-5deg); }
+  30% { -moz-transform: translateX(12%) rotate(3deg); }
+  45% { -moz-transform: translateX(-9%) rotate(-3deg); }
+  60% { -moz-transform: translateX(6%) rotate(2deg); }
+  75% { -moz-transform: translateX(-3%) rotate(-1deg); }
+  100% { -moz-transform: translateX(0%); }
+}
+
+@-o-keyframes wobble {
+  0% { -o-transform: translateX(0%); }
+  15% { -o-transform: translateX(-15%) rotate(-5deg); }
+  30% { -o-transform: translateX(12%) rotate(3deg); }
+  45% { -o-transform: translateX(-9%) rotate(-3deg); }
+  60% { -o-transform: translateX(6%) rotate(2deg); }
+  75% { -o-transform: translateX(-3%) rotate(-1deg); }
+  100% { -o-transform: translateX(0%); }
+}
+
+@keyframes wobble {
+  0% { transform: translateX(0%); }`
+  15% { transform: translateX(-15%) rotate(-5deg); }
+  30% { transform: translateX(12%) rotate(3deg); }
+  45% { transform: translateX(-9%) rotate(-3deg); }
+  60% { transform: translateX(6%) rotate(2deg); }
+  75% { transform: translateX(-3%) rotate(-1deg); }
+  100% { transform: translateX(0%); }
+}
+
+
+
+
+.wobble, .im_first {
+  -webkit-animation-name: wobble;
+  -moz-animation-name: wobble;
+  -o-animation-name: wobble;
+  animation-name: wobble;
+}
+
+@-webkit-keyframes pulse {
+    0% { -webkit-transform: scale(1); } 
+  50% { -webkit-transform: scale(1.1); }
+    100% { -webkit-transform: scale(1); }
+}
+@-moz-keyframes pulse {
+    0% { -moz-transform: scale(1); }  
+  50% { -moz-transform: scale(1.1); }
+    100% { -moz-transform: scale(1); }
+}
+@-o-keyframes pulse {
+    0% { -o-transform: scale(1); }  
+  50% { -o-transform: scale(1.1); }
+    100% { -o-transform: scale(1); }
+}
+@keyframes pulse {
+    0% { transform: scale(1); } 
+  50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.pulse, .im_blown {
+  -webkit-animation-name: pulse;
+  -moz-animation-name: pulse;
+  -o-animation-name: pulse;
+  animation-name: pulse;
+}
+
+
+
+
+@-webkit-keyframes bounceIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(.3);
+  }
+  
+  50% {
+    opacity: 1;
+    -webkit-transform: scale(1.05);
+  }
+  
+  70% {
+    -webkit-transform: scale(.9);
+  }
+  
+  100% {
+    -webkit-transform: scale(1);
+  }
+}
+
+@-moz-keyframes bounceIn {
+  0% {
+    opacity: 0;
+    -moz-transform: scale(.3);
+  }
+  
+  50% {
+    opacity: 1;
+    -moz-transform: scale(1.05);
+  }
+  
+  70% {
+    -moz-transform: scale(.9);
+  }
+  
+  100% {
+    -moz-transform: scale(1);
+  }
+}
+
+@-o-keyframes bounceIn {
+  0% {
+    opacity: 0;
+    -o-transform: scale(.3);
+  }
+  
+  50% {
+    opacity: 1;
+    -o-transform: scale(1.05);
+  }
+  
+  70% {
+    -o-transform: scale(.9);
+  }
+  
+  100% {
+    -o-transform: scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(.3);
+  }
+  
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  
+  70% {
+    transform: scale(.9);
+  }
+  
+  100% {
+    transform: scale(1);
+  }
+}
+
+.bounceIn, .im_trippin {
+  -webkit-animation-name: bounceIn;
+  -moz-animation-name: bounceIn;
+  -o-animation-name: bounceIn;
+  animation-name: bounceIn;
+}
