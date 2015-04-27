@@ -110,8 +110,8 @@ Repo so big, takes forever to download
 <br>
 ![](http://img2.wikia.nocookie.net/__cb20121028051340/tfsrox/images/c/c4/Tumblr_m403dltfk91qmb7u4o1_250.gif)
 <br>
-<img src="https://media.giphy.com/media/12ri8ebjE91pQY/giphy.gif">
+![](https://media.giphy.com/media/12ri8ebjE91pQY/giphy.gif)
 <br>
-<img src="https://31.media.tumblr.com/tumblr_m5ldirNQ3b1qjenx9.gif">
+![](https://31.media.tumblr.com/tumblr_m5ldirNQ3b1qjenx9.gif
 <br>
-<img src="http://www.gifsforum.com/images/gif/fuk%20everything/grand/fuk-everything-eccbc87e4b5ce2fe28308fd9f2a7baf3-1392.gif">
+![](http://www.gifsforum.com/images/gif/fuk%20everything/grand/fuk-everything-eccbc87e4b5ce2fe28308fd9f2a7baf3-1392.gif)
