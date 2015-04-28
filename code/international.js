@@ -9,7 +9,7 @@ function hello(language) {
     'German': 'Hallo Welt',
     'Greek': 'Γεια σου κόσμε',
     'Hebrew': 'שלום עולם',
-    'Hindia': 'हैलो दुनिया  ',
+    'Hindi': 'हैलो दुनिया  ',
     'Indonesian': 'Halo dunia',
     'Italian': 'Ciao mondo',
     'Japanese': 'こんにちは世界',
