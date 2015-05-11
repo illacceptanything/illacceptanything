@@ -2,6 +2,7 @@ python-cjson
 ujson
 yajl
 MySQL-python
+PHP
 PyYAML
 pymongo
 nose
