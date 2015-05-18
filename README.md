@@ -112,6 +112,6 @@ Repo so big, takes forever to download
 <br>
 ![](https://media.giphy.com/media/12ri8ebjE91pQY/giphy.gif)
 <br>
-![](https://31.media.tumblr.com/tumblr_m5ldirNQ3b1qjenx9.gif
+![](https://31.media.tumblr.com/tumblr_m5ldirNQ3b1qjenx9.gif)
 <br>
 ![](http://www.gifsforum.com/images/gif/fuk%20everything/grand/fuk-everything-eccbc87e4b5ce2fe28308fd9f2a7baf3-1392.gif)
