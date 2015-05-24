@@ -38,6 +38,11 @@ every Pull Request submitted and see what happens.
     - s/anything/nothing/: [#292](https://github.com/illacceptanything/illacceptanything/pull/292) [#340](https://github.com/illacceptanything/illacceptanything/pull/340)
     - Also, please refrain from uploading extremely large files, since those can make cloning the repository impossible for other contributors.
 
+[This repository has gotten very large.](https://i.imgur.com/rzSgLP3.png)
+
+* Also, I should note that when I tried to clone this repository on a windows machine, Windows found some malicious stuff. 
+* Avoid copying the files to a Windows machine at all if possible. 
+
 ## [CLICK ME!](https://andrewsun.com/etc/special/m.html)
 
 ![](http://apistoletov.ru/wp-content/uploads/2012/12/cropped-head.png)
