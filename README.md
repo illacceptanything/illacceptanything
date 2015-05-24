@@ -1,5 +1,7 @@
 ![](https://img.shields.io/badge/build-passing-brightgreen.svg)
 
+## WARNING - [Large repository](https://i.imgur.com/rzSgLP3.png); [may trigger antivirus software](https://github.com/illacceptanything/illacceptanything/blob/75109b706351420c31999915d4d54b0b4ab12df7/data/text/EICAR.COM.TXT)!
+
     ██╗    ██╗    ██╗██╗██╗     ██╗
     ██║    ██║    ██║██║██║     ██║
     ██║    ██║ █╗ ██║██║██║     ██║
