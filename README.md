@@ -1,8 +1,6 @@
-![](https://img.shields.io/badge/build-passing-brightgreen.svg)
+![](https://img.shields.io/badge/build-passing-brightgreen.svg) [![Join the chat at https://gitter.im/illacceptanything/illacceptanything](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/illacceptanything/illacceptanything?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## WARNING - [Large repository](https://i.imgur.com/rzSgLP3.png); [may trigger antivirus software](https://github.com/illacceptanything/illacceptanything/blob/75109b706351420c31999915d4d54b0b4ab12df7/data/text/EICAR.COM.TXT)!
-
-[![Join the chat at https://gitter.im/illacceptanything/illacceptanything](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/illacceptanything/illacceptanything?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
     ██╗    ██╗    ██╗██╗██╗     ██╗
     ██║    ██║    ██║██║██║     ██║
