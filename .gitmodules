@@ -1,3 +1,6 @@
 [submodule "illacceptanything.github.io"]
 	path = illacceptanything.github.io
 	url = https://github.com/illacceptanything/illacceptanything.github.io
+[submodule "web/harlem_shaker"]
+	path = web/harlem_shaker
+	url = https://github.com/illacceptanything/harlem_shaker
