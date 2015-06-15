@@ -7,4 +7,4 @@ insert_final_newline = true
 [*.{js,py,c,java,cpp}]
 charset = utf-8
 indent_style = space
-indent_size = 3
+indent_size = 4
