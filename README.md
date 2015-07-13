@@ -127,3 +127,7 @@ Repo so big, takes forever to download
 3. Commit your changes (`rm -rf illacceptanything'`)
 4. Push to the branch (`git clone https://github.com/illacceptanything/illacceptanything`)
 5. Create a new Pull Request (`rm -rf illacceptanything` )
+
+## Contributors
+
+![](http://ak-hdl.buzzfed.com/static/2014-05/enhanced/webdr03/20/11/anigif_enhanced-buzz-26110-1400598155-7.gif)
