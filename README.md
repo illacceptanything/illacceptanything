@@ -120,6 +120,8 @@ Repo so big, takes forever to download
 
 ![](data/media/lemur.jpg)
 
+![](http://ak-hdl.buzzfed.com/static/2014-05/enhanced/webdr03/20/11/anigif_enhanced-buzz-26110-1400598155-7.gif)
+
 ## Contributing
 	
 1. Fork it ( https://github.com/illacceptanything/illacceptanything/fork )
