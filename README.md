@@ -41,12 +41,12 @@ every Pull Request submitted and see what happens.
 ## [CLICK ME!](https://andrewsun.com/etc/special/m.html)
 
 ![](http://apistoletov.ru/wp-content/uploads/2012/12/cropped-head.png)
-
+<br>
 ![](https://i.imgur.com/ehUtz.gif)
 
 Leader of the FREE world
 ![](http://cdn.makeagif.com/media/4-08-2015/tAagTa.gif)
-
+<br>
 ![](http://i.imgur.com/F2zh7G4.gif)
 
 ```
@@ -101,9 +101,9 @@ Repo so big, takes forever to download
 
 ## Best meme on the interwebz ⬇
 ![](http://weknowmemes.com/wp-content/uploads/2012/01/if-you-touch-my-virginity-ill-stab-you.jpg)
-
+<br>
 ![](http://www.ceolato.com/html/_images/python_powered.png) ![](http://media.giphy.com/media/2gFM7CtCNfzP2/giphy.gif)
-
+<br>
 ![](https://media.giphy.com/media/wPrqe5846Z9GU/giphy.gif)
 <br>
 ![](https://31.media.tumblr.com/tumblr_m403dltfk91qmb7u4o2_500.gif)
@@ -116,8 +116,6 @@ Repo so big, takes forever to download
 <br>
 ![](https://31.media.tumblr.com/tumblr_m5ldirNQ3b1qjenx9.gif)
 <br>
-![](http://www.gifsforum.com/images/gif/fuk%20everything/grand/fuk-everything-eccbc87e4b5ce2fe28308fd9f2a7baf3-1392.gif)
-
 ![](data/media/lemur.jpg)
 
 ## Contributing
