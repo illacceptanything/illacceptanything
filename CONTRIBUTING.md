@@ -1,4 +1,5 @@
-- No porn.
+- No porn on Tuesdays.
 - Nothing illegal.
 - Can't violate GitHub terms of service.
+- Trigger Warning
 - Don't be a dick, or any other copulatory organ.
