@@ -6,3 +6,5 @@ __pycache__
 *.swp
 .ropeproject
 .DS_Store
+
+*
