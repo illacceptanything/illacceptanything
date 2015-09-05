@@ -11,5 +11,5 @@ namespace Ass;
 
 class PoopException extends \Exception
 {
-
+    protected $message = 'shit happens';
 }

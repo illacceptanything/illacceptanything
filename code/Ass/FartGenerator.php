@@ -20,7 +20,9 @@ class FartGenerator
     public static function generate()
     {
         try {
-            echo "fart!\n";
+            $fart = new ConcreteFart();
+
+            echo "$fart\n";
 
             throw new PoopException('oops!');
         } catch (PoopException $e) {
