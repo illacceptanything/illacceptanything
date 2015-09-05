@@ -1,0 +1,35 @@
+{
+  "name": "your/ass",
+  "version": "1.0",
+  "description": "Module for doing some fart",
+  "homepage": "https://illacceptanything.github.io/",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "everybody",
+      "email": "everybody@everydomain.everyzone",
+      "homepage": "https://illacceptanything.github.io/",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.4",
+    "zendframework/zendframework": ">=2.4",
+    "table/flip": "dev-master"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*",
+    "mikey179/vfsStream": "1.*"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.zendframework.com/"
+    }
+  ],
+  "autoload": {
+    "psr-0": {
+      "Ass\\": "/"
+    }
+  }
+}
