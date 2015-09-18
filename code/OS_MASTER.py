@@ -4,15 +4,17 @@ import time
 from sys import platform as _platform
 
 class colors:
-	red = '\033[31m'  # red
-	blue = '\033[34m'  # blue
-	magenta = '\033[35m'  # purple
-	cyan = '\033[36m'  # cyan
-	reset = "\033[0m"
+    red = '\033[31m'  # red
+    blue = '\033[34m'  # blue
+    magenta = '\033[35m'  # purple
+    cyan = '\033[36m'  # cyan
+    reset = "\033[0m"
 
-if _platform == "linux" or _platform == "linux2":
+def main_master():
+
+  if _platform == "linux" or _platform == "linux2":
       print'[!] You are on Linux.'
-      print colors.cyan + '[1] Who is my master?'
+      print colors.cyan + '\n[1] Who is my master?'
       print colors.magenta + '[2] Who do I listen to?'
       print colors.reset
       
@@ -20,16 +22,18 @@ if _platform == "linux" or _platform == "linux2":
       if master_command == '1':
             os.system('say You are my master.')
             os.system('whoami')
+            main_master()
       elif master_command == '2':
             os.system('say I listen to you my master.')
+            main_master()
       else:
             os.system('say Shutting down.')
             time.sleep(3)
             sys.exit()
-            
-elif _platform == "darwin":
+
+  elif _platform == "darwin":
       print'[!] You are on OSX.'
-      print colors.cyan + '[1] Who is my master?'
+      print colors.cyan + '\n[1] Who is my master?'
       print colors.magenta + '[2] Who do I listen to?'
       print colors.reset
       
@@ -37,9 +41,13 @@ elif _platform == "darwin":
       if master_command == '1':
             os.system('say You are my master.')
             os.system('whoami')
+            main_master()
       elif master_command == '2':
             os.system('say I listen to you my master.')
+            main_master()
       else:
             os.system('say Shutting down.')
             time.sleep(3)
             sys.exit()
+
+main_master()
