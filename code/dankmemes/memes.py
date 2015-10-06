@@ -5,8 +5,8 @@ words = {'jet': '1',
          'fuel': '2',
          'can\'t': '3',
          'melt': '4',
-         'steel': '5',
-         'beams': '6'}
+         'dank': '5',
+         'memes': '6'}
 
 meme = []
 
