@@ -1,13 +1,12 @@
 import os
-import sys
 import time
 from sys import platform as _platform
 
 class colors:
-    red = '\033[31m'  # red
-    blue = '\033[34m'  # blue
-    magenta = '\033[35m'  # purple
-    cyan = '\033[36m'  # cyan
+    red = '\033[31m' 
+    blue = '\033[34m' 
+    magenta = '\033[35m' 
+    cyan = '\033[36m'
     reset = "\033[0m"
 
 def main_master():
