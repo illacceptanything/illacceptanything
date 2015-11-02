@@ -41,7 +41,7 @@ every Pull Request submitted and see what happens.
 ## [CLICK ME!](https://andrewsun.com/etc/special/m.html)
 ![](https://i.imgur.com/ehUtz.gif)
 
-Leader of the FREE world
+Leader of the FREE world (aka lord RMS)
 ![](http://cdn.makeagif.com/media/4-08-2015/tAagTa.gif)
 <br>
 ![](http://i.imgur.com/F2zh7G4.gif)
