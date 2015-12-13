@@ -4,3 +4,6 @@
 [submodule "web/harlem_shaker"]
 	path = web/harlem_shaker
 	url = https://github.com/illacceptanything/harlem_shaker
+[submodule "botwillacceptanything"]
+	path = botwillacceptanything
+	url = https://github.com/botwillacceptanything/botwillacceptanything
