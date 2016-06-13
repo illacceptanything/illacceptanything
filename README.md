@@ -118,7 +118,7 @@ Repo so big, takes forever to download
 <br>
 ![](http://i.imgur.com/hEOaIS5.png)
 <br>
-![](data/media/lemur.jpg)
+![](media/lemur.jpg)
 <br>
 ![](http://www.hollywoodhomestead.com/wp-content/uploads/2013/08/misc-all-the-things-l-1-1024x768.jpg)
 
