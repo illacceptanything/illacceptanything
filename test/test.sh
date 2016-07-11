@@ -6,6 +6,7 @@ echo
 echo
 echo "All tests failed in 9.0 seconds."
 echo "Done."
+echo "hack the planet!"
 echo "No, wait... forgot to carry the 1"
 echo "Running tests again"
 echo -ne '#####                     (33%)\r'
