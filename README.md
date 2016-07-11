@@ -28,6 +28,8 @@
 I want to make a really cool project, but I don't know what to make. So I'll just accept
 every Pull Request submitted and see what happens.
 
+## Rules
+
  * No porn.
  * Nothing illegal.
  * Can't violate GitHub terms of service.
@@ -39,6 +41,7 @@ every Pull Request submitted and see what happens.
     - s/anything/nothing/: [#292](https://github.com/illacceptanything/illacceptanything/pull/292) [#340](https://github.com/illacceptanything/illacceptanything/pull/340)
     - Removing items from this list
  * Also, please refrain from uploading extremely large files or filenames with reserved characters, since those can make cloning the repository impossible for other contributors.
+ * Please try to sort files in `data/`, `code/`, etc. where applicable. A neater repository is more maintainable!
 
 ## Contributing
 
