@@ -40,6 +40,21 @@ every Pull Request submitted and see what happens.
     - Removing items from this list
  * Also, please refrain from uploading extremely large files or filenames with reserved characters, since those can make cloning the repository impossible for other contributors.
 
+## Contributing
+
+1. Fork it (https://github.com/illacceptanything/illacceptanything/fork)
+2. Create your feature branch (`git clone https://github.com/illacceptanything/illacceptanything`)
+3. Commit your changes (`rm -rf illacceptanything'`)
+4. Push to the branch (`git clone https://github.com/illacceptanything/illacceptanything`)
+5. Create a new Pull Request (`rm -rf illacceptanything`)
+
+## Contributors
+
+![](http://ak-hdl.buzzfed.com/static/2014-05/enhanced/webdr03/20/11/anigif_enhanced-buzz-26110-1400598155-7.gif)
+
+## Scumbag Steve
+If your name is steve, list yourself here.
+
 ---
 
  🇨🇱 ![Chile Parrot](http://countryparrots.com/parrots/chile-parrot.gif) 🇨🇱
@@ -126,18 +141,3 @@ Repo so big, takes forever to download
 ![](media/lemur.jpg)
 <br>
 ![](http://www.hollywoodhomestead.com/wp-content/uploads/2013/08/misc-all-the-things-l-1-1024x768.jpg)
-
-## Contributing
-
-1. Fork it (https://github.com/illacceptanything/illacceptanything/fork)
-2. Create your feature branch (`git clone https://github.com/illacceptanything/illacceptanything`)
-3. Commit your changes (`rm -rf illacceptanything'`)
-4. Push to the branch (`git clone https://github.com/illacceptanything/illacceptanything`)
-5. Create a new Pull Request (`rm -rf illacceptanything`)
-
-## Contributors
-
-![](http://ak-hdl.buzzfed.com/static/2014-05/enhanced/webdr03/20/11/anigif_enhanced-buzz-26110-1400598155-7.gif)
-
-## Scumbag Steve
-If your name is steve, list yourself here.
