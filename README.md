@@ -39,6 +39,10 @@ every Pull Request submitted and see what happens.
     - Removing items from this list
     - Also, please refrain from uploading extremely large files, since those can make cloning the repository impossible for other contributors.
 
+---
+
+ 🇨🇱 ![Chile Parrot](http://countryparrots.com/parrots/chile-parrot.gif) 🇨🇱
+
 ## [CLICK ME!](https://andrewsun.com/etc/special/m.html)
 ![](https://i.imgur.com/ehUtz.gif)
 
