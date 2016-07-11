@@ -34,10 +34,11 @@ every Pull Request submitted and see what happens.
  * Don't mess with the LICENSE file - we kind of need that intact!
  * Don't be a [dick](https://github.com/illacceptanything/illacceptanything/blob/master/dickbutt.dickbutt), or any other copulatory organ. This includes:
     - [Trying](https://github.com/illacceptanything/illacceptanything/pull/463) [to](https://github.com/illacceptanything/illacceptanything/pull/498) [delete](https://github.com/illacceptanything/illacceptanything/pull/545) [everything](https://github.com/illacceptanything/illacceptanything/pull/308) [in](https://github.com/illacceptanything/illacceptanything/pull/259) [the](https://github.com/illacceptanything/illacceptanything/pull/131) [repository](https://github.com/illacceptanything/illacceptanything/pull/396).
-    - [Uploading](https://github.com/illacceptanything/illacceptanything/pull/423) [malicious](https://github.com/illacceptanything/illacceptanything/pull/404) [code](https://github.com/illacceptanything/illacceptanything/pull/492)
+    - [Uploading](https://github.com/illacceptanything/illacceptanything/pull/128) [malicious](https://github.com/illacceptanything/illacceptanything/pull/330) [code](https://github.com/illacceptanything/illacceptanything/pull/766)
+    - [Uploading](https://github.com/illacceptanything/illacceptanything/pull/423) [fork](https://github.com/illacceptanything/illacceptanything/pull/404) [bombs](https://github.com/illacceptanything/illacceptanything/pull/492)
     - s/anything/nothing/: [#292](https://github.com/illacceptanything/illacceptanything/pull/292) [#340](https://github.com/illacceptanything/illacceptanything/pull/340)
     - Removing items from this list
-    - Also, please refrain from uploading extremely large files, since those can make cloning the repository impossible for other contributors.
+ * Also, please refrain from uploading extremely large files or filenames with reserved characters, since those can make cloning the repository impossible for other contributors.
 
 ---
 
