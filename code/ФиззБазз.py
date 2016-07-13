@@ -10,6 +10,8 @@ def главный():
             print("Физз")
         elif номер % 5 == 0:
             print("Базз")
+        else:
+            print(номер)
 
 
 if __name__ == '__main__':
