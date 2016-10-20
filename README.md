@@ -46,10 +46,11 @@ every Pull Request submitted and see what happens.
 ## Contributing
 
 1. Fork it (https://github.com/illacceptanything/illacceptanything/fork)
-2. Create your feature branch (`git clone https://github.com/illacceptanything/illacceptanything`)
-3. Commit your changes (`rm -rf illacceptanything'`)
-4. Push to the branch (`git clone https://github.com/illacceptanything/illacceptanything`)
-5. Create a new Pull Request (`rm -rf illacceptanything`)
+2. Clone it (`git clone https://github.com/illacceptanything/illacceptanything`)
+3. Create your feature branch (`git checkout -b your_branch_name`)
+4. Commit your changes (`git commit -m 'Description of a commit'`)
+5. Push to the branch (`git push origin your_branch_name`)
+6. Create a new Pull Request
 
 ## Contributors
 
