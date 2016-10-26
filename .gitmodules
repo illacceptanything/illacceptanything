@@ -7,3 +7,7 @@
 [submodule "botwillacceptanything"]
 	path = botwillacceptanything
 	url = https://github.com/botwillacceptanything/botwillacceptanything
+[submodule "recursive"]
+	path = recursive
+	url = https://github.com/illacceptanything/illacceptanything.git
+	branch = master

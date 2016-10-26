@@ -14,5 +14,7 @@ sleep 1
 echo -ne '#############             (66%)\r'
 sleep 1
 echo -ne '#######################   (100%)\r'
+sleep 1
+echo -ne '###########################133%)\r'
 echo -ne '\n'
 yes 'it all works!' | head -n $RANDOM
