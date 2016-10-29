@@ -100,6 +100,8 @@ Repo so big, takes forever to download
 
 I'm in love with this repo. - Dhruv KB ;)
 
+Really good for someone who want to increase contribution count. :D
+
 ![](http://i.imgur.com/3HFuDe4.gif)
 
 ```
