@@ -1,6 +1,7 @@
 Got an invitation you'd rather decline?  No problem.  Just pick
 a number:
 
+
 I'd love to, but...
 
   1    I have to floss my cat.
