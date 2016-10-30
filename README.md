@@ -58,6 +58,7 @@ every Pull Request submitted and see what happens.
 ## Scumbag Steve
 If your name is steve, list yourself here.
 
+# Call me Eric. Merge me pls ;-;
 ---
 
  🇨🇱 ![Chile Parrot](http://countryparrots.com/parrots/chile-parrot.gif) 🇨🇱
