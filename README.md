@@ -65,11 +65,6 @@ If your name is steve, list yourself here.
 ## [CLICK ME!](https://andrewsun.com/etc/special/m.html)
 ![](https://i.imgur.com/ehUtz.gif)
 
-Leader of the FREE world (aka lord RMS)
-![](http://cdn.makeagif.com/media/4-08-2015/tAagTa.gif)
-<br>
-![](http://i.imgur.com/F2zh7G4.gif)
-
 ```
    _____                  __  .__    .__                 ._.
   /  _  \   ____ ___.__._/  |_|  |__ |__| ____    ____   | |
@@ -78,11 +73,6 @@ Leader of the FREE world (aka lord RMS)
 \____|__  /___|  / ____| |__| |___|  /__|___|  /\___  /   __
         \/     \/\/                \/        \//_____/    \/
 ```
-
-[Darude](http://www.reddit.com/r/Music/comments/31v7n0/i_am_darude_ama/) is totally allowed tho. Darude is the real mvp.
-![darude-sandstorm](https://github.com/illacceptanything/illacceptanything/blob/master/web/images/darude-sandstorm.gif.mp4.mov.wmv.png.jpeg)
-
-![](https://38.media.tumblr.com/tumblr_mchf7fdrhd1r7swjzo1_250.gif)
 
 ```
  __                 
@@ -101,8 +91,6 @@ Repo so big, takes forever to download
 I'm in love with this repo. - Dhruv KB ;)
 
 Really good for someone who want to increase contribution count. :D
-
-![](http://i.imgur.com/3HFuDe4.gif)
 
 ```
 / they said i could PR anything so I PRd \
@@ -124,13 +112,11 @@ Really good for someone who want to increase contribution count. :D
 ## Holy Religion of the Internet (besides porn)
 ![](http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg)
 
-## Best meme on the interwebz ⬇
-![](http://weknowmemes.com/wp-content/uploads/2012/01/if-you-touch-my-virginity-ill-stab-you.jpg)
+## Misc
 <br>
 ![](http://www.ceolato.com/html/_images/python_powered.png) ![](http://media.giphy.com/media/2gFM7CtCNfzP2/giphy.gif)
 <br>
 ![](https://media.giphy.com/media/wPrqe5846Z9GU/giphy.gif)
-![](http://i.imgur.com/7Gr5Bar.gif)
 
 <br>
 ![](https://31.media.tumblr.com/tumblr_m403dltfk91qmb7u4o2_500.gif)
