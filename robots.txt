@@ -1,0 +1,3 @@
+# Accept all robots
+User-agent: * 
+Disallow:
