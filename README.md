@@ -103,6 +103,11 @@ Repo so big, takes forever to download
 
 I'm in love with this repo. - Dhruv KB ;)
 
+█░░█ █░░█ █▀▄▀█ █▀▀█ █▀▀▄ █▀▀█ ▀█▀ █▀▀▄ █▀▀ 　
+█▀▀█ █░░█ █░▀░█ █▄▄█ █░░█ █░░█ ▒█░ █░░█ ▀▀█ 　 
+▀░░▀ ░▀▀▀ ▀░░░▀ ▀░░▀ ▀░░▀ ▀▀▀▀ ▄█▄ ▀▀▀░ ▀▀▀ 　
+                                    -Ritwick 
+
 Really good for someone who want to increase contribution count. :D
 
 ```
