@@ -24,7 +24,7 @@
 
 # illacceptanything
 
-> The project where [literally](https://xkcd.com/725/)* anything goes
+> The project where [literally](https://xkcd.com/725/)* anything goes wrong
 
 I want to make a really cool project, but I don't know what to make. So I'll just accept
 every Pull Request submitted and see what happens.
