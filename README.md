@@ -124,32 +124,32 @@ Really good for someone who want to increase contribution count. :D
 ![](http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg)
 
 ## Misc
-<br>
+
 ![](http://www.ceolato.com/html/_images/python_powered.png) ![](http://media.giphy.com/media/2gFM7CtCNfzP2/giphy.gif)
-<br>
+
 ![](https://media.giphy.com/media/wPrqe5846Z9GU/giphy.gif)
 
-<br>
+
 ![](https://31.media.tumblr.com/tumblr_m403dltfk91qmb7u4o2_500.gif)
-<br>
+
 ![](https://38.media.tumblr.com/075ba126e507d5643cb2dee8ab18c6a7/tumblr_inline_mykjwj3Ej61rc3of7.gif)
-<br>
+
 ![](http://img2.wikia.nocookie.net/__cb20121028051340/tfsrox/images/c/c4/Tumblr_m403dltfk91qmb7u4o1_250.gif)
-<br>
+
 ![](https://media.giphy.com/media/12ri8ebjE91pQY/giphy.gif)
-<br>
+
 ![](https://31.media.tumblr.com/tumblr_m5ldirNQ3b1qjenx9.gif)
-<br>
+
 ![](http://i.imgur.com/hEOaIS5.png)
-<br>
+
 ![](media/lemur.jpg)
-<br>
+
 ![](http://www.hollywoodhomestead.com/wp-content/uploads/2013/08/misc-all-the-things-l-1-1024x768.jpg)
-<br>
+
 ![](https://media.makeameme.org/created/such-hacking-many.jpg)
-<br>
+
 ![](http://images.8tracks.com/cover/i/009/503/018/photo-2314.jpg?rect=0,0,900,900&q=98&fm=jpg&fit=max)
-<br>
+
 ![](http://i0.kym-cdn.com/photos/images/original/000/976/339/ded.png)
 
 
