@@ -64,16 +64,18 @@ every Pull Request submitted and see what happens.
 
 ![](http://ak-hdl.buzzfed.com/static/2014-05/enhanced/webdr03/20/11/anigif_enhanced-buzz-26110-1400598155-7.gif)
 
-## Scumbag Steve
+## Testimonials
+
+### Scumbag Steve
 If your name is steve, list yourself here.
 I'm not Steve but anyways, HI!
 
-# Call me Eric. Merge me pls ;-;
+### Call me Eric. Merge me pls ;-;
 ---
 
  🇨🇱 ![Chile Parrot](http://countryparrots.com/parrots/chile-parrot.gif) 🇨🇱
 
-## [CLICK ME!](https://andrewsun.com/etc/special/m.html)
+### [CLICK ME!](https://andrewsun.com/etc/special/m.html)
 ![](https://i.imgur.com/ehUtz.gif)
 
 ```
@@ -118,12 +120,12 @@ Really good for someone who want to increase contribution count. :D
     \___)=(___/
 
 ```
-## Der Ulf war hier
+### Der Ulf war hier
 
-## Holy Religion of the Internet (besides porn)
+### Holy Religion of the Internet (besides porn)
 ![](http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg)
 
-## Misc
+### Misc
 
 ![](http://www.ceolato.com/html/_images/python_powered.png) ![](http://media.giphy.com/media/2gFM7CtCNfzP2/giphy.gif)
 
