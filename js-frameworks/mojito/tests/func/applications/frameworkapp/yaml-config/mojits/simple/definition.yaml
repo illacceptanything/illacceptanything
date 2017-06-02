@@ -1,0 +1,11 @@
+# The the routes file
+-
+    # These are the dimensions that will be affected by these settings
+    settings: [master]
+    appPort: 5000
+    # The settings that will be read by the Mojit
+    appLevel: false
+    specs: 
+        simple: 
+            type: simple
+      

@@ -1,0 +1,14 @@
+<div id="{{mojit_view_id}}" class="mojit">
+    <div class="mod" id="calendar">
+        {{> widget_heading}}
+        <div class="inner">
+            <ul>
+            {{#each results}}
+                <li>{{#entry}}<span>{{#summary}}{{content}}{{/summary}}</span><a href="{{#link}}{{href}}{{/link}}" title="{{#title}}{{content}}{{/title}}">{{#title}}{{content}}{{/title}}</a>{{/entry}}</li>
+            {{else}}
+               <li class="none">Sorry, no results were returned. Try refreshing the page again.</li> 
+            {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+# The application configuration file
+---
+
+-
+    # These are the dimensions that will be affected by these settings
+    settings: [master]
+    # Port number
+    appPort: 4000
+    yui:
+        config:
+            debug: true
+            # This is the level that will be used
+            logLevel: debug
+    specs:
+        simple:
+            type: simple

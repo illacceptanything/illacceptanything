@@ -1,0 +1,22 @@
+# The the routes file
+-
+    # These are the dimensions that will be affected by these settings
+    settings: [master]
+
+    # Each route must have unique key
+    index:
+        # This is a list of verbs the route will respond to
+        verbs: [get]
+        # This is the URL path that need to matched for this route to trigger
+        path: "/"
+        # This is the Mojito and action that will be called when the route is matched
+        call: "@simple.index"
+
+    # Each route must have unique key
+    index_spec:
+        # This is a list of verbs the route will respond to
+        verbs: [get]
+        # This is the URL path that need to matched for this route to trigger
+        path: "/spec"
+        # This is the Mojito and action that will be called when the route is matched
+        call: "simple.index"

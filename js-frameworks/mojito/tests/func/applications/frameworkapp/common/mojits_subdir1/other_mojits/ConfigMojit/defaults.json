@@ -1,0 +1,21 @@
+[
+    {
+        "settings": [ "master" ],
+        "config": {
+            "key1": "This is the value from the default.yaml for key1",
+            "key2": "This is the value from the default.yaml for key2",
+            "commonKey1": "Value of commonKey1 in defaults.yaml",
+			"defaultArray": [
+			     "defaultArrayValue1",
+				 "defaultArrayValue2"
+			],
+			"nestedConfig": {
+			     "subConfig1": "SubConfig from defaults.yaml",
+				 "subConfig2": {
+				        "subsubConfig1": "SubSubConfig1 from defaults.yaml",
+						"subsubConfig2": "SubSubConfig2 from defaults.yaml"
+				 }
+			}
+        }
+    }
+]

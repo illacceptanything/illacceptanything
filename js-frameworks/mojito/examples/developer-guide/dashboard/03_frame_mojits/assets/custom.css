@@ -1,0 +1,19 @@
+
+.mycustom {
+    border: 1px solid red;
+ /*   border: 1px solid #2d2d2d; */
+    margin: 8px;
+    padding: 16px;
+    border-radius: 3px;
+    box-shadow: 10px 10px 5px #888888;
+    /** temp until get grids going **/
+    float: left;
+}
+
+.mycustom h3 {
+    margin: 0px;
+    padding: 0px;
+    font-weight: bold;
+    text-shadow: 5px 5px 5px #C0C0C0;
+}
+.

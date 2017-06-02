@@ -1,0 +1,16 @@
+<div id="{{mojit_view_id}}" class="mojit">
+    <div class="mod" id="calendar">
+        <h3>
+            <strong>{{title}}</strong>
+            <a title="minimize module" class="min" href="#">-</a>
+            <a title="close module" class="close" href="#">x</a>
+        </h3>
+        <div class="inner">
+            <ul>
+                {{#results}}
+                    <li>{{#entry}}<span>{{#summary}}{{content}}{{/summary}}</span><a href="{{#link}}{{href}}{{/link}}" title="{{#title}}{{content}}{{/title}}">{{#title}}{{content}}{{/title}}</a>{{/entry}}</li>
+                {{/results}}
+            </ul>
+        </div>
+    </div>
+</div>

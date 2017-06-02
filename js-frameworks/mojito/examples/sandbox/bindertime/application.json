@@ -1,0 +1,36 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "allowQueryStringRouting": true,
+
+        "specs": {
+            "frame": {
+                "type": "HTMLFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "child": {
+                        "type": "Layout",
+                        "config": {
+                            "children": {
+                                "one": {
+                                    "base": "loader"
+                                },
+                                "two": {
+                                    "base": "loader"
+                                },
+                                "three": {
+                                    "base": "loader"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+
+            "loader": {
+                "type": "Loader"
+            }
+        }
+    }
+]

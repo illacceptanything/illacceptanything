@@ -1,0 +1,18 @@
+[{
+    "settings": [ "master" ],
+    "staticHandling": {
+        "cache": false,
+        "forceUpdate": true
+    },
+    "specs": {
+        "myBase": {
+            "type": "HTMLFrameMojit",
+            "config": {
+                "deploy": true,
+                "child": {
+                    "type": "myMojit"
+                }
+            }
+        }
+    }
+}]

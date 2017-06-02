@@ -1,0 +1,27 @@
+{
+ "routes": [
+   {
+     "method": "post",
+     "route": "*"
+   },
+   {
+     "method": "get",
+     "route": "*"
+   },
+   {
+     "method": "delete",
+     "route": "*"
+   },
+   {
+     "method": "put",
+     "route": "*"
+   }
+ ],
+ "mods": {
+   "mod_yby": {
+     "bouncer": {
+       "paranoid_approved_auth_overwrite": false
+     }
+   }
+ }
+}

@@ -1,0 +1,56 @@
+---
+language: node_js
+node_js:
+  - "0.10"
+
+sudo: false
+
+cache:
+  directories:
+    - node_modules
+    - bower_components
+
+before_install:
+  - "npm config set spin false"
+  - "npm install -g npm@^2"
+  - "npm --version"
+
+install:
+  - "npm install"
+
+after_success:
+  - "./bin/publish_builds"
+
+script:
+  - npm test
+
+after_script:
+    - ember stop-sauce-connect
+
+env:
+  global:
+    - SAUCE_USERNAME=ember-ci
+    - SAUCE_ACCESS_KEY=b5cff982-069f-4a0d-ac34-b77e57c2e295
+    - DISABLE_SOURCE_MAPS=true
+    - BROCCOLI_ENV=production
+    - S3_BUILD_CACHE_BUCKET=emberjs-build-cache
+    - S3_BUCKET_NAME=builds.emberjs.com
+    - secure: "SHnuJ4A3QbSc3LV2fYynDPbbSbhVl0ZWnCiKPuRgwnddDnoSaMQUY2RqyHdtsQGdUZCOeNaMvYUhYx6hzxBVHn0yuN3KA20aSwvYdwaMgZXfJi+lyxgsEI8iYdksWXvVbCAyKM8zjTWXUtNcMBGtsGYOfdD41wfZgI8GsI0YYJc="
+    - secure: ! 'KXJmcGLpnxnPmmei/qPNVcdQxLX1xyYIaVocinQ0YAjtBvCtAwg63EWMFnGp
+
+      VIzUNikE+Cej3g+nwEdDJiL1c9NFPL+zCnriR2iMVjPak+IQaG3YcMm0T+hY
+
+      /WLEPAquZBKw1gU6lBEUuDumTlkXQQdHz3cJYoidAXz3uV1EXIU='
+    - secure: ! 'qCW0BVNFuQjAI53pvvE6oeGxtEdZ+RlvcCpYjU4vxEjedidEEcHKtIVh7d7J
+
+      PZ8DNTxX0zsp2jjY8NwTR5MC8NBH+J5VjuTSGv82t5sm0i0jzaBmOOSLbKqH
+
+      I/BFT0MbnR6JVCZiPV7TCWPgY1gvgZ6TEEIKGqauDMUBdL8ZK6I='
+    - secure: e0yxVfwVW61d3Mi/QBOsY6Rfd1mZd3VXUd9xNRoz/fkvQJRuVwDe7oG3NOuJ4LZzvMw7BJ+zpDV9D8nKhAyPEEOgpkkMHUB7Ds83pHG4qSMzm4EAwBCadDLXCQirldz8dzN5FAqgGucXoj5fj/p2SKOkO6qWIZveGr8pdBJEG1E=
+  matrix:
+    - TEST_SUITE=each-package-tests
+    - TEST_SUITE=built-tests EMBER_ENV=production DISABLE_JSCS=true DISABLE_JSHINT=true
+    - TEST_SUITE=old-jquery
+    - TEST_SUITE=extend-prototypes
+    - TEST_SUITE=node EMBER_ENV=production DISABLE_JSCS=true DISABLE_JSHINT=true
+    - TEST_SUITE=sauce

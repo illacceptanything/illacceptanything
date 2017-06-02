@@ -1,0 +1,85 @@
+///*------------------------------------*\
+//    #OBJECTS-CHECKBOX
+//\*------------------------------------*/
+
+// Checkbox base styles
+.checkbox {}
+
+    // Checkbox input
+    .checkbox__input {
+        @extend %visuallyhidden;
+
+        &:not(:checked) {
+            & + .checkbox__label {
+                &:before {
+                    @include transform(scale(1));
+                }
+
+                &:after {
+                    @include transform(scale(0));
+                }
+            }
+        }
+
+        &:checked {
+            & + .checkbox__label {
+                &:before {
+                    @include transform(scale(0));
+                }
+
+                &:after {
+                    @include transform(scale(1));
+                }
+            }
+        }
+
+        &[disabled] {
+            & + .checkbox__label {
+                cursor: not-allowed;
+
+                &:before,
+                &:after {
+                    color: $black-3;
+                }
+            }
+        }
+    }
+
+    // Checkbox label
+    .checkbox__label {
+        display: block;
+        position: relative;
+        padding-left: $base-spacing-unit * 4;
+        font-weight: 400;
+        line-height: $size-xs;
+        cursor: pointer;
+        @include user-select(none);
+
+        &:before,
+        &:after {
+            @include mdi;
+            @include position(absolute, 0 null null 0);
+            @include font-size($size-xs);
+            line-height: $size-xs;
+            @include transition-property(transform);
+            @include transition-duration(0.2s);
+        }
+
+        &:before {
+            content: '\f1d6';
+        }
+
+        &:after {
+            content: '\f1d7';
+            color: $teal-500;
+        }
+    }
+
+    // Checkbox help
+    .checkbox__help {
+        display: block;
+        padding-left: $base-spacing-unit * 4;
+        @extend %fs-caption;
+        color: $black-2;
+        text-align: left;
+    }

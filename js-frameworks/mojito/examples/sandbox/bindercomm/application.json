@@ -1,0 +1,34 @@
+[
+    {
+        "settings": [ "master" ],
+        "specs": {
+
+            "frame": {
+                "type": "HTMLFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "child": {
+                        "type": "Parent",
+                        "config": {
+                            "children": {
+                                "devil": {
+                                    "type": "RedChild"
+                                },
+                                "socks": {
+                                    "type": "RedChild"
+                                },
+                                "jeans": {
+                                    "type": "BlueChild"
+                                },
+                                "jay": {
+                                    "type": "BlueChild"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "settings": [ "master" ],
+    "specs": {
+      "frame": {
+        "type": "HTMLFrameMojit",
+        "config": {
+          "deploy": true,
+          "child": {
+            "type": "Main"
+          }
+        }
+      }
+    }
+  }
+]

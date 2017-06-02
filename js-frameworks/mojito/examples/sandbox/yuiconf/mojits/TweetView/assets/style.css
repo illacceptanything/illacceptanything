@@ -1,0 +1,10 @@
+.tweet-view {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #99ffff;
+    padding: 10px;
+    border: solid 2px blue;
+    border-radius: 6px;
+    width: 44%;
+}

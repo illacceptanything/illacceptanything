@@ -1,0 +1,45 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "merged",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"merged",
+                "path": "../../../examples/input/merged"
+            }
+        },
+
+        "dataprovider" : { 
+            "merged" : {
+                "group" : "input,merged",
+                "params" : {
+                    "scenario": [
+                        {
+                           "test" : "test_merged1.js",
+                           "page" : "$$config.baseUrl$$/form"
+                        },
+                        {
+                           "controller": "locator",
+                           "params": {
+                                  "using": "xpath",
+                                  "value": "//input[2]",
+                                  "click": true
+                           }
+                        },
+                        {
+                           "test" : "test_merged2.js"
+                        }
+                     ]
+                }
+            }
+        }     
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

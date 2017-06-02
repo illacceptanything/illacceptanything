@@ -1,0 +1,7 @@
+{
+    "name": "should-not-be-used",
+    "version": "0.0.0",
+    "dependencies": {
+        "mojito": "*"
+    }
+}

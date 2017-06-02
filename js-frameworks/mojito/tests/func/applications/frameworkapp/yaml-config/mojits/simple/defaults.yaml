@@ -1,0 +1,9 @@
+# The the routes file
+-
+    # These are the dimensions that will be affected by these settings
+    settings: [master]
+
+    # The settings that will be read by the Mojit
+    config:
+        # This is a list of verbs the route will respond to
+        message: "Using YAML configs with comments!"

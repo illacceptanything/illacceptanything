@@ -1,0 +1,29 @@
+[
+    {
+        "settings": [ "master" ],
+        "specs": {
+            "frame": {
+                "type": "HTMLFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "child": {
+
+                        "type": "Container",
+                        "config": {
+
+                            "children": {
+                                "myLazyMojit": {
+                                    "type": "LazyPants",
+                                    "action": "hello",
+                                    "defer": true
+                                }
+                            }
+
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+]

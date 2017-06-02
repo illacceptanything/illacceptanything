@@ -1,0 +1,20 @@
+{
+    "name": "part1-1",
+    "description": "first app for mojito perf testing",
+    "version": "0.1.0",
+    "contributors": [
+          {
+              "name": "Lichun Zhan",
+              "email": "lzhan@yahoo-inc.com"
+          }
+    ],
+    "dependencies": {
+        "mojito": "*"
+    },
+    "yahoo" : {
+          "bugzilla" : {
+              "product" : "Mojito",
+              "component" : "General"
+          }
+    }
+}

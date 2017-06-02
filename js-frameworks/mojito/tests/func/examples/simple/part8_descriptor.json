@@ -1,0 +1,30 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "part8",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"part8",
+                "path": "../../../examples/simple/part8"
+            }
+        },
+
+        "dataprovider" : { 
+            "part8" : {
+                 "group" : "simple,part8,new",
+                 "params" : {
+                      "test" : "test_part8.js",
+                      "page" : "$$config.baseUrl$$/"
+                }
+            }
+        }     
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

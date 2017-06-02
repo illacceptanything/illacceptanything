@@ -1,0 +1,72 @@
+[
+    {
+        "settings": [ "master" ],
+        "name": "mojito-middleware-unit-tests",
+        "config": {
+            "lib": "../../../../../lib",
+            "base": "../../../../base"
+        },
+        "commonlib": "$$config.base$$/mojito-test.js",
+        "dataprovider" : {
+            "contextualizer": {
+                "params": {
+                    "lib": "$$config.lib$$/app/middleware/mojito-contextualizer.js",
+                    "test": "./test-contextualizer.js",
+                    "driver": "nodejs"
+                },
+                "group": "fw,unit,server"
+            },
+            "handler-static": {
+                "params": {
+                    "lib": "$$config.lib$$/app/middleware/mojito-handler-static.js",
+                    "test": "./test-handler-static.js",
+                    "driver": "nodejs"
+                },
+                "group": "fw,unit,server"
+            },
+            "handler-tunnel": {
+                "params": {
+                    "lib": "$$config.lib$$/app/middleware/mojito-handler-tunnel.js",
+                    "test": "./test-handler-tunnel.js",
+                    "driver": "nodejs"
+                },
+                "group": "fw,unit,server"
+            },
+            "handler-tunnel-parser": {
+                "params": {
+                    "lib": "$$config.lib$$/app/middleware/mojito-handler-tunnel-parser.js",
+                    "test": "./test-handler-tunnel-parser.js",
+                    "driver": "nodejs"
+                },
+                "group": "fw,unit,server"
+            },
+            "handler-tunnel-rpc": {
+                "params": {
+                    "lib": "$$config.lib$$/app/middleware/mojito-handler-tunnel-rpc.js",
+                    "test": "./test-handler-tunnel-rpc.js",
+                    "driver": "nodejs"
+                },
+                "group": "fw,unit,server"
+            },
+            "handler-tunnel-specs": {
+                "params": {
+                    "lib": "$$config.lib$$/app/middleware/mojito-handler-tunnel-specs.js",
+                    "test": "./test-handler-tunnel-specs.js",
+                    "driver": "nodejs"
+                },
+                "group": "fw,unit,server"
+            },
+            "handler-tunnel-type": {
+                "params": {
+                    "lib": "$$config.lib$$/app/middleware/mojito-handler-tunnel-type.js",
+                    "test": "./test-handler-tunnel-type.js",
+                    "driver": "nodejs"
+                },
+                "group": "fw,unit,server"
+            }
+        }
+    },
+    {
+        "settings": [ "environment:development" ]
+    }
+]

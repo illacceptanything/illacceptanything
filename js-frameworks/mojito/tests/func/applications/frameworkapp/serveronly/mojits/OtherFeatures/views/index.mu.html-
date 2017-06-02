@@ -1,0 +1,4 @@
+<div id="{{mojit_view_id}}">
+	<h2>{{title}}</h2>
+	<p>This is from index.mu.html-</h>
+</div>

@@ -1,0 +1,149 @@
+///*------------------------------------*\
+//    #OBJECTS-BUTTON
+//\*------------------------------------*/
+
+// Button vars
+$btn-padding:   ('xs': 10px, 's': 12px, 'm': 14px, 'l': 16px, 'xl': 26px);
+$btn-font-size: ('xs': 11px, 's': 11px, 'm': 13px, 'l': 14px, 'xl': 16px);
+$btn-icon-size: ('xs': 13px, 's': 15px, 'm': 20px, 'l': 24px, 'xl': 28px);
+
+
+
+
+
+// Button base styles
+.btn,
+%btn {
+    z-index: 2;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: $base-round;
+    background-color: transparent;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: none;
+        outline: none;
+    }
+
+    &::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+
+    .ripple {
+        z-index: -1;
+    }
+}
+
+// Sizes
+@each $key, $size in $sizes {
+    .btn--#{$key} {
+        padding-left: map-get($btn-padding, $key);
+        padding-right: map-get($btn-padding, $key);
+        @include font-size(map-get($btn-font-size, $key));
+        line-height: $size;
+    }
+}
+
+// Disabled states
+.btn[disabled],
+.btn--is-disabled {
+    box-shadow: none !important;
+    cursor: not-allowed;
+    color: $black-3 !important;
+
+    &.btn--raised,
+    &.btn--fab {
+        background-color: $grey-300 !important;
+    }
+}
+
+
+
+
+
+// Flat / Icon button
+@each $key, $color in $colors {
+    .btn--flat.btn--#{$key},
+    .btn--icon.btn--#{$key} {
+        color: $color;
+
+        .ripple {
+            background-color: $color;
+        }
+    }
+}
+
+
+
+
+
+// Raised / FAB buttons
+.btn--raised,
+.btn--fab {
+    @include z-depth(1);
+    @include transition-property(box-shadow);
+    @include transition-duration(0.2s);
+
+    &:hover {
+        @include z-depth(2);
+    }
+}
+
+@each $key, $color in $colors {
+    .btn--raised.btn--#{$key},
+    .btn--fab.btn--#{$key} {
+        @if $key == 'white' {
+            color: $black-1;
+        } @else {
+            color: $white-1;
+        }
+
+        background-color: $color;
+
+        .ripple {
+            background-color: darken($color, 50%);
+        }
+    }
+}
+
+
+
+
+
+// Icon / FAB buttons
+.btn--icon,
+.btn--fab {
+    border-radius: 50%;
+}
+
+@each $key, $size in $sizes {
+    .btn--icon.btn--#{$key},
+    .btn--fab.btn--#{$key} {
+        @include size($size);
+        padding: 0;
+
+        .mdi {
+            vertical-align: top;
+            line-height: $size;
+        }
+    }
+
+    .btn--icon.btn--#{$key} {
+        @include font-size((map-get($btn-icon-size, $key)));
+    }
+
+    .btn--fab.btn--#{$key} {
+        @include font-size((map-get($btn-font-size, $key)) + 4);
+    }
+}

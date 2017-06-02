@@ -1,0 +1,24 @@
+{
+    "name": "lazy_load",
+    "description": "My Mojito application",
+    "version": "0.0.1",
+    "author": {
+        "name": "Your Name",
+        "email": "nobody@yahoo-inc.com"
+    },
+    "contributors": [
+          {
+              "name": "Your Name",
+              "email": "nobody@yahoo-inc.com"
+          }
+    ],
+    "dependencies": {
+        "mojito": ">= 0.8.0"
+    },
+    "engines": {
+        "node": ">= 0.8"
+    },
+    "scripts": {
+        "start": "mojito start"
+    }
+}

@@ -1,0 +1,11 @@
+[
+    {
+        "settings": [ "master" ],
+        
+        "poster": {
+            "verbs": ["get"],
+            "path": "/form",
+            "call": "poster.index"
+        }
+    }
+]

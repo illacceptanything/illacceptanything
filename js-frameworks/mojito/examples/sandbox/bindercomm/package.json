@@ -1,0 +1,18 @@
+{
+    "name": "bindercomm",
+    "description": "My Mojito application",
+    "version": "0.0.1",
+    "contributors": [
+          {
+              "name": "Your Name",
+              "email": "nobody@yahoo-inc.com"
+          }
+    ],
+    "engines": {
+        "node": "> 0.8",
+        "npm": "> 1.0"
+    },
+    "dependencies": {
+        "mojito": "*"
+    }
+}

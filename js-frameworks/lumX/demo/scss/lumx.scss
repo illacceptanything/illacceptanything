@@ -1,0 +1,21 @@
+///*------------------------------------*\
+//    #LUMX
+//\*------------------------------------*/
+
+@import "settings/settings.common";
+@import "../../core/scss/lumx";
+
+@import "modules/common/modules.common.layout";
+@import "modules/common/modules.common.sidebar";
+@import "modules/common/modules.common.header";
+@import "modules/common/modules.common.main";
+@import "modules/common/modules.common.footer";
+
+@import "modules/home/modules.home.banner";
+@import "modules/home/modules.home.github-activity";
+@import "modules/home/modules.home.features";
+
+@import "objects/objects.example";
+@import "objects/objects.colors";
+
+@import "components/components.hljs";

@@ -1,0 +1,18 @@
+<!-- Added as test -->
+<script type="text/javascript">  
+  // Changes background color of the header.
+  // Note: JavaScript code should not be hard 
+  //coded into the view template. It&apos;s done      
+  // here to simplify the code example.  
+  function setColor(id, color) {
+    document.getElementById(id).style.backgroundColor = color;  
+  }
+</script>
+<div id="{{mojit_view_id}}" class="mojit">
+  <h2 id="header">{{title}}</h2>
+  <ul class="toolbar">
+  {{#colors}}
+    <li><a href="#" onClick="setColor(&apos;header&apos;,&apos;{{rgb}}&apos;);">{{id}}</a></li>
+  {{/colors}}
+  </ul>
+</div>

@@ -1,0 +1,6 @@
+.FlickrBrowser td {
+    vertical-align: top;
+}
+.FlickrBrowser .FlickrDetail {
+    min-width: 200px;
+}

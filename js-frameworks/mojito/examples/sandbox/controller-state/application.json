@@ -1,0 +1,38 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "specs": {
+
+            "frame": {
+                "type": "HTMLFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "child": {
+                        "type": "Parent",
+                        "config": {
+                            "children": {
+                                "a": {
+                                    "type": "Stateful"
+                                },
+                                "b": {
+                                    "type": "Stateful"
+                                },
+                                "c": {
+                                    "type": "Stateful"
+                                },
+                                "d": {
+                                    "type": "Stateful"
+                                },
+                                "e": {
+                                    "type": "Stateful"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+]

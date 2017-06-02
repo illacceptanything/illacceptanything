@@ -1,0 +1,32 @@
+///*------------------------------------*\
+//    #OBJECTS-EXAMPLE
+//\*------------------------------------*/
+
+// Example base styles
+.example {
+	margin-bottom: $base-spacing-unit * 3;
+	border-radius: $base-round;
+    background-color: #fff;
+    @include z-depth(1);
+
+    &:last-child {
+    	margin-bottom: 0;
+    }
+}
+	
+	// Example content
+	.example__content {
+        position: relative;
+		padding: $base-spacing-unit * 3;
+		border-bottom: 1px solid #ddd;
+	}
+
+	// Example code
+	.example__code {
+		padding: $base-spacing-unit * 1.5;
+		background-color: #f8f8f8;
+		
+		pre {
+			margin-bottom: 0;
+		}
+	}

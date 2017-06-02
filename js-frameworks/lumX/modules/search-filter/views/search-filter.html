@@ -1,0 +1,9 @@
+<div class="search-filter search-filter--{{ theme }}-theme"
+     ng-class="{ 'search-filter--is-focused': model,
+                 'search-filter--is-closed': closed }">
+    <div class="search-filter__container">
+        <label class="search-filter__label"><i class="mdi mdi-magnify"></i></label>
+        <input type="text" class="search-filter__input" placeholder="{{ placeholder }}" ng-model="model">
+        <span class="search-filter__cancel" ng-click="clear()"><i class="mdi mdi-close-circle"></i></span>
+    </div>
+</div>

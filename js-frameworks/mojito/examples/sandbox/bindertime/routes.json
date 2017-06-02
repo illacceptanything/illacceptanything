@@ -1,0 +1,15 @@
+[{
+    "settings": ["master"],
+
+    "frame": {
+        "verbs": ["get"],
+        "path": "/",
+        "call": "frame.index"
+    },
+    "loader foo": {
+        "verbs": ["get"],
+        "path": "/:num/loadfoo",
+        "call": "loader.foo"
+    }
+
+}]

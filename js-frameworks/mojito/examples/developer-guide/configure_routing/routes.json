@@ -1,0 +1,20 @@
+[
+  {
+    "settings": ["master"],
+    "root_route" : {
+      "verbs": ["get"],
+      "path": "/",
+      "call": "mapped_mojit.index"
+    },
+    "index_route": {
+      "verbs": ["get"],
+      "path": "/index",
+      "call": "mapped_mojit.index"
+    },
+    "show_route": {
+      "verbs": ["post"],
+      "path": "/show",
+      "call": "mapped_mojit.show"
+    }  
+  }
+]

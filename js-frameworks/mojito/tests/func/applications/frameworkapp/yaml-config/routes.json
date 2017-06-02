@@ -1,0 +1,15 @@
+[
+  {
+    "settings": [ "master" ],
+    "index": {
+      "verbs": ["get"],
+      "path": "/test",
+      "call": "@simple.index"
+    },
+	"index_spec": {
+      "verbs": ["get"],
+      "path": "/testspec",
+      "call": "simple.index"
+    }
+  }
+]

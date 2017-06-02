@@ -1,0 +1,65 @@
+---
+# Copyright (c) 2011-2013, Yahoo! Inc.  All rights reserved.
+# Copyrights licensed under the New BSD License.
+# See the accompanying LICENSE file for terms.
+
+# Both the server and client runtimes of an application can be configured. The application is configured in the
+# application.json file in the application directory. The file consists of an array of zero or more configuration
+# objects.
+# For details on every configuration, visit: http://developer.yahoo.com/cocktails/mojito/docs/intro/mojito_configuring.html#application-configuration
+
+# YAML supports commenting, JSON doesn't
+- settings:
+  # "master" setting is the default context. If other context is specified, the attributes here will be overwritten
+  - master
+
+  # Declares Instances
+  specs:
+    # For routing info on this instance, visit: https://github.com/yahoo/mojito/blob/develop/examples/quickstartguide/routes.yaml#L15-L20
+    shelf:
+      # "base" will inherit the setting from specified instance
+      base: _frame
+      config:
+        child:
+          # Puts your mojit under a child of HTMLFrameMojit
+          # Mojit name by default will be the name of the folder. Can be specified in mojit's package.json
+          type: Shelf
+          config:
+            # Includes css or other javascript files
+            assets:
+              # top: loads before other renderings from the view; buttom: loads afterwards
+              top:
+                css:
+                - /static/Shelf/assets/shelf.css
+    # For routing info on this instance, visit: https://github.com/yahoo/mojito/blob/develop/examples/quickstartguide/routes.yaml#L21-L25
+    read:
+      base: _frame
+      config:
+        # Overwrites HTML header title
+        title: Mojito Quickstart Guide » Read
+        child:
+          type: Read
+          config:
+            assets:
+              top:
+                css:
+                - /static/Read/assets/read.css
+    _frame:
+      type: HTMLFrameMojit
+      # HTMLFrameMojit is a handy way to help you create HTML skelton
+      config:
+        # Deploy = true for binder to be executed
+        deploy: true
+        # HTML header title
+        title: Mojito Quickstart Guide
+        assets:
+          top:
+            blob:
+            - <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            css:
+            # Loads a global css
+            - /static/yahoo_application_quickstartguide/assets/reset.css
+  # Set up static name such as app name and prefix
+  staticHandling:
+    appName: yahoo_application_quickstartguide
+...

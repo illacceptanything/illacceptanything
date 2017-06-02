@@ -1,0 +1,15 @@
+#blog h3 strong {
+    background-image: url(/static/Blog/assets/favicon-blog.png);
+}
+
+
+#blog li .desc {
+    display:block;
+    color: grey;
+    font-size: 0.8em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-left: 4px;
+    margin-top: 4px;
+}

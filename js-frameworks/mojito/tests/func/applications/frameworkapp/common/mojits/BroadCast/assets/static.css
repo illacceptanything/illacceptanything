@@ -1,0 +1,15 @@
+.red {
+    background-color: #ff9999;
+}
+.blue {
+    background-color: #00ccff;
+}
+.green {
+    background-color: #00FF00;
+}
+.purple {
+    background-color: #DBA4DB;
+}
+.child {
+    border:  solid 1px red;
+}

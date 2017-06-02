@@ -1,0 +1,54 @@
+[
+    {
+        "settings": ["region:ca"],
+
+        "logo": "yahoo_CA.png",
+        "links": {
+            "home": "http://ca.yahoo.com",
+            "mail": "http://ca.mail.yahoo.com"
+        }
+    },
+    {
+        "settings": ["region:gb"],
+
+        "logo": "yahoo_GB.png",
+        "links": {
+            "home": "http://gb.yahoo.com",
+            "mail": "http://gb.mail.yahoo.com"
+        }
+    },
+    {
+        "settings": ["lang:fr"],
+
+        "logo": "yahoo_FR.png"
+    },
+    {
+        "settings": ["region:fr"],
+
+        "logo": "yahoo_FR.png",
+        "links": {
+            "home": "http://fr.yahoo.com",
+            "mail": "http://fr.mail.yahoo.com"
+        }
+    },
+    {
+        "settings": ["flavor:att"],
+
+        "logo": "yahoo_att.png"
+    },
+    {
+        "settings": ["flavor:att","region:ca"],
+
+        "logo": "yahoo_att_CA.png"
+    },
+    {
+        "settings": ["flavor:bt","region:gb"],
+
+        "logo": "yahoo_bt_GB.png"
+    },
+    {
+        "settings": ["region:fr","flavor:bt"],
+
+        "logo": "yahoo_bt_FR.png"
+    }
+]

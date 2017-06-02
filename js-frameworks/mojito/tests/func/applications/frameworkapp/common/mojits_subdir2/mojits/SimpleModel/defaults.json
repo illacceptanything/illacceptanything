@@ -1,0 +1,8 @@
+[{
+    "settings": [ "master" ],
+
+    "config": {
+        "myconfig1": "This is myconfig1 from defaults.json",
+        "myconfig2": "This is myconfig2 from defaults.json"
+    }
+}]

@@ -1,0 +1,21 @@
+[
+  {
+    "settings": [ "master" ],
+    "staticHandling": {
+        "cache": false,
+        "forceUpdate": true
+    },
+    "specs": {
+      "frame" : {
+        "type" : "HTMLFrameMojit",
+        "deploy": true,
+        "config": {
+          "child" : {
+            "type" : "device"
+          }
+        }
+      }
+    }
+  },
+  { "settings": [ "device:iphone" ], "selector": "iphone" }
+]

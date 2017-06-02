@@ -1,0 +1,8 @@
+[
+    {
+        "settings": [ "master" ],
+        "config": {
+			"message": "JSONL Config from a spec file."
+        }
+    }
+]

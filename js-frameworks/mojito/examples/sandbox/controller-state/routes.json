@@ -1,0 +1,9 @@
+[{
+    "settings": [ "master" ],
+
+    "*": {
+        "call": "frame.index",
+        "path": "*",
+        "verbs": ["get"]
+    }
+}]

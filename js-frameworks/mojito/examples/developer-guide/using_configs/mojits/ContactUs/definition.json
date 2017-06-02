@@ -1,0 +1,39 @@
+[{
+    "settings": [ "master" ],
+
+    "corporate": [
+        {
+        	"dept": "Human Resources",
+        	"chief": "Bobby 'Soylent' Green",
+        	"phone": "555.555.1212 x123",
+        	"email": "hr@woohoo.com"
+        },
+        {
+        	"dept": "Sales",
+        	"chief": "Biff 'Whitey' Shoemaker",
+        	"phone": "555.555.1212 x124",
+        	"email": "sales@woohoo.com"
+        },
+        {
+        	"dept": "Customer Service",
+        	"chief": "Earl 'Ringer' Scheib",
+        	"phone": "555.555.1212 x234",
+        	"email": "help@woohoo.com"
+        }
+    ],
+
+    "subsidiary": [
+        {
+        	"dept": "Engineering",
+        	"chief": "Tommy 'Tacoma' Bridge",
+        	"phone": "555.555.1212 x121",
+        	"email": "hr@woohoo.com"
+        },
+        {
+        	"dept": "Customer Service",
+        	"chief": "Willy 'Windy' Wilson",
+        	"phone": "555.555.1212 x784",
+        	"email": "help@woohoo.com"
+        }
+    ]
+}]

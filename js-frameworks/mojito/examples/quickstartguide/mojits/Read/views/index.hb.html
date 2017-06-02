@@ -1,0 +1,31 @@
+<!-- View for mojito -->
+<!-- The views are HTML files that can include templates, such as Handlebars expressions, and are located in the views directory. We call these files templates to differentiate them from the rendered views that have substituted values for the template tags. Mojito uses Handlebars as the default rendering engine for templates. -->
+<!-- For more info, visit: http://developer.yahoo.com/cocktails/mojito/docs/intro/mojito_mvc.html#views -->
+<div id="{{mojit_view_id}}" class="container">
+    <div class="content-box">
+        <div class="contents-nav">
+            {{#if prev}}
+                <a class="link link-prev" href="{{prev}}">&laquo;</a>
+            {{/if}}
+            <a class="link link-home" href="index.html">HOME</a>
+            {{#if next}}
+                <a class="link link-next" href="{{next}}">&raquo;</a>
+            {{/if}}
+        </div>
+        <div class="content-title">
+            <h2>{{title}}</h2>
+        </div>
+        <div class="content style-simple {{css_style}}">
+            <div id="desc">{{{content}}}</div>
+        </div>
+        <footer class="link-bottom">
+            {{#if prev}}
+            <a class="link link-prev" href="{{prev}}">&laquo;</a>
+            {{/if}}
+            <p>{{title}}</p>
+            {{#if next}}
+            <a class="link link-next" href="{{next}}">&raquo;</a>
+            {{/if}}
+        </footer>
+    </div>
+</div>

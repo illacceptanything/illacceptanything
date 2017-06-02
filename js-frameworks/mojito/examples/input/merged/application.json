@@ -1,0 +1,13 @@
+[
+    {
+        "settings": [ "master" ],
+        "specs": {
+            "param-grabber": {
+                "type": "ParamGrabber"
+            },
+            "poster": {
+                "type": "Poster"
+            }
+        }
+    }
+]

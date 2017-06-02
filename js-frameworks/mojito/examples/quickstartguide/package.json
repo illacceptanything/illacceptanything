@@ -1,0 +1,45 @@
+{
+    "name": "yahoo_application_quickstartguide",
+    "description": "mojito guides reader derived from newsboxes app",
+    "version": "0.0.1",
+    "author": "Richard Allinson <allinson@yahoo-inc.com>",
+    "contributors": [
+        {
+            "name": "Steven Lu",
+            "email": "chenghan@yahoo-inc.com"
+        },
+        {
+            "name": "Joe Catera",
+            "email": "jcatera@yahoo-inc.com"
+        },
+        {
+            "name": "Ren Waldura",
+            "email": "rwaldura@yahoo-inc.com"
+        }
+    ],
+    "yahoo": {
+        "custodian": {
+            "email": "devel-ydesignmojits@yahoo-inc.com",
+            "url": "https://github.com/yahoo/mojito/wiki/Mojito-Quickstart-Guide"
+        },
+        "bugzilla": {
+            "product": "Mobile",
+            "component": "General"
+        }
+    },
+    "scripts": {
+        "start": "node app.js"
+    },
+    "engines": {
+        "node": "> 0.8",
+        "npm": "> 1.0"
+    },
+    "dependencies": {
+        "debug": "*",
+        "node-markdown": "*",
+        "mojito": "~0.9.0"
+    },
+    "devDependencies": {
+        "mojito-cli": ">= 0.2.0"
+    }
+}

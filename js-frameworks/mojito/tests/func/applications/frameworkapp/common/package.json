@@ -1,0 +1,26 @@
+{
+    "name": "common",
+	"description": "My Test Mojito application",
+    "version": "0.1.0",
+    "contributors": [
+          {   
+              "name": "Lichun Zhan",
+              "email": "lzhan@yahoo-inc.com"
+          }
+    ],
+    "dependencies": {
+      "mojito": ">= 0.3.27"
+    },
+    "engines": {
+      "node": ">= 0.6.0 < 0.7.0"
+    },
+    "scripts": {
+      "start": "mojito start"
+    },
+    "yahoo": {
+      "bugzilla" : {
+        "product" : "Test application",
+        "component" : "General"
+      }
+    }
+}

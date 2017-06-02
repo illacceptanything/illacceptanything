@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="ionic">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title></title>
+
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../../../../dist/css/ionic.css" />
+    <script src="../../../../dist/js/ionic.bundle.js"></script>
+
+  </head>
+
+  <body>
+
+    <div ng-controller="Ctrl">
+      <ion-header-bar title="title" type="bar-positive">
+      </ion-header-bar>
+      <ion-content class="has-header" style="background: lightblue;">
+        <h1>outer</h1>
+        <ion-scroll style="background: lightgreen; height: 200px;">
+          <h1>inner</h1>
+          <p ng-repeat="i in range">{{i}}</p>
+        </ion-scroll>
+        <p ng-repeat="i in range">{{i}}</p>
+      </ion-content>
+    </div>
+<script>
+function Ctrl($scope) {
+  $scope.range = [];
+  for (var i=0; i<20; i++) {
+    $scope.range.push(i);
+  }
+}
+</script>
+  </body>
+</html>

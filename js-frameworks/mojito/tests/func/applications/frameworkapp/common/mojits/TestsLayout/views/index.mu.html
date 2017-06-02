@@ -1,0 +1,27 @@
+<div id="{{mojit_view_id}}" class="mojit">
+	<h1>{{title}}</h1>
+
+    <h3>List of all the children:</h3>
+
+    {{#childData}}
+        <p><a href="#{{name}}">{{name}}</a></p>
+    {{/childData}}
+
+	
+	<table width="100%" cellspacing=0>
+	{{#childData}}
+	<tr><td width="40%" valign="top" class="td_border">
+		<a name="#{{name}}">
+		<div id="{{name}}">
+	        {{{html}}}
+	    </div>
+		<div>
+		  <p>{{{urls}}}</p>
+		</div>
+	</td><td class="td_border">
+		<fieldset><legend>Output&nbsp;&nbsp;<a title="Click to clear the output" href="javascript:removeOutput('{{name}}Result')" style="text-decoration:none">X</a></legend><div id="{{name}}Result"></div></fieldset>
+	</td></tr>
+	{{/childData}}
+	</table>
+
+</div>

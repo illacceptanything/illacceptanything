@@ -1,0 +1,108 @@
+[
+    {
+        "settings": [ "master" ],
+        "staticHandling": {
+          "appName": "trib"
+        },
+        "yui":{
+            "config": {
+                "comboBase":"http://yui.yahooapis.com/combo?",
+                "root":"3.8.1/build/",
+                "seed": [
+                    "yui-base",
+                    "loader-base",
+                    "loader-yui3",
+                    "loader-app",
+                    "loader-app-base{langPath}"
+                ],
+                "debug": true,
+                "logLevel": "warn" 
+            }
+        },
+        "specs": {            
+            "tribframe": {
+                "type": "HTMLFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "title": "Trib - YUI/Mojito Developer Dashboard",
+                    "child": {
+                        "type": "PageLayout",
+                        "config": {
+                            "children": {
+                                "header": {
+                                    "type": "Header"
+                                },
+                                "body": {
+                                    "type": "Body",
+                                    "config": {
+                                        "children": {
+                                            "github": {
+                                                "type":"Github"
+                                            },
+                                            "calendar": {
+                                                "type":"Calendar"
+                                            },
+                                            "twitter": {
+                                                "type":"Twitter"
+                                            },
+                                            "youtube": {
+                                                "type": "Youtube"
+                                            },
+                                            "blog": {
+                                                "type": "Blog"
+                                            },
+                                            "gallery": {
+                                                "type": "Gallery"
+                                            }
+                                        }
+                                    }
+                                },
+                                "footer": {
+                                    "type": "Footer"
+                                }
+                            }
+                        }
+                    },
+                    "assets": {
+                        "top": {
+                            "css": [
+                                "http://yui.yahooapis.com/3.9.0/build/cssnormalize/cssnormalize-min.css",
+                                "http://yui.yahooapis.com/gallery-2013.03.13-20-05/build/gallerycss-cssform/gallerycss-cssform-min.css",
+                                "http://yui.yahooapis.com/3.9.0/build/cssgrids-responsive/cssgrids-responsive-min.css",
+                                "http://yui.yahooapis.com/3.9.0/build/cssbutton/cssbutton-min.css",
+                                "http://yui.yahooapis.com/gallery-2013.03.13-20-05/build/gallerycss-csslist/gallerycss-csslist-min.css",
+                                "https://rawgithub.com/tilomitra/yuicss-common/master/ui.css",
+                                "/static/trib/assets/trib.css"
+                            ]
+
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        "settings": [ "environment:development" ],
+        "staticHandling": {
+            "forceUpdate": true
+        },
+        "yui":{
+            "config": {
+                "debug": true,
+                "logLevel": "debug"
+            }
+        }
+    },
+    {
+        "settings": [ "environment:production" ],
+        "staticHandling": {
+            "forceUpdate": false
+        },
+        "yui":{
+            "config": {
+                "debug": false,
+                "logLevel": "none"
+            }
+        }
+    }
+]

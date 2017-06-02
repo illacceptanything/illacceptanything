@@ -1,0 +1,94 @@
+///*------------------------------------*\
+//    #BASE-TYPOGRAPHY
+//\*------------------------------------*/
+
+.fs-caption,
+%fs-caption {
+    @include font-size(12px);
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.fs-body-1,
+%fs-body-1,
+.fs-body-2,
+%fs-body-2 {
+    @include media-query(portable) {
+        @include font-size(14px);
+    }
+
+    @include media-query(desk) {
+        @include font-size(13px);
+    }
+}
+
+.fs-body-1,
+%fs-body-1 {
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.fs-body-2,
+%fs-body-2 {
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.fs-subhead,
+%fs-subhead {
+    font-weight: 400;
+    line-height: 24px;
+
+    @include media-query(portable) {
+        @include font-size(16px);
+    }
+
+    @include media-query(desk) {
+        @include font-size(15px);
+    }
+}
+
+.fs-title,
+%fs-title {
+    @include font-size(20px);
+    font-weight: 500;
+    line-height: 28px;
+}
+
+.fs-headline,
+%fs-headline {
+    @include font-size(24px);
+    font-weight: 400;
+    line-height: 32px;
+}
+
+.fs-display-1,
+%fs-display-1 {
+    @include font-size(34px);
+    font-weight: 400;
+    line-height: 40px;
+}
+
+.fs-display-2,
+%fs-display-2 {
+    @include font-size(45px);
+    font-weight: 400;
+    line-height: 48px;
+    letter-spacing: -1px;
+}
+
+.fs-display-3,
+%fs-display-3 {
+    @include font-size(56px);
+    font-weight: 400;
+    line-height: 64px;
+    letter-spacing: -2px;
+}
+
+.fs-display-4,
+%fs-display-4 {
+    @include font-size(112px);
+    font-weight: 300;
+    line-height: 128px;
+    letter-spacing: -5px;
+}

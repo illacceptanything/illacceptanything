@@ -1,0 +1,59 @@
+<!-- Sidebar -->
+<ng-include src="'/includes/sidebar/sidebar-css.html'"></ng-include>
+
+<div class="main-section">
+    <h3 class="main-section__title">Colors</h3>
+
+    <div class="main-section__content">
+        <div class="paragraph">
+            <h4 class="main-section__subtitle">Background and text colors</h4>
+
+            <p>
+                Each color can be used as background color or text-color.
+            </p>
+        </div>
+
+        <div class="example mt++">
+            <div class="example__content">
+                <ng-include src="'/includes/css/colors/helper.html'"></ng-include>
+            </div>
+
+            <!-- Example -->
+            <div class="example__code" hljs include="'/includes/css/colors/helper.html'" language="html"></div>
+            <!-- /Example -->
+        </div>
+    </div>
+
+    <div class="main-section__content">
+        <div class="paragraph">
+            <h4 class="main-section__subtitle">Color palette</h4>
+
+            <p>
+                We've created Sass variables for every color used in the <a href="https://www.google.com/design/spec/style/color.html#color-ui-color-palette" target="_blank">UI Color Palette</a>.
+            </p>
+
+            <ng-include src="'/includes/css/colors/palette.html'"></ng-include>
+        </div>
+    </div>
+
+    <div class="main-section__content">
+        <div class="paragraph">
+            <h4 class="main-section__subtitle">Primary and accent colors</h4>
+
+            <p>
+                As described in Material Design Guidelines, you should limit your selection of colors by choosing three color hues from the primary palette and one accent color from the secondary palette. The accent color may or may not need fallback options.
+            </p>
+
+            <p>
+                Primary and secondary colors are defined in <code>dist/scss/settings/_defaults.scss</code>.<br />
+                Feel free to override it according to your needs.
+            </p>
+        </div>
+
+        <div class="example mt++">
+            <!-- Example -->
+            <div class="example__code" hljs include="'/includes/css/colors/selection.html'" language="scss"></div>
+            <!-- /Example -->
+        </div>
+    </div>
+</div>

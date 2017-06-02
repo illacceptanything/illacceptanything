@@ -1,0 +1,26 @@
+{% block extrahead %}
+<style type="text/css">
+li.none {
+  list-style-type: none; 
+  color: green;
+  font-size: 16px;
+  margin-left: 10px;
+  text-decoration: underline;
+}
+h2 {
+    padding-left: 10px;
+    background-color: #6BA81E;
+    line-height: 32px;
+    color: #fff;
+    text-shadow: 0px 1px 0 #444;
+    font-size: 20px;
+}
+</style>
+{% endblock %}
+{% block relbar1 %}
+<h2>See Also</h2>
+<li class='none'><a href="../">Welcome to Cocktails!</a></li>
+<li class='none'><a href="../glossary/">Glossary</a></li>
+<li class='none'><a href="../guide/">Mojito Developer Guide</a></li>
+<li class='none'><a href="../manhattan/">Manhattan Developer Guide</a></li>
+{% endblock %}

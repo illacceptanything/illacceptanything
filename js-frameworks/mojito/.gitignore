@@ -1,0 +1,15 @@
+.DS_Store
+.lock-wscript
+.svn/
+*.bak
+*~
+node_modules
+!tests/fixtures/app-jsons/node_modules
+!tests/fixtures/packages/node_modules
+!tests/fixtures/packages/node_modules/*/node_modules
+arrowreport
+artifacts
+coverage
+flatfile
+*_descriptor-report.json
+*_descriptor-report.xml

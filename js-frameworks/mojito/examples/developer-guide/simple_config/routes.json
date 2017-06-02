@@ -1,0 +1,10 @@
+[
+  {
+    "settings": [ "master" ],
+    "simple": { 
+      "verbs": ["get"],
+      "path": "/", 
+      "call": "simple.index" 
+    }
+  }
+]

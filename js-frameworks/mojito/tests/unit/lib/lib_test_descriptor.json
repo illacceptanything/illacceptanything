@@ -1,0 +1,47 @@
+[
+    {
+        "settings": [ "master" ],
+        "name": "lib-unit-tests",
+        "config": {
+            "lib": "../../../lib",
+            "base": "../../base"
+        },
+        "commonlib": "$$config.base$$/mojito-test.js,$$config.lib$$/app/autoload/util.common.js",
+        "dataprovider" : {
+            "output-handler.server": {
+                "params": {
+                    "test": "./test-output-handler.server.js",
+                    "driver": "nodejs"
+                },
+                "group": "fw,unit,server"
+            },
+            "router": {
+                "params": {
+                    "lib": "$$config.lib$$/router.js",
+                    "test": "./test-router.js",
+                    "driver": "nodejs"
+                },
+                "group": "fw,unit,server"
+            },
+            "dispatcher": {
+                "params": {
+                    "lib": "$$config.lib$$/dispatcher.js",
+                    "test": "./test-dispatcher.js",
+                    "driver": "nodejs"
+                },
+                "group": "fw,unit,server"
+            },
+            "middleware": {
+                "params": {
+                    "lib": "$$config.lib$$/middleware.js",
+                    "test": "./test-middleware.js",
+                    "driver": "nodejs"
+                },
+                "group": "fw,unit,server"
+            }
+        }
+    },
+    {
+        "settings": [ "environment:development" ]
+    }
+]

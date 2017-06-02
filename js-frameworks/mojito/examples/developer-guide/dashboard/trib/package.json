@@ -1,0 +1,31 @@
+{
+    "name": "trib",
+    "description": "My Mojito application",
+    "version": "0.0.1",
+    "author": {
+        "name": "Andrew Wooldridge",
+        "email": "awooldri@yahoo-inc.com"
+    },
+    "contributors": [
+          {
+              "name": "Andrew Wooldridge",
+              "email": "awooldri@yahoo-inc.com"
+          }
+    ],
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "debug": "*",
+        "mojito": "~0.9.0"
+    },
+    "devDependencies": {
+        "mojito-cli": ">= 0.2.0",
+        "simple-twitter": "~1.0.0",
+        "yahoo-arrow": "~0.0.77",
+        "phantomjs": ">=1.8.0"
+    },
+    "engines": {
+        "node": ">0.8"
+    }
+}

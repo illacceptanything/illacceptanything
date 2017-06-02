@@ -1,0 +1,11 @@
+div.yui-tweet {
+    border: solid black 2px;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 4px;
+    width: 44%;
+}
+
+.highlighted {
+    background-color: #ccffff;
+}

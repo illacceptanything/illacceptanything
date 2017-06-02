@@ -1,0 +1,12 @@
+<div id="{{mojit_view_id}}" class="mojit">
+  <h2 style="color: #606; font-weight:bold;">Simple View</h2>
+  <div>type: {{type}}</div>
+  <div>time: {{#time}}{{hours}}:{{minutes}} {{period}}{{/time}}</div>
+  <div>show: {{#show}}{{type}}{{/show}}</div>
+  <div>hide: {{#hide}}{{type}}{{/hide}}</div>
+  <div>no show: {{^show}}{{type}}{{/show}}</div>
+  <div>no hide: {{^hide}}{{type}}{{/hide}}</div>
+  <div>list: {{#list}}{{id}}{{/list}}</div>
+  <div>hole: {{^hole}}no list{{/hole}}</div>
+  <div>html: {{{html}}}</div>
+</div>

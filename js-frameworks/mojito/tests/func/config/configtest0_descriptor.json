@@ -1,0 +1,51 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "config",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"configapp",
+                "path": "./frameworkapp/configapp"
+            }
+        },
+
+        "dataprovider" : {     
+            "DefaultConfig1" : {
+                "group" : "functional,smoke,config,testgroup0",
+                "params" : {
+                    "test" : "testDefaultConfig1.js",
+                    "page" : "$$config.baseUrl$$"
+                }
+            },
+            "DefaultConfig2" : {
+                "group" : "functional,smoke,config,testgroup0",
+                "params" : {
+                    "test" : "testDefaultConfig2.js",
+                    "page" : "$$config.baseUrl$$/?lang=de"
+                }
+            },
+            "DefaultConfig3" : {
+                "group" : "functional,smoke,config,testgroup0",
+                "params" : {
+                    "test" : "testDefaultConfig3.js",
+                    "page" : "$$config.baseUrl$$/?lang=fr"
+                }
+            },
+            "DefaultConfig4" : {
+                "group" : "functional,smoke,config,testgroup0",
+                "params" : {
+                    "test" : "testDefaultConfig4.js",
+                    "page" : "$$config.baseUrl$$/?subject=math"
+                }
+            }
+        }     
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

@@ -1,0 +1,34 @@
+<div id="{{mojit_view_id}}" class="mojit" style="position: relative; width: 960px">
+  <h3>Query Term: {{query}}</h3>
+  <div id="nav" style="clear: both;">
+  {{#hasLink}}
+    {{#prev}}
+    <a href="{{{link}}}">{{title}}</a>
+    {{/prev}}
+  {{/hasLink}}
+  {{^hasLink}}
+    {{#prev}}{{title}}{{/prev}}
+  {{/hasLink}}
+  {{#next}}
+    <a href="{{{link}}}">{{title}}</a>
+  {{/next}}
+  </div>
+  <div id="master" style="width: 30%; float: left;">
+    <ul>
+    {{#data}}
+      <li><a href="{{location}}" data-id="{{image_id}}">{{title}}</a></li>
+    {{/data}}
+    </ul>
+  </div>
+  <!--
+  <div id="display" style="position: absolute; right: 0; top: 100px; background-color: pink; text-align: center;">      
+   Model Unknown
+  </div>
+  -->
+  <div style="width: 50%; float: right">
+  <!-- load image here dynamically -->
+    <div id="display" style="margin: 0 auto;">
+      &nbsp;
+    </div>
+  </div>
+</div>

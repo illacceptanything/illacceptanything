@@ -1,0 +1,18 @@
+[
+  {
+    "settings": [ "master" ],
+    "staticHandling": {
+        "cache": false,
+        "forceUpdate": true
+    },
+    "specs": {
+      "device": {
+        "type" : "device"
+      }
+    }
+  },
+  { "settings": [ "device:android" ], "selector": "android" },
+  { "settings": [ "device:blackberry" ], "selector": "blackberry" },
+  { "settings": [ "device:iphone" ], "selector": "iphone" }
+]
+

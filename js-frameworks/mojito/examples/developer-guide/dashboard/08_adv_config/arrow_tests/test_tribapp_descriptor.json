@@ -1,0 +1,50 @@
+[
+    {
+        "settings": [ "master" ],
+        "name" : "trib_app",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"input",
+                "path": "../"
+            }
+        },
+        "dataprovider" : { 
+            "test trib app index page" : {
+                "group" : "tribapp",
+                "params" : {
+                    "scenario": [
+                        {
+                            "test" : "test_yui_dashboard.js",
+                            "page" : "$$config.baseUrl$$"
+                        },
+                        {
+                           "controller": "locator",
+                           "params": {
+                                  "value": "a.yui3-button.swap",
+                                  "click": true
+                           }
+                        },
+                        {
+                           "test" : "test_mojito_dashboard.js"
+                        },
+                        {
+                           "controller": "locator",
+                           "params": {
+                                  "value": "a.yui3-button.swap",
+                                  "click": true
+                           }
+                        },
+                        {
+                           "test" : "test_yui_dashboard.js"
+                        }
+                     ]
+                }
+            }
+        }    
+    },
+    {
+        "settings": [ "environment:development" ]
+    }
+]

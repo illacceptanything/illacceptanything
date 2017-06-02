@@ -1,0 +1,9 @@
+[{
+    "settings": [ "master" ],
+    "yui": {
+        "config": {
+            "debug": true,
+            "logLevel": "error"
+        }
+    }
+}]

@@ -1,0 +1,11 @@
+[
+    {
+        "settings": ["master"],
+        "root": {
+            "verb": ["get"],
+            "path": "/",
+            "call": "frame.index"
+        }
+    }
+]
+

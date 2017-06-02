@@ -1,0 +1,27 @@
+[
+    {
+        "settings": [ "master" ],
+        "staticHandling": {
+            "cache": false,
+            "forceUpdate": true
+        },
+        "specs": {
+            "frame" : {
+                "type" : "HTMLFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "child" : {
+                        "type" : "scroll"
+                    },
+                    "assets": {
+                        "top": {
+                            "css":[
+                                "/static/scroll/assets/index.css"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+]

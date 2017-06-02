@@ -1,0 +1,11 @@
+<div id="{{mojit_view_id}}">
+    <h1>YUI Tweets</h1>
+    <h3>From http://tweets.yuilibrary.com/</h3>
+    {{#tweets}} 
+        <div class="yui-tweet">
+            <h2>{{title}}</h2>
+            <h3>{{pubDate}}</h3>
+            <p class="screenName">{{creator}}</p>
+        </div>
+    {{/tweets}}
+</div>

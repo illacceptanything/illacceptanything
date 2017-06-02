@@ -1,0 +1,123 @@
+///*------------------------------------*\
+//    #OBJECTS-TABS
+//\*------------------------------------*/
+
+// Tabs base styles
+.tabs {
+    position: relative;
+
+    &:after {
+        content: '';
+        @include position(absolute, (($base-spacing-unit * 6) - 1) 0 null 0);
+        height: 1px;
+    }
+}
+
+// Tabs themes
+.tabs--theme-light {
+    &:after {
+        background-color: $white-2;
+    }
+
+    .tabs-link {
+        color: $white-2;
+    }
+
+    .tabs-link:hover,
+    .tabs-link--is-active {
+        color: $white-1 !important;
+    }
+}
+
+.tabs--theme-dark {
+    &:after {
+        background-color: $black-4;
+    }
+
+    .tabs-link {
+        color: $black-2;
+    }
+}
+
+// Tabs layout
+.tabs--layout-full {
+    .tabs__links {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+        text-align: center;
+
+        li {
+            display: table-cell;
+        }
+    }
+}
+
+.tabs--layout-inline {
+    .tabs__links {
+        li {
+            display: inline-block;
+            vertical-align: top;
+        }
+    }
+
+    .tabs-link {
+        @include media-query(palm) {
+            padding-left: $base-spacing-unit * 1.5;
+            padding-right: $base-spacing-unit * 1.5;
+        }
+
+        @include media-query(lap-and-up) {
+            padding-left: $base-spacing-unit * 3;
+            padding-right: $base-spacing-unit * 3;
+        }
+    }
+}
+
+// No divider
+.tabs--no-divider:after {
+    display: none;
+}
+    
+    // Tabs links
+    .tabs__links {
+        position: relative;
+        @extend %bare-list;
+    }
+
+    // Tabs indicator
+    .tabs__indicator {
+        @include position(absolute, (($base-spacing-unit * 6) - 2) 0 null 0);
+        z-index: 1;
+        height: 2px;
+    }
+
+
+
+
+
+// Tabs link
+.tabs-link {
+    display: block;
+    height: $base-spacing-unit * 6;
+    cursor: pointer;
+    font-weight: 500;
+    line-height: 48px;
+    text-align: center;
+    text-transform: uppercase;
+    @include transition-property(color);
+    @include transition-duration(0.2s);
+
+    @include media-query(portable) {
+        @include font-size(14px);
+    }
+
+    @include media-query(desk) {
+        @include font-size(13px);
+    }
+
+    .mdi {
+        @include font-size(24px);
+        line-height: $base-spacing-unit * 6;
+    }
+}

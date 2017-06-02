@@ -1,0 +1,9 @@
+.mojit {
+  text-align: center;
+}
+ul.toolbar {
+  display: block;
+  margin: 0 auto;
+  width: 17.0em;
+}
+.toolbar li { display:inline; }

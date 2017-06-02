@@ -1,0 +1,18 @@
+[{
+    "settings": ["master"],
+    "root": {
+        "verbs": ["get"],
+        "path": "/",
+        "call": "server.index"
+    },
+    "clientframe": {
+        "verbs": ["get"],
+        "path": "/client/index",
+        "call": "client.index"
+    },
+    "servercatch": {
+        "verbs": ["get"],
+        "path": "/server/catch",
+        "call": "server.catch"
+    }
+}]

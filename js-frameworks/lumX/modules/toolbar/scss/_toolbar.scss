@@ -1,0 +1,42 @@
+///*------------------------------------*\
+//    #OBJECTS-TOOLBAR
+//\*------------------------------------*/
+
+// Toolbar base styles
+.toolbar {
+    @include display(flex);
+    @include flex-direction(row);
+    padding: 0 $base-spacing-unit * 2;
+
+    @include media-query(portable) {
+        height: $base-spacing-unit * 7;
+        padding-top: $base-spacing-unit;
+        padding-bottom: $base-spacing-unit;
+    }
+
+    @include media-query(desk) {
+        height: $base-spacing-unit * 8;
+        padding-top: $base-spacing-unit * 1.5;
+        padding-bottom: $base-spacing-unit * 1.5;
+    }
+}
+    
+    // Toolbar left area
+    .toolbar__left {
+        @include display(flex);
+        @include flex-direction(row);
+    }
+
+    // Toolbar right area
+    .toolbar__right {
+        @include display(flex);
+        @include flex-direction(row);
+        @include justify-content(flex-end);
+        @include align-items(center);
+    }
+
+    // Toolbar label
+    .toolbar__label {
+        @include flex(1);
+        line-height: $size-l;
+    }

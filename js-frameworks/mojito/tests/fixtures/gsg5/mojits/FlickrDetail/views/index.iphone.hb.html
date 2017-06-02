@@ -1,0 +1,45 @@
+<div id="{{mojit_view_id}}" class="FlickrDetail device-iphone">
+<table>
+<tr class="img">
+    <td colspan="2">
+        <img src="{{#urls}}{{#image}}{{{content}}}{{/image}}{{/urls}}" alt="{{title}}"/>
+    </td>
+</tr>
+<tr class="title">
+    <th>{{#intl}}{{TITLE}}{{/intl}}</th>
+    <td>
+        {{#have_title}}{{title}}{{/have_title}}
+        {{^have_title}}{{#intl}}<span class="none">{{TITLE_NONE}}</span>{{/intl}}{{/have_title}}
+    </td>
+</tr>
+<tr class="username">
+    <th>{{#intl}}{{OWNER_USERNAME}}{{/intl}}</th>
+    <td>{{#owner}}{{username}}{{/owner}}</td>
+</tr>
+<tr class="posted">
+    <th>{{#intl}}{{DATE_POSTED}}{{/intl}}</th>
+    <td>{{#intl}}{{posted}}{{/intl}}</td>
+</tr>
+<tr class="description">
+    <th>{{#intl}}{{DESCRIPTION}}{{/intl}}</th>
+    <td>
+        {{#have_description}}{{description}}{{/have_description}}
+        {{^have_description}}{{#intl}}<span class="none">{{DESCRIPTION_NONE}}</span>{{/intl}}{{/have_description}}
+    </td>
+</tr>
+<tr class="tags">
+    <th>{{#intl}}{{TAGS}}{{/intl}}</th>
+    <td>
+        {{#tags}}{{#tag}}{{content}} {{/tag}}{{/tags}}
+        {{^tags}}{{#intl}}<span class="none">{{TAGS_NONE}}</span>{{/intl}}{{/tags}}
+    </td>
+</tr>
+<tr class="urls">
+    <th>{{#intl}}{{URLS}}{{/intl}}</th>
+    <td>
+        {{#urls}}{{#url}}<a href="{{{content}}}">{{#intl}}{{URL_PHOTO_PAGE}}{{/intl}}</a>{{/url}}{{/urls}}
+        {{#urls}}{{#image}}<a href="{{{content}}}">{{#intl}}{{URL_IMAGE}}{{/intl}}</a>{{/image}}{{/urls}}
+    </td>
+</tr>
+</table>
+</div>

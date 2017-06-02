@@ -1,0 +1,42 @@
+<button class="btn btn--m btn--black btn--flat" ng-click="opendDialog('test')" lx-ripple>Open dialog</button>
+
+<lx-dialog class="dialog dialog--l" id="test" onclose="closingDialog()">
+    <div class="dialog__header">
+        <div class="toolbar bgc-light-blue-500 pl++">
+            <span class="toolbar__label tc-white fs-title">
+                Lorem Ipsum
+            </span>
+
+            <div class="toolbar__right">
+                <button class="btn btn--l btn--white btn--icon" lx-ripple ng-click="addPerson()">
+                    <i class="mdi mdi-plus"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="dialog__content">
+        <lx-tabs links-tc="light" links-bgc="light-blue-500" indicator="yellow-500" no-divider="true" layout="inline">
+            <lx-tab heading="Lorem Ipsum 1">
+                <div class="p++">
+                    <div ng-repeat="person in people">
+                        {{ person.name }} - {{ person.email }} - {{ person.age }}
+                    </div>
+                </div>
+            </lx-tab>
+
+            <lx-tab heading="Lorem Ipsum 2">
+                <p class="p++">Lorem Ipsum Content 2</p>
+            </lx-tab>
+
+            <lx-tab heading="Lorem Ipsum 3">
+                <p class="p++">Lorem Ipsum Content 3</p>
+            </lx-tab>
+        </lx-tabs>
+    </div>
+
+    <div class="dialog__actions">
+        <button class="btn btn--m btn--black btn--flat" lx-ripple lx-dialog-close>Cancel</button>
+        <button class="btn btn--m btn--black btn--flat" lx-ripple>Lorem Ipsum</button>
+    </div>
+</lx-dialog>

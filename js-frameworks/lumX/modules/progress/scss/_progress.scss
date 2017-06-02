@@ -1,0 +1,118 @@
+///*------------------------------------*\
+//    #OBJECTS-PROGRESS
+//\*------------------------------------*/
+
+// Progress circular container
+.progress-circular-container {
+    position: relative;
+    height: 50px;
+}
+
+// Progress circular base styles
+.progress-circular {
+    @include position(absolute, 50% null null 50%);
+    z-index: 999;
+    @include size(100px);
+    margin-top: -50px;
+    margin-left: -50px;
+}
+
+.progress-circular--is-small {
+    @include transform(scale(0.5));
+}
+
+.progress-circular--is-shown {
+    .progress-circular__path {
+        stroke-width: 6;
+    }
+}
+
+    .progress-circular__svg {
+        position: relative;
+        @include size(100px);
+        @include animation(spin 2s linear infinite);
+    }
+
+    .progress-circular__path {
+        stroke-width: 0;
+        stroke-dasharray: 1,200;
+        stroke-dashoffset: 0;
+        stroke-linecap: round;
+        @include animation(circular 1.5s ease-in-out infinite);
+        @include transition-property(stroke-width);
+        @include transition-duration(0.4s);
+    }
+
+@include keyframes(circular) {
+    0%{
+        stroke-dasharray: 1,200;
+        stroke-dashoffset: 0;
+    }
+    50%{
+        stroke-dasharray: 89,200;
+        stroke-dashoffset: -35;
+    }
+    100%{
+        stroke-dasharray: 89,200;
+        stroke-dashoffset: -124;
+    }
+}
+
+
+
+
+
+// Progress linear base styles
+.progress-linear {
+    @include position(absolute, null 0 0 0);
+    z-index: 999;
+    height: 4px;
+    overflow: hidden;
+    @include transform(scale(1, 0));
+    @include transition-property(transform);
+    @include transition-duration(0.4s);
+    @include transform-origin(bottom center);
+}
+
+.progress-linear--is-shown {
+    @include transform(none);
+}
+
+    // Progress linear background
+    .progress-linear__background {
+        @include position(absolute, 0 0 0 0);
+        opacity: 0.4;
+    }
+
+    // Progress linear bars
+    .progress-linear__bar {
+        @include transform(scale(1) translateX(50%));
+    }
+
+    .progress-linear__bar--first {
+        @include position(absolute, -($base-spacing-unit * 1.5) null null null);
+        @include size(100% 24px);
+        @include animation(bar1 2s linear infinite);
+    }
+
+    .progress-linear__bar--second {
+        @include position(absolute, -($base-spacing-unit * 6) null null null);
+        @include size(100% 96px);
+        @include animation(bar2 2s linear infinite); 
+    }
+
+@include keyframes(bar1) {
+    0% { @include transform(scale(0.5) translateX(-150%)); }
+    37.5% { @include transform(scale(0.75) translateX(0%)); }
+    75% { @include transform(scale(0.5) translateX(150%));  }
+    100% { @include transform(scale(0.5) translateX(150%)); }
+}
+
+@include keyframes(bar2) {
+    0% { @include transform(scale(0.5) translateX(-250%)); }
+    40% { @include transform(scale(0.5) translateX(-250%)); }
+    55% { @include transform(scale(0.5) translateX(-150%)); }
+    70% { @include transform(scale(0.5) translateX(-50%)); }
+    85% { @include transform(scale(0.25) translateX(150%)); }
+    100% { @include transform(scale(0.25) translateX(250%)); }
+}

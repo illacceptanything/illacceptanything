@@ -1,0 +1,15 @@
+[
+  {
+    "settings": [ "master" ],
+    "mu": {
+      "verbs": ["get"],
+      "path": "/",
+      "call": "myMojit.default_ve"
+    },
+    "hb": {
+      "verbs": ["get"],
+      "path": "/ejs",
+      "call": "myMojit.added_ve"
+    }
+  }
+]

@@ -1,0 +1,5 @@
+YUI.add('MAutoloadNot', function(Y) {
+
+    Y.autoload.not = 'nope';
+
+}, '0.0.1', {requires: []});

@@ -1,0 +1,43 @@
+///*------------------------------------*\
+//    #OBJECTS-NOTIFICATION
+//\*------------------------------------*/
+
+// Notification base styles
+.notification {
+    @include position(fixed, null $base-spacing-unit * 3 $base-spacing-unit * 3 null);
+    z-index: 1001;
+    max-width: 300px;
+    padding: $base-spacing-unit * 2 $base-spacing-unit * 3;
+    border-radius: $base-round;
+    background-color: #323232;
+    cursor: pointer;
+    @include animation(jelly 1000ms linear both);
+    @include transition(margin-bottom .2s ease-in-out);
+}
+
+    // Notification content
+    .notification__content {
+        display: block;
+        @include font-size(14px);
+        color: $white-1;
+        line-height: 20px;
+    }
+
+    .notification--has-icon .notification__content {
+        padding-left: $base-spacing-unit * 4;
+    }
+
+    // Notification icon
+    .notification__icon {
+        @include position(absolute, $base-spacing-unit * 2 null null $base-spacing-unit * 3);
+        @include font-size(14px);
+        color: $white-1;
+        line-height: 20px !important;
+    }
+
+
+@each $key, $color in $colors {
+    .notification--#{$key} .notification__icon {
+        color: $color;
+    }
+}

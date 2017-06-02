@@ -1,0 +1,38 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "config",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"configapp",
+                "path": "./frameworkapp/configapp",
+                "param": "environment:testing,subject:bc-100"
+			}
+        },
+
+        "dataprovider" : {     
+            "ChemEnv1" : {
+                "group" : "functional,smoke,config,testgroup4",
+                "params" : {
+                    "test" : "testchemenv1.js",
+                    "page" : "$$config.baseUrl$$/"
+                }
+            },
+            "ChemEnv2" : {
+                "group" : "functional,smoke,config,testgroup4",
+                "params" : {
+                    "test" : "testchemenv2.js",
+                    "page" : "$$config.baseUrl$$/?lang=fr"
+                }
+            }
+        }     
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

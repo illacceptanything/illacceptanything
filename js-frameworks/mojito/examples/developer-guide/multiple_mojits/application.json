@@ -1,0 +1,27 @@
+[ 
+  {
+    "settings": [ "master" ],
+    "staticHandling": {
+        "cache": false,
+        "forceUpdate": true
+    },
+    "specs": {
+      "parent": {
+        "type": "Frame", 
+        "config" : {
+          "children": {
+            "header": {
+              "type": "Header"
+            },
+            "body": {
+              "type": "Body"
+            },
+            "footer": {
+              "type": "Footer"
+            }
+          }
+        }
+      }
+    }
+  }
+]

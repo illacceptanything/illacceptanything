@@ -1,0 +1,29 @@
+<div id="{{mojit_view_id}}">
+	<p><b>Application.json</b>
+	<p id="configValue">ac.config.get('config1') - <i>{{configValue}}</i></p>
+    <p id="configArrayValue">ac.config.get('configArray1') - <i>{{{configArrayValue}}}</i></p>
+    <p id="configNested1">ac.config.get('config2.config2Key1') - <i>{{configNested1}}</i></p>
+    <p id="configNested2">ac.config.get('config2.config2Key2') - <i>{{configNested2}}</i></p>
+    <p id="configNested3">ac.config.get('config2.config2Key2.config2Key2Key1') - <i>{{configNested3}}</i></p>
+    <p id="completeConfig">ac.config.get() - <i>{{completeConfig}}</i></p>
+	<p id="noMatchConfigArray">ac.config.get('something_unknown', '["I", "am", "an", "array"]') - <i>{{{noMatchConfigArray}}}</i></p>
+	<p id="noMatchConfig">ac.config.get('something_unknown', 'Config not found') - <i>{{noMatchConfig}}</i></p>
+	</p>
+    
+	<p><b>Defaults.json</b>	
+    <p id="defaultFileValue">ac.config.get('key1') - <i>{{defaultFileValue}}</i></p>
+    <p id="commonKeyValue">ac.config.get('commonKey1') - <i>{{commonKeyValue}}</i></p>
+	<p id="defaultArray">ac.config.get('defaultArray') - <i>{{defaultArray}}</i></p>
+	<p id="defaultNested1">ac.config.get('nestedConfig.subConfig2') - <i>{{defaultNested1}}</i></p>
+    </p>
+	
+	<p><b>Definition.json</b>
+    <p id="definitionValue">ac.config.getDefinition('def1') - <i>{{definitionValue}}</i></p>
+    <p id="defArrayValue">ac.config.getDefinition('defArray1') - <i>{{defArrayValue}}</i></p>
+	<p id="defNested1">ac.config.getDefinition('nested.subset2') - <i>{{defNested1}}</i></p>
+	<p id="defNestedArray">ac.config.getDefinition('nested.subset2.subsubsetArray') - <i>{{defNestedArray}}</i></p>
+	<p id="noMatchDefinition">ac.config.getDefinition('something_unknown', 'definition not found') - <i>{{noMatchDefinition}}</i></p>
+	<p id="noMatchDefinitionArray">ac.config.getDefinition('something_unknown', '["I", "am", "an", "array"]') - <i>{{noMatchDefinitionArray}}</i></p>
+	<p id="noMatchDefinitionJson">ac.config.getDefinition('something_unknown', '{one: {two: "I am two", three: "I am three"}}') - <i>{{noMatchDefinitionJson}}</i></p>
+	</p>
+</div>

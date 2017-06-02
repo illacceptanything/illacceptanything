@@ -1,0 +1,10 @@
+[
+  {
+    "settings": [ "master" ],
+    "_framed_view": { 
+      "verbs": ["get"], 
+      "path": "/", 
+      "call": "frame.index" 
+    }
+  }
+]

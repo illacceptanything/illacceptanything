@@ -1,0 +1,43 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "unittest_model_controller",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"unittest_model_controller",
+                "path": "../../../examples/developer-guide/unittest_model_controller"
+            }
+        },
+
+        "dataprovider" : {    
+            "unittestmodelcontroller" : {
+                "group" : "developerguide,unittest_model_controller",
+                "params" : {
+                    "scenario": [
+                        {
+                            "page" : "$$config.baseUrl$$/?environment=development"
+                        },
+                        {
+                            "controller": "locator",
+                            "params": {
+                                "using": "xpath",
+                                "value": "/html/body/div/ul/li"
+                            }
+                        },
+                        {
+                            "test" : "test_unittest_model_controller.js"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

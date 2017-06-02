@@ -1,0 +1,14 @@
+<div id="{{mojit_view_id}}" class="mojit">
+    <div class="mod" id="gallery">
+        {{> widget_heading}}
+        <div class="inner galleryFlow">
+            <ul>
+            {{#each results.json}}
+                <li>{{{linker this "http://yuilibrary.com/gallery/buildtag/" this }}}</a></li>
+            {{else}}
+                <li class="none">Sorry, no results were returned. Try refreshing the page again.</li> 
+            {{/each}}
+             </ul>
+        </div>
+    </div>
+</div>

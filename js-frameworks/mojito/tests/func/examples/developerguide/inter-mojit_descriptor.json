@@ -1,0 +1,63 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "inter-mojit",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"inter-mojit",
+                "path": "../../../examples/developer-guide/inter-mojit"
+            }
+        },
+
+        "dataprovider" : {    
+            "intermojit" : {
+                "group" : "developerguide,inter-mojit",
+                "params" : {
+                    "scenario": [
+                        {
+                            "page" : "$$config.baseUrl$$/"
+                        },
+                        {
+                            "controller": "locator",
+                            "params": {
+                                "using": "xpath",
+                                "value": "/html/body/div/table/tbody/tr/td/div/h3"
+                            }
+                        },
+                        {
+                            "test" : "test_intermojit.js",
+                            "testName": "first"
+                        },
+                        {
+                            "controller": "locator",
+                            "params": {
+                                "using": "xpath",
+                                "value": "/html/body/div/table/tbody/tr/td/div/ul/li/a",
+                                "click": true
+                            }
+                        },
+                        {
+                            "controller": "locator",
+                            "params": {
+                                "using": "xpath",
+                                "value": "/html/body/div/table/tbody/tr/td[2]/div/div/h3"
+                            }
+                        },
+                        {
+                            "test" : "test_intermojit.js",
+                            "testName": "second"
+                        }
+                    ]
+                }
+            }
+        }     
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

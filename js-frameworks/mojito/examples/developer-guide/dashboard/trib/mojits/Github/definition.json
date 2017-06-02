@@ -1,0 +1,16 @@
+[
+    {
+        "settings": [ "master" ],
+        "yqlTable" : "store://gpgSGZAwQ3vaDaalPQZ44u",
+        "yui": {
+            "title" : "YUI GitHub Activity",
+            "id": "yui",
+            "repo": "yui3"
+        }, 
+        "mojito": { 
+            "title" : "Mojito GitHub Activity",
+            "id": "yahoo",
+            "repo": "mojito"
+        }
+    }
+]

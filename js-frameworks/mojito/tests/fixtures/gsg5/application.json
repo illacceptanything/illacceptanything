@@ -1,0 +1,47 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "specs": {
+            "flickr": {
+                "type": "HTMLFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "child": {
+                        "type": "FlickrBrowser",
+                        "config": {
+                            "children": {
+                                "thumbs": {
+                                    "base": "thumbs"
+                                },
+                                "detail": {
+                                    "base": "detail"
+                                }
+                            }
+                        }
+                    },
+                    "meta": {
+                        "viewport": "width=device-width,initial-scale=1"
+                    },
+                    "assets": {
+                        "top": {
+                            "css": [
+                                "/static/PagedFlickr/assets/index.css"
+                            ]
+                        }
+                    }
+                }
+            },
+            "thumbs": {
+                "type": "PagedFlickr"
+            },
+            "detail": {
+                "type": "FlickrDetail"
+            }
+        }
+    },
+    {
+        "settings": [ "device:iphone" ],
+        "selector": "iphone"
+    }
+]

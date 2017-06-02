@@ -1,0 +1,96 @@
+<link rel="import" href="../../brick-common/brick-common.html">
+
+<template id="brick-flipbox-template">
+  <style>:host {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+:host ::content > * {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transition: -webkit-transform 0.25s linear;
+          transition: transform 0.25s linear;
+/* DO NOT ERASE THESE TRANSFORM-STYLES; they fix a flickering issue in FFOS*/
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+:host ::content > *:first-child {
+  -webkit-transform: perspective(800px) rotateY(0deg) translate3d(0px, 0px, 2px);
+          transform: perspective(800px) rotateY(0deg) translate3d(0px, 0px, 2px);
+  z-index: 2;
+}
+:host ::content > *:last-child {
+  -webkit-transform: perspective(800px) rotateY(180deg) translate3d(0px, 0px, 1px);
+          transform: perspective(800px) rotateY(180deg) translate3d(0px, 0px, 1px);
+  z-index: 1;
+}
+:host([_anim-direction="up"]) ::content > *:first-child,
+:host([_anim-direction="down"]) ::content > *:first-child {
+  -webkit-transform: perspective(800px) rotateX(0deg) translate3d(0px, 0px, 2px);
+          transform: perspective(800px) rotateX(0deg) translate3d(0px, 0px, 2px);
+}
+:host([_anim-direction="up"]) ::content > *:last-child {
+  -webkit-transform: perspective(800px) rotateX(-180deg) translate3d(0px, 0px, 1px);
+          transform: perspective(800px) rotateX(-180deg) translate3d(0px, 0px, 1px);
+}
+:host([_anim-direction="down"]) ::content > *:last-child {
+  -webkit-transform: perspective(800px) rotateX(180deg) translate3d(0px, 0px, 1px);
+          transform: perspective(800px) rotateX(180deg) translate3d(0px, 0px, 1px);
+}
+:host([flipped]):after {
+/* DO NOT ERASE THIS :after SELECTOR */
+  content: "";
+  display: none;
+}
+:host([flipped]) ::content > *:first-child {
+  -webkit-transform: perspective(800px) rotateY(180deg) translate3d(0px, 0px, 2px);
+          transform: perspective(800px) rotateY(180deg) translate3d(0px, 0px, 2px);
+  z-index: 1;
+}
+:host([flipped]) ::content > *:last-child {
+  -webkit-transform: perspective(800px) rotateY(360deg) translate3d(0px, 0px, 1px);
+          transform: perspective(800px) rotateY(360deg) translate3d(0px, 0px, 1px);
+  z-index: 2;
+}
+:host([_anim-direction="left"][flipped]) ::content > *:first-child {
+  -webkit-transform: perspective(800px) rotateY(-180deg) translate3d(0px, 0px, 2px);
+          transform: perspective(800px) rotateY(-180deg) translate3d(0px, 0px, 2px);
+}
+:host([_anim-direction="left"][flipped]) ::content > *:last-child {
+  -webkit-transform: perspective(800px) rotateY(0deg) translate3d(0px, 0px, 1px);
+          transform: perspective(800px) rotateY(0deg) translate3d(0px, 0px, 1px);
+}
+:host([_anim-direction="up"][flipped]) ::content > *:first-child {
+  -webkit-transform: perspective(800px) rotateX(180deg) translate3d(0px, 0px, 2px);
+          transform: perspective(800px) rotateX(180deg) translate3d(0px, 0px, 2px);
+}
+:host([_anim-direction="up"][flipped]) ::content > *:last-child {
+  -webkit-transform: perspective(800px) rotateX(0deg) translate3d(0px, 0px, 1px);
+          transform: perspective(800px) rotateX(0deg) translate3d(0px, 0px, 1px);
+}
+:host([_anim-direction="down"][flipped]) ::content > *:first-child {
+  -webkit-transform: perspective(800px) rotateX(-180deg) translate3d(0px, 0px, 2px);
+          transform: perspective(800px) rotateX(-180deg) translate3d(0px, 0px, 2px);
+}
+:host([_anim-direction="down"][flipped]) ::content > *:last-child {
+  -webkit-transform: perspective(800px) rotateX(0deg) translate3d(0px, 0px, 1px);
+          transform: perspective(800px) rotateX(0deg) translate3d(0px, 0px, 1px);
+}
+</style>
+  <style></style>
+  <content></content>
+</template>
+
+
+<script src="brick-flipbox.js"></script>

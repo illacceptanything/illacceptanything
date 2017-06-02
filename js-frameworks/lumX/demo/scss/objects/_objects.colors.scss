@@ -1,0 +1,410 @@
+///*------------------------------------*\
+//    #OBJECTS-COLORS
+//\*------------------------------------*/
+
+// Colors
+.colors {
+    margin-bottom: $base-spacing-unit * 3;
+    @extend %bare-list;
+
+    & > div {
+        height: $base-spacing-unit * 6;
+        padding: 0 $base-spacing-unit * 2;
+        line-height: $base-spacing-unit * 6;
+    }
+}
+
+    // Colors main
+    .colors__main {
+        position: relative;
+        height: $base-spacing-unit * 12 !important;
+        margin-bottom: $base-spacing-unit;
+        line-height: 1em !important;
+
+        .colors__variable {
+            @include position(absolute, null null $base-spacing-unit * 2 $base-spacing-unit * 2);
+        }
+    }
+
+    // Colors title
+    .colors__title {
+        @include position(absolute, $base-spacing-unit * 2 null null $base-spacing-unit * 2);
+        @include font-size(18px);
+        font-weight: 500;
+        color: $white;
+    }
+
+    // Colors variable
+    .colors__variable {
+        @include font-size(14px);
+        font-weight: 500;
+        color: $white;
+    }
+
+    .colors__variable--black {
+        color: $black !important;
+    }
+
+
+
+
+
+// Colors red
+.colors--red {
+    .colors__main   { background-color: $red-500;   }
+    .colors__50     { background-color: $red-50;    }
+    .colors__100    { background-color: $red-100;   }
+    .colors__200    { background-color: $red-200;   }
+    .colors__300    { background-color: $red-300;   }
+    .colors__400    { background-color: $red-400;   }
+    .colors__500    { background-color: $red-500;   }
+    .colors__600    { background-color: $red-600;   }
+    .colors__700    { background-color: $red-700;   }
+    .colors__800    { background-color: $red-800;   }
+    .colors__900    { background-color: $red-900;   }
+    .colors__A100   { background-color: $red-A100;  }
+    .colors__A200   { background-color: $red-A200;  }
+    .colors__A400   { background-color: $red-A400;  }
+    .colors__A700   { background-color: $red-A700;  }
+}
+
+// Colors pink
+.colors--pink {
+    .colors__main   { background-color: $pink-500;   }
+    .colors__50     { background-color: $pink-50;    }
+    .colors__100    { background-color: $pink-100;   }
+    .colors__200    { background-color: $pink-200;   }
+    .colors__300    { background-color: $pink-300;   }
+    .colors__400    { background-color: $pink-400;   }
+    .colors__500    { background-color: $pink-500;   }
+    .colors__600    { background-color: $pink-600;   }
+    .colors__700    { background-color: $pink-700;   }
+    .colors__800    { background-color: $pink-800;   }
+    .colors__900    { background-color: $pink-900;   }
+    .colors__A100   { background-color: $pink-A100;  }
+    .colors__A200   { background-color: $pink-A200;  }
+    .colors__A400   { background-color: $pink-A400;  }
+    .colors__A700   { background-color: $pink-A700;  }
+}
+
+// Colors purple
+.colors--purple {
+    .colors__main   { background-color: $purple-500;   }
+    .colors__50     { background-color: $purple-50;    }
+    .colors__100    { background-color: $purple-100;   }
+    .colors__200    { background-color: $purple-200;   }
+    .colors__300    { background-color: $purple-300;   }
+    .colors__400    { background-color: $purple-400;   }
+    .colors__500    { background-color: $purple-500;   }
+    .colors__600    { background-color: $purple-600;   }
+    .colors__700    { background-color: $purple-700;   }
+    .colors__800    { background-color: $purple-800;   }
+    .colors__900    { background-color: $purple-900;   }
+    .colors__A100   { background-color: $purple-A100;  }
+    .colors__A200   { background-color: $purple-A200;  }
+    .colors__A400   { background-color: $purple-A400;  }
+    .colors__A700   { background-color: $purple-A700;  }
+}
+
+// Colors deep purple
+.colors--deep-purple {
+    .colors__main   { background-color: $deep-purple-500;   }
+    .colors__50     { background-color: $deep-purple-50;    }
+    .colors__100    { background-color: $deep-purple-100;   }
+    .colors__200    { background-color: $deep-purple-200;   }
+    .colors__300    { background-color: $deep-purple-300;   }
+    .colors__400    { background-color: $deep-purple-400;   }
+    .colors__500    { background-color: $deep-purple-500;   }
+    .colors__600    { background-color: $deep-purple-600;   }
+    .colors__700    { background-color: $deep-purple-700;   }
+    .colors__800    { background-color: $deep-purple-800;   }
+    .colors__900    { background-color: $deep-purple-900;   }
+    .colors__A100   { background-color: $deep-purple-A100;  }
+    .colors__A200   { background-color: $deep-purple-A200;  }
+    .colors__A400   { background-color: $deep-purple-A400;  }
+    .colors__A700   { background-color: $deep-purple-A700;  }
+}
+
+// Colors indigo
+.colors--indigo {
+    .colors__main   { background-color: $indigo-500;   }
+    .colors__50     { background-color: $indigo-50;    }
+    .colors__100    { background-color: $indigo-100;   }
+    .colors__200    { background-color: $indigo-200;   }
+    .colors__300    { background-color: $indigo-300;   }
+    .colors__400    { background-color: $indigo-400;   }
+    .colors__500    { background-color: $indigo-500;   }
+    .colors__600    { background-color: $indigo-600;   }
+    .colors__700    { background-color: $indigo-700;   }
+    .colors__800    { background-color: $indigo-800;   }
+    .colors__900    { background-color: $indigo-900;   }
+    .colors__A100   { background-color: $indigo-A100;  }
+    .colors__A200   { background-color: $indigo-A200;  }
+    .colors__A400   { background-color: $indigo-A400;  }
+    .colors__A700   { background-color: $indigo-A700;  }
+}
+
+// Colors blue
+.colors--blue {
+    .colors__main   { background-color: $blue-500;   }
+    .colors__50     { background-color: $blue-50;    }
+    .colors__100    { background-color: $blue-100;   }
+    .colors__200    { background-color: $blue-200;   }
+    .colors__300    { background-color: $blue-300;   }
+    .colors__400    { background-color: $blue-400;   }
+    .colors__500    { background-color: $blue-500;   }
+    .colors__600    { background-color: $blue-600;   }
+    .colors__700    { background-color: $blue-700;   }
+    .colors__800    { background-color: $blue-800;   }
+    .colors__900    { background-color: $blue-900;   }
+    .colors__A100   { background-color: $blue-A100;  }
+    .colors__A200   { background-color: $blue-A200;  }
+    .colors__A400   { background-color: $blue-A400;  }
+    .colors__A700   { background-color: $blue-A700;  }
+}
+
+// Colors light-blue
+.colors--light-blue {
+    .colors__main   { background-color: $light-blue-500;   }
+    .colors__50     { background-color: $light-blue-50;    }
+    .colors__100    { background-color: $light-blue-100;   }
+    .colors__200    { background-color: $light-blue-200;   }
+    .colors__300    { background-color: $light-blue-300;   }
+    .colors__400    { background-color: $light-blue-400;   }
+    .colors__500    { background-color: $light-blue-500;   }
+    .colors__600    { background-color: $light-blue-600;   }
+    .colors__700    { background-color: $light-blue-700;   }
+    .colors__800    { background-color: $light-blue-800;   }
+    .colors__900    { background-color: $light-blue-900;   }
+    .colors__A100   { background-color: $light-blue-A100;  }
+    .colors__A200   { background-color: $light-blue-A200;  }
+    .colors__A400   { background-color: $light-blue-A400;  }
+    .colors__A700   { background-color: $light-blue-A700;  }
+}
+
+// Colors teal
+.colors--teal {
+    .colors__main   { background-color: $teal-500;   }
+    .colors__50     { background-color: $teal-50;    }
+    .colors__100    { background-color: $teal-100;   }
+    .colors__200    { background-color: $teal-200;   }
+    .colors__300    { background-color: $teal-300;   }
+    .colors__400    { background-color: $teal-400;   }
+    .colors__500    { background-color: $teal-500;   }
+    .colors__600    { background-color: $teal-600;   }
+    .colors__700    { background-color: $teal-700;   }
+    .colors__800    { background-color: $teal-800;   }
+    .colors__900    { background-color: $teal-900;   }
+    .colors__A100   { background-color: $teal-A100;  }
+    .colors__A200   { background-color: $teal-A200;  }
+    .colors__A400   { background-color: $teal-A400;  }
+    .colors__A700   { background-color: $teal-A700;  }
+}
+
+// Colors green
+.colors--green {
+    .colors__main   { background-color: $green-500;   }
+    .colors__50     { background-color: $green-50;    }
+    .colors__100    { background-color: $green-100;   }
+    .colors__200    { background-color: $green-200;   }
+    .colors__300    { background-color: $green-300;   }
+    .colors__400    { background-color: $green-400;   }
+    .colors__500    { background-color: $green-500;   }
+    .colors__600    { background-color: $green-600;   }
+    .colors__700    { background-color: $green-700;   }
+    .colors__800    { background-color: $green-800;   }
+    .colors__900    { background-color: $green-900;   }
+    .colors__A100   { background-color: $green-A100;  }
+    .colors__A200   { background-color: $green-A200;  }
+    .colors__A400   { background-color: $green-A400;  }
+    .colors__A700   { background-color: $green-A700;  }
+}
+
+// Colors light-green
+.colors--light-green {
+    .colors__main   { background-color: $light-green-500;   }
+    .colors__50     { background-color: $light-green-50;    }
+    .colors__100    { background-color: $light-green-100;   }
+    .colors__200    { background-color: $light-green-200;   }
+    .colors__300    { background-color: $light-green-300;   }
+    .colors__400    { background-color: $light-green-400;   }
+    .colors__500    { background-color: $light-green-500;   }
+    .colors__600    { background-color: $light-green-600;   }
+    .colors__700    { background-color: $light-green-700;   }
+    .colors__800    { background-color: $light-green-800;   }
+    .colors__900    { background-color: $light-green-900;   }
+    .colors__A100   { background-color: $light-green-A100;  }
+    .colors__A200   { background-color: $light-green-A200;  }
+    .colors__A400   { background-color: $light-green-A400;  }
+    .colors__A700   { background-color: $light-green-A700;  }
+}
+
+// Colors lime
+.colors--lime {
+    .colors__main   { background-color: $lime-500;   }
+    .colors__50     { background-color: $lime-50;    }
+    .colors__100    { background-color: $lime-100;   }
+    .colors__200    { background-color: $lime-200;   }
+    .colors__300    { background-color: $lime-300;   }
+    .colors__400    { background-color: $lime-400;   }
+    .colors__500    { background-color: $lime-500;   }
+    .colors__600    { background-color: $lime-600;   }
+    .colors__700    { background-color: $lime-700;   }
+    .colors__800    { background-color: $lime-800;   }
+    .colors__900    { background-color: $lime-900;   }
+    .colors__A100   { background-color: $lime-A100;  }
+    .colors__A200   { background-color: $lime-A200;  }
+    .colors__A400   { background-color: $lime-A400;  }
+    .colors__A700   { background-color: $lime-A700;  }
+}
+
+// Colors yellow
+.colors--yellow {
+    .colors__main   { background-color: $yellow-500;   }
+    .colors__50     { background-color: $yellow-50;    }
+    .colors__100    { background-color: $yellow-100;   }
+    .colors__200    { background-color: $yellow-200;   }
+    .colors__300    { background-color: $yellow-300;   }
+    .colors__400    { background-color: $yellow-400;   }
+    .colors__500    { background-color: $yellow-500;   }
+    .colors__600    { background-color: $yellow-600;   }
+    .colors__700    { background-color: $yellow-700;   }
+    .colors__800    { background-color: $yellow-800;   }
+    .colors__900    { background-color: $yellow-900;   }
+    .colors__A100   { background-color: $yellow-A100;  }
+    .colors__A200   { background-color: $yellow-A200;  }
+    .colors__A400   { background-color: $yellow-A400;  }
+    .colors__A700   { background-color: $yellow-A700;  }
+}
+
+// Colors amber
+.colors--amber {
+    .colors__main   { background-color: $amber-500;   }
+    .colors__50     { background-color: $amber-50;    }
+    .colors__100    { background-color: $amber-100;   }
+    .colors__200    { background-color: $amber-200;   }
+    .colors__300    { background-color: $amber-300;   }
+    .colors__400    { background-color: $amber-400;   }
+    .colors__500    { background-color: $amber-500;   }
+    .colors__600    { background-color: $amber-600;   }
+    .colors__700    { background-color: $amber-700;   }
+    .colors__800    { background-color: $amber-800;   }
+    .colors__900    { background-color: $amber-900;   }
+    .colors__A100   { background-color: $amber-A100;  }
+    .colors__A200   { background-color: $amber-A200;  }
+    .colors__A400   { background-color: $amber-A400;  }
+    .colors__A700   { background-color: $amber-A700;  }
+}
+
+// Colors orange
+.colors--orange {
+    .colors__main   { background-color: $orange-500;   }
+    .colors__50     { background-color: $orange-50;    }
+    .colors__100    { background-color: $orange-100;   }
+    .colors__200    { background-color: $orange-200;   }
+    .colors__300    { background-color: $orange-300;   }
+    .colors__400    { background-color: $orange-400;   }
+    .colors__500    { background-color: $orange-500;   }
+    .colors__600    { background-color: $orange-600;   }
+    .colors__700    { background-color: $orange-700;   }
+    .colors__800    { background-color: $orange-800;   }
+    .colors__900    { background-color: $orange-900;   }
+    .colors__A100   { background-color: $orange-A100;  }
+    .colors__A200   { background-color: $orange-A200;  }
+    .colors__A400   { background-color: $orange-A400;  }
+    .colors__A700   { background-color: $orange-A700;  }
+}
+
+// Colors deep-orange
+.colors--deep-orange {
+    .colors__main   { background-color: $deep-orange-500;   }
+    .colors__50     { background-color: $deep-orange-50;    }
+    .colors__100    { background-color: $deep-orange-100;   }
+    .colors__200    { background-color: $deep-orange-200;   }
+    .colors__300    { background-color: $deep-orange-300;   }
+    .colors__400    { background-color: $deep-orange-400;   }
+    .colors__500    { background-color: $deep-orange-500;   }
+    .colors__600    { background-color: $deep-orange-600;   }
+    .colors__700    { background-color: $deep-orange-700;   }
+    .colors__800    { background-color: $deep-orange-800;   }
+    .colors__900    { background-color: $deep-orange-900;   }
+    .colors__A100   { background-color: $deep-orange-A100;  }
+    .colors__A200   { background-color: $deep-orange-A200;  }
+    .colors__A400   { background-color: $deep-orange-A400;  }
+    .colors__A700   { background-color: $deep-orange-A700;  }
+}
+
+// Colors brown
+.colors--brown {
+    .colors__main   { background-color: $brown-500;   }
+    .colors__50     { background-color: $brown-50;    }
+    .colors__100    { background-color: $brown-100;   }
+    .colors__200    { background-color: $brown-200;   }
+    .colors__300    { background-color: $brown-300;   }
+    .colors__400    { background-color: $brown-400;   }
+    .colors__500    { background-color: $brown-500;   }
+    .colors__600    { background-color: $brown-600;   }
+    .colors__700    { background-color: $brown-700;   }
+    .colors__800    { background-color: $brown-800;   }
+    .colors__900    { background-color: $brown-900;   }
+}
+
+// Colors grey
+.colors--grey {
+    .colors__main   { background-color: $grey-500;   }
+    .colors__50     { background-color: $grey-50;    }
+    .colors__100    { background-color: $grey-100;   }
+    .colors__200    { background-color: $grey-200;   }
+    .colors__300    { background-color: $grey-300;   }
+    .colors__400    { background-color: $grey-400;   }
+    .colors__500    { background-color: $grey-500;   }
+    .colors__600    { background-color: $grey-600;   }
+    .colors__700    { background-color: $grey-700;   }
+    .colors__800    { background-color: $grey-800;   }
+    .colors__900    { background-color: $grey-900;   }
+}
+
+// Colors blue-grey
+.colors--blue-grey {
+    .colors__main   { background-color: $blue-grey-500;   }
+    .colors__50     { background-color: $blue-grey-50;    }
+    .colors__100    { background-color: $blue-grey-100;   }
+    .colors__200    { background-color: $blue-grey-200;   }
+    .colors__300    { background-color: $blue-grey-300;   }
+    .colors__400    { background-color: $blue-grey-400;   }
+    .colors__500    { background-color: $blue-grey-500;   }
+    .colors__600    { background-color: $blue-grey-600;   }
+    .colors__700    { background-color: $blue-grey-700;   }
+    .colors__800    { background-color: $blue-grey-800;   }
+    .colors__900    { background-color: $blue-grey-900;   }
+}
+
+// Colors Black
+.colors--black {
+    .colors__main   { background-color: $black;     }
+    .colors__first  { background-color: $black-1;   }
+    .colors__second { background-color: $black-2;   }
+    .colors__third  { background-color: $black-3;   }
+    .colors__fourth { background-color: $black-4;   }
+}
+
+// Colors White
+.colors--white {
+    background: #f9f9f9; 
+
+    .colors__main {
+        height: $base-spacing-unit * 12 + $base-spacing-unit !important;
+        margin-bottom: 0;
+        border-bottom: solid 6px #fff;
+        background-color: $white;
+    }
+
+    .colors__first  { background-color: $white-1;   }
+    .colors__second { background-color: $white-2;   }
+    .colors__third  { background-color: $white-3;   }
+    .colors__fourth { background-color: $white-4;   }
+}
+
+
+.colors__black      { background-color: $black; }
+.colors__white      { background-color: $white; }

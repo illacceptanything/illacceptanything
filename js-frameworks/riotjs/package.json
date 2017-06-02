@@ -1,0 +1,81 @@
+{
+  "name": "riot",
+  "version": "2.0.14",
+  "description": "A React- like, 3.5K user interface library",
+  "homepage": "https://muut.com/riotjs/",
+  "repository": "muut/riotjs",
+  "author": "Muut, Inc. and other contributors",
+  "license": "MIT",
+  "scripts": {
+    "test": "make riot"
+  },
+  "keywords": [
+    "custom tags",
+    "custom elements",
+    "web components",
+    "virtual dom",
+    "shadow dom",
+    "polymer",
+    "react",
+    "jsx",
+    "minimal",
+    "minimalist",
+    "client-side",
+    "framework",
+    "declarative",
+    "templating",
+    "template",
+    "data binding",
+    "mvc",
+    "router",
+    "model",
+    "view",
+    "controller",
+    "riotjs",
+    "riot.js"
+  ],
+  "dependencies": {
+    "chokidar": "~1.0.0-rc4",
+    "minimist": "~1.1.1",
+    "shelljs": "~0.4.0",
+    "simple-dom": "^0.2.2",
+    "simple-html-tokenizer": "^0.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^0.17.1",
+    "expect.js": "^0.3.1",
+    "glob": "^5.0.3",
+    "jsdom": "^4.0.5",
+    "karma": "^0.12.31",
+    "karma-coverage": "^0.2.7",
+    "karma-mocha": "^0.1.10",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "mocha": "^2.2.1",
+    "uglify-js": "latest"
+  },
+  "preferGlobal": true,
+  "files": [
+    "lib",
+    "riot.js",
+    "riot.min.js",
+    "compiler.js",
+    "compiler.min.js",
+    "riot+compiler.js",
+    "riot+compiler.min.js"
+  ],
+  "bin": {
+    "riot": "lib/cli.js"
+  },
+  "main": "lib/node.js",
+  "browser": "riot.js",
+  "spm": {
+    "main": "riot.js",
+    "ignore": [
+      "demo",
+      "doc",
+      "test",
+      "lib",
+      "make"
+    ]
+  }
+}

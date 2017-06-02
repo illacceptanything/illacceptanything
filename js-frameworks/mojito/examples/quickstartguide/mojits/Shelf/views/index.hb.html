@@ -1,0 +1,20 @@
+<!-- View for mojito -->
+<!-- The views are HTML files that can include templates, such as Handlebars expressions, and are located in the views directory. We call these files templates to differentiate them from the rendered views that have substituted values for the template tags. Mojito uses Handlebars as the default rendering engine for templates. -->
+<!-- For more info, visit: http://developer.yahoo.com/cocktails/mojito/docs/intro/mojito_mvc.html#views -->
+<div id="{{mojit_view_id}}" class="container">
+    <div class="logo-nav">
+        <a class="mojito_logo" href="http://developer.yahoo.com/cocktails/mojito/" target="_blank"></a>
+        <h1>Quickstart Guide</h1>
+    </div>
+    <div id="toc" class="toc">
+        <ul class="tiles">
+            {{#each tiles}}
+            <li><a href="{{link}}"><em>{{titleNum}}</em><br/>{{titleRest}}</a></li>
+            {{/each}}
+        </ul>
+    </div>
+
+    <section class="description"><a href="https://github.com/yahoo/mojito/tree/develop/examples/quickstartguide" target="_blank">Learn more about this application.</a></section>
+
+    <footer class="copyright">Copyright (c) 2011-2013, Yahoo! Inc. All rights reserved.</footer>
+</div>

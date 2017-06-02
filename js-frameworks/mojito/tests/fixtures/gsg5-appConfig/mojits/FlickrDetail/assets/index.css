@@ -1,0 +1,41 @@
+.FlickrDetail .img td {
+    width: 400px;
+    height: 400px;
+    text-align: center;
+    vertical-align: middle;
+}
+.FlickrDetail .img img {
+    max-width: 400px;
+    max-height: 400px;
+}
+.FlickrDetail th {
+    padding: 0.2em 0.6em;
+    text-align: right;
+    vertical-align: top;
+}
+.FlickrDetail .title th {
+    vertical-align: bottom;
+}
+.FlickrDetail .title td {
+    font-size: 120%;
+}
+.FlickrDetail .title td ,
+.FlickrDetail .description td ,
+.FlickrDetail .tags td {
+    max-width: 20em;
+}
+.FlickrDetail .none {
+    font-style: italic;
+    font-size: 80%;
+    color: #888;
+    padding-left: 0.6em;
+}
+.FlickrDetail.device-iphone .img img {
+    max-width: 300px;
+    max-height: 300px;
+}
+.FlickrDetail.device-iphone .title td ,
+.FlickrDetail.device-iphone .description td ,
+.FlickrDetail.device-iphone .tags td {
+    max-width: 20em;
+}

@@ -1,0 +1,61 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "newsboxes",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"input",
+                "path": "../../../examples/newsboxes"
+            }
+        },
+
+        "dataprovider" : { 
+            "newsboxes" : {
+                "group" : "newsboxes",
+                "params" : {
+                    "scenario": [
+                        {
+                            "page" : "$$config.baseUrl$$/?devide=iphone"
+                        },
+                        {
+                           "controller": "locator",
+                           "params": {
+                                  "using": "xpath",
+                                  "value": "/html/body/div/div[2]/ul/li[3]/a"
+                           }
+                        },
+                        {
+                            "test" : "test_newsboxes1.js"
+                        },
+                        {
+                           "controller": "locator",
+                           "params": {
+                                  "using": "xpath",
+                                  "value": "/html/body/div/div[2]/ul/li[3]/a",
+                                  "click": true
+                           }
+                        },
+                        {
+                           "controller": "locator",
+                           "params": {
+                                  "using": "xpath",
+                                  "value": "/html/body/div/div"
+                           }
+                        },
+                        {
+                           "test" : "test_newsboxes2.js"
+                        }
+                     ]
+                }
+            }
+        }     
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

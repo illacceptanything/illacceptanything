@@ -1,0 +1,20 @@
+[
+  {
+    "settings": [ "master" ],
+    "staticHandling": {
+        "cache": false,
+        "forceUpdate": true
+    },
+    "specs": {
+      "frame" : {
+        "type" : "HTMLFrameMojit",
+        "config": {
+	  "title": "HTMLFrameMojit Example",
+          "child" : {
+            "type" : "framed" 
+          }
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,50 @@
+[{
+    "settings": [ "master" ],
+
+    "feeds": {
+        "bbcnews": {
+            "name": "BBC World News",
+            "url": "http://feeds.bbci.co.uk/news/world/rss.xml"
+        },
+        "yahoonews": {
+            "name": "Yahoo! Internet News",
+            "url": "http://rss.news.yahoo.com/rss/internet"
+        },
+        "techcrunch": {
+            "name": "TechCrunch",
+            "url": "http://feeds.feedburner.com/TechCrunch"
+        },
+        "yahoopersonaltech": {
+            "name": "Yahoo! Sports MLB",
+            "url": "http://sports.yahoo.com/mlb/rss.xml"
+        },
+        "allthingsd": {
+            "name": "AllThingsD",
+            "url": "http://allthingsd.com/feed/"
+        },
+        "yahoostocks": {
+            "name": "Yahoo! Stock Markets News",
+            "url": "http://rss.news.yahoo.com/rss/stocks"
+        },
+        "bbcbusiness": {
+            "name": "BBC Business News",
+            "url": "http://feeds.bbci.co.uk/news/business/rss.xml"
+        },
+        "yahooomg": {
+            "name": "Yahoo! OMG",
+            "url": "http://rss.omg.yahoo.com/-/news/latest"
+        },
+        "yui": {
+            "name": "YUI Blog",
+            "url": "http://feeds.yuiblog.com/YahooUserInterfaceBlog"
+        },
+        "yql": {
+            "name": "YQL Blog",
+            "url": "http://yqlblog.net/blog/feed/"
+        },
+        "ysearch": {
+            "name": "Yahoo Search Blog",
+            "url": "http://www.ysearchblog.com/feed/"
+        }
+    }
+}]

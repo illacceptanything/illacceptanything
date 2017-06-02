@@ -1,0 +1,22 @@
+{
+  "name": "Matreshka",
+  "version": "1.0.4",
+  "authors": [
+    "finom"
+  ],
+  "description": "JavaScript framework for programmers",
+  "keywords": [
+    "matreshka",
+    "framework"
+  ],
+  "license": "MIT",
+  "homepage": "http://matreshka.io",
+  "main": "matreshka.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

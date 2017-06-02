@@ -1,0 +1,22 @@
+legend
+{
+        font-family: sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+}
+fieldset
+{
+        margin-top:5pt;
+        width:50%;
+}
+.td_border
+{
+        border-top-width:1px;
+        border-top-style:solid;
+        border-bottom-width:1px;
+        border-bottom-style:solid;
+        border-color:grey;
+}
+.alert {
+	background-color: red;
+}

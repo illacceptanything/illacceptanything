@@ -1,0 +1,249 @@
+///*------------------------------------*\
+//    #OBJECTS-FLEXBOX
+//\*------------------------------------*/
+
+// Flex container
+[flex-container] {
+    @include media-query(desk) {
+        @include display(flex);
+    }
+}
+
+[flex-container="row"] {
+    @include media-query(desk) {
+        @include flex-direction(row);
+    }
+}
+
+[flex-container="column"] {
+    @include media-query(desk) {
+        @include flex-direction(column);
+    }
+}
+
+
+
+
+
+// Flex wrap
+[flex-wrap] {
+    @include flex-wrap(wrap);
+}
+
+
+
+
+
+// Alignment
+// Main Axis
+// center, start, end, space-between, space-around
+
+// Main Axis Center
+[flex-align="center"], //stretch
+[flex-align="center center"],
+[flex-align="center start"],
+[flex-align="center end"] {
+    @include media-query(desk) {
+        @include justify-content(center);
+    }
+}
+
+// Main Axis End
+[flex-align="end"], //stretch
+[flex-align="end center"],
+[flex-align="end start"],
+[flex-align="end end"] {
+    @include media-query(desk) {
+        @include justify-content(flex-end);
+    }
+}
+
+// Main Axis Space Around
+[flex-align="space-around"], //stretch
+[flex-align="space-around center"],
+[flex-align="space-around start"],
+[flex-align="space-around end"] {
+    @include media-query(desk) {
+        @include justify-content(space-around);
+    }
+}
+
+// Main Axis Space Between
+[flex-align="space-between"], //stretch
+[flex-align="space-between center"],
+[flex-align="space-between start"],
+[flex-align="space-between end"] {
+    @include media-query(desk) {
+        @include justify-content(space-between);
+    }
+}
+
+
+// Cross Axis
+// center, start, end
+
+// Cross Axis Center
+[flex-align="center center"],
+[flex-align="start center"],
+[flex-align="end center"],
+[flex-align="space-between center"],
+[flex-align="space-around center"] {
+    @include media-query(desk) {
+        @include align-items(center);
+    }
+}
+
+// Cross Axis Start
+[flex-align="center start"],
+[flex-align="start start"],
+[flex-align="end start"],
+[flex-align="space-between start"],
+[flex-align="space-around start"] {
+    @include media-query(desk) {
+        @include align-items(flex-start);
+    }
+}
+
+// Cross Axis End
+[flex-align="center end"],
+[flex-align="start end"],
+[flex-align="end end"],
+[flex-align="space-between end"],
+[flex-align="space-around end"] {
+    @include media-query(desk) {
+        @include align-items(flex-end);
+    }
+}
+
+
+
+
+
+// Grid system
+[flex-gutter="8"] {
+    @include media-query(desk) {
+        margin: 0 ($base-spacing-unit / 2) * -1;
+    }
+
+    & > [flex-item] {
+        @include media-query(portable) {
+            margin-bottom: $base-spacing-unit;
+        }
+
+        @include media-query(desk) {
+            padding: 0 $base-spacing-unit / 2;
+        }
+    }
+}
+
+[flex-gutter="16"] {
+    @include media-query(desk) {
+        margin: 0 $base-spacing-unit * -1;
+    }
+
+    & > [flex-item] {
+        @include media-query(portable) {
+            margin-bottom: $base-spacing-unit * 2;
+        }
+
+        @include media-query(desk) {
+            padding: 0 $base-spacing-unit;
+        }
+    }
+}
+
+[flex-gutter="24"] {
+    @include media-query(desk) {
+        margin: 0 ($base-spacing-unit * 1.5) * -1;
+    }
+
+    & > [flex-item] {
+        @include media-query(portable) {
+            margin-bottom: $base-spacing-unit * 3;
+        }
+
+        @include media-query(desk) {
+            padding: 0 $base-spacing-unit * 1.5;
+        }
+    }
+}
+
+[flex-gutter="32"] {
+    @include media-query(desk) {
+        margin: 0 ($base-spacing-unit * 2) * -1;
+    }
+
+    & > [flex-item] {
+        @include media-query(portable) {
+            margin-bottom: $base-spacing-unit * 4;
+        }
+
+        @include media-query(desk) {
+            padding: 0 $base-spacing-unit * 2;
+        }
+    }
+}
+
+
+
+
+
+// Flex item
+[flex-item] {
+    @include media-query(desk) {
+        position: relative;
+        @include flex(1);
+    }
+}
+
+@for $i from 1 through 12 {
+    [flex-container="row"] > [flex-item="#{$i}"] {
+        @include media-query(desk) {
+            flex: 0 0 #{(100 / 12) * $i + '%'};
+            max-width: #{(100 / 12) * $i + '%'};
+        }
+    }
+
+    [flex-container="column"] > [flex-item="#{$i}"] {
+        @include media-query(desk) {
+            flex: 0 0 #{(100 / 12) * $i + '%'};
+            max-height: #{(100 / 12) * $i + '%'};
+        }
+    }
+}
+
+
+
+
+
+// Flex item align
+[flex-item-align="center"] {
+    @include media-query(desk) {
+        @include align-self(center);
+    }
+}
+
+[flex-item-align="start"] {
+    @include media-query(desk) {
+        @include align-self(flex-start);
+    }
+}
+
+[flex-item-align="end"] {
+    @include media-query(desk) {
+        @include align-self(flex-end);
+    }
+}
+
+
+
+
+
+// Flex item order
+@for $i from 1 through 12 {
+    [flex-item-order="#{$i}"] {
+        @include media-query(desk) {
+            @include order($i);
+        }
+    }
+}

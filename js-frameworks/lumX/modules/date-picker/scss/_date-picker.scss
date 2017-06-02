@@ -1,0 +1,258 @@
+///*------------------------------------*\
+//    #OBJECTS-DATE-PICKER
+//\*------------------------------------*/
+
+// Lx date base styles
+.lx-date {
+    position: relative;
+}
+
+.lx-date--fixed-label {
+
+    // Text field
+    .text-field {
+        padding-top: $base-spacing-unit;
+    }
+
+    .text-field--is-active {
+        .text-field__label {
+            display: none;
+        }
+    }
+
+        // Text field label
+        .text-field__label {
+            @include transform(none);
+        }
+}
+
+.lx-date--with-icon {
+    margin-left: $base-spacing-unit * 8;
+}
+
+
+
+
+
+// Date filter
+.lx-date-filter {
+    @include position(fixed, 0 0 0 0);
+    z-index: 999;
+    background-color: rgba(0,0,0,0.6);
+    opacity: 0;
+    @include transition-property(opacity);
+    @include transition-duration(0.6s);
+    @include transition-timing-function($ease-out-quint);
+}
+
+.lx-date-filter--is-shown {
+    opacity: 1;
+}
+
+
+
+
+
+// Date input
+.lx-date-input {
+    &,
+    input {
+        cursor: pointer !important;
+    }
+}
+
+
+
+
+
+// Date picker base styles
+.lx-date-picker {
+    display: none;
+    @include position(fixed, $base-spacing-unit * 4 null null 50%);
+    z-index: 1000;
+    width: 280px;
+    margin-left: -140px;
+    background-color: $white;
+    opacity: 0;
+    @include z-depth(3);
+    @include transform(translateY(-50px));
+    @include transition-property(opacity, transform);
+    @include transition-duration(0.6s);
+    @include transition-timing-function($ease-out-quint);
+}
+
+.lx-date-picker--is-shown {
+    opacity: 1;
+    @include transform(translateY(0));
+}
+    
+    // Date picker current day of week
+    .lx-date-picker__current-day-of-week {
+        background-color: $teal-700;
+
+        span {
+            display: block;
+            @include font-size(14px);
+            color: $white-1;
+            line-height: 32px;
+            text-align: center;
+            text-transform: capitalize;
+        }
+    }
+
+    // Date picker current date
+    .lx-date-picker__current-date {
+        padding: $base-spacing-unit 0;
+        background-color: $teal-500;
+
+        span,
+        strong,
+        a {
+            display: block;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        span,
+        a {
+            @include font-size(24px);
+            line-height: 32px;
+        }
+
+        span {
+            text-transform: uppercase;
+        }
+
+        strong {
+            @include font-size(60px);
+            line-height: 1;
+        }
+
+        a {
+            cursor: pointer;
+            font-style: normal;
+        }
+    }
+
+    // Date picker navigation
+    .lx-date-picker__nav {
+        position: relative;
+
+        span {
+            display: block;
+            @include font-size(14px);
+            font-weight: 500;
+            line-height: 40px;
+            text-align: center;
+            text-transform: capitalize;
+        }
+
+        button {
+            position: absolute !important;
+            top: $base-spacing-unit;
+
+            &:first-child {
+                left: $base-spacing-unit * 2;
+            }
+
+            &:last-child {
+                right: $base-spacing-unit * 2;
+            }
+        }
+    }
+
+    // Date picker days of week
+    .lx-date-picker__days-of-week {
+        padding: 0 $base-spacing-unit * 2;
+
+        span {
+            display: inline-block;
+            vertical-align: top;
+            width: percentage(1/7);
+            @include font-size(12px);
+            font-weight: 400;
+            color: $black-2;
+            line-height: 24px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+    }
+
+    // Date picker days
+    .lx-date-picker__days {
+        padding: 0 $base-spacing-unit * 2;
+    }
+
+    // Date picker day
+    .lx-date-picker__day {
+        display: inline-block;
+        vertical-align: top;
+        width: percentage(1/7);
+        padding: $base-spacing-unit / 2 0;
+
+        a {
+            display: block;
+            @include size(32px);
+            margin: 0 auto;
+            border-radius: 50%;
+            @include font-size(12px);
+            font-weight: 400;
+            line-height: 32px;
+            text-align: center;
+        }
+    }
+
+    .lx-date-picker__day--is-today a {
+        font-weight: 500;
+        color: $teal-700;
+    }
+
+    .lx-date-picker__day a:hover,
+    .lx-date-picker__day--is-selected a {
+        cursor: pointer;
+        background-color: $teal-500;
+        color: $white-1;
+    }
+
+    // Year selector
+    .lx-date-picker__year-selector {
+        position: relative;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .lx-date-picker__year {
+        display: block;
+        cursor: pointer;
+
+        span {
+            display: block;
+            @include size(65px);
+            margin: 0 auto;
+            border-radius: 50%;
+            @include font-size(16px);
+            line-height: 65px;
+            text-align: center;
+        }
+    }
+
+    .lx-date-picker__year:hover {
+        span {
+            color: $teal-700;
+        }
+    }
+
+    .lx-date-picker__year--is-active {
+        span {
+            background-color: $teal-500;
+            color: $white-1 !important;
+        }
+    }
+
+    // Date picker actions
+    .lx-date-picker__actions {
+        padding: $base-spacing-unit;
+        border-top: 1px solid $black-4;
+        text-align: center;
+    }

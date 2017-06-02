@@ -1,0 +1,35 @@
+application: lumx
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /images
+  static_dir: images
+
+- url: /includes
+  static_dir: includes
+
+- url: /js
+  static_dir: js
+
+- url: /libs
+  static_dir: libs
+
+- url: /app.js
+  static_files: app.js
+  upload: app.js
+  mime_type: application/javascript
+
+- url: /lumx.css
+  static_files: lumx.css
+  upload: lumx.css
+
+- url: /favicon.png
+  static_files: favicon.png
+  upload: favicon.png
+
+- url: /.*
+  static_files: index.html
+  upload: index\.html

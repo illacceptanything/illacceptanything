@@ -1,0 +1,45 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "yui_module",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"yui_module",
+                "path": "../../../examples/developer-guide/yui_module"
+            }
+        },
+
+        "dataprovider" : {
+            "yuimodule" : {
+                 "group" : "developerguide,yui_module",
+                 "params" : {
+                    "scenario": [
+                        {
+                           "page" : "$$config.baseUrl$$"
+                        },
+                        {
+                            "controller": "locator",
+                            "params": {
+                                "value": "#notes"
+                            },
+                            "waitForElements": [
+                                "#notes"
+                            ]
+                        },
+                        {
+                           "test" : "test_yuimodule.js"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

@@ -1,0 +1,51 @@
+///*------------------------------------*\
+//    #TOOLS-RESPONSIVE
+//\*------------------------------------*/
+
+// A simple mixin to quickly generate whole media queries from the aliases and
+// conditions defined in `_settings.responsive.scss`.
+//
+// Usage:
+//
+// .foo {
+//     color: green;
+//
+//     @include media-query(palm) {
+//         color: red;
+//     }
+//
+// }
+
+@mixin media-query($mq) {
+
+    $breakpoint-found: false;
+
+    // Loop through the list of breakpoints we’ve provided in our settings file.
+    @each $breakpoint in $breakpoints {
+
+        // Grab the alias and the condition from their respective locations in
+        // the list.
+        $alias:     nth($breakpoint, 1);
+        $condition: nth($breakpoint, 2);
+
+        // If the media query we’ve specified has an alias and a condition...
+        @if $mq == $alias and $condition {
+
+            // ...tell the mixin that we’ve found it...
+            $breakpoint-found: true;
+
+            // ...and spit it out here.
+            @media #{$condition} {
+                @content;
+            }
+
+        }
+
+    }
+
+    // If the user specifies a non-exitent alias, send them a warning.
+    @if $breakpoint-found == false {
+        @warn "Oops! Breakpoint ‘#{$mq}’ does not exist."
+    }
+
+}

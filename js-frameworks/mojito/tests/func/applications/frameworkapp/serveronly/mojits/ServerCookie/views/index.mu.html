@@ -1,0 +1,20 @@
+<div id="{{mojit_view_id}}" class="mojit">
+  <h2>{{title}}</h2>
+  <p id="getcookie">Cookies got: {{mycookievalue}}</p>
+  <p id="setcookie">Cookies set:
+	<li id='city'>City: </li>
+	<li id='name'>Name: </li>
+	<li id='hello'>Hello: </li>
+  </p>
+</div>
+<script type="text/javascript" src="http://yui.yahooapis.com/3.3.0/build/yui/yui-min.js"></script>
+<script type="text/javascript">YUI().use('cookie', 'node', function(Y) {
+  Y.Cookie.set('mycookie', 'chocolate chip cookie');
+  var onClick = function() {
+	  Y.one('#city').insert(Y.Cookie.get('city')); 
+      Y.one('#name').insert(Y.Cookie.get('name')); 
+      Y.one('#hello').insert(Y.Cookie.get('hello')); 
+  };
+  Y.one('#setcookie').on('click', onClick);
+});
+</script>

@@ -1,0 +1,20 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="/static/Shelf/assets/shelf.opera-mini.css" />
+</head>
+<body>
+<div id="{{mojit_view_id}}" class="container">
+    <div class="logo-nav">
+        <h1>News<em>Boxes</em></h1>
+    </div>
+    <div class="toc">
+        <ul>
+            {{#tiles}}
+            <li><a href="{{link}}">{{name}}</a></li>
+            {{/tiles}}
+        </ul>
+    </div>
+</div>
+</body>
+</html>

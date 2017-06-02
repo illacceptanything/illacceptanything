@@ -1,0 +1,22 @@
+.MasterMojit #header {
+    margin: 0 auto;
+    padding: 15px;
+    width: 500px;
+    text-align: center;
+}
+
+.MasterMojit table {
+    width: 960px;
+}
+
+.MasterMojit td.left {
+    width: 40%;
+    float: left;
+}
+
+.MasterMojit td.right {
+    width: 40%;
+    float: right;
+}
+
+

@@ -1,0 +1,44 @@
+<lx-dropdown-menu class="lx-select__choices">
+    <ul ng-if="!tree">
+        <li ng-if="getSelectedElements().length > 0">
+            <div class="lx-select__chosen"
+                 ng-class="{ 'lx-select__chosen--is-multiple': multiple }"
+                 ng-bind-html="getSelectedTemplate()"></div>
+        </li>
+
+        <li>
+            <div class="lx-select__filter dropdown-filter">
+                <lx-search-filter model="data.filter" filter-width="100%" lx-dropdown-filter></lx-search-filter>
+            </div>
+        </li>
+
+        <li class="lx-select__help" ng-if="isHelperVisible()">
+            <span ng-if="filterNeeded()">Type minimum {{ minLength }} to search</span>
+            <span ng-if="hasNoResults() && !filterNeeded()">No results!</span>
+        </li>
+
+        <li ng-repeat="$choice in choices() | filter:data.filter" ng-if="isChoicesVisible() && isChoicesArray()">
+            <a class="lx-select__choice dropdown-link"
+               ng-class="{ 'lx-select__choice--is-multiple': multiple,
+                           'lx-select__choice--is-selected': isSelected($choice) }"
+               ng-click="toggle($choice, $event)"
+               ng-transclude="child"></a>
+        </li>
+
+        <li ng-repeat-start="($subheader, children) in choices()" ng-if="isChoicesVisible() && !isChoicesArray()">
+            <span class="dropdown-link dropdown-link--is-header" ng-bind-html="trust($subheader)"></span>
+        </li>
+
+        <li ng-repeat-end ng-repeat="$choice in children | filter:data.filter" ng-if="isChoicesVisible() && !isChoicesArray()">
+            <a class="lx-select__choice dropdown-link"
+               ng-class="{ 'lx-select__choice--is-multiple': multiple,
+                           'lx-select__choice--is-selected': isSelected($choice) }"
+               ng-click="toggle($choice, $event)"
+               ng-transclude="child"></a>
+        </li>
+
+        <li class="lx-select__loader" ng-if="loading === 'true'">
+            <i class="mdi mdi-reload"></i>
+        </li>
+    </ul>
+</lx-dropdown-menu>

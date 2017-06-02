@@ -1,0 +1,78 @@
+<div class="card">
+    <lx-tabs>
+        <lx-tab heading="Lorem Ipsum 1">
+            <p class="p+">Lorem Ipsum Content 1</p>
+        </lx-tab>
+
+        <lx-tab heading="Lorem Ipsum 2">
+            <p class="p+">Lorem Ipsum Content 2</p>
+        </lx-tab>
+
+        <lx-tab heading="Lorem Ipsum 3">
+            <p class="p+">Lorem Ipsum Content 3</p>
+        </lx-tab>
+    </lx-tabs>
+</div>
+
+<div class="card mt++">
+    <lx-tabs>
+        <lx-tab icon="car">
+            <p class="p+">Lorem Ipsum Content 1</p>
+        </lx-tab>
+
+        <lx-tab icon="bus">
+            <p class="p+">Lorem Ipsum Content 2</p>
+        </lx-tab>
+
+        <lx-tab icon="train">
+            <p class="p+">Lorem Ipsum Content 3</p>
+        </lx-tab>
+    </lx-tabs>
+</div>
+
+<div class="card mt++">
+    <lx-tabs indicator="green-200" active-tab="1" layout="inline">
+        <lx-tab heading="Lorem">
+            <p class="p+">Lorem Ipsum Content 1</p>
+        </lx-tab>
+
+        <lx-tab heading="Lorem Ipsum">
+            <p class="p+">Lorem Ipsum Content 2</p>
+        </lx-tab>
+
+        <lx-tab heading="Dolor">
+            <p class="p+">Lorem Ipsum Content 3</p>
+        </lx-tab>
+    </lx-tabs>
+</div>
+
+<div class="card mt++">
+    <lx-tabs links-tc="light" links-bgc="light-blue-500" indicator="yellow-500" no-divider="true" z-depth="1">
+        <lx-tab heading="Lorem Ipsum 1">
+            <p class="p+">Lorem Ipsum Content 1</p>
+        </lx-tab>
+
+        <lx-tab heading="Lorem Ipsum 2">
+            <p class="p+">Lorem Ipsum Content 2</p>
+        </lx-tab>
+
+        <lx-tab heading="Lorem Ipsum 3">
+            <p class="p+">Lorem Ipsum Content 3</p>
+        </lx-tab>
+    </lx-tabs>
+</div>
+
+<lx-tabs class="card mt++">
+    <lx-tab heading="{{ tab.heading }}" ng-repeat="tab in tabs">
+        <p class="p+">
+            {{ tab.content }}
+        </p>
+
+        <button class="btn btn--m btn--white btn--raised m+ mt0" ng-click="removeTab(tabs.indexOf(tab))" lx-ripple>Remove current tab</button>
+    </lx-tab>
+</lx-tabs>
+
+<div class="mt++">
+    <button class="btn btn--m btn--blue btn--raised" ng-click="addTab()" lx-ripple>Add a tab</button>
+    <button class="btn btn--m btn--white btn--raised" ng-click="removeFirstTab()" lx-ripple>Remove first tab</button>
+</div>

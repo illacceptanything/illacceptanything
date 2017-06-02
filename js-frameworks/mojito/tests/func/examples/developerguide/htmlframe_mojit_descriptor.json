@@ -1,0 +1,30 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "htmlframe_mojit",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"htmlframe_mojit",
+                "path": "../../../examples/developer-guide/htmlframe_mojit"
+            }
+        },
+
+        "dataprovider" : {    
+           "htmlframe" : {
+                 "group" : "developerguide,htmlframe_mojit",
+                 "params" : {
+                             "test" : "test_htmlframe.js",
+                             "page" : "$$config.baseUrl$$/"
+                }
+            }
+        }     
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

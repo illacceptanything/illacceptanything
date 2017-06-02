@@ -1,0 +1,13 @@
+body {
+  margin:auto;
+  width: 40%;
+}
+h2 {
+  text-align: center;
+  padding: 10px 0px;
+}
+ul.toolbar {  
+  text-align: center;
+  display: block;  
+}
+.toolbar li { display:inline; } 

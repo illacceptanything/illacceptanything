@@ -1,0 +1,15 @@
+<div id="{{mojit_view_id}}">
+    <h1>Parent - Child Communication: Dynamic children</h1>
+
+    <blockquote style="float:right;width:400px">
+        In this example, all the children of this parent mojit were generated dynamically.
+        There was no knowledge of them until runtime. But they are still accessible within
+        the parent binder through the <em>mojit proxy</em>. Try hovering your mouse over
+        the mojits to the left of your screen. Each hover broadcasts a message to the
+        parent mojit which in turn broadcasts messages only to those mojits surrounding
+        the hovered mojit (and the hovered mojit itself).
+    </blockquote>
+
+    {{{childrenHere}}}
+
+</div>

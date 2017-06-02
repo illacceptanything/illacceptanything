@@ -1,0 +1,19 @@
+<div class="tabs tabs--theme-{{ linksTc }} tabs--layout-{{ layout }}"
+     ng-class="{ 'tabs--no-divider': noDivider }">
+    <ul class="tabs__links bgc-{{ linksBgc }} z-depth{{ zDepth }}">
+        <li ng-repeat="tab in getTabs()">
+            <a lx-tab-link
+               class="tabs-link"
+               ng-class="{ 'tabs-link--is-active': $index === activeTab }"
+               ng-click="setActiveTab($index)"
+               lx-ripple="{{ indicator }}">
+               <span ng-if="tab.icon !== undefined"><i class="mdi mdi-{{ tab.icon }}"></i></span>
+               <span ng-if="tab.icon === undefined">{{ tab.heading }}</i></span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="tabs__panes" ng-transclude="1"></div>
+
+    <div class="tabs__indicator bgc-{{ indicator }}"></div>
+</div>

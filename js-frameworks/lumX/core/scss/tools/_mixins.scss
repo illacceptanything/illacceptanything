@@ -1,0 +1,46 @@
+///*------------------------------------*\
+//    #TOOLS-MIXINS
+//\*------------------------------------*/
+
+// Generate a rem-based font-size with its pixel fallback, e.g.:
+//
+// .foo {
+//     @include font-size(12px);
+// }
+
+@mixin font-size($font-size) {
+    font-size: $font-size;
+    font-size: ($font-size / $base-font-size) * 1rem;
+}
+
+
+
+
+
+// Z-depth mixin
+@mixin z-depth($z-depth) {
+    @if $z-depth == 1 {
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    } @elseif $z-depth == 2 {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+    } @elseif $z-depth == 3 {
+        box-shadow: 0 9px 18px rgba(0, 0, 0, 0.5);
+    }
+}
+
+
+
+
+
+// Material design icon
+@mixin mdi() {
+    font-family: MaterialDesignIcons;
+    font-weight: 400;
+    font-style: normal;
+    speak: none;
+    text-decoration: inherit;
+    text-transform: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

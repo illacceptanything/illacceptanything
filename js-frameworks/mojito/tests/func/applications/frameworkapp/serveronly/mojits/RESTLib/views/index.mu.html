@@ -1,0 +1,18 @@
+<div id="{{mojit_view_id}}">
+    <p id="hostname_para">HostName to run the tests on: <b><span id="hostname">{{hostname}}</span></b></p>
+    <table border="1">
+        <tr><th>Function<br/>(Controller function name)</th><th>Server Side</th><th>Client Side</th></tr>
+        <tr><td>Calling simple WebService<br/>(simpleWSCall)</td><td><a href="/rest/index" id="a_simpleWS">Simple WS</a></td><td id="td_simpleWS"><p id="p_simpleWS" style="color:blue"><u>Simple WS</u></p></td></tr>
+        <tr><td>Inspect Response Object<br/>(inspectResponse)</td><td><a href="/rest/inspect_response" id="a_inspectResp">Inspect Response</a></td><td id="td_inspectResp"><p id="p_inspectResp" style="color:blue"><u>Inspect Response</u></p></td></tr>
+        <tr><td>WebService Timeout<br/>(WSTimeout)</td><td><a href="/rest/timeout_ws" id="a_wsTimeout">WS Timeout</a></td><td id="td_wsTimeout"><p id="p_wsTimeout" style="color:blue"><u>WS Timeout</u></p></td></tr>
+        <tr><td>Inspect Error Object<br/>(inspectError)</td><td><a href="/restWS/inspectError" id="a_inspectErr">Inspect Error</a></td><td id="td_inspectErr"><p id="p_inspectErr" style="color:blue"><u>Inspect Error</u></p></td></tr>
+        <tr><td>Test GET Parameters<br/>(testGETParam)</td><td><a href="/restWS/testGETParam?sprint_num=4" id="a_getParam">GET Params</a></td><td id="td_getParam"><p id="p_getParam" style="color:blue"><u>GET Params</u></p></td></tr>
+        <tr><td>Test GET Parameters Negative<br/>(testGETParam)</td><td><a href="/restWS/testGETParam?sprint_num=4&negative_test=true" id="a_getParamNegative">GET Params (-ve)</a></td><td id="td_getParamNegative"><p id="p_getParamNegative" style="color:blue"><u>GET Params (-ve)</u></p></td></tr>
+        <tr><td>Test POST Parameters<br/>(testPOSTParam)</td><td><a href="/restWS/testPOSTParam?sprint_num=4" id="a_postParam">POST Params</a></td><td id="td_postParam"><p id="p_postParam" style="color:blue"><u>POST Params</u></p></td></tr>
+        <tr><td>Test POST Parameters Negative<br/>(testPOSTParam)</td><td><a href="/restWS/testPOSTParam?sprint_num=4&negative_test=true" id="a_postParamNegative">POST Params (-ve)</a></td><td id="td_postParamNegative"><p id="p_postParamNegative" style="color:blue"><u>POST Params (-ve)</u></p></td></tr>
+        <tr><td>Test PUT Parameters<br/>(testPUTParam)</td><td><a href="/restWS/testPUTParam?sprint_num=4" id="a_putParam">PUT Params</a></td><td id="td_putParam"><p id="p_putParam" style="color:blue"><u>PUT Params</u></p></td></tr>
+        <tr><td>Test DELETE Parameters<br/>(testDELETEParam)</td><td><a href="/restWS/testDELETEParam?sprint_num=4" id="a_deleteParam">DELETE Params</a></td><td id="td_deleteParam"><p id="p_deleteParam" style="color:blue"><u>DELETE Params</u></p></td></tr>
+        <tr><td>Test HEAD Parameters<br/>(testHEAD)</td><td><a href="/restWS/testHEAD?sprint_num=4" id="a_headParam">HEAD Params</a></td><td id="td_headParam"><p id="p_headParam" style="color:blue"><u>HEAD Params</u> (Not valid for client)</p></td></tr>
+        <tr><td>Test Headers<br/>(testHeaders)</td><td><a href="/restWS/testHeaders" id="a_headers">Headers</a></td><td id="td_headers"><p id="p_headers" style="color:blue"><u>Headers</u></p></td></tr>
+    </table>
+</div>

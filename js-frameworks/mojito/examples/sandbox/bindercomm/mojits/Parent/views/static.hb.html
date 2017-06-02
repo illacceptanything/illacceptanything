@@ -1,0 +1,70 @@
+<div id="{{mojit_view_id}}">
+    <h1>Parent - Child Communication: Static children</h1>
+
+    <blockquote>
+        This example shows one composite mojit with 4 children below: <em>devil</em>, <em>socks</em>, <em>jeans</em>, and
+        <em>jay</em>. These are identified because they are predefined in the application.json file:
+
+<pre>
+    [
+        {
+            "settings": [ "master" ],
+            "specs": {
+
+                "frame": {
+                    "type": "HTMLFrameMojit",
+                    "config": {
+                        "deploy": true,
+                        "child": {
+                            "type": "Parent",
+                            "config": {
+                                "children": {
+                                    "devil": {
+                                        "type": "RedChild"
+                                    },
+                                    "socks": {
+                                        "type": "RedChild"
+                                    },
+                                    "jeans": {
+                                        "type": "BlueChild"
+                                    },
+                                    "jay": {
+                                        "type": "BlueChild"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    ]
+
+</pre>
+
+        If a target child is given in the form below, only it will receive the broadcast. The target child corresponds to the slot defined as the identifier within the <em>children</em> property of the composite configuration.
+    </blockquote>
+
+    <label for="event">Event</label>
+    <input id="event" value="notify"/>
+    <label for="message">Message</label>
+    <input id="message" value="hello"/>
+    <label for="child">Target Child</label>
+    <input id="child" value="devil"/>
+    <button>Send</button>
+
+
+    <h2>devil</h2>
+    {{{devil}}}
+    <h2>socks</h2>
+    {{{socks}}}
+
+    <hr/>
+
+    <h2>jeans</h2>
+    {{{jeans}}}
+    <h2>jay</h2>
+    {{{jay}}}
+
+</div>

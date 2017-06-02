@@ -1,0 +1,21 @@
+Example:
+Integrating a YUI Scroll View.
+
+Summary:
+
+Shows an example of using YUI as part of a mojit's view.
+
+Relevant Files:
+./mojits/scroll/controller.js
+./mojits/scroll/assets/simple.css
+./mojits/scroll/views/index.html
+
+
+Modified Files:
+./application.yaml
+./mojits/scroll/controller.js
+./mojits/scroll/assets/simple.css
+./mojits/scroll/assets/simple.iphone.css
+./mojits/scroll/tests/controller-tests.js
+./mojits/scroll/views/index.html
+./routes.yaml

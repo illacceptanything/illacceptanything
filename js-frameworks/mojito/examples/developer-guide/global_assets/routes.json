@@ -1,0 +1,9 @@
+[{
+    "settings": [ "master" ],
+
+    "/": {
+        "call": "ohhai.index",
+        "path": "/",
+        "verbs": ["get"]
+    }
+}]

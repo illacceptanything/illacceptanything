@@ -1,0 +1,8 @@
+///*------------------------------------*\
+//    #ANIMATIONS-RIPPLE
+//\*------------------------------------*/
+
+// Ripple animation
+@include keyframes(ripple) {
+    100% { opacity: 0; @include transform(scale(2.5)); }
+}

@@ -1,0 +1,45 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "locale_i18n",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"locale_i18n",
+                "path": "../../../examples/developer-guide/locale_i18n"
+            }
+        },
+
+        "dataprovider" : {    
+           "i18n" : {
+                 "group" : "developerguide,locale_i18n",
+                 "params" : {
+                    "scenario": [
+                        {
+                            "test" : "test_locale_i18n.js",
+                            "page" : "$$config.baseUrl$$/",
+                            "testName": "Default"
+                        },
+                        {
+                            "test" : "test_locale_i18n.js",
+                            "page" : "$$config.baseUrl$$/?lang=en-AU",
+                            "testName": "en-AU"
+                        },
+                        {
+                            "test" : "test_locale_i18n.js",
+                            "page" : "$$config.baseUrl$$/?lang=fr-FR",
+                            "testName": "fr-FR"
+                        }
+                    ]
+                }
+            }
+        }     
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

@@ -1,0 +1,38 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "config",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"configapp",
+                "path": "./frameworkapp/configapp",
+                "param": "environment:production"
+            }
+        },
+
+        "dataprovider" : {     
+            "ProdEnv1" : {
+                "group" : "functional,smoke,config,testgroup1",
+                "params" : {
+                    "test" : "testproductionenv1.js",
+                    "page" : "$$config.baseUrl$$"
+                }
+            },
+            "ProdEnv2" : {
+                "group" : "functional,smoke,config,testgroup1",
+                "params" : {
+                    "test" : "testproductionenv2.js",
+                    "page" : "$$config.baseUrl$$/?lang=de"
+                }
+            }
+        }     
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

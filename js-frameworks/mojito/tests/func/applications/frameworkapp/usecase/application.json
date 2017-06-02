@@ -1,0 +1,124 @@
+[
+    {
+        "settings": [ "master" ],
+        "resourceStore": {
+            "lazyResolve": true,
+            "lazyLangs": true,
+            "lazyMojits": true
+        },
+        "yui": {
+            "config": {
+                "filter": "raw"
+            }
+        },
+        "specs": {
+            "hello-1": {
+                "type": "HelloMojit"
+            },
+            "context-model": {
+                "type": "contextModelMojit"
+            },
+            "flickr-1": {
+                "type": "Flickr"
+            },
+            "i18n-1": {
+                "type": "i18nMojit"
+            },
+            "i18n-2": {
+                "type": "i18n_Mojit"
+            },
+            "i18n-3": {
+                "type": "HTMLFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "child": {
+                        "type": "i18n_ParentMojit",
+                        "config":{
+                            "children": {
+                                "i18n_ChildMojit": {
+                                    "type": "i18n_ChildMojit",
+                                    "defer": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "flickr": {
+                "type": "HTMLFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "child": {
+                        "type": "PagedFlickr"
+                    },
+                    "assets": {
+                        "top": {
+                            "css":[
+                                "/static/PagedFlickr/assets/css/style.css"
+                            ]
+                        }
+                    }
+                }
+            },
+            "flickr2": {
+                "type": "HTMLFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "child": {
+                        "type": "PagedFlickr2",
+                        "config":{
+                            "config1": "This is the config for config1 in application.json"
+                        }
+                    },
+                    "assets": {
+                        "top": {
+                            "css":[
+                                "/static/PagedFlickr2/assets/css/style.css"
+                            ]
+                        }
+                    }
+                }
+            },
+            "flickr5": {
+                "type": "HTMLFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "child": {
+                        "type": "FlickrBrowser",
+                        "config": {
+                            "children": {
+                                "thumbs": {
+                                    "base": "thumbs"
+                                },
+                                "detail": {
+                                    "base": "detail"
+                                }
+                            }
+                        }
+                    },
+                    "meta": {
+                        "viewport": "width=device-width,initial-scale=1"
+                    },
+                    "assets": {
+                        "top": {
+                            "css": [
+                                "/static/PagedFlickr5/assets/index.css",
+                                "/static/FlickrDetail/assets/index.css"
+                            ]
+                        }
+                    }
+                }
+            },
+            "thumbs": {
+                "type": "PagedFlickr5"
+            },
+            "detail": {
+                "type": "FlickrDetail"
+            },
+            "Coverage": {
+                "type": "Coverage"
+            }
+        }
+    },
+    { "settings": [ "device:iphone" ], "selector": "iphone" }
+]

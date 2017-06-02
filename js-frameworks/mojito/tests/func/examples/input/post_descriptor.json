@@ -1,0 +1,45 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "post",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"post",
+                "path": "../../../examples/input/post"
+            }
+        },
+
+        "dataprovider" : { 
+            "post" : {
+                "group" : "input,post",
+                "params" : {
+                    "scenario": [
+                        {
+                           "test" : "test_post1.js",
+                           "page" : "$$config.baseUrl$$/pitch"
+                        },
+                        {
+                           "controller": "locator",
+                           "params": {
+                                  "using": "xpath",
+                                  "value": "//input[2]",
+                                  "click": true
+                           }
+                        },
+                        {
+                           "test" : "test_post2.js"
+                        }
+                     ]
+                }
+            }
+        }     
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

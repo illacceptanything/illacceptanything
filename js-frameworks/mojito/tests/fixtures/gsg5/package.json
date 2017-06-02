@@ -1,0 +1,16 @@
+{
+    "name": "paged-yql",
+    "description": "My Mojito Application",
+    "version": "0.1.0",
+    "contributors": [
+          {
+              "name": "Your Name",
+              "email": "nobody@yahoo-inc.com"
+          }
+    ],
+    "config": {
+        "mojito": {
+            "version": "*"
+        }
+    }
+}

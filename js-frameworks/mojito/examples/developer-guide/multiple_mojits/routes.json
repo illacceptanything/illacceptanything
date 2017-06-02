@@ -1,0 +1,10 @@
+[
+  {
+    "settings": ["master"],
+    "root": {
+      "verbs": ["get"],
+      "path": "/", 
+      "call": "parent.index"
+    }
+  }
+]

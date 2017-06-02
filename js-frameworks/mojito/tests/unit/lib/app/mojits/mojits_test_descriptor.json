@@ -1,0 +1,24 @@
+[
+    {
+        "settings": [ "master" ],
+        "name": "mojito-mojits-unit-tests",
+        "config": {
+            "lib": "../../../../../lib",
+            "base": "../../../../base"
+        },
+        "commonlib": "$$config.base$$/mojito-test.js",
+        "dataprovider" : {
+            "htmlframemojit-controller": {
+                "params": {
+                    "lib": "$$config.lib$$/app/mojits/HTMLFrameMojit/controller.server.js,./$$config.lib$$/app/autoload/util.common.js",
+                    "test": "./test-htmlframemojit-controller.server.js",
+                    "driver": "nodejs"
+                },
+                "group": "fw,unit,server"
+            }
+        }
+    },
+    {
+        "settings": [ "environment:development" ]
+    }
+]

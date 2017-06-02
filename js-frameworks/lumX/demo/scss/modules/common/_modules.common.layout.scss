@@ -1,0 +1,24 @@
+///*------------------------------------*\
+//    #MODULES-COMMON-LAYOUT
+//\*------------------------------------*/
+
+// Body base styles
+body {
+ 	font-family: 'Roboto', sans-serif;
+}
+
+
+
+
+
+// Wrapper
+.wrapper {
+    @include media-query(desk) {
+		width: 960px;
+		margin: 0 auto;
+	}
+
+	@include media-query(portable) {
+		margin: 0 $base-spacing-unit * 3;
+	}
+}

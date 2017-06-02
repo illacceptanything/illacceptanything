@@ -1,0 +1,33 @@
+///*------------------------------------*\
+//    #OBJECTS-CARD
+//\*------------------------------------*/
+
+// Card base styles
+.card {
+    border-radius: $base-round;
+    background-color: $white;
+    overflow: hidden;
+    @include z-depth(1);
+}
+
+    // Card image
+    .card__img--top {
+        position: relative;
+
+        span, strong,
+        h1, h2, h3, h4, h5, h6 {
+            @include position(absolute, null $base-spacing-unit * 2 $base-spacing-unit * 2 $base-spacing-unit * 2);
+        }
+    }
+
+    .card__img--left {
+        img {
+            max-height: 100%;
+        }
+    }
+
+    // Card actions
+    .card__actions {
+        padding: $base-spacing-unit;
+        border-top: 1px solid $black-4;
+    }

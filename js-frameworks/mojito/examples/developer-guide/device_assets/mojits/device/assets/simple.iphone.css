@@ -1,0 +1,17 @@
+body {
+  margin:auto;
+  width: 40%;
+}
+h2 {
+  text-align: center;
+  padding: 5px 0px;
+  width: 8.0em;
+}
+ul.toolbar {  
+  display: block;  
+  width: 17.0em;
+}
+.toolbar li {
+  display:block;
+  padding:.6em 0em .6em 0em;
+}

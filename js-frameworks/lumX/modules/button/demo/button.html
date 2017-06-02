@@ -1,0 +1,100 @@
+<!-- Sidebar -->
+<ng-include src="'/includes/sidebar/sidebar-css.html'"></ng-include>
+
+<div class="main-section">
+    <h3 class="main-section__title">Buttons</h3>
+
+    <div class="main-section__content">
+        <!-- Types -->
+        <h4 class="main-section__subtitle">Types</h4>
+
+        <div class="example mt++">
+            <div class="example__content">
+                <ng-include src="'/includes/modules/button/includes/types.html'"></ng-include>
+            </div>
+
+            <!-- Example -->
+            <div class="example__code" hljs include="'/includes/modules/button/includes/types.html'" language="html"></div>
+            <!-- /Example -->
+        </div>
+        <!-- /Types -->
+    </div>
+
+    <div class="main-section__content">
+        <!-- States -->
+        <h4 class="main-section__subtitle">States</h4>
+
+        <div class="example mt++">
+            <div class="example__content">
+                <ng-include src="'/includes/modules/button/includes/states.html'"></ng-include>
+            </div>
+
+            <!-- Example -->
+            <div class="example__code" hljs include="'/includes/modules/button/includes/states.html'" language="html"></div>
+            <!-- /Example -->
+        </div>
+        <!-- /States -->
+    </div>
+
+    <div class="main-section__content">
+        <!-- Sizes -->
+        <h4 class="main-section__subtitle">Sizes</h4>
+
+        <div class="example mt++">
+            <div class="example__content">
+                <ng-include src="'/includes/modules/button/includes/sizes.html'"></ng-include>
+            </div>
+
+            <!-- Example -->
+            <div class="example__code" hljs include="'/includes/modules/button/includes/sizes.html'" language="html"></div>
+            <!-- /Example -->
+        </div>
+        <!-- /Sizes -->
+    </div>
+
+    <div class="main-section__content">
+        <!-- Colors -->
+        <div class="paragraph">
+            <h4 class="main-section__subtitle">Main colors</h4>
+
+            <p>
+                You can use color helpers to quickly create colored buttons.<br />
+                You can set button background color with main colors defined in <code>dist/scss/core/settings/_settings.defaults.scss</code>.<br />
+                Text/Icon color and ripple colors will be automaticly set according to the color.
+            </p>
+        </div>
+
+        <div class="example mt++">
+            <div class="example__content">
+                <ng-include src="'/includes/modules/button/includes/colors.html'"></ng-include>
+            </div>
+
+            <!-- Example -->
+            <div class="example__code" hljs include="'/includes/modules/button/includes/colors.html'" language="html"></div>
+            <!-- /Example -->
+        </div>
+        <!-- /Colors -->
+    </div>
+
+    <div class="main-section__content">
+        <!-- Colors -->
+        <div class="paragraph">
+            <h4 class="main-section__subtitle">Custom colors</h4>
+
+            <p>
+                Or you can create a fully customizable button with background and text color helpers. Moreover, you should specfify the ripple color.
+            </p>
+        </div>
+
+        <div class="example mt++">
+            <div class="example__content">
+                <ng-include src="'/includes/modules/button/includes/custom-colors.html'"></ng-include>
+            </div>
+
+            <!-- Example -->
+            <div class="example__code" hljs include="'/includes/modules/button/includes/custom-colors.html'" language="html"></div>
+            <!-- /Example -->
+        </div>
+        <!-- /Colors -->
+    </div>
+</div>

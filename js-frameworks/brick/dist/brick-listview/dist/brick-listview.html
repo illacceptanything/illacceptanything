@@ -1,0 +1,70 @@
+<link rel="import" href="../../brick-common/brick-common.html">
+
+<template id="brick-listview-template">
+  <style>:host,
+:host * {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+:host {
+  overflow: auto;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  display: block;
+}
+:host .item.sentinel {
+  visibility: hidden;
+}
+:host .list {
+  position: relative;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+}
+:host .item {
+  height: 80px;
+  position: absolute;
+  width: 100%;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+:host .item img {
+  height: 100%;
+}
+:host .item .content {
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center;
+}
+:host.scrolling .item {
+  pointer-events: none;
+}
+</style>
+  <style>:host .item {
+  border-bottom: 1px solid #f4f4f4;
+}
+:host .item:hover {
+  background: #eee;
+}
+:host .item .content {
+  line-height: 1.4em;
+  margin-left: 1.2em;
+}
+:host .item .content div:last-child {
+  font-size: 0.88em;
+  color: #858585;
+}
+</style>
+  <content></content>
+</template>
+
+
+<script src="brick-listview.js"></script>

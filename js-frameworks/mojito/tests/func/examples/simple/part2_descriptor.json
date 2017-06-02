@@ -1,0 +1,30 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "part2",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"part2",
+                "path": "../../../examples/simple/part2"
+            }
+        },
+
+        "dataprovider" : { 
+            "part2" : {
+                 "group" : "simple,part2",
+                 "params" : {
+                     "test" : "test_part2.js",
+                     "page" : "$$config.baseUrl$$/@myMojit/index"    
+                }
+            }
+        }     
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

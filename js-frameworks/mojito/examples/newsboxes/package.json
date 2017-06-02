@@ -1,0 +1,27 @@
+{
+    "name": "mojito_newsboxes",
+    "description": "a developer oriented version of Ric Allinson's Slideboard",
+    "version": "0.0.2",
+    "author": "Richard Allinson <allinson@yahoo-inc.com>",
+    "contributors": [
+        {"name": "CPG Solutions", "email": "mobile-integration@yahoo-inc.com"}
+    ],
+    "yahoo": {
+        "bugzilla": {"product": "Mojito", "component": "General"}
+    },
+    "scripts": {
+        "start": "node app.js"
+    },
+    "engines": {
+        "node": "> 0.8",
+        "npm": "> 1.0"
+    },
+    "dependencies": {
+        "debug": "*",
+        "mojito": "~0.9.0"
+    },
+    "devDependencies": {
+        "mojito-cli": ">= 0.2.0"
+    }
+}
+

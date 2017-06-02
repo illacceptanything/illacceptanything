@@ -1,0 +1,10 @@
+{
+  "name": "ember",
+  "version": "VERSION_STRING_PLACEHOLDER",
+  "main": [
+    "./ember.debug.js"
+  ],
+  "dependencies": {
+    "jquery": ">= 1.7.0 < 2.2.0"
+  }
+}

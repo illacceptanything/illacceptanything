@@ -1,0 +1,67 @@
+///*------------------------------------*\
+//    #MODULES-COMMON-MAIN
+//\*------------------------------------*/
+
+// Main base styles
+.main {
+	padding: 60px 0 0;
+}
+
+
+
+
+
+// Main section
+.main-section {
+	@include media-query(desk) {
+		margin: 0 0 0 260px;
+	}
+}
+
+	// Main section title
+	.main-section__title {
+		display: block;
+		height: $base-spacing-unit * 8;
+	    padding: 0 $base-spacing-unit * 3;
+	    border-bottom: 1px solid #ddd;
+	    @include font-size(22px);
+	    font-weight: 500;
+        line-height: $base-spacing-unit * 8;
+	}
+
+	// Main section intro
+	.main-section__intro {
+		padding: $base-spacing-unit * 3;
+		@include font-size(22px);
+		font-weight: 300;
+
+		a {
+			color: $blue;
+			text-decoration: none;
+		}
+	}
+
+	// Main section content
+	.main-section__content {
+		padding: $base-spacing-unit * 3;
+
+		p > code {
+			padding: 2px 4px;
+			font-size: 90%;
+			color: $blue;
+			background-color: lighten($blue, 40%);
+			border-radius: 4px;
+		}
+
+		p > a {
+			color: $blue;
+			text-decoration: none;
+		}
+	}
+
+	// Main section subtitle
+	.main-section__subtitle {
+		@include font-size(30px);
+		font-weight: 300;
+		line-height: 1;
+	}

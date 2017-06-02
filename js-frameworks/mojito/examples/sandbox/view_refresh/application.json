@@ -1,0 +1,102 @@
+[
+    {
+        "settings": [ "master" ],
+        "specs": {
+            "frame": {
+                "type": "HTMLFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "child": {
+                        "type": "Parent",
+                        "config": {
+                            "children": {
+                                "one": {
+                                    "type": "Parent",
+                                    "config": {
+                                        "children": {
+                                            "one": {
+                                                "type": "Parent",
+                                                "config": {
+                                                    "children": {
+                                                        "one": {
+                                                            "type": "ColoredChild",
+                                                            "config": {
+                                                                "text": "gold",
+                                                                "background": "black"
+                                                            }
+                                                        },
+                                                        "two": {
+                                                            "type": "ColoredChild",
+                                                            "config": {
+                                                                "text": "yellow",
+                                                                "background": "blue"
+                                                            }
+                                                        },
+                                                        "three": {
+                                                            "type": "ColoredChild",
+                                                            "config": {
+                                                                "text": "cyan",
+                                                                "background": "red"
+                                                            }
+                                                        },
+                                                        "four": {
+                                                            "type": "ColoredChild",
+                                                            "config": {
+                                                                "text": "orange",
+                                                                "background": "maroon"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "two": {
+                                                "type": "ColoredChild",
+                                                "config": {
+                                                    "text": "yellow",
+                                                    "background": "blue"
+                                                }
+                                            },
+                                            "three": {
+                                                "type": "ColoredChild",
+                                                "config": {
+                                                    "text": "cyan",
+                                                    "background": "red"
+                                                }
+                                            },
+                                            "four": {
+                                                "type": "ColoredChild",
+                                                "config": {
+                                                    "text": "orange",
+                                                    "background": "maroon"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "two": {
+                                    "type": "ColoredChild",
+                                    "config": {
+                                        "name": "one-2",
+                                        "text": "yellow",
+                                        "background": "blue"
+                                    }
+                                },
+                                "three": {
+                                    "type": "ColoredChild",
+                                    "config": {
+                                        "text": "cyan",
+                                        "background": "brown"
+                                    }
+                                },
+                                "four": {
+                                    "type": "ColoredChild",
+                                    "action": "alternative"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+]

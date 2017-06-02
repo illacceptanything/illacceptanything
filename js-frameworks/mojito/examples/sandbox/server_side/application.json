@@ -1,0 +1,22 @@
+[
+    {
+        "settings": [ "master" ],
+        "specs": {
+
+            "layout": {
+                "type": "Layout",
+                "config": {
+                    "children": {
+                        "foo": {
+                             "type": "MyServer"
+                        }
+                    }
+                }
+            },
+            "foo": {
+                "id": "foo",
+                "type": "MyServer"
+            }
+        }
+    }
+]

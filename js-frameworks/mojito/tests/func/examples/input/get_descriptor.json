@@ -1,0 +1,42 @@
+[
+    {
+        "settings": [ "master" ],
+
+        "name" : "get",
+
+        "config" :{
+            "baseUrl" : "http://localhost:8666",
+            "application" : {
+                "name":"get",
+                "path": "../../../examples/input/get"
+            }
+        },
+
+        "dataprovider" : { 
+            "get" : {
+                 "group" : "input,get",
+                 "params" : {
+                    "scenario": [
+                        {
+                            "test" : "test_get1.js",
+                            "page" : "$$config.baseUrl$$/@GetCatcher/allParams?foo=txt&bar=app"
+                        },
+                        {
+                            "test" : "test_get2.js",
+                            "page" : "$$config.baseUrl$$/@GetCatcher/paramsByValue?bar=app"
+                        },
+                        {
+                            "test" : "test_get3.js",
+                            "page" : "$$config.baseUrl$$/@GetCatcher/paramsByValue?foo=txt"
+                        }
+                    ]
+                }
+            }
+		}
+    },
+
+    {
+        "settings": [ "environment:development" ]
+    }
+
+]

@@ -1,0 +1,17 @@
+///*------------------------------------*\
+//    #OBJECTS-RIPPLE
+//\*------------------------------------*/
+
+// Ripple base styles
+.ripple {
+	display: block;
+	position: absolute;
+	border-radius: 100%;
+    opacity: 0.3;
+	@include transform(scale(0));
+    pointer-events: none;
+}
+
+.ripple--is-animated {
+	@include animation(ripple 0.65s linear);
+}

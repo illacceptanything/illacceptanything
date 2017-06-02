@@ -1,0 +1,15 @@
+[{
+    "settings": [ "master" ],
+
+    "/": {
+        "call": "corporate.index",
+        "path": "/",
+        "verbs": ["get"]
+    },
+
+    "/booyah": {
+        "call": "subsidiary.index",
+        "path": "/booyah",
+        "verbs": ["get"]
+    }
+}]

@@ -1,0 +1,14 @@
+<div class="sidebar-filter" ng-class="{ 'sidebar-filter--is-shown': Sidebar.isSidebarShown() }" ng-click="Sidebar.toggleSidebar()"></div>
+
+<div class="sidebar" ng-class="{ 'sidebar--is-shown': Sidebar.isSidebarShown() }">
+    <div class="sidebar-menu">
+        <ul>
+            <li>
+                <a class="sidebar-menu__link" href="/services/notifications" ng-click="Sidebar.toggleSidebar()">Notifications</a>
+            </li>
+            <li>
+                <a class="sidebar-menu__link" href="/services/progress" ng-click="Sidebar.toggleSidebar()">Progress</a>
+            </li>
+        </ul>
+    </div>
+</div>

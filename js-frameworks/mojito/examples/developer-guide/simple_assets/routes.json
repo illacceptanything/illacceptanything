@@ -1,0 +1,10 @@
+[
+  {
+    "settings": [ "master" ], 
+      "_simple_view": { 
+      "verbs": ["get"], 
+      "path": "/", 
+      "call": "simple.index" 
+    } 
+  }
+]

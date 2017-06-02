@@ -1,0 +1,13 @@
+[{
+    "settings": [ "master" ],
+
+    "/": {
+        "call": "shelf.index",
+        "path": "/(|index.html)"
+    },
+
+    "/read.html (offline)": {
+        "call": "read.index",
+        "path": "/read.html"
+    }
+}]
