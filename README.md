@@ -5,6 +5,12 @@
 [![Watchers](https://img.shields.io/github/watchers/illacceptanything/illacceptanything.svg)](https://github.com/illacceptanything/illacceptanything/watchers)
 [![Stargazers](https://img.shields.io/github/stars/illacceptanything/illacceptanything.svg)](https://github.com/illacceptanything/illacceptanything/stargazers)
 [![Forks](https://img.shields.io/github/forks/illacceptanything/illacceptanything.svg)](https://github.com/illacceptanything/illacceptanything/network)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![](https://img.shields.io/badge/made%20by-everyone-blue.svg?style=flat-square)](https://github.com/illacceptanything)
+[![](https://img.shields.io/badge/project-everything-blue.svg?style=flat-square)](https://github.com/illacceptanything/illacceptanything)
+[![standard-readme not compliant](https://img.shields.io/badge/standard--readme-NOPE-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+[![standard-readme not compliant](https://img.shields.io/badge/readme%20style-not-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-not-readme)
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
 ## WARNING - [Large repository](https://i.imgur.com/rzSgLP3.png); [may trigger antivirus software](https://github.com/illacceptanything/illacceptanything/blob/75109b706351420c31999915d4d54b0b4ab12df7/data/text/EICAR.COM.TXT)!
 
