@@ -6,7 +6,7 @@ with pip
 
 in `illacceptanything/code`:
 
-`pip install pylon`
+`pip install ./pylon`
 
 
 ## Use
