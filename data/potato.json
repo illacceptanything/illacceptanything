@@ -1,0 +1,462 @@
+[
+    {
+        "locale":"af",
+        "country":"Afrikaans",
+        "string":"Jy is &#39;n aartappel"
+    },
+    {
+        "locale":"ar",
+        "country":"Arabic",
+        "string":"انت بطاطس"
+    },
+    {
+        "locale":"az",
+        "country":"Azerbaijani",
+        "string":"Sən kartofsan"
+    },
+    {
+        "locale":"be",
+        "country":"Belarusian",
+        "string":"вы бульба"
+    },
+    {
+        "locale":"bg",
+        "country":"Bulgarian",
+        "string":"Ти си картоф"
+    },
+    {
+        "locale":"bn",
+        "country":"Bengali",
+        "string":"আপনি একটি আলু হয়"
+    },
+    {
+        "locale":"bs",
+        "country":"Bosnian",
+        "string":"Ti si krompir"
+    },
+    {
+        "locale":"ca",
+        "country":"Catalan",
+        "string":"Ets una patata"
+    },
+    {
+        "locale":"ceb",
+        "country":"Cebuano",
+        "string":"Ikaw usa ka patatas"
+    },
+    {
+        "locale":"cs",
+        "country":"Czech",
+        "string":"Jste brambor"
+    },
+    {
+        "locale":"cy",
+        "country":"Welsh",
+        "string":"ydych yn tatws"
+    },
+    {
+        "locale":"da",
+        "country":"Danish",
+        "string":"Du er en kartoffel"
+    },
+    {
+        "locale":"de",
+        "country":"German",
+        "string":"Du bist eine Kartoffel"
+    },
+    {
+        "locale":"el",
+        "country":"Greek",
+        "string":"Είστε πατάτα"
+    },
+    {
+        "locale":"en",
+        "country":"English",
+        "string":"you are a potato"
+    },
+    {
+        "locale":"eo",
+        "country":"Esperanto",
+        "string":"you are a potato"
+    },
+    {
+        "locale":"es",
+        "country":"Spanish",
+        "string":"Eres una papa"
+    },
+    {
+        "locale":"et",
+        "country":"Estonian",
+        "string":"Sa oled kartul"
+    },
+    {
+        "locale":"eu",
+        "country":"Basque",
+        "string":"Patata zara"
+    },
+    {
+        "locale":"fa",
+        "country":"Persian",
+        "string":"تو سیب زمینی هستی"
+    },
+    {
+        "locale":"fi",
+        "country":"Finnish",
+        "string":"Olet peruna"
+    },
+    {
+        "locale":"fr",
+        "country":"French",
+        "string":"Vous êtes une pomme de terre"
+    },
+    {
+        "locale":"ga",
+        "country":"Irish",
+        "string":"tá tú prátaí"
+    },
+    {
+        "locale":"gl",
+        "country":"Galician",
+        "string":"Vostede é unha pataca"
+    },
+    {
+        "locale":"gu",
+        "country":"Gujarati",
+        "string":"તમે બટાટા છો"
+    },
+    {
+        "locale":"ha",
+        "country":"Hausa",
+        "string":"kai ne a dankalin"
+    },
+    {
+        "locale":"hi",
+        "country":"Hindi",
+        "string":"तुम एक आलू हो"
+    },
+    {
+        "locale":"hmn",
+        "country":"Hmong",
+        "string":"you are a potato"
+    },
+    {
+        "locale":"hr",
+        "country":"Croatian",
+        "string":"Ti si krumpir"
+    },
+    {
+        "locale":"ht",
+        "country":"Haitian Creole",
+        "string":"ou se yon pòmdetè"
+    },
+    {
+        "locale":"hu",
+        "country":"Hungarian",
+        "string":"Te vagy a burgonya"
+    },
+    {
+        "locale":"hy",
+        "country":"Armenian",
+        "string":"Դուք կարտոֆիլ եք"
+    },
+    {
+        "locale":"id",
+        "country":"Indonesian",
+        "string":"Anda adalah kentang"
+    },
+    {
+        "locale":"ig",
+        "country":"Igbo",
+        "string":"ị na-a nduku"
+    },
+    {
+        "locale":"is",
+        "country":"Icelandic",
+        "string":"Þú ert kartöflur"
+    },
+    {
+        "locale":"it",
+        "country":"Italian",
+        "string":"Sei una patata"
+    },
+    {
+        "locale":"iw",
+        "country":"Hebrew",
+        "string":"אתה תפוח אדמה"
+    },
+    {
+        "locale":"ja",
+        "country":"Japanese",
+        "string":"あなたはジャガイモです"
+    },
+    {
+        "locale":"jw",
+        "country":"Javanese",
+        "string":"Sampeyan kentang"
+    },
+    {
+        "locale":"ka",
+        "country":"Georgian",
+        "string":"კარტოფილი ხარ"
+    },
+    {
+        "locale":"kk",
+        "country":"Kazakh",
+        "string":"Сен картопсың"
+    },
+    {
+        "locale":"km",
+        "country":"Khmer",
+        "string":"អ្នកគឺជាដំឡូងមួយ"
+    },
+    {
+        "locale":"kn",
+        "country":"Kannada",
+        "string":"ನೀವು ಒಂದು ಆಲೂಗಡ್ಡೆ"
+    },
+    {
+        "locale":"ko",
+        "country":"Korean",
+        "string":"너는 감자 야."
+    },
+    {
+        "locale":"la",
+        "country":"Latin",
+        "string":"you are a potato"
+    },
+    {
+        "locale":"lo",
+        "country":"Lao",
+        "string":"ທ່ານມີມັນຕົ້ນ,"
+    },
+    {
+        "locale":"lt",
+        "country":"Lithuanian",
+        "string":"Tu esi bulvytė"
+    },
+    {
+        "locale":"lv",
+        "country":"Latvian",
+        "string":"Tu esi kartupelis"
+    },
+    {
+        "locale":"mg",
+        "country":"Malagasy",
+        "string":"ianao dia ovy"
+    },
+    {
+        "locale":"mi",
+        "country":"Maori",
+        "string":"ko koe he rīwai"
+    },
+    {
+        "locale":"mk",
+        "country":"Macedonian",
+        "string":"Вие сте компир"
+    },
+    {
+        "locale":"ml",
+        "country":"Malayalam",
+        "string":"നിങ്ങൾ ഒരു ഉരുളക്കിഴങ്ങ് ആണ്"
+    },
+    {
+        "locale":"mn",
+        "country":"Mongolian",
+        "string":"Та бол төмс"
+    },
+    {
+        "locale":"mr",
+        "country":"Marathi",
+        "string":"तू बटाटा आहेस"
+    },
+    {
+        "locale":"ms",
+        "country":"Malay",
+        "string":"Anda adalah kentang"
+    },
+    {
+        "locale":"mt",
+        "country":"Maltese",
+        "string":"Inti patata"
+    },
+    {
+        "locale":"my",
+        "country":"Myanmar (Burmese)",
+        "string":"သင်တစ်ဦးအာလူးများမှာ"
+    },
+    {
+        "locale":"ne",
+        "country":"Nepali",
+        "string":"तपाईं एक आलु छन्"
+    },
+    {
+        "locale":"nl",
+        "country":"Dutch",
+        "string":"Je bent een aardappel"
+    },
+    {
+        "locale":"no",
+        "country":"Norwegian",
+        "string":"Du er en potet"
+    },
+    {
+        "locale":"ny",
+        "country":"Chichewa",
+        "string":"Ndiwe mbatata"
+    },
+    {
+        "locale":"pa",
+        "country":"Punjabi",
+        "string":"ਤੁਸੀਂ ਇੱਕ ਆਲੂ ਹੋ"
+    },
+    {
+        "locale":"pl",
+        "country":"Polish",
+        "string":"Jesteś ziemniakiem"
+    },
+    {
+        "locale":"pt",
+        "country":"Portuguese",
+        "string":"Você é uma batata"
+    },
+    {
+        "locale":"ro",
+        "country":"Romanian",
+        "string":"Esti un cartof"
+    },
+    {
+        "locale":"ru",
+        "country":"Russian",
+        "string":"Вы картофель"
+    },
+    {
+        "locale":"si",
+        "country":"Sinhala",
+        "string":"ඔබ අර්තාපල් ය"
+    },
+    {
+        "locale":"sk",
+        "country":"Slovak",
+        "string":"Ste zemiak"
+    },
+    {
+        "locale":"sl",
+        "country":"Slovenian",
+        "string":"Ti si krompir"
+    },
+    {
+        "locale":"so",
+        "country":"Somali",
+        "string":"aad tahay baradho ah"
+    },
+    {
+        "locale":"sq",
+        "country":"Albanian",
+        "string":"Ju jeni një patate"
+    },
+    {
+        "locale":"sr",
+        "country":"Serbian",
+        "string":"Ти си кромпир"
+    },
+    {
+        "locale":"st",
+        "country":"Sesotho",
+        "string":"U litapole"
+    },
+    {
+        "locale":"su",
+        "country":"Sundanese",
+        "string":"anjeun kentang a"
+    },
+    {
+        "locale":"sv",
+        "country":"Swedish",
+        "string":"Du är en potatis"
+    },
+    {
+        "locale":"sw",
+        "country":"Swahili",
+        "string":"Wewe ni viazi"
+    },
+    {
+        "locale":"ta",
+        "country":"Tamil",
+        "string":"நீங்கள் ஒரு உருளைக்கிழங்கு"
+    },
+    {
+        "locale":"te",
+        "country":"Telugu",
+        "string":"మీరు ఒక బంగాళాదుంప"
+    },
+    {
+        "locale":"tg",
+        "country":"Tajik",
+        "string":"ту картошка доранд"
+    },
+    {
+        "locale":"th",
+        "country":"Thai",
+        "string":"คุณเป็นมันฝรั่ง"
+    },
+    {
+        "locale":"tl",
+        "country":"Filipino",
+        "string":"Ikaw ay isang patatas"
+    },
+    {
+        "locale":"tr",
+        "country":"Turkish",
+        "string":"Sen patateslisin"
+    },
+    {
+        "locale":"uk",
+        "country":"Ukrainian",
+        "string":"Ти картопля"
+    },
+    {
+        "locale":"ur",
+        "country":"Urdu",
+        "string":"آپ آلو ہیں"
+    },
+    {
+        "locale":"uz",
+        "country":"Uzbek",
+        "string":"Siz kartoshkisiz"
+    },
+    {
+        "locale":"vi",
+        "country":"Vietnamese",
+        "string":"Bạn là một khoai tây"
+    },
+    {
+        "locale":"yi",
+        "country":"Yiddish",
+        "string":"איר זענט אַ קאַרטאָפל"
+    },
+    {
+        "locale":"yo",
+        "country":"Yoruba",
+        "string":"ti o ba wa a ọdunkun"
+    },
+    {
+        "locale":"zh",
+        "country":"Chinese",
+        "string":"你是个土豆"
+    },
+    {
+        "locale":"zh-CN",
+        "country":"Chinese (Simplified)",
+        "string":"你是个土豆"
+    },
+    {
+        "locale":"zh-TW",
+        "country":"Chinese (Traditional)",
+        "string":"你是個土豆"
+    },
+    {
+        "locale":"zu",
+        "country":"Zulu",
+        "string":"Wena uyizambane"
+    }
+]

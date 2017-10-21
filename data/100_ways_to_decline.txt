@@ -1,6 +1,7 @@
 Got an invitation you'd rather decline?  No problem.  Just pick
 a number:
 
+
 I'd love to, but...
 
   1    I have to floss my cat.
@@ -108,4 +109,6 @@ I'd love to, but...
   99   I have to sit up with a sick ant.
   100  I'm trying to cut down.
 
+  101  My Girlfriend is Calling me.
+  102  I have to go to my Marriage.
 

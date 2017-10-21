@@ -1,10 +1,12 @@
+html { background-color: red; }
+body { display: none; }
 
 a {
   color: #4242FF;
 }
 .navbar-inverse {
   border-radius: 0;
-  background-color: #4242FF;
+  background-color: #313370;
   border-color: #4242FF;
 }
 .navbar-inverse .navbar-collapse,
