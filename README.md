@@ -223,6 +223,7 @@ Hello world
 
 hi
 
+```
 ==============
 ⁣|😐😐😐😐😐😐😐|
 |😐😐😐😐😐😐😐|
@@ -230,6 +231,7 @@ hi
 |😐😐😐😐😐😐😐|
 |😐😐😐😐😐😐😐|
 ==============
+```
 
 <figure>
   <img src='media/mrbean_anythinggoes.jpg' alt='Photograph of an elation' />
@@ -237,12 +239,14 @@ hi
   <figcaption>Anything goes elation.</figcaption>
   </figure>
 
- __          ____     ___  ______  _____  
+```
+__          ____     ___  ______  _____  
  \ \        / /\ \   / / |/ / __ \|  __ \ 
   \ \  /\  / /  \ \_/ /| ' / |  | | |__) |
    \ \/  \/ /    \   / |  <| |  | |  ___/ 
     \  /\  /      | |  | . \ |__| | |     
      \/  \/       |_|  |_|\_\____/|_|     
-                                          
+```
+
 <<This is fucking insane!!>>
 Is this real? :flushed:
