@@ -9,6 +9,9 @@
 namespace Ass;
 
 
+COMPILATION ERRORR!!!!!
+
+
 abstract class Fart
 {
 
