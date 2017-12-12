@@ -251,3 +251,6 @@ __          ____     ___  ______  _____
 
 <<This is fucking insane!!>>
 Is this real? :flushed:
+
+AAST REPRESENT, HCS 2017!! - Kai/G
+HS Graduate Programmers of 2020 add below!
