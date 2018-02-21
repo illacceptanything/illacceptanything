@@ -52,6 +52,7 @@ every Pull Request submitted and see what happens.
     - s/anything/nothing/: [#292](https://github.com/illacceptanything/illacceptanything/pull/292) [#340](https://github.com/illacceptanything/illacceptanything/pull/340)
     - Removing items from this list
     - You never said anything about adding items to this list
+    - Parler français
  * Also, please refrain from uploading extremely large files or filenames with reserved characters, since those can make cloning the repository impossible for other contributors.
  * Please try to sort files into `data/`, `code/`, etc. where applicable. A neater repository is more maintainable!
  * Não insira mais de uma linha de conteúdo escrito em linguagens que contenham a palavra "capivara".
