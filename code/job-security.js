@@ -27,4 +27,4 @@ tere.moi();
 
 для (пер i в tere) {
   console.log(i);
-}
+};
