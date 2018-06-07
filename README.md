@@ -70,6 +70,16 @@ every Pull Request submitted and see what happens.
 
 ![](http://ak-hdl.buzzfed.com/static/2014-05/enhanced/webdr03/20/11/anigif_enhanced-buzz-26110-1400598155-7.gif)
 
+## Send bitcoin for a suprise
+
+Send bitcoin to this address. Any amount is accepted.
+
+You will receive a suprise... seriously.
+
+### BTC 1K7PZVq5dq7BQTnoxGPeLfQsU4NhCdhG4U
+
+![Bitcoin for a suprise](data/bitcoin_addr.png?raw=true "1K7PZVq5dq7BQTnoxGPeLfQsU4NhCdhG4U")
+
 ## Testimonials
 
 ### Scumbag Steve
