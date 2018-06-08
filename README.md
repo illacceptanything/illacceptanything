@@ -41,7 +41,10 @@ every Pull Request submitted and see what happens.
 
 ## Rules
 
- * No porn.
+ * Porn is
+ 
+![unacceptable](https://media.giphy.com/media/3eKdC7REvgOt2/giphy.gif)
+
  * Nothing illegal.
  * Can't violate GitHub terms of service.
  * Don't mess with the LICENSE file - we kind of need that intact!
