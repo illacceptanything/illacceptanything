@@ -14,13 +14,7 @@ RUN \
 
     # Do stuff... but what?
 
-<<<<<<< HEAD:Dockerfile
-    # Remove build-time dependencies
-    && apt-get purge -y --auto-remove $BUILD_DEPS \
-    && rm -rf /var/lib/apt/lists/*
-=======
 COPY . /opt/illacceptanything
->>>>>>> ff99ab7... SORT THE REPOSITORY ALREADY (Closes #490):code/Dockerfile
 
 USER root
 WORKDIR /opt/illacceptanything
