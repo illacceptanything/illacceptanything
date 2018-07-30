@@ -10,6 +10,7 @@
 [![](https://img.shields.io/badge/project-everything-blue.svg?style=flat-square)](https://github.com/illacceptanything/illacceptanything)
 [![standard-readme not compliant](https://img.shields.io/badge/readme%20style-not-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-not-readme)
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+[![](https://forthebadge.com/images/badges/uses-badges.svg)](https://forthebadge.com)
 
 ## WARNING - [Large repository](https://i.imgur.com/rzSgLP3.png); [may trigger antivirus software](https://github.com/illacceptanything/illacceptanything/blob/75109b706351420c31999915d4d54b0b4ab12df7/data/text/EICAR.COM.TXT)!
 
@@ -74,6 +75,8 @@ every Pull Request submitted and see what happens.
 ![](http://ak-hdl.buzzfed.com/static/2014-05/enhanced/webdr03/20/11/anigif_enhanced-buzz-26110-1400598155-7.gif)
 
 ## Testimonials
+
+i tried cloning this, it took forever and then git gave me an error. i had to do this on github dot fucking com
 
 ### Scumbag Steve
 If your name is steve, list yourself here.
@@ -195,6 +198,8 @@ Really good for someone who want to increase contribution count. :D
 ![](http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg)
 
 ### Misc
+
+<img src="https://cdn.discordapp.com/attachments/395018826292527115/443137166621671444/magik.png" width="100%">
 
 ![](http://www.ceolato.com/html/_images/python_powered.png) ![](http://media.giphy.com/media/2gFM7CtCNfzP2/giphy.gif)
 
