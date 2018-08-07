@@ -1,0 +1,15 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    <vttn> -- <Developer> -- <https://github.com/vttn>
+
+# THANKS
+
+    <Obama>
+
+# TECHNOLOGY COLOPHON
+
+    CSS3, HTML5, PHP7, ElasticSearch 2.3, CakePHP, Ubuntu, Django 1.10
+    Apache Server Configs, jQuery, Modernizr, Normalize.css
