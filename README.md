@@ -88,6 +88,10 @@ I'm not Steve but anyways, HI!
 ### Call me Eric. Merge me pls ;-;
 ---
 
+### 中国。
+### 想改变世界？请和我联系。
+---
+
  🇨🇱 ![Chile Parrot](http://countryparrots.com/parrots/chile-parrot.gif) 🇨🇱
 
 ### [CLICK ME!](https://andrewsun.com/etc/special/m.html)
