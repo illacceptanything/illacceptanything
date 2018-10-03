@@ -1,0 +1,51 @@
+== Setup
+
+If you don't have an environment for running tests, read
+http://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html#setting-up-a-development-environment
+
+== Running the Tests
+
+To run a specific test:
+
+  $ bundle exec ruby -Itest test/cases/base_test.rb -n method_name
+
+To run a set of tests:
+
+  $ bundle exec ruby -Itest test/cases/base_test.rb
+
+You can also run tests that depend upon a specific database backend. For
+example:
+
+  $ bundle exec rake test:sqlite3
+
+Simply executing <tt>bundle exec rake test</tt> is equivalent to the following:
+
+  $ bundle exec rake test:mysql2
+  $ bundle exec rake test:postgresql
+  $ bundle exec rake test:sqlite3
+
+Using the SQLite3 adapter with an in-memory database is the fastest way
+to run the tests:
+
+  $ bundle exec rake test:sqlite3_mem
+
+There should be tests available for each database backend listed in the {Config
+File}[rdoc-label:label-Config+File]. (the exact set of available tests is
+defined in +Rakefile+)
+
+== Config File
+
+If +test/config.yml+ is present, then its parameters are obeyed; otherwise, the
+parameters in +test/config.example.yml+ are.
+
+You can override the +connections:+ parameter in either file using the +ARCONN+
+(Active Record CONNection) environment variable:
+
+  $ ARCONN=postgresql bundle exec ruby -Itest test/cases/base_test.rb
+
+Or
+
+  $ bundle exec rake test:postgresql TEST=test/cases/base_test.rb
+
+You can specify a custom location for the config file using the +ARCONFIG+
+environment variable.
