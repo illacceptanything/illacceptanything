@@ -96,7 +96,10 @@ I'm not Steve but anyways, HI!
  🇨🇱 ![Chile Parrot](http://countryparrots.com/parrots/chile-parrot.gif) 🇨🇱
 
 ### [CLICK ME!](https://andrewsun.com/etc/special/m.html)
+
 ![](https://i.imgur.com/ehUtz.gif)
+
+![](https://cdn.discordapp.com/attachments/394168392841691137/496424659538149378/unknown.png)
 
 ```
    _____                  __  .__    .__                 ._.
