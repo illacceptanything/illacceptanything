@@ -96,7 +96,10 @@ I'm not Steve but anyways, HI!
  🇨🇱 ![Chile Parrot](http://countryparrots.com/parrots/chile-parrot.gif) 🇨🇱
 
 ### [CLICK ME!](https://andrewsun.com/etc/special/m.html)
+
 ![](https://i.imgur.com/ehUtz.gif)
+
+![](https://cdn.discordapp.com/attachments/394168392841691137/496424659538149378/unknown.png)
 
 ```
    _____                  __  .__    .__                 ._.
@@ -201,6 +204,8 @@ Really good for someone who want to increase contribution count. :D
 
 ```
 ### Der Ulf war hier
+
+#### Der Klaus nicht.
 
 ### Holy Religion of the Internet (besides porn)
 ![](http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg)
