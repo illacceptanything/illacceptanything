@@ -171,6 +171,8 @@ I'm not Steve but anyways, HI!
        ░    ░   ▒     ░░   ░   ░       ░  ░░ ░                     
        ░  ░     ░  ░   ░               ░  ░  ░                     
 
+![](https://media.giphy.com/media/omLzpfGF9hKTe/giphy.gif)
+
 it'll happen...
 
 媽我在這～～～ 
