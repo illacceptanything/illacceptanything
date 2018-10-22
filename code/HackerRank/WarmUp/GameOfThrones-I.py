@@ -5,7 +5,7 @@ def count(char, string):
             count += 1
     return count
             
-n = input()
+n = input("Enter the input")
 length = len(n) 
 counter = 0
 numOfOdd = 0
