@@ -59,8 +59,6 @@ every Pull Request submitted and see what happens.
     - [Uploading](https://github.com/illacceptanything/illacceptanything/pull/423) [fork](https://github.com/illacceptanything/illacceptanything/pull/404) [bombs](https://github.com/illacceptanything/illacceptanything/pull/492)
     - s/anything/nothing/: [#292](https://github.com/illacceptanything/illacceptanything/pull/292) [#340](https://github.com/illacceptanything/illacceptanything/pull/340)
     - Removing items from this list
-    - You never said anything about adding items to this list
-    - Parler français
  * Also, please refrain from uploading extremely large files or filenames with reserved characters, since those can make cloning the repository impossible for other contributors.
  * Please try to sort files into `data/`, `code/`, etc. where applicable. A neater repository is more maintainable!
  * Não insira mais de uma linha de conteúdo escrito em linguagens que contenham a palavra "capivara".
@@ -82,6 +80,7 @@ Just tellin ya, nothing else important is under this line.
 Proceed at your own caution.
 
 ![](http://ak-hdl.buzzfed.com/static/2014-05/enhanced/webdr03/20/11/anigif_enhanced-buzz-26110-1400598155-7.gif)
+<<<<<<< HEAD
 
 ## Pull me, maybe
 
@@ -299,3 +298,5 @@ ARE YOU READY TO RUMBLE????????????????
 
 ![嘶哈嘶哈](FBK.jpg)
 
+=======
+>>>>>>> daae5b0df09514ff21a02fa986c9f69521839df8
