@@ -305,7 +305,7 @@ ARE YOU READY TO RUMBLE????????????????
 
 :poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop:
 
-**Just making my mark on this awesome project
+**Just making my mark on this awesome project.
 JordyV - [github.com/JordyValentine](https://github.com/JordyValentine)**
 
 :poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop:
