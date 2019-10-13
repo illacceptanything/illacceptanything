@@ -101,6 +101,8 @@ Disallow:
 #   / \   / \
 #  (>.<) (>.<)
 
+Sorry this is not a robot
+
      ____          ____
 #    |oooo|        |oooo|
 #    |oooo| .----. |oooo|
@@ -126,5 +128,3 @@ Disallow:
 #     || ||        || ||    
 #   __|\_/|__    __|\_/|__
 #  /___n_n___\  /___n_n___\
-
-
