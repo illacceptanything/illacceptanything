@@ -19,3 +19,4 @@ echo -ne '###########################133%)\r'
 echo -ne '\n'
 yes 'it all works!' | head -n $RANDOM
 echo "holanda, que talca?"
+echo "Viggy, Viggy, Viggy. You are a bad monkey!"
