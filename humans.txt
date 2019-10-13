@@ -7,9 +7,10 @@
 
 # THANKS
 
-    <Obama>
+    <Obama> -- <Trump>
 
 # TECHNOLOGY COLOPHON
 
     CSS3, HTML5, PHP7, ElasticSearch 2.3, CakePHP, Ubuntu, Django 1.10
     Apache Server Configs, jQuery, Modernizr, Normalize.css
+

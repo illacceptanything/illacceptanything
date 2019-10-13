@@ -82,7 +82,7 @@ Just tellin ya, nothing else important is under this line.
 Proceed at your own caution.
 
 ![](http://ak-hdl.buzzfed.com/static/2014-05/enhanced/webdr03/20/11/anigif_enhanced-buzz-26110-1400598155-7.gif)
-<<<<<<< HEAD
+<<<<<< HEAD
 
 ## Pull me, maybe
 
@@ -300,8 +300,9 @@ ARE YOU READY TO RUMBLE????????????????
 
 ![嘶哈嘶哈](FBK.jpg)
 
-=======
->>>>>>> daae5b0df09514ff21a02fa986c9f69521839df8
+======
+>>>>>> daae5b0df09514ff21a02fa986c9f69521839df8
+
 
 ```
    ___             _  _    _      _         _              __ _  
@@ -311,3 +312,11 @@ ARE YOU READY TO RUMBLE????????????????
 _|"""""|_|"""""|_| """"|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""| 
 "`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-' 
 ```
+
+:poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop:
+
+**Just making my mark on this awesome project.
+JordyV - [github.com/JordyValentine](https://github.com/JordyValentine)**
+
+:poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop:
+
