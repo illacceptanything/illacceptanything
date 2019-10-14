@@ -251,6 +251,8 @@ Really good for someone who want to increase contribution count. :D
 
 ![](http://i0.kym-cdn.com/photos/images/original/000/976/339/ded.png)
 
+![](https://media.giphy.com/media/3ohryqqyqdhVyhMBGM/giphy.gif)
+
 
 WATFACE WAT WAT WAT
 Hello world
