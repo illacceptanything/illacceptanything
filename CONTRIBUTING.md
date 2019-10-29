@@ -13,3 +13,4 @@ Also:
     - s/anything/nothing/: [#292](https://github.com/illacceptanything/illacceptanything/pull/292) [#340](https://github.com/illacceptanything/illacceptanything/pull/340)
     - Removing items from this list
     - Also, please refrain from uploading extremely large files, since those can make cloning the repository impossible for other contributors.
+    - don't use restricted items 
