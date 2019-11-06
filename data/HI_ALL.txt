@@ -1,4 +1,0 @@
-int main()
-{
-	printf("thanhmssl10 have been here muahahahahah");
-}

@@ -1,4 +1,0 @@
-[submodule "primitives"]
-	path = Source/primitives
-	url = https://github.com/Paws/primitives.js.git
-	branch = Master

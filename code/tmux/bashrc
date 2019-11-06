@@ -1,2 +1,0 @@
-[ -S "$SSH_AUTH_SOCK" ] || export SSH_AUTH_SOCK="$HOME/.ssh/agent"
-ssh-add -l >/dev/null 2>&1 || eval "$(ssh-agent -a "$SSH_AUTH_SOCK")"
