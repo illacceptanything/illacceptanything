@@ -15,8 +15,8 @@ var requestAnimFrame = (function(){
 // Create the canvas
 var canvas = document.createElement("canvas");
 var ctx = canvas.getContext("2d");
-canvas.width = $(window).width() - ($(window).width() % 32);
-canvas.height = $(window).height() - ($(window).height() % 32);
+canvas.width = $(window).width() - ($(window).width() / 8);
+canvas.height = $(window).height() - ($(window).height() / 8);
 document.body.appendChild(canvas);
 
 // The main game loop
@@ -221,7 +221,7 @@ function checkCollisions() {
 
                 // Add score
                 score += 100;
-
+                
                 // Add an explosion
                 explosions.push({
                     pos: pos,
@@ -237,7 +237,10 @@ function checkCollisions() {
                 // Remove the bullet and stop this iteration
                 bullets.splice(j, 1);
 
-                showDialog(theD);
+                if(enemies.length == 0) {
+                    showDialog(theD);
+                }
+
                 document.getElementById('close-dialog').addEventListener('click', function() {
                     closeDialog();
                 });
@@ -304,7 +307,7 @@ function gameOver() {
     isGameOver = true;
 }
 
-// Game over
+// You win
 function showDialog(the_dialog) {
     $("#show-dialog h1").text(the_dialog);
     document.getElementById('show-dialog').style.display = 'block';
@@ -314,6 +317,7 @@ function showDialog(the_dialog) {
 function closeDialog() {
     document.getElementById('show-dialog').style.display = 'none';
     document.getElementById('show-dialog-overlay').style.display = 'none';
+    reset()
 }
 
 // Reset game to original state

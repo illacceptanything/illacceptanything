@@ -82,6 +82,9 @@ Just tellin ya, nothing else important is under this line.
 Proceed at your own caution.
 
 ![](http://ak-hdl.buzzfed.com/static/2014-05/enhanced/webdr03/20/11/anigif_enhanced-buzz-26110-1400598155-7.gif)
+<<<<<< HEAD
+
+## Pull me, maybe
 
 ## Testimonials
 
@@ -248,6 +251,8 @@ Really good for someone who want to increase contribution count. :D
 
 ![](http://i0.kym-cdn.com/photos/images/original/000/976/339/ded.png)
 
+![](https://media.giphy.com/media/3ohryqqyqdhVyhMBGM/giphy.gif)
+
 
 WATFACE WAT WAT WAT
 Hello world
@@ -296,4 +301,24 @@ ARE YOU READY TO RUMBLE????????????????
 (https://media.giphy.com/media/3oKIPjzfv0sI2p7fDW/source.gif)
 
 ![嘶哈嘶哈](FBK.jpg)
+
+======
+>>>>>> daae5b0df09514ff21a02fa986c9f69521839df8
+
+
+```
+   ___             _  _    _      _         _              __ _  
+  /   \   _ _     | || |  | |_   | |_      (_)    _ _     / _` | 
+  | - |  | ' \     \_, |  |  _|  | ' \     | |   | ' \    \__, | 
+  |_|_|  |_||_|   _|__/   _\__|  |_||_|   _|_|_  |_||_|   |___/  
+_|"""""|_|"""""|_| """"|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""| 
+"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-' 
+```
+
+:poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop:
+
+**Just making my mark on this awesome project.
+JordyV - [github.com/JordyValentine](https://github.com/JordyValentine)**
+
+:poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop:
 
