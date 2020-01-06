@@ -217,9 +217,6 @@ Really good for someone who want to increase contribution count. :D
 
 #### Der Klaus nicht.
 
-### Holy Religion of the Internet (besides porn)
-![](http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg)
-
 ### Misc
 
 <img src="https://cdn.discordapp.com/attachments/395018826292527115/443137166621671444/magik.png" width="100%">
