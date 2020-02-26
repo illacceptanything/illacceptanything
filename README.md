@@ -77,7 +77,7 @@ every Pull Request submitted and see what happens.
 
 ## Contributors
 
-# Huge worning from your friendly neighborhood JasorYEH - Everything starting from this point on including this line is just random people :)
+# Huge woorning from your friendly neighborhood JasorYEH - Everything starting from this point on including this line is just random people :)
 Just tellin ya, nothing else important is under this line.
 Proceed at your own caution.
 
