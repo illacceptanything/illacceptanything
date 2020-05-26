@@ -32,14 +32,19 @@
     "typescript": "^3.9.3"
   },
   "dependencies": {
+    "DICSS": "github:letsgetrandy/DICSS",
     "anime": "^0.1.2",
+    "is-thirteen": "^2.0.0",
     "jest": "^26.0.1",
     "lodash": "^4.17.15",
     "mocha": "^7.2.0",
     "mongoose": "^5.9.16",
     "needle": "^2.5.0",
+    "penis": "github:edankwan/penis.js",
     "sequelize": "^5.21.10",
     "sinon": "^9.0.2",
+    "vanillajs": "github:mikeal/vanilla",
+    "vapor": "github:madrobby/vapor.js",
     "webpack": "^4.43.0"
   }
 }
