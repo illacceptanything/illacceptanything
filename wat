@@ -6,3 +6,4 @@ No worries. It obviously was "Are you a pink russian walrus?". I'm a pidgeon mys
 Hi ! New guy here ! Still good ?
 Yep, this is good. Git-based chat protocol when? Matrix bridge to Git-based chat protocol when?
 Good day boys
+🥭🥭🥭🥭🥭
