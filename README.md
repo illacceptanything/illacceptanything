@@ -82,7 +82,6 @@ Just tellin ya, nothing else important is under this line.
 Proceed at your own caution.
 
 ![](http://ak-hdl.buzzfed.com/static/2014-05/enhanced/webdr03/20/11/anigif_enhanced-buzz-26110-1400598155-7.gif)
-<<<<<< HEAD
 
 ## Pull me, maybe
 
