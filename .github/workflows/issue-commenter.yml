@@ -1,8 +1,7 @@
 name: Comment on new Issue
 
-on: 
-   issues:
-     types: [opened]
+on: [pull_request]
+
 jobs:
   add-comment:
     runs-on: ubuntu-latest
