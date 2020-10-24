@@ -7,6 +7,11 @@ jobs:
   add-comment:
     runs-on: ubuntu-latest
     steps:
+      - name: This will take a while
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          submodules: recursive
       - name: Comment on Issue
         uses: ActionsDesk/add-comment-action@master
         with:
