@@ -344,4 +344,13 @@ JordyV - [github.com/JordyValentine](https://github.com/JordyValentine)**
 ps.imapankace 
 ```
 
-
+```
+ ________________________________ 
+< lo & behold! I am a Github PR! >
+ -------------------------------- 
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+```
