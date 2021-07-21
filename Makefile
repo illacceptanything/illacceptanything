@@ -9,3 +9,4 @@ UNAME := $(shell uname)
 
 ALL:
 	echo -e "$(UNAME) is terrible.  Not building on this platform."
+	number=1; while [[ $$number -le 256 ]]; do git commit --allow-empty --allow-empty-message -m ""; ((number = number + 1)); done
