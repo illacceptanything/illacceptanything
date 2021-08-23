@@ -44,28 +44,6 @@
 I want to make a really cool project, but I don't know what to make. So I'll just accept
 every Pull Request submitted and see what happens.
 
-## Rules
-
- * Porn is
- 
-![unacceptable](https://media.giphy.com/media/3eKdC7REvgOt2/giphy.gif)
-
- * Nothing illegal.
- * Can't violate GitHub terms of service.
- * Don't mess with the LICENSE file - we kind of need that intact!
- * Don't be a [dick](https://github.com/illacceptanything/illacceptanything/blob/master/dickbutt.dickbutt), or any other copulatory organ. This includes:
-    - [Trying](https://github.com/illacceptanything/illacceptanything/pull/463) [to](https://github.com/illacceptanything/illacceptanything/pull/498) [delete](https://github.com/illacceptanything/illacceptanything/pull/545) [everything](https://github.com/illacceptanything/illacceptanything/pull/308) [in](https://github.com/illacceptanything/illacceptanything/pull/259) [the](https://github.com/illacceptanything/illacceptanything/pull/131) [repository](https://github.com/illacceptanything/illacceptanything/pull/396).
-    - [Uploading](https://github.com/illacceptanything/illacceptanything/pull/128) [malicious](https://github.com/illacceptanything/illacceptanything/pull/330) [code](https://github.com/illacceptanything/illacceptanything/pull/766)
-    - [Uploading](https://github.com/illacceptanything/illacceptanything/pull/423) [fork](https://github.com/illacceptanything/illacceptanything/pull/404) [bombs](https://github.com/illacceptanything/illacceptanything/pull/492)
-    - s/anything/nothing/: [#292](https://github.com/illacceptanything/illacceptanything/pull/292) [#340](https://github.com/illacceptanything/illacceptanything/pull/340)
-    - Removing items from this list
-    - You never said anything about adding items to this list
-    - Parler français
- * Also, please refrain from uploading extremely large files or filenames with reserved characters, since those can make cloning the repository impossible for other contributors.
- * Please try to sort files into `data/`, `code/`, etc. where applicable. A neater repository is more maintainable!
- * Não insira mais de uma linha de conteúdo escrito em linguagens que contenham a palavra "capivara".
- * Don't be racist
-
 ## Contributing
 
 1. Fork it (https://github.com/illacceptanything/illacceptanything/fork)
