@@ -81,6 +81,18 @@ every Pull Request submitted and see what happens.
 Just tellin ya, nothing else important is under this line.
 Proceed at your own caution.
 
+# Another huge warning from AcaiBerii
+A git error occurs while cloning this repository:  
+```text
+error: filename in tree entry contains backslash: '=$x7?1O2E!# gD*ar)[%lv?YsDc!!?Evt?>??{V=v:c^w&9xzN;xb{[?^L<N?%3(rP:K[6M?????\oI?bC9Un?Fg??"O?Xs3sN!Ee\f??C(%:3(?`Iq?gC2:(?GaPXQ?B??[W\
+""5#s&?7?0tJY??_?zGm?A:f'<?Ja eI84J`"'?X?-?\}9P9#_^>$'$j?
+_?0PsI??>y8wqrX".3t?mZ.{=+~0?0M??ftY3?[?`<QZ7??7I `?J??P`tA??N'
+fatal: Not all child objects of c467d1844aef205dcb08df420200767e7df3e35a are reachable
+fatal: index-pack failed
+```
+This causes an error for Windows users.  
+The person who commited this will need to remove it.
+
 
 ﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀
 >>>>>>>>>>>>
