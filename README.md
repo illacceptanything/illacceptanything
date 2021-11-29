@@ -346,3 +346,25 @@ ps.imapankace
 
 (╯°□°）╯︵ ┻━┻
 
+
+======
+# Poll
+
+### Linux x Mac x Windows for dev
+
+- 1   Linux
+- 0   Mac
+- 0   Windows
+
+### Linux x Mac x Windows for gaming
+
+- 0.5   Linux
+- 0     Mac
+- 0.5   Windows
+
+### Linux x Mac x Windows you are using right now
+
+- 1   Linux
+- 0   Mac
+- 0   Windows
+
