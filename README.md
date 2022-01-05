@@ -83,7 +83,6 @@ Proceed at your own caution.
 
 
 ﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀
-Join team c00lkidd today! https://discord.gg/w7b6QADrGe
 >>>>>>>>>>>>
 -------------------------------------
 ###    kenevil1 wuz here
@@ -92,6 +91,8 @@ Join team c00lkidd today! https://discord.gg/w7b6QADrGe
 ﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀
 
 OKAY, now nothing else is important under this line
+
+Join team c00lkidd today! https://discord.gg/w7b6QADrGe ( this is important team c00lkidd epix)
 
 ![](http://ak-hdl.buzzfed.com/static/2014-05/enhanced/webdr03/20/11/anigif_enhanced-buzz-26110-1400598155-7.gif)
 
