@@ -83,6 +83,7 @@ Proceed at your own caution.
 
 
 ﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀
+Join team c00lkidd today! https://discord.gg/w7b6QADrGe
 >>>>>>>>>>>>
 -------------------------------------
 ###    kenevil1 wuz here
