@@ -32,6 +32,7 @@
     "typescript": "^3.9.3"
   },
   "dependencies": {
+    "banana-js": "0.2.5",
     "DICSS": "github:letsgetrandy/DICSS",
     "anime": "^0.1.2",
     "is-thirteen": "^2.0.0",
