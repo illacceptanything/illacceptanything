@@ -368,6 +368,6 @@ ps.imapankace
 ### Linux x Mac x Windows you are using right now
 
 - 1   Linux
-- 0   Mac
+- 1   Mac
 - 0   Windows
 
