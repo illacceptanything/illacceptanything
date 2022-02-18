@@ -73206,7 +73206,6 @@ django-scribbler
 Pi7SegPy
 python-evoqueclient
 envRunner
-mocket
 django-viewclass-mixins
 pyimpact
 django-app-plugins
