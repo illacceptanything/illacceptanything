@@ -367,7 +367,7 @@ ps.imapankace
 
 ### Linux x Mac x Windows you are using right now
 
-- 2   Linux
+- 3   Linux
 - 1   Mac
 - -1   Windows
 
