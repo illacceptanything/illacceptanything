@@ -1,3 +1,3 @@
 public abstract class AbstractClass {
-  public abstract doStuff();
+  public abstract void doStuff();
 }
