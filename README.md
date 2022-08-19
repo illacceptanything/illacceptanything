@@ -363,24 +363,27 @@ ps.imapankace
 (╯°□°）╯︵ ┻━┻
 
 
+![](https://i.imgur.com/WaTpo9m.gif)
+
+
 ======
 # Poll
 
 ### Linux x Mac x Windows for dev
 
-- 2   Linux
+- 3   Linux
 - 0   Mac
 - 0   Windows
 
 ### Linux x Mac x Windows for gaming
 
 - 0.75   Linux
-- 0     Mac
+- -3     Mac
 - 1.25   Windows
 
 ### Linux x Mac x Windows you are using right now
 
-- 3   Linux
+- 4   Linux
 - 1   Mac
 - -1   Windows
 
