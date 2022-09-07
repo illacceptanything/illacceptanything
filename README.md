@@ -387,3 +387,8 @@ ps.imapankace
 - 1   Mac
 - -1   Windows
 
+## Important notice
+You are awesome but you don't know it yet.
+To accept the fact that you're awesome, please put a new heart here: 🤍
+
+
