@@ -1,0 +1,45 @@
+#include<stdio.h>
+
+#include<conio.h>
+
+int main()
+
+{
+
+	int a,n,z,i,sum=0,x,rev[20];	printf("\n enter the numbers \t");
+
+	scanf("%d",&n);
+
+	x=n, z=0;
+
+	while(x>0)
+
+	{
+
+		a=x%10;
+
+		sum=sum+a;
+
+		rev[z]=a;
+
+		x=x/10;
+
+		++;
+
+	}
+
+	printf("\n\t sum of the digits of %d = %d ",n,sum);
+
+	printf("\n\n\t revers of %d =",n);
+
+	for(i=0;i<z;i++)
+
+	{
+
+		printf("%d",rev[i]);
+
+	}
+
+	getch();
+
+}
