@@ -15,6 +15,7 @@
 [![](https://forthebadge.com/images/badges/compatibility-emacs.svg)](https://forthebadge.com)
 [![](https://forthebadge.com/images/badges/powered-by-oxygen.svg)](https://forthebadge.com)
 [![](https://forthebadge.com/images/badges/oooo-kill-em.svg)](https://forthebadge.com)
+[![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
 
 ## WARNING - [Large repository](https://i.imgur.com/rzSgLP3.png); [may trigger antivirus software](https://github.com/illacceptanything/illacceptanything/blob/75109b706351420c31999915d4d54b0b4ab12df7/data/text/EICAR.COM.TXT)!
 
@@ -53,6 +54,7 @@ every Pull Request submitted and see what happens.
  * Nothing illegal.
  * Can't violate GitHub terms of service.
  * Don't mess with the LICENSE file - we kind of need that intact!
+ * I edited Readme.md, is that okay?
  * Don't be a [dick](https://github.com/illacceptanything/illacceptanything/blob/master/dickbutt.dickbutt), or any other copulatory organ. This includes:
     - [Trying](https://github.com/illacceptanything/illacceptanything/pull/463) [to](https://github.com/illacceptanything/illacceptanything/pull/498) [delete](https://github.com/illacceptanything/illacceptanything/pull/545) [everything](https://github.com/illacceptanything/illacceptanything/pull/308) [in](https://github.com/illacceptanything/illacceptanything/pull/259) [the](https://github.com/illacceptanything/illacceptanything/pull/131) [repository](https://github.com/illacceptanything/illacceptanything/pull/396).
     - [Uploading](https://github.com/illacceptanything/illacceptanything/pull/128) [malicious](https://github.com/illacceptanything/illacceptanything/pull/330) [code](https://github.com/illacceptanything/illacceptanything/pull/766)
@@ -61,6 +63,7 @@ every Pull Request submitted and see what happens.
     - Removing items from this list
     - You never said anything about adding items to this list
     - Parler français
+    - Removing bees from a location
  * Also, please refrain from uploading extremely large files or filenames with reserved characters, since those can make cloning the repository impossible for other contributors.
  * Please try to sort files into `data/`, `code/`, etc. where applicable. A neater repository is more maintainable!
  * Não insira mais de uma linha de conteúdo escrito em linguagens que contenham a palavra "capivara".
@@ -80,6 +83,28 @@ every Pull Request submitted and see what happens.
 # Huge woorning from your friendly neighborhood JasorYEH - Everything starting from this point on including this line is just random people :)
 Just tellin ya, nothing else important is under this line.
 Proceed at your own caution.
+
+
+-------------------------------------
+An arch user, a vegan, and an atheist walk into a bar......
+...........................................................
+I know because they told everyone
+
+### I use Arch btw ;)
+ - Rohan
+-------------------------------------
+>>>>>>>>>>>>
+
+﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀
+
+>>>>>>>>>>>>
+-------------------------------------
+###    kenevil1 wuz here
+-------------------------------------
+>>>>>>>>>>>>
+﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀﹀
+
+OKAY, now nothing else is important under this line
 
 ![](http://ak-hdl.buzzfed.com/static/2014-05/enhanced/webdr03/20/11/anigif_enhanced-buzz-26110-1400598155-7.gif)
 
@@ -252,9 +277,14 @@ Really good for someone who want to increase contribution count. :D
 
 ![](https://media.giphy.com/media/3ohryqqyqdhVyhMBGM/giphy.gif)
 
+![](https://i.imgur.com/dnjJndP.jpg)
+
 
 WATFACE WAT WAT WAT
 Hello world
+
+
+![](https://upload.wikimedia.org/wikipedia/en/9/9d/Loituma.gif)
 
 hi
 
@@ -314,10 +344,52 @@ _|"""""|_|"""""|_| """"|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|
 "`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-' 
 ```
 
-:poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop:
+:bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet::bouquet:
 
 **Just making my mark on this awesome project.
 JordyV - [github.com/JordyValentine](https://github.com/JordyValentine)**
 
 :poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop::poop:
+
+```
+     __                __                          .__         .__    .__  .__                                         .___            .__     _________  
+    |__|__ __  _______/  |_    ___________  ___.__.|__| ____   |  |__ |__| |  |__   ______  _  __  ___.__._____      __| _/____   ____ |__| ___\_____   \ 
+    |  |  |  \/  ___/\   __\  /  ___/\__  \<   |  ||  |/    \  |  |  \|  | |  |  \ /  _ \ \/ \/ / <   |  |\__  \    / __ |/  _ \ /  _ \|  |/    \ /   __/ 
+    |  |  |  /\___ \  |  |    \___ \  / __ \\___  ||  |   |  \ |   Y  \  | |   Y  (  <_> )     /   \___  | / __ \_ / /_/ (  <_> |  <_> )  |   |  \   |    
+/\__|  |____//____  > |__|   /____  >(____  / ____||__|___|  / |___|  /__| |___|  /\____/ \/\_/    / ____|(____  / \____ |\____/ \____/|__|___|  /___|    
+\______|          \/              \/      \/\/             \/       \/          \/                 \/          \/       \/                     \/<___>    
+ps.imapankace 
+```
+
+(╯°□°）╯︵ ┻━┻
+
+
+![](https://i.imgur.com/WaTpo9m.gif)
+
+
+======
+# Poll
+
+### Linux x Mac x Windows for dev
+
+- 3   Linux
+- 0   Mac
+- 0   Windows
+
+### Linux x Mac x Windows for gaming
+
+- 0.75   Linux
+- -3     Mac
+- 1.25   Windows
+
+### Linux x Mac x Windows you are using right now
+
+- 4   Linux
+- 1   Mac
+- -1   Windows
+
+## Important notice
+You are awesome but you don't know it yet.
+To accept the fact that you're awesome, please put a new heart here: 🤍
+
 

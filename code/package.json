@@ -1,0 +1,51 @@
+{
+  "name": "illacceptanything",
+  "version": "4.2.0",
+  "description": "I can't beleive this project didn't have a package.json. How is it even usable if it doesnt have one?",
+  "main": "sagar-datta.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "depoy-production-k8s": "docker build -t illacceptanything/illacceptanything . && docker push illacceptanything/illacceptanything && sleep 10 && kubectl create deployment --image=illacceptanything/illacceptanything ",
+    "test": "echo \"LOL :DDDDDD\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/notarock/illacceptanything.git"
+  },
+  "keywords": [
+    "LOL"
+  ],
+  "author": "notarock",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/notarock/illacceptanything/issues"
+  },
+  "homepage": "https://github.com/notarock/illacceptanything#readme",
+  "devDependencies": {
+    "is-even": "^1.0.0",
+    "is-odd": "^3.0.1",
+    "react": "^16.13.1",
+    "react-typescript": "^1.0.0",
+    "shelljs": "^0.8.4",
+    "typescript": "^3.9.3"
+  },
+  "dependencies": {
+    "banana-js": "0.2.5",
+    "DICSS": "github:letsgetrandy/DICSS",
+    "anime": "^0.1.2",
+    "is-thirteen": "^2.0.0",
+    "jest": "^26.0.1",
+    "lodash": "^4.17.15",
+    "mocha": "^7.2.0",
+    "mongoose": "^5.9.16",
+    "needle": "^2.5.0",
+    "penis": "github:edankwan/penis.js",
+    "sequelize": "^5.21.10",
+    "sinon": "^9.0.2",
+    "vanillajs": "github:mikeal/vanilla",
+    "vapor": "github:madrobby/vapor.js",
+    "webpack": "^4.43.0"
+  }
+}
