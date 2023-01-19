@@ -48,8 +48,8 @@ every Pull Request submitted and see what happens.
 ## Rules
 
  * Porn is
- 
 ![unacceptable](https://media.giphy.com/media/3eKdC7REvgOt2/giphy.gif)
+(unacceptable)
 
  * Nothing illegal.
  * Can't violate GitHub terms of service.
@@ -64,6 +64,7 @@ every Pull Request submitted and see what happens.
     - You never said anything about adding items to this list
     - Parler français
     - Removing bees from a location
+    - Using Windows
  * Also, please refrain from uploading extremely large files or filenames with reserved characters, since those can make cloning the repository impossible for other contributors.
  * Please try to sort files into `data/`, `code/`, etc. where applicable. A neater repository is more maintainable!
  * Não insira mais de uma linha de conteúdo escrito em linguagens que contenham a palavra "capivara".
