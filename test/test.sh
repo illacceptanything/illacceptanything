@@ -20,3 +20,4 @@ echo -ne '\n'
 yes 'it all works!' | head -n $RANDOM
 echo "holanda, que talca?"
 echo "Viggy, Viggy, Viggy. You are a bad monkey!"
+echo "We are now walking the tests again... Or maybe not. You shouldn't run so fast; you miss things!"

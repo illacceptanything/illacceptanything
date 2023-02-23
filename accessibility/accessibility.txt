@@ -1,0 +1,5 @@
+Consider Accessibility!
+
+Looking at this repo there is far too little accessibility, ya know? Consider describing images in the readme, etc... Would be beautiful and amazing thank you.
+
+- Blind people anywhere and everywhere.
