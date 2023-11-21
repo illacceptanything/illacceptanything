@@ -84,6 +84,11 @@ every Pull Request submitted and see what happens.
 
 ## Contributors
 
+# Fishing industry by country
+
+* 🇫🇴 Faroe Islands
+* 🇳🇴 Norway
+
 # Huge woorning from your friendly neighborhood JasorYEH - Everything starting from this point on including this line is just random people :)
 Just tellin ya, nothing else important is under this line.
 Proceed at your own caution.
@@ -377,8 +382,8 @@ ARE YOU READY TO RUMBLE????????????????
 
 ```
    ___             _  _    _      _         _              __ _  
-  /   \   _ _     | || |  | |_   | |_      (_)    _ _     / _` | 
-  | - |  | ' \     \_, |  |  _|  | ' \     | |   | ' \    \__, | 
+  | /   \   _ _ |  |  |  |  |  | _ |  | _      (_)    _ _     / _` |
+  | ----------- || ' \     \_, |  |  _|  | ' \     | |   | ' \    \__, | 
   |_|_|  |_||_|   _|__/   _\__|  |_||_|   _|_|_  |_||_|   |___/  
 _|"""""|_|"""""|_| """"|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""| 
 "`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-' 
@@ -406,13 +411,12 @@ ps.imapankace
 
 ![](https://i.imgur.com/WaTpo9m.gif)
 
-
 ======
 # Poll
 
 ### Linux x Mac x Windows for dev
 
-- 3   Linux
+- √3   Linux
 - 0   Mac
 - 0   Windows
 
@@ -430,6 +434,6 @@ ps.imapankace
 
 ## Important notice
 You are awesome but you don't know it yet.
-To accept the fact that you're awesome, please put a new heart here: 🤍
+To accept the fact that you're awesome, please put a new heart here: 🤍🤍
 
 
