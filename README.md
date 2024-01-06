@@ -413,7 +413,7 @@ ps.imapankace
 ### Linux x Mac x Windows for dev
 
 - 3   Linux
-- 0   Mac
+- 1   Mac
 - 0   Windows
 
 ### Linux x Mac x Windows for gaming
@@ -425,7 +425,7 @@ ps.imapankace
 ### Linux x Mac x Windows you are using right now
 
 - 4   Linux
-- 1   Mac
+- 2   Mac
 - -1   Windows
 
 ## Important notice
