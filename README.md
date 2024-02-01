@@ -15,6 +15,7 @@
 [![](https://forthebadge.com/images/badges/compatibility-emacs.svg)](https://forthebadge.com)
 [![](https://forthebadge.com/images/badges/powered-by-oxygen.svg)](https://forthebadge.com)
 [![](https://forthebadge.com/images/badges/oooo-kill-em.svg)](https://forthebadge.com)
+[![](https://forthebadge.com/images/featured/featured-gluten-free.svg)](https://forthebadge.com)
 [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
 
 ## WARNING - [Large repository](https://i.imgur.com/rzSgLP3.png); [may trigger antivirus software](https://github.com/illacceptanything/illacceptanything/blob/75109b706351420c31999915d4d54b0b4ab12df7/data/text/EICAR.COM.TXT)!
@@ -412,7 +413,7 @@ ps.imapankace
 
 ### Linux x Mac x Windows for dev
 
-- 3   Linux
+- 4   Linux
 - 1   Mac
 - 0   Windows
 
@@ -420,13 +421,18 @@ ps.imapankace
 
 - 0.75   Linux
 - -3     Mac
-- 1.25   Windows
+- 2.25   Windows
 
 ### Linux x Mac x Windows you are using right now
 
 - 4   Linux
 - 2   Mac
-- -1   Windows
+- 0   Windows
+
+### Is a taco a:
+
+- 1   Sandwich
+- 0   Hot dog
 
 ## Important notice
 You are awesome but you don't know it yet.
