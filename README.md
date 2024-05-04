@@ -105,6 +105,11 @@ I know because they told everyone
 
 >>>>>>>>>>>>
 -------------------------------------
+### I use ❄️Nix BTW λ.(λλλ(λ))
+![Nix-OS isotype](https://raw.githubusercontent.com/NixOS/nixos-artwork/f84c13adae08e860a7c3f76ab3a9bef916d276cc/logo/nix-snowflake-colours.svg)
+
+[PFP](https://en.wikipedia.org/wiki/Purely_functional_programming) [FTW](https://en.wiktionary.org/wiki/for_the_win)!!
+
 ###    kenevil1 wuz here
 -------------------------------------
 >>>>>>>>>>>>
