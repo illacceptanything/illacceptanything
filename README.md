@@ -421,7 +421,7 @@ ps.imapankace
 
 - 4   Linux
 - 1   Mac
-- 0   Windows
+- 1   Windows
 
 ### Linux x Mac x Windows for gaming
 
@@ -433,7 +433,7 @@ ps.imapankace
 
 - 4   Linux
 - 2   Mac
-- 0   Windows
+- 1  Windows
 
 ### Is a taco a:
 
