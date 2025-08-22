@@ -1,14 +1,21 @@
+#ifndef __cplusplus
+extern "C" {
+#endif
+
 #include <stdio.h>
-int main() {    
 
-    int number1, number2, sum;
-    
-    printf("Enter two integers: ");
-    scanf("%d %d", &number1, &number2);
+int main() {
+  int number1, number2;
+  printf("%s", "Enter two integers: ");
+  scanf("%d %d", &number1, &number2);
 
-    // calculating sum
-    sum = number1 + number2;      
+  // calculate sum
+  int const sum = number1 + number2;      
     
-    printf("%d + %d = %d", number1, number2, sum);
-    return 0;
+  printf("%d + %d = %d", number1, number2, sum);
+  return 0;
 }
+
+#ifndef __cplusplus
+}
+#endif
