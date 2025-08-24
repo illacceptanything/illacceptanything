@@ -70,7 +70,7 @@ every Pull Request submitted and see what happens.
  * Also, please refrain from uploading extremely large files or filenames with reserved characters, since those can make cloning the repository impossible for other contributors.
  * Please try to sort files into `data/`, `code/`, etc. where applicable. A neater repository is more maintainable!
  * Não insira mais de uma linha de conteúdo escrito em linguagens que contenham a palavra "capivara".
- * Don't be racist
+ * Don't be racist please
  * You shall worship the puro.
    ![unnamed](https://github.com/TheBearodactyl/illacceptanything/assets/114454115/7e26f5be-5cf7-49f9-87b7-dd2cf6244561)
 
