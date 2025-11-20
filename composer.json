@@ -1,0 +1,22 @@
+{
+    "name": "illacceptanything/illacceptanything",
+    "description": "The project where literally anything* goes. (Accepts every pull request).",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "illacceptanything contributors",
+            "role": "Maintainer"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "IllAcceptAnything\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
